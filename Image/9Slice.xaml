@@ -1,0 +1,114 @@
+<Grid
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  
+    <Grid.Background>
+        <RadialGradientBrush Center="0.6,0.7" GradientOrigin="0.6,0.7" RadiusX="0.6" RadiusY="0.7">
+            <GradientStop Offset="0" Color="YellowGreen"/>
+            <GradientStop Offset="1" Color="OliveDrab"/>
+        </RadialGradientBrush>
+    </Grid.Background>
+  
+    <Grid.Resources>
+        <ImageBrush x:Key="WoodSignTL" ImageSource="Images/9slice.png" ViewboxUnits="Absolute" Viewbox="0,0,50,60"/>
+        <ImageBrush x:Key="WoodSignT" ImageSource="Images/9slice.png" ViewboxUnits="Absolute" Viewbox="50,0,200,60"/>
+        <ImageBrush x:Key="WoodSignTR" ImageSource="Images/9slice.png" ViewboxUnits="Absolute" Viewbox="250,0,50,60"/>
+        
+        <ImageBrush x:Key="WoodSignML" ImageSource="Images/9slice.png" ViewboxUnits="Absolute" Viewbox="0,60,50,80"/>
+        <ImageBrush x:Key="WoodSignM" ImageSource="Images/9slice.png" ViewboxUnits="Absolute" Viewbox="50,60,200,80"/>
+        <ImageBrush x:Key="WoodSignMR" ImageSource="Images/9slice.png" ViewboxUnits="Absolute" Viewbox="250,60,50,80"/>
+        
+        <ImageBrush x:Key="WoodSignBL" ImageSource="Images/9slice.png" ViewboxUnits="Absolute" Viewbox="0,140,50,60"/>
+        <ImageBrush x:Key="WoodSignB" ImageSource="Images/9slice.png" ViewboxUnits="Absolute" Viewbox="50,140,200,60"/>
+        <ImageBrush x:Key="WoodSignBR" ImageSource="Images/9slice.png" ViewboxUnits="Absolute" Viewbox="250,140,50,60"/>
+    </Grid.Resources>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    
+        <Grid Width="200" Height="150">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            
+            <Rectangle Grid.Column="0" Grid.Row="0" Fill="{StaticResource WoodSignTL}"/>
+            <Rectangle Grid.Column="1" Grid.Row="0" Fill="{StaticResource WoodSignT}"/>
+            <Rectangle Grid.Column="2" Grid.Row="0" Fill="{StaticResource WoodSignTR}"/>
+            
+            <Rectangle Grid.Column="0" Grid.Row="1" Fill="{StaticResource WoodSignML}"/>
+            <Rectangle Grid.Column="1" Grid.Row="1" Fill="{StaticResource WoodSignM}"/>
+            <Rectangle Grid.Column="2" Grid.Row="1" Fill="{StaticResource WoodSignMR}"/>
+            
+            <Rectangle Grid.Column="0" Grid.Row="2" Fill="{StaticResource WoodSignBL}"/>
+            <Rectangle Grid.Column="1" Grid.Row="2" Fill="{StaticResource WoodSignB}"/>
+            <Rectangle Grid.Column="2" Grid.Row="2" Fill="{StaticResource WoodSignBR}"/>
+            
+            <TextBlock Grid.ColumnSpan="3" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+                FontFamily="#Another" FontSize="40" Foreground="#402000" Text="Welcome!"/>
+        </Grid>
+        
+        <Grid Width="300" Height="200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            
+            <Rectangle Grid.Column="0" Grid.Row="0" Fill="{StaticResource WoodSignTL}"/>
+            <Rectangle Grid.Column="1" Grid.Row="0" Fill="{StaticResource WoodSignT}"/>
+            <Rectangle Grid.Column="2" Grid.Row="0" Fill="{StaticResource WoodSignTR}"/>
+            
+            <Rectangle Grid.Column="0" Grid.Row="1" Fill="{StaticResource WoodSignML}"/>
+            <Rectangle Grid.Column="1" Grid.Row="1" Fill="{StaticResource WoodSignM}"/>
+            <Rectangle Grid.Column="2" Grid.Row="1" Fill="{StaticResource WoodSignMR}"/>
+            
+            <Rectangle Grid.Column="0" Grid.Row="2" Fill="{StaticResource WoodSignBL}"/>
+            <Rectangle Grid.Column="1" Grid.Row="2" Fill="{StaticResource WoodSignB}"/>
+            <Rectangle Grid.Column="2" Grid.Row="2" Fill="{StaticResource WoodSignBR}"/>
+            
+            <TextBlock Grid.ColumnSpan="3" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+                FontFamily="#Another" FontSize="70" Foreground="#402000" Text="Welcome!"/>
+        </Grid>
+    
+        <Grid Width="400" Height="250">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            
+            <Rectangle Grid.Column="0" Grid.Row="0" Fill="{StaticResource WoodSignTL}"/>
+            <Rectangle Grid.Column="1" Grid.Row="0" Fill="{StaticResource WoodSignT}"/>
+            <Rectangle Grid.Column="2" Grid.Row="0" Fill="{StaticResource WoodSignTR}"/>
+            
+            <Rectangle Grid.Column="0" Grid.Row="1" Fill="{StaticResource WoodSignML}"/>
+            <Rectangle Grid.Column="1" Grid.Row="1" Fill="{StaticResource WoodSignM}"/>
+            <Rectangle Grid.Column="2" Grid.Row="1" Fill="{StaticResource WoodSignMR}"/>
+            
+            <Rectangle Grid.Column="0" Grid.Row="2" Fill="{StaticResource WoodSignBL}"/>
+            <Rectangle Grid.Column="1" Grid.Row="2" Fill="{StaticResource WoodSignB}"/>
+            <Rectangle Grid.Column="2" Grid.Row="2" Fill="{StaticResource WoodSignBR}"/>
+            
+            <TextBlock Grid.ColumnSpan="3" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+                FontFamily="#Another" FontSize="100" Foreground="#402000" Text="Welcome!"/>
+        </Grid>
+
+    </StackPanel>
+
+</Grid>
