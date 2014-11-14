@@ -1,0 +1,12 @@
+<Grid
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:noesis="clr-namespace:NoesisGUIExtensions">
+    <StackPanel VerticalAlignment="Center" Width="200" TextElement.FontSize="25">
+        <TextBlock Text="Foreground" TextAlignment="Center" Margin="4" Foreground="DodgerBlue"/>
+        <TextBlock Text="Background" TextAlignment="Center" Margin="3" Padding="1" Background="DodgerBlue"/>
+        <TextBlock Text="Stroke" TextAlignment="Center" Margin="4" 
+          noesis:Text.Stroke="DodgerBlue"
+          noesis:Text.StrokeThickness="2.5"/>
+    </StackPanel>
+</Grid>

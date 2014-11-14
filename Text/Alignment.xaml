@@ -1,0 +1,15 @@
+<Grid
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+        <Border BorderBrush="DodgerBlue" BorderThickness="1" Margin="2" Padding="1">
+            <TextBlock Text="Left" TextAlignment="Left"/>
+        </Border>
+        <Border BorderBrush="DodgerBlue" BorderThickness="1" Margin="2" Padding="1">
+            <TextBlock Text="Center" TextAlignment="Center"/>
+        </Border>
+        <Border BorderBrush="DodgerBlue" BorderThickness="1" Margin="2" Padding="1">
+            <TextBlock Text="Right" TextAlignment="Right"/>
+        </Border>
+    </StackPanel>
+</Grid>

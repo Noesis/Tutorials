@@ -1,0 +1,214 @@
+<Grid
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="White" UseLayoutRounding="True"
+  TextElement.Foreground="Black">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Justify" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Left" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Center" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Right" TextAlignment="Right" FontWeight="Bold" VerticalAlignment="Center"/>
+        
+        <Border Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Background="LightGray" Margin="5,1" Padding="0,2">
+            <TextBlock Text="NoWrap" TextAlignment="Center" FontWeight="Bold"/>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="3" Background="LightGray" Margin="5,1" Padding="0,2">
+            <TextBlock Text="Wrap" TextAlignment="Center" FontWeight="Bold"/>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" Background="LightGray" Margin="5,1" Padding="0,2">
+            <TextBlock Text="WrapWithOverflow" TextAlignment="Center" FontWeight="Bold"/>
+        </Border>
+        
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="NoTrimming" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="CharTrimming" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="WordTrimming" TextAlignment="Center" FontWeight="Bold"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="4" Text="NoTrimming" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Grid.Column="5" Text="CharTrimming" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Grid.Column="6" Text="WordTrimming" TextAlignment="Center" FontWeight="Bold"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="7" Text="NoTrimming" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Grid.Column="8" Text="CharTrimming" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Grid.Column="9" Text="WordTrimming" TextAlignment="Center" FontWeight="Bold"/>
+        
+        <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Justify" TextWrapping="NoWrap" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Justify" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Justify" TextWrapping="NoWrap" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="6" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+         
+        <Border Grid.Row="2" Grid.Column="7" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Justify" TextWrapping="WrapWithOverflow" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="8" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Justify" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="9" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Justify" TextWrapping="WrapWithOverflow" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Left" TextWrapping="NoWrap" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Left" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Left" TextWrapping="NoWrap" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Left" TextWrapping="Wrap" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Left" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="6" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Left" TextWrapping="Wrap" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+         
+        <Border Grid.Row="3" Grid.Column="7" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Left" TextWrapping="WrapWithOverflow" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="8" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Left" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="3" Grid.Column="9" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Left" TextWrapping="WrapWithOverflow" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        
+        <Border Grid.Row="4" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="NoWrap" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="NoWrap" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+
+        <Border Grid.Row="4" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="6" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+         
+        <Border Grid.Row="4" Grid.Column="7" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="8" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="9" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        
+        <Border Grid.Row="5" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Right" TextWrapping="NoWrap" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="5" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Right" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="5" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Right" TextWrapping="NoWrap" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+
+        <Border Grid.Row="5" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Right" TextWrapping="Wrap" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="5" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Right" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="5" Grid.Column="6" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Right" TextWrapping="Wrap" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+         
+        <Border Grid.Row="5" Grid.Column="7" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Right" TextWrapping="WrapWithOverflow" TextTrimming="None"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="5" Grid.Column="8" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Right" TextWrapping="WrapWithOverflow" TextTrimming="CharacterEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        <Border Grid.Row="5" Grid.Column="9" BorderBrush="Black" BorderThickness="1" Margin="5,3" Width="100">
+            <TextBlock TextAlignment="Right" TextWrapping="WrapWithOverflow" TextTrimming="WordEllipsis"
+                Text="Some text to tryout quitedifferentorsimilar alignments"/>
+        </Border>
+        
+    </Grid>
+    
+</Grid>
