@@ -1,0 +1,378 @@
+﻿<Grid
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	UseLayoutRounding="true"
+	Margin="10" d:DesignWidth="800" d:DesignHeight="600">
+	
+	<Grid.Resources>
+	    <SolidColorBrush x:Key="FgBrush" Color="White"/>
+	    <SolidColorBrush x:Key="BgBrush" Color="#7F0A335C"/>
+	    <SolidColorBrush x:Key="BdBrush" Color="#AF084E91"/>
+	    
+	    <SolidColorBrush x:Key="DisabledFgBrush" Color="#7FFFFFFF"/>
+	    <SolidColorBrush x:Key="DisabledBgBrush" Color="#66143352"/>
+	    <SolidColorBrush x:Key="DisabledBdBrush" Color="#7F174E82"/>
+	    
+	    <SolidColorBrush x:Key="BgOverBrush" Color="#B20A335C"/>
+	    <SolidColorBrush x:Key="BgPressBrush" Color="#B2064079"/>
+	    <SolidColorBrush x:Key="BgDarkBrush" Color="#CC0A345C"/>
+	    <SolidColorBrush x:Key="BgLightBrush" Color="#CC336799"/>
+	    
+		<ControlTemplate x:Key="VerticalScrollBarTemplate" TargetType="{x:Type ScrollBar}">
+			<Grid/>
+		</ControlTemplate>
+		<Style TargetType="{x:Type ScrollBar}">
+			<Setter Property="Template" Value="{StaticResource VerticalScrollBarTemplate}"/>
+		</Style>
+
+		<ControlTemplate x:Key="ComboBoxToggleButtonTemplate" TargetType="{x:Type ToggleButton}">
+			<Border x:Name="Bg"
+			  BorderThickness="{TemplateBinding BorderThickness}"
+			  BorderBrush="{TemplateBinding BorderBrush}"
+			  Background="{TemplateBinding Background}"
+			  SnapsToDevicePixels="True">
+				<Border HorizontalAlignment="Right" Padding="4">
+					<Path x:Name="Arrow"
+					  Data="M0,0L3.5,4 7,0z"
+					  Fill="{TemplateBinding Foreground}"
+					  HorizontalAlignment="Center"
+					  VerticalAlignment="Center"
+					  Margin="0,1,0,0"
+					  Width="7"/>
+				</Border>
+			</Border>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" TargetName="Bg" Value="{StaticResource BgOverBrush}"/>
+				</Trigger>
+				<Trigger Property="IsPressed" Value="True">
+					<Setter Property="Background" TargetName="Bg" Value="{StaticResource BgPressBrush}"/>
+				</Trigger>
+				<Trigger Property="IsChecked" Value="True">
+					<Setter Property="Background" TargetName="Bg" Value="{StaticResource BgPressBrush}"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<Style x:Key="ComboBoxToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+			<Setter Property="OverridesDefaultStyle" Value="True"/>
+			<Setter Property="IsTabStop" Value="False"/>
+			<Setter Property="Focusable" Value="False"/>
+			<Setter Property="ClickMode" Value="Press"/>
+			<Setter Property="Template" Value="{StaticResource ComboBoxToggleButtonTemplate}"/>
+			<Setter Property="Foreground" Value="{StaticResource FgBrush}"/>
+		</Style>
+		<ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
+			<Grid x:Name="MainGrid" SnapsToDevicePixels="True">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="15"/>
+				</Grid.ColumnDefinitions>
+				<Popup x:Name="PART_Popup"
+				  AllowsTransparency="True"
+				  Grid.ColumnSpan="2"
+				  IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+				  Margin="1"
+				  PopupAnimation="Fade"
+				  Placement="Bottom">
+					<Border x:Name="DropDownBorder"
+					  MaxHeight="{TemplateBinding MaxDropDownHeight}"
+					  MinWidth="{Binding ActualWidth, ElementName=MainGrid}"
+					  BorderBrush="{StaticResource BdBrush}"
+					  Background="{StaticResource BgDarkBrush}"
+					  BorderThickness="1">
+						<ScrollViewer x:Name="DropDownScrollViewer">
+							<Grid>
+								<ItemsPresenter x:Name="ItemsPresenter"
+								  KeyboardNavigation.DirectionalNavigation="Contained"
+								  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+							</Grid>
+						</ScrollViewer>
+					</Border>
+				</Popup>
+				<ToggleButton
+				  Style="{StaticResource ComboBoxToggleButtonStyle}"
+				  BorderThickness="1"
+				  BorderBrush="{TemplateBinding BorderBrush}"
+				  Background="{TemplateBinding Background}"
+				  Grid.ColumnSpan="2"
+				  IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+				<ContentPresenter
+				  Content="{TemplateBinding SelectionBoxItem}"
+				  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+				  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+				  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+				  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+				  Margin="{TemplateBinding Padding}"
+				  IsHitTestVisible="False"/>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<Trigger Property="HasItems" Value="False">
+					<Setter Property="Height" TargetName="DropDownBorder" Value="95"/>
+				</Trigger>
+				<Trigger Property="IsEnabled" Value="False">
+					<Setter Property="Foreground" Value="{StaticResource DisabledFgBrush}"/>
+					<Setter Property="Background" Value="{StaticResource DisabledBgBrush}"/>
+					<Setter Property="BorderBrush" Value="{StaticResource DisabledBdBrush}"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<Style TargetType="{x:Type ComboBox}">
+			<Setter Property="FontSize" Value="10"/>
+			<Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
+			<Setter Property="Foreground" Value="{StaticResource FgBrush}"/>
+			<Setter Property="Background" Value="{StaticResource BgBrush}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource BdBrush}"/>
+			<Setter Property="Padding" Value="4,5,4,3"/>
+		</Style>
+		
+		<ControlTemplate x:Key="ComboBoxItemTemplate" TargetType="{x:Type ComboBoxItem}">
+			<Border x:Name="Bd"
+			  BorderBrush="{TemplateBinding BorderBrush}"
+			  BorderThickness="{TemplateBinding BorderThickness}"
+			  Background="{TemplateBinding Background}"
+			  Padding="{TemplateBinding Padding}"
+			  SnapsToDevicePixels="true">
+				<ContentPresenter
+				  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+				  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+				  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+			</Border>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsHighlighted" Value="true">
+					<Setter Property="Background" TargetName="Bd" Value="{StaticResource BgLightBrush}"/>
+				</Trigger>
+				<Trigger Property="IsEnabled" Value="false">
+					<Setter Property="Foreground" Value="{StaticResource DisabledFgBrush}"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<Style TargetType="{x:Type ComboBoxItem}">
+			<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="Padding" Value="3,4,3,2"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Template" Value="{StaticResource ComboBoxItemTemplate}"/>
+		</Style>
+		
+		<ControlTemplate x:Key="SliderRepeatButtonTemplate" TargetType="{x:Type RepeatButton}">
+			<Rectangle Fill="Transparent"/>
+		</ControlTemplate>
+		<Style x:Key="SliderRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
+			<Setter Property="OverridesDefaultStyle" Value="true"/>
+			<Setter Property="IsTabStop" Value="false"/>
+			<Setter Property="Focusable" Value="false"/>
+			<Setter Property="Template" Value="{StaticResource SliderRepeatButtonTemplate}"/>
+		</Style>
+		<ControlTemplate x:Key="SliderThumbTemplate" TargetType="{x:Type Thumb}">
+			<Border x:Name="Bg" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Margin="0,1">
+			    <Rectangle Fill="{TemplateBinding Foreground}" VerticalAlignment="Center" Height="4" Margin="1,0" SnapsToDevicePixels="False"/>
+			</Border>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="true">
+					<Setter Property="Background" Value="{StaticResource BgOverBrush}"/>
+				</Trigger>
+				<Trigger Property="IsDragging" Value="true">
+					<Setter Property="Background" Value="{StaticResource BgPressBrush}"/>
+				</Trigger>
+				<Trigger Property="IsEnabled" Value="false">
+				    <Setter Property="Foreground" Value="{StaticResource DisabledFgBrush}"/>
+					<Setter Property="Background" TargetName="Bg" Value="{StaticResource DisabledBgBrush}"/>
+					<Setter Property="BorderBrush" TargetName="Bg" Value="{StaticResource DisabledBdBrush}"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<Style x:Key="HorizontalSliderThumbStyle" TargetType="{x:Type Thumb}">
+			<Setter Property="Focusable" Value="false"/>
+			<Setter Property="OverridesDefaultStyle" Value="true"/>
+			<Setter Property="Height" Value="22"/>
+			<Setter Property="Width" Value="11"/>
+			<Setter Property="Foreground" Value="{StaticResource FgBrush}"/>
+			<Setter Property="Background" Value="{StaticResource BgBrush}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource BdBrush}"/>
+			<Setter Property="Template" Value="{StaticResource SliderThumbTemplate}"/>
+		</Style>
+		<ControlTemplate x:Key="SliderTemplate" TargetType="{x:Type Slider}">
+			<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<Border x:Name="TrackBackground"
+					  Background="{DynamicResource BgBrush}"
+					  Height="4"
+					  Margin="5,0"
+					  Grid.Row="1"
+					  VerticalAlignment="Center"/>
+				    <Track x:Name="PART_Track" Grid.Row="1">
+						<Track.DecreaseRepeatButton>
+							<RepeatButton Command="Slider.DecreaseLarge" Style="{StaticResource SliderRepeatButtonStyle}"/>
+						</Track.DecreaseRepeatButton>
+						<Track.IncreaseRepeatButton>
+							<RepeatButton Command="Slider.IncreaseLarge" Style="{StaticResource SliderRepeatButtonStyle}"/>
+						</Track.IncreaseRepeatButton>
+						<Track.Thumb>
+							<Thumb x:Name="Thumb" Style="{StaticResource HorizontalSliderThumbStyle}"/>
+						</Track.Thumb>
+					</Track>
+				</Grid>
+			</Border>
+		</ControlTemplate>
+		<Style TargetType="{x:Type Slider}">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="{StaticResource FgBrush}"/>
+			<Setter Property="Template" Value="{StaticResource SliderTemplate}"/>
+		</Style>
+        
+        <ControlTemplate x:Key="ScrollViewerTemplate" TargetType="{x:Type ScrollViewer}">
+			<Grid x:Name="Grid" Background="{TemplateBinding Background}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
+				  Grid.Row="0"
+				  Grid.Column="0"
+				  CanContentScroll="{TemplateBinding CanContentScroll}"
+				  ContentTemplate="{TemplateBinding ContentTemplate}"
+				  Content="{TemplateBinding Content}"
+				  Margin="{TemplateBinding Padding}"/>
+				<ScrollBar x:Name="PART_VerticalScrollBar"
+				  Grid.Row="0"
+				  Grid.Column="1"
+				  Minimum="0"
+				  Maximum="{TemplateBinding ScrollableHeight}"
+				  Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+				  Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+				  ViewportSize="{TemplateBinding ViewportHeight}"/>
+				<ScrollBar x:Name="PART_HorizontalScrollBar"
+				  Grid.Row="1"
+				  Grid.Column="0"
+				  Orientation="Horizontal"
+				  Minimum="0"
+				  Maximum="{TemplateBinding ScrollableWidth}"
+				  Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+				  Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+				  ViewportSize="{TemplateBinding ViewportWidth}"/>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsEnabled" Value="false">
+					<Setter Property="Foreground" Value="{StaticResource DisabledFgBrush}"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<Style TargetType="{x:Type ScrollViewer}">
+			<Setter Property="Template" Value="{StaticResource ScrollViewerTemplate}"/>
+		</Style>
+
+		<Storyboard x:Key="LogoAnim" Duration="0:0:10" RepeatBehavior="Forever">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="Logo">
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="360">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Logo">
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Logo">
+				<EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:2" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</Grid.Resources>
+
+	<Grid.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Name="LogoAnimAction" Storyboard="{StaticResource LogoAnim}"/>
+		</EventTrigger>
+	</Grid.Triggers>
+	
+	<Viewbox x:Name="Logo" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-10,-35,-35,-10" Width="100" RenderTransformOrigin="0.5,0.5">
+		<Viewbox.RenderTransform>
+			<TransformGroup>
+				<ScaleTransform/>
+				<SkewTransform/>
+				<RotateTransform Angle="0"/>
+				<TranslateTransform/>
+			</TransformGroup>
+		</Viewbox.RenderTransform>
+		<Grid Margin="20">
+			<Ellipse Margin="-20">
+				<Ellipse.Fill>
+					<RadialGradientBrush>
+						<GradientStop Color="#33679BCB"/>
+						<GradientStop Color="#118DB4D8" Offset="0.5"/>
+						<GradientStop Offset="1" Color="#00DAE7F3"/>
+					</RadialGradientBrush>
+				</Ellipse.Fill>
+			</Ellipse>
+			<Path
+			  Data="M7.8181405,7.4350004 L10.785884,7.8000641 7.852119,11.690807 11.590569,20.510078 18.350574,21.331413 21.303009,17.404706 22.470999,20.155071 19.469023,24.164001 9.801919,22.896036 4.8940001,11.323773 z M5.9316196,2.9500001 L18.40727,4.4857712 20.313,8.9625416 18.51292,11.350153 16.610325,6.8640554 7.1036329,5.6920075 3.0124421,11.135642 4.9367938,15.656001 1.9709837,15.292187 0,10.687964 z M16.419453,0 L21.392439,0.59517956 25.128,9.6013365 17.559879,19.638 12.729766,19.050041 11.562,16.297375 16.39856,16.892647 22.16725,9.2453375 19.498543,2.9802699 14.621408,2.3866845 z"
+			  Stretch="Fill" Width="18.071" Height="17.379" UseLayoutRounding="False" Fill="{DynamicResource BgLightBrush}"/>
+		</Grid>
+	</Viewbox>
+
+	<StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+    
+		<ComboBox x:Name="Background" SelectedIndex="0" Margin="5">
+			<ComboBoxItem Content="BackGround: Cell"/>
+			<ComboBoxItem Content="BackGround: Field"/>
+		</ComboBox>
+        
+		<ComboBox x:Name="Lights" SelectedIndex="0" Margin="5" MaxDropDownHeight="300">
+			<ComboBoxItem Content="1 light"/>
+			<ComboBoxItem Content="2 lights"/>
+			<ComboBoxItem Content="3 lights"/>
+			<ComboBoxItem Content="4 lights"/>
+			<ComboBoxItem Content="5 lights"/>
+			<ComboBoxItem Content="6 lights"/>
+		</ComboBox>
+        
+		<ComboBox x:Name="Visualization" SelectedIndex="0" Margin="5">
+			<ComboBoxItem Content="Scene with Shadow"/>
+			<ComboBoxItem Content="Show Shadow Volume"/>
+			<ComboBoxItem Content="Shadow Volume Complexity"/>
+		</ComboBox>
+
+		<Grid Margin="5,10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<TextBlock Foreground="White" Text="Luminance: " FontSize="10"/>
+			<TextBlock Grid.Column="1" Foreground="White" Text="{Binding Value, ElementName=Luminance, StringFormat=F0}" FontSize="10"/>
+			<Slider Grid.ColumnSpan="2" Grid.Row="1" x:Name="Luminance" Width="200" Value="15" Minimum="1" Maximum="40" Orientation="Horizontal" HorizontalAlignment="Left"/>
+		</Grid>
+        
+	</StackPanel>
+</Grid>
