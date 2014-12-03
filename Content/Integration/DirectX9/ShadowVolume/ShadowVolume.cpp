@@ -1506,7 +1506,7 @@ HRESULT CALLBACK OnResetDevice( IDirect3DDevice9* pd3dDevice,
 #ifdef NOESIS_GUI
     pd3dDevice->CreateStateBlock(D3DSBT_ALL, &gStateBlock);
     
-    if (NsGetKernel()->IsInitialized())
+    if (gXamlRenderer != 0)
     {
         Noesis::GUI::OnResetDevice();
         gXamlRenderer->SetSize(pBackBufferSurfaceDesc->Width, pBackBufferSurfaceDesc->Height);
@@ -2224,7 +2224,7 @@ void CALLBACK OnLostDevice( void* pUserContext )
     SAFE_RELEASE( g_pTextSprite );
     
 #ifdef NOESIS_GUI
-    if (NsGetKernel()->IsInitialized())
+    if (gXamlRenderer != 0)
     {
         Noesis::GUI::OnLostDevice();
     }

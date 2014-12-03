@@ -1,0 +1,26 @@
+<Canvas
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    Height="300" Width="300" Background="LightGray">
+
+  <Line X1="30" Y1="30" X2="130" Y2="130" Stroke="Black" StrokeThickness="8"
+      StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+
+  <Ellipse Canvas.Top="25" Canvas.Left="160" Height="120" Width="120"
+      StrokeThickness="4" Stroke="Black">
+    <Ellipse.Fill>
+      <RadialGradientBrush GradientOrigin="0.75,0.25">
+        <GradientStop Color="Yellow" Offset="0.0" />
+        <GradientStop Color="Orange" Offset="0.5" />
+        <GradientStop Color="Red" Offset="1.0" />
+      </RadialGradientBrush>
+    </Ellipse.Fill>
+  </Ellipse>
+
+  <Rectangle Canvas.Left="45" Canvas.Top="250" Height="150" Width="80" RadiusX="9" RadiusY="9"
+      Fill="LightBlue" StrokeThickness="2" Stroke="Green" StrokeDashArray="3,1">
+    <Rectangle.RenderTransform>
+      <RotateTransform Angle="-80" />
+    </Rectangle.RenderTransform>
+  </Rectangle>
+
+</Canvas>
