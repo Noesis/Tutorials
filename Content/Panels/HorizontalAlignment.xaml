@@ -1,0 +1,15 @@
+<StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+	<Border Width="100" Height ="100" Margin="5" BorderBrush="Black" BorderThickness="1">
+		<Button Content="Left" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+	</Border>
+	<Border Width="100" Height ="100" Margin="5" BorderBrush="Black" BorderThickness="1">
+		<Button Content="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	</Border>
+	<Border Width="100" Height ="100" Margin="5" BorderBrush="Black" BorderThickness="1">
+		<Button Content="Right" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+	</Border>
+	<Border Width="100" Height ="100" Margin="5" BorderBrush="Black" BorderThickness="1">
+		<Button Content="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+	</Border>
+</StackPanel>

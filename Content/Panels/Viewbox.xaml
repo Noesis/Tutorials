@@ -1,0 +1,41 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+   <Grid Background="Gray" ShowGridLines="True">
+      <Grid.RowDefinitions>
+         <RowDefinition Height="*"/>
+         <RowDefinition Height="3*"/>
+         <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="*"/>
+         <ColumnDefinition Width="3*"/>
+         <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <Viewbox Grid.Column="0" Grid.Row="0" Stretch="Uniform">
+         <Grid>
+            <Rectangle Fill="Green" />
+            <Label Content="Top left" />
+         </Grid>
+      </Viewbox>
+      <Viewbox Grid.Column="0" Grid.Row="2" Stretch="Uniform">
+         <Grid Background="Yellow">
+            <Label Content="Bottom left"/>
+         </Grid>
+      </Viewbox>
+      <Viewbox Grid.Column="2" Grid.Row="0" Stretch="Uniform">
+         <Grid Background="Red">
+            <Label Content="Top right"/>
+         </Grid>
+      </Viewbox>
+      <Viewbox Grid.Column="2" Grid.Row="2" Stretch="Uniform">
+         <Grid Background="Blue">
+            <Label Content="Bottom right"/>
+         </Grid>
+      </Viewbox>
+      <Viewbox Grid.Column="1" Grid.Row="1" Stretch="Uniform">
+         <Grid Background="White">
+            <Label Content="Center"/>
+         </Grid>
+      </Viewbox>
+   </Grid>
+</Page>

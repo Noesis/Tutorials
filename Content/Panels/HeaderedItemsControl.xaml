@@ -1,0 +1,147 @@
+<StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+	<Border Width="150" Height ="200" Margin="5">
+		<DockPanel Background="Gray" LastChildFill="False">
+		<Menu DockPanel.Dock="Top">
+		    <MenuItem Header="File">
+		        <MenuItem Header="Open"/>
+		        <MenuItem Header="Save"/>
+		        <Separator/>
+		        <MenuItem Header="Exit"/>
+		    </MenuItem>
+		</Menu>
+		</DockPanel>
+	</Border>
+	<Border Width="200" Height ="200" Margin="5">
+		<TreeView Width="500" Height="400">
+			<TreeViewItem>
+				<TreeViewItem.Header>
+					<StackPanel Orientation="Horizontal">
+						<Image Source="Images/monitor.png" Width="24" Height="24"/>
+						<TextBlock Text="Computer" VerticalAlignment="Center" Margin="4,0,0,0"/>
+					</StackPanel>
+				</TreeViewItem.Header>
+				<TreeViewItem>
+					<TreeViewItem.Header>
+						<StackPanel Orientation="Horizontal">
+							<Image Source="Images/game_pad.png" Width="24" Height="24"/>
+							<TextBlock Text="Games" VerticalAlignment="Center" Margin="4,0,0,0"/>
+						</StackPanel>
+					</TreeViewItem.Header>
+					<TreeViewItem>
+						<TreeViewItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="Images/folder.png" Width="24" Height="24"/>
+								<TextBlock Text="Duck Hunt" VerticalAlignment="Center" Margin="4,0,0,0"/>
+							</StackPanel>
+						</TreeViewItem.Header>
+					</TreeViewItem>
+					<TreeViewItem>
+						<TreeViewItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="Images/folder.png" Width="24" Height="24"/>
+								<TextBlock Text="Bouncing Ball" VerticalAlignment="Center" Margin="4,0,0,0"/>
+							</StackPanel>
+						</TreeViewItem.Header>
+					</TreeViewItem>
+				</TreeViewItem>
+				<TreeViewItem>
+					<TreeViewItem.Header>
+						<StackPanel Orientation="Horizontal">
+							<Image Source="Images/folder.png" Width="24" Height="24"/>
+							<TextBlock Text="Program Files" VerticalAlignment="Center" Margin="4,0,0,0"/>
+						</StackPanel>
+					</TreeViewItem.Header>
+					<TreeViewItem>
+						<TreeViewItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="Images/folder.png" Width="24" Height="24"/>
+								<TextBlock Text="Cognition" VerticalAlignment="Center" Margin="4,0,0,0"/>
+							</StackPanel>
+						</TreeViewItem.Header>
+					</TreeViewItem>
+				</TreeViewItem>
+				<TreeViewItem>
+					<TreeViewItem.Header>
+						<StackPanel Orientation="Horizontal">
+							<Image Source="Images/recycle_bin.png" Width="24" Height="24"/>
+							<TextBlock Text="Recycle Bin" VerticalAlignment="Center" Margin="4,0,0,0"/>
+						</StackPanel>
+					</TreeViewItem.Header>
+				</TreeViewItem>
+				<TreeViewItem>
+					<TreeViewItem.Header>
+						<StackPanel Orientation="Horizontal">
+							<Image Source="Images/folder.png" Width="24" Height="24"/>
+							<TextBlock Text="Users" VerticalAlignment="Center" Margin="4,0,0,0"/>
+						</StackPanel>
+					</TreeViewItem.Header>
+					<TreeViewItem>
+						<TreeViewItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="Images/folder.png" Width="24" Height="24"/>
+								<TextBlock Text="Administrator" VerticalAlignment="Center" Margin="4,0,0,0"/>
+							</StackPanel>
+						</TreeViewItem.Header>
+					</TreeViewItem>
+					<TreeViewItem>
+						<TreeViewItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="Images/folder.png" Width="24" Height="24"/>
+								<TextBlock Text="John Doe" VerticalAlignment="Center" Margin="4,0,0,0"/>
+							</StackPanel>
+						</TreeViewItem.Header>
+					</TreeViewItem>
+				</TreeViewItem>
+				<TreeViewItem>
+					<TreeViewItem.Header>
+						<StackPanel Orientation="Horizontal">
+							<Image Source="Images/folder.png" Width="24" Height="24"/>
+							<TextBlock Text="Windows" VerticalAlignment="Center" Margin="4,0,0,0"/>
+						</StackPanel>
+					</TreeViewItem.Header>
+					<TreeViewItem>
+						<TreeViewItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="Images/folder.png" Width="24" Height="24"/>
+								<TextBlock Text="Fonts" VerticalAlignment="Center" Margin="4,0,0,0"/>
+							</StackPanel>
+						</TreeViewItem.Header>
+					</TreeViewItem>
+					<TreeViewItem>
+						<TreeViewItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="Images/folder.png" Width="24" Height="24"/>
+								<TextBlock Text="Media" VerticalAlignment="Center" Margin="4,0,0,0"/>
+							</StackPanel>
+						</TreeViewItem.Header>
+					</TreeViewItem>
+					<TreeViewItem>
+						<TreeViewItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="Images/folder.png" Width="24" Height="24"/>
+								<TextBlock Text="Resources" VerticalAlignment="Center" Margin="4,0,0,0"/>
+							</StackPanel>
+						</TreeViewItem.Header>
+						<TreeViewItem>
+							<TreeViewItem.Header>
+								<StackPanel Orientation="Horizontal">
+									<Image Source="Images/folder.png" Width="24" Height="24"/>
+									<TextBlock Text="Themes" VerticalAlignment="Center" Margin="4,0,0,0"/>
+								</StackPanel>
+							</TreeViewItem.Header>
+						</TreeViewItem>
+					</TreeViewItem>
+					<TreeViewItem>
+						<TreeViewItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<Image Source="Images/folder.png" Width="24" Height="24"/>
+								<TextBlock Text="System32" VerticalAlignment="Center" Margin="4,0,0,0"/>
+							</StackPanel>
+						</TreeViewItem.Header>
+					</TreeViewItem>
+				</TreeViewItem>
+			</TreeViewItem>
+		</TreeView>
+	</Border>
+</StackPanel>

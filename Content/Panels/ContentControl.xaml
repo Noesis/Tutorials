@@ -1,0 +1,14 @@
+<StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+	<Border Width="150" Height ="50" Margin="5">
+		<Button Content="Press me"/>
+	</Border>
+	<Border Width="150" Height ="50" Margin="5">
+		<Button HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="15">
+		    <Rectangle Fill="Red"/>
+		</Button>
+	</Border>
+	<Border Width="150" Height ="50" Margin="5">	
+		<Label Content="A Label control" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	</Border>
+</StackPanel>

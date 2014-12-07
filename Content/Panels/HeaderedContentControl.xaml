@@ -1,0 +1,20 @@
+<StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+	<Border Width="150" Height ="90" Margin="5">
+		<GroupBox Header="Group" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+		    <Rectangle Fill="Red" Margin="10"/>
+		</GroupBox>
+	</Border>
+	<Border Width="150" Height ="90" Margin="5">
+		<Expander Header="Expander" padding="16">
+		    <Rectangle Fill="Red" Width="100" Height="35"/>
+		</Expander>
+	</Border>
+	<Border Width="150" Height ="90" Margin="5">	
+		<TabControl HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+		    <TabItem Header="Tab">
+		        <Rectangle Fill="Red" Margin="10"/>
+		    </TabItem>
+		</TabControl>
+	</Border>
+</StackPanel>
