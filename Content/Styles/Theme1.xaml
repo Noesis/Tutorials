@@ -1,0 +1,36 @@
+<StackPanel
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  HorizontalAlignment="Center" VerticalAlignment="Center">
+    <StackPanel.Resources>
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type Button}">
+            <Grid>
+                <Ellipse x:Name="Circle"
+                  Stroke="{TemplateBinding BorderBrush}"
+                  Fill="{TemplateBinding Background}"/>
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                  Content="{TemplateBinding Content}"
+                  Margin="{TemplateBinding Padding}"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="Circle" Property="Stroke" Value="Red"/>
+                    <Setter TargetName="Circle" Property="Fill" Value="Pink"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="Circle" Property="Stroke" Value="Green"/>
+                    <Setter TargetName="Circle" Property="Fill" Value="PaleGreen"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Background" Value="Silver"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate}"/>
+        </Style>
+    </StackPanel.Resources>
+    <Button Content="First"/>
+    <Button Content="Second" Margin="0,5"/>
+    <Button Content="Third" BorderBrush="Blue" Background="SkyBlue" Padding="30"/>
+</StackPanel>

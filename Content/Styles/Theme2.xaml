@@ -1,0 +1,36 @@
+<StackPanel
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  HorizontalAlignment="Center" VerticalAlignment="Center">
+
+    <Button Content="Noesis Style" Width="200" Height="60" Margin="0,5">
+      <Button.Resources>
+          <ResourceDictionary>
+              <ResourceDictionary.MergedDictionaries>
+                  <ResourceDictionary Source="Themes/NoesisStyle.xaml"/>
+              </ResourceDictionary.MergedDictionaries>
+          </ResourceDictionary>
+      </Button.Resources>
+    </Button>
+
+    <Button Content="Simple Style" Width="200" Height="60" Margin="0,5">
+      <Button.Resources>
+          <ResourceDictionary>
+              <ResourceDictionary.MergedDictionaries>
+                  <ResourceDictionary Source="Themes/SimpleStyle.xaml"/>
+              </ResourceDictionary.MergedDictionaries>
+          </ResourceDictionary>
+      </Button.Resources>
+    </Button>
+    
+    <Button Content="Windows Style" Width="200" Height="60" Margin="0,5">
+      <Button.Resources>
+          <ResourceDictionary>
+              <ResourceDictionary.MergedDictionaries>
+                  <ResourceDictionary Source="Themes/WindowsStyle.xaml"/>
+              </ResourceDictionary.MergedDictionaries>
+          </ResourceDictionary>
+      </Button.Resources>
+    </Button>
+
+</StackPanel>
