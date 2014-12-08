@@ -35,9 +35,9 @@ struct SimpleVertex
 
 struct ConstantBuffer
 {
-	XMMATRIX mWorld;
-	XMMATRIX mView;
-	XMMATRIX mProjection;
+    XMMATRIX mWorld;
+    XMMATRIX mView;
+    XMMATRIX mProjection;
 };
 
 
@@ -67,15 +67,18 @@ XMMATRIX                g_World1;
 XMMATRIX                g_World2;
 XMMATRIX                g_View;
 XMMATRIX                g_Projection;
+UINT                    g_Width;
+UINT                    g_Height;
 
 
 //--------------------------------------------------------------------------------------
 // Forward declarations
 //--------------------------------------------------------------------------------------
-HRESULT InitWindow( HINSTANCE hInstance, int nCmdShow );
+HRESULT InitWindow(HINSTANCE hInstance, int nCmdShow);
 HRESULT InitDevice();
+HRESULT Resize(UINT width, UINT height);
 void CleanupDevice();
-LRESULT CALLBACK    WndProc( HWND, UINT, WPARAM, LPARAM );
+LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 void Render();
 
 
@@ -85,8 +88,9 @@ void Render();
 #ifdef NOESIS_GUI
 
 using namespace Noesis;
-Ptr<IRenderer> xamlRenderer;
-Noesis::Key gKeyMap[256];
+
+Ptr<IRenderer> g_XamlRenderer;
+Noesis::Key g_KeyMap[256];
 
 void ErrorHandler(const NsChar*, NsInt, const NsChar* desc)
 {
@@ -96,120 +100,120 @@ void ErrorHandler(const NsChar*, NsInt, const NsChar* desc)
 
 void SetupKeyMap()
 {
-    memset(gKeyMap, 0, sizeof(gKeyMap));
+    memset(g_KeyMap, 0, sizeof(g_KeyMap));
 
-    gKeyMap[VK_BACK] = Key_Back;
-    gKeyMap[VK_TAB] = Key_Tab;
-    gKeyMap[VK_CLEAR] = Key_Clear;
-    gKeyMap[VK_RETURN] = Key_Return;
-    gKeyMap[VK_PAUSE] = Key_Pause;
+    g_KeyMap[VK_BACK] = Key_Back;
+    g_KeyMap[VK_TAB] = Key_Tab;
+    g_KeyMap[VK_CLEAR] = Key_Clear;
+    g_KeyMap[VK_RETURN] = Key_Return;
+    g_KeyMap[VK_PAUSE] = Key_Pause;
 
-    gKeyMap[VK_SHIFT] = Key_Shift;
-    gKeyMap[VK_CONTROL] = Key_Control;
-    gKeyMap[VK_MENU] = Key_Alt;
+    g_KeyMap[VK_SHIFT] = Key_Shift;
+    g_KeyMap[VK_CONTROL] = Key_Control;
+    g_KeyMap[VK_MENU] = Key_Alt;
 
-    gKeyMap[VK_ESCAPE] = Key_Escape;
+    g_KeyMap[VK_ESCAPE] = Key_Escape;
 
-    gKeyMap[VK_SPACE] = Key_Space;
-    gKeyMap[VK_PRIOR] = Key_Prior;
-    gKeyMap[VK_NEXT] = Key_Next;
-    gKeyMap[VK_END] = Key_End;
-    gKeyMap[VK_HOME] = Key_Home;
-    gKeyMap[VK_LEFT] = Key_Left;
-    gKeyMap[VK_UP] = Key_Up;
-    gKeyMap[VK_RIGHT] = Key_Right;
-    gKeyMap[VK_DOWN] = Key_Down;
-    gKeyMap[VK_SELECT] = Key_Select;
-    gKeyMap[VK_PRINT] = Key_Print;
-    gKeyMap[VK_EXECUTE] = Key_Execute;
-    gKeyMap[VK_SNAPSHOT] = Key_SnapShot;
-    gKeyMap[VK_INSERT] = Key_Insert;
-    gKeyMap[VK_DELETE] = Key_Delete;
-    gKeyMap[VK_HELP] = Key_Help;
+    g_KeyMap[VK_SPACE] = Key_Space;
+    g_KeyMap[VK_PRIOR] = Key_Prior;
+    g_KeyMap[VK_NEXT] = Key_Next;
+    g_KeyMap[VK_END] = Key_End;
+    g_KeyMap[VK_HOME] = Key_Home;
+    g_KeyMap[VK_LEFT] = Key_Left;
+    g_KeyMap[VK_UP] = Key_Up;
+    g_KeyMap[VK_RIGHT] = Key_Right;
+    g_KeyMap[VK_DOWN] = Key_Down;
+    g_KeyMap[VK_SELECT] = Key_Select;
+    g_KeyMap[VK_PRINT] = Key_Print;
+    g_KeyMap[VK_EXECUTE] = Key_Execute;
+    g_KeyMap[VK_SNAPSHOT] = Key_SnapShot;
+    g_KeyMap[VK_INSERT] = Key_Insert;
+    g_KeyMap[VK_DELETE] = Key_Delete;
+    g_KeyMap[VK_HELP] = Key_Help;
 
-    gKeyMap['0'] = Key_0;
-    gKeyMap['1'] = Key_1;
-    gKeyMap['2'] = Key_2;
-    gKeyMap['3'] = Key_3;
-    gKeyMap['4'] = Key_4;
-    gKeyMap['5'] = Key_5;
-    gKeyMap['6'] = Key_6;
-    gKeyMap['7'] = Key_7;
-    gKeyMap['8'] = Key_8;
-    gKeyMap['9'] = Key_9;
+    g_KeyMap['0'] = Key_0;
+    g_KeyMap['1'] = Key_1;
+    g_KeyMap['2'] = Key_2;
+    g_KeyMap['3'] = Key_3;
+    g_KeyMap['4'] = Key_4;
+    g_KeyMap['5'] = Key_5;
+    g_KeyMap['6'] = Key_6;
+    g_KeyMap['7'] = Key_7;
+    g_KeyMap['8'] = Key_8;
+    g_KeyMap['9'] = Key_9;
 
-    gKeyMap[VK_NUMPAD0] = Key_Pad0;
-    gKeyMap[VK_NUMPAD1] = Key_Pad1;
-    gKeyMap[VK_NUMPAD2] = Key_Pad2;
-    gKeyMap[VK_NUMPAD3] = Key_Pad3;
-    gKeyMap[VK_NUMPAD4] = Key_Pad4;
-    gKeyMap[VK_NUMPAD5] = Key_Pad5;
-    gKeyMap[VK_NUMPAD6] = Key_Pad6;
-    gKeyMap[VK_NUMPAD7] = Key_Pad7;
-    gKeyMap[VK_NUMPAD8] = Key_Pad8;
-    gKeyMap[VK_NUMPAD9] = Key_Pad9;
+    g_KeyMap[VK_NUMPAD0] = Key_Pad0;
+    g_KeyMap[VK_NUMPAD1] = Key_Pad1;
+    g_KeyMap[VK_NUMPAD2] = Key_Pad2;
+    g_KeyMap[VK_NUMPAD3] = Key_Pad3;
+    g_KeyMap[VK_NUMPAD4] = Key_Pad4;
+    g_KeyMap[VK_NUMPAD5] = Key_Pad5;
+    g_KeyMap[VK_NUMPAD6] = Key_Pad6;
+    g_KeyMap[VK_NUMPAD7] = Key_Pad7;
+    g_KeyMap[VK_NUMPAD8] = Key_Pad8;
+    g_KeyMap[VK_NUMPAD9] = Key_Pad9;
 
-    gKeyMap[VK_MULTIPLY] = Key_Multiply;
-    gKeyMap[VK_ADD] = Key_Add;
-    gKeyMap[VK_SEPARATOR] = Key_Separator;
-    gKeyMap[VK_SUBTRACT] = Key_Subtract;
-    gKeyMap[VK_DECIMAL] = Key_Decimal;
-    gKeyMap[VK_DIVIDE] = Key_Divide;
+    g_KeyMap[VK_MULTIPLY] = Key_Multiply;
+    g_KeyMap[VK_ADD] = Key_Add;
+    g_KeyMap[VK_SEPARATOR] = Key_Separator;
+    g_KeyMap[VK_SUBTRACT] = Key_Subtract;
+    g_KeyMap[VK_DECIMAL] = Key_Decimal;
+    g_KeyMap[VK_DIVIDE] = Key_Divide;
 
-    gKeyMap['A'] = Key_A;
-    gKeyMap['B'] = Key_B;
-    gKeyMap['C'] = Key_C;
-    gKeyMap['D'] = Key_D;
-    gKeyMap['E'] = Key_E;
-    gKeyMap['F'] = Key_F;
-    gKeyMap['G'] = Key_G;
-    gKeyMap['H'] = Key_H;
-    gKeyMap['I'] = Key_I;
-    gKeyMap['J'] = Key_J;
-    gKeyMap['K'] = Key_K;
-    gKeyMap['L'] = Key_L;
-    gKeyMap['M'] = Key_M;
-    gKeyMap['N'] = Key_N;
-    gKeyMap['O'] = Key_O;
-    gKeyMap['P'] = Key_P;
-    gKeyMap['Q'] = Key_Q;
-    gKeyMap['R'] = Key_R;
-    gKeyMap['S'] = Key_S;
-    gKeyMap['T'] = Key_T;
-    gKeyMap['U'] = Key_U;
-    gKeyMap['V'] = Key_V;
-    gKeyMap['W'] = Key_W;
-    gKeyMap['X'] = Key_X;
-    gKeyMap['Y'] = Key_Y;
-    gKeyMap['Z'] = Key_Z;
+    g_KeyMap['A'] = Key_A;
+    g_KeyMap['B'] = Key_B;
+    g_KeyMap['C'] = Key_C;
+    g_KeyMap['D'] = Key_D;
+    g_KeyMap['E'] = Key_E;
+    g_KeyMap['F'] = Key_F;
+    g_KeyMap['G'] = Key_G;
+    g_KeyMap['H'] = Key_H;
+    g_KeyMap['I'] = Key_I;
+    g_KeyMap['J'] = Key_J;
+    g_KeyMap['K'] = Key_K;
+    g_KeyMap['L'] = Key_L;
+    g_KeyMap['M'] = Key_M;
+    g_KeyMap['N'] = Key_N;
+    g_KeyMap['O'] = Key_O;
+    g_KeyMap['P'] = Key_P;
+    g_KeyMap['Q'] = Key_Q;
+    g_KeyMap['R'] = Key_R;
+    g_KeyMap['S'] = Key_S;
+    g_KeyMap['T'] = Key_T;
+    g_KeyMap['U'] = Key_U;
+    g_KeyMap['V'] = Key_V;
+    g_KeyMap['W'] = Key_W;
+    g_KeyMap['X'] = Key_X;
+    g_KeyMap['Y'] = Key_Y;
+    g_KeyMap['Z'] = Key_Z;
 
-    gKeyMap[VK_F1] = Key_F1;
-    gKeyMap[VK_F2] = Key_F2;
-    gKeyMap[VK_F3] = Key_F3;
-    gKeyMap[VK_F4] = Key_F4;
-    gKeyMap[VK_F5] = Key_F5;
-    gKeyMap[VK_F6] = Key_F6;
-    gKeyMap[VK_F7] = Key_F7;
-    gKeyMap[VK_F8] = Key_F8;
-    gKeyMap[VK_F9] = Key_F9;
-    gKeyMap[VK_F10] = Key_F10;
-    gKeyMap[VK_F11] = Key_F11;
-    gKeyMap[VK_F12] = Key_F12;
-    gKeyMap[VK_F13] = Key_F13;
-    gKeyMap[VK_F14] = Key_F14;
-    gKeyMap[VK_F15] = Key_F15;
-    gKeyMap[VK_F16] = Key_F16;
-    gKeyMap[VK_F17] = Key_F17;
-    gKeyMap[VK_F18] = Key_F18;
-    gKeyMap[VK_F19] = Key_F19;
-    gKeyMap[VK_F20] = Key_F20;
-    gKeyMap[VK_F21] = Key_F21;
-    gKeyMap[VK_F22] = Key_F22;
-    gKeyMap[VK_F23] = Key_F23;
-    gKeyMap[VK_F24] = Key_F24;
+    g_KeyMap[VK_F1] = Key_F1;
+    g_KeyMap[VK_F2] = Key_F2;
+    g_KeyMap[VK_F3] = Key_F3;
+    g_KeyMap[VK_F4] = Key_F4;
+    g_KeyMap[VK_F5] = Key_F5;
+    g_KeyMap[VK_F6] = Key_F6;
+    g_KeyMap[VK_F7] = Key_F7;
+    g_KeyMap[VK_F8] = Key_F8;
+    g_KeyMap[VK_F9] = Key_F9;
+    g_KeyMap[VK_F10] = Key_F10;
+    g_KeyMap[VK_F11] = Key_F11;
+    g_KeyMap[VK_F12] = Key_F12;
+    g_KeyMap[VK_F13] = Key_F13;
+    g_KeyMap[VK_F14] = Key_F14;
+    g_KeyMap[VK_F15] = Key_F15;
+    g_KeyMap[VK_F16] = Key_F16;
+    g_KeyMap[VK_F17] = Key_F17;
+    g_KeyMap[VK_F18] = Key_F18;
+    g_KeyMap[VK_F19] = Key_F19;
+    g_KeyMap[VK_F20] = Key_F20;
+    g_KeyMap[VK_F21] = Key_F21;
+    g_KeyMap[VK_F22] = Key_F22;
+    g_KeyMap[VK_F23] = Key_F23;
+    g_KeyMap[VK_F24] = Key_F24;
 
-    gKeyMap[VK_NUMLOCK] = Key_NumLock;
-    gKeyMap[VK_SCROLL] = Key_Scroll;
+    g_KeyMap[VK_NUMLOCK] = Key_NumLock;
+    g_KeyMap[VK_SCROLL] = Key_Scroll;
 }
 #endif
 
@@ -218,15 +222,15 @@ void SetupKeyMap()
 // Entry point to the program. Initializes everything and goes into a message processing 
 // loop. Idle time is used to render the scene.
 //--------------------------------------------------------------------------------------
-int WINAPI wWinMain( _In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nCmdShow )
+int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nCmdShow)
 {
-    UNREFERENCED_PARAMETER( hPrevInstance );
-    UNREFERENCED_PARAMETER( lpCmdLine );
+    UNREFERENCED_PARAMETER(hPrevInstance);
+    UNREFERENCED_PARAMETER(lpCmdLine);
 
-    if( FAILED( InitWindow( hInstance, nCmdShow ) ) )
+    if (FAILED(InitWindow(hInstance, nCmdShow)))
         return 0;
 
-    if( FAILED( InitDevice() ) )
+    if (FAILED(InitDevice()))
     {
         CleanupDevice();
         return 0;
@@ -240,20 +244,20 @@ int WINAPI wWinMain( _In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
         Noesis::GUI::AddResourceProvider(".");
 
         Ptr<FrameworkElement> xaml = Noesis::GUI::LoadXaml<FrameworkElement>("ComboBox.xaml");
-        xamlRenderer = Noesis::GUI::CreateRenderer(xaml.GetPtr());
-        xamlRenderer->SetSize(800, 600);
-        xamlRenderer->SetAntialiasingMode(Noesis::Gui::AntialiasingMode_PPAA);
+        g_XamlRenderer = Noesis::GUI::CreateRenderer(xaml.GetPtr());
+        g_XamlRenderer->SetSize(g_Width, g_Height);
+        g_XamlRenderer->SetAntialiasingMode(Noesis::Gui::AntialiasingMode_PPAA);
     }
 #endif
 
     // Main message loop
-    MSG msg = {0};
-    while( WM_QUIT != msg.message )
+    MSG msg = { 0 };
+    while (WM_QUIT != msg.message)
     {
-        if( PeekMessage( &msg, nullptr, 0, 0, PM_REMOVE ) )
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            TranslateMessage( &msg );
-            DispatchMessage( &msg );
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
         }
         else
         {
@@ -266,48 +270,48 @@ int WINAPI wWinMain( _In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 #ifdef NOESIS_GUI
     {
         // Free global resources and shutdown kernel
-        xamlRenderer.Reset();
+        g_XamlRenderer.Reset();
         Noesis::GUI::Shutdown();
     }
 #endif
 
-    return ( int )msg.wParam;
+    return (int)msg.wParam;
 }
 
 
 //--------------------------------------------------------------------------------------
 // Register class and create window
 //--------------------------------------------------------------------------------------
-HRESULT InitWindow( HINSTANCE hInstance, int nCmdShow )
+HRESULT InitWindow(HINSTANCE hInstance, int nCmdShow)
 {
     // Register class
     WNDCLASSEX wcex;
-    wcex.cbSize = sizeof( WNDCLASSEX );
+    wcex.cbSize = sizeof(WNDCLASSEX);
     wcex.style = CS_HREDRAW | CS_VREDRAW;
     wcex.lpfnWndProc = WndProc;
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
     wcex.hInstance = hInstance;
-    wcex.hIcon = LoadIcon( hInstance, ( LPCTSTR )IDI_TUTORIAL1 );
-    wcex.hCursor = LoadCursor( nullptr, IDC_ARROW );
-    wcex.hbrBackground = ( HBRUSH )( COLOR_WINDOW + 1 );
+    wcex.hIcon = LoadIcon(hInstance, (LPCTSTR)IDI_TUTORIAL1);
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wcex.lpszMenuName = nullptr;
     wcex.lpszClassName = L"TutorialWindowClass";
-    wcex.hIconSm = LoadIcon( wcex.hInstance, ( LPCTSTR )IDI_TUTORIAL1 );
-    if( !RegisterClassEx( &wcex ) )
+    wcex.hIconSm = LoadIcon(wcex.hInstance, (LPCTSTR)IDI_TUTORIAL1);
+    if (!RegisterClassEx(&wcex))
         return E_FAIL;
 
     // Create window
     g_hInst = hInstance;
     RECT rc = { 0, 0, 800, 600 };
-    AdjustWindowRect( &rc, WS_OVERLAPPEDWINDOW, FALSE );
-    g_hWnd = CreateWindow( L"TutorialWindowClass", L"Direct3D 11 Tutorial 5", WS_OVERLAPPEDWINDOW,
-                           CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance,
-                           nullptr );
-    if( !g_hWnd )
+    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
+    g_hWnd = CreateWindow(L"TutorialWindowClass", L"Direct3D 11 Tutorial 5", WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance,
+        nullptr);
+    if (!g_hWnd)
         return E_FAIL;
 
-    ShowWindow( g_hWnd, nCmdShow );
+    ShowWindow(g_hWnd, nCmdShow);
 
     return S_OK;
 }
@@ -318,7 +322,7 @@ HRESULT InitWindow( HINSTANCE hInstance, int nCmdShow )
 //
 // With VS 11, we could load up prebuilt .cso files instead...
 //--------------------------------------------------------------------------------------
-HRESULT CompileShaderFromFile( WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut )
+HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut)
 {
     HRESULT hr = S_OK;
 
@@ -335,18 +339,18 @@ HRESULT CompileShaderFromFile( WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR sz
 #endif
 
     ID3DBlob* pErrorBlob = nullptr;
-    hr = D3DCompileFromFile( szFileName, nullptr, nullptr, szEntryPoint, szShaderModel, 
-        dwShaderFlags, 0, ppBlobOut, &pErrorBlob );
-    if( FAILED(hr) )
+    hr = D3DCompileFromFile(szFileName, nullptr, nullptr, szEntryPoint, szShaderModel,
+        dwShaderFlags, 0, ppBlobOut, &pErrorBlob);
+    if (FAILED(hr))
     {
-        if( pErrorBlob )
+        if (pErrorBlob)
         {
-            OutputDebugStringA( reinterpret_cast<const char*>( pErrorBlob->GetBufferPointer() ) );
+            OutputDebugStringA(reinterpret_cast<const char*>(pErrorBlob->GetBufferPointer()));
             pErrorBlob->Release();
         }
         return hr;
     }
-    if( pErrorBlob ) pErrorBlob->Release();
+    if (pErrorBlob) pErrorBlob->Release();
 
     return S_OK;
 }
@@ -360,7 +364,7 @@ HRESULT InitDevice()
     HRESULT hr = S_OK;
 
     RECT rc;
-    GetClientRect( g_hWnd, &rc );
+    GetClientRect(g_hWnd, &rc);
     UINT width = rc.right - rc.left;
     UINT height = rc.bottom - rc.top;
 
@@ -375,48 +379,48 @@ HRESULT InitDevice()
         D3D_DRIVER_TYPE_WARP,
         D3D_DRIVER_TYPE_REFERENCE,
     };
-    UINT numDriverTypes = ARRAYSIZE( driverTypes );
+    UINT numDriverTypes = ARRAYSIZE(driverTypes);
 
-	D3D_FEATURE_LEVEL featureLevels[] =
+    D3D_FEATURE_LEVEL featureLevels[] =
     {
         D3D_FEATURE_LEVEL_11_1,
         D3D_FEATURE_LEVEL_11_0,
         D3D_FEATURE_LEVEL_10_1,
         D3D_FEATURE_LEVEL_10_0,
-	};
-	UINT numFeatureLevels = ARRAYSIZE( featureLevels );
+    };
+    UINT numFeatureLevels = ARRAYSIZE(featureLevels);
 
-    for( UINT driverTypeIndex = 0; driverTypeIndex < numDriverTypes; driverTypeIndex++ )
+    for (UINT driverTypeIndex = 0; driverTypeIndex < numDriverTypes; driverTypeIndex++)
     {
         g_driverType = driverTypes[driverTypeIndex];
-        hr = D3D11CreateDevice( nullptr, g_driverType, nullptr, createDeviceFlags, featureLevels, numFeatureLevels,
-                                D3D11_SDK_VERSION, &g_pd3dDevice, &g_featureLevel, &g_pImmediateContext );
+        hr = D3D11CreateDevice(nullptr, g_driverType, nullptr, createDeviceFlags, featureLevels, numFeatureLevels,
+            D3D11_SDK_VERSION, &g_pd3dDevice, &g_featureLevel, &g_pImmediateContext);
 
-        if ( hr == E_INVALIDARG )
+        if (hr == E_INVALIDARG)
         {
             // DirectX 11.0 platforms will not recognize D3D_FEATURE_LEVEL_11_1 so we need to retry without it
-            hr = D3D11CreateDevice( nullptr, g_driverType, nullptr, createDeviceFlags, &featureLevels[1], numFeatureLevels - 1,
-                                    D3D11_SDK_VERSION, &g_pd3dDevice, &g_featureLevel, &g_pImmediateContext );
+            hr = D3D11CreateDevice(nullptr, g_driverType, nullptr, createDeviceFlags, &featureLevels[1], numFeatureLevels - 1,
+                D3D11_SDK_VERSION, &g_pd3dDevice, &g_featureLevel, &g_pImmediateContext);
         }
 
-        if( SUCCEEDED( hr ) )
+        if (SUCCEEDED(hr))
             break;
     }
-    if( FAILED( hr ) )
+    if (FAILED(hr))
         return hr;
 
     // Obtain DXGI factory from device (since we used nullptr for pAdapter above)
     IDXGIFactory1* dxgiFactory = nullptr;
     {
         IDXGIDevice* dxgiDevice = nullptr;
-        hr = g_pd3dDevice->QueryInterface( __uuidof(IDXGIDevice), reinterpret_cast<void**>(&dxgiDevice) );
+        hr = g_pd3dDevice->QueryInterface(__uuidof(IDXGIDevice), reinterpret_cast<void**>(&dxgiDevice));
         if (SUCCEEDED(hr))
         {
             IDXGIAdapter* adapter = nullptr;
             hr = dxgiDevice->GetAdapter(&adapter);
             if (SUCCEEDED(hr))
             {
-                hr = adapter->GetParent( __uuidof(IDXGIFactory1), reinterpret_cast<void**>(&dxgiFactory) );
+                hr = adapter->GetParent(__uuidof(IDXGIFactory1), reinterpret_cast<void**>(&dxgiFactory));
                 adapter->Release();
             }
             dxgiDevice->Release();
@@ -427,14 +431,14 @@ HRESULT InitDevice()
 
     // Create swap chain
     IDXGIFactory2* dxgiFactory2 = nullptr;
-    hr = dxgiFactory->QueryInterface( __uuidof(IDXGIFactory2), reinterpret_cast<void**>(&dxgiFactory2) );
-    if ( dxgiFactory2 )
+    hr = dxgiFactory->QueryInterface(__uuidof(IDXGIFactory2), reinterpret_cast<void**>(&dxgiFactory2));
+    if (dxgiFactory2)
     {
         // DirectX 11.1 or later
-        hr = g_pd3dDevice->QueryInterface( __uuidof(ID3D11Device1), reinterpret_cast<void**>(&g_pd3dDevice1) );
+        hr = g_pd3dDevice->QueryInterface(__uuidof(ID3D11Device1), reinterpret_cast<void**>(&g_pd3dDevice1));
         if (SUCCEEDED(hr))
         {
-            (void) g_pImmediateContext->QueryInterface( __uuidof(ID3D11DeviceContext1), reinterpret_cast<void**>(&g_pImmediateContext1) );
+            (void)g_pImmediateContext->QueryInterface(__uuidof(ID3D11DeviceContext1), reinterpret_cast<void**>(&g_pImmediateContext1));
         }
 
         DXGI_SWAP_CHAIN_DESC1 sd;
@@ -447,10 +451,10 @@ HRESULT InitDevice()
         sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
         sd.BufferCount = 1;
 
-        hr = dxgiFactory2->CreateSwapChainForHwnd( g_pd3dDevice, g_hWnd, &sd, nullptr, nullptr, &g_pSwapChain1 );
+        hr = dxgiFactory2->CreateSwapChainForHwnd(g_pd3dDevice, g_hWnd, &sd, nullptr, nullptr, &g_pSwapChain1);
         if (SUCCEEDED(hr))
         {
-            hr = g_pSwapChain1->QueryInterface( __uuidof(IDXGISwapChain), reinterpret_cast<void**>(&g_pSwapChain) );
+            hr = g_pSwapChain1->QueryInterface(__uuidof(IDXGISwapChain), reinterpret_cast<void**>(&g_pSwapChain));
         }
 
         dxgiFactory2->Release();
@@ -472,7 +476,7 @@ HRESULT InitDevice()
         sd.SampleDesc.Quality = 0;
         sd.Windowed = TRUE;
 
-        hr = dxgiFactory->CreateSwapChain( g_pd3dDevice, &sd, &g_pSwapChain );
+        hr = dxgiFactory->CreateSwapChain(g_pd3dDevice, &sd, &g_pSwapChain);
     }
 
     dxgiFactory->Release();
@@ -480,20 +484,185 @@ HRESULT InitDevice()
     if (FAILED(hr))
         return hr;
 
-    // Create a render target view
-    ID3D11Texture2D* pBackBuffer = nullptr;
-    hr = g_pSwapChain->GetBuffer( 0, __uuidof( ID3D11Texture2D ), reinterpret_cast<void**>( &pBackBuffer ) );
-    if( FAILED( hr ) )
+    hr = Resize(width, height);
+    if (FAILED(hr))
         return hr;
 
-    hr = g_pd3dDevice->CreateRenderTargetView( pBackBuffer, nullptr, &g_pRenderTargetView );
+    // Compile the vertex shader
+    ID3DBlob* pVSBlob = nullptr;
+    hr = CompileShaderFromFile(L"Tutorial05.fx", "VS", "vs_4_0", &pVSBlob);
+    if (FAILED(hr))
+    {
+        MessageBox(nullptr,
+            L"The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file.", L"Error", MB_OK);
+        return hr;
+    }
+
+    // Create the vertex shader
+    hr = g_pd3dDevice->CreateVertexShader(pVSBlob->GetBufferPointer(), pVSBlob->GetBufferSize(), nullptr, &g_pVertexShader);
+    if (FAILED(hr))
+    {
+        pVSBlob->Release();
+        return hr;
+    }
+
+    // Define the input layout
+    D3D11_INPUT_ELEMENT_DESC layout[] =
+    {
+        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+        { "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+    };
+    UINT numElements = ARRAYSIZE(layout);
+
+    // Create the input layout
+    hr = g_pd3dDevice->CreateInputLayout(layout, numElements, pVSBlob->GetBufferPointer(),
+        pVSBlob->GetBufferSize(), &g_pVertexLayout);
+    pVSBlob->Release();
+    if (FAILED(hr))
+        return hr;
+
+    // Set the input layout
+    g_pImmediateContext->IASetInputLayout(g_pVertexLayout);
+
+    // Compile the pixel shader
+    ID3DBlob* pPSBlob = nullptr;
+    hr = CompileShaderFromFile(L"Tutorial05.fx", "PS", "ps_4_0", &pPSBlob);
+    if (FAILED(hr))
+    {
+        MessageBox(nullptr,
+            L"The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file.", L"Error", MB_OK);
+        return hr;
+    }
+
+    // Create the pixel shader
+    hr = g_pd3dDevice->CreatePixelShader(pPSBlob->GetBufferPointer(), pPSBlob->GetBufferSize(), nullptr, &g_pPixelShader);
+    pPSBlob->Release();
+    if (FAILED(hr))
+        return hr;
+
+    // Create vertex buffer
+    SimpleVertex vertices[] =
+    {
+        { XMFLOAT3(-1.0f, 1.0f, -1.0f), XMFLOAT4(0.0f, 0.0f, 1.0f, 1.0f) },
+        { XMFLOAT3(1.0f, 1.0f, -1.0f), XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f) },
+        { XMFLOAT3(1.0f, 1.0f, 1.0f), XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f) },
+        { XMFLOAT3(-1.0f, 1.0f, 1.0f), XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f) },
+        { XMFLOAT3(-1.0f, -1.0f, -1.0f), XMFLOAT4(1.0f, 0.0f, 1.0f, 1.0f) },
+        { XMFLOAT3(1.0f, -1.0f, -1.0f), XMFLOAT4(1.0f, 1.0f, 0.0f, 1.0f) },
+        { XMFLOAT3(1.0f, -1.0f, 1.0f), XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f) },
+        { XMFLOAT3(-1.0f, -1.0f, 1.0f), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f) },
+    };
+    D3D11_BUFFER_DESC bd;
+    ZeroMemory(&bd, sizeof(bd));
+    bd.Usage = D3D11_USAGE_DEFAULT;
+    bd.ByteWidth = sizeof(SimpleVertex) * 8;
+    bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+    bd.CPUAccessFlags = 0;
+    D3D11_SUBRESOURCE_DATA InitData;
+    ZeroMemory(&InitData, sizeof(InitData));
+    InitData.pSysMem = vertices;
+    hr = g_pd3dDevice->CreateBuffer(&bd, &InitData, &g_pVertexBuffer);
+    if (FAILED(hr))
+        return hr;
+
+    // Set vertex buffer
+    UINT stride = sizeof(SimpleVertex);
+    UINT offset = 0;
+    g_pImmediateContext->IASetVertexBuffers(0, 1, &g_pVertexBuffer, &stride, &offset);
+
+    // Create index buffer
+    WORD indices[] =
+    {
+        3, 1, 0,
+        2, 1, 3,
+
+        0, 5, 4,
+        1, 5, 0,
+
+        3, 4, 7,
+        0, 4, 3,
+
+        1, 6, 5,
+        2, 6, 1,
+
+        2, 7, 6,
+        3, 7, 2,
+
+        6, 4, 5,
+        7, 4, 6,
+    };
+    bd.Usage = D3D11_USAGE_DEFAULT;
+    bd.ByteWidth = sizeof(WORD) * 36;        // 36 vertices needed for 12 triangles in a triangle list
+    bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
+    bd.CPUAccessFlags = 0;
+    InitData.pSysMem = indices;
+    hr = g_pd3dDevice->CreateBuffer(&bd, &InitData, &g_pIndexBuffer);
+    if (FAILED(hr))
+        return hr;
+
+    // Set index buffer
+    g_pImmediateContext->IASetIndexBuffer(g_pIndexBuffer, DXGI_FORMAT_R16_UINT, 0);
+
+    // Set primitive topology
+    g_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+    // Create the constant buffer
+    bd.Usage = D3D11_USAGE_DEFAULT;
+    bd.ByteWidth = sizeof(ConstantBuffer);
+    bd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+    bd.CPUAccessFlags = 0;
+    hr = g_pd3dDevice->CreateBuffer(&bd, nullptr, &g_pConstantBuffer);
+    if (FAILED(hr))
+        return hr;
+
+    // Initialize the world matrix
+    g_World1 = XMMatrixIdentity();
+    g_World2 = XMMatrixIdentity();
+
+    // Initialize the view matrix
+    XMVECTOR Eye = XMVectorSet(0.0f, 1.0f, -5.0f, 0.0f);
+    XMVECTOR At = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+    XMVECTOR Up = XMVectorSet(0.0f, 1.0f, 0.0f, 0.0f);
+    g_View = XMMatrixLookAtLH(Eye, At, Up);
+
+    return S_OK;
+}
+
+//--------------------------------------------------------------------------------------
+// Resize
+//--------------------------------------------------------------------------------------
+HRESULT Resize(UINT width, UINT height)
+{
+    HRESULT hr = S_OK;
+
+    g_Width = width;
+    g_Height = height;
+
+    // // Release all outstanding references to the swap chain's buffers
+    if (g_pDepthStencil) g_pDepthStencil->Release();
+    if (g_pDepthStencilView) g_pDepthStencilView->Release();
+    if (g_pRenderTargetView) g_pRenderTargetView->Release();
+
+    g_pImmediateContext->OMSetRenderTargets(0, 0, 0);
+
+    hr = g_pSwapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0);
+    if (FAILED(hr))
+        return hr;
+
+    // Create a render target view
+    ID3D11Texture2D* pBackBuffer = nullptr;
+    hr = g_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&pBackBuffer));
+    if (FAILED(hr))
+        return hr;
+
+    hr = g_pd3dDevice->CreateRenderTargetView(pBackBuffer, nullptr, &g_pRenderTargetView);
     pBackBuffer->Release();
-    if( FAILED( hr ) )
+    if (FAILED(hr))
         return hr;
 
     // Create depth stencil texture
     D3D11_TEXTURE2D_DESC descDepth;
-	ZeroMemory( &descDepth, sizeof(descDepth) );
+    ZeroMemory(&descDepth, sizeof(descDepth));
     descDepth.Width = width;
     descDepth.Height = height;
     descDepth.MipLevels = 1;
@@ -505,21 +674,21 @@ HRESULT InitDevice()
     descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
     descDepth.CPUAccessFlags = 0;
     descDepth.MiscFlags = 0;
-    hr = g_pd3dDevice->CreateTexture2D( &descDepth, nullptr, &g_pDepthStencil );
-    if( FAILED( hr ) )
+    hr = g_pd3dDevice->CreateTexture2D(&descDepth, nullptr, &g_pDepthStencil);
+    if (FAILED(hr))
         return hr;
 
     // Create the depth stencil view
     D3D11_DEPTH_STENCIL_VIEW_DESC descDSV;
-	ZeroMemory( &descDSV, sizeof(descDSV) );
+    ZeroMemory(&descDSV, sizeof(descDSV));
     descDSV.Format = descDepth.Format;
     descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
     descDSV.Texture2D.MipSlice = 0;
-    hr = g_pd3dDevice->CreateDepthStencilView( g_pDepthStencil, &descDSV, &g_pDepthStencilView );
-    if( FAILED( hr ) )
+    hr = g_pd3dDevice->CreateDepthStencilView(g_pDepthStencil, &descDSV, &g_pDepthStencilView);
+    if (FAILED(hr))
         return hr;
 
-    g_pImmediateContext->OMSetRenderTargets( 1, &g_pRenderTargetView, g_pDepthStencilView );
+    g_pImmediateContext->OMSetRenderTargets(1, &g_pRenderTargetView, g_pDepthStencilView);
 
     // Setup the viewport
     D3D11_VIEWPORT vp;
@@ -529,147 +698,17 @@ HRESULT InitDevice()
     vp.MaxDepth = 1.0f;
     vp.TopLeftX = 0;
     vp.TopLeftY = 0;
-    g_pImmediateContext->RSSetViewports( 1, &vp );
-
-	// Compile the vertex shader
-	ID3DBlob* pVSBlob = nullptr;
-    hr = CompileShaderFromFile( L"Tutorial05.fx", "VS", "vs_4_0", &pVSBlob );
-    if( FAILED( hr ) )
-    {
-        MessageBox( nullptr,
-                    L"The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file.", L"Error", MB_OK );
-        return hr;
-    }
-
-	// Create the vertex shader
-	hr = g_pd3dDevice->CreateVertexShader( pVSBlob->GetBufferPointer(), pVSBlob->GetBufferSize(), nullptr, &g_pVertexShader );
-	if( FAILED( hr ) )
-	{	
-		pVSBlob->Release();
-        return hr;
-	}
-
-    // Define the input layout
-    D3D11_INPUT_ELEMENT_DESC layout[] =
-    {
-        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-        { "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-	};
-	UINT numElements = ARRAYSIZE( layout );
-
-    // Create the input layout
-	hr = g_pd3dDevice->CreateInputLayout( layout, numElements, pVSBlob->GetBufferPointer(),
-                                          pVSBlob->GetBufferSize(), &g_pVertexLayout );
-	pVSBlob->Release();
-	if( FAILED( hr ) )
-        return hr;
-
-    // Set the input layout
-    g_pImmediateContext->IASetInputLayout( g_pVertexLayout );
-
-	// Compile the pixel shader
-	ID3DBlob* pPSBlob = nullptr;
-    hr = CompileShaderFromFile( L"Tutorial05.fx", "PS", "ps_4_0", &pPSBlob );
-    if( FAILED( hr ) )
-    {
-        MessageBox( nullptr,
-                    L"The FX file cannot be compiled.  Please run this executable from the directory that contains the FX file.", L"Error", MB_OK );
-        return hr;
-    }
-
-	// Create the pixel shader
-	hr = g_pd3dDevice->CreatePixelShader( pPSBlob->GetBufferPointer(), pPSBlob->GetBufferSize(), nullptr, &g_pPixelShader );
-	pPSBlob->Release();
-    if( FAILED( hr ) )
-        return hr;
-
-    // Create vertex buffer
-    SimpleVertex vertices[] =
-    {
-        { XMFLOAT3( -1.0f, 1.0f, -1.0f ), XMFLOAT4( 0.0f, 0.0f, 1.0f, 1.0f ) },
-        { XMFLOAT3( 1.0f, 1.0f, -1.0f ), XMFLOAT4( 0.0f, 1.0f, 0.0f, 1.0f ) },
-        { XMFLOAT3( 1.0f, 1.0f, 1.0f ), XMFLOAT4( 0.0f, 1.0f, 1.0f, 1.0f ) },
-        { XMFLOAT3( -1.0f, 1.0f, 1.0f ), XMFLOAT4( 1.0f, 0.0f, 0.0f, 1.0f ) },
-        { XMFLOAT3( -1.0f, -1.0f, -1.0f ), XMFLOAT4( 1.0f, 0.0f, 1.0f, 1.0f ) },
-        { XMFLOAT3( 1.0f, -1.0f, -1.0f ), XMFLOAT4( 1.0f, 1.0f, 0.0f, 1.0f ) },
-        { XMFLOAT3( 1.0f, -1.0f, 1.0f ), XMFLOAT4( 1.0f, 1.0f, 1.0f, 1.0f ) },
-        { XMFLOAT3( -1.0f, -1.0f, 1.0f ), XMFLOAT4( 0.0f, 0.0f, 0.0f, 1.0f ) },
-    };
-    D3D11_BUFFER_DESC bd;
-	ZeroMemory( &bd, sizeof(bd) );
-    bd.Usage = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth = sizeof( SimpleVertex ) * 8;
-    bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	bd.CPUAccessFlags = 0;
-    D3D11_SUBRESOURCE_DATA InitData;
-	ZeroMemory( &InitData, sizeof(InitData) );
-    InitData.pSysMem = vertices;
-    hr = g_pd3dDevice->CreateBuffer( &bd, &InitData, &g_pVertexBuffer );
-    if( FAILED( hr ) )
-        return hr;
-
-    // Set vertex buffer
-    UINT stride = sizeof( SimpleVertex );
-    UINT offset = 0;
-    g_pImmediateContext->IASetVertexBuffers( 0, 1, &g_pVertexBuffer, &stride, &offset );
-
-    // Create index buffer
-    WORD indices[] =
-    {
-        3,1,0,
-        2,1,3,
-
-        0,5,4,
-        1,5,0,
-
-        3,4,7,
-        0,4,3,
-
-        1,6,5,
-        2,6,1,
-
-        2,7,6,
-        3,7,2,
-
-        6,4,5,
-        7,4,6,
-    };
-    bd.Usage = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth = sizeof( WORD ) * 36;        // 36 vertices needed for 12 triangles in a triangle list
-    bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	bd.CPUAccessFlags = 0;
-    InitData.pSysMem = indices;
-    hr = g_pd3dDevice->CreateBuffer( &bd, &InitData, &g_pIndexBuffer );
-    if( FAILED( hr ) )
-        return hr;
-
-    // Set index buffer
-    g_pImmediateContext->IASetIndexBuffer( g_pIndexBuffer, DXGI_FORMAT_R16_UINT, 0 );
-
-    // Set primitive topology
-    g_pImmediateContext->IASetPrimitiveTopology( D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
-
-	// Create the constant buffer
-	bd.Usage = D3D11_USAGE_DEFAULT;
-	bd.ByteWidth = sizeof(ConstantBuffer);
-	bd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	bd.CPUAccessFlags = 0;
-    hr = g_pd3dDevice->CreateBuffer( &bd, nullptr, &g_pConstantBuffer );
-    if( FAILED( hr ) )
-        return hr;
-
-    // Initialize the world matrix
-	g_World1 = XMMatrixIdentity();
-	g_World2 = XMMatrixIdentity();
-
-    // Initialize the view matrix
-	XMVECTOR Eye = XMVectorSet( 0.0f, 1.0f, -5.0f, 0.0f );
-	XMVECTOR At = XMVectorSet( 0.0f, 1.0f, 0.0f, 0.0f );
-	XMVECTOR Up = XMVectorSet( 0.0f, 1.0f, 0.0f, 0.0f );
-	g_View = XMMatrixLookAtLH( Eye, At, Up );
+    g_pImmediateContext->RSSetViewports(1, &vp);
 
     // Initialize the projection matrix
-	g_Projection = XMMatrixPerspectiveFovLH( XM_PIDIV2, width / (FLOAT)height, 0.01f, 100.0f );
+    g_Projection = XMMatrixPerspectiveFovLH(XM_PIDIV2, width / (FLOAT)height, 0.01f, 100.0f);
+
+#ifdef NOESIS_GUI
+    if (g_XamlRenderer != 0)
+    {
+        g_XamlRenderer->SetSize(g_Width, g_Height);
+    }
+#endif
 
     return S_OK;
 }
@@ -680,103 +719,112 @@ HRESULT InitDevice()
 //--------------------------------------------------------------------------------------
 void CleanupDevice()
 {
-    if( g_pImmediateContext ) g_pImmediateContext->ClearState();
+    if (g_pImmediateContext) g_pImmediateContext->ClearState();
 
-    if( g_pConstantBuffer ) g_pConstantBuffer->Release();
-    if( g_pVertexBuffer ) g_pVertexBuffer->Release();
-    if( g_pIndexBuffer ) g_pIndexBuffer->Release();
-    if( g_pVertexLayout ) g_pVertexLayout->Release();
-    if( g_pVertexShader ) g_pVertexShader->Release();
-    if( g_pPixelShader ) g_pPixelShader->Release();
-    if( g_pDepthStencil ) g_pDepthStencil->Release();
-    if( g_pDepthStencilView ) g_pDepthStencilView->Release();
-    if( g_pRenderTargetView ) g_pRenderTargetView->Release();
-    if( g_pSwapChain1 ) g_pSwapChain1->Release();
-    if( g_pSwapChain ) g_pSwapChain->Release();
-    if( g_pImmediateContext1 ) g_pImmediateContext1->Release();
-    if( g_pImmediateContext ) g_pImmediateContext->Release();
-    if( g_pd3dDevice1 ) g_pd3dDevice1->Release();
-    if( g_pd3dDevice ) g_pd3dDevice->Release();
+    if (g_pConstantBuffer) g_pConstantBuffer->Release();
+    if (g_pVertexBuffer) g_pVertexBuffer->Release();
+    if (g_pIndexBuffer) g_pIndexBuffer->Release();
+    if (g_pVertexLayout) g_pVertexLayout->Release();
+    if (g_pVertexShader) g_pVertexShader->Release();
+    if (g_pPixelShader) g_pPixelShader->Release();
+    if (g_pDepthStencil) g_pDepthStencil->Release();
+    if (g_pDepthStencilView) g_pDepthStencilView->Release();
+    if (g_pRenderTargetView) g_pRenderTargetView->Release();
+    if (g_pSwapChain1) g_pSwapChain1->Release();
+    if (g_pSwapChain) g_pSwapChain->Release();
+    if (g_pImmediateContext1) g_pImmediateContext1->Release();
+    if (g_pImmediateContext) g_pImmediateContext->Release();
+    if (g_pd3dDevice1) g_pd3dDevice1->Release();
+    if (g_pd3dDevice) g_pd3dDevice->Release();
 }
 
 
 //--------------------------------------------------------------------------------------
 // Called every time the application receives a message
 //--------------------------------------------------------------------------------------
-LRESULT CALLBACK WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     PAINTSTRUCT ps;
     HDC hdc;
 
-    switch( message )
+    switch (message)
     {
         case WM_PAINT:
-            hdc = BeginPaint( hWnd, &ps );
-            EndPaint( hWnd, &ps );
+            hdc = BeginPaint(hWnd, &ps);
+            EndPaint(hWnd, &ps);
             break;
 
         case WM_DESTROY:
-            PostQuitMessage( 0 );
+            PostQuitMessage(0);
+            break;
+
+        case WM_SIZE:
+            if (g_pSwapChain)
+            {
+                RECT rc;
+                GetClientRect(hWnd, &rc);
+                Resize(rc.right - rc.left, rc.bottom - rc.top);
+            }
             break;
 
 #ifdef NOESIS_GUI
         case WM_KEYDOWN:
-            if (xamlRenderer != 0)
+            if (g_XamlRenderer != 0)
             {
-                xamlRenderer->KeyDown(wParam < 256 ? gKeyMap[wParam] : Noesis::Key_None);
+                g_XamlRenderer->KeyDown(wParam < 256 ? g_KeyMap[wParam] : Noesis::Key_None);
             }
             break;
 
         case WM_KEYUP:
-            if (xamlRenderer != 0)
+            if (g_XamlRenderer != 0)
             {
-                xamlRenderer->KeyUp(wParam < 256 ? gKeyMap[wParam] : Noesis::Key_None);
+                g_XamlRenderer->KeyUp(wParam < 256 ? g_KeyMap[wParam] : Noesis::Key_None);
             }
             break;
 
         case WM_CHAR:
-            if (xamlRenderer != 0)
+            if (g_XamlRenderer != 0)
             {
-                xamlRenderer->Char(NsUInt32(wParam));
+                g_XamlRenderer->Char(NsUInt32(wParam));
             }
             break;
 
         case WM_MOUSEMOVE:
-            if (xamlRenderer != 0)
+            if (g_XamlRenderer != 0)
             {
-                xamlRenderer->MouseMove(LOWORD(lParam), HIWORD(lParam));
+                g_XamlRenderer->MouseMove(LOWORD(lParam), HIWORD(lParam));
             }
             break;
 
         case WM_LBUTTONDOWN:
-            if (xamlRenderer != 0)
+            if (g_XamlRenderer != 0)
             {
-                xamlRenderer->MouseButtonDown(LOWORD(lParam), HIWORD(lParam), MouseButton_Left);
+                g_XamlRenderer->MouseButtonDown(LOWORD(lParam), HIWORD(lParam), MouseButton_Left);
             }
             break;
 
         case WM_LBUTTONUP:
-            if (xamlRenderer != 0)
+            if (g_XamlRenderer != 0)
             {
-                xamlRenderer->MouseButtonUp(LOWORD(lParam), HIWORD(lParam), MouseButton_Left);
+                g_XamlRenderer->MouseButtonUp(LOWORD(lParam), HIWORD(lParam), MouseButton_Left);
             }
             break;
 
         case WM_MOUSEWHEEL:
-            if (xamlRenderer != 0)
+            if (g_XamlRenderer != 0)
             {
                 POINT point;
                 point.x = LOWORD(lParam);
                 point.y = HIWORD(lParam);
                 ::ScreenToClient(hWnd, &point);
-            
-                xamlRenderer->MouseWheel(point.x, point.y, GET_WHEEL_DELTA_WPARAM(wParam));
+
+                g_XamlRenderer->MouseWheel(point.x, point.y, GET_WHEEL_DELTA_WPARAM(wParam));
             }
             break;
 #endif
 
         default:
-            return DefWindowProc( hWnd, message, wParam, lParam );
+            return DefWindowProc(hWnd, message, wParam, lParam);
     }
 
     return 0;
@@ -788,108 +836,110 @@ LRESULT CALLBACK WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam 
 //--------------------------------------------------------------------------------------
 void Render()
 {
-
-
     // Update our time
     static float t = 0.0f;
-    if( g_driverType == D3D_DRIVER_TYPE_REFERENCE )
+    if (g_driverType == D3D_DRIVER_TYPE_REFERENCE)
     {
-        t += ( float )XM_PI * 0.0125f;
+        t += (float)XM_PI * 0.0125f;
     }
     else
     {
         static ULONGLONG timeStart = 0;
         ULONGLONG timeCur = GetTickCount64();
-        if( timeStart == 0 )
+        if (timeStart == 0)
             timeStart = timeCur;
-        t = ( timeCur - timeStart ) / 1000.0f;
+        t = (timeCur - timeStart) / 1000.0f;
     }
 
     // 1st Cube: Rotate around the origin
-	g_World1 = XMMatrixRotationY( t );
+    g_World1 = XMMatrixRotationY(t);
 
     // 2nd Cube:  Rotate around origin
-    XMMATRIX mSpin = XMMatrixRotationZ( -t );
-    XMMATRIX mOrbit = XMMatrixRotationY( -t * 2.0f );
-	XMMATRIX mTranslate = XMMatrixTranslation( -4.0f, 0.0f, 0.0f );
-	XMMATRIX mScale = XMMatrixScaling( 0.3f, 0.3f, 0.3f );
+    XMMATRIX mSpin = XMMatrixRotationZ(-t);
+    XMMATRIX mOrbit = XMMatrixRotationY(-t * 2.0f);
+    XMMATRIX mTranslate = XMMatrixTranslation(-4.0f, 0.0f, 0.0f);
+    XMMATRIX mScale = XMMatrixScaling(0.3f, 0.3f, 0.3f);
 
-	g_World2 = mScale * mSpin * mTranslate * mOrbit;
+    g_World2 = mScale * mSpin * mTranslate * mOrbit;
 
 #ifdef NOESIS_GUI
     NsGetKernel()->Tick();
 
-    xamlRenderer->Update(t);
-    const RenderCommands& commands = xamlRenderer->WaitForUpdate();
+    g_XamlRenderer->Update(t);
+    const RenderCommands& commands = g_XamlRenderer->WaitForUpdate();
 
     if (commands.offscreenCommands != 0)
     {
-        xamlRenderer->Render(commands.offscreenCommands.GetPtr());
+        g_XamlRenderer->Render(commands.offscreenCommands.GetPtr());
     }
 
-    g_pImmediateContext->OMSetRenderTargets( 1, &g_pRenderTargetView, g_pDepthStencilView );
-    g_pImmediateContext->IASetInputLayout( g_pVertexLayout );
-    UINT stride = sizeof( SimpleVertex );
+    // Restore state. This must be done per frame because NoesisGUI modifies the GPU state
+    g_pImmediateContext->OMSetRenderTargets(1, &g_pRenderTargetView, g_pDepthStencilView);
+    g_pImmediateContext->IASetInputLayout(g_pVertexLayout);
+    UINT stride = sizeof(SimpleVertex);
     UINT offset = 0;
-    g_pImmediateContext->IASetVertexBuffers( 0, 1, &g_pVertexBuffer, &stride, &offset );
-    g_pImmediateContext->IASetIndexBuffer( g_pIndexBuffer, DXGI_FORMAT_R16_UINT, 0 );
-    g_pImmediateContext->IASetPrimitiveTopology( D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
+    g_pImmediateContext->IASetVertexBuffers(0, 1, &g_pVertexBuffer, &stride, &offset);
+    g_pImmediateContext->IASetIndexBuffer(g_pIndexBuffer, DXGI_FORMAT_R16_UINT, 0);
+    g_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
     g_pImmediateContext->OMSetDepthStencilState(0, 0);
     g_pImmediateContext->RSSetState(0);
     g_pImmediateContext->OMSetBlendState(0, 0, 0xffffffff);
+
+    D3D11_VIEWPORT vp = { 0.0f, 0.0f, (FLOAT)g_Width, (FLOAT)g_Height, 0.0f, 1.0f};
+    g_pImmediateContext->RSSetViewports(1, &vp);
 #endif
 
     //
     // Clear the back buffer
     //
-    g_pImmediateContext->ClearRenderTargetView( g_pRenderTargetView, DirectX::Colors::MidnightBlue );
+    g_pImmediateContext->ClearRenderTargetView(g_pRenderTargetView, DirectX::Colors::MidnightBlue);
 
     //
     // Clear the depth buffer to 1.0 (max depth)
     //
-    g_pImmediateContext->ClearDepthStencilView( g_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0 );
+    g_pImmediateContext->ClearDepthStencilView(g_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 
     //
     // Update variables for the first cube
     //
     ConstantBuffer cb1;
-	cb1.mWorld = XMMatrixTranspose( g_World1 );
-	cb1.mView = XMMatrixTranspose( g_View );
-	cb1.mProjection = XMMatrixTranspose( g_Projection );
-	g_pImmediateContext->UpdateSubresource( g_pConstantBuffer, 0, nullptr, &cb1, 0, 0 );
+    cb1.mWorld = XMMatrixTranspose(g_World1);
+    cb1.mView = XMMatrixTranspose(g_View);
+    cb1.mProjection = XMMatrixTranspose(g_Projection);
+    g_pImmediateContext->UpdateSubresource(g_pConstantBuffer, 0, nullptr, &cb1, 0, 0);
 
     //
     // Render the first cube
     //
-	g_pImmediateContext->VSSetShader( g_pVertexShader, nullptr, 0 );
-	g_pImmediateContext->VSSetConstantBuffers( 0, 1, &g_pConstantBuffer );
-	g_pImmediateContext->PSSetShader( g_pPixelShader, nullptr, 0 );
-	g_pImmediateContext->DrawIndexed( 36, 0, 0 );
+    g_pImmediateContext->VSSetShader(g_pVertexShader, nullptr, 0);
+    g_pImmediateContext->VSSetConstantBuffers(0, 1, &g_pConstantBuffer);
+    g_pImmediateContext->PSSetShader(g_pPixelShader, nullptr, 0);
+    g_pImmediateContext->DrawIndexed(36, 0, 0);
 
     //
     // Update variables for the second cube
     //
     ConstantBuffer cb2;
-	cb2.mWorld = XMMatrixTranspose( g_World2 );
-	cb2.mView = XMMatrixTranspose( g_View );
-	cb2.mProjection = XMMatrixTranspose( g_Projection );
-	g_pImmediateContext->UpdateSubresource( g_pConstantBuffer, 0, nullptr, &cb2, 0, 0 );
+    cb2.mWorld = XMMatrixTranspose(g_World2);
+    cb2.mView = XMMatrixTranspose(g_View);
+    cb2.mProjection = XMMatrixTranspose(g_Projection);
+    g_pImmediateContext->UpdateSubresource(g_pConstantBuffer, 0, nullptr, &cb2, 0, 0);
 
     //
     // Render the second cube
     //
-	g_pImmediateContext->DrawIndexed( 36, 0, 0 );
+    g_pImmediateContext->DrawIndexed(36, 0, 0);
 
 
 #ifdef NOESIS_GUI
-    xamlRenderer->Render(commands.commands.GetPtr());
+    g_XamlRenderer->Render(commands.commands.GetPtr());
 #endif
 
     //
     // Present our back buffer to our front buffer
     //
-    g_pSwapChain->Present( 0, 0 );
+    g_pSwapChain->Present(0, 0);
 }
 
 
