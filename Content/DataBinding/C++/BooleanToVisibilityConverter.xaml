@@ -1,0 +1,16 @@
+<Grid
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Background="Gray">
+
+    <Grid.Resources>
+        <BooleanToVisibilityConverter x:Key="converter"/>
+    </Grid.Resources>
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    	<CheckBox x:Name="checkBox" Content="Show Button" Width="100"/>
+    	<Button Content="Click" Margin="5" Visibility="{Binding ElementName=checkBox, Path=IsChecked,
+    		Converter={StaticResource converter}}"/>
+    </StackPanel>
+
+</Grid>

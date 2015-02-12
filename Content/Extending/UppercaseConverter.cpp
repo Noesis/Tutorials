@@ -1,7 +1,5 @@
 #include "pch.h"
 
-#include <assert.h>
-
 
 using namespace Noesis;
 
@@ -9,13 +7,17 @@ using namespace Noesis;
 class UppercaseConverter: public BaseValueConverter
 {
 public:
-    NsBool TryConvert(BaseComponent* value, const Type* type, BaseComponent* parameter, Ptr<BaseComponent>& result)
+    NsBool TryConvert(BaseComponent* value, const Type* targetType, BaseComponent* parameter, Ptr<BaseComponent>& result)
     {
-        assert(type == TypeOf<NsString>());
-        NsString text = Boxing::Unbox<NsString>(value);
-        text.make_upper();
-        result = Boxing::Box<NsString>(text);
-        return true;
+        if (targetType == TypeOf<NsString>() && Boxing::CanUnbox<NsString>(value))
+        {
+            NsString text = Boxing::Unbox<NsString>(value);
+            text.make_upper();
+            result = Boxing::Box<NsString>(text);
+            return true;
+        }
+
+        return false;
     }
 
 private:

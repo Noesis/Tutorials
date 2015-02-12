@@ -1,0 +1,23 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <UserControl.Resources>
+        <DataModel1 x:Name="dataModel">
+            <DataModel1.Person>
+                <Person Weight="90">
+                    <Person.Name>
+                        <Name First="John" Last="Doe" />
+                    </Person.Name>
+                </Person>
+            </DataModel1.Person>
+        </DataModel1>
+    </UserControl.Resources>
+
+    <StackPanel DataContext="{StaticResource dataModel}" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<TextBlock Text="{Binding Person.Name.First}" />
+		<TextBlock Text="{Binding Person.Name.Last}" />
+		<TextBlock Text="{Binding Person.Weight, StringFormat=Weight is {0:F2}}" />
+    </StackPanel>
+
+</UserControl>
