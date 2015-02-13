@@ -1,0 +1,27 @@
+<Grid
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:noesis="clr-namespace:Noesis.Samples">
+    
+    <Grid.Resources>
+        <noesis:ViewModel x:Key="ViewModel"/>
+        <noesis:CapsConverter x:Key="CapsConverter"/>
+    </Grid.Resources>
+    
+    <Viewbox>
+        <Border x:Name="myBorder" DataContext="{StaticResource ViewModel}" Width="400" Margin="50"
+            Background="#801C1F21" BorderThickness="1" CornerRadius="5" BorderBrush="#D0101611" Padding="5"
+            HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical">
+                <TextBox MinWidth="300" Margin="3" Text="{Binding Input, Mode=TwoWay}" FontSize="28"/>
+                <TextBox x:Name="Param" MinWidth="300" Margin="3" Text="" FontSize="24"/>
+                <Button Content="Say Hello" Margin="3" Command="{Binding SayHelloCommand}" CommandParameter="{Binding Text, ElementName=Param, Converter={StaticResource CapsConverter}}" FontSize="28" />
+                <Viewbox Margin="5" Height="50">
+                    <TextBlock Margin="5" Padding="0" TextAlignment="Center" Text="{Binding Output}" FontSize="28" Foreground="White"/>
+                </Viewbox>
+            </StackPanel>
+        </Border>
+    </Viewbox>
+    
+</Grid>
+
