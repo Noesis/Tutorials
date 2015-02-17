@@ -1,0 +1,53 @@
+<Grid
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid.Resources>
+        <Style x:Key="CyanHeader" TargetType="GridViewColumnHeader">
+            <Setter Property="Background" Value="Cyan"/>
+            <Setter Property="Foreground" Value="Navy"/>
+        </Style>
+        <DataTemplate x:Key="CheckHeader" DataType="GridViewColumnHeader">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox/>
+                <TextBlock Text="{Binding Header}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="RefText">
+            <Border Background="#8080FFFF" BorderBrush="Navy" BorderThickness="1" Padding="6,2" CornerRadius="2">
+                <TextBlock Text="{Binding Name}" Foreground="Navy" FontWeight="Bold"/>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="StockText">
+            <Border x:Name="Bd" Background="LightBlue" Padding="6,2" CornerRadius="2">
+                <TextBlock x:Name="Txt" Text="{Binding IsEnabled}" Foreground="SlateGray"/>
+            </Border>
+            <DataTemplate.Triggers>
+                <Trigger SourceName="Txt" Property="Text" Value="False">
+                    <Setter TargetName="Bd" Property="Background" Value="Pink"/>
+                    <Setter TargetName="Txt" Property="Foreground" Value="Red"/>
+                </Trigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </Grid.Resources>
+    <GroupBox Width="400" VerticalAlignment="Center" Padding="10">
+        <ListView Height="200">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="#Ref" CellTemplate="{StaticResource RefText}" HeaderContainerStyle="{StaticResource CyanHeader}"/>
+                    <GridViewColumn Header="Product" Width="140"/>
+                    <GridViewColumn Header="Price €" Width="60" DisplayMemberBinding="{Binding ActualWidth, StringFormat=F2}"/>
+                    <GridViewColumn Header="Available" HeaderTemplate="{StaticResource CheckHeader}" CellTemplate="{StaticResource StockText}"/>
+                </GridView>
+            </ListView.View>
+            <TextBlock x:Name="ID20041" Text="Alfalfa meal" Margin="5,0"/>
+            <TextBlock x:Name="ID13494" Text="Blood meal" Margin="5,0"/>
+            <TextBlock x:Name="ID83471" Text="Greensand mix" Margin="5,0" IsEnabled="False"/>
+            <TextBlock x:Name="ID27856" Text="Calcium lime" Margin="5,0"/>
+            <TextBlock x:Name="ID74865" Text="Chilean nitrate" Margin="5,0"/>
+            <TextBlock x:Name="ID47286" Text="Cotton seed" Margin="5,0"/>
+            <TextBlock x:Name="ID27456" Text="Epsom salt" Margin="5,0" IsEnabled="False"/>
+            <TextBlock x:Name="ID24583" Text="Feather meal" Margin="5,0"/>
+            <TextBlock x:Name="ID24659" Text="Humates" Margin="5,0"/>
+        </ListView>
+    </GroupBox>
+</Grid>
