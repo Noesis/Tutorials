@@ -399,20 +399,7 @@ void DrawFrame(UserData* userData)
     GLfloat vertices[] = { 0.0f,0.5f,0.0f, -0.5f,-0.5f,0.0f, 0.5f,-0.5f,0.0f };
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertices);
     glEnableVertexAttribArray(0);
-
-    GLenum er = GL_NO_ERROR;
-    while ((er = glGetError()) != GL_NO_ERROR)
-    {
-        LOGE("Pre %d", er);
-    }
-
     glDrawArrays(GL_TRIANGLES, 0, 3);
-
-    er = GL_NO_ERROR;
-    while ((er = glGetError()) != GL_NO_ERROR)
-    {
-        LOGE("Post %d", er);
-    }
 
 #ifdef NOESIS_GUI
     NoesisPostRender(userData);
