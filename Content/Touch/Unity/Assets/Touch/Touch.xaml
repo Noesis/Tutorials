@@ -1,0 +1,10 @@
+<Grid
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Canvas x:Name="root">
+    <Rectangle Fill="Red" Width="200" Height="200" RenderTransform="1 0 0 1 50 50" IsManipulationEnabled="True"/>
+    <Rectangle Fill="Blue" Width="200" Height="200" RenderTransform="1 0 0 1 200 300" IsManipulationEnabled="True"/>
+  </Canvas>
+
+</Grid>
