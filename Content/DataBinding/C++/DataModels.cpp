@@ -257,8 +257,8 @@ class Player: public BaseComponent
 {
 public:
     Player() {}
-    Player(NsString name, Color color, NsFloat32 scale, NsString pos) : _name(name), _scale(scale),
-        _pos(pos), _color(*new SolidColorBrush(color)) {}
+    Player(const NsChar* name, Color color, NsFloat32 scale, const NsChar* pos) : _name(name), 
+        _scale(scale), _pos(pos), _color(*new SolidColorBrush(color)) {}
 
 private:
     NsString _name;
@@ -274,7 +274,6 @@ private:
         NsProp("Pos", &Player::_pos);
         NsProp("Color", &Player::_color);
     }
-
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -309,12 +308,133 @@ private:
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+class Team: public BaseComponent
+{
+public:
+    Team(const NsChar* name): _name(name) {}
+
+private:
+    NsString _name;
+
+    NS_IMPLEMENT_INLINE_REFLECTION(Team, BaseComponent)
+    {
+        NsMeta<TypeId>("Team");
+        NsProp("Name", &Team::_name);
+    }
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class Division: public BaseComponent
+{
+public:
+    Division(const NsChar* name) : _name(name)
+    {
+        _teams = *new Collection();
+    }
+
+    void Add(Team* team)
+    {
+        _teams->Add(team);
+    }
+
+private:
+    NsString _name;
+    Ptr<Collection> _teams;
+
+    NS_IMPLEMENT_INLINE_REFLECTION(Division, BaseComponent)
+    {
+        NsMeta<TypeId>("Division");
+        NsProp("Name", &Division::_name);
+        NsProp("Teams", &Division::_teams);
+    }
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class League: public BaseComponent
+{
+public:
+    League(const NsChar* name) : _name(name)
+    {
+        _divisions = *new Collection();
+    }
+
+    void Add(Division* division)
+    {
+        _divisions->Add(division);
+    }
+
+private:
+    NsString _name;
+    Ptr<Collection> _divisions;
+
+    NS_IMPLEMENT_INLINE_REFLECTION(League, BaseComponent)
+    {
+        NsMeta<TypeId>("League");
+        NsProp("Name", &League::_name);
+        NsProp("Divisions", &League::_divisions);
+    }
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class LeagueList: public BaseComponent
+{
+public:
+    LeagueList()
+    {
+        _leagues = *new Collection();
+
+        Ptr<League> leagueA = *new League("League A");
+        _leagues->Add(leagueA.GetPtr());
+
+        Ptr<League> leagueB = *new League("League B");
+        _leagues->Add(leagueB.GetPtr());
+
+            Ptr<Division> divisionA = *new Division("Division A");
+            leagueB->Add(divisionA.GetPtr());
+
+            Ptr<Division> divisionB = *new Division("Division B");
+            leagueB->Add(divisionB.GetPtr());
+
+            Ptr<Division> divisionC = *new Division("Division C");
+            leagueB->Add(divisionC.GetPtr());
+
+                Ptr<Team> east = *new Team("Team East");
+                divisionC->Add(east.GetPtr());
+
+                Ptr<Team> west = *new Team("Team West");
+                divisionC->Add(west.GetPtr());
+
+                Ptr<Team> north = *new Team("Team North");
+                divisionC->Add(north.GetPtr());
+
+                Ptr<Team> south = *new Team("Team South");
+                divisionC->Add(south.GetPtr());
+
+            Ptr<Division> divisionD = *new Division("Division D");
+            leagueB->Add(divisionD.GetPtr());
+
+        Ptr<League> leagueC = *new League("League C");
+        _leagues->Add(leagueC.GetPtr());
+    }
+
+private:
+    Ptr<Collection> _leagues;
+
+    NS_IMPLEMENT_INLINE_REFLECTION(LeagueList, BaseComponent)
+    {
+        NsMeta<TypeId>("LeagueList");
+        NsProp("Leagues", &LeagueList::_leagues);
+    }
+
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 class SolarSystemObject: public BaseComponent
 {
 public:
-    SolarSystemObject(const NsChar* name, NsFloat32 orbit, NsFloat32 diameter, NsString image,
-        NsString details) : _name(name), _orbit(orbit), _diameter(diameter), _details(details),
-        _image(*new TextureSource(image.c_str()))
+    SolarSystemObject(const NsChar* name, NsFloat32 orbit, NsFloat32 diameter, const NsChar* image,
+        const NsChar* details): _name(name), _orbit(orbit), _diameter(diameter), _details(details),
+        _image(*new TextureSource(image))
     {
     }
 
@@ -429,6 +549,7 @@ extern "C" NS_DLL_EXPORT void NsRegisterReflection(ComponentFactory* factory, Ns
     NS_REGISTER_COMPONENT(View2)
     NS_REGISTER_COMPONENT(Player)
     NS_REGISTER_COMPONENT(DataModel3)
+    NS_REGISTER_COMPONENT(LeagueList)
     NS_REGISTER_COMPONENT(SolarSystem)
     NS_REGISTER_COMPONENT(ConvertOrbit)
 }
