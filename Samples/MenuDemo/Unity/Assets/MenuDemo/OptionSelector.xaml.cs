@@ -78,7 +78,7 @@ namespace MenuDemo
             UpdateButtons();
         }
 
-		private static readonly DependencyProperty SelectedIndexProperty = DependencyProperty.Register(
+		private static DependencyProperty SelectedIndexProperty = DependencyProperty.Register(
 			"SelectedIndex", typeof(int), typeof(OptionSelector),
 			new PropertyMetadata(-1, new PropertyChangedCallback(OnIndexChanged)));
 		
