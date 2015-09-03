@@ -19,18 +19,12 @@ namespace MenuDemo
 	{
 		public MainWindow()
 		{
-			#if !UNITY
 			this.Initialized += OnInitialized;
-			#endif
 
 			this.InitializeComponent();
 		}
 
-		#if !UNITY
 		private void OnInitialized(object sender, EventArgs e)
-		#else
-		public void OnPostInit()
-		#endif
 		{
 			var mainMenu = (MainMenu)FindName("Main");
 			var startMenu = (StartMenu)FindName("Start");

@@ -11,8 +11,8 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-#endif
 using System.Windows.Input;
+#endif
 
 namespace MenuDemo
 {
@@ -43,18 +43,12 @@ namespace MenuDemo
 		
 		public MainMenu()
 		{
-			#if !UNITY
 			this.Initialized += OnInitialized;
-			#endif
 
 			this.InitializeComponent();
 		}
 		
-		#if !UNITY
 		private void OnInitialized(object sender, EventArgs e)
-		#else
-		public void OnPostInit()
-		#endif
 		{
 			_fadeIn = (Storyboard)FindResource("FadeIn");
             _fadeOut = (Storyboard)FindResource("FadeOut");

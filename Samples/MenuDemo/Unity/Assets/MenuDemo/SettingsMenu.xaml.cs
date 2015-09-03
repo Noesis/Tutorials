@@ -47,18 +47,12 @@ namespace MenuDemo
 		
 		public SettingsMenu()
 		{
-			#if !UNITY
 			this.Initialized += OnInitialized;
-			#endif
 
 			this.InitializeComponent();
 		}
 		
-		#if !UNITY
 		private void OnInitialized(object sender, EventArgs e)
-		#else
-		public void OnPostInit()
-		#endif
 		{
 			_fadeIn = (Storyboard)FindResource("FadeIn");
             _fadeOut = (Storyboard)FindResource("FadeOut");
