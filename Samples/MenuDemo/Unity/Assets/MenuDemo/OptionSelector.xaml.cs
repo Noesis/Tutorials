@@ -5,11 +5,11 @@
 #if UNITY
 using Noesis;
 #else
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 #endif
-using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
@@ -28,18 +28,12 @@ namespace MenuDemo
 		
 		public OptionSelector()
 		{			
-			#if !UNITY
 			this.Initialized += OnInitialized;
-			#endif
 			
 			this.InitializeComponent();
 		}
 		
-		#if !UNITY
 		private void OnInitialized(object sender, EventArgs e)
-		#else
-		public void OnPostInit()
-		#endif
 		{
 			_prevButton = (RepeatButton)FindName("PrevButton");
 			_nextButton = (RepeatButton)FindName("NextButton");
@@ -78,7 +72,7 @@ namespace MenuDemo
             UpdateButtons();
         }
 
-		private static readonly DependencyProperty SelectedIndexProperty = DependencyProperty.Register(
+		private static DependencyProperty SelectedIndexProperty = DependencyProperty.Register(
 			"SelectedIndex", typeof(int), typeof(OptionSelector),
 			new PropertyMetadata(-1, new PropertyChangedCallback(OnIndexChanged)));
 		
@@ -105,7 +99,7 @@ namespace MenuDemo
 		
 		private int LastIndex { get { return NumOptions - 1; } }
 		
-		private int Index { get { return NumOptions == 0 ? -1 : Math.Max(0, Math.Min(SelectedIndex, LastIndex)); } }
+		private int Index { get { return NumOptions == 0 ? -1 : System.Math.Max(0, System.Math.Min(SelectedIndex, LastIndex)); } }
 		
 		private static DependencyProperty SelectedOptionProperty = DependencyProperty.Register(
             "SelectedOption", typeof(object), typeof(OptionSelector),
