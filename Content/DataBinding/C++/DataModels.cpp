@@ -15,13 +15,6 @@ NS_DECLARE_SYMBOL(Person);
 class Name: public BaseComponent, public INotifyPropertyChanged
 {
 public:
-    Name() {}
-
-    ~Name()
-    {
-        _destroyed(this);
-    }
-
     const NsChar* GetFirst() const
     {
         return _first.c_str();
@@ -55,11 +48,6 @@ public:
         return _propertyChanged;
     }
 
-    DestroyedEventHandler& Destroyed()
-    {
-        return _destroyed;
-    }
-
     void Serialize(SerializationData* data) const
     {
         data->Serialize("First", _first);
@@ -77,7 +65,6 @@ private:
     NsString _last;
 
     PropertyChangedEventHandler _propertyChanged;
-    DestroyedEventHandler _destroyed;
 
     NS_IMPLEMENT_INLINE_REFLECTION(Name, BaseComponent)
     {
@@ -92,13 +79,6 @@ private:
 class Person: public BaseComponent, public INotifyPropertyChanged
 {
 public:
-    Person() {}
-
-    ~Person()
-    {
-        _destroyed(this);
-    }
-
     Name* GetName() const
     {
         return _name.GetPtr();
@@ -132,11 +112,6 @@ public:
         return _propertyChanged;
     }
 
-    DestroyedEventHandler& Destroyed()
-    {
-        return _destroyed;
-    }
-
     void Serialize(SerializationData* data) const
     {
         data->Serialize("Name", _name);
@@ -154,7 +129,6 @@ private:
     NsFloat32 _weight;
 
     PropertyChangedEventHandler _propertyChanged;
-    DestroyedEventHandler _destroyed;
 
     NS_IMPLEMENT_INLINE_REFLECTION(Person, BaseComponent)
     {
@@ -169,13 +143,6 @@ private:
 class DataModel1: public BaseComponent, public INotifyPropertyChanged
 {
 public:
-    DataModel1() {}
-
-    ~DataModel1()
-    {
-        _destroyed(this);
-    }
-
     Person* GetPerson() const
     {
         return _person.GetPtr();
@@ -195,11 +162,6 @@ public:
         return _propertyChanged;
     }
 
-    DestroyedEventHandler& Destroyed()
-    {
-        return _destroyed;
-    }
-
     void Serialize(Noesis::Core::SerializationData* data) const
     {
         data->Serialize("Person", _person);
@@ -213,7 +175,6 @@ public:
 private:
     Ptr<Person> _person;
     PropertyChangedEventHandler _propertyChanged;
-    DestroyedEventHandler _destroyed;
 
     NS_IMPLEMENT_INLINE_REFLECTION(DataModel1, BaseComponent)
     {
