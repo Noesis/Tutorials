@@ -1,14 +1,15 @@
-<Grid
+<UserControl
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
-	<Grid.Resources>
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+	<UserControl.Resources>
 		<LinearGradientBrush x:Key="BlueGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.8">
-			<GradientStop Color="#FF002A7C"/>
-			<GradientStop Color="#FF61AAFF" Offset="0.5"/>
-			<GradientStop Color="#FF001A47" Offset="1"/>
+			<GradientStop Color="#FF00467C"/>
+			<GradientStop Color="#FF61BBFF" Offset="0.5"/>
+			<GradientStop Color="#FF002847" Offset="1"/>
 		</LinearGradientBrush>
 		<ControlTemplate x:Key="LeftButtonTemplate" TargetType="{x:Type RepeatButton}">
-			<Border x:Name="Bd" CornerRadius="0,5,0,20" Padding="10" Background="#CC00317D" BorderBrush="#CC003F9A" BorderThickness="2">
+			<Border x:Name="Bd" CornerRadius="0,5,0,20" Padding="10" Background="#CC004D7D" BorderBrush="#CC00579A" BorderThickness="2">
 				<VisualStateManager.VisualStateGroups>
 					<VisualStateGroup x:Name="CommonStates">
 						<VisualStateGroup.Transitions>
@@ -47,7 +48,7 @@
 			</Border>
 		</ControlTemplate>
 		<ControlTemplate x:Key="RightButtonTemplate" TargetType="{x:Type RepeatButton}">
-			<Border x:Name="Bd" CornerRadius="5,0,20,0" Padding="10" Background="#CC00317D" BorderBrush="#CC003F9A" BorderThickness="2">
+			<Border x:Name="Bd" CornerRadius="5,0,20,0" Padding="10" Background="#CC00477D" BorderBrush="#CC005F9A" BorderThickness="2">
 				<VisualStateManager.VisualStateGroups>
 					<VisualStateGroup x:Name="CommonStates">
 						<VisualStateGroup.Transitions>
@@ -86,50 +87,50 @@
 			</Border>
 		</ControlTemplate>
 		<Geometry x:Key="ArrowGeometry">M0,0.37037037 L5.877193,0 5.4385965,3 C6.9590643,4.2235706 8.4795322,5.0020784 10,3.9259259 L10,7.9259259 C8.3333333,9.4014724 6.6666667,8.458389 5,7 L4.5614035,10 z</Geometry>
-	</Grid.Resources>
-	<StackPanel x:Name="panel" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-		<StackPanel.RenderTransform>
-			<TranslateTransform/>
-		</StackPanel.RenderTransform>
-		<Border x:Name="titleBar" BorderThickness="5,5,5,0" BorderBrush="#CC003F9A" HorizontalAlignment="Center" Padding="80,5,80,5" Background="#CC00327D" CornerRadius="10,10,0,0" Panel.ZIndex="100"
-		    ToolTip="Drag to move around" ToolTipService.Placement="Center" ToolTipService.VerticalOffset="-28">
-			<TextBlock Text="S P A C E   B O Y" FontSize="12" Foreground="White" FontWeight="Bold" IsHitTestVisible="False"/>
-		</Border>
-		<Grid Width="400" Height="400">
-			<Path Data="M8.6187845,0 L91.381215,0 100,8.6187845 100,91.381215 91.381215,100 8.6187845,100 0,91.381215 0,8.6187845 z" StrokeThickness="24" Stretch="Fill" Margin="9" Stroke="{DynamicResource BlueGradientBrush}"/>
-			<Path Data="M8.61878453038674,0L91.3812154696133,0 100,8.61878453038674 100,91.3812154696133 91.3812154696133,100 8.61878453038674,100 0,91.3812154696133 0,8.61878453038674z" StrokeThickness="24" Stretch="Fill" Margin="9">
-				<Path.Stroke>
-					<LinearGradientBrush EndPoint="0,4" MappingMode="Absolute" SpreadMethod="Repeat">
-						<GradientStop Color="#00000000"/>
-						<GradientStop Color="#7F02347F" Offset="0.5"/>
-						<GradientStop Offset="1" Color="#000066FF"/>
-					</LinearGradientBrush>
-				</Path.Stroke>
-			</Path>
-			<Path Data="M10,0 L90,0 100,10 100,90 90,100 10,100 0,90 0,10 Z" StrokeThickness="10" Stretch="Fill" Stroke="{DynamicResource BlueGradientBrush}"/>
-			<Rectangle x:Name="rtRect" StrokeThickness="10" Margin="30" Clip="M30,0 L310,0 340,30 340,310 310,340 30,340 0,310 0,30 z" Fill="Black"/>
-			<Path Data="M8.0276134,0 L91.972387,0 100,8.0276134 100,91.972387 91.972387,100 8.0276134,100 0,91.972387 0,8.0276134 z" StrokeThickness="2" Stretch="Fill" Margin="30">
-				<Path.Stroke>
-					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-						<GradientStop Color="#CC216091" Offset="1"/>
-						<GradientStop Color="#CC123B5A"/>
-					</LinearGradientBrush>
-				</Path.Stroke>
-			</Path>
-			<RepeatButton x:Name="rotateLeft" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,50"
-				Delay="100" Interval="10" Template="{StaticResource LeftButtonTemplate}"
-				ToolTip="Rotate Space Boy" ToolTipService.Placement="Top" ToolTipService.VerticalOffset="-2">
-				<Path Data="{StaticResource ArrowGeometry}" Fill="White" Stretch="Fill" Width="20" Height="10" Stroke="#FF5691D4"/>
-			</RepeatButton>
-			<RepeatButton x:Name="rotateRight" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,50"
-				Delay="100" Interval="10" Template="{StaticResource RightButtonTemplate}"
-				ToolTip="Rotate Space Boy" ToolTipService.Placement="Top" ToolTipService.VerticalOffset="-2">
-				<Path Data="{StaticResource ArrowGeometry}" Fill="White" Stretch="Fill" Width="20" Height="10" Stroke="#FF5691D4" RenderTransformOrigin="0.5,0.5">
-					<Path.RenderTransform>
-						<ScaleTransform ScaleY="1" ScaleX="-1"/>
-					</Path.RenderTransform>
-				</Path>
-			</RepeatButton>
-		</Grid>
-	</StackPanel>
-</Grid>
+	</UserControl.Resources>
+    <StackPanel x:Name="panel" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50">
+        <StackPanel.RenderTransform>
+            <TranslateTransform/>
+        </StackPanel.RenderTransform>
+        <Border x:Name="titleBar" BorderThickness="5,5,5,0" BorderBrush="#CC00579A" HorizontalAlignment="Center" Padding="80,5,80,5" Background="#CC00477D" CornerRadius="10,10,0,0" Panel.ZIndex="100"
+		ToolTip="Drag to move around" ToolTipService.Placement="Center" ToolTipService.VerticalOffset="-28">
+            <TextBlock Text="S P A C E   B O Y" FontSize="12" Foreground="White" FontWeight="Bold" IsHitTestVisible="False"/>
+        </Border>
+        <Grid Width="400" Height="400">
+            <Path Data="M8.6187845,0 L91.381215,0 100,8.6187845 100,91.381215 91.381215,100 8.6187845,100 0,91.381215 0,8.6187845 z" StrokeThickness="24" Stretch="Fill" Margin="9" Stroke="{DynamicResource BlueGradientBrush}"/>
+            <Path Data="M8.61878453038674,0L91.3812154696133,0 100,8.61878453038674 100,91.3812154696133 91.3812154696133,100 8.61878453038674,100 0,91.3812154696133 0,8.61878453038674z" StrokeThickness="24" Stretch="Fill" Margin="9">
+                <Path.Stroke>
+                    <LinearGradientBrush EndPoint="0,4" MappingMode="Absolute" SpreadMethod="Repeat">
+                        <GradientStop Color="#00000000"/>
+                        <GradientStop Color="#7F024F7F" Offset="0.5"/>
+                        <GradientStop Offset="1" Color="#000073FF"/>
+                    </LinearGradientBrush>
+                </Path.Stroke>
+            </Path>
+            <Path Data="M10,0 L90,0 100,10 100,90 90,100 10,100 0,90 0,10 Z" StrokeThickness="10" Stretch="Fill" Stroke="{DynamicResource BlueGradientBrush}"/>
+            <Rectangle x:Name="rtRect" StrokeThickness="10" Margin="30" Clip="M30,0 L310,0 340,30 340,310 310,340 30,340 0,310 0,30 z" Fill="Black"/>
+            <Path Data="M8.0276134,0 L91.972387,0 100,8.0276134 100,91.972387 91.972387,100 8.0276134,100 0,91.972387 0,8.0276134 z" StrokeThickness="2" Stretch="Fill" Margin="30">
+                <Path.Stroke>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#CC216091" Offset="1"/>
+                        <GradientStop Color="#CC123B5A"/>
+                    </LinearGradientBrush>
+                </Path.Stroke>
+            </Path>
+            <RepeatButton x:Name="rotateLeft" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,50"
+			Delay="100" Interval="10" Template="{StaticResource LeftButtonTemplate}"
+			ToolTip="Rotate Space Boy" ToolTipService.Placement="Top" ToolTipService.VerticalOffset="-2">
+                <Path Data="{StaticResource ArrowGeometry}" Fill="White" Stretch="Fill" Width="20" Height="10" Stroke="#FF5691D4"/>
+            </RepeatButton>
+            <RepeatButton x:Name="rotateRight" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,50"
+			Delay="100" Interval="10" Template="{StaticResource RightButtonTemplate}"
+			ToolTip="Rotate Space Boy" ToolTipService.Placement="Top" ToolTipService.VerticalOffset="-2">
+                <Path Data="{StaticResource ArrowGeometry}" Fill="White" Stretch="Fill" Width="20" Height="10" Stroke="#FF5691D4" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                    </Path.RenderTransform>
+                </Path>
+            </RepeatButton>
+        </Grid>
+    </StackPanel>
+</UserControl>
