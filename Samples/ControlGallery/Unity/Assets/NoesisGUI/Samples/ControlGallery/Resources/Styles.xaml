@@ -1,0 +1,59 @@
+<Grid
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Viewbox Margin="20">
+        <Border Background="#80D0D0D0" BorderBrush="#80808080" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Default Style" VerticalAlignment="Center" FontSize="10" Foreground="Black" TextAlignment="Right"/>
+                <Button Grid.Column="1" Content="Button" Margin="10,0,0,5" Padding="40,2" HorizontalAlignment="Center"/>
+    
+                <TextBlock Grid.Row="1" Text="Noesis Style" VerticalAlignment="Center" FontSize="10" Foreground="Black" TextAlignment="Right"/>
+                <Border Grid.Row="1" Grid.Column="1" Margin="10,5,0,5">
+                    <Border.Resources>
+                        <ResourceDictionary Source="NoesisStyle.xaml"/>
+                    </Border.Resources>
+                    <Button Content="Button" Padding="40,2" HorizontalAlignment="Center"/>
+                </Border>
+    
+                <TextBlock Grid.Row="2" Text="Simple Style" VerticalAlignment="Center" FontSize="10" Foreground="Black" TextAlignment="Right"/>
+                <Border Grid.Row="2" Grid.Column="1" Margin="10,5,0,5">
+                    <Border.Resources>
+                        <ResourceDictionary Source="SimpleStyle.xaml"/>
+                    </Border.Resources>
+                    <Button Content="Button" Padding="40,2" HorizontalAlignment="Center"/>
+                </Border>
+    
+                <TextBlock Grid.Row="3" Text="Windows Style" VerticalAlignment="Center" FontSize="10" Foreground="Black" TextAlignment="Right"/>
+                <Border Grid.Row="3" Grid.Column="1" Margin="10,5,0,5">
+                    <Border.Resources>
+                        <ResourceDictionary Source="WindowsStyle.xaml"/>
+                    </Border.Resources>
+                    <Button Content="Button" Padding="40,2" HorizontalAlignment="Center"/>
+                </Border>
+    
+                <TextBlock Grid.Row="4" Text="Orb Style" VerticalAlignment="Center" FontSize="10" Foreground="Black" TextAlignment="Right"/>
+                <Border Grid.Row="4" Grid.Column="1">
+                    <Border.Resources>
+                        <ResourceDictionary Source="StylesOrbButton.xaml"/>
+                    </Border.Resources>
+                    <Button Content="Button" HorizontalAlignment="Center"/>
+                </Border>
+                
+            </Grid>
+        </Border>
+    </Viewbox>
+    
+</Grid>
