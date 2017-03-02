@@ -54,10 +54,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Assets\NoesisGUI\Samples\Buttons\Buttons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Assets\NoesisGUI\Samples\Common\ControlResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,27 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\NoesisGUI\Samples\Scores\ScoreWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Assets\NoesisGUI\Samples\Login\LoginWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Assets\NoesisGUI\Samples\QuestLog\Images\QuestImages.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Assets\NoesisGUI\Samples\QuestLog\QuestLogWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\ControlGallery.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -94,36 +70,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\Buttons\Buttons.xaml.cs">
-      <DependentUpon>Buttons.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\Buttons\ButtonsViewModel.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Common\DelegateCommand.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Common\ElementExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Common\NotifyPropertyChangedBase.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Scores\Game.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Scores\Player.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Scores\ScoreWindow.xaml.cs">
-      <DependentUpon>ScoreWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\Scores\ThousandConverter.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Login\LoginViewModel.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Login\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\NoesisGUI\Samples\Login\PasswordHelper.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\QuestLog\QuestLogViewModel.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\QuestLog\QuestLogWindow.xaml.cs">
-      <DependentUpon>QuestLogWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\ControlGallery\ControlGallery.xaml.cs">
-      <DependentUpon>ControlGallery.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -144,8 +98,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Resource Include="Assets\NoesisGUI\Samples\Common\Aero Matics Regular.ttf" />
-    <Resource Include="Assets\NoesisGUI\Samples\Scores\Fonts\Cheboyga.ttf" />
-    <Resource Include="Assets\NoesisGUI\Samples\Scores\Fonts\PERRYGOT.TTF" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -155,18 +107,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\NoesisGUI\Samples\QuestLog\Images\Image0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\NoesisGUI\Samples\QuestLog\Images\Image1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\NoesisGUI\Samples\QuestLog\Images\Image2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\NoesisGUI\Samples\ControlGallery\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
