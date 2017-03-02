@@ -118,7 +118,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <!-- ScrollBarPageButton Style -->
         <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource NoesisControlStyle}">
             <Setter Property="IsTabStop" Value="False"/>
@@ -131,7 +131,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-                
+
         <!-- VerticalScrollBarThumb Style -->
         <Style x:Key="VerticalScrollBarThumb" TargetType="{x:Type Thumb}" BasedOn="{StaticResource NoesisControlStyle}">
             <Setter Property="IsTabStop" Value="False"/>
@@ -185,7 +185,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <!-- VerticalScrollBar Template -->
         <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
             <Grid
@@ -212,13 +212,13 @@
                     Grid.Row="0"
                     Style="{StaticResource ScrollBarLineButton}"
                     Command="ScrollBar.LineUpCommand">
-                    <Geometry>M 0 4 L 8 4 L 4 0 Z</Geometry>    
+                    <Geometry>M 0 4 L 8 4 L 4 0 Z</Geometry>
                 </RepeatButton>
                 <RepeatButton x:Name="DownLineButton"
                     Grid.Row="2"
                     Style="{StaticResource ScrollBarLineButton}"
                     Command="ScrollBar.LineDownCommand">
-                    <Geometry>M 0 0 L 4 4 L 8 0 Z</Geometry>    
+                    <Geometry>M 0 0 L 4 4 L 8 0 Z</Geometry>
                 </RepeatButton>
             </Grid>
             <ControlTemplate.Triggers>
@@ -233,7 +233,7 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        
+
         <!-- ScrollBar Style -->
         <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource NoesisControlStyle}">
             <Style.Triggers>
@@ -243,7 +243,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+
         <!-- ScrollViewer Style -->
         <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource NoesisControlStyle}">
             <Setter Property="Background" Value="Transparent"/>
@@ -253,17 +253,17 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ScrollViewer}">
                         <Grid Background="{TemplateBinding Background}">
-                            
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-    
+
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-    
+
                             <ScrollContentPresenter
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
@@ -274,7 +274,7 @@
                                 ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                 CanContentScroll="{TemplateBinding CanContentScroll}"
                                 Margin="{TemplateBinding Padding}"/>
-                            
+
                             <!-- The visibility of the ScrollBars is controlled by the implementation of the control -->
                             <ScrollBar x:Name="PART_HorizontalScrollBar"
                                 Grid.Column="0"
@@ -852,7 +852,7 @@
     <Grid>
         <Grid>
             <Grid.Resources>
-                <ResourceDictionary Source="/SamplesWPF;component/Assets/NoesisGUI/Samples/Common/LogoResources.xaml"/>
+                <ResourceDictionary Source="/ControlGallery;component/Assets/NoesisGUI/Samples/Common/LogoResources.xaml"/>
             </Grid.Resources>
             <Border Background="{StaticResource NoesisLogoBg}"/>
             <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoFg}" RenderTransform="{StaticResource NoesisLogoTransform}" RenderTransformOrigin="0.5,0.5" Stretch="Uniform" StrokeLineJoin="Round" UseLayoutRounding="False"/>
@@ -897,14 +897,16 @@
                 <Grid>
                     <Border x:Name="SampleContainer1">
                         <StackPanel Margin="250,200" Width="1280" VerticalAlignment="Center" >
-                            <StackPanel Orientation="Horizontal" Margin="0,0,62.837,0" d:LayoutOverrides="Width">
-                                <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoBlueBg}" Stretch="Uniform"/>
-                                <Path Data="{StaticResource NoesisTextGeometry}" Fill="White" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
-                                <Path Data="{StaticResource NoesisGuiTextGeometry}" Fill="{StaticResource NoesisLogoBlueBg}" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
-                            </StackPanel>
+                            <Viewbox d:LayoutOverrides="Width" Stretch="Fill" Margin="100,0">
+                                <StackPanel Orientation="Horizontal" Height="201" Width="1280">
+                                    <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoBlueBg}" Stretch="Uniform"/>
+                                    <Path Data="{StaticResource NoesisTextGeometry}" Fill="White" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                                    <Path Data="{StaticResource NoesisGuiTextGeometry}" Fill="{StaticResource NoesisLogoBlueBg}" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Viewbox>
                             <Grid d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,100,0,0">
-                                <TextBlock Text="Control &amp; Style Gallery" TextAlignment="Center" Foreground="#40000000" FontSize="100" Margin="0,6,-4,0"/>
-                                <TextBlock Text="Control &amp; Style Gallery" TextAlignment="Center" Foreground="White" FontSize="100"/>
+                                <TextBlock Text="Control &amp; Style Gallery" TextAlignment="Center" Foreground="#40000000" FontSize="60" Margin="0,6,-4,0"/>
+                                <TextBlock Text="Control &amp; Style Gallery" TextAlignment="Center" Foreground="White" FontSize="60"/>
                             </Grid>
                         </StackPanel>
                     </Border>
