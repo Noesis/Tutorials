@@ -7,13 +7,14 @@
 	mc:Ignorable="d"
 	x:Class="Noesis.Samples.ScoreWindow"
 	x:Name="UserControl"
-	FontFamily="/SamplesWPF;component/Assets/NoesisGUI/Samples/Scores/Fonts/#Cheboygan">
+	FontFamily="/ScoreBoard;component/Assets/NoesisGUI/Samples/Scores/Fonts/#Cheboygan">
 	
 	<UserControl.Resources>
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Common/LogoResources.xaml"/>
+                <ResourceDictionary Source="NoesisStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <local:ThousandConverter x:Key="ThousandConverter"/>
@@ -196,7 +197,7 @@
 				    </Path.Fill>
 			    </Path>
                 <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center"
-                           FontFamily="/SamplesWPF;component/Assets/NoesisGUI/Samples/Scores/Fonts/#PerryGothic" FontSize="36" Foreground="White"/>
+                           FontFamily="/ScoreBoard;component/Assets/NoesisGUI/Samples/Scores/Fonts/#PerryGothic" FontSize="36" Foreground="White"/>
 			    <Rectangle Grid.Row="1" Margin="20,8,150,20" Fill="{StaticResource HighlightScore}"/>
 			    <Path Data="{StaticResource EmblemAlliance}" Stretch="Uniform" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="22,14,8,22" StrokeThickness="4" Stroke="#19000000" StrokeLineJoin="Round"/>
 			    <Path Data="{StaticResource EmblemAlliance}" Fill="{StaticResource AllianceColor}" Stretch="Uniform" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="24,16,8,24"/>
@@ -254,11 +255,11 @@
 					    <ColumnDefinition Width="20*"/>
 				    </Grid.ColumnDefinitions>
 				    <ComboBox x:Name="VisibleTeam" ItemsSource="{Binding VisibleTeams}" SelectedIndex="{Binding SelectedTeam}" Foreground="{StaticResource ScoreFg}" Grid.Column="0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0" Padding="8,4" FontSize="20"/>
-				    <TextBlock Text="Elapsed time: " Grid.Column="1" Style="{StaticResource PlayersHeaderStyle}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Elapsed time: " Grid.Column="1" Style="{StaticResource PlayersHeaderStyle}" HorizontalAlignment="Right"/>
 				    <TextBlock Text="{Binding ElapsedTime}" Grid.Column="2" Style="{StaticResource PlayersHeaderStyle}" Foreground="White" HorizontalAlignment="Right"/>
 				    <TextBlock Text="Minutes" Grid.Column="3" Style="{StaticResource PlayersHeaderStyle}" Foreground="White" HorizontalAlignment="Left" Margin="8,0,0,0"/>
-				    <Button Style="{StaticResource ButtonStyle}" Content="Play Again" Grid.Column="4" Margin="8,0" VerticalAlignment="Center"/>
-				    <Button Style="{StaticResource ButtonStyle}" Content="Leave" Grid.Column="5" Margin="8,0" VerticalAlignment="Center"/>
+				    <Button Content="Play Again" Grid.Column="4" Margin="8,0" VerticalAlignment="Center" FontSize="24" Foreground="{StaticResource ScoreFg}"/>
+                    <Button Content="Leave" Grid.Column="5" Margin="8,0" VerticalAlignment="Center" FontSize="24" Foreground="{StaticResource ScoreFg}"/>
 			    </Grid>
 		    </Grid>
 	    </Viewbox>
