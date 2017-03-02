@@ -12,9 +12,9 @@
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/SamplesWPF;component/Assets/NoesisGUI/Samples/QuestLog/Images/QuestImages.xaml"/>
-                <ResourceDictionary Source="/SamplesWPF;component/Assets/NoesisGUI/Samples/Common/LogoResources.xaml"/>
-                <ResourceDictionary Source="/SamplesWPF;component/Assets/NoesisGUI/Samples/Common/ControlResources.xaml"/>
+                <ResourceDictionary Source="/QuestLog;component/Assets/NoesisGUI/Samples/QuestLog/Images/QuestImages.xaml"/>
+                <ResourceDictionary Source="/QuestLog;component/Assets/NoesisGUI/Samples/Common/LogoResources.xaml"/>
+                <ResourceDictionary Source="/QuestLog;component/Assets/NoesisGUI/Samples/Common/ControlResources.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 			<BooleanToVisibilityConverter x:Key="boolToVisibility"/>
 			<Storyboard x:Key="Intro" BeginTime="0:0:0.3">
