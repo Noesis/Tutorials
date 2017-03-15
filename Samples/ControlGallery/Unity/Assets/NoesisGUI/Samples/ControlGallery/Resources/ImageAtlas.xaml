@@ -5,7 +5,7 @@
     <Grid.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Images/Aladin/aladin.xaml"/>
+                <ResourceDictionary Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Aladin/aladin.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <Storyboard x:Key="AladinRun" RepeatBehavior="Forever" Duration="0:0:4.2">
@@ -89,7 +89,7 @@
         
     			<TextBlock Text="Atlas Image" TextAlignment="Center"/>
     			<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    				<Image Source="Images/Aladin/aladin-atlas.png" Stretch="None"/>
+                    <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Aladin/aladin-atlas.png" Stretch="None"/>
     			</Border>
     
     			<TextBlock Text="Image brushes for each sprite" TextAlignment="Center" Margin="0,10,0,0"/>

@@ -23,7 +23,7 @@
                 <TextBlock Grid.Row="1" Text="Noesis Style" VerticalAlignment="Center" FontSize="10" Foreground="Black" TextAlignment="Right"/>
                 <Border Grid.Row="1" Grid.Column="1" Margin="10,5,0,5">
                     <Border.Resources>
-                        <ResourceDictionary Source="NoesisStyle.xaml"/>
+                        <ResourceDictionary Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/NoesisStyle.xaml"/>
                     </Border.Resources>
                     <Button Content="Button" Padding="40,2" HorizontalAlignment="Center"/>
                 </Border>
@@ -31,7 +31,7 @@
                 <TextBlock Grid.Row="2" Text="Simple Style" VerticalAlignment="Center" FontSize="10" Foreground="Black" TextAlignment="Right"/>
                 <Border Grid.Row="2" Grid.Column="1" Margin="10,5,0,5">
                     <Border.Resources>
-                        <ResourceDictionary Source="SimpleStyle.xaml"/>
+                        <ResourceDictionary Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/SimpleStyle.xaml"/>
                     </Border.Resources>
                     <Button Content="Button" Padding="40,2" HorizontalAlignment="Center"/>
                 </Border>
@@ -39,7 +39,7 @@
                 <TextBlock Grid.Row="3" Text="Windows Style" VerticalAlignment="Center" FontSize="10" Foreground="Black" TextAlignment="Right"/>
                 <Border Grid.Row="3" Grid.Column="1" Margin="10,5,0,5">
                     <Border.Resources>
-                        <ResourceDictionary Source="WindowsStyle.xaml"/>
+                        <ResourceDictionary Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/WindowsStyle.xaml"/>
                     </Border.Resources>
                     <Button Content="Button" Padding="40,2" HorizontalAlignment="Center"/>
                 </Border>
@@ -47,7 +47,7 @@
                 <TextBlock Grid.Row="4" Text="Orb Style" VerticalAlignment="Center" FontSize="10" Foreground="Black" TextAlignment="Right"/>
                 <Border Grid.Row="4" Grid.Column="1">
                     <Border.Resources>
-                        <ResourceDictionary Source="StylesOrbButton.xaml"/>
+                        <ResourceDictionary Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/StylesOrbButton.xaml"/>
                     </Border.Resources>
                     <Button Content="Button" HorizontalAlignment="Center"/>
                 </Border>

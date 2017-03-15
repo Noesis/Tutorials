@@ -51,6 +51,8 @@ namespace Noesis.Samples
             _sampleContainer1 = (Border)FindName("SampleContainer1");
             _sampleContainer2 = (Border)FindName("SampleContainer2");
 
+            _sampleContainer.Resources = _noesisStyleResources;
+
             _sampleOverlay = (Grid)FindName("SampleOverlay");
             _sampleOverlay.MouseDown += OnSampleOverlayMouseDown;
 
