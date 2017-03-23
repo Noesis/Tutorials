@@ -138,13 +138,8 @@ namespace Noesis.Samples
             NoesisXaml xamlUnity = (NoesisXaml)UnityEngine.Resources.Load(xaml, typeof(NoesisXaml));
             return xamlUnity.Load();
 #else
-            object root;
-            string path = "../../Assets/NoesisGUI/Samples/ControlGallery/Resources/" + xaml + ".xaml";
-            using (FileStream stream = new FileStream(path, FileMode.Open))
-            {
-                root = XamlReader.Load(stream);
-            }
-            return root;
+            string path = "/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/" + xaml + ".xaml";
+            return Application.LoadComponent(new Uri(path, UriKind.RelativeOrAbsolute));
 #endif
         }
 
