@@ -107,9 +107,7 @@ public class ReplacementListDrawer : PropertyDrawer
 		{
 			
 			for (int i=-1; i<items.arraySize; ++i) {
-				
-				var item = items.GetArrayElementAtIndex (i);
-				
+
 				float rowX = x;
 				for (int n=0; n<props.Length; ++n)
 				{
@@ -147,7 +145,8 @@ public class ReplacementListDrawer : PropertyDrawer
 							
 						} else {
 
-							SerializedProperty prop = item.FindPropertyRelative(props[n]);	
+							var item = items.GetArrayElementAtIndex(i);
+							SerializedProperty prop = item.FindPropertyRelative(props[n]);
 							EditorGUI.PropertyField(rect, prop, GUIContent.none);
 	
 						}
