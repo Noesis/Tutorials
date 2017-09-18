@@ -11,76 +11,79 @@ using System;
 
 namespace Noesis.Samples
 {
-	public class LoginViewModel : NotifyPropertyChangedBase
-	{
-		public LoginViewModel()
-		{
-			LoginCommand = new DelegateCommand(this.CanLogin, this.Login);
-		}
-		
-		public DelegateCommand LoginCommand { get; private set; }
-		
-		public string AccountName { get; set; }
-		public string AccountPassword { get; set; }
-		
-		private string _validationText;
-		public string ValidationText
-		{
-			get { return _validationText; }
-			set
-			{
-				if (_validationText != value)
-				{
-					_validationText = value;
-					OnPropertyChanged("ValidationText");
-				}
-			}
-		}
-		
-		private bool _notifyInvalidCredentials;
-		public bool NotifyInvalidCredentials
-		{
-			get { return _notifyInvalidCredentials; }
-			set
-			{
-				if (_notifyInvalidCredentials != value)
-				{
-					_notifyInvalidCredentials = value;
-					OnPropertyChanged("NotifyInvalidCredentials");
-				}
-			}
-		}
-		
-		private bool CanLogin(object parameter)
-		{
-			bool invalidCredentials = string.IsNullOrEmpty(AccountName) && !string.IsNullOrEmpty(AccountPassword);
-			ValidationText = invalidCredentials ? "ACCOUNT NAME CANNOT BE EMPTY" : "";
-			NotifyInvalidCredentials = invalidCredentials;
-			NotifyInvalidCredentials = false;
-			
-			//return !invalidCredentials;
+    public class LoginViewModel : NotifyPropertyChangedBase
+    {
+        public LoginViewModel()
+        {
+            LoginCommand = new DelegateCommand(this.Login);
+        }
+
+        public DelegateCommand LoginCommand { get; private set; }
+
+        public string AccountName { get; set; }
+        public string AccountPassword { get; set; }
+
+        private string _validationText;
+        public string ValidationText
+        {
+            get { return _validationText; }
+            set
+            {
+                if (_validationText != value)
+                {
+                    _validationText = value;
+                    OnPropertyChanged("ValidationText");
+                }
+            }
+        }
+
+        private bool _invalidCredentials;
+        public bool InvalidCredentials
+        {
+            get { return _invalidCredentials; }
+            set
+            {
+                if (_invalidCredentials != value)
+                {
+                    _invalidCredentials = value;
+                    OnPropertyChanged("InvalidCredentials");
+                }
+            }
+        }
+
+        private void Login(object parameter)
+        {
+            if (CheckCredentials())
+            {
+                #if NOESIS
+                Debug.Log("Login succesfully");
+                #endif
+            }
+        }
+
+        private bool CheckCredentials()
+        {
+            if (string.IsNullOrEmpty(AccountName) && !string.IsNullOrEmpty(AccountPassword))
+            {
+                NotifyInvalidCredentials("ACCOUNT NAME CANNOT BE EMPTY");
+                return false;
+            }
+
+            // Verify login and password
+            if (AccountName != "NoesisGUI" || AccountPassword != "noesis")
+            {
+                NotifyInvalidCredentials("ACCOUNT NAME OR PASSWORD IS INCORRECT");
+                return false;
+            }
+
             return true;
-		}
-		
-		private void Login(object parameter)
-		{
-			if (TryLogin(AccountName, AccountPassword))
-			{
-				#if NOESIS
-				Debug.Log("Login succesfully");
-				#endif
-			}
-			else
-			{
-				ValidationText = "ACCOUNT NAME OR PASSWORD IS INCORRECT";
-				NotifyInvalidCredentials = true;
-				NotifyInvalidCredentials = false;
-			}
-		}
-		
-		private bool TryLogin(string accountName, string accountPassword)
-		{
-			return accountName == "NoesisGUI" && accountPassword == "noesis";
-		}
-	}
+        }
+
+        private void NotifyInvalidCredentials(string message)
+        {
+            ValidationText = message;
+            InvalidCredentials = true;
+            InvalidCredentials = false;
+        }
+    }
 }
