@@ -557,19 +557,17 @@
 					<RowDefinition Height="*"/>
 					<RowDefinition Height="Auto"/>
 				</Grid.RowDefinitions>
-				<StackPanel x:Name="MenuTitle" Orientation="Vertical" HorizontalAlignment="Left">
-					<StackPanel Orientation="Horizontal">
-						<Viewbox Width="80" Stretch="Fill" Height="80" VerticalAlignment="Center" Margin="0,-20">
-							<Canvas Width="720" Height="720" Margin="-70">
-								<Path Width="566.149" Height="540" Canvas.Left="76.927" Canvas.Top="90.5002" Stretch="Fill" Fill="#FFF5055F" Data="M 320.434,264.366L 254.258,352.202L 254.328,352.208L 337.601,548.738L 484.529,565.489L 484.516,565.458L 552.56,479.998L 578.507,541.898L 512.042,630.5L 294.415,606.168L 184.028,346.001L 250.669,255.676L 320.434,264.366 Z M 234.845,219.709L 146.981,338.595L 147.087,338.608L 187.005,440.256L 120.422,431.777L 76.927,329.917L 76.9274,329.916L 206.804,153.607L 487.309,188.095L 532.226,290.975L 489.812,347.039L 446.672,245.886L 446.688,245.863L 234.889,219.715L 234.845,219.709 Z M 512.742,160.146L 404.73,143.921L 445.362,90.5002L 555.324,103.763L 643.076,304.389L 472.954,530.079L 361.404,517.527L 334.052,452.772L 443.416,466.608L 443.414,466.603L 571.791,295.579L 512.786,160.089L 512.742,160.146 Z "/>
-							</Canvas>
-						</Viewbox>
-						<TextBlock Text="NOESIS" FontSize="48" Foreground="#E5FFFFFF" FontFamily="Fonts/#Korataki" VerticalAlignment="Center" Margin="20,0,0,0"/>
-						<TextBlock Text="GUI" FontSize="70" Foreground="#E5EA2E72" VerticalAlignment="Center" Margin="5,-20,0,-5" FontFamily="Fonts/#WeblySleek UI Semibold"/>
-					</StackPanel>
-					<TextBlock Text="MENU DEMO" FontSize="36" HorizontalAlignment="Right" Margin="0,-10,3,0" Foreground="{StaticResource TransparentWhiteBrush70}"/>
-				</StackPanel>
-				<StackPanel x:Name="MenuOptions" Grid.Row="1" Margin="0,30,0,0" RenderTransformOrigin="0.5,0.5"
+                <StackPanel x:Name="MenuTitle" Orientation="Vertical" HorizontalAlignment="Left">
+                    <Viewbox x:Name="Logo" Stretch="Uniform" Height="100" Margin="0,-9,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoMagentaBg}" Stretch="Uniform"/>
+                            <Path Data="{StaticResource NoesisTextGeometry}" Fill="White" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                            <Path Data="{StaticResource NoesisGuiTextGeometry}" Fill="{StaticResource NoesisLogoMagentaBg}" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Viewbox>
+                    <TextBlock Text="MENU DEMO" FontSize="50" HorizontalAlignment="Right" Margin="0,-19,-2,0" Foreground="{StaticResource TransparentWhiteBrush70}"/>
+                </StackPanel>
+                <StackPanel x:Name="MenuOptions" Grid.Row="1" Margin="0,30,0,0" RenderTransformOrigin="0.5,0.5"
 					KeyboardNavigation.TabNavigation="Cycle"
 					KeyboardNavigation.ControlTabNavigation="Cycle"
 					KeyboardNavigation.DirectionalNavigation="Cycle">
@@ -620,7 +618,7 @@
 							</LinearGradientBrush>
 						</Rectangle.Fill>
 					</Rectangle>
-					<Grid Margin="0,4,0,0" Width="640" HorizontalAlignment="Left">
+					<Grid Margin="18,4,0,0" Width="640" HorizontalAlignment="Left">
 						<ContentControl Style="{StaticResource MenuToolTipStyle}" Content="For players looking for experience the game without any of the challenge." IsEnabled="{Binding IsMouseOver, ElementName=Casual}"/>
 						<ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Recommended for standard player." IsEnabled="{Binding IsMouseOver, ElementName=Normal}"/>
 						<ContentControl Style="{StaticResource MenuToolTipStyle}" Content="For experienced veterans only." IsEnabled="{Binding IsMouseOver, ElementName=Veteran}"/>
