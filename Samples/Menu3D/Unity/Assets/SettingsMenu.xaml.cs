@@ -18,17 +18,6 @@ namespace Menu3D
     /// </summary>
     public partial class SettingsMenu : UserControl
     {
-        Storyboard _fadeIn;
-        Storyboard _fadeOut;
-
-        HeaderedContentControl _texDetail;
-        HeaderedContentControl _aalias;
-        HeaderedContentControl _soundVol;
-        HeaderedContentControl _videoRes;
-        HeaderedContentControl _gamma;
-        HeaderedContentControl _subtitles;
-        ToggleButton _back;
-        
         public SettingsMenu()
         {
             this.Initialized += OnInitialized;
@@ -62,13 +51,8 @@ namespace Menu3D
             _fadeIn.Completed += OnFadeInCompleted;
 
             _texDetail = (HeaderedContentControl)FindName("TexDetail");
-            _aalias = (HeaderedContentControl)FindName("AAlias");
-            _soundVol = (HeaderedContentControl)FindName("SoundVol");
-            _videoRes = (HeaderedContentControl)FindName("VideoRes");
-            _gamma = (HeaderedContentControl)FindName("Gamma");
-            _subtitles = (HeaderedContentControl)FindName("Subtitles");
             _back = (ToggleButton)FindName("Back");
-            
+
             PreviewKeyDown += ProcessKeyDown;
         }
 
@@ -80,60 +64,41 @@ namespace Menu3D
         {
             _texDetail.Focus();
         }
-        
-        private void TryCycleOption(HeaderedContentControl control)
-        {
-            OptionSelector selector = control.Content as OptionSelector;
-            if (selector != null)
-            {
-                selector.SelectedIndex++;
-                if (selector.SelectedIndex >= selector.Options.Count)
-                {
-                    selector.SelectedIndex = 0;
-                }
-            }
-        }
-        
-        private void TryToggleCheck(HeaderedContentControl control)
-        {
-            CheckBox check = control.Content as CheckBox;
-            if (check != null)
-            {
-                check.IsChecked = !check.IsChecked;
-            }
-        }
-        
+
         private void ProcessKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                if (_texDetail.IsKeyboardFocused)
+#if NOESIS
+                object source = e.Source;
+#else
+                object source = e.OriginalSource;
+#endif
+
+                HeaderedContentControl control = source as HeaderedContentControl;
+                if (control != null)
                 {
-                    TryCycleOption(_texDetail);
+                    OptionSelector selector = control.Content as OptionSelector;
+                    if (selector != null)
+                    {
+                        selector.CycleNext();
+                        return;
+                    }
+
+                    CheckBox check = control.Content as CheckBox;
+                    if (check != null)
+                    {
+                        check.IsChecked = !check.IsChecked;
+                        return;
+                    }
+
+                    return;
                 }
-                else if (_aalias.IsKeyboardFocused)
+
+                ToggleButton btn = source as ToggleButton;
+                if (btn != null)
                 {
-                    TryToggleCheck(_aalias);
-                }
-                else if (_soundVol.IsKeyboardFocused)
-                {
-                    TryCycleOption(_soundVol);
-                }
-                else if (_videoRes.IsKeyboardFocused)
-                {
-                    TryCycleOption(_videoRes);
-                }
-                else if (_gamma.IsKeyboardFocused)
-                {
-                    TryCycleOption(_gamma);
-                }
-                else if (_subtitles.IsKeyboardFocused)
-                {
-                    TryToggleCheck(_subtitles);
-                }
-                else if (_back.IsKeyboardFocused)
-                {
-                    CommandHelper.TryExecute(_back.Command);
+                    CommandHelper.TryExecute(btn.Command);
                 }
             }
             else if (e.Key == Key.Escape)
@@ -141,5 +106,13 @@ namespace Menu3D
                 CommandHelper.TryExecute(_back.Command);
             }
         }
+
+        #region Private members
+        Storyboard _fadeIn;
+        Storyboard _fadeOut;
+
+        HeaderedContentControl _texDetail;
+        ToggleButton _back;
+        #endregion
     }
 }

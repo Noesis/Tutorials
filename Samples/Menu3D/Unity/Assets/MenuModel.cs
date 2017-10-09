@@ -1,8 +1,5 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
-#endif
-
-#if NOESIS
 using Noesis;
 #else
 using System;
@@ -62,6 +59,8 @@ namespace Menu3D
         {
             #if NOESIS
             UnityEngine.Debug.Log("Start Casual");
+            #else
+            Console.WriteLine("Start Casual");
             #endif
         }
 
@@ -69,6 +68,8 @@ namespace Menu3D
         {
             #if NOESIS
             UnityEngine.Debug.Log("Start Normal");
+            #else
+            Console.WriteLine("Start Normal");
             #endif
         }
 
@@ -76,6 +77,8 @@ namespace Menu3D
         {
             #if NOESIS
             UnityEngine.Debug.Log("Start Veteran");
+            #else
+            Console.WriteLine("Start Veteran");
             #endif
         }
 

@@ -55,10 +55,8 @@ namespace Menu3D
             _fadeIn.Completed += OnFadeInCompleted;
 
             _casual = (ToggleButton)FindName("Casual");
-            _normal = (ToggleButton)FindName("Normal");
-            _veteran = (ToggleButton)FindName("Veteran");
             _back = (ToggleButton)FindName("Back");
-            
+
             PreviewKeyDown += ProcessKeyDown;
         }
 
@@ -70,26 +68,21 @@ namespace Menu3D
         {
             _casual.Focus();
         }
-        
+
         private void ProcessKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                if (_casual.IsKeyboardFocused)
+#if NOESIS
+                object source = e.Source;
+#else
+                object source = e.OriginalSource;
+#endif
+
+                ToggleButton btn = source as ToggleButton;
+                if (btn != null)
                 {
-                    CommandHelper.TryExecute(_casual.Command);
-                }
-                else if (_normal.IsKeyboardFocused)
-                {
-                    CommandHelper.TryExecute(_normal.Command);
-                }
-                else if (_veteran.IsKeyboardFocused)
-                {
-                    CommandHelper.TryExecute(_veteran.Command);
-                }
-                else if (_back.IsKeyboardFocused)
-                {
-                    CommandHelper.TryExecute(_back.Command);
+                    CommandHelper.TryExecute(btn.Command);
                 }
             }
             else if (e.Key == Key.Escape)
@@ -105,8 +98,6 @@ namespace Menu3D
         Storyboard _activateCasual;
 
         ToggleButton _casual;
-        ToggleButton _normal;
-        ToggleButton _veteran;
         ToggleButton _back;
         #endregion
     }
