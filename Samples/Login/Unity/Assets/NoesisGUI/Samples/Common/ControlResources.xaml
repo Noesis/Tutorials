@@ -11,7 +11,7 @@
         </Style.Triggers>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="FontFamily" Value="./#Aero Matics"/>
+        <Setter Property="FontFamily" Value="#Aero Matics"/>
         <Setter Property="FontSize" Value="48"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -258,7 +258,7 @@
                 <Setter Property="noesis:ElementExtensions.FocusOnHover" Value="True"/>
             </Trigger>
         </Style.Triggers>
-        <Setter Property="FontFamily" Value="./#Aero Matics"/>
+        <Setter Property="FontFamily" Value="#Aero Matics"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="CaretBrush" Value="White"/>
@@ -373,7 +373,7 @@
                 <Setter Property="noesis:ElementExtensions.FocusOnHover" Value="True"/>
             </Trigger>
         </Style.Triggers>
-        <Setter Property="FontFamily" Value="./#Aero Matics"/>
+        <Setter Property="FontFamily" Value="#Aero Matics"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="CaretBrush" Value="White"/>
@@ -479,26 +479,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
-    <Style x:Key="InvalidCredentialsStyle" TargetType="{x:Type TextBlock}">
-        <Style.Resources>
-            <Storyboard x:Key="OnEnabled">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFF4C861"/>
-                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD49841"/>
-                    <EasingColorKeyFrame KeyTime="0:0:2.7" Value="#FFD49841"/>
-                    <EasingColorKeyFrame KeyTime="0:0:3.0" Value="#00D49841"/>
-                </ColorAnimationUsingKeyFrames>
-            </Storyboard>
-        </Style.Resources>
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="True">
-                <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource OnEnabled}"/>
-                </Trigger.EnterActions>
-            </Trigger>
-        </Style.Triggers>
-        <Setter Property="Foreground" Value="#FFD49841"/>
     </Style>
 
 </ResourceDictionary>

@@ -1,8 +1,5 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
-#endif
-
-#if NOESIS
 using Noesis;
 #else
 using System;

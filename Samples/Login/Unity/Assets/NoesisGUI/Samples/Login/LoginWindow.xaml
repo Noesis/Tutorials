@@ -15,10 +15,11 @@
                 <ResourceDictionary Source="../Common/LogoResources.xaml"/>
                 <ResourceDictionary Source="../Common/ControlResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Storyboard x:Key="Intro" BeginTime="0:0:0.3">
+            <Storyboard x:Key="Intro">
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Dialog">
                     <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseOut" Amplitude="0.1"/>
                         </EasingDoubleKeyFrame.EasingFunction>
@@ -26,7 +27,8 @@
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Dialog">
                     <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseOut" Amplitude="0.1"/>
                         </EasingDoubleKeyFrame.EasingFunction>
@@ -34,13 +36,34 @@
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Dialog">
                     <EasingDoubleKeyFrame KeyTime="0" Value="-200"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-200"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <CircleEase EasingMode="EaseOut"/>
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
+            <Style x:Key="InvalidCredentialsStyle" TargetType="{x:Type TextBlock}">
+                <Style.Resources>
+                    <Storyboard x:Key="OnEnabled">
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFF4C861"/>
+                            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD49841"/>
+                            <EasingColorKeyFrame KeyTime="0:0:2.7" Value="#FFD49841"/>
+                            <EasingColorKeyFrame KeyTime="0:0:3.0" Value="#00D49841"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </Style.Resources>
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard Storyboard="{StaticResource OnEnabled}"/>
+                        </Trigger.EnterActions>
+                    </Trigger>
+                </Style.Triggers>
+                <Setter Property="Foreground" Value="#FFD49841"/>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <UserControl.Triggers>

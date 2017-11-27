@@ -1,8 +1,5 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
-#endif
-
-#if NOESIS
 using Noesis;
 using UnityEngine;
 #else
@@ -57,6 +54,8 @@ namespace Noesis.Samples
             {
                 #if NOESIS
                 Debug.Log("Login succesfully");
+                #else
+                Console.WriteLine("Login succesfully");
                 #endif
             }
         }
