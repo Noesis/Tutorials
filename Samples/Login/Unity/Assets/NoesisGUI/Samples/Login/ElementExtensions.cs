@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 #endif
 
-namespace Noesis.Samples
+namespace Login
 {
     public class ElementExtensions: DependencyObject
     {

@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 #endif
 
-namespace Noesis.Samples
+namespace Login
 {
     /// <summary>
     /// When you try to bind the password property of a PasswordBox you will find that you cannot

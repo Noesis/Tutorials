@@ -28,7 +28,7 @@ namespace Login
 
         private void OnInitialized(object sender, EventArgs args)
         {
-            this.DataContext = new LoginViewModel();
+            this.DataContext = new ViewModel();
         }
     }
 }

@@ -54,11 +54,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Assets\NoesisGUI\Samples\Common\ControlResources.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Login\ControlResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\NoesisGUI\Samples\Common\LogoResources.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Login\LogoResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -70,10 +70,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\Common\DelegateCommand.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Common\ElementExtensions.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Common\NotifyPropertyChangedBase.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Login\LoginViewModel.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Login\DelegateCommand.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Login\ElementExtensions.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Login\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Login\ViewModel.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Login\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -97,7 +97,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\NoesisGUI\Samples\Common\Aero Matics Regular.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\Login\Aero Matics Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -2,17 +2,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-    xmlns:noesis="clr-namespace:Noesis.Samples"
+    xmlns:noesis="clr-namespace:Login"
     x:Class="Login.MainWindow"
     d:DesignWidth="1280" d:DesignHeight="720"
-    FontFamily="../Common/#Aero Matics"
+    FontFamily="#Aero Matics"
     Foreground="#FF488EB5">
     
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Common/LogoResources.xaml"/>
-                <ResourceDictionary Source="../Common/ControlResources.xaml"/>
+                <ResourceDictionary Source="LogoResources.xaml"/>
+                <ResourceDictionary Source="ControlResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="Intro">
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Dialog">
@@ -43,26 +43,6 @@
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
-            <Style x:Key="InvalidCredentialsStyle" TargetType="{x:Type TextBlock}">
-                <Style.Resources>
-                    <Storyboard x:Key="OnEnabled">
-                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-                            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFF4C861"/>
-                            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD49841"/>
-                            <EasingColorKeyFrame KeyTime="0:0:2.7" Value="#FFD49841"/>
-                            <EasingColorKeyFrame KeyTime="0:0:3.0" Value="#00D49841"/>
-                        </ColorAnimationUsingKeyFrames>
-                    </Storyboard>
-                </Style.Resources>
-                <Style.Triggers>
-                    <Trigger Property="IsEnabled" Value="True">
-                        <Trigger.EnterActions>
-                            <BeginStoryboard Storyboard="{StaticResource OnEnabled}"/>
-                        </Trigger.EnterActions>
-                    </Trigger>
-                </Style.Triggers>
-                <Setter Property="Foreground" Value="#FFD49841"/>
-            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <UserControl.Triggers>

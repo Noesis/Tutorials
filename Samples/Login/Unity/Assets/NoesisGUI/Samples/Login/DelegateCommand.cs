@@ -5,7 +5,7 @@ using Noesis;
 using System;
 using System.Windows.Input;
 
-namespace Noesis.Samples
+namespace Login
 {
 	public class DelegateCommand: ICommand
 	{
