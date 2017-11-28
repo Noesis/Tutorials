@@ -4,6 +4,7 @@ using Noesis;
 #else
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 #endif
 
@@ -83,6 +84,40 @@ namespace Login
             if (element != null && (bool)e.NewValue == true)
             {
                 Selector.SetIsSelected(element, true);
+            }
+        }
+        #endregion
+
+        #region SelectAllOnFocus
+        public static DependencyProperty SelectAllOnFocusProperty = DependencyProperty.RegisterAttached(
+            "SelectAllOnFocus", typeof(bool), typeof(ElementExtensions), new PropertyMetadata(false, OnSelectAllOnFocusChanged));
+
+        public static bool GetSelectAllOnFocus(DependencyObject d)
+        {
+            return (bool)d.GetValue(SelectOnHoverProperty);
+        }
+
+        public static void SetSelectAllOnFocus(DependencyObject d, bool value)
+        {
+            d.SetValue(SelectOnHoverProperty, value);
+        }
+
+        private static void OnSelectAllOnFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UIElement element = d as UIElement;
+            if (element != null && (bool)e.NewValue == true)
+            {
+                element.GotFocus += (sender, args) =>
+                {
+                    if (sender is TextBox)
+                    {
+                        ((TextBox)sender).SelectAll();
+                    }
+                    else if (sender is PasswordBox)
+                    {
+                        ((PasswordBox)sender).SelectAll();
+                    }
+                };
             }
         }
         #endregion
