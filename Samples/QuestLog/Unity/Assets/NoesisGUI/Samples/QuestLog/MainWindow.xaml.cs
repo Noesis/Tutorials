@@ -29,7 +29,7 @@ namespace QuestLog
 
         private void OnInitialized(object sender, EventArgs args)
         {
-            this.DataContext = new QuestLogViewModel((ResourceDictionary)Resources.MergedDictionaries[0]);
+            this.DataContext = new ViewModel((ResourceDictionary)Resources.MergedDictionaries[0]);
         }
     }
 }

@@ -1,12 +1,10 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
 using Noesis;
-using Noesis.Samples;
 using UnityEngine;
 using System.Collections.ObjectModel;
 #else
 using System;
-using Noesis.Samples;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
@@ -30,11 +28,11 @@ namespace QuestLog
         public bool Completed { get; set; }
     }
 
-    public class QuestLogViewModel : NotifyPropertyChangedBase
+    public class ViewModel : NotifyPropertyChangedBase
     {
-        public QuestLogViewModel() { } // used in design time DataContext
+        public ViewModel() { } // used in design time DataContext
 
-        public QuestLogViewModel(ResourceDictionary questImages)
+        public ViewModel(ResourceDictionary questImages)
         {
             Quests = new ObservableCollection<Quest>();
 

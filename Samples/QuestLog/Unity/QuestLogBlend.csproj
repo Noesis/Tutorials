@@ -54,7 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Assets\NoesisGUI\Samples\Common\LogoResources.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\QuestLog\LogoResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -70,9 +70,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\Common\ElementExtensions.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Common\NotifyPropertyChangedBase.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\QuestLog\QuestLogViewModel.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\QuestLog\ElementExtensions.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\QuestLog\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\QuestLog\ViewModel.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\QuestLog\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -99,7 +99,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\NoesisGUI\Samples\Common\Aero Matics Regular.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\QuestLog\Aero Matics Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,7 +118,9 @@
   <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\QuestLog\Images\Image2.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets\NoesisGUI\Samples\Common\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

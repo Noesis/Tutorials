@@ -1,16 +1,12 @@
-﻿#if UNITY_5_3_OR_NEWER
-#define NOESIS
-#endif
-
-using System;
+﻿using System;
 using System.ComponentModel;
 
-namespace Noesis.Samples
+namespace QuestLog
 {
-	/// <summary>
-	/// Base class implementing INotifyPropertyChanged
-	/// </summary>
-	public class NotifyPropertyChangedBase: INotifyPropertyChanged
+    /// <summary>
+    /// Base class implementing INotifyPropertyChanged
+    /// </summary>
+    public class NotifyPropertyChangedBase: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
