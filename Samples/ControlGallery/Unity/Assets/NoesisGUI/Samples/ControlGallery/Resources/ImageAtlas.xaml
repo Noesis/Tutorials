@@ -5,7 +5,7 @@
     <Grid.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Aladin/aladin.xaml"/>
+                <ResourceDictionary Source="Images/Aladin/aladin.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <Storyboard x:Key="AladinRun" RepeatBehavior="Forever" Duration="0:0:4.2">
@@ -84,86 +84,86 @@
 
     <Viewbox Margin="50">
 
-    	<GroupBox HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Background="#80272B30">
-    		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <GroupBox HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Background="#80272B30">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         
-    			<TextBlock Text="Atlas Image" TextAlignment="Center"/>
-    			<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-                    <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Aladin/aladin-atlas.png" Stretch="None"/>
-    			</Border>
+                <TextBlock Text="Atlas Image" TextAlignment="Center"/>
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                    <Image Source="Images/Aladin/aladin-atlas.png" Stretch="None"/>
+                </Border>
     
-    			<TextBlock Text="Image brushes for each sprite" TextAlignment="Center" Margin="0,10,0,0"/>
-    			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin01}" Width="33" Height="54"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin02}" Width="30" Height="54"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin03}" Width="27" Height="57"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin04}" Width="33" Height="57"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin05}" Width="38" Height="54"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin06}" Width="36" Height="56"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin07}" Width="31" Height="54"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin08}" Width="27" Height="54"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin09}" Width="30" Height="57"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin10}" Width="35" Height="58"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin11}" Width="41" Height="55"/>
-    				</Border>
-    				<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
-    					<Rectangle Fill="{StaticResource aladin12}" Width="37" Height="57"/>
-    				</Border>
-    			</StackPanel>
+                <TextBlock Text="Image brushes for each sprite" TextAlignment="Center" Margin="0,10,0,0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin01}" Width="33" Height="54"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin02}" Width="30" Height="54"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin03}" Width="27" Height="57"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin04}" Width="33" Height="57"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin05}" Width="38" Height="54"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin06}" Width="36" Height="56"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin07}" Width="31" Height="54"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin08}" Width="27" Height="54"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin09}" Width="30" Height="57"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin10}" Width="35" Height="58"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin11}" Width="41" Height="55"/>
+                    </Border>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Margin="5" Background="#801C1F21">
+                        <Rectangle Fill="{StaticResource aladin12}" Width="37" Height="57"/>
+                    </Border>
+                </StackPanel>
             
-    			<TextBlock Text="Animated sprites" TextAlignment="Center" Margin="0,10,0,5"/>
-    			<Border BorderBrush="Black" BorderThickness="1" Width="530" ClipToBounds="True" Margin="0,0,0,10">
-    				<Border.Background>
-    					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.5">
-    						<GradientStop Offset="0" Color="Cyan"/>
-    						<GradientStop Offset="0.71" Color="White"/>
-    						<GradientStop Offset="0.72" Color="Green"/>
-    						<GradientStop Offset="1" Color="LightGreen"/>
-    					</LinearGradientBrush>
-    				</Border.Background>
-    				<Grid x:Name="aladin" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,40,0,10">
-    					<Grid.RenderTransform>
-    						<TranslateTransform/>
-    					</Grid.RenderTransform>
-    						<Rectangle x:Name="aladin_sprite_01" Fill="{StaticResource aladin01}" Width="33" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
-    						<Rectangle x:Name="aladin_sprite_02" Fill="{StaticResource aladin02}" Width="30" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_03" Fill="{StaticResource aladin03}" Width="27" Height="57" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_04" Fill="{StaticResource aladin04}" Width="33" Height="57" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_05" Fill="{StaticResource aladin05}" Width="38" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_06" Fill="{StaticResource aladin06}" Width="36" Height="56" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_07" Fill="{StaticResource aladin07}" Width="31" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_08" Fill="{StaticResource aladin08}" Width="27" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_09" Fill="{StaticResource aladin09}" Width="30" Height="57" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_10" Fill="{StaticResource aladin10}" Width="35" Height="58" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_11" Fill="{StaticResource aladin11}" Width="41" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    						<Rectangle x:Name="aladin_sprite_12" Fill="{StaticResource aladin12}" Width="37" Height="57" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
-    				</Grid>
-    			</Border>
+                <TextBlock Text="Animated sprites" TextAlignment="Center" Margin="0,10,0,5"/>
+                <Border BorderBrush="Black" BorderThickness="1" Width="530" ClipToBounds="True" Margin="0,0,0,10">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.5">
+                            <GradientStop Offset="0" Color="Cyan"/>
+                            <GradientStop Offset="0.71" Color="White"/>
+                            <GradientStop Offset="0.72" Color="Green"/>
+                            <GradientStop Offset="1" Color="LightGreen"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid x:Name="aladin" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,40,0,10">
+                        <Grid.RenderTransform>
+                            <TranslateTransform/>
+                        </Grid.RenderTransform>
+                            <Rectangle x:Name="aladin_sprite_01" Fill="{StaticResource aladin01}" Width="33" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible"/>
+                            <Rectangle x:Name="aladin_sprite_02" Fill="{StaticResource aladin02}" Width="30" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_03" Fill="{StaticResource aladin03}" Width="27" Height="57" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_04" Fill="{StaticResource aladin04}" Width="33" Height="57" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_05" Fill="{StaticResource aladin05}" Width="38" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_06" Fill="{StaticResource aladin06}" Width="36" Height="56" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_07" Fill="{StaticResource aladin07}" Width="31" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_08" Fill="{StaticResource aladin08}" Width="27" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_09" Fill="{StaticResource aladin09}" Width="30" Height="57" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_10" Fill="{StaticResource aladin10}" Width="35" Height="58" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_11" Fill="{StaticResource aladin11}" Width="41" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                            <Rectangle x:Name="aladin_sprite_12" Fill="{StaticResource aladin12}" Width="37" Height="57" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                    </Grid>
+                </Border>
             
-    		</StackPanel>
-    	</GroupBox>
-	
-	</Viewbox>
-	
+            </StackPanel>
+        </GroupBox>
+    
+    </Viewbox>
+    
 </Grid>

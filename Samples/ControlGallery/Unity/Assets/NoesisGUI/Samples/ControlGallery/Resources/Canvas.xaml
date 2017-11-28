@@ -27,7 +27,7 @@
                 <TextBlock Text="{Binding ActualHeight, ElementName=Canvas}"/>
             </StackPanel>
             <Canvas x:Name="Canvas" Width="380" Height="240" Grid.Row="1" Background="White" Margin="8">
-                <Border BorderBrush="Black" BorderThickness="1" Height="50" CornerRadius="0,4,4,4" Background="{DynamicResource BgBrush}" Canvas.Left="20" Canvas.Top="15">
+                <Border BorderBrush="Black" BorderThickness="1" Height="50" CornerRadius="0,4,4,4" Background="{StaticResource BgBrush}" Canvas.Left="20" Canvas.Top="15">
                     <Grid>
                         <StackPanel Orientation="Horizontal" Margin="2,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <TextBlock Text="(left="/>
@@ -39,7 +39,7 @@
                         <Ellipse Fill="Black" Stroke="#00000000" Width="4" Height="4" HorizontalAlignment="Left" VerticalAlignment="Top" StrokeThickness="0" Margin="-2,-2,0,0"/>
                     </Grid>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1" Height="50" CornerRadius="4,0,4,4" Background="{DynamicResource BgBrush}" Canvas.Right="15" Canvas.Top="35">
+                <Border BorderBrush="Black" BorderThickness="1" Height="50" CornerRadius="4,0,4,4" Background="{StaticResource BgBrush}" Canvas.Right="15" Canvas.Top="35">
                     <Grid>
                         <StackPanel Orientation="Horizontal" Margin="10,0,2,0" HorizontalAlignment="Right" VerticalAlignment="Top">
                             <TextBlock Text="(right="/>
@@ -51,7 +51,7 @@
                         <Ellipse Fill="Black" Stroke="#00000000" Width="4" Height="4" HorizontalAlignment="Right" VerticalAlignment="Top" StrokeThickness="0" Margin="0,-2,-2,0"/>
                     </Grid>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1" Height="50" CornerRadius="4,4,4,0" Background="{DynamicResource BgBrush}" Canvas.Left="10" Canvas.Bottom="35">
+                <Border BorderBrush="Black" BorderThickness="1" Height="50" CornerRadius="4,4,4,0" Background="{StaticResource BgBrush}" Canvas.Left="10" Canvas.Bottom="35">
                     <Grid>
                         <StackPanel Orientation="Horizontal" Margin="2,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                             <TextBlock Text="(left="/>
@@ -63,7 +63,7 @@
                         <Ellipse Fill="Black" Stroke="#00000000" Width="4" Height="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" StrokeThickness="0" Margin="-2,0,0,-2"/>
                     </Grid>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1" Height="50" CornerRadius="4,4,0,4" Background="{DynamicResource BgBrush}" Canvas.Right="10" Canvas.Bottom="5">
+                <Border BorderBrush="Black" BorderThickness="1" Height="50" CornerRadius="4,4,0,4" Background="{StaticResource BgBrush}" Canvas.Right="10" Canvas.Bottom="5">
                     <Grid>
                         <StackPanel Orientation="Horizontal" Margin="10,0,2,0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                             <TextBlock Text="(right="/>
@@ -75,7 +75,7 @@
                         <Ellipse Fill="Black" Stroke="#00000000" Width="4" Height="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" StrokeThickness="0" Margin="0,0,-2,-2"/>
                     </Grid>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1" Height="30" CornerRadius="0,4,4,4" Background="{DynamicResource BgBrush}" Canvas.Left="160" Canvas.Top="115">
+                <Border BorderBrush="Black" BorderThickness="1" Height="30" CornerRadius="0,4,4,4" Background="{StaticResource BgBrush}" Canvas.Left="160" Canvas.Top="115">
                     <Grid>
                         <StackPanel Orientation="Horizontal" Margin="2,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <TextBlock Text="(left="/>

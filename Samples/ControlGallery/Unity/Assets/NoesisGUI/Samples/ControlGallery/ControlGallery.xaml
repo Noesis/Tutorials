@@ -1,10 +1,8 @@
-<UserControl
+<UserControl x:Class="Noesis.Samples.ControlGallery"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-    xmlns:noesis="clr-namespace:Noesis.Samples"
-    x:Class="Noesis.Samples.ControlGallery"
-    FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#Roboto"
+    FontFamily="Resources/Fonts/#Roboto"
     Foreground="#FFC9CCCF"
     d:DesignWidth="1280" d:DesignHeight="720">
 
@@ -853,7 +851,7 @@
     <Grid>
         <Grid>
             <Grid.Resources>
-                <ResourceDictionary Source="/ControlGallery;component/Assets/NoesisGUI/Samples/Common/LogoResources.xaml"/>
+                <ResourceDictionary Source="../Common/LogoResources.xaml"/>
             </Grid.Resources>
             <Border Background="{StaticResource NoesisLogoBg}"/>
             <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoFg}" RenderTransform="{StaticResource NoesisLogoTransform}" RenderTransformOrigin="0.5,0.5" Stretch="Uniform" StrokeLineJoin="Round" UseLayoutRounding="False"/>

@@ -993,17 +993,17 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard Storyboard="{StaticResource IndeterminateOn}"/>
                             </Trigger.EnterActions>
-							<Setter TargetName="PART_Track" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_Track" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_GlowRect1" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="GlowBg" Property="Visibility" Value="Visible"/>
                         </Trigger>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter TargetName="PART_Track" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
-							<Setter TargetName="PART_Track" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}"/>
-							<Setter TargetName="GlowBg" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
-							<Setter TargetName="GlowBg" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}"/>
-						</Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="PART_Track" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="PART_Track" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}"/>
+                            <Setter TargetName="GlowBg" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="GlowBg" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -1027,7 +1027,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Data="M 0 0 L 4 4 L 8 0 Z"
-				UseLayoutRounding="False"
+                UseLayoutRounding="False"
                 Fill="{StaticResource GlyphBrush}"/>
         </Border>
         <ControlTemplate.Triggers>

@@ -7,15 +7,15 @@
     TextElement.Foreground="Black">
     
     <Grid.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/SimpleStyle.xaml"/>
-			</ResourceDictionary.MergedDictionaries>
-			<LinearGradientBrush x:Key="BgBrush" StartPoint="0,0" EndPoint="1,1">
-				<GradientStop Offset="0" Color="#FF9BDEFF"/>
-				<GradientStop Offset="1" Color="#FF69B5FF"/>
-			</LinearGradientBrush>
-		</ResourceDictionary>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SimpleStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <LinearGradientBrush x:Key="BgBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Offset="0" Color="#FF9BDEFF"/>
+                <GradientStop Offset="1" Color="#FF69B5FF"/>
+            </LinearGradientBrush>
+        </ResourceDictionary>
     </Grid.Resources>
     
     <Viewbox Margin="50">
@@ -33,7 +33,7 @@
                 <TextBlock Text="{Binding ActualHeight, ElementName=DockPanel}"/>
             </StackPanel>
             <DockPanel x:Name="DockPanel" Background="White" Height="240" Margin="8" Grid.Row="1" Width="380" LastChildFill="{Binding IsChecked, ElementName=LastChildFills}">
-                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="Top" Margin="4" Padding="0">
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource BgBrush}" DockPanel.Dock="Top" Margin="4" Padding="0">
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
                             <TextBlock Text="dock="/>
@@ -41,7 +41,7 @@
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="Bottom" Margin="4" Padding="0">
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource BgBrush}" DockPanel.Dock="Bottom" Margin="4" Padding="0">
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
                             <TextBlock Text="dock="/>
@@ -49,7 +49,7 @@
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Margin="4" Padding="0">
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource BgBrush}" Margin="4" Padding="0">
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
                             <TextBlock Text="dock="/>
@@ -57,7 +57,7 @@
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="Right" Margin="4" Padding="0">
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource BgBrush}" DockPanel.Dock="Right" Margin="4" Padding="0">
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
                             <TextBlock Text="dock="/>
@@ -65,7 +65,7 @@
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="Top" Margin="4" Padding="0">
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource BgBrush}" DockPanel.Dock="Top" Margin="4" Padding="0">
                     <Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
                             <TextBlock Text="dock="/>
@@ -73,7 +73,7 @@
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="{Binding SelectedItem.Content, ElementName=Positioning}" Margin="4" Padding="0">
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource BgBrush}" DockPanel.Dock="{Binding SelectedItem.Content, ElementName=Positioning}" Margin="4" Padding="0">
                     <Grid>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
                         <TextBlock Text="Last Child" FontWeight="Bold"/>

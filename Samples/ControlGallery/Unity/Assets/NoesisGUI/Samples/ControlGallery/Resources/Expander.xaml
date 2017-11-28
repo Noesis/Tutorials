@@ -16,14 +16,14 @@
                                     <ColorAnimation Duration="0:0:0.6" Storyboard.TargetName="CollapseRect" Storyboard.TargetProperty="Fill.Color" From="#00ADFF2F" To="#FFADFF2F"/>
                                 </Storyboard>
                             </BeginStoryboard>
-                        </EventTrigger>	
+                        </EventTrigger>    
                         <EventTrigger RoutedEvent="Expander.Expanded">
                             <BeginStoryboard>
                                 <Storyboard>
                                     <ColorAnimation Duration="0:0:0.6" Storyboard.TargetName="ExpandRect" Storyboard.TargetProperty="Fill.Color" From="#00ADFF2F" To="#FFADFF2F"/>
                                 </Storyboard>
                             </BeginStoryboard>
-                        </EventTrigger>	
+                        </EventTrigger>    
                     </Grid.Triggers>
                     
                     <Grid.ColumnDefinitions>
@@ -48,7 +48,7 @@
                     <Expander Header="Expander Container" Grid.Row="1" Margin="0,8,0,0" Width="175">
                         <StackPanel>
                             <ScrollViewer Height="100">
-                                <TextBlock Text="No more static and outdated user interfaces. No more wasting of programming resources for the UI. Give your artist team the freedom they need to reach maximum creativity in a workflow based on XAML tools. The visual appearance and flexibility of NoesisGUI is of such high quality that once you start using it you won't go back." TextWrapping="Wrap"/>						
+                                <TextBlock Text="No more static and outdated user interfaces. No more wasting of programming resources for the UI. Give your artist team the freedom they need to reach maximum creativity in a workflow based on XAML tools. The visual appearance and flexibility of NoesisGUI is of such high quality that once you start using it you won't go back." TextWrapping="Wrap"/>                        
                             </ScrollViewer>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
                                 <Button Content="Ok" Width="60"/>

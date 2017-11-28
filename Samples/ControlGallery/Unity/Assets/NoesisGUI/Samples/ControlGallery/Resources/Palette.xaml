@@ -54,25 +54,25 @@
                 </Menu>
                 <ToolBar DockPanel.Dock="Top">
                     <Button>
-                        <Image Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/consulting.png" Stretch="Fill" Width="16"/>
+                        <Image Height="16" Source="Images/Icons/consulting.png" Stretch="Fill" Width="16"/>
                     </Button>
                     <Button>
-                        <Image Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/folder.png" Stretch="Fill" Width="16"/>
+                        <Image Height="16" Source="Images/Icons/folder.png" Stretch="Fill" Width="16"/>
                     </Button>
                     <Separator/>
                     <CheckBox>
-                        <Image Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/print.png" Stretch="Fill" Width="16"/>
+                        <Image Height="16" Source="Images/Icons/print.png" Stretch="Fill" Width="16"/>
                     </CheckBox>
                     <Separator/>
                     <RadioButton>
-                        <Image Width="16" Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/plus.png" Stretch="Fill"/>
+                        <Image Width="16" Height="16" Source="Images/Icons/plus.png" Stretch="Fill"/>
                     </RadioButton>
                     <RadioButton>
-                        <Image Width="16" Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/refresh.png" Stretch="Fill"/>
+                        <Image Width="16" Height="16" Source="Images/Icons/refresh.png" Stretch="Fill"/>
                     </RadioButton>
                     <Separator/>
                     <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2,0,7,0">
-                        <Image Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/freelance.png" Stretch="Fill" Width="16"/>
+                        <Image Height="16" Source="Images/Icons/freelance.png" Stretch="Fill" Width="16"/>
                     </Label>
                     <ComboBox Width="100">
                         <ComboBoxItem Content="Debug" IsSelected="True"/>
@@ -86,23 +86,23 @@
                     </ComboBox>
                     <Separator/>
                     <Button>
-                        <Image Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/search.png" Stretch="Fill" Width="16"/>
+                        <Image Height="16" Source="Images/Icons/search.png" Stretch="Fill" Width="16"/>
                     </Button>
                     <TextBox Width="100"/>
                     <Separator/>
                     <Menu>
                         <MenuItem>
                             <MenuItem.Header>
-                                <Image Width="16" Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/product.png" Stretch="Fill"/>
+                                <Image Width="16" Height="16" Source="Images/Icons/product.png" Stretch="Fill"/>
                             </MenuItem.Header>
                             <MenuItem>
                                 <MenuItem.Header>
-                                    <Image Width="16" Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/calendar.png" Stretch="Fill"/>
+                                    <Image Width="16" Height="16" Source="Images/Icons/calendar.png" Stretch="Fill"/>
                                 </MenuItem.Header>
                             </MenuItem>
                             <MenuItem>
                                 <MenuItem.Header>
-                                    <Image Width="16" Height="16" Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/database.png" Stretch="Fill"/>
+                                    <Image Width="16" Height="16" Source="Images/Icons/database.png" Stretch="Fill"/>
                                 </MenuItem.Header>
                             </MenuItem>
                         </MenuItem>
@@ -120,28 +120,28 @@
                                 <TreeViewItem IsExpanded="True">
                                     <TreeViewItem.Header>
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/archives.png" Width="12" Height="12" />
+                                            <Image Source="Images/Icons/archives.png" Width="12" Height="12" />
                                             <TextBlock Text="Solution 'Sample' (1 project)" Margin="4,0,0,0"/>
                                         </StackPanel>
                                     </TreeViewItem.Header>
                                     <TreeViewItem IsExpanded="True">
                                         <TreeViewItem.Header>
                                             <StackPanel Orientation="Horizontal">
-                                                <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/project.png" Width="12" Height="12" />
+                                                <Image Source="Images/Icons/project.png" Width="12" Height="12" />
                                                 <TextBlock Text="Sample" Margin="4,0,0,0"/>
                                             </StackPanel>
                                         </TreeViewItem.Header>
                                         <TreeViewItem>
                                             <TreeViewItem.Header>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/sitemap.png" Width="12" Height="12" />
+                                                    <Image Source="Images/Icons/sitemap.png" Width="12" Height="12" />
                                                     <TextBlock Text="References" Margin="4,0,0,0"/>
                                                 </StackPanel>
                                             </TreeViewItem.Header>
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/billing.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/billing.png" Width="12" Height="12" />
                                                         <TextBlock Text="PresentationCore" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -149,7 +149,7 @@
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/billing.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/billing.png" Width="12" Height="12" />
                                                         <TextBlock Text="PresentationFramework" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -157,7 +157,7 @@
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/billing.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/billing.png" Width="12" Height="12" />
                                                         <TextBlock Text="System" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -165,7 +165,7 @@
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/billing.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/billing.png" Width="12" Height="12" />
                                                         <TextBlock Text="System.Core" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -173,7 +173,7 @@
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/billing.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/billing.png" Width="12" Height="12" />
                                                         <TextBlock Text="System.Data" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -181,7 +181,7 @@
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/billing.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/billing.png" Width="12" Height="12" />
                                                         <TextBlock Text="System.Xaml" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -189,7 +189,7 @@
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/billing.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/billing.png" Width="12" Height="12" />
                                                         <TextBlock Text="WindowBase" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -198,7 +198,7 @@
                                         <TreeViewItem>
                                             <TreeViewItem.Header>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/config.png" Width="12" Height="12" />
+                                                    <Image Source="Images/Icons/config.png" Width="12" Height="12" />
                                                     <TextBlock Text="App.config" Margin="4,0,0,0"/>
                                                 </StackPanel>
                                             </TreeViewItem.Header>
@@ -206,14 +206,14 @@
                                         <TreeViewItem>
                                             <TreeViewItem.Header>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/featured.png" Width="12" Height="12" />
+                                                    <Image Source="Images/Icons/featured.png" Width="12" Height="12" />
                                                     <TextBlock Text="App.xaml" Margin="4,0,0,0"/>
                                                 </StackPanel>
                                             </TreeViewItem.Header>
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/attributes.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/attributes.png" Width="12" Height="12" />
                                                         <TextBlock Text="App.xaml.cs" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -222,7 +222,7 @@
                                         <TreeViewItem>
                                             <TreeViewItem.Header>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/featured.png" Width="12" Height="12" />
+                                                    <Image Source="Images/Icons/featured.png" Width="12" Height="12" />
                                                     <TextBlock Text="Tiger.xaml" Margin="4,0,0,0"/>
                                                 </StackPanel>
                                             </TreeViewItem.Header>
@@ -230,14 +230,14 @@
                                         <TreeViewItem>
                                             <TreeViewItem.Header>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/featured.png" Width="12" Height="12" />
+                                                    <Image Source="Images/Icons/featured.png" Width="12" Height="12" />
                                                     <TextBlock Text="Time.xaml" Margin="4,0,0,0"/>
                                                 </StackPanel>
                                             </TreeViewItem.Header>
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/attributes.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/attributes.png" Width="12" Height="12" />
                                                         <TextBlock Text="Time.xaml.cs" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -256,28 +256,28 @@
                                 <TreeViewItem IsExpanded="True">
                                     <TreeViewItem.Header>
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/advertising.png" Width="12" Height="12" />
+                                            <Image Source="Images/Icons/advertising.png" Width="12" Height="12" />
                                             <TextBlock Text="[Grid]" Margin="4,0,0,0"/>
                                         </StackPanel>
                                     </TreeViewItem.Header>
                                     <TreeViewItem IsExpanded="True">
                                         <TreeViewItem.Header>
                                             <StackPanel Orientation="Horizontal">
-                                                <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/communication.png" Width="12" Height="12" />
+                                                <Image Source="Images/Icons/communication.png" Width="12" Height="12" />
                                                 <TextBlock Text="[Viewbox]" Margin="4,0,0,0"/>
                                             </StackPanel>
                                         </TreeViewItem.Header>
                                         <TreeViewItem IsExpanded="True">
                                             <TreeViewItem.Header>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/advertising.png" Width="12" Height="12" />
+                                                    <Image Source="Images/Icons/advertising.png" Width="12" Height="12" />
                                                     <TextBlock Text="[Grid]" Margin="4,0,0,0"/>
                                                 </StackPanel>
                                             </TreeViewItem.Header>
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/future-projects.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/future-projects.png" Width="12" Height="12" />
                                                         <TextBlock Text="[Border]" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -285,7 +285,7 @@
                                             <TreeViewItem>
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/twitter.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/twitter.png" Width="12" Height="12" />
                                                         <TextBlock Text="[TextBlock] 'Title'" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
@@ -293,14 +293,14 @@
                                             <TreeViewItem IsExpanded="True">
                                                 <TreeViewItem.Header>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/advertising.png" Width="12" Height="12" />
+                                                        <Image Source="Images/Icons/advertising.png" Width="12" Height="12" />
                                                         <TextBlock Text="[Grid]" Margin="4,0,0,0"/>
                                                     </StackPanel>
                                                 </TreeViewItem.Header>
                                                 <TreeViewItem>
                                                     <TreeViewItem.Header>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/payment-card.png" Width="12" Height="12" />
+                                                            <Image Source="Images/Icons/payment-card.png" Width="12" Height="12" />
                                                             <TextBlock Text="[Menu]" Margin="4,0,0,0"/>
                                                         </StackPanel>
                                                     </TreeViewItem.Header>
@@ -309,7 +309,7 @@
                                                 <TreeViewItem>
                                                     <TreeViewItem.Header>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/check.png" Width="12" Height="12" />
+                                                            <Image Source="Images/Icons/check.png" Width="12" Height="12" />
                                                             <TextBlock Text="[CheckBox] 'Enable'" Margin="4,0,0,0"/>
                                                         </StackPanel>
                                                     </TreeViewItem.Header>
@@ -317,7 +317,7 @@
                                                 <TreeViewItem>
                                                     <TreeViewItem.Header>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/premium.png" Width="12" Height="12" />
+                                                            <Image Source="Images/Icons/premium.png" Width="12" Height="12" />
                                                             <TextBlock Text="[Path] 'Logo'" Margin="4,0,0,0"/>
                                                         </StackPanel>
                                                     </TreeViewItem.Header>
@@ -325,7 +325,7 @@
                                                 <TreeViewItem>
                                                     <TreeViewItem.Header>
                                                         <StackPanel Orientation="Horizontal">
-                                                            <Image Source="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Images/Icons/advertising.png" Width="12" Height="12" />
+                                                            <Image Source="Images/Icons/advertising.png" Width="12" Height="12" />
                                                             <TextBlock Text="[Grid]" Margin="4,0,0,0"/>
                                                         </StackPanel>
                                                     </TreeViewItem.Header>
@@ -1452,7 +1452,7 @@
                                                         <TranslateTransform/>
                                                     </TransformGroup>
                                                 </Grid.RenderTransform>
-                                                <TextBlock x:Name="textSecondsOut" Height="92" TextWrapping="Wrap" Width="76.623" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#K22 Ambelyn Condensed" FontSize="96" TextAlignment="Center" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                                <TextBlock x:Name="textSecondsOut" Height="92" TextWrapping="Wrap" Width="76.623" FontFamily="Fonts/#K22 Ambelyn Condensed" FontSize="96" TextAlignment="Center" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                                     <TextBlock.Foreground>
                                                         <SolidColorBrush Color="{StaticResource RedNumbers}"/>
                                                     </TextBlock.Foreground>
@@ -1465,7 +1465,7 @@
                                                         </TransformGroup>
                                                     </TextBlock.RenderTransform>
                                                 </TextBlock>
-                                                <TextBlock x:Name="textSecondsIn" Height="92" TextWrapping="Wrap" Width="76.623" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#K22 Ambelyn Condensed" FontSize="96" TextAlignment="Center" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                                <TextBlock x:Name="textSecondsIn" Height="92" TextWrapping="Wrap" Width="76.623" FontFamily="Fonts/#K22 Ambelyn Condensed" FontSize="96" TextAlignment="Center" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                                     <TextBlock.Foreground>
                                                         <SolidColorBrush Color="{StaticResource RedNumbers}"/>
                                                     </TextBlock.Foreground>
@@ -1488,7 +1488,7 @@
                                                         <TranslateTransform/>
                                                     </TransformGroup>
                                                 </Grid.RenderTransform>
-                                                <TextBlock x:Name="textMinutesOut" Height="92" TextWrapping="Wrap" Width="76.623" Foreground="Black" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#K22 Ambelyn Condensed" FontSize="96" TextAlignment="Center" Text="00" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                                <TextBlock x:Name="textMinutesOut" Height="92" TextWrapping="Wrap" Width="76.623" Foreground="Black" FontFamily="Fonts/#K22 Ambelyn Condensed" FontSize="96" TextAlignment="Center" Text="00" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                                     <TextBlock.RenderTransform>
                                                         <TransformGroup>
                                                             <ScaleTransform/>
@@ -1498,7 +1498,7 @@
                                                         </TransformGroup>
                                                     </TextBlock.RenderTransform>
                                                 </TextBlock>
-                                                <TextBlock x:Name="textMinutesIn" Height="92" TextWrapping="Wrap" Width="76.623" Foreground="Black" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#K22 Ambelyn Condensed" FontSize="96" TextAlignment="Center" Text="00" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                                <TextBlock x:Name="textMinutesIn" Height="92" TextWrapping="Wrap" Width="76.623" Foreground="Black" FontFamily="Fonts/#K22 Ambelyn Condensed" FontSize="96" TextAlignment="Center" Text="00" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                                     <TextBlock.RenderTransform>
                                                         <TransformGroup>
                                                             <ScaleTransform/>
@@ -1608,7 +1608,7 @@
                                                     </LinearGradientBrush>
                                                 </Path.Fill>
                                             </Path>
-                                            <Control HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource ScrewStyle}" Margin="0,44.249,63.218,0" Height="20" Width="20" RenderTransformOrigin="0.5,0.5">
+                                            <Control HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource ScrewStyle}" Margin="0,44.249,63.218,0" Height="20" Width="20" RenderTransformOrigin="0.5,0.5">
                                                 <Control.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -1638,7 +1638,7 @@
                                                     </LinearGradientBrush>
                                                 </Path.Fill>
                                             </Path>
-                                            <Control HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{DynamicResource ScrewStyle}" Margin="0,0,62.408,15.759" Width="20" Height="20" RenderTransformOrigin="0.5,0.5">
+                                            <Control HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource ScrewStyle}" Margin="0,0,62.408,15.759" Width="20" Height="20" RenderTransformOrigin="0.5,0.5">
                                                 <Control.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -1648,7 +1648,7 @@
                                                     </TransformGroup>
                                                 </Control.RenderTransform>
                                             </Control>
-                                            <Control VerticalAlignment="Bottom" Style="{DynamicResource ScrewStyle}" Margin="188.619,0,191.6,79.177" Width="23" Height="23" RenderTransformOrigin="0.5,0.5">
+                                            <Control VerticalAlignment="Bottom" Style="{StaticResource ScrewStyle}" Margin="188.619,0,191.6,79.177" Width="23" Height="23" RenderTransformOrigin="0.5,0.5">
                                                 <Control.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -1658,9 +1658,9 @@
                                                     </TransformGroup>
                                                 </Control.RenderTransform>
                                             </Control>
-                                            <TextBlock Margin="91,8,0,0" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#Let Me Ride" FontWeight="Bold" Foreground="#FF603813" FontSize="24" Text="T I M E" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+                                            <TextBlock Margin="91,8,0,0" FontFamily="Fonts/#Let Me Ride" FontWeight="Bold" Foreground="#FF603813" FontSize="24" Text="T I M E" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
                                         </Grid>
-                                        <Control x:Name="G2" HorizontalAlignment="Left" Height="169.365" VerticalAlignment="Top" Width="169.365" Style="{DynamicResource GearStyle}" Margin="29.416,32.253,0,0" RenderTransformOrigin="0.5,0.5">
+                                        <Control x:Name="G2" HorizontalAlignment="Left" Height="169.365" VerticalAlignment="Top" Width="169.365" Style="{StaticResource GearStyle}" Margin="29.416,32.253,0,0" RenderTransformOrigin="0.5,0.5">
                                             <Control.RenderTransform>
                                                 <TransformGroup>
                                                     <ScaleTransform/>
@@ -1982,7 +1982,7 @@
                                                     </RadialGradientBrush>
                                                 </Path.Fill>
                                             </Path>
-                                            <Control HorizontalAlignment="Right" Margin="0,141.746,5.534,154.354" Width="23" Height="23" Style="{DynamicResource ScrewStyle}" RenderTransformOrigin="0.5,0.5">
+                                            <Control HorizontalAlignment="Right" Margin="0,141.746,5.534,154.354" Width="23" Height="23" Style="{StaticResource ScrewStyle}" RenderTransformOrigin="0.5,0.5">
                                                 <Control.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -1992,7 +1992,7 @@
                                                     </TransformGroup>
                                                 </Control.RenderTransform>
                                             </Control>
-                                            <Control HorizontalAlignment="Left" Style="{DynamicResource ScrewStyle}" Margin="4,141.468,0,154.632" Width="23" Height="23" RenderTransformOrigin="0.5,0.5">
+                                            <Control HorizontalAlignment="Left" Style="{StaticResource ScrewStyle}" Margin="4,141.468,0,154.632" Width="23" Height="23" RenderTransformOrigin="0.5,0.5">
                                                 <Control.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -2005,11 +2005,11 @@
                                             <Path x:Name="SphereMarks" Data="M38.705996,9.3790022 L32.981995,2.7540006 33.290995,0 35.830996,1.1100003 z M9.6859885,38.176 L1.4170001,35.301 0.30700161,32.760999 3.0609978,32.451999 z M9.3799951,117.155 L2.7549986,122.879 -2.1175824E-22,122.571 1.1099994,120.031 z M38.174997,146.175 L35.299996,154.445 32.759996,155.556 32.450996,152.801 z M117.154,146.482 L122.87899,153.107 122.57099,155.863 120.02999,154.753 z M146.17499,117.686 L154.445,120.561 155.557,123.10201 152.801,123.41101 z M146.48101,38.708 L153.106,32.983999 155.86299,33.290999 154.75199,35.832 z M117.68501,9.6880044 L120.561,1.418001 123.102,0.30600051 123.41,3.0610016 z" Fill="#FF808184" Stretch="Fill" Margin="54.866,75.06,54.862,88.177"/>
                                             <Path x:Name="SphereInnerGreyBorder" Data="M332.0884,158.1787C332.0884,206.6717,292.7764,245.9847,244.2824,245.9847C195.7884,245.9847,156.4764,206.6717,156.4764,158.1787C156.4764,109.6847,195.7884,70.3727,244.2824,70.3727C292.7764,70.3727,332.0884,109.6847,332.0884,158.1787z" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF808184" StrokeThickness="1" StrokeMiterLimit="4" StrokeLineJoin="Miter" Margin="43.578,64.686,45.401,77.802"/>
                                             <Path x:Name="SphereInnerMarks" Data="M90.260016,0.50000001 C121.47001,6.074999 146.21601,30.307994 152.547,61.248989 M0.5,61.249001 C6.6920005,30.989001 30.496003,7.1450006 60.735005,0.89600063 M65.479002,153.708 C33.326995,149.126 7.5249884,124.83699 0.69798671,93.463987 M152.56501,92.437992 C146.26401,123.41399 121.513,147.68299 90.285,153.27199 M101.30702,7.8400016 C97.461016,6.4390013 93.455011,5.380001 89.331005,4.6580008 M112.52602,13.099001 C108.96802,11.038002 105.22302,9.2650034 101.30702,7.8400041 M122.67301,20.204999 C119.51501,17.553 116.11901,15.176001 112.52601,13.099001 M131.434,28.966006 C128.77301,25.798004 125.84101,22.867002 122.67302,20.206 M143.802,50.334004 C145.201,54.180004 146.26,58.187005 146.983,62.310006 M143.802,50.334004 C142.376,46.418004 140.60201,42.674004 138.54102,39.114005 M131.434,28.966006 C134.088,32.126005 136.46401,35.522004 138.54101,39.114003 M89.330997,4.658 L87.309,16.126005 M101.30702,7.8400016 L97.323,18.785002 M112.52602,13.099001 L106.70401,23.182001 M122.67301,20.204999 L115.191,29.126001 M131.434,28.966006 L122.51501,36.451005 M138.541,39.114 L128.459,44.937002 M143.802,50.334004 L132.85601,54.317002 M135.51501,64.331999 L146.98299,62.309009" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FFBBBDBF" StrokeThickness="1" StrokeMiterLimit="4" StrokeLineJoin="Miter" Margin="55.361,76.104,57.165,88.788"/>
-                                            <TextBlock TextWrapping="Wrap" Text="N O E S I S" VerticalAlignment="Bottom" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#Let Me Ride" FontWeight="Bold" Margin="101.75,0,94.951,123.64" d:LayoutOverrides="Width" Foreground="#FF58595B" FontSize="8"/>
-                                            <TextBlock TextWrapping="Wrap" Text="XII" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#K22 Ambelyn Condensed" Foreground="#FF58595B" RenderTransformOrigin="0.5,0.5" FontSize="26.667" VerticalAlignment="Top" Margin="124.508,65.548,125.828,0" d:LayoutOverrides="Width"/>
-                                            <TextBlock TextWrapping="Wrap" Text="III" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#K22 Ambelyn Condensed" Foreground="#FF58595B" FontSize="26.667" HorizontalAlignment="Right" Margin="0,140.257,53.893,152.975" d:LayoutOverrides="Height"/>
-                                            <TextBlock TextWrapping="Wrap" Text="VI" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#K22 Ambelyn Condensed" Foreground="#FF58595B" d:LayoutOverrides="Width" FontSize="26.667" VerticalAlignment="Bottom" Margin="126.515,0,127.662,80.344"/>
-                                            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#K22 Ambelyn Condensed" Text="IX" Foreground="#FF58595B" d:LayoutOverrides="Height" FontSize="26.667" Margin="49.816,140.257,0,152.976"/>
+                                            <TextBlock TextWrapping="Wrap" Text="N O E S I S" VerticalAlignment="Bottom" FontFamily="Fonts/#Let Me Ride" FontWeight="Bold" Margin="101.75,0,94.951,123.64" d:LayoutOverrides="Width" Foreground="#FF58595B" FontSize="8"/>
+                                            <TextBlock TextWrapping="Wrap" Text="XII" FontFamily="Fonts/#K22 Ambelyn Condensed" Foreground="#FF58595B" RenderTransformOrigin="0.5,0.5" FontSize="26.667" VerticalAlignment="Top" Margin="124.508,65.548,125.828,0" d:LayoutOverrides="Width"/>
+                                            <TextBlock TextWrapping="Wrap" Text="III" FontFamily="Fonts/#K22 Ambelyn Condensed" Foreground="#FF58595B" FontSize="26.667" HorizontalAlignment="Right" Margin="0,140.257,53.893,152.975" d:LayoutOverrides="Height"/>
+                                            <TextBlock TextWrapping="Wrap" Text="VI" FontFamily="Fonts/#K22 Ambelyn Condensed" Foreground="#FF58595B" d:LayoutOverrides="Width" FontSize="26.667" VerticalAlignment="Bottom" Margin="126.515,0,127.662,80.344"/>
+                                            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Fonts/#K22 Ambelyn Condensed" Text="IX" Foreground="#FF58595B" d:LayoutOverrides="Height" FontSize="26.667" Margin="49.816,140.257,0,152.976"/>
                                             <Grid x:Name="clockHands" Margin="81.736,100.408,50.958,157.786" >
                                                 <Path x:Name="Hours" Data="F1M216.5684,121.4951C213.4604,119.6241,206.6214,119.3821,194.6684,107.4301L193.7814,108.3161C205.7344,120.2681,205.9764,127.1081,207.8474,130.2161C207.8474,130.2161,210.2324,137.7711,216.7344,131.2691C217.1044,131.8601,217.4754,132.4361,217.8454,133.0031C216.7774,134.2101,216.1674,135.2651,216.4314,135.5281C216.6774,135.7751,217.6144,135.2561,218.7214,134.3171C231.2344,152.8581,243.4284,157.9621,243.4284,157.9621L244.3154,157.0751C244.3154,157.0751,239.2094,144.8821,220.6684,132.3691C221.6084,131.2631,222.1264,130.3261,221.8804,130.0791C221.6164,129.8161,220.5624,130.4261,219.3554,131.4941C218.7884,131.1231,218.2124,130.7521,217.6214,130.3821C224.1234,123.8801,216.5684,121.4951,216.5684,121.4951" Fill="#FF231F20" Stretch="Fill" Width="50.534" RenderTransformOrigin="1.006,0.992" HorizontalAlignment="Left" Margin="0,2.03,0,8.344">
                                                     <Path.RenderTransform>
@@ -2077,7 +2077,7 @@
                                                     </LinearGradientBrush>
                                                 </Path.Fill>
                                             </Path>
-                                            <TextBlock TextWrapping="Wrap" Text="M" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#Let Me Ride" FontWeight="Bold" FontSize="9.333" Margin="103.119,8.078,0,0" Foreground="#FF603813" RenderTransformOrigin="0.5,0.5">
+                                            <TextBlock TextWrapping="Wrap" Text="M" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Fonts/#Let Me Ride" FontWeight="Bold" FontSize="9.333" Margin="103.119,8.078,0,0" Foreground="#FF603813" RenderTransformOrigin="0.5,0.5">
                                                 <TextBlock.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -2087,7 +2087,7 @@
                                                     </TransformGroup>
                                                 </TextBlock.RenderTransform>
                                             </TextBlock>
-                                            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Text="M" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#Let Me Ride" FontWeight="Bold" FontSize="9.333" Margin="119.808,6.19,0,0" Foreground="#FF603813" RenderTransformOrigin="0.5,0.5">
+                                            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Text="M" FontFamily="Fonts/#Let Me Ride" FontWeight="Bold" FontSize="9.333" Margin="119.808,6.19,0,0" Foreground="#FF603813" RenderTransformOrigin="0.5,0.5">
                                                 <TextBlock.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -2097,7 +2097,7 @@
                                                     </TransformGroup>
                                                 </TextBlock.RenderTransform>
                                             </TextBlock>
-                                            <TextBlock TextWrapping="Wrap" Text="X" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="9.333" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#Let Me Ride" FontWeight="Bold" Margin="0,6.445,116.543,0" Foreground="#FF603813" RenderTransformOrigin="0.5,0.5">
+                                            <TextBlock TextWrapping="Wrap" Text="X" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="9.333" FontFamily="Fonts/#Let Me Ride" FontWeight="Bold" Margin="0,6.445,116.543,0" Foreground="#FF603813" RenderTransformOrigin="0.5,0.5">
                                                 <TextBlock.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -2107,7 +2107,7 @@
                                                     </TransformGroup>
                                                 </TextBlock.RenderTransform>
                                             </TextBlock>
-                                            <TextBlock TextWrapping="Wrap" Text="I" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/Fonts/#Let Me Ride" FontWeight="Bold" FontSize="9.333" Margin="0,8.202,107.427,0" Foreground="#FF603813" RenderTransformOrigin="0.5,0.5">
+                                            <TextBlock TextWrapping="Wrap" Text="I" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Fonts/#Let Me Ride" FontWeight="Bold" FontSize="9.333" Margin="0,8.202,107.427,0" Foreground="#FF603813" RenderTransformOrigin="0.5,0.5">
                                                 <TextBlock.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -2138,7 +2138,7 @@
             &lt;GroupBox.Header&gt;&#xa;
                 &lt;TextBlock Text=&quot;Noesis Control Palette&quot; Foreground=&quot;#FF20292E&quot; FontSize=&quot;16&quot; FontWeight=&quot;Bold&quot;/&gt;&#xa;
             &lt;/GroupBox.Header&gt;&#xa;
-            &lt;DockPanel&gt;&#xa;			...&#xa;&lt;/Grid&gt;"/>
+            &lt;DockPanel&gt;&#xa;            ...&#xa;&lt;/Grid&gt;"/>
                                 </ScrollViewer>
                             </Border>
                             </Grid>

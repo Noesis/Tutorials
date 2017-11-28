@@ -3275,7 +3275,11 @@
                             <ContentPresenter x:Name="ContentHost"
                                 ContentSource="Header"
                                 HorizontalAlignment="Left"
-                                VerticalAlignment="Center"/>
+                                VerticalAlignment="Center">
+                                <TextElement.Foreground>
+                                    <SolidColorBrush Color="{StaticResource NormalFgColor}"/>
+                                </TextElement.Foreground>
+                            </ContentPresenter>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>

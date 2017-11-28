@@ -55,10 +55,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Text.cs" />
-    <Page Include="Assets\NoesisGUI\Samples\Common\ControlResources.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Assets\NoesisGUI\Samples\Common\LogoResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,9 +67,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\Common\DelegateCommand.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Common\ElementExtensions.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Common\NotifyPropertyChangedBase.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\ControlGallery\ControlGallery.xaml.cs">
       <DependentUpon>ControlGallery.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -266,7 +259,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\NoesisGUI\Samples\Common\Aero Matics Regular.ttf" />
     <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Resources\Fonts\K22 Ambelyn Condensed.ttf" />
     <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Resources\Fonts\LCDMono2.ttf" />
     <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Resources\Fonts\LetMeRide.ttf" />

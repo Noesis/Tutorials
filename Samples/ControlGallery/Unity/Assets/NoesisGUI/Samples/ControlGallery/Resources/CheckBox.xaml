@@ -13,8 +13,8 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,8,0,16">
                     <StackPanel.Triggers>
@@ -44,9 +44,9 @@
                     <CheckBox Content="Normal CheckBox (checked)" Margin="0,2,0,0" IsChecked="True"/>
                     <CheckBox Content="Tri-state CheckBox (indeterminate)" Margin="0,2,0,0" IsThreeState="True" IsChecked="{x:Null}"/>
                 </StackPanel>
-				<TextBlock Text="Checked" Grid.Column="0" Grid.Row="1" FontSize="10" HorizontalAlignment="Center"/>
-				<TextBlock Text="Unchecked" Grid.Column="1" Grid.Row="1" FontSize="10" HorizontalAlignment="Center"/>
-				<TextBlock Text="Indeterminate" Grid.Column="2" Grid.Row="1" FontSize="10" HorizontalAlignment="Center"/>
+                <TextBlock Text="Checked" Grid.Column="0" Grid.Row="1" FontSize="10" HorizontalAlignment="Center"/>
+                <TextBlock Text="Unchecked" Grid.Column="1" Grid.Row="1" FontSize="10" HorizontalAlignment="Center"/>
+                <TextBlock Text="Indeterminate" Grid.Column="2" Grid.Row="1" FontSize="10" HorizontalAlignment="Center"/>
                 <Grid Grid.Column="0" Grid.Row="2" Margin="8,8,8,0" UseLayoutRounding="True">
                     <Rectangle Fill="DodgerBlue" Width="40" Height="60"/>
                     <Rectangle Fill="#FFADFF2F" Width="40" Height="60" x:Name="CheckedRect"/>
