@@ -480,7 +480,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="InvalidCredentialsStyle" TargetType="{x:Type TextBlock}">
+    <Style x:Key="MessageStyle" TargetType="{x:Type TextBlock}">
         <Style.Resources>
             <Storyboard x:Key="OnEnabled">
                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">

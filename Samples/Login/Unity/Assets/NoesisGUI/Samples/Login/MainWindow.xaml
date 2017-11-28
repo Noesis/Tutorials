@@ -188,12 +188,11 @@
                         <TextBox Grid.Row="3" VerticalAlignment="Bottom" Margin="5,0,10,0" noesis:ElementExtensions.FocusOnLoaded="True"
                             Text="{Binding AccountName, Mode=OneWayToSource}"/>
                         <TextBlock Text="Account Password:" Grid.Row="4" VerticalAlignment="Bottom"/>
-                        <PasswordBox Grid.Row="5" VerticalAlignment="Bottom" PasswordChar="#" Margin="5,0,10,0"
-                            noesis:PasswordHelper.Attach="True" noesis:PasswordHelper.Password="{Binding AccountPassword, Mode=TwoWay}"/>
+                        <PasswordBox x:Name="PassBox" Grid.Row="5" VerticalAlignment="Bottom" PasswordChar="#" Margin="5,0,10,0"/>
                         <TextBlock Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,15,0"
-                            Style="{StaticResource InvalidCredentialsStyle}" Foreground="#FFD49841" FontSize="8"
-                            Text="{Binding ValidationText}" IsEnabled="{Binding InvalidCredentials}"/>
-                        <Button Content="LOG IN" Grid.Row="7" VerticalAlignment="Bottom" Command="{Binding LoginCommand}"/>
+                            Style="{StaticResource MessageStyle}" Foreground="#FFD49841" FontSize="8"
+                            Text="{Binding Message}" IsEnabled="{Binding NotifyMessage}"/>
+                        <Button Content="LOG IN" Grid.Row="7" VerticalAlignment="Bottom" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PassBox}"/>
                     </Grid>
                 </Grid>
             </Grid>

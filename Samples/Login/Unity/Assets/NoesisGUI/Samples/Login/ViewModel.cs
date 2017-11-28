@@ -4,6 +4,7 @@ using Noesis;
 using UnityEngine;
 #else
 using System;
+using System.Windows.Controls;
 #endif
 
 namespace Login
@@ -18,71 +19,67 @@ namespace Login
         public DelegateCommand LoginCommand { get; private set; }
 
         public string AccountName { get; set; }
-        public string AccountPassword { get; set; }
 
-        private string _validationText;
-        public string ValidationText
+        private string _message;
+        public string Message
         {
-            get { return _validationText; }
+            get { return _message; }
             set
             {
-                if (_validationText != value)
+                if (_message != value)
                 {
-                    _validationText = value;
-                    OnPropertyChanged("ValidationText");
+                    _message = value;
+                    OnPropertyChanged("Message");
                 }
             }
         }
 
-        private bool _invalidCredentials;
-        public bool InvalidCredentials
+        private bool _notifyMessage;
+        public bool NotifyMessage
         {
-            get { return _invalidCredentials; }
+            get { return _notifyMessage; }
             set
             {
-                if (_invalidCredentials != value)
+                if (_notifyMessage != value)
                 {
-                    _invalidCredentials = value;
-                    OnPropertyChanged("InvalidCredentials");
+                    _notifyMessage = value;
+                    OnPropertyChanged("NotifyMessage");
                 }
             }
         }
 
         private void Login(object parameter)
         {
-            if (CheckCredentials())
+            if (CheckCredentials((PasswordBox)parameter))
             {
-                #if NOESIS
-                Debug.Log("Login succesfully");
-                #else
-                Console.WriteLine("Login succesfully");
-                #endif
+                OnNotifyMessage("LOGIN SUCCESSFUL");
             }
         }
 
-        private bool CheckCredentials()
+        private bool CheckCredentials(PasswordBox passwordBox)
         {
-            if (string.IsNullOrEmpty(AccountName) && !string.IsNullOrEmpty(AccountPassword))
+            string password = passwordBox.Password;
+            if (string.IsNullOrEmpty(AccountName) && !string.IsNullOrEmpty(password))
             {
-                NotifyInvalidCredentials("ACCOUNT NAME CANNOT BE EMPTY");
+                OnNotifyMessage("ACCOUNT NAME CANNOT BE EMPTY");
                 return false;
             }
 
             // Verify login and password
-            if (AccountName != "NoesisGUI" || AccountPassword != "noesis")
+            if (AccountName != "NoesisGUI" || password != "noesis")
             {
-                NotifyInvalidCredentials("ACCOUNT NAME OR PASSWORD IS INCORRECT");
+                OnNotifyMessage("ACCOUNT NAME OR PASSWORD IS INCORRECT");
                 return false;
             }
 
             return true;
         }
 
-        private void NotifyInvalidCredentials(string message)
+        private void OnNotifyMessage(string message)
         {
-            ValidationText = message;
-            InvalidCredentials = true;
-            InvalidCredentials = false;
+            Message = message;
+            NotifyMessage = true;
+            NotifyMessage = false;
         }
     }
 }
