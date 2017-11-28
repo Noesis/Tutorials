@@ -1,18 +1,18 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
 using Noesis;
+using Noesis.Samples;
 using UnityEngine;
 using System.Collections.ObjectModel;
 #else
 using System;
+using Noesis.Samples;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Markup;
-using System.IO;
 #endif
 
-namespace Noesis.Samples
+namespace QuestLog
 {
     public enum QuestDifficulty
     {
@@ -20,7 +20,7 @@ namespace Noesis.Samples
         Normal,
         Hard
     }
-    
+
     public class Quest
     {
         public string Title { get; set; }
@@ -29,7 +29,7 @@ namespace Noesis.Samples
         public string Description { get; set; }
         public bool Completed { get; set; }
     }
-    
+
     public class QuestLogViewModel : NotifyPropertyChangedBase
     {
         public QuestLogViewModel() { } // used in design time DataContext
@@ -138,7 +138,7 @@ namespace Noesis.Samples
             
             SelectedQuest = Quests[0];
         }
-        
+
         public ObservableCollection<Quest> Quests { get; internal set; }
         
         private Quest _selectedQuest;

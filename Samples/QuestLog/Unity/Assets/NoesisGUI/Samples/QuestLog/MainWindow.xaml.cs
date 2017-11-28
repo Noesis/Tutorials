@@ -1,8 +1,5 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
-#endif
-
-#if NOESIS
 using Noesis;
 #else
 using System;
@@ -10,14 +7,14 @@ using System.Windows;
 using System.Windows.Controls;
 #endif
 
-namespace Noesis.Samples
+namespace QuestLog
 {
     /// <summary>
-    /// Interaction logic for QuestLogWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class QuestLogWindow : UserControl
+    public partial class MainWindow : UserControl
     {
-        public QuestLogWindow()
+        public MainWindow()
         {
             this.Initialized += OnInitialized;
             this.InitializeComponent();
@@ -26,7 +23,7 @@ namespace Noesis.Samples
 #if NOESIS
         void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/QuestLog/QuestLogWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/QuestLog/MainWindow.xaml");
         }
 #endif
 
