@@ -58,11 +58,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\NoesisGUI\Samples\Common\ControlResources.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Buttons\ControlResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\NoesisGUI\Samples\Common\LogoResources.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Buttons\LogoResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -73,11 +73,11 @@
     <Compile Include="Assets\NoesisGUI\Samples\Buttons\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\Buttons\ButtonsViewModel.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Common\DelegateCommand.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Buttons\ViewModel.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Buttons\DelegateCommand.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NoesisGUI\Samples\Common\ElementExtensions.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Buttons\ElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,7 +95,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\NoesisGUI\Samples\Common\Aero Matics Regular.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\Buttons\Aero Matics Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

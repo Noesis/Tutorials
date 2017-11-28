@@ -1,11 +1,9 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
 using Noesis;
-using Noesis.Samples;
 using UnityEngine;
 #else
 using System;
-using Noesis.Samples;
 #endif
 
 namespace Buttons
@@ -13,15 +11,15 @@ namespace Buttons
     /// <summary>
     /// Buttons sample view model
     /// </summary>
-    public class ButtonsViewModel
+    public class ViewModel
     {
-        public ButtonsViewModel()
+        public ViewModel()
         {
             StartCommand = new DelegateCommand(this.Start);
             SettingsCommand = new DelegateCommand(this.Settings);
             ExitCommand = new DelegateCommand(this.Exit);
         }
-        
+
         public DelegateCommand StartCommand { get; private set; }
         public DelegateCommand SettingsCommand { get; private set; }
         public DelegateCommand ExitCommand { get; private set; }
