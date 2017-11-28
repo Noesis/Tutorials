@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Noesis.Samples
+namespace Scoreboard
 {
     /// <summary>
     /// Base class implementing INotifyPropertyChanged
