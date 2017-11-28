@@ -15,16 +15,16 @@ namespace Login
         public ElementExtensions()
         {
         }
-        
+
         #region FocusOnLoaded
         public static DependencyProperty FocusOnLoadedProperty = DependencyProperty.RegisterAttached(
             "FocusOnLoaded", typeof(bool), typeof(ElementExtensions), new PropertyMetadata(false, OnFocusOnLoadedChanged));
-        
+
         public static bool GetFocusOnLoaded(DependencyObject d)
         {
             return (bool)d.GetValue(FocusOnLoadedProperty);
         }
-        
+
         public static void SetFocusOnLoaded(DependencyObject d, bool value)
         {
             d.SetValue(FocusOnLoadedProperty, value);
@@ -39,16 +39,16 @@ namespace Login
             }
         }
         #endregion
-        
+
         #region FocusOnHover
         public static DependencyProperty FocusOnHoverProperty = DependencyProperty.RegisterAttached(
             "FocusOnHover", typeof(bool), typeof(ElementExtensions), new PropertyMetadata(false, OnFocusOnHoverChanged));
-        
+
         public static bool GetFocusOnHover(DependencyObject d)
         {
             return (bool)d.GetValue(FocusOnHoverProperty);
         }
-        
+
         public static void SetFocusOnHover(DependencyObject d, bool value)
         {
             d.SetValue(FocusOnHoverProperty, value);
@@ -63,16 +63,16 @@ namespace Login
             }
         }
         #endregion
-        
+
         #region SelectOnHover
         public static DependencyProperty SelectOnHoverProperty = DependencyProperty.RegisterAttached(
             "SelectOnHover", typeof(bool), typeof(ElementExtensions), new PropertyMetadata(false, OnSelectOnHoverChanged));
-        
+
         public static bool GetSelectOnHover(DependencyObject d)
         {
             return (bool)d.GetValue(SelectOnHoverProperty);
         }
-        
+
         public static void SetSelectOnHover(DependencyObject d, bool value)
         {
             d.SetValue(SelectOnHoverProperty, value);

@@ -2,7 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-    xmlns:noesis="clr-namespace:QuestLog"
+    xmlns:local="clr-namespace:QuestLog"
     d:DesignWidth="1280" d:DesignHeight="720"
     d:DataContext="{d:DesignData /SampleData/QuestLogSampleData.xaml}"
     FontFamily="#Aero Matics"
@@ -370,8 +370,8 @@
             <Style x:Key="QuestListItemStyle" TargetType="{x:Type ListBoxItem}">
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="noesis:ElementExtensions.SelectOnHover" Value="True"/>
-                        <Setter Property="noesis:ElementExtensions.FocusOnHover" Value="True"/>
+                        <Setter Property="local:ElementExtensions.SelectOnHover" Value="True"/>
+                        <Setter Property="local:ElementExtensions.FocusOnHover" Value="True"/>
                     </Trigger>
                 </Style.Triggers>
                 <Setter Property="Foreground" Value="#FF80C4EA"/>
