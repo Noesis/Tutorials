@@ -10,14 +10,14 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 #endif
 
-namespace Noesis.Samples
+namespace ControlGallery
 {
     /// <summary>
-    /// Interaction logic for ControlGallery.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class ControlGallery : UserControl
+    public partial class MainWindow : UserControl
     {
-        public ControlGallery()
+        public MainWindow()
         {
             this.Initialized += OnInitialized;
             this.InitializeComponent();
@@ -26,7 +26,7 @@ namespace Noesis.Samples
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/ControlGallery/ControlGallery.xaml");
+            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/ControlGallery/MainWindow.xaml");
         }
 #endif
 

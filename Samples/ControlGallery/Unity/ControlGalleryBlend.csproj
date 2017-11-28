@@ -55,11 +55,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Text.cs" />
-    <Page Include="Assets\NoesisGUI\Samples\Common\LogoResources.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Resources\LogoResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\ControlGallery.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -67,8 +67,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\ControlGallery\ControlGallery.xaml.cs">
-      <DependentUpon>ControlGallery.xaml</DependentUpon>
+    <Compile Include="Assets\NoesisGUI\Samples\ControlGallery\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Resources\Brushes.xaml">
@@ -328,6 +328,7 @@
     <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Resources\Images\tile.png" />
     <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Resources\Images\transparent-img.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
