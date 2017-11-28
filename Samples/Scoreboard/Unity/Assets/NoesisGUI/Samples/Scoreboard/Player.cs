@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Noesis.Samples
+namespace Scoreboard
 {
 	public enum Team
 	{

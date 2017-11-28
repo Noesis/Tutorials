@@ -1,8 +1,5 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
-#endif
-
-#if NOESIS
 using Noesis;
 #else
 using System;
@@ -11,14 +8,14 @@ using System.Windows.Controls;
 #endif
 
 
-namespace Noesis.Samples
+namespace Scoreboard
 {
     /// <summary>
-    /// Interaction logic for ScoreWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class ScoreWindow : UserControl
+    public partial class MainWindow : UserControl
     {
-        public ScoreWindow()
+        public MainWindow()
         {
             this.Initialized += OnInitialized;
             this.InitializeComponent();
@@ -27,7 +24,7 @@ namespace Noesis.Samples
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Scores/ScoreWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Scoreboard/MainWindow.xaml");
         }
 #endif
 

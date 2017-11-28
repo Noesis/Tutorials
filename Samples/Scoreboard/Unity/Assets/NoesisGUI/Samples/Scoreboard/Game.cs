@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Noesis.Samples;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Noesis.Samples
+namespace Scoreboard
 {
     public class Game : NotifyPropertyChangedBase
     {        

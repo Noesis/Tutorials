@@ -1,16 +1,15 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
-#endif
-
-#if NOESIS
 using Noesis;
-#else
-using System.Windows.Data;
-#endif
 using System;
 using System.Globalization;
+#else
+using System;
+using System.Windows.Data;
+using System.Globalization;
+#endif
 
-namespace Noesis.Samples
+namespace Scoreboard
 {
 	public class ThousandConverter: IValueConverter
 	{
