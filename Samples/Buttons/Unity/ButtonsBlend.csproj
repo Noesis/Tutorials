@@ -54,7 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Assets\NoesisGUI\Samples\Buttons\Buttons.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Buttons\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -70,8 +70,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Assets\NoesisGUI\Samples\Buttons\Buttons.xaml.cs">
-      <DependentUpon>Buttons.xaml</DependentUpon>
+    <Compile Include="Assets\NoesisGUI\Samples\Buttons\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\NoesisGUI\Samples\Buttons\ButtonsViewModel.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Common\DelegateCommand.cs" />
