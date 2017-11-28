@@ -7,14 +7,14 @@ using System.Windows;
 using System.Windows.Controls;
 #endif
 
-namespace Noesis.Samples
+namespace Login
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class LoginWindow : UserControl
+    public partial class MainWindow : UserControl
     {
-        public LoginWindow()
+        public MainWindow()
         {
             this.Initialized += OnInitialized;
             this.InitializeComponent();
@@ -22,7 +22,7 @@ namespace Noesis.Samples
 #if NOESIS
         void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Login/LoginWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Login/MainWindow.xaml");
         }
 #endif
 

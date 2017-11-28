@@ -62,7 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\NoesisGUI\Samples\Login\LoginWindow.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Login\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -74,8 +74,8 @@
     <Compile Include="Assets\NoesisGUI\Samples\Common\ElementExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Common\NotifyPropertyChangedBase.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Login\LoginViewModel.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Login\LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    <Compile Include="Assets\NoesisGUI\Samples\Login\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\NoesisGUI\Samples\Login\PasswordHelper.cs" />
   </ItemGroup>
