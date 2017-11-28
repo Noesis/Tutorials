@@ -1,10 +1,18 @@
-﻿<Grid
+﻿<Grid x:Class="Menu3D.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
     xmlns:Menu3D="clr-namespace:Menu3D"
-    xmlns:noesis="clr-namespace:NoesisGUIExtensions"
-    x:Class="Menu3D.MainWindow">
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions">
     <Grid.Resources>
+        <Storyboard x:Key="Intro">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Start">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Settings">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
         <Storyboard x:Key="BackgroundAnim">
             <DoubleAnimationUsingKeyFrames
                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
@@ -39,6 +47,7 @@
     </Grid.Resources>
     <Grid.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Intro}"/>
             <BeginStoryboard Storyboard="{StaticResource BackgroundAnim}"/>
         </EventTrigger>
     </Grid.Triggers>
@@ -81,8 +90,8 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Menu3D:MainMenu x:Name="Main" Grid.Row="1" Grid.Column="1" Visibility="Collapsed"/>
-        <Menu3D:StartMenu x:Name="Start" Grid.Row="1" Grid.Column="1" Visibility="Collapsed"/>
-        <Menu3D:SettingsMenu x:Name="Settings" Grid.Row="1" Grid.Column="1" Visibility="Collapsed"/>
+        <Menu3D:MainMenu x:Name="Main" Grid.Row="1" Grid.Column="1"/>
+        <Menu3D:StartMenu x:Name="Start" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
+        <Menu3D:SettingsMenu x:Name="Settings" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
     </Grid>
 </Grid>

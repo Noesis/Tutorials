@@ -51,34 +51,39 @@ namespace Menu3D
             _start = (ToggleButton)FindName("Start");
             _settings = (ToggleButton)FindName("Settings");
             _exit = (ToggleButton)FindName("Exit");
-            
+
             PreviewKeyDown += ProcessKeyDown;
         }
 
 #if NOESIS
         private void OnFadeInCompleted(object sender, TimelineEventArgs e)
-#else
-        private void OnFadeInCompleted(object sender, EventArgs e)
-#endif
         {
             _start.Focus();
         }
-        
+#else
+        private void OnFadeInCompleted(object sender, EventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                _start.Focus();
+            }));
+        }
+#endif
+
         private void ProcessKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                if (_start.IsKeyboardFocused)
+#if NOESIS
+                object source = e.Source;
+#else
+                object source = e.OriginalSource;
+#endif
+
+                ToggleButton btn = source as ToggleButton;
+                if (btn != null)
                 {
-                    CommandHelper.TryExecute(_start.Command);
-                }
-                else if (_settings.IsKeyboardFocused)
-                {
-                    CommandHelper.TryExecute(_settings.Command);
-                }
-                else if (_exit.IsKeyboardFocused)
-                {
-                    CommandHelper.TryExecute(_exit.Command);
+                    CommandHelper.TryExecute(btn.Command);
                 }
             }
             else if (e.Key == Key.Escape)

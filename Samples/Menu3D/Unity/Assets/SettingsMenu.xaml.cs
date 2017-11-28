@@ -58,12 +58,18 @@ namespace Menu3D
 
 #if NOESIS
         private void OnFadeInCompleted(object sender, TimelineEventArgs e)
-#else
-        private void OnFadeInCompleted(object sender, EventArgs e)
-#endif
         {
             _texDetail.Focus();
         }
+#else
+        private void OnFadeInCompleted(object sender, EventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                _texDetail.Focus();
+            }));
+        }
+#endif
 
         private void ProcessKeyDown(object sender, KeyEventArgs e)
         {

@@ -33,23 +33,23 @@ namespace Menu3D
             var startMenu = (StartMenu)FindName("Start");
             var settingsMenu = (SettingsMenu)FindName("Settings");
 
-            var model = new MenuModel(mainMenu, startMenu, settingsMenu);
-            
+            var model = new ViewModel(mainMenu, startMenu, settingsMenu);
+
             mainMenu.DataContext = model;
             startMenu.DataContext = model;
             settingsMenu.DataContext = model;
-            
+
             mainMenu.FadeIn();
         }
 
         public static DependencyProperty HoverProperty = DependencyProperty.RegisterAttached(
             "Hover", typeof(bool), typeof(MainWindow), new PropertyMetadata(false, OnHoverChanged));
-        
+
         public static bool GetHover(DependencyObject d)
         {
             return (bool)d.GetValue(HoverProperty);
         }
-        
+
         public static void SetHover(DependencyObject d, bool hover)
         {
             d.SetValue(HoverProperty, hover);

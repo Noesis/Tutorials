@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Menu3D
 {
-    public class MenuModel
+    public class ViewModel
     {
         public ICommand Start { get; private set; }
         public ICommand StartCasual { get; private set; }
@@ -20,7 +20,7 @@ namespace Menu3D
         public ICommand Exit { get; private set; }
         public ICommand Back { get; private set; }
 
-        public MenuModel(MainMenu main, StartMenu start, SettingsMenu settings)
+        public ViewModel(MainMenu main, StartMenu start, SettingsMenu settings)
         {
             Start = new DelegateCommand(OnStart);
             StartCasual = new DelegateCommand(OnStartCasual);

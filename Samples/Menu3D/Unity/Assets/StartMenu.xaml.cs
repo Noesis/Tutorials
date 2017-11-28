@@ -18,7 +18,6 @@ namespace Menu3D
     /// </summary>
     public partial class StartMenu : UserControl
     {
-        
         public StartMenu()
         {
             this.Initialized += OnInitialized;
@@ -62,12 +61,18 @@ namespace Menu3D
 
 #if NOESIS
         private void OnFadeInCompleted(object sender, TimelineEventArgs e)
-#else
-        private void OnFadeInCompleted(object sender, EventArgs e)
-#endif
         {
             _casual.Focus();
         }
+#else
+        private void OnFadeInCompleted(object sender, EventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                _casual.Focus();
+            }));
+        }
+#endif
 
         private void ProcessKeyDown(object sender, KeyEventArgs e)
         {
