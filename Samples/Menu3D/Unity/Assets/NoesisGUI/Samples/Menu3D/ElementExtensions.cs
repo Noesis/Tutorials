@@ -111,7 +111,7 @@ namespace Menu3D
                 {
                     if (sender is TextBox)
                     {
-                        //((TextBox)sender).SelectAll();
+                        ((TextBox)sender).SelectAll();
                     }
                     else if (sender is PasswordBox)
                     {
