@@ -23,7 +23,7 @@ namespace Menu3D
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Menu3D/MainWindow.xaml");
         }
 #endif
 
@@ -40,28 +40,6 @@ namespace Menu3D
             settingsMenu.DataContext = model;
 
             mainMenu.FadeIn();
-        }
-
-        public static DependencyProperty HoverProperty = DependencyProperty.RegisterAttached(
-            "Hover", typeof(bool), typeof(MainWindow), new PropertyMetadata(false, OnHoverChanged));
-
-        public static bool GetHover(DependencyObject d)
-        {
-            return (bool)d.GetValue(HoverProperty);
-        }
-
-        public static void SetHover(DependencyObject d, bool hover)
-        {
-            d.SetValue(HoverProperty, hover);
-        }
-
-        private static void OnHoverChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            UIElement element = d as UIElement;
-            if (element != null && (bool)e.NewValue == true)
-            {
-                element.Focus();
-            }
         }
     }
 }

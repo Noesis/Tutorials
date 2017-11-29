@@ -6,22 +6,21 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Input;
 #endif
 
 namespace Menu3D
 {
     /// <summary>
-    /// Interaction logic for SettingsMenu.xaml
+    /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class SettingsMenu : UserControl
+    public partial class MainMenu : UserControl
     {
-        public SettingsMenu()
+        public MainMenu()
         {
             this.Initialized += OnInitialized;
-
             this.InitializeComponent();
         }
 
@@ -35,11 +34,10 @@ namespace Menu3D
             _fadeOut.Begin();
         }
 
-
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/SettingsMenu.xaml");
+            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Menu3D/MainMenu.xaml");
         }
 #endif
 
@@ -50,8 +48,8 @@ namespace Menu3D
 
             _fadeIn.Completed += OnFadeInCompleted;
 
-            _texDetail = (HeaderedContentControl)FindName("TexDetail");
-            _back = (ToggleButton)FindName("Back");
+            _start = (ToggleButton)FindName("Start");
+            _exit = (ToggleButton)FindName("Exit");
 
             PreviewKeyDown += ProcessKeyDown;
         }
@@ -59,14 +57,14 @@ namespace Menu3D
 #if NOESIS
         private void OnFadeInCompleted(object sender, TimelineEventArgs e)
         {
-            _texDetail.Focus();
+            _start.Focus();
         }
 #else
         private void OnFadeInCompleted(object sender, EventArgs e)
         {
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                _texDetail.Focus();
+                _start.Focus();
             }));
         }
 #endif
@@ -81,26 +79,6 @@ namespace Menu3D
                 object source = e.OriginalSource;
 #endif
 
-                HeaderedContentControl control = source as HeaderedContentControl;
-                if (control != null)
-                {
-                    OptionSelector selector = control.Content as OptionSelector;
-                    if (selector != null)
-                    {
-                        selector.CycleNext();
-                        return;
-                    }
-
-                    CheckBox check = control.Content as CheckBox;
-                    if (check != null)
-                    {
-                        check.IsChecked = !check.IsChecked;
-                        return;
-                    }
-
-                    return;
-                }
-
                 ToggleButton btn = source as ToggleButton;
                 if (btn != null)
                 {
@@ -109,7 +87,7 @@ namespace Menu3D
             }
             else if (e.Key == Key.Escape)
             {
-                CommandHelper.TryExecute(_back.Command);
+                CommandHelper.TryExecute(_exit.Command);
             }
         }
 
@@ -117,8 +95,8 @@ namespace Menu3D
         Storyboard _fadeIn;
         Storyboard _fadeOut;
 
-        HeaderedContentControl _texDetail;
-        ToggleButton _back;
+        ToggleButton _start;
+        ToggleButton _exit;
         #endregion
     }
 }

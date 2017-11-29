@@ -14,30 +14,33 @@ using System.Windows.Input;
 namespace Menu3D
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for StartMenu.xaml
     /// </summary>
-    public partial class MainMenu : UserControl
+    public partial class StartMenu : UserControl
     {
-        public MainMenu()
+        public StartMenu()
         {
             this.Initialized += OnInitialized;
+
             this.InitializeComponent();
         }
 
         public void FadeIn()
         {
             _fadeIn.Begin();
+            _activateCasual.Begin();
         }
 
         public void FadeOut()
         {
             _fadeOut.Begin();
+            _activateCasual.Begin();
         }
 
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/MainMenu.xaml");
+            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Menu3D/StartMenu.xaml");
         }
 #endif
 
@@ -46,11 +49,12 @@ namespace Menu3D
             _fadeIn = (Storyboard)FindResource("FadeIn");
             _fadeOut = (Storyboard)FindResource("FadeOut");
 
+            _activateCasual = (Storyboard)FindResource("ActivateCasual");
+
             _fadeIn.Completed += OnFadeInCompleted;
 
-            _start = (ToggleButton)FindName("Start");
-            _settings = (ToggleButton)FindName("Settings");
-            _exit = (ToggleButton)FindName("Exit");
+            _casual = (ToggleButton)FindName("Casual");
+            _back = (ToggleButton)FindName("Back");
 
             PreviewKeyDown += ProcessKeyDown;
         }
@@ -58,14 +62,14 @@ namespace Menu3D
 #if NOESIS
         private void OnFadeInCompleted(object sender, TimelineEventArgs e)
         {
-            _start.Focus();
+            _casual.Focus();
         }
 #else
         private void OnFadeInCompleted(object sender, EventArgs e)
         {
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                _start.Focus();
+                _casual.Focus();
             }));
         }
 #endif
@@ -88,7 +92,7 @@ namespace Menu3D
             }
             else if (e.Key == Key.Escape)
             {
-                CommandHelper.TryExecute(_exit.Command);
+                CommandHelper.TryExecute(_back.Command);
             }
         }
 
@@ -96,9 +100,10 @@ namespace Menu3D
         Storyboard _fadeIn;
         Storyboard _fadeOut;
 
-        ToggleButton _start;
-        ToggleButton _settings;
-        ToggleButton _exit;
+        Storyboard _activateCasual;
+
+        ToggleButton _casual;
+        ToggleButton _back;
         #endregion
     }
 }

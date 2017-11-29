@@ -27,7 +27,7 @@ namespace Menu3D
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/OptionSelector.xaml");
+            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Menu3D/OptionSelector.xaml");
         }
 #endif
 
