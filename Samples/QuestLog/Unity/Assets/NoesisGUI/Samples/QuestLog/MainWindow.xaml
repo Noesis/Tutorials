@@ -254,6 +254,8 @@
                 </Grid>
             </ControlTemplate>
             <Style x:Key="QuestListStyle" TargetType="{x:Type ListBox}">
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Template" Value="{StaticResource QuestListTemplate}"/>
             </Style>
@@ -374,10 +376,11 @@
                         <Setter Property="local:ElementExtensions.FocusOnHover" Value="True"/>
                     </Trigger>
                 </Style.Triggers>
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                 <Setter Property="Foreground" Value="#FF80C4EA"/>
                 <Setter Property="FontSize" Value="10"/>
                 <Setter Property="Template" Value="{StaticResource QuestListItemTemplate}"/>
-                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
