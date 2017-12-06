@@ -60,21 +60,23 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CommandHelper.cs" />
-    <Compile Include="Assets\MainMenu.xaml.cs">
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\CommandHelper.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\DelegateCommand.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\ElementExtensions.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Assets\MainWindow.xaml.cs">
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Assets\MenuModel.cs" />
-    <Compile Include="Assets\OptionSelector.xaml.cs">
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\ViewModel.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\OptionSelector.xaml.cs">
       <DependentUpon>OptionSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Assets\SettingsMenu.xaml.cs">
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\SettingsMenu.xaml.cs">
       <DependentUpon>SettingsMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Assets\StartMenu.xaml.cs">
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Element.cs" />
@@ -95,8 +97,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\Fonts\weblysleekuisb.ttf" />
-    <Resource Include="Assets\Fonts\weblysleekuisl.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Fonts\weblysleekuisb.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Fonts\weblysleekuisl.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,36 +109,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\BigPlanet.png" />
-    <Resource Include="Assets\Images\CloseUpPlanet.png" />
-    <Resource Include="Assets\Images\SpaceBg.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\BigPlanet.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\CloseUpPlanet.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\SpaceBg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Assets\MainMenu.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Menu3D\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\MainWindow.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Menu3D\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\MenuResources.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Menu3D\MenuResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\OptionSelector.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Menu3D\OptionSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\SettingsMenu.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Menu3D\SettingsMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Assets\StartMenu.xaml">
+    <Page Include="Assets\NoesisGUI\Samples\Menu3D\StartMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

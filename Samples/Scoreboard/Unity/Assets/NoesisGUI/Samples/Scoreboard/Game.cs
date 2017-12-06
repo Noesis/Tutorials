@@ -1,12 +1,11 @@
-﻿using Noesis.Samples;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Scoreboard
 {
     public class Game : NotifyPropertyChangedBase
-    {        
+    {
         public Game()
         {
             Players = new List<Player>();

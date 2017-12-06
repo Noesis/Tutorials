@@ -29,7 +29,7 @@ namespace Buttons
 
         private void OnInitialized(object sender, EventArgs args)
         {
-            this.DataContext = new ButtonsViewModel();
+            this.DataContext = new ViewModel();
         }
     }
 }
