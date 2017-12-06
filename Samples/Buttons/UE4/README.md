@@ -22,10 +22,10 @@ This is a simple demo that presents three buttons to the user. The main focus po
 
 ### Blueprint
 
-* `NoesisView /Game/MainWindowView`: It's a `NoesisView` for `NoesisXaml /Game/MainWindow` ([MainWindow.xaml](Content/MainWindow.xaml)) and also acts as its `DataContext`. Implements the `Command`s `StartCommand`, `SettingsCommand` and `ExitCommand` that are used via `Binding`.
+* `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`: It's a `NoesisView` for `NoesisXaml'/Game/MainWindow.MainWindow'` ([MainWindow.xaml](Content/MainWindow.xaml)) and also acts as its `DataContext`. Implements the `Command`s `StartCommand`, `SettingsCommand` and `ExitCommand` that are used via `Binding`.
 
-![/Game/MainWindowView](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/MainWindowView.PNG)
+![NoesisBlueprint'/Game/MainWindowView.MainWindowView'](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/MainWindowView.PNG)
 
-* `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisView /Game/MainWindowView`, adds it to the viewport and captures mouse and keyboard input.
+* `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`, adds it to the viewport and captures mouse and keyboard input.
 
 ![TestLevel - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/LevelBlueprint.PNG)
