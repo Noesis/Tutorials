@@ -26,7 +26,7 @@ This is a demo that shows how you can use `Binding` with user defined types and 
 
 ![UserDefinedEnum'/Game/QuestDifficulty.QuestDifficulty'](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/QuestDificulty.PNG)
 
-* `Blueprint'/Game/Quest.Quest'`: `NoesisBlueprint'/Game/MainWindowView.MainWindowView'` contains an `Array` of these that it exposes as a property for `Binding`.
+* `Blueprint'/Game/Quest.Quest'`: `NoesisBlueprint'/Game/MainWindowView.MainWindowView'` contains an `Array` of these that it exposes as a property for `Binding`. It contais variables of types `Texture2D` as well as `UserDefinedEnum'/Game/QuestDifficulty.QuestDifficulty'` that are used for `Binding` in the XAML.
 
 ![Blueprint'/Game/Quest.Quest'](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/Quest.PNG)
 
