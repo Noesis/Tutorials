@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace NoesisExtensions
+namespace NoesisGUIExtensions
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// Adds stroke capabilities to text elements.
@@ -21,7 +21,7 @@ namespace NoesisExtensions
     ///     <Grid 
     ///       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     ///       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    ///       xmlns:noesis="clr-namespace:NoesisExtensions">
+    ///       xmlns:noesis="clr-namespace:NoesisGUIExtensions">
     ///         <TextBlock noesis:Text.Stroke="Red" noesis:Text.StrokeThickness="1" Text="Hello"/>
     ///     </Grid>
     ///
@@ -304,7 +304,7 @@ namespace NoesisExtensions
         ///     <Grid
         ///       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         ///       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        ///       xmlns:noesis="clr-namespace:NoesisExtensions">
+        ///       xmlns:noesis="clr-namespace:NoesisGUIExtensions">
         ///         <Grid.Resources>
         ///             <Storyboard x:Key="AnimProjection" AutoReverse="True" RepeatBehavior="Forever">
         ///                 <DoubleAnimationUsingKeyFrames
