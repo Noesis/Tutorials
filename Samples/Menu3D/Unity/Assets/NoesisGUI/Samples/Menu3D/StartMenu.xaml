@@ -3,20 +3,24 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
     xmlns:local="clr-namespace:Menu3D"
+    xmlns:noesis="clr-namespace:NoesisExtensions"
     x:Class="Menu3D.StartMenu"
     x:Name="StartMenuControl"
     d:DesignWidth="1300" d:DesignHeight="900"
     FontFamily="Fonts/#WeblySleek UI Semilight">
+    <UserControl.InputBindings>
+        <KeyBinding Gesture="Esc" Command="{Binding Back}"/>
+    </UserControl.InputBindings>
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="MenuResources.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="FadeIn">
-                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="StartMenuControl">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
                     <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
                 </ObjectAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
+                    <DiscreteBooleanKeyFrame KeyTime="0:0:0.2" Value="True"/>
+                </BooleanAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
                     <EasingDoubleKeyFrame KeyTime="0" Value="1.15"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                         <EasingDoubleKeyFrame.EasingFunction>
@@ -24,7 +28,7 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
                     <EasingDoubleKeyFrame KeyTime="0" Value="1.15"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                         <EasingDoubleKeyFrame.EasingFunction>
@@ -32,7 +36,7 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
                     <EasingDoubleKeyFrame KeyTime="0" Value="550"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
                         <EasingDoubleKeyFrame.EasingFunction>
@@ -40,7 +44,7 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
                     <EasingDoubleKeyFrame KeyTime="0" Value="-50"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
                         <EasingDoubleKeyFrame.EasingFunction>
@@ -48,7 +52,7 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.Opacity)">
                     <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                         <EasingDoubleKeyFrame.EasingFunction>
@@ -56,21 +60,15 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MenuOptions">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MenuDec">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
-                </DoubleAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="StartMenuControl">
-                    <DiscreteBooleanKeyFrame KeyTime="0:0:0.6" Value="True"/>
-                </BooleanAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="FadeOut">
-                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="StartMenuControl">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
                     <DiscreteObjectKeyFrame KeyTime="0:0:0.6" Value="{x:Static Visibility.Collapsed}"/>
                 </ObjectAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutRoot">
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
+                    <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
+                </BooleanAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.Opacity)">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.1">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseIn" Amplitude="0.15"/>
@@ -83,21 +81,21 @@
                     </EasingDoubleKeyFrame>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.15">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseIn" Amplitude="0.15"/>
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.15">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseIn" Amplitude="0.15"/>
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="450">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseIn" Amplitude="0.15"/>
@@ -109,22 +107,13 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-50">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <SineEase EasingMode="EaseIn"/>
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MenuOptions">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MenuDec">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="300"/>
-                </DoubleAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="StartMenuControl">
-                    <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
-                </BooleanAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="ActivateCasual">
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="CasualTitle">
@@ -530,6 +519,24 @@
             </Storyboard>
         </ResourceDictionary>
     </UserControl.Resources>
+
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="IsEnabled" Value="False"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="Start">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard Storyboard="{StaticResource FadeIn}"/>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource FadeOut}"/>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="Casual">
             <BeginStoryboard Storyboard="{StaticResource ActivateCasual}"/>
@@ -542,7 +549,10 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
+    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5"
+          noesis:EventToCommand.Event="IsEnabledChanged"
+          noesis:EventToCommand.Command="{Binding FadeInCompleted}"
+          noesis:EventToCommand.CommandParameter="{Binding ElementName=Casual}">
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -568,10 +578,36 @@
                     </Viewbox>
                     <TextBlock Text="MENU DEMO" FontSize="50" HorizontalAlignment="Right" Margin="0,-19,-2,0" Foreground="{StaticResource TransparentWhiteBrush70}"/>
                 </StackPanel>
-                <StackPanel x:Name="MenuOptions" Grid.Row="1" Margin="0,30,0,0" RenderTransformOrigin="0.5,0.5"
+                <StackPanel x:Name="MenuOptions" Grid.Row="1" Width="640" Margin="0,30,0,0" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5"
                     KeyboardNavigation.TabNavigation="Cycle"
                     KeyboardNavigation.ControlTabNavigation="Cycle"
                     KeyboardNavigation.DirectionalNavigation="Cycle">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding State}" Value="Start">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
                     <StackPanel.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -581,18 +617,13 @@
                         </TransformGroup>
                     </StackPanel.RenderTransform>
                     <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                    <ToggleButton x:Name="Casual" Style="{StaticResource MenuButtonStyle}" Width="640" Margin="2,0" Content="CASUAL" HorizontalAlignment="Left"
-                        Command="{Binding StartCasual}"/>
-                    <ToggleButton x:Name="Normal" Style="{StaticResource MenuButtonStyle}" Width="640" Margin="2,0" Content="NORMAL" HorizontalAlignment="Left"
-                        Command="{Binding StartNormal}"/>
-                    <ToggleButton x:Name="Veteran" Style="{StaticResource MenuButtonStyle}" Width="640" Margin="2,0" Content="VETERAN" HorizontalAlignment="Left"
-                        Command="{Binding StartVeteran}"/>
-                    <Grid Height="200"/>
+                    <ToggleButton x:Name="Casual" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="CASUAL" Command="{Binding StartCasual}"/>
+                    <ToggleButton x:Name="Normal" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="NORMAL" Command="{Binding StartNormal}"/>
+                    <ToggleButton x:Name="Veteran" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="VETERAN" Command="{Binding StartVeteran}"/>
+                    <Rectangle Height="2" Margin="0,200,0,2" Fill="{StaticResource HorizontalLineBg}"/>
+                    <ToggleButton x:Name="Back" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="BACK" Command="{Binding Back}"/>
                     <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                    <ToggleButton x:Name="Back" Style="{StaticResource MenuButtonStyle}" Width="640" Margin="2,0" Content="BACK" HorizontalAlignment="Left"
-                        Command="{Binding Back}"/>
-                    <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                    <Grid Margin="18,4,0,0" Width="640" HorizontalAlignment="Left">
+                    <Grid Margin="18,4,0,0">
                         <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="For players looking for experience the game without any of the challenge." IsEnabled="{Binding IsMouseOver, ElementName=Casual}"/>
                         <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Recommended for standard player." IsEnabled="{Binding IsMouseOver, ElementName=Normal}"/>
                         <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="For experienced veterans only." IsEnabled="{Binding IsMouseOver, ElementName=Veteran}"/>
@@ -725,6 +756,32 @@
                     </StackPanel>
                 </Grid>
                 <StackPanel x:Name="MenuDec" Orientation="Vertical" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding State}" Value="Start">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="300"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
                     <StackPanel.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>

@@ -5,6 +5,7 @@ using Noesis;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 #endif
 
 namespace Menu3D
@@ -29,17 +30,7 @@ namespace Menu3D
 
         private void OnInitialized(object sender, EventArgs e)
         {
-            var mainMenu = (MainMenu)FindName("Main");
-            var startMenu = (StartMenu)FindName("Start");
-            var settingsMenu = (SettingsMenu)FindName("Settings");
-
-            var model = new ViewModel(mainMenu, startMenu, settingsMenu);
-
-            mainMenu.DataContext = model;
-            startMenu.DataContext = model;
-            settingsMenu.DataContext = model;
-
-            mainMenu.FadeIn();
+            DataContext = new ViewModel();
         }
     }
 }

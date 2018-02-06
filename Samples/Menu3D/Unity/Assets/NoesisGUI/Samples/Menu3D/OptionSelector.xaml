@@ -3,12 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
     x:Name="OptionSelectorControl"
-    d:DesignWidth="500" d:DesignHeight="100">
+    d:DesignWidth="500" d:DesignHeight="100"
+    Foreground="{StaticResource TransparentWhiteBrush70}"
+    FontFamily="Fonts/#WeblySleek UI Semilight"
+    FontSize="40">
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="MenuResources.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
             <ControlTemplate x:Key="OptionSelectorButtonTemplate" TargetType="{x:Type RepeatButton}">
                 <Grid x:Name="Root" Background="Transparent" RenderTransformOrigin="0.5,0.5">
                     <Grid.RenderTransform>
@@ -85,6 +85,10 @@
                     </Path>
                 </Grid>
             </ControlTemplate>
+            <Style x:Key="OptionSelectorButtonStyle" TargetType="{x:Type RepeatButton}">
+                <Setter Property="Focusable" Value="False"/>
+                <Setter Property="Template" Value="{StaticResource OptionSelectorButtonTemplate}"/>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -94,22 +98,14 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <RepeatButton x:Name="PrevButton" Template="{StaticResource OptionSelectorButtonTemplate}" Focusable="False"/>
+        <RepeatButton x:Name="PrevButton" Style="{StaticResource OptionSelectorButtonStyle}"/>
         <ContentPresenter
             Grid.Column="1"
             Content="{Binding SelectedOption, ElementName=OptionSelectorControl}"
-            TextElement.Foreground="{StaticResource TransparentWhiteBrush70}"
-            TextElement.FontFamily="Fonts/#WeblySleek UI Semilight"
-            TextElement.FontSize="40"
             Margin="0,-5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <RepeatButton x:Name="NextButton" Grid.Column="2" Template="{StaticResource OptionSelectorButtonTemplate}" RenderTransformOrigin="0.5,0.5" Focusable="False">
+        <RepeatButton x:Name="NextButton" Grid.Column="2" Style="{StaticResource OptionSelectorButtonStyle}" RenderTransformOrigin="0.5,0.5">
             <RepeatButton.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                    <SkewTransform AngleY="0" AngleX="0"/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform/>
-                </TransformGroup>
+                <ScaleTransform ScaleX="-1"/>
             </RepeatButton.RenderTransform>
         </RepeatButton>
     </Grid>

@@ -5,54 +5,77 @@ using Noesis;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 #endif
+using System.ComponentModel;
 using System.Windows.Input;
+using System.Linq;
 
 namespace Menu3D
 {
-    public class ViewModel
+    public enum State
     {
+        Main,
+        Start,
+        Settings,
+        Exit
+    }
+
+    public class ViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ICommand Start { get; private set; }
         public ICommand StartCasual { get; private set; }
         public ICommand StartNormal { get; private set; }
         public ICommand StartVeteran { get; private set; }
         public ICommand Settings { get; private set; }
+        public ICommand SettingsAction { get; private set; }
         public ICommand Exit { get; private set; }
         public ICommand Back { get; private set; }
+        public ICommand FadeInCompleted { get; private set; }
 
-        public ViewModel(MainMenu main, StartMenu start, SettingsMenu settings)
+        public ViewModel()
         {
             Start = new DelegateCommand(OnStart);
             StartCasual = new DelegateCommand(OnStartCasual);
             StartNormal = new DelegateCommand(OnStartNormal);
             StartVeteran = new DelegateCommand(OnStartVeteran);
             Settings = new DelegateCommand(OnSettings);
+            SettingsAction = new DelegateCommand(OnSettingsAction);
             Exit = new DelegateCommand(OnExit);
             Back = new DelegateCommand(OnBack);
+            FadeInCompleted = new DelegateCommand(OnFadeInCompleted);
 
-            _mainMenu = main;
-            _startMenu = start;
-            _settingsMenu = settings;
-            
-            _state = State.Main;
-        }
-
-        enum State
-        {
-            Main,
-            Start,
-            Settings,
-            Exit
+            State = State.Main;
         }
 
         private State _state;
+        public State State
+        {
+            get { return _state; }
+            set
+            {
+                if (_state != value)
+                {
+                    _state = value;
+                    OnPropertyChanged("State");
+                }
+            }
+        }
+
+        private void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
 
         private void OnStart(object parameter)
         {
-            _state = State.Start;
-
-            _mainMenu.FadeOut();
-            _startMenu.FadeIn();
+            State = State.Start;
         }
 
         private void OnStartCasual(object parameter)
@@ -84,10 +107,31 @@ namespace Menu3D
 
         private void OnSettings(object parameter)
         {
-            _state = State.Settings;
+            State = State.Settings;
+        }
 
-            _mainMenu.FadeOut();
-            _settingsMenu.FadeIn();
+        private void OnSettingsAction(object parameter)
+        {
+            StackPanel settings = (StackPanel)parameter;
+            foreach (HeaderedContentControl control in settings.Children.OfType<HeaderedContentControl>())
+            {
+                if (control.IsKeyboardFocused)
+                {
+                    OptionSelector selector = control.Content as OptionSelector;
+                    if (selector != null)
+                    {
+                        selector.CycleNext();
+                        return;
+                    }
+
+                    CheckBox check = control.Content as CheckBox;
+                    if (check != null)
+                    {
+                        check.IsChecked = !check.IsChecked;
+                        return;
+                    }
+                }
+            }
         }
 
         private void OnExit(object parameter)
@@ -96,7 +140,7 @@ namespace Menu3D
             UnityEngine.Debug.Log("Exiting game");
             #endif
 
-            _state = State.Exit;
+            State = State.Exit;
             #if NOESIS
             UnityEngine.Application.Quit();
             #else
@@ -106,7 +150,7 @@ namespace Menu3D
 
         private void OnBack(object parameter)
         {
-            switch (_state)
+            switch (State)
             {
                 case State.Main:
                 {
@@ -114,28 +158,25 @@ namespace Menu3D
                     break;
                 }
                 case State.Start:
-                {
-                    _state = State.Main;
-
-                    _startMenu.FadeOut();
-                    _mainMenu.FadeIn();
-                    break;
-                }
                 case State.Settings:
                 {
-                    _state = State.Main;
-
-                    _settingsMenu.FadeOut();
-                    _mainMenu.FadeIn();
+                    State = State.Main;
                     break;
                 }
             }
         }
 
-        #region Private members
-        private MainMenu _mainMenu;
-        private StartMenu _startMenu;
-        private SettingsMenu _settingsMenu;
-        #endregion
+        private void OnFadeInCompleted(object parameter)
+        {
+            UIElement target = (UIElement)parameter;
+#if NOESIS
+            target.Focus();
+#else
+            target.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                target.Focus();
+            }));
+#endif
+        }
     }
 }

@@ -19,8 +19,10 @@ namespace Menu3D
     {
         public OptionSelector()
         {
+            this._options = new ObservableCollection<UIElement>();
+            this._options.CollectionChanged += OnOptionsChanged;
+
             this.Initialized += OnInitialized;
-            
             this.InitializeComponent();
         }
 
@@ -46,32 +48,11 @@ namespace Menu3D
         ObservableCollection<UIElement> _options;
         public ObservableCollection<UIElement> Options
         {
-            get
-            {
-                if (_options == null)
-                {
-                    _options = new ObservableCollection<UIElement>();
-                    _options.CollectionChanged += OnOptionsChanged;
-                }
-                return _options;
-            }
-            set
-            {
-                if (_options != null)
-                {
-                    _options.CollectionChanged -= OnOptionsChanged;
-                }
-
-                _options = value;
-
-                if (_options != null)
-                {
-                    _options.CollectionChanged += OnOptionsChanged;
-                }
-            }
+            get { return _options; }
+            set { /* just need a setter for Blend so this property can be used in xaml */ }
         }
 
-        private int NumOptions { get { return _options == null ? 0 : _options.Count; } }
+        private int NumOptions { get { return _options.Count; } }
 
         private void OnOptionsChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
