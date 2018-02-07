@@ -206,6 +206,7 @@
     <Style x:Key="MenuButtonStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="FontSize" Value="40"/>
+        <Setter Property="Margin" Value="2,0,14,2"/>
         <Setter Property="Template" Value="{StaticResource MenuButtonTemplate}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Style.Triggers>
@@ -284,7 +285,7 @@
             </Grid.ColumnDefinitions>
             <ToggleButton x:Name="Toggle" Style="{StaticResource MenuButtonStyle}" IsTabStop="False"
                 Content="{TemplateBinding Header}" Grid.ColumnSpan="2" IsHitTestVisible="False"/>
-            <ContentPresenter x:Name="ContentHost" ContentSource="Content" Grid.Column="1" IsEnabled="False" RenderTransformOrigin="0.15,0.5">
+            <ContentPresenter x:Name="ContentHost" ContentSource="Content" Grid.Column="1" RenderTransformOrigin="0.15,0.5">
                 <ContentPresenter.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -296,7 +297,7 @@
             </ContentPresenter>
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsKeyboardFocused" Value="True">
+            <Trigger Property="IsKeyboardFocusWithin" Value="True">
                 <Trigger.ExitActions>
                     <BeginStoryboard Storyboard="{StaticResource OverOff}"/>
                 </Trigger.ExitActions>
@@ -304,17 +305,17 @@
                     <BeginStoryboard Storyboard="{StaticResource OverOn}"/>
                 </Trigger.EnterActions>
                 <Setter Property="IsChecked" TargetName="Toggle" Value="True"/>
-                <Setter Property="IsEnabled" TargetName="ContentHost" Value="True"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="SettingContentStyle" TargetType="{x:Type HeaderedContentControl}">
-        <Setter Property="Margin" Value="4,0,14,2"/>
+        <Setter Property="Margin" Value="2,0,14,2"/>
         <Setter Property="Template" Value="{StaticResource SettingContentTemplate}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Focusable" Value="False"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="local:ElementExtensions.FocusOnHover" Value="True"/>
+                <Setter Property="local:ElementExtensions.FocusContentOnHover" Value="True"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -355,6 +356,13 @@
     <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
         <Setter Property="Template" Value="{StaticResource CheckBoxTemplate}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="KeyboardNavigation.AcceptsReturn" Value="True"/>
+    </Style>
+    <Style x:Key="OptionSelectorStyle" TargetType="{x:Type UserControl}">
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Focusable" Value="True"/>
+        <Setter Property="IsTabStop" Value="True"/>
+        <Setter Property="KeyboardNavigation.AcceptsReturn" Value="True"/>
     </Style>
 </ResourceDictionary>

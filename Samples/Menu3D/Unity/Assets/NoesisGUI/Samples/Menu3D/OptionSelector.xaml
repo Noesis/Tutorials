@@ -4,9 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
     x:Name="OptionSelectorControl"
     d:DesignWidth="500" d:DesignHeight="100"
-    Foreground="{StaticResource TransparentWhiteBrush70}"
-    FontFamily="Fonts/#WeblySleek UI Semilight"
-    FontSize="40">
+    Background="Transparent" Foreground="{StaticResource TransparentWhiteBrush70}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ControlTemplate x:Key="OptionSelectorButtonTemplate" TargetType="{x:Type RepeatButton}">
@@ -93,6 +91,15 @@
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot">
+        <Grid.Style>
+            <Style TargetType="Grid">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsKeyboardFocused, ElementName=OptionSelectorControl}" Value="False">
+                        <Setter Property="IsEnabled" Value="False"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>

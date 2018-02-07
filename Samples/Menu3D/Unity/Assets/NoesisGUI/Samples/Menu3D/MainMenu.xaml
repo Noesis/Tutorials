@@ -201,9 +201,9 @@
                         </TransformGroup>
                     </StackPanel.RenderTransform>
                     <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                    <ToggleButton x:Name="Start" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="START GAME" Command="{Binding Start}"/>
-                    <ToggleButton x:Name="Settings" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2" Content="SETTINGS" Command="{Binding Settings}"/>
-                    <ToggleButton x:Name="Exit" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="EXIT" Command="{Binding Exit}"/>
+                    <ToggleButton x:Name="Start" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Content="START GAME" Command="{Binding Start}"/>
+                    <ToggleButton x:Name="Settings" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Content="SETTINGS" Command="{Binding Settings}"/>
+                    <ToggleButton x:Name="Exit" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Content="EXIT" Command="{Binding Exit}"/>
                     <Rectangle Height="2" Margin="0,100,0,2" Fill="{StaticResource HorizontalLineBg}"/>
                     <Grid Margin="18,4,0,0">
                         <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Dive straight into the carnage." IsEnabled="{Binding IsKeyboardFocused, ElementName=Start}"/>

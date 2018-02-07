@@ -617,11 +617,11 @@
                         </TransformGroup>
                     </StackPanel.RenderTransform>
                     <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                    <ToggleButton x:Name="Casual" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="CASUAL" Command="{Binding StartCasual}"/>
-                    <ToggleButton x:Name="Normal" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="NORMAL" Command="{Binding StartNormal}"/>
-                    <ToggleButton x:Name="Veteran" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="VETERAN" Command="{Binding StartVeteran}"/>
+                    <ToggleButton x:Name="Casual" Style="{StaticResource MenuButtonStyle}" Content="CASUAL" Command="{Binding StartCasual}"/>
+                    <ToggleButton x:Name="Normal" Style="{StaticResource MenuButtonStyle}" Content="NORMAL" Command="{Binding StartNormal}"/>
+                    <ToggleButton x:Name="Veteran" Style="{StaticResource MenuButtonStyle}" Content="VETERAN" Command="{Binding StartVeteran}"/>
                     <Rectangle Height="2" Margin="0,200,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                    <ToggleButton x:Name="Back" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Margin="2,0" Content="BACK" Command="{Binding Back}"/>
+                    <ToggleButton x:Name="Back" Style="{StaticResource MenuButtonStyle}" Content="BACK" Command="{Binding Back}"/>
                     <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
                     <Grid Margin="18,4,0,0">
                         <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="For players looking for experience the game without any of the challenge." IsEnabled="{Binding IsMouseOver, ElementName=Casual}"/>

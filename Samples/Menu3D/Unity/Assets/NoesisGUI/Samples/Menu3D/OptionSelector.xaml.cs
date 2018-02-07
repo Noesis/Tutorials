@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 #endif
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -19,8 +20,7 @@ namespace Menu3D
     {
         public OptionSelector()
         {
-            this._options = new ObservableCollection<UIElement>();
-            this._options.CollectionChanged += OnOptionsChanged;
+            Options = new ObservableCollection<UIElement>();
 
             this.Initialized += OnInitialized;
             this.InitializeComponent();
@@ -43,13 +43,28 @@ namespace Menu3D
 
             UpdateSelectedOption();
             UpdateButtons();
+
+            KeyDown += OnKeyDown;
         }
 
         ObservableCollection<UIElement> _options;
         public ObservableCollection<UIElement> Options
         {
             get { return _options; }
-            set { /* just need a setter for Blend so this property can be used in xaml */ }
+            set
+            {
+                if (_options != null)
+                {
+                    this._options.CollectionChanged -= OnOptionsChanged;
+                }
+
+                _options = value;
+
+                if (_options != null)
+                {
+                    this._options.CollectionChanged += OnOptionsChanged;
+                }
+            }
         }
 
         private int NumOptions { get { return _options.Count; } }
@@ -126,6 +141,46 @@ namespace Menu3D
             if (_nextButton != null)
             {
                 _nextButton.IsEnabled = Index < LastIndex;
+            }
+        }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Space:
+                {
+                    CycleNext();
+                    e.Handled = true;
+                    break;
+                }
+                case Key.Enter:
+                {
+                    if (KeyboardNavigation.GetAcceptsReturn(this))
+                    {
+                        CycleNext();
+                        e.Handled = true;
+                    }
+                    break;
+                }
+                case Key.Left:
+                {
+                    if (Index > 0)
+                    {
+                        --SelectedIndex;
+                    }
+                    e.Handled = true;
+                    break;
+                }
+                case Key.Right:
+                {
+                    if (Index < LastIndex)
+                    {
+                        ++SelectedIndex;
+                    }
+                    e.Handled = true;
+                    break;
+                }
             }
         }
 

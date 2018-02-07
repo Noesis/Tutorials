@@ -64,6 +64,34 @@ namespace Menu3D
         }
         #endregion
 
+        #region FocusContentOnHover
+        public static DependencyProperty FocusContentOnHoverProperty = DependencyProperty.RegisterAttached(
+            "FocusContentOnHover", typeof(bool), typeof(ElementExtensions), new PropertyMetadata(false, OnFocusContentOnHoverChanged));
+
+        public static bool GetFocusContentOnHover(DependencyObject d)
+        {
+            return (bool)d.GetValue(FocusContentOnHoverProperty);
+        }
+
+        public static void SetFocusContentOnHover(DependencyObject d, bool value)
+        {
+            d.SetValue(FocusContentOnHoverProperty, value);
+        }
+
+        private static void OnFocusContentOnHoverChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ContentControl control = d as ContentControl;
+            if (control != null && (bool)e.NewValue == true)
+            {
+                UIElement element = control.Content as UIElement;
+                if (element != null)
+                {
+                    element.Focus();
+                }
+            }
+        }
+        #endregion
+
         #region SelectOnHover
         public static DependencyProperty SelectOnHoverProperty = DependencyProperty.RegisterAttached(
             "SelectOnHover", typeof(bool), typeof(ElementExtensions), new PropertyMetadata(false, OnSelectOnHoverChanged));

@@ -9,7 +9,6 @@ using System.Windows.Threading;
 #endif
 using System.ComponentModel;
 using System.Windows.Input;
-using System.Linq;
 
 namespace Menu3D
 {
@@ -17,8 +16,7 @@ namespace Menu3D
     {
         Main,
         Start,
-        Settings,
-        Exit
+        Settings
     }
 
     public class ViewModel : INotifyPropertyChanged
@@ -30,7 +28,6 @@ namespace Menu3D
         public ICommand StartNormal { get; private set; }
         public ICommand StartVeteran { get; private set; }
         public ICommand Settings { get; private set; }
-        public ICommand SettingsAction { get; private set; }
         public ICommand Exit { get; private set; }
         public ICommand Back { get; private set; }
         public ICommand FadeInCompleted { get; private set; }
@@ -42,7 +39,6 @@ namespace Menu3D
             StartNormal = new DelegateCommand(OnStartNormal);
             StartVeteran = new DelegateCommand(OnStartVeteran);
             Settings = new DelegateCommand(OnSettings);
-            SettingsAction = new DelegateCommand(OnSettingsAction);
             Exit = new DelegateCommand(OnExit);
             Back = new DelegateCommand(OnBack);
             FadeInCompleted = new DelegateCommand(OnFadeInCompleted);
@@ -110,37 +106,12 @@ namespace Menu3D
             State = State.Settings;
         }
 
-        private void OnSettingsAction(object parameter)
-        {
-            StackPanel settings = (StackPanel)parameter;
-            foreach (HeaderedContentControl control in settings.Children.OfType<HeaderedContentControl>())
-            {
-                if (control.IsKeyboardFocused)
-                {
-                    OptionSelector selector = control.Content as OptionSelector;
-                    if (selector != null)
-                    {
-                        selector.CycleNext();
-                        return;
-                    }
-
-                    CheckBox check = control.Content as CheckBox;
-                    if (check != null)
-                    {
-                        check.IsChecked = !check.IsChecked;
-                        return;
-                    }
-                }
-            }
-        }
-
         private void OnExit(object parameter)
         {
             #if NOESIS
             UnityEngine.Debug.Log("Exiting game");
             #endif
 
-            State = State.Exit;
             #if NOESIS
             UnityEngine.Application.Quit();
             #else

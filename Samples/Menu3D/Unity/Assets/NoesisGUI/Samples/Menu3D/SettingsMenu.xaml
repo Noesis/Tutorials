@@ -137,7 +137,7 @@
     <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5"
           noesis:EventToCommand.Event="IsEnabledChanged"
           noesis:EventToCommand.Command="{Binding FadeInCompleted}"
-          noesis:EventToCommand.CommandParameter="{Binding ElementName=TexDetail}">
+          noesis:EventToCommand.CommandParameter="{Binding ElementName=TexDetailContent}">
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -167,9 +167,6 @@
                     KeyboardNavigation.TabNavigation="Cycle"
                     KeyboardNavigation.ControlTabNavigation="Cycle"
                     KeyboardNavigation.DirectionalNavigation="Cycle">
-                    <StackPanel.InputBindings>
-                        <KeyBinding Gesture="Enter" Command="{Binding SettingsAction}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}}"/>
-                    </StackPanel.InputBindings>
                     <StackPanel.Style>
                         <Style TargetType="StackPanel">
                             <Style.Triggers>
@@ -207,7 +204,7 @@
                     </StackPanel.RenderTransform>
                     <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
                     <HeaderedContentControl x:Name="TexDetail" Header="Texture Detail" Style="{StaticResource SettingContentStyle}">
-                        <local:OptionSelector SelectedIndex="1">
+                        <local:OptionSelector x:Name="TexDetailContent" SelectedIndex="1" Style="{StaticResource OptionSelectorStyle}">
                             <local:OptionSelector.Options>
                                 <TextBlock Text="Low"/>
                                 <TextBlock Text="Medium"/>
@@ -219,7 +216,7 @@
                         <CheckBox VerticalAlignment="Center" Style="{StaticResource CheckBoxStyle}"/>
                     </HeaderedContentControl>
                     <HeaderedContentControl x:Name="SoundVol" Header="Sound Volume" Style="{StaticResource SettingContentStyle}">
-                        <local:OptionSelector SelectedIndex="5">
+                        <local:OptionSelector SelectedIndex="5" Style="{StaticResource OptionSelectorStyle}">
                             <local:OptionSelector.Options>
                                 <TextBlock Text="0"/>
                                 <TextBlock Text="1"/>
@@ -235,7 +232,7 @@
                         </local:OptionSelector>
                     </HeaderedContentControl>
                     <HeaderedContentControl x:Name="VideoRes" Header="Video Resolution" Style="{StaticResource SettingContentStyle}">
-                        <local:OptionSelector SelectedIndex="2">
+                        <local:OptionSelector SelectedIndex="2" Style="{StaticResource OptionSelectorStyle}">
                             <local:OptionSelector.Options>
                                 <TextBlock Text="800x600"/>
                                 <TextBlock Text="1024x768"/>
@@ -247,7 +244,7 @@
                         </local:OptionSelector>
                     </HeaderedContentControl>
                     <HeaderedContentControl x:Name="Gamma" Header="Gamma Correction" Style="{StaticResource SettingContentStyle}">
-                        <local:OptionSelector SelectedIndex="5">
+                        <local:OptionSelector SelectedIndex="5" Style="{StaticResource OptionSelectorStyle}">
                             <local:OptionSelector.Options>
                                 <TextBlock Text="0"/>
                                 <TextBlock Text="1"/>
@@ -266,8 +263,8 @@
                         <CheckBox VerticalAlignment="Center" Style="{StaticResource CheckBoxStyle}"/>
                     </HeaderedContentControl>
                     <Rectangle Height="2" Margin="0,70,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                    <ToggleButton x:Name="Back" Style="{StaticResource MenuButtonStyle}" Width="640" Margin="2,0" Content="BACK" Command="{Binding Back}" HorizontalAlignment="Left"/>
-                    <Rectangle Height="2" Margin="0,2,0,0" Fill="{StaticResource HorizontalLineBg}"/>
+                    <ToggleButton x:Name="Back" Style="{StaticResource MenuButtonStyle}" Content="BACK" Margin="2,0,26,2" Command="{Binding Back}"/>
+                    <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
                     <Grid Margin="18,4,0,0">
                         <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Adjust the texture detail for the application." IsEnabled="{Binding IsKeyboardFocusWithin, ElementName=TexDetail}"/>
                         <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Toggles the anti-aliasing." IsEnabled="{Binding IsKeyboardFocusWithin, ElementName=AAlias}"/>
