@@ -1,0 +1,398 @@
+// !$*UTF8*$!
+{
+    archiveVersion = 1;
+    classes = {};
+    objectVersion = 46;
+    objects = {
+
+/* Begin PBXBuildFile section */
+        66AD977D590E4BECBA56A7F4 = {isa = PBXBuildFile; fileRef = 134E0095845F46C1B684B7B6 /* App.xaml */; };
+        2F0C4D9BACFB4D8E894FFAAA = {isa = PBXBuildFile; fileRef = 26482DAD43C544C69D2BB5D2 /* MainWindow.xaml */; };
+        1DFA9D75D2114160ACF5DC33 = {isa = PBXBuildFile; fileRef = 9B7D8D53D79044CB9DC8CCEF /* MenuResources.xaml */; };
+        772A756CD093405A9DF20861 = {isa = PBXBuildFile; fileRef = 781E302DBC9B484B9006D1FB /* MainMenu.xaml */; };
+        9ADC4E10B5B1482EABD5C405 = {isa = PBXBuildFile; fileRef = DB924340C8014B11B06DFAAB /* StartMenu.xaml */; };
+        86AED14D3C3C4A3BA9C62384 = {isa = PBXBuildFile; fileRef = D9FC5D7DC26D413C9299565A /* SettingsMenu.xaml */; };
+        A9FA5AEB8BE84FB298E5AC6D = {isa = PBXBuildFile; fileRef = CDE7BF04C9E94F03B480C25A /* OptionSelector.xaml */; };
+        D69C6AAF895F4518B3C58B21 = {isa = PBXBuildFile; fileRef = 6A907E49F674412CA4947B2D /* BigPlanet.png */; };
+        3F9E35F1429A48C2AA17E663 = {isa = PBXBuildFile; fileRef = 645193D6291F4ACAA3D3F2C4 /* CloseUpPlanet.png */; };
+        D886DBE6DEE144CF959F2C74 = {isa = PBXBuildFile; fileRef = B0885A26D8CA495699B752E9 /* SpaceBg.jpg */; };
+        A2924FDAF03C4AAFABE852D9 = {isa = PBXBuildFile; fileRef = 2DA30A96295E41A480B26B8C /* weblysleekuisb.ttf */; };
+        2BCFD7933CE1497EAA61D54B = {isa = PBXBuildFile; fileRef = 40C6F1A5860E4B8AB0257E2D /* weblysleekuisl.ttf */; };
+        81E29CE0F50049559E3E5CD0 = {isa = PBXBuildFile; fileRef = 129076188547480D8CEC8FB4 /* OptionSelector.xaml.cpp */; };
+        D6FB0946D71648ABACABB998 = {isa = PBXBuildFile; fileRef = BDC6382D609543BD8B2BA0F4 /* App.xaml.cpp */; };
+        8C1A3329F7074CE0A17800A3 = {isa = PBXBuildFile; fileRef = DC70ACBB54494F839420E20F /* NotifyPropertyChangedBase.cpp */; };
+        7D747F9465BE42588BFB1470 = {isa = PBXBuildFile; fileRef = 41B664AAA153412FB17564EC /* ViewModel.cpp */; };
+        0202038E3E194FBF903FDD29 = {isa = PBXBuildFile; fileRef = BF4387EDD76043D0A818E85B /* StartMenu.xaml.cpp */; };
+        EDFF75E3B81C45A29FA64C61 = {isa = PBXBuildFile; fileRef = 73DEA9A715054ACB9D514FDE /* DelegateCommand.cpp */; };
+        92D8C039E9764275974A9246 = {isa = PBXBuildFile; fileRef = 758D78EAAE7D4A759E10CABF /* MainMenu.xaml.cpp */; };
+        FA2780922F9C4B4195BB036B = {isa = PBXBuildFile; fileRef = D28314F539A2436288CFE536 /* ElementExtensions.cpp */; };
+        1C1418B2421E4FDE8C338255 = {isa = PBXBuildFile; fileRef = ABE0D208F7C64B738EFA3F2E /* SettingsMenu.xaml.cpp */; };
+        A0EEDE1FE5414C61850E03ED = {isa = PBXBuildFile; fileRef = B793962DD165485885D072FD /* Main.cpp */; };
+        D54CBA1B83024013A32B2DF1 = {isa = PBXBuildFile; fileRef = 62DD4BCD1DA949DCBC2210B9 /* MainWindow.xaml.cpp */; };
+        16DEC6934A0A48E3A2D48A83 = {isa = PBXBuildFile; fileRef = 7A7F900A24784FBF82A6299A /* AppKit.framework */; };
+        59A3D3E072BF4E5D958C6F36 = {isa = PBXBuildFile; fileRef = 0E5B09A0D0444E9087ABDC2B /* Noesis.dylib */; };
+        AA8DDECEE07944C2A50CC585 = {isa = PBXBuildFile; fileRef = 58BD3DB6635A49C2AD46670C /* NoesisApp.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+        5F71D8E9A98C42A5B53FA582 /* Samples.Menu3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.Menu3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        7A7F900A24784FBF82A6299A /* AppKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "AppKit.framework"; path = "System/Library/Frameworks/AppKit.framework"; sourceTree = SDKROOT; };
+        0E5B09A0D0444E9087ABDC2B /* Noesis.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = "Noesis.dylib"; path = "../../../../../../Bin/osx/Noesis.dylib"; sourceTree = SOURCE_ROOT; };
+        58BD3DB6635A49C2AD46670C /* NoesisApp.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = "NoesisApp.dylib"; path = "../../../../../../Bin/osx/NoesisApp.dylib"; sourceTree = SOURCE_ROOT; };
+        17575FA848D64EABB6F32395 /* Common.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Common.xcconfig"; path = "../../../../../../Config/Common.xcconfig"; sourceTree = SOURCE_ROOT; };
+        0AC98FD9978549C3BF90CE64 /* Release.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Release.xcconfig"; path = "../../../../../../Config/Release/Release.xcconfig"; sourceTree = SOURCE_ROOT; };
+        039C19938F8A45818C48B76A /* Profile.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Profile.xcconfig"; path = "../../../../../../Config/Profile/Profile.xcconfig"; sourceTree = SOURCE_ROOT; };
+        0B526781D02049F2BFBB6E75 /* Debug.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Debug.xcconfig"; path = "../../../../../../Config/Debug/Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
+        129076188547480D8CEC8FB4 /* OptionSelector.xaml.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "OptionSelector.xaml.cpp"; path = "../../Src/OptionSelector.xaml.cpp"; sourceTree = SOURCE_ROOT; };
+        BDC6382D609543BD8B2BA0F4 /* App.xaml.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "App.xaml.cpp"; path = "../../Src/App.xaml.cpp"; sourceTree = SOURCE_ROOT; };
+        A05B9F0F294A4BEA9851B80B /* MainMenu.xaml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "MainMenu.xaml.h"; path = "../../Src/MainMenu.xaml.h"; sourceTree = SOURCE_ROOT; };
+        0320ED7CCEF34908B8A57CCC /* StartMenu.xaml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "StartMenu.xaml.h"; path = "../../Src/StartMenu.xaml.h"; sourceTree = SOURCE_ROOT; };
+        BDD3EF49DA064EF3AA22CA2C /* App.xaml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "App.xaml.h"; path = "../../Src/App.xaml.h"; sourceTree = SOURCE_ROOT; };
+        DC70ACBB54494F839420E20F /* NotifyPropertyChangedBase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "NotifyPropertyChangedBase.cpp"; path = "../../Src/NotifyPropertyChangedBase.cpp"; sourceTree = SOURCE_ROOT; };
+        084A65F34B5F48B5BD674A1C /* ViewModel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "ViewModel.h"; path = "../../Src/ViewModel.h"; sourceTree = SOURCE_ROOT; };
+        C93E91AB33DB4F1B87FA0941 /* NotifyPropertyChangedBase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "NotifyPropertyChangedBase.h"; path = "../../Src/NotifyPropertyChangedBase.h"; sourceTree = SOURCE_ROOT; };
+        41B664AAA153412FB17564EC /* ViewModel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "ViewModel.cpp"; path = "../../Src/ViewModel.cpp"; sourceTree = SOURCE_ROOT; };
+        BF4387EDD76043D0A818E85B /* StartMenu.xaml.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "StartMenu.xaml.cpp"; path = "../../Src/StartMenu.xaml.cpp"; sourceTree = SOURCE_ROOT; };
+        F5B4E5E4CC594F99BFDC31E9 /* MainWindow.xaml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "MainWindow.xaml.h"; path = "../../Src/MainWindow.xaml.h"; sourceTree = SOURCE_ROOT; };
+        73DEA9A715054ACB9D514FDE /* DelegateCommand.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "DelegateCommand.cpp"; path = "../../Src/DelegateCommand.cpp"; sourceTree = SOURCE_ROOT; };
+        758D78EAAE7D4A759E10CABF /* MainMenu.xaml.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "MainMenu.xaml.cpp"; path = "../../Src/MainMenu.xaml.cpp"; sourceTree = SOURCE_ROOT; };
+        C0B17BB7A3F94C0F9AA4F3CE /* SettingsMenu.xaml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "SettingsMenu.xaml.h"; path = "../../Src/SettingsMenu.xaml.h"; sourceTree = SOURCE_ROOT; };
+        D28314F539A2436288CFE536 /* ElementExtensions.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "ElementExtensions.cpp"; path = "../../Src/ElementExtensions.cpp"; sourceTree = SOURCE_ROOT; };
+        95B36DD4E1844BA3AD1E557D /* ElementExtensions.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "ElementExtensions.h"; path = "../../Src/ElementExtensions.h"; sourceTree = SOURCE_ROOT; };
+        370F79609DB44F4BAC4A3BE8 /* DelegateCommand.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "DelegateCommand.h"; path = "../../Src/DelegateCommand.h"; sourceTree = SOURCE_ROOT; };
+        ABE0D208F7C64B738EFA3F2E /* SettingsMenu.xaml.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "SettingsMenu.xaml.cpp"; path = "../../Src/SettingsMenu.xaml.cpp"; sourceTree = SOURCE_ROOT; };
+        B793962DD165485885D072FD /* Main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "../../Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
+        345F7F7CFE7242829BBD55A4 /* OptionSelector.xaml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "OptionSelector.xaml.h"; path = "../../Src/OptionSelector.xaml.h"; sourceTree = SOURCE_ROOT; };
+        62DD4BCD1DA949DCBC2210B9 /* MainWindow.xaml.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "MainWindow.xaml.cpp"; path = "../../Src/MainWindow.xaml.cpp"; sourceTree = SOURCE_ROOT; };
+        134E0095845F46C1B684B7B6 /* App.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "App.xaml"; path = "../../Data/App.xaml"; sourceTree = SOURCE_ROOT; };
+        26482DAD43C544C69D2BB5D2 /* MainWindow.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MainWindow.xaml"; path = "../../Data/MainWindow.xaml"; sourceTree = SOURCE_ROOT; };
+        9B7D8D53D79044CB9DC8CCEF /* MenuResources.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MenuResources.xaml"; path = "../../Data/MenuResources.xaml"; sourceTree = SOURCE_ROOT; };
+        781E302DBC9B484B9006D1FB /* MainMenu.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MainMenu.xaml"; path = "../../Data/MainMenu.xaml"; sourceTree = SOURCE_ROOT; };
+        DB924340C8014B11B06DFAAB /* StartMenu.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "StartMenu.xaml"; path = "../../Data/StartMenu.xaml"; sourceTree = SOURCE_ROOT; };
+        D9FC5D7DC26D413C9299565A /* SettingsMenu.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SettingsMenu.xaml"; path = "../../Data/SettingsMenu.xaml"; sourceTree = SOURCE_ROOT; };
+        CDE7BF04C9E94F03B480C25A /* OptionSelector.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OptionSelector.xaml"; path = "../../Data/OptionSelector.xaml"; sourceTree = SOURCE_ROOT; };
+        6A907E49F674412CA4947B2D /* BigPlanet.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BigPlanet.png"; path = "../../Data/Images/BigPlanet.png"; sourceTree = SOURCE_ROOT; };
+        645193D6291F4ACAA3D3F2C4 /* CloseUpPlanet.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CloseUpPlanet.png"; path = "../../Data/Images/CloseUpPlanet.png"; sourceTree = SOURCE_ROOT; };
+        B0885A26D8CA495699B752E9 /* SpaceBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpaceBg.jpg"; path = "../../Data/Images/SpaceBg.jpg"; sourceTree = SOURCE_ROOT; };
+        2DA30A96295E41A480B26B8C /* weblysleekuisb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "weblysleekuisb.ttf"; path = "../../Data/Fonts/weblysleekuisb.ttf"; sourceTree = SOURCE_ROOT; };
+        40C6F1A5860E4B8AB0257E2D /* weblysleekuisl.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "weblysleekuisl.ttf"; path = "../../Data/Fonts/weblysleekuisl.ttf"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+        78B69770FB454826ACF121A5 = {
+            isa = PBXGroup;
+            children = (
+                129076188547480D8CEC8FB4,
+                BDC6382D609543BD8B2BA0F4,
+                A05B9F0F294A4BEA9851B80B,
+                0320ED7CCEF34908B8A57CCC,
+                BDD3EF49DA064EF3AA22CA2C,
+                DC70ACBB54494F839420E20F,
+                084A65F34B5F48B5BD674A1C,
+                C93E91AB33DB4F1B87FA0941,
+                41B664AAA153412FB17564EC,
+                BF4387EDD76043D0A818E85B,
+                F5B4E5E4CC594F99BFDC31E9,
+                73DEA9A715054ACB9D514FDE,
+                758D78EAAE7D4A759E10CABF,
+                C0B17BB7A3F94C0F9AA4F3CE,
+                D28314F539A2436288CFE536,
+                95B36DD4E1844BA3AD1E557D,
+                370F79609DB44F4BAC4A3BE8,
+                ABE0D208F7C64B738EFA3F2E,
+                B793962DD165485885D072FD,
+                345F7F7CFE7242829BBD55A4,
+                62DD4BCD1DA949DCBC2210B9,
+            );
+            name = Src;
+            sourceTree = "<group>";
+        };
+        536D72A4ADCB43D7B4EA9F6B = {
+            isa = PBXGroup;
+            children = (
+                134E0095845F46C1B684B7B6,
+                26482DAD43C544C69D2BB5D2,
+                9B7D8D53D79044CB9DC8CCEF,
+                781E302DBC9B484B9006D1FB,
+                DB924340C8014B11B06DFAAB,
+                D9FC5D7DC26D413C9299565A,
+                CDE7BF04C9E94F03B480C25A,
+                6A907E49F674412CA4947B2D,
+                645193D6291F4ACAA3D3F2C4,
+                B0885A26D8CA495699B752E9,
+                2DA30A96295E41A480B26B8C,
+                40C6F1A5860E4B8AB0257E2D,
+            );
+            name = Data;
+            sourceTree = "<group>";
+        };
+        446A601EE6004040A5C13C6B = {
+            isa = PBXGroup;
+            children = (
+                0AC98FD9978549C3BF90CE64,
+                039C19938F8A45818C48B76A,
+                17575FA848D64EABB6F32395,
+                0B526781D02049F2BFBB6E75,
+            );
+            name = Config;
+            sourceTree = "<group>";
+        };
+        BB5C79B2DC7244A195BAC676 = {
+            isa = PBXGroup;
+            children = (
+                5F71D8E9A98C42A5B53FA582,
+            );
+            name = Products;
+            sourceTree = "<group>";
+        };
+        ECEA78768E7B4A859969443E = {
+            isa = PBXGroup;
+            children = (
+                7A7F900A24784FBF82A6299A,
+                0E5B09A0D0444E9087ABDC2B,
+                58BD3DB6635A49C2AD46670C,
+            );
+            name = Dependencies;
+            sourceTree = "<group>";
+        };
+        C647EE0AD4C84FC1BAE3F883 = {
+            isa = PBXGroup;
+            children = (
+                78B69770FB454826ACF121A5,
+                536D72A4ADCB43D7B4EA9F6B,
+                446A601EE6004040A5C13C6B,
+                BB5C79B2DC7244A195BAC676,
+                ECEA78768E7B4A859969443E,
+                0A7954FC564C4392AAA1FAD3,
+            );
+            sourceTree = "<group>";
+        };
+/* End PBXGroup section */
+
+/* Begin PBXSourcesBuildPhase section */
+        4442E6D2A69446E7A425224D = {
+            isa = PBXSourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                66AD977D590E4BECBA56A7F4,
+                2F0C4D9BACFB4D8E894FFAAA,
+                1DFA9D75D2114160ACF5DC33,
+                772A756CD093405A9DF20861,
+                9ADC4E10B5B1482EABD5C405,
+                86AED14D3C3C4A3BA9C62384,
+                A9FA5AEB8BE84FB298E5AC6D,
+                D69C6AAF895F4518B3C58B21,
+                3F9E35F1429A48C2AA17E663,
+                D886DBE6DEE144CF959F2C74,
+                A2924FDAF03C4AAFABE852D9,
+                2BCFD7933CE1497EAA61D54B,
+                81E29CE0F50049559E3E5CD0,
+                D6FB0946D71648ABACABB998,
+                8C1A3329F7074CE0A17800A3,
+                7D747F9465BE42588BFB1470,
+                0202038E3E194FBF903FDD29,
+                EDFF75E3B81C45A29FA64C61,
+                92D8C039E9764275974A9246,
+                FA2780922F9C4B4195BB036B,
+                1C1418B2421E4FDE8C338255,
+                A0EEDE1FE5414C61850E03ED,
+                D54CBA1B83024013A32B2DF1,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXBuildRule section */
+        0A51D5FA54914B2BB448DC4A = {
+            isa = PBXBuildRule;
+            compilerSpec = com.apple.compilers.proxy.script;
+            filePatterns = "*.xaml *.xaml *.xaml *.xaml *.xaml *.xaml *.xaml *.png *.png *.jpg *.ttf *.ttf";
+            fileType = pattern.proxy;
+            isEditable = 0;
+            outputFiles = (
+                "${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}.bin.h"
+            );
+            script = "../../../../../Tools/Bin2h/bin2h.py \"${INPUT_FILE_PATH}\" > \"${DERIVED_SOURCES_DIR}/${INPUT_FILE_NAME}.bin.h\"";
+        };
+/* End PBXBuildRule section */
+
+/* Begin PBXFrameworksBuildPhase section */
+        F6E82F76A331470784834B13 = {
+            isa = PBXFrameworksBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                16DEC6934A0A48E3A2D48A83,
+                59A3D3E072BF4E5D958C6F36,
+                AA8DDECEE07944C2A50CC585,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+        3BACFD25834F400E85862359 = {
+            isa = PBXResourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+        2CC5889F34E64DDEBECF6730 = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = 1920A928CD4F4D2C958C0EE7;
+            buildPhases = (
+                4442E6D2A69446E7A425224D,
+                F6E82F76A331470784834B13,
+                3BACFD25834F400E85862359,
+            );
+            buildRules = (
+                0A51D5FA54914B2BB448DC4A,
+            );
+            dependencies = ();
+            name = Samples.Menu3D;
+            productName = Samples.Menu3D;
+            productReference = 5F71D8E9A98C42A5B53FA582;
+            productType = "com.apple.product-type.application";
+        };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+        C1F73D5CF8744374A86807D5 = {
+            isa = PBXProject;
+            attributes = {};
+            buildConfigurationList = 3467168098DB41108B3A200B;
+            compatibilityVersion = "Xcode 3.2";
+            developmentRegion = English;
+            hasScannedForEncodings = 0;
+            knownRegions = (en,);
+            mainGroup = C647EE0AD4C84FC1BAE3F883;
+            productRefGroup = BB5C79B2DC7244A195BAC676;
+            projectDirPath = "";
+            projectRoot = "";
+            targets = (2CC5889F34E64DDEBECF6730,);
+        };
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+        CA48BDDE4B2D4B82AF75559E = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = 0AC98FD9978549C3BF90CE64;
+            buildSettings = {
+                SDKROOT = macosx;
+                ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../Math/Utils/Include,../../../../Math/VectorMath/Include,../../../../Gui/DependencySystem/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Samples/Menu3D/Include,../../../../Drawing/Types/Include,../../../../Core/TypeConverter/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../Gui/Core/Include,../../../../Gui/Animation/Include,../../../../../../Include,../../../../App/ApplicationLauncher/Include,../../../../Gui/Providers/Include,../../../../App/DisplayLauncher/Include,../../../../Core/Kernel/Include,../../../../Gui/CachedFontProvider/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Release","NS_VERSION=2.1.0rc3","NS_APP_FRAMEWORK","NS_RELEASE_CFG","NS_ASSERTS_ENABLED=0","NS_INSTRUMENTED_ENABLED=0","NS_MINIMUM_LOG_LEVEL=2","$(inherited)");
+                LIBRARY_SEARCH_PATHS = ();
+                OTHER_LDFLAGS = ();
+                GCC_PRECOMPILE_PREFIX_HEADER = YES;
+                GCC_PREFIX_HEADER = pch.h;
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/osx";
+                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+                USE_HEADERMAP = NO;
+            };
+            name = Release;
+        };
+        B53629B7D2804195A82E6852 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "Noesis.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 2.1.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                INFOPLIST_FILE = "$(PROJECT_DIR)/../../Resources/macOS/info.plist";
+                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../";
+            };
+            name = Release;
+        };
+        3F23FD5917374792B343C93A = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = 039C19938F8A45818C48B76A;
+            buildSettings = {
+                SDKROOT = macosx;
+                ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../Math/Utils/Include,../../../../Math/VectorMath/Include,../../../../Gui/DependencySystem/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Samples/Menu3D/Include,../../../../Drawing/Types/Include,../../../../Core/TypeConverter/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../Gui/Core/Include,../../../../Gui/Animation/Include,../../../../../../Include,../../../../App/ApplicationLauncher/Include,../../../../Gui/Providers/Include,../../../../App/DisplayLauncher/Include,../../../../Core/Kernel/Include,../../../../Gui/CachedFontProvider/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Profile","NS_VERSION=2.1.0rc3","NS_APP_FRAMEWORK","NS_PROFILE_CFG","NS_ASSERTS_ENABLED=0","NS_INSTRUMENTED_ENABLED=1","NS_MINIMUM_LOG_LEVEL=2","$(inherited)");
+                LIBRARY_SEARCH_PATHS = ();
+                OTHER_LDFLAGS = ();
+                GCC_PRECOMPILE_PREFIX_HEADER = YES;
+                GCC_PREFIX_HEADER = pch.h;
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/osx";
+                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+                USE_HEADERMAP = NO;
+            };
+            name = Profile;
+        };
+        792113762BF74F6AB4D1895C = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "Noesis.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 2.1.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                INFOPLIST_FILE = "$(PROJECT_DIR)/../../Resources/macOS/info.plist";
+                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../";
+            };
+            name = Profile;
+        };
+        F47B09DBF1E24166887FC99A = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = 0B526781D02049F2BFBB6E75;
+            buildSettings = {
+                SDKROOT = macosx;
+                ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../Math/Utils/Include,../../../../Math/VectorMath/Include,../../../../Gui/DependencySystem/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Samples/Menu3D/Include,../../../../Drawing/Types/Include,../../../../Core/TypeConverter/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../Gui/Core/Include,../../../../Gui/Animation/Include,../../../../../../Include,../../../../App/ApplicationLauncher/Include,../../../../Gui/Providers/Include,../../../../App/DisplayLauncher/Include,../../../../Core/Kernel/Include,../../../../Gui/CachedFontProvider/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Debug","NS_VERSION=2.1.0rc3","NS_APP_FRAMEWORK","NS_DEBUG_CFG","NS_ASSERTS_ENABLED=1","NS_INSTRUMENTED_ENABLED=1","NS_MINIMUM_LOG_LEVEL=1","$(inherited)");
+                LIBRARY_SEARCH_PATHS = ();
+                OTHER_LDFLAGS = ();
+                GCC_PRECOMPILE_PREFIX_HEADER = YES;
+                GCC_PREFIX_HEADER = pch.h;
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/osx";
+                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+                USE_HEADERMAP = NO;
+            };
+            name = Debug;
+        };
+        1CD0F953F2D14DB6AA3C2DF7 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "Noesis.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 2.1.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                INFOPLIST_FILE = "$(PROJECT_DIR)/../../Resources/macOS/info.plist";
+                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../";
+            };
+            name = Debug;
+        };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+        3467168098DB41108B3A200B = {
+            isa = XCConfigurationList;
+            buildConfigurations = (CA48BDDE4B2D4B82AF75559E,3F23FD5917374792B343C93A,F47B09DBF1E24166887FC99A);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Release;
+        };
+
+        1920A928CD4F4D2C958C0EE7 = {
+            isa = XCConfigurationList;
+            buildConfigurations = (B53629B7D2804195A82E6852,792113762BF74F6AB4D1895C,1CD0F953F2D14DB6AA3C2DF7);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Release;
+        };
+/* End XCConfigurationList section */
+    };
+    rootObject = C1F73D5CF8744374A86807D5;
+}

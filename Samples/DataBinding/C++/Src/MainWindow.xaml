@@ -1,0 +1,83 @@
+﻿<Window x:Class="DataBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:DataBinding"
+        Title="NoesisGUI - Solar System" Width="650" Height="620"
+        Background="Black"
+        FontFamily="./#Roboto">
+
+    <Window.Resources>
+        <local:SolarSystem x:Key="solarSystem" />
+        <local:ConvertOrbit x:Key="convertOrbit" />
+
+        <Style TargetType="ListBox">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <Canvas Width="590" Height="590" />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate DataType="{x:Type local:SolarSystemObject}">
+            <Canvas Width="20" Height="20" >
+                <Ellipse 
+                    Canvas.Left="{Binding Path=Orbit, Converter={StaticResource convertOrbit}, ConverterParameter=-1.707}" 
+                    Canvas.Top="{Binding Path=Orbit, Converter={StaticResource convertOrbit}, ConverterParameter=-0.293}" 
+                    Width="{Binding Path=Orbit, Converter={StaticResource convertOrbit}, ConverterParameter=2}" 
+                    Height="{Binding Path=Orbit, Converter={StaticResource convertOrbit}, ConverterParameter=2}" 
+                    Stroke="White" 
+                    StrokeThickness="1"/>
+                <Image Source="{Binding Path=Image}" Width="20" Height="20"
+                       ToolTipService.InitialShowDelay="0"
+                       ToolTipService.ShowDuration="8000">
+                    <Image.ToolTip>
+                        <StackPanel Width="180">
+                            <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="Bold" Foreground="#FF365264" Background="LightSkyBlue"
+                                Margin="-7,-5,-7,0" Padding="0,2" TextAlignment="Center"/>
+                            <TextBlock Text="{Binding Orbit, StringFormat=Orbit: {0:F2} AU}" FontSize="14" Foreground="White" Margin="0,8"/>
+                            <TextBlock Text="{Binding Details}" FontSize="14" Foreground="WhiteSmoke" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Image.ToolTip>
+                </Image>
+            </Canvas>
+        </DataTemplate>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Canvas.Left" Value="{Binding Path=Orbit, Converter={StaticResource convertOrbit}, ConverterParameter=0.707}"/>
+            <Setter Property="Canvas.Bottom" Value="{Binding Path=Orbit, Converter={StaticResource convertOrbit}, ConverterParameter=0.707}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Grid>
+                            <Ellipse x:Name="selectedPlanet" Margin="-10" StrokeThickness="2" IsHitTestVisible="False"/>
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Stroke" TargetName="selectedPlanet" Value="Yellow"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Panel.ZIndex" Value="100"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+
+    <ViewBox>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ListBox ItemsSource="{Binding Source={StaticResource solarSystem}, Path=SolarSystemObjects}" Focusable="False" />
+        </Grid>
+    </ViewBox>
+</Window>

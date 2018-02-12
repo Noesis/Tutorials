@@ -1,0 +1,42 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    x:Class="BlendTutorial.ColorSelector"
+    x:Name="ColorSelectorRoot"
+    Foreground="{StaticResource BlendTutorialForeground}"
+    Slider.ValueChanged="Slider_ValueChanged"
+    d:DesignWidth="200" d:DesignHeight="100">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle RadiusX="2" RadiusY="2" Grid.RowSpan="4" Margin="0,0,5,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,15" MappingMode="Absolute" SpreadMethod="Repeat">
+                    <GradientStop Color="Gray" Offset="0"/>
+                    <GradientStop Color="Silver" Offset="0.5"/>
+                    <GradientStop Color="White" Offset="0.5001"/>
+                    <GradientStop Color="Gainsboro" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="ColorRect" Fill="{Binding Color, ElementName=ColorSelectorRoot}" Stroke="{StaticResource BlendTutorialBorderBrush}" RadiusX="2" RadiusY="2" Grid.RowSpan="4" Margin="0,0,5,0"/>
+        <Slider x:Name="R" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Margin="10,1,0,1" Maximum="255" LargeChange="10" SmallChange="1"/>
+        <Slider x:Name="G" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="10,1,0,1" Maximum="255" LargeChange="10" SmallChange="1"/>
+        <Slider x:Name="B" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="10,1,0,1" Maximum="255" LargeChange="10" SmallChange="1"/>
+        <Slider x:Name="A" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="10,1,0,1" Maximum="255" SmallChange="1" LargeChange="10" Value="255"/>
+        <TextBlock Text="R" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock Text="G" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1"/>
+        <TextBlock Text="B" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2"/>
+        <TextBlock Text="A" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3"/>
+    </Grid>
+</UserControl>

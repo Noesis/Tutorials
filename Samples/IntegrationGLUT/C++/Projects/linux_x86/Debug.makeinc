@@ -1,0 +1,46 @@
+####################################################################################################
+# PROJECT: Samples.IntegrationGLUT
+####################################################################################################
+
+ifeq ($(V), 1)
+ Q =
+else
+ Q = @
+endif
+
+$(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/pch.h.gch: $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/pch.h
+	@echo [PH] Samples.IntegrationGLUT/$(notdir $<)
+	$(Q)g++ $(CPPFLAGS_DEBUG) -I$(PREFIX)/Gui/Core/Include/ -I$(PREFIX)/Render/RenderDevice/Include/ -I$(PREFIX)/Render/GLRenderDevice/Include/ -I$(PREFIX)/Gui/DependencySystem/Include/ -I$(PREFIX)/Drawing/Types/Include/ -I$(PREFIX)/Core/Kernel/Include/ -I$(PREFIX)/Math/VectorMath/Include/ -I$(PREFIX)/Gui/CachedFontProvider/Include/ -I$(PREFIX)/Samples/IntegrationGLUT/Include/ -I$(PREFIX)/../../Include/ -I$(PREFIX)/Gui/Providers/Include/ -I$(PREFIX)/Core/NSTL/Include/ -I$(PREFIX)/Core/Nullable/Include/ -I$(PREFIX)/Math/Utils/Include/ -I$(PREFIX)/App/Launcher/Include/ -I$(PREFIX)/../../3rdParty/EASTL/local/include/ -I$(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.1.0rc3 -DNS_APP_FRAMEWORK -DNS_DEBUG_CFG -DNS_ASSERTS_ENABLED=1 -DNS_INSTRUMENTED_ENABLED=1 -DNS_MINIMUM_LOG_LEVEL=1 -march=i686 -m32 -c -MMD -fPIC -o $@ $<
+
+$(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/%.o: $(PREFIX)/Samples/IntegrationGLUT/Src/%.cpp $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/pch.h.gch
+	@echo [CC] Samples/IntegrationGLUT/$(notdir $<)
+	$(Q)g++ $(CPPFLAGS_DEBUG) -I$(PREFIX)/Gui/Core/Include/ -I$(PREFIX)/Render/RenderDevice/Include/ -I$(PREFIX)/Render/GLRenderDevice/Include/ -I$(PREFIX)/Gui/DependencySystem/Include/ -I$(PREFIX)/Drawing/Types/Include/ -I$(PREFIX)/Core/Kernel/Include/ -I$(PREFIX)/Math/VectorMath/Include/ -I$(PREFIX)/Gui/CachedFontProvider/Include/ -I$(PREFIX)/Samples/IntegrationGLUT/Include/ -I$(PREFIX)/../../Include/ -I$(PREFIX)/Gui/Providers/Include/ -I$(PREFIX)/Core/NSTL/Include/ -I$(PREFIX)/Core/Nullable/Include/ -I$(PREFIX)/Math/Utils/Include/ -I$(PREFIX)/App/Launcher/Include/ -I$(PREFIX)/../../3rdParty/EASTL/local/include/ -I$(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.1.0rc3 -DNS_APP_FRAMEWORK -DNS_DEBUG_CFG -DNS_ASSERTS_ENABLED=1 -DNS_INSTRUMENTED_ENABLED=1 -DNS_MINIMUM_LOG_LEVEL=1 -march=i686 -m32 -c -MMD -fPIC -o $@ $< -include pch.h
+
+$(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/%.o: $(PREFIX)/Samples/IntegrationGLUT/Src/%.c
+	@echo [CC] Samples/IntegrationGLUT/$(notdir $<)
+	$(Q)gcc $(CFLAGS_DEBUG) -I$(PREFIX)/Gui/Core/Include/ -I$(PREFIX)/Render/RenderDevice/Include/ -I$(PREFIX)/Render/GLRenderDevice/Include/ -I$(PREFIX)/Gui/DependencySystem/Include/ -I$(PREFIX)/Drawing/Types/Include/ -I$(PREFIX)/Core/Kernel/Include/ -I$(PREFIX)/Math/VectorMath/Include/ -I$(PREFIX)/Gui/CachedFontProvider/Include/ -I$(PREFIX)/Samples/IntegrationGLUT/Include/ -I$(PREFIX)/../../Include/ -I$(PREFIX)/Gui/Providers/Include/ -I$(PREFIX)/Core/NSTL/Include/ -I$(PREFIX)/Core/Nullable/Include/ -I$(PREFIX)/Math/Utils/Include/ -I$(PREFIX)/App/Launcher/Include/ -I$(PREFIX)/../../3rdParty/EASTL/local/include/ -I$(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.1.0rc3 -DNS_APP_FRAMEWORK -DNS_DEBUG_CFG -DNS_ASSERTS_ENABLED=1 -DNS_INSTRUMENTED_ENABLED=1 -DNS_MINIMUM_LOG_LEVEL=1 -march=i686 -m32 -c -MMD -fPIC -o $@ $<
+
+$(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/Reflections.xaml.bin.h: $(PREFIX)/Samples/IntegrationGLUT/Src/Reflections.xaml
+	@echo [BH] Samples/IntegrationGLUT/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/IntegrationGLUT/Src/Reflections.xaml > $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/Reflections.xaml.bin.h 
+
+$(BINDIR)/Samples.IntegrationGLUT: $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/Reflections.xaml.bin.h $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/Main.o $(BINDIR)/libNoesis.so $(BINDIR)/libNoesisApp.so
+	@echo [LD] $(notdir $@)
+	$(Q)g++ $(LFLAGS_DEBUG) -m32 -pie -Wl,-rpath,\$$ORIGIN -Wl,-rpath,$(PREFIX)/../../Bin/linux_x86 -L$(PREFIX)/../../Bin/linux_x86  -o $(BINDIR)/Samples.IntegrationGLUT $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/Main.o -lNoesisApp -lGL -lNoesis -lglut
+	@echo [STRIP] $(notdir $@)
+	$(Q)objcopy --only-keep-debug $(BINDIR)/Samples.IntegrationGLUT $(BINDIR)/Samples.IntegrationGLUT.debug 
+	$(Q)strip --strip-unneeded $(BINDIR)/Samples.IntegrationGLUT
+	$(Q)objcopy --add-gnu-debuglink=$(BINDIR)/Samples.IntegrationGLUT.debug $(BINDIR)/Samples.IntegrationGLUT
+
+DEBUG_CLEAN_SAMPLES_INTEGRATIONGLUT:
+	@rm -f $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/Main.o $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/Reflections.xaml.bin.h $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/pch.h.gch
+	@rm -f $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/pch.h.d $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/Main.d
+	@rm -f $(BINDIR)/Samples.IntegrationGLUT
+	@rm -f $(BINDIR)/Samples.IntegrationGLUT.debug
+
+DEBUG_COMPILE_TARGETS += $(BINDIR)/Samples.IntegrationGLUT
+DEBUG_ADDITIONAL_DEPS += $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/pch.h.d $(PREFIX)/Samples/IntegrationGLUT/Projects/linux_x86/_build/Debug/Main.d
+DEBUG_CLEAN_TARGETS += DEBUG_CLEAN_SAMPLES_INTEGRATIONGLUT
+
+
