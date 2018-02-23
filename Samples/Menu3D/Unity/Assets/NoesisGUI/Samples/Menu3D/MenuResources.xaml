@@ -3,19 +3,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Menu3D">
     <Color x:Key="TransparentWhiteColor5">#0CFFFFFF</Color>
-    <Color x:Key="TransparentWhiteColor30">#4CFFFFFF</Color>
-    <Color x:Key="TransparentWhiteColor50">#7FFFFFFF</Color>
-    <Color x:Key="TransparentWhiteColor70">#B3FFFFFF</Color>
-    <Color x:Key="TransparentOrangeColor4">#08FFC100</Color>
-    <Color x:Key="TransparentOrangeColor15">#26FFC400</Color>
-    <Color x:Key="TransparentOrangeColor70">#B2FFC400</Color>
-    <Color x:Key="GlowOrangeColor0">#00FFD500</Color>
-    <Color x:Key="GlowOrangeColor30">#4CFFD500</Color>
-    <Color x:Key="SolidOrangeColor">#FFFF9900</Color>
-    <SolidColorBrush x:Key="TransparentWhiteBrush30" Color="{StaticResource TransparentWhiteColor30}"/>
-    <SolidColorBrush x:Key="TransparentWhiteBrush50" Color="{StaticResource TransparentWhiteColor50}"/>
-    <SolidColorBrush x:Key="TransparentWhiteBrush70" Color="{StaticResource TransparentWhiteColor70}"/>
-    <SolidColorBrush x:Key="NoesisLogoMagentaBg" Color="#E5EA2E72"/>
+    <Color x:Key="TransparentWhiteColor30">#7FFFFFFF</Color>
+    <Color x:Key="TransparentWhiteColor75">#BFFFFFFF</Color>
+    <Color x:Key="TransparentWhiteColor95">#F2FFFFFF</Color>
+    <Color x:Key="TransparentOrangeColor4">#0A00E1FF</Color>
+    <Color x:Key="TransparentOrangeColor15">#2600E6FF</Color>
+    <Color x:Key="TransparentOrangeColor70">#B200E6FF</Color>
+    <Color x:Key="GlowOrangeColor0">#0000F7FF</Color>
+    <Color x:Key="GlowOrangeColor30">#4C00F7FF</Color>
+    <Color x:Key="SolidOrangeColor">#FF00BBFF</Color>
+    <Color x:Key="BadgeDarkColor90">#E5132A39</Color>
+    <Color x:Key="BadgeDarkColor80">#CC4D6B80</Color>
+    <SolidColorBrush x:Key="TransparentWhiteBrush50" Color="{StaticResource TransparentWhiteColor30}"/>
+    <SolidColorBrush x:Key="TransparentWhiteBrush75" Color="{StaticResource TransparentWhiteColor75}"/>
+    <SolidColorBrush x:Key="TransparentWhiteBrush95" Color="{StaticResource TransparentWhiteColor95}"/>
+    <SolidColorBrush x:Key="NoesisLogoBlue" Color="#FF2AA6E2"/>
     <LinearGradientBrush x:Key="HorizontalLineBg" EndPoint="1,0" StartPoint="0,0">
         <GradientStop Color="{StaticResource TransparentWhiteColor5}" Offset="0"/>
         <GradientStop Color="{StaticResource TransparentWhiteColor30}" Offset="0.01"/>
@@ -149,7 +151,7 @@
                                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
                             </DoubleAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ContentHost">
-                                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="{StaticResource TransparentWhiteColor70}"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="{StaticResource TransparentWhiteColor95}"/>
                             </ColorAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Group">
                                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.025"/>
@@ -193,7 +195,7 @@
             </ContentPresenter>
             <Path x:Name="CircledArrow" Data="{StaticResource CircledArrowGeometry}" Stretch="Fill" Width="24" Height="24" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Margin="8,0" Visibility="Visible">
                 <Path.Fill>
-                    <SolidColorBrush Color="{StaticResource TransparentWhiteColor70}" Opacity="0"/>
+                    <SolidColorBrush Color="{StaticResource TransparentWhiteColor95}" Opacity="0"/>
                 </Path.Fill>
             </Path>
         </Grid>
@@ -238,7 +240,7 @@
         </ControlTemplate.Resources>
         <ContentPresenter x:Name="ContentHost">
             <TextElement.Foreground>
-                <SolidColorBrush Color="{StaticResource TransparentWhiteColor70}" Opacity="0"/>
+                <SolidColorBrush Color="{StaticResource TransparentWhiteColor95}" Opacity="0"/>
             </TextElement.Foreground>
         </ContentPresenter>
         <ControlTemplate.Triggers>
@@ -343,7 +345,7 @@
             </VisualStateManager.VisualStateGroups>
             <Border x:Name="Bd" BorderThickness="2" Padding="4,5,4,7" Width="36" Height="36" Background="Transparent">
                 <Border.BorderBrush>
-                    <SolidColorBrush Color="{StaticResource TransparentWhiteColor70}"/>
+                    <SolidColorBrush Color="{StaticResource TransparentWhiteColor95}"/>
                 </Border.BorderBrush>
                 <Path x:Name="CheckMark" Data="M0,12 L10,24 24,0" StrokeThickness="5" Stretch="Fill">
                     <Path.Stroke>

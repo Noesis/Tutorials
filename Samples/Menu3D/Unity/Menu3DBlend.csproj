@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="..\..\NoesisGUIExtensions\NoesisGUIExtensions.cs">
+      <Link>NoesisGUIExtensions.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -78,7 +81,6 @@
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NoesisGUIExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -109,11 +111,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\BigPlanet.png" />
-    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\CloseUpPlanet.png" />
-    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\SpaceBg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Assets\NoesisGUI\Samples\Menu3D\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -139,7 +136,13 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\BackClouds.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\FrontClouds.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\FrontTrees.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\LakeAndMountains.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\SkyAndSun.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

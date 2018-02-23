@@ -13,7 +13,7 @@ using System.Windows.Media.Animation;
 
 namespace NoesisGUIExtensions
 {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>
     /// Adds stroke capabilities to text elements.
     ///
     /// Usage:
@@ -25,7 +25,7 @@ namespace NoesisGUIExtensions
     ///         <TextBlock noesis:Text.Stroke="Red" noesis:Text.StrokeThickness="1" Text="Hello"/>
     ///     </Grid>
     ///
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
     public class Text
     {
         public Text()
@@ -75,17 +75,17 @@ namespace NoesisGUIExtensions
         #endregion
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>
     /// Provides a base class for projections, which describe how to transform an object
     /// in 3-D space using perspective transforms.
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
     public abstract class Projection : Animatable
     {
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>
     /// Represents a perspective transform (a 3-D-like effect) on an object.
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
     public class PlaneProjection : Projection
     {
         /// <summary>
@@ -290,9 +290,9 @@ namespace NoesisGUIExtensions
         #endregion
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>
     /// Extends UI elements with properties not supported by WPF but included in Noesis
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
     public static class Element
     {
         /// <summary>
@@ -392,6 +392,9 @@ namespace NoesisGUIExtensions
         #endregion
     }
 
+    /// <summary>
+    /// Allows executing a Command in response to an event raised by the target object
+    /// </summary>
     class EventToCommand
     {
         /// <summary>
