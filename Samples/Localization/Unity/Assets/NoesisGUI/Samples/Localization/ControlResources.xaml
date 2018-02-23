@@ -5,13 +5,13 @@
 
     <SolidColorBrush x:Key="TextForegroundBrush" Color="#FF482E19"/>
     <LinearGradientBrush x:Key="IndentBackground" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Offset="0" Color="#59000000"/>
+        <GradientStop Offset="0" Color="#5956AFE2"/>
         <GradientStop Offset="0.1" Color="#33000000"/>
-        <GradientStop Offset="1" Color="#0C000000"/>
+        <GradientStop Offset="1" Color="#0C68B7EE"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="IndentBorder" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#7F000000" Offset="0"/>
-        <GradientStop Color="#26000000" Offset="1"/>
+        <GradientStop Color="#19000000" Offset="0"/>
+        <GradientStop Color="#0C000000" Offset="1"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="LabelBackgroundBrush" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="White" Offset="0"/>
@@ -132,9 +132,7 @@
     <Style x:Key="SliderStyle" TargetType="{x:Type Slider}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="IsMoveToPointEnabled" Value="True"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Margin" Value="8,1"/>
-        <Setter Property="Width" Value="150"/>
+        <Setter Property="Margin" Value="0,0,8,2"/>
         <Setter Property="MinHeight" Value="0"/>
         <Setter Property="Minimum" Value="0"/>
         <Setter Property="Maximum" Value="100"/>
