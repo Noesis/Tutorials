@@ -163,6 +163,7 @@
                     </Viewbox>
                     <TextBlock Text="MENU DEMO" FontSize="50" HorizontalAlignment="Right" Margin="0,-19,-2,0" Foreground="{StaticResource TransparentWhiteBrush95}"/>
                 </StackPanel>
+                <Border Grid.Row="1" Margin="-20,0" Background="{StaticResource OptionsBg}"  OpacityMask="{StaticResource OptionsMask}"/>
                 <StackPanel x:Name="MenuOptions" Grid.Row="1" Margin="0,30,0,0" RenderTransformOrigin="0.5,0.5"
                     KeyboardNavigation.TabNavigation="Cycle"
                     KeyboardNavigation.ControlTabNavigation="Cycle"

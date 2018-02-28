@@ -75,7 +75,9 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NoesisGUIExtensions.cs" />
+    <Compile Include="..\..\..\..\Extra\BlendExtensions\NoesisGUIExtensions.cs">
+      <Link>NoesisGUIExtensions.cs</Link>
+    </Compile>
     <Compile Include="OptionSelector.xaml.cs">
       <DependentUpon>OptionSelector.xaml</DependentUpon>
     </Compile>
