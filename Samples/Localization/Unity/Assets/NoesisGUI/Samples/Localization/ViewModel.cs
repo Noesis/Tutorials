@@ -31,9 +31,16 @@ namespace Localization
 
                 new Language
                 {
-                    Name = "French",
+                    Name = "Français",
                     Resources = (ResourceDictionary)GUI.LoadXaml(
                         "Assets/NoesisGUI/Samples/Localization/Language-fr.xaml")
+                },
+
+                new Language
+                {
+                    Name = "日本語",
+                    Resources = (ResourceDictionary)GUI.LoadXaml(
+                        "Assets/NoesisGUI/Samples/Localization/Language-jp.xaml")
                 }
             };
 

@@ -63,16 +63,6 @@ namespace Localization.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Aero_Matics_Regular {
-            get {
-                object obj = ResourceManager.GetObject("Aero_Matics_Regular", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] App {
             get {
                 object obj = ResourceManager.GetObject("App", resourceCulture);
@@ -113,6 +103,16 @@ namespace Localization.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Flag_jp {
+            get {
+                object obj = ResourceManager.GetObject("Flag_jp", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Language_en {
             get {
                 object obj = ResourceManager.GetObject("Language_en", resourceCulture);
@@ -133,6 +133,16 @@ namespace Localization.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Language_jp {
+            get {
+                object obj = ResourceManager.GetObject("Language_jp", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] LogoResources {
             get {
                 object obj = ResourceManager.GetObject("LogoResources", resourceCulture);
@@ -146,6 +156,16 @@ namespace Localization.Properties {
         internal static byte[] MainWindow {
             get {
                 object obj = ResourceManager.GetObject("MainWindow", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] rounded_mgenplus_1c_regular {
+            get {
+                object obj = ResourceManager.GetObject("rounded_mgenplus_1c_regular", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -69,14 +69,12 @@
   <ItemGroup>
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="ElementExtensions.cs" />
+    <Compile Include="NoesisGUIExtensions.cs" />
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\..\..\..\Extra\BlendExtensions\NoesisGUIExtensions.cs">
-      <Link>NoesisGUIExtensions.cs</Link>
     </Compile>
     <Compile Include="OptionSelector.xaml.cs">
       <DependentUpon>OptionSelector.xaml</DependentUpon>

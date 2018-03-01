@@ -67,6 +67,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Language-jp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="LogoResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,12 +109,12 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Aero Matics Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="rounded-mgenplus-1c-regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -118,6 +122,9 @@
   <ItemGroup>
     <Resource Include="Flag-en.png" />
     <Resource Include="Flag-fr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Flag-jp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

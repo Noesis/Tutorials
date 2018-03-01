@@ -7,8 +7,8 @@
 
     <sys:String x:Key="SoundLabel">Son</sys:String>
     <sys:String x:Key="MusicLabel">Musique</sys:String>
-    <sys:String x:Key="TitleLabel">TUTORIEL DE LOCALISATION</sys:String>
+    <sys:String x:Key="TitleLabel">EXAMPLE DE LOCALISATION</sys:String>
     <sys:String x:Key="SubTitleLabel">La localisation Français</sys:String>
-    <sys:String x:Key="DescLabel">Cet exemple montre comment implémenter la localisation en utilisant NoesisGUI. Pour localiser un widget, nous allons utiliser la liaison de données. Nous allons lier le contenu du widget avec l'entrée correspondante dans le dictionnaire localisée. Ensuite, nous venons de établir la propriétè DataContext à la racine de Noesis View pour résoudre les liaisons et l'exemple est prêt. Pardon pour la traduction automatique :)</sys:String>
+    <sys:String x:Key="DescLabel">Il existe plusieurs façons d'implémenter la localisation dans NoesisGUI. Dans cet exemple, nous utilisons DataBinding. Chaque langue est stockée dans un ResourceDictionary contenant des textes localisés pour chaque entrée. La langue souhaitée est sélectionnée dans la racine DataContext. Chaque fois que la langue est modifiée, le texte affiché est mis à jour en conséquence.</sys:String>
 
 </ResourceDictionary>

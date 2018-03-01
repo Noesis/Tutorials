@@ -22,7 +22,8 @@ namespace Localization
                 new EmbeddedXaml { filename = "ControlResources.xaml", resource = "ControlResources" },
                 new EmbeddedXaml { filename = "LogoResources.xaml", resource = "LogoResources" },
                 new EmbeddedXaml { filename = "Language-en.xaml", resource = "Language_en" },
-                new EmbeddedXaml { filename = "Language-fr.xaml", resource = "Language_fr" }
+                new EmbeddedXaml { filename = "Language-fr.xaml", resource = "Language_fr" },
+                new EmbeddedXaml { filename = "Language-jp.xaml", resource = "Language_jp" }
             };
             return new EmbeddedXamlProvider(xamls, Properties.Resources.ResourceManager);
         }
@@ -32,7 +33,8 @@ namespace Localization
             EmbeddedTexture[] textures =
             {
                 new EmbeddedTexture { filename = "Flag-en.png", resource = "Flag_en" },
-                new EmbeddedTexture { filename = "Flag-fr.png", resource = "Flag_fr" }
+                new EmbeddedTexture { filename = "Flag-fr.png", resource = "Flag_fr" },
+                new EmbeddedTexture { filename = "Flag-jp.png", resource = "Flag_jp" }
             };
             return new EmbeddedTextureProvider(textures, Properties.Resources.ResourceManager);
         }
@@ -41,7 +43,7 @@ namespace Localization
         {
             EmbeddedFont[] fonts =
             {
-                new EmbeddedFont { folder = "", resource = "Aero_Matics_Regular" }
+                new EmbeddedFont { folder = "", resource = "rounded_mgenplus_1c_regular" }
             };
             return new EmbeddedFontProvider(fonts, Properties.Resources.ResourceManager);
         }

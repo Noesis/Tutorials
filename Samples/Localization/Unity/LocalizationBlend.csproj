@@ -58,6 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Assets\NoesisGUI\Samples\Localization\Language-jp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Assets\NoesisGUI\Samples\Localization\Language-en.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,7 +107,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\NoesisGUI\Samples\Localization\Aero Matics Regular.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\Localization\rounded-mgenplus-1c-regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,6 +120,9 @@
   <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\Localization\Flag-en.png" />
     <Resource Include="Assets\NoesisGUI\Samples\Localization\Flag-fr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\NoesisGUI\Samples\Localization\Flag-jp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

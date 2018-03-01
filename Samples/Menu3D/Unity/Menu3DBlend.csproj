@@ -54,15 +54,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="..\..\..\Extra\BlendExtensions\NoesisGUIExtensions.cs">
-      <Link>NoesisGUIExtensions.cs</Link>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NoesisGUIExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\DelegateCommand.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\ElementExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\MainMenu.xaml.cs">

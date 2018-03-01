@@ -29,8 +29,14 @@ namespace Localization
 
                 new Language
                 {
-                    Name = "French",
+                    Name = "Français",
                     Resources = (ResourceDictionary)GUI.LoadXaml("Language-fr.xaml")
+                },
+
+                new Language
+                {
+                    Name = "日本語",
+                    Resources = (ResourceDictionary)GUI.LoadXaml("Language-jp.xaml")
                 }
             };
 

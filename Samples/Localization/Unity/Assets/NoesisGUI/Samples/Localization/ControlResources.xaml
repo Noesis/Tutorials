@@ -6,8 +6,8 @@
     <SolidColorBrush x:Key="TextForegroundBrush" Color="#FF482E19"/>
     <LinearGradientBrush x:Key="IndentBackground" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Offset="0" Color="#5956AFE2"/>
-        <GradientStop Offset="0.1" Color="#33000000"/>
-        <GradientStop Offset="1" Color="#0C68B7EE"/>
+        <GradientStop Offset="0.95" Color="#33000000"/>
+        <GradientStop Offset="0.85" Color="#0C68B7EE"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="IndentBorder" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="#19000000" Offset="0"/>
@@ -42,8 +42,8 @@
 
     <ControlTemplate x:Key="LabelTemplate" TargetType="{x:Type Label}">
         <Grid>
-            <TextBlock Text="{TemplateBinding Content}" Margin="1,1,-1,-1" Foreground="#30000000" TextWrapping="Wrap" TextAlignment="Justify"/>
-            <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap" TextAlignment="Justify"/>
+            <TextBlock Text="{TemplateBinding Content}" Margin="1,1,-1,-1" Foreground="#30000000" TextWrapping="Wrap"/>
+            <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap"/>
         </Grid>
     </ControlTemplate>
     <Style TargetType="{x:Type Label}">
@@ -189,7 +189,7 @@
                         </Border.Background>
                     </Border>
                     <ContentPresenter x:Name="ContentSite"
-                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,2"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"
                             ContentSource="SelectionBoxItem"/>
                     <ToggleButton x:Name="DropDownButton"
                             IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
@@ -220,7 +220,8 @@
     </ControlTemplate>
     <Style TargetType="{x:Type ComboBox}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Padding" Value="0,2"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
         <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
     </Style>

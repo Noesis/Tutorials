@@ -19,6 +19,7 @@ namespace Localization
             this.Initialized += OnInitialized;
             this.InitializeComponent();
         }
+
 #if NOESIS
         void InitializeComponent()
         {
