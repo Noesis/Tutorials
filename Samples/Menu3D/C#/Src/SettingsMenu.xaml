@@ -1,0 +1,330 @@
+﻿<UserControl x:Class="Menu3D.SettingsMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    xmlns:local="clr-namespace:Menu3D"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions"
+    x:Name="SettingsMenuControl"
+    d:DesignWidth="1300" d:DesignHeight="900"
+    FontFamily="Fonts/#WeblySleek UI Semilight">
+    <UserControl.InputBindings>
+        <KeyBinding Gesture="Esc" Command="{Binding Back}"/>
+    </UserControl.InputBindings>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Storyboard x:Key="FadeIn">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
+                    <DiscreteBooleanKeyFrame KeyTime="0:0:0.2" Value="True"/>
+                </BooleanAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1.15"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseOut" Amplitude="0.15"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1.15"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseOut" Amplitude="0.15"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="800"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseOut" Amplitude="0.15"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="-50"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseOut" Amplitude="0.15"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.Opacity)">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseOut" Amplitude="0.15"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="FadeOut">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.6" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
+                    <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
+                </BooleanAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.Opacity)">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseIn" Amplitude="0.15"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.05">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <SineEase EasingMode="EaseOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.15">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseIn" Amplitude="0.15"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.15">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseIn" Amplitude="0.15"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="450">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseIn" Amplitude="0.15"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="800">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <SineEase EasingMode="EaseOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(ContentControl.Content).(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-50">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <SineEase EasingMode="EaseIn"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="IsEnabled" Value="False"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding State}" Value="Settings">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard Storyboard="{StaticResource FadeIn}"/>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource FadeOut}"/>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+
+    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5"
+          noesis:EventToCommand.Event="IsEnabledChanged"
+          noesis:EventToCommand.Command="{Binding FadeInCompleted}"
+          noesis:EventToCommand.CommandParameter="{Binding ElementName=TexDetailContent}">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Viewbox>
+            <Grid Width="1300" Height="900">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel x:Name="MenuTitle" Orientation="Vertical" HorizontalAlignment="Left">
+                    <Viewbox x:Name="Logo" Stretch="Uniform" Height="100" Margin="0,-9,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoBlue}" Stretch="Uniform"/>
+                            <Path Data="{StaticResource NoesisTextGeometry}" Fill="White" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                            <Path Data="{StaticResource NoesisGuiTextGeometry}" Fill="{StaticResource NoesisLogoBlue}" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Viewbox>
+                    <TextBlock Text="MENU DEMO" FontSize="50" HorizontalAlignment="Right" Margin="0,-19,-2,0" Foreground="{StaticResource TransparentWhiteBrush95}"/>
+                </StackPanel>
+                <Border Grid.Row="1" Margin="-20,0" Background="{StaticResource OptionsBg}"  OpacityMask="{StaticResource OptionsMask}"/>
+                <StackPanel x:Name="MenuOptions" Grid.Row="1" Margin="0,30,0,0" RenderTransformOrigin="0.5,0.5"
+                    KeyboardNavigation.TabNavigation="Cycle"
+                    KeyboardNavigation.ControlTabNavigation="Cycle"
+                    KeyboardNavigation.DirectionalNavigation="Cycle">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding State}" Value="Settings">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+                    <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
+                    <HeaderedContentControl x:Name="TexDetail" Header="Texture Detail" Style="{StaticResource SettingContentStyle}">
+                        <local:OptionSelector x:Name="TexDetailContent" SelectedIndex="1" Style="{StaticResource OptionSelectorStyle}">
+                            <local:OptionSelector.Options>
+                                <TextBlock Text="Low"/>
+                                <TextBlock Text="Medium"/>
+                                <TextBlock Text="High"/>
+                            </local:OptionSelector.Options>
+                        </local:OptionSelector>
+                    </HeaderedContentControl>
+                    <HeaderedContentControl x:Name="AAlias" Header="Anti-Aliasing" Style="{StaticResource SettingContentStyle}">
+                        <CheckBox VerticalAlignment="Center" Style="{StaticResource CheckBoxStyle}"/>
+                    </HeaderedContentControl>
+                    <HeaderedContentControl x:Name="SoundVol" Header="Sound Volume" Style="{StaticResource SettingContentStyle}">
+                        <local:OptionSelector SelectedIndex="5" Style="{StaticResource OptionSelectorStyle}">
+                            <local:OptionSelector.Options>
+                                <TextBlock Text="0"/>
+                                <TextBlock Text="1"/>
+                                <TextBlock Text="2"/>
+                                <TextBlock Text="3"/>
+                                <TextBlock Text="4"/>
+                                <TextBlock Text="5"/>
+                                <TextBlock Text="6"/>
+                                <TextBlock Text="7"/>
+                                <TextBlock Text="8"/>
+                                <TextBlock Text="9"/>
+                            </local:OptionSelector.Options>
+                        </local:OptionSelector>
+                    </HeaderedContentControl>
+                    <HeaderedContentControl x:Name="VideoRes" Header="Video Resolution" Style="{StaticResource SettingContentStyle}">
+                        <local:OptionSelector SelectedIndex="2" Style="{StaticResource OptionSelectorStyle}">
+                            <local:OptionSelector.Options>
+                                <TextBlock Text="800x600"/>
+                                <TextBlock Text="1024x768"/>
+                                <TextBlock Text="1280x720"/>
+                                <TextBlock Text="1280x768"/>
+                                <TextBlock Text="1600x1200"/>
+                                <TextBlock Text="1920x1080"/>
+                            </local:OptionSelector.Options>
+                        </local:OptionSelector>
+                    </HeaderedContentControl>
+                    <HeaderedContentControl x:Name="Gamma" Header="Gamma Correction" Style="{StaticResource SettingContentStyle}">
+                        <local:OptionSelector SelectedIndex="5" Style="{StaticResource OptionSelectorStyle}">
+                            <local:OptionSelector.Options>
+                                <TextBlock Text="0"/>
+                                <TextBlock Text="1"/>
+                                <TextBlock Text="2"/>
+                                <TextBlock Text="3"/>
+                                <TextBlock Text="4"/>
+                                <TextBlock Text="5"/>
+                                <TextBlock Text="6"/>
+                                <TextBlock Text="7"/>
+                                <TextBlock Text="8"/>
+                                <TextBlock Text="9"/>
+                            </local:OptionSelector.Options>
+                        </local:OptionSelector>
+                    </HeaderedContentControl>
+                    <HeaderedContentControl x:Name="Subtitles" Header="Subtitles" Style="{StaticResource SettingContentStyle}">
+                        <CheckBox VerticalAlignment="Center" Style="{StaticResource CheckBoxStyle}"/>
+                    </HeaderedContentControl>
+                    <Rectangle Height="2" Margin="0,70,0,2" Fill="{StaticResource HorizontalLineBg}"/>
+                    <ToggleButton x:Name="Back" Style="{StaticResource MenuButtonStyle}" Content="BACK" Margin="2,0,26,2" Command="{Binding Back}"/>
+                    <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
+                    <Grid Margin="18,4,0,0">
+                        <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Adjust the texture detail for the application." IsEnabled="{Binding IsKeyboardFocusWithin, ElementName=TexDetail}"/>
+                        <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Toggles the anti-aliasing." IsEnabled="{Binding IsKeyboardFocusWithin, ElementName=AAlias}"/>
+                        <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Changes the volume level for the application." IsEnabled="{Binding IsKeyboardFocusWithin, ElementName=SoundVol}"/>
+                        <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Changes the application's resolution." IsEnabled="{Binding IsKeyboardFocusWithin, ElementName=VideoRes}"/>
+                        <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Adjust the gamma correction for the application." IsEnabled="{Binding IsKeyboardFocusWithin, ElementName=Gamma}"/>
+                        <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Toggles English subtitles." IsEnabled="{Binding IsKeyboardFocusWithin, ElementName=Subtitles}"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel x:Name="MenuDec" Orientation="Vertical" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding State}" Value="Settings">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="300"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+                    <TextBlock Text="SETTINGS" FontSize="64" Foreground="{StaticResource TransparentWhiteBrush50}" FontFamily="Fonts/#WeblySleek UI Semibold"/>
+                    <Rectangle Height="12" Margin="0,8,0,0" Fill="{StaticResource DiagonalLinesBg}"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="{StaticResource TransparentWhiteBrush75}" Padding="8,2" VerticalAlignment="Center">
+                            <TextBlock Text="ENTER" Foreground="{StaticResource TransparentWhiteBrush75}" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold"/>
+                        </Border>
+                        <TextBlock Text="ACCEPT" Foreground="{StaticResource TransparentWhiteBrush75}" VerticalAlignment="Center" Margin="10,-10,0,-7" FontSize="30"/>
+                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="{StaticResource TransparentWhiteBrush75}" Padding="8,2" VerticalAlignment="Center" Margin="50,0,0,0">
+                            <TextBlock Text="ESC" Foreground="{StaticResource TransparentWhiteBrush75}" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold"/>
+                        </Border>
+                        <TextBlock Text="BACK" Foreground="{StaticResource TransparentWhiteBrush75}" VerticalAlignment="Center" Margin="10,-10,0,-7" FontSize="30"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>
