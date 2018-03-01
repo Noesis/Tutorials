@@ -141,11 +141,7 @@ namespace ControlGallery
 #endif
         }
 
-#if NOESIS
-        void OnShowSampleCompleted(object sender, TimelineEventArgs e)
-#else
         void OnShowSampleCompleted(object sender, EventArgs e)
-#endif
         {
             if (_sampleContainer1.Visibility == Visibility.Visible)
             {
