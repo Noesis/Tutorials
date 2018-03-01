@@ -30,7 +30,7 @@ This is a demo that shows how you can use `UserControl`s to implement a multi-pa
 
 * `Blueprint'/Game/Menu3DViewModel.Menu3DViewModel'`: It's an `Object` that is used as the `DataContext` for `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`. It exposes the variable `State` that is used as a property for `Binding`, as well as the `Command`s `FadeInCompleted`, `Start`, `Settings`, `Back`, `Exit`, `StartCasual`, `StartNormal` and `StartVeteran` that are also used in `Binding`s. `FadeInCompleted` receives a parameter that is a `UIElement` to focus on. Even though in the `Blueprint` itself we cannot do anything with it, we can pass it as a parameter to the native function `SetFocus` defined in `Menu3DFunctionLibrary` that can retrieve the NoesisGUI component from the `Object`pointer. 
 
-![Blueprint'/Game/Menu3DViewModel.Menu3DViewModel'](https://noesis.github.io/NoesisGUI/Samples/Menu3D/UE4/ViewModel.PNG)
+![Blueprint'/Game/Menu3DViewModel.Menu3DViewModel'](https://noesis.github.io/NoesisGUI/Samples/Menu3D/UE4/Menu3DViewModel.PNG)
 
 * `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`: It's a `NoesisView` for `NoesisXaml'/Game/MainWindow.MainWindow'` ([MainWindow.xaml](Content/MainWindow.xaml)). It also creates an object with the `Class` `Blueprint'/Game/Menu3DViewModel.Menu3DViewModel'` and sets it as its `DataContext`.
 
