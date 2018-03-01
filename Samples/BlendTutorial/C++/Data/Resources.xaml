@@ -1,0 +1,349 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" mc:Ignorable="d">
+    <SolidColorBrush x:Key="BlendTutorialForeground" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="BlendTutorialBackgroundBrush" Color="#FFA0A0A0"/>
+    <SolidColorBrush x:Key="BlendTutorialBackgroundOverBrush" Color="#50000000"/>
+    <SolidColorBrush x:Key="BlendTutorialFormBackgroundBrush" Color="#FFB8B8B8"/>
+    <SolidColorBrush x:Key="BlendTutorialTextBoxBackgroundBrush" Color="#FF696969"/>
+    <SolidColorBrush x:Key="BlendTutorialBorderBrush" Color="#FF696969"/>
+    <SolidColorBrush x:Key="BlendTutorialBorderOverBrush" Color="#FF494949"/>
+    <SolidColorBrush x:Key="BlendTutorialBorderPressBrush" Color="#FF292929"/>
+    <SolidColorBrush x:Key="BlendTutorialFocusedBrush" Color="#E4FFF04B"/>
+    <ControlTemplate x:Key="BlendTutorialButtonTemplate" TargetType="{x:Type Button}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="OverOn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgOver">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="OverOff">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgOver">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="PressOn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgPress">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="PressOff">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgPress">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="FocusedOn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgFocused">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.0" Value="0.5"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="FocusedOff">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgFocused">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid>
+            <Border x:Name="Bg" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="1" CornerRadius="2" Background="{TemplateBinding Background}"/>
+            <Border x:Name="BgOver" BorderBrush="{StaticResource BlendTutorialBorderOverBrush}" Background="{StaticResource BlendTutorialBackgroundOverBrush}" BorderThickness="1" Margin="1" CornerRadius="2" Opacity="0"/>
+            <Border x:Name="BgPress" BorderBrush="{StaticResource BlendTutorialBorderPressBrush}" BorderThickness="1" Margin="1" Opacity="0" CornerRadius="2" Background="{StaticResource BlendTutorialBackgroundOverBrush}"/>
+            <Border x:Name="BgFocused" BorderThickness="1" Margin="0" Opacity="0" CornerRadius="2" BorderBrush="{StaticResource BlendTutorialFocusedBrush}"/>
+            <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource FocusedOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource FocusedOn}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource PressOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource PressOn}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource OverOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource OverOn}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template" Value="{StaticResource BlendTutorialButtonTemplate}"/>
+        <Setter Property="Foreground" Value="{StaticResource BlendTutorialForeground}"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="Background" Value="{StaticResource BlendTutorialBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BlendTutorialBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    <ControlTemplate x:Key="BlendTutorialExpanderButtonTemplate" TargetType="{x:Type ToggleButton}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="OverOn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgOver">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="OverOff">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgOver">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid UseLayoutRounding="True">
+            <Border x:Name="Bg" Background="{StaticResource BlendTutorialBackgroundBrush}" BorderBrush="{StaticResource BlendTutorialBorderBrush}" BorderThickness="1" CornerRadius="2"/>
+            <Border x:Name="BgOver" Background="{StaticResource BlendTutorialBackgroundOverBrush}" BorderBrush="{StaticResource BlendTutorialBorderOverBrush}" BorderThickness="1" CornerRadius="2" Opacity="0"/>
+            <Path x:Name="Path" Data="M0,0L5,4 0,8" Height="8" Fill="{StaticResource BlendTutorialForeground}" Stretch="None" StrokeThickness="0" Margin="8,5,2,5" VerticalAlignment="Center"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="Bg" Property="CornerRadius" Value="2,2,0,0"/>
+                <Setter TargetName="BgOver" Property="CornerRadius" Value="2,2,0,0"/>
+                <Setter TargetName="Path" Property="Data" Value="M0,0L8,0 4,5"/>
+                <Setter TargetName="Path" Property="Margin" Value="5,8,5,2"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource OverOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource OverOn}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter TargetName="Path" Property="Fill" Value="{StaticResource BlendTutorialFocusedBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="BlendTutorialExpanderButtonStyle" TargetType="ToggleButton">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template" Value="{StaticResource BlendTutorialExpanderButtonTemplate}"/>
+    </Style>
+    <ControlTemplate x:Key="BlendTutorialExpanderTemplate" TargetType="{x:Type Expander}">
+        <Grid UseLayoutRounding="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Border x:Name="ContentBorder" BorderBrush="{StaticResource BlendTutorialBorderBrush}" BorderThickness="1" Margin="0,-1,0,0" Grid.RowSpan="2" Grid.Row="1" CornerRadius="0,0,2,2" Background="{StaticResource BlendTutorialFormBackgroundBrush}" Padding="1" Visibility="Collapsed">
+                <ContentPresenter UseLayoutRounding="{TemplateBinding UseLayoutRounding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}"/>
+            </Border>
+            <Grid>
+                <ToggleButton Style="{StaticResource BlendTutorialExpanderButtonStyle}" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <ContentPresenter ContentSource="Header" VerticalAlignment="Center" UseLayoutRounding="{TemplateBinding UseLayoutRounding}" Margin="18,0,8,0" IsHitTestVisible="False"/>
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsExpanded" Value="True">
+                <Setter TargetName="ContentBorder" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type Expander}">
+        <Setter Property="Template" Value="{StaticResource BlendTutorialExpanderTemplate}"/>
+        <Setter Property="Foreground" Value="{StaticResource BlendTutorialForeground}"/>
+        <Setter Property="Background" Value="{StaticResource BlendTutorialBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BlendTutorialBorderBrush}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+    </Style>
+    <ControlTemplate x:Key="BlendTutorialRadioButtonTemplate" TargetType="{x:Type RadioButton}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="CheckedOn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CheckMark">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CheckMarkBorder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.25"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="CheckedOff">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CheckMark">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CheckMarkBorder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="OverOn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgOver">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="OverOff">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgOver">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="PressedOn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CheckMarkPressed">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="PressedOff">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CheckMarkPressed">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="FocusedOn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgFocused">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.0" Value="0.5"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="FocusedOff">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgFocused">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <BulletDecorator Background="Transparent">
+            <BulletDecorator.Bullet>
+                <Grid Width="14" Height="14">
+                    <Ellipse x:Name="Bg" Margin="1" StrokeThickness="1" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}"/>
+                    <Ellipse x:Name="BgOver" Margin="1" StrokeThickness="1" Stroke="{StaticResource BlendTutorialBorderOverBrush}" Opacity="0"/>
+                    <Ellipse x:Name="CheckMark" Margin="4" Fill="{StaticResource BlendTutorialFocusedBrush}" Opacity="0" Stroke="#E4A59701"/>
+                    <Ellipse x:Name="CheckMarkBorder" Margin="4" Opacity="0" Stroke="{StaticResource BlendTutorialBorderBrush}"/>
+                    <Ellipse x:Name="CheckMarkPressed" Margin="4" Opacity="0" Fill="{StaticResource BlendTutorialBackgroundOverBrush}"/>
+                    <Ellipse x:Name="BgFocused" StrokeThickness="1" Stroke="{StaticResource BlendTutorialFocusedBrush}" Opacity="0"/>
+                </Grid>
+            </BulletDecorator.Bullet>
+            <ContentPresenter HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center"/>
+        </BulletDecorator>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource FocusedOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource FocusedOn}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource PressedOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource PressedOn}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource OverOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource OverOn}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource CheckedOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource CheckedOn}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type RadioButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template" Value="{StaticResource BlendTutorialRadioButtonTemplate}"/>
+        <Setter Property="Foreground" Value="{StaticResource BlendTutorialForeground}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BlendTutorialBorderBrush}"/>
+        <Setter Property="Background" Value="{StaticResource BlendTutorialBackgroundBrush}"/>
+    </Style>
+    <ControlTemplate x:Key="BlendTutorialSliderThumbTemplate" TargetType="{x:Type Thumb}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="OverOn">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgOver">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="OverOff">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgOver">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid Width="8">
+            <Border x:Name="Bg" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" BorderThickness="1"/>
+            <Border x:Name="BgOver" BorderBrush="{StaticResource BlendTutorialBorderOverBrush}" Background="{StaticResource BlendTutorialBackgroundOverBrush}" CornerRadius="2" BorderThickness="1" Opacity="0"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource OverOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource OverOn}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="BlendTutorialSliderThumbStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="Template" Value="{StaticResource BlendTutorialSliderThumbTemplate}"/>
+        <Setter Property="Background" Value="{StaticResource BlendTutorialBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BlendTutorialBorderBrush}"/>
+    </Style>
+    <ControlTemplate x:Key="BlendTutorialSliderTemplate" TargetType="{x:Type Slider}">
+        <Border CornerRadius="2" BorderThickness="1" BorderBrush="{StaticResource BlendTutorialBorderBrush}" Background="{StaticResource BlendTutorialTextBoxBackgroundBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border x:Name="BgFocused" Grid.ColumnSpan="2" BorderBrush="{StaticResource BlendTutorialFocusedBrush}" BorderThickness="1" CornerRadius="3" Margin="-2" Opacity="0"/>
+                <Border Grid.Column="0" CornerRadius="2,0,0,2" Background="{StaticResource BlendTutorialBackgroundOverBrush}" Padding="2">
+                    <TextBlock Text="{Binding Value, ElementName=PART_Track, StringFormat=F0}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Border>
+                <Border Grid.Column="1" Background="{StaticResource BlendTutorialFormBackgroundBrush}" CornerRadius="0,2,2,0" Margin="0" Padding="1" >
+                    <Track x:Name="PART_Track">
+                        <Track.Thumb>
+                            <Thumb Style="{StaticResource BlendTutorialSliderThumbStyle}"/>
+                        </Track.Thumb>
+                    </Track>
+                </Border>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgFocused">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.0" Value="0.5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BgFocused">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type Slider}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template" Value="{StaticResource BlendTutorialSliderTemplate}"/>
+        <Setter Property="Foreground" Value="{StaticResource BlendTutorialForeground}"/>
+    </Style>
+</ResourceDictionary>

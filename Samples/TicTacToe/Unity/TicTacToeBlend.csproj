@@ -54,7 +54,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Text.cs" />
+    <Compile Include="NoesisGUIExtensions.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\TicTacToe\DelegateCommand.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\TicTacToe\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Assets\NoesisGUI\Samples\TicTacToe\ViewModel.cs" />
     <Page Include="Assets\NoesisGUI\Samples\TicTacToe\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,7 +76,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Element.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -102,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\TicTacToe\Fonts\JandaManateeSolid.ttf" />
-    <Resource Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

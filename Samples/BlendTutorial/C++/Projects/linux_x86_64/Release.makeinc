@@ -1,0 +1,66 @@
+####################################################################################################
+# PROJECT: Samples.BlendTutorial
+####################################################################################################
+
+ifeq ($(V), 1)
+ Q =
+else
+ Q = @
+endif
+
+$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/pch.h.gch: $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/pch.h
+	@echo [PH] Samples.BlendTutorial/$(notdir $<)
+	$(Q)g++ $(CPPFLAGS_RELEASE) -I$(PREFIX)/Gui/Core/Include/ -I$(PREFIX)/App/Display/Include/ -I$(PREFIX)/Gui/DependencySystem/Include/ -I$(PREFIX)/Drawing/Types/Include/ -I$(PREFIX)/Core/Kernel/Include/ -I$(PREFIX)/Math/VectorMath/Include/ -I$(PREFIX)/Gui/CachedFontProvider/Include/ -I$(PREFIX)/Samples/BlendTutorial/Include/ -I$(PREFIX)/../../Include/ -I$(PREFIX)/Gui/Providers/Include/ -I$(PREFIX)/Core/NSTL/Include/ -I$(PREFIX)/Core/Nullable/Include/ -I$(PREFIX)/App/DisplayLauncher/Include/ -I$(PREFIX)/Math/Utils/Include/ -I$(PREFIX)/App/ApplicationLauncher/Include/ -I$(PREFIX)/App/Launcher/Include/ -I$(PREFIX)/../../3rdParty/EASTL/local/include/ -I$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.1.0rc3 -DNS_APP_FRAMEWORK -DNS_RELEASE_CFG -DNS_ASSERTS_ENABLED=0 -DNS_INSTRUMENTED_ENABLED=0 -DNS_MINIMUM_LOG_LEVEL=2 -march=x86-64 -m64 -c -MMD -fPIC -o $@ $<
+
+$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/%.o: $(PREFIX)/Samples/BlendTutorial/Src/%.cpp $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/pch.h.gch
+	@echo [CC] Samples/BlendTutorial/$(notdir $<)
+	$(Q)g++ $(CPPFLAGS_RELEASE) -I$(PREFIX)/Gui/Core/Include/ -I$(PREFIX)/App/Display/Include/ -I$(PREFIX)/Gui/DependencySystem/Include/ -I$(PREFIX)/Drawing/Types/Include/ -I$(PREFIX)/Core/Kernel/Include/ -I$(PREFIX)/Math/VectorMath/Include/ -I$(PREFIX)/Gui/CachedFontProvider/Include/ -I$(PREFIX)/Samples/BlendTutorial/Include/ -I$(PREFIX)/../../Include/ -I$(PREFIX)/Gui/Providers/Include/ -I$(PREFIX)/Core/NSTL/Include/ -I$(PREFIX)/Core/Nullable/Include/ -I$(PREFIX)/App/DisplayLauncher/Include/ -I$(PREFIX)/Math/Utils/Include/ -I$(PREFIX)/App/ApplicationLauncher/Include/ -I$(PREFIX)/App/Launcher/Include/ -I$(PREFIX)/../../3rdParty/EASTL/local/include/ -I$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.1.0rc3 -DNS_APP_FRAMEWORK -DNS_RELEASE_CFG -DNS_ASSERTS_ENABLED=0 -DNS_INSTRUMENTED_ENABLED=0 -DNS_MINIMUM_LOG_LEVEL=2 -march=x86-64 -m64 -c -MMD -fPIC -o $@ $< -include pch.h
+
+$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/%.o: $(PREFIX)/Samples/BlendTutorial/Src/%.c
+	@echo [CC] Samples/BlendTutorial/$(notdir $<)
+	$(Q)gcc $(CFLAGS_RELEASE) -I$(PREFIX)/Gui/Core/Include/ -I$(PREFIX)/App/Display/Include/ -I$(PREFIX)/Gui/DependencySystem/Include/ -I$(PREFIX)/Drawing/Types/Include/ -I$(PREFIX)/Core/Kernel/Include/ -I$(PREFIX)/Math/VectorMath/Include/ -I$(PREFIX)/Gui/CachedFontProvider/Include/ -I$(PREFIX)/Samples/BlendTutorial/Include/ -I$(PREFIX)/../../Include/ -I$(PREFIX)/Gui/Providers/Include/ -I$(PREFIX)/Core/NSTL/Include/ -I$(PREFIX)/Core/Nullable/Include/ -I$(PREFIX)/App/DisplayLauncher/Include/ -I$(PREFIX)/Math/Utils/Include/ -I$(PREFIX)/App/ApplicationLauncher/Include/ -I$(PREFIX)/App/Launcher/Include/ -I$(PREFIX)/../../3rdParty/EASTL/local/include/ -I$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.1.0rc3 -DNS_APP_FRAMEWORK -DNS_RELEASE_CFG -DNS_ASSERTS_ENABLED=0 -DNS_INSTRUMENTED_ENABLED=0 -DNS_MINIMUM_LOG_LEVEL=2 -march=x86-64 -m64 -c -MMD -fPIC -o $@ $<
+
+$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/App.xaml.bin.h: $(PREFIX)/Samples/BlendTutorial/Data/App.xaml
+	@echo [BH] Samples/BlendTutorial/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/BlendTutorial/Data/App.xaml > $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/App.xaml.bin.h 
+
+$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/MainWindow.xaml.bin.h: $(PREFIX)/Samples/BlendTutorial/Data/MainWindow.xaml
+	@echo [BH] Samples/BlendTutorial/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/BlendTutorial/Data/MainWindow.xaml > $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/MainWindow.xaml.bin.h 
+
+$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/ColorSelector.xaml.bin.h: $(PREFIX)/Samples/BlendTutorial/Data/ColorSelector.xaml
+	@echo [BH] Samples/BlendTutorial/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/BlendTutorial/Data/ColorSelector.xaml > $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/ColorSelector.xaml.bin.h 
+
+$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/Resources.xaml.bin.h: $(PREFIX)/Samples/BlendTutorial/Data/Resources.xaml
+	@echo [BH] Samples/BlendTutorial/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/BlendTutorial/Data/Resources.xaml > $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/Resources.xaml.bin.h 
+
+$(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/WeblySleek_UI_Normal.ttf.bin.h: $(PREFIX)/Samples/BlendTutorial/Data/Fonts/WeblySleek_UI_Normal.ttf
+	@echo [BH] Samples/BlendTutorial/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/BlendTutorial/Data/Fonts/WeblySleek_UI_Normal.ttf > $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/WeblySleek_UI_Normal.ttf.bin.h 
+
+$(BINDIR)/Samples.BlendTutorial: $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/App.xaml.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/MainWindow.xaml.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/ColorSelector.xaml.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/Resources.xaml.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/WeblySleek_UI_Normal.ttf.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/Main.o $(BINDIR)/libNoesis.so $(BINDIR)/libNoesisApp.so
+	@echo [LD] $(notdir $@)
+	$(Q)g++ $(LFLAGS_RELEASE) -m64 -pie -Wl,-rpath,\$$ORIGIN -Wl,-rpath,$(PREFIX)/../../Bin/linux_x86_64 -L$(PREFIX)/../../Bin/linux_x86_64  -o $(BINDIR)/Samples.BlendTutorial $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/Main.o -lNoesisApp -lNoesis
+	@echo [STRIP] $(notdir $@)
+	$(Q)objcopy --only-keep-debug $(BINDIR)/Samples.BlendTutorial $(BINDIR)/Samples.BlendTutorial.debug 
+	$(Q)strip --strip-unneeded $(BINDIR)/Samples.BlendTutorial
+	$(Q)objcopy --add-gnu-debuglink=$(BINDIR)/Samples.BlendTutorial.debug $(BINDIR)/Samples.BlendTutorial
+
+RELEASE_CLEAN_SAMPLES_BLENDTUTORIAL:
+	@rm -f $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/Main.o $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/App.xaml.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/MainWindow.xaml.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/ColorSelector.xaml.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/Resources.xaml.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/WeblySleek_UI_Normal.ttf.bin.h $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/pch.h.gch
+	@rm -f $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/pch.h.d $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/Main.d
+	@rm -f $(BINDIR)/Samples.BlendTutorial
+	@rm -f $(BINDIR)/Samples.BlendTutorial.debug
+
+RELEASE_COMPILE_TARGETS += $(BINDIR)/Samples.BlendTutorial
+RELEASE_ADDITIONAL_DEPS += $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/pch.h.d $(PREFIX)/Samples/BlendTutorial/Projects/linux_x86_64/_build/Release/Main.d
+RELEASE_CLEAN_TARGETS += RELEASE_CLEAN_SAMPLES_BLENDTUTORIAL
+
+

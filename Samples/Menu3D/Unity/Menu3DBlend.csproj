@@ -60,7 +60,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\CommandHelper.cs" />
+    <Compile Include="NoesisGUIExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\DelegateCommand.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\ElementExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\MainMenu.xaml.cs">
@@ -79,7 +79,6 @@
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Element.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -96,6 +95,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Fonts\weblysleekuisb.ttf" />
     <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Fonts\weblysleekuisl.ttf" />
@@ -107,11 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\BigPlanet.png" />
-    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\CloseUpPlanet.png" />
-    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\SpaceBg.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Assets\NoesisGUI\Samples\Menu3D\MainMenu.xaml">
@@ -139,7 +134,13 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\BackClouds.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\FrontClouds.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\FrontTrees.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\LakeAndMountains.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\SkyAndSun.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

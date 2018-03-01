@@ -1,0 +1,269 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Localization">
+
+    <SolidColorBrush x:Key="TextForegroundBrush" Color="#FF482E19"/>
+    <LinearGradientBrush x:Key="IndentBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Offset="0" Color="#5956AFE2"/>
+        <GradientStop Offset="0.95" Color="#33000000"/>
+        <GradientStop Offset="0.85" Color="#0C68B7EE"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="IndentBorder" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#19000000" Offset="0"/>
+        <GradientStop Color="#0C000000" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="LabelBackgroundBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="White" Offset="0"/>
+        <GradientStop Color="#FFCBCBCB" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ControlShadowBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#11000000" Offset="0"/>
+        <GradientStop Color="#33000000" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="SliderBorderBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF1A7FB2"/>
+        <GradientStop Color="#FF24648F" Offset="0.5"/>
+        <GradientStop Color="#FF1A7FB2" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="SliderBackgroundBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Offset="0" Color="#0C000000"/>
+        <GradientStop Offset="0.5" Color="#4C000000"/>
+        <GradientStop Offset="1" Color="#0C000000"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="SliderIndicatorBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0" Color="#00000000"/>
+        <GradientStop Offset="1" Color="#4C000000"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ComboBorderBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF1A7FB2"/>
+        <GradientStop Color="#FF24648F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <ControlTemplate x:Key="LabelTemplate" TargetType="{x:Type Label}">
+        <Grid>
+            <TextBlock Text="{TemplateBinding Content}" Margin="1,1,-1,-1" Foreground="#30000000" TextWrapping="Wrap"/>
+            <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap"/>
+        </Grid>
+    </ControlTemplate>
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template" Value="{StaticResource LabelTemplate}"/>
+    </Style>
+
+    <Style x:Key="FocusStyle" TargetType="{x:Type Control}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Control}">
+                    <Border CornerRadius="2" BorderThickness="1" Margin="1">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="0.0" Color="#22E0F8FF"/>
+                                <GradientStop Offset="0.5" Color="#88E0F8FF"/>
+                                <GradientStop Offset="1.0" Color="#22E0F8FF"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SliderButtonStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="UseLayoutRounding" Value="true"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="ClickMode" Value="Press"/>
+        <Setter Property="Delay" Value="250"/>
+        <Setter Property="Interval" Value="100"/>
+        <Setter Property="Foreground" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Background="Transparent">
+                        <Grid Margin="1">
+                            <Border Background="{TemplateBinding Foreground}" CornerRadius="1"/>
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="1"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid Background="Transparent"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="SliderTemplate" TargetType="{x:Type Slider}">
+        <Border BorderThickness="1" CornerRadius="3" UseLayoutRounding="True" BorderBrush="{StaticResource ControlShadowBrush}">
+            <Border BorderThickness="1" CornerRadius="2" BorderBrush="{StaticResource SliderBorderBrush}" Background="{StaticResource SliderBackgroundBrush}">
+                <Grid>
+                    <Track x:Name="PART_Track">
+                        <Track.DecreaseRepeatButton>
+                            <RepeatButton x:Name="DecBtn"
+                                    Style="{StaticResource SliderButtonStyle}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Background="{StaticResource SliderIndicatorBrush}"
+                                    BorderBrush="{StaticResource ControlShadowBrush}"
+                                    Command="Slider.DecreaseLarge"/>
+                        </Track.DecreaseRepeatButton>
+                        <Track.IncreaseRepeatButton>
+                            <RepeatButton
+                                    Style="{StaticResource SliderButtonStyle}"
+                                    Command="Slider.IncreaseLarge"/>
+                        </Track.IncreaseRepeatButton>
+                        <Track.Thumb>
+                            <Thumb Style="{StaticResource SliderThumbStyle}" Width="20" Margin="-10,0"/>
+                        </Track.Thumb>
+                    </Track>
+                </Grid>
+            </Border>
+        </Border>
+    </ControlTemplate>
+    <Style x:Key="SliderStyle" TargetType="{x:Type Slider}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="IsMoveToPointEnabled" Value="True"/>
+        <Setter Property="Margin" Value="0,0,8,2"/>
+        <Setter Property="MinHeight" Value="0"/>
+        <Setter Property="Minimum" Value="0"/>
+        <Setter Property="Maximum" Value="100"/>
+        <Setter Property="SmallChange" Value="1"/>
+        <Setter Property="LargeChange" Value="10"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
+        <Setter Property="Template" Value="{StaticResource SliderTemplate}"/>
+    </Style>
+
+    <DataTemplate x:Key="LanguageItemTemplate">
+        <TextBlock Text="{Binding Name}"/>
+    </DataTemplate>
+
+    <ControlTemplate x:Key="ComboBoxButtonTemplate" TargetType="{x:Type ToggleButton}">
+        <Grid Background="Transparent"/>
+    </ControlTemplate>
+    <Style x:Key="ComboBoxButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="ClickMode" Value="Press"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template" Value="{StaticResource ComboBoxButtonTemplate}"/>
+    </Style>
+    <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
+        <Grid UseLayoutRounding="True">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="MouseOver"/>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.2"/>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bd">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF175B82"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bd">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF1C4463"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border BorderThickness="1" CornerRadius="3" BorderBrush="{StaticResource ControlShadowBrush}">
+                <Grid>
+                    <Border x:Name="Bd" BorderBrush="{StaticResource ComboBorderBrush}" BorderThickness="1" CornerRadius="2">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF204E74" Offset="0"/>
+                                <GradientStop Color="#FF153C5C" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                    <ContentPresenter x:Name="ContentSite"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"
+                            ContentSource="SelectionBoxItem"/>
+                    <ToggleButton x:Name="DropDownButton"
+                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Style="{StaticResource ComboBoxButtonStyle}"/>
+                </Grid>
+            </Border>
+            <Popup x:Name="PART_Popup"
+                    Focusable="False"
+                    IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                    Placement="Bottom"
+                    PopupAnimation="Slide" VerticalOffset="-2" AllowsTransparency="True">
+                <Grid x:Name="DropDown" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="500">
+                    <Border x:Name="DropDownBorder" BorderBrush="#FF24648F" BorderThickness="1" CornerRadius="2" Margin="1,0,1,2">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF1C4463" Offset="0"/>
+                                <GradientStop Color="#FF1A3143" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel
+                                IsItemsHost="True"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                UseLayoutRounding="{TemplateBinding UseLayoutRounding}" Margin="3"/>
+                    </Border>
+                </Grid>
+            </Popup>
+        </Grid>
+    </ControlTemplate>
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Padding" Value="0,2"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
+        <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
+    </Style>
+    <ControlTemplate x:Key="ComboBoxItemTemplate" TargetType="{x:Type ComboBoxItem}">
+        <Border x:Name="Bd" BorderThickness="1" CornerRadius="2">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#FF1A3143" Opacity="0"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0">
+                    <GradientStop Color="#FF175B82" Offset="0"/>
+                    <GradientStop Color="#FF1C4463" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="MouseOver"/>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.2"/>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,2"/>
+        </Border>
+    </ControlTemplate>
+    <Style TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Template" Value="{StaticResource ComboBoxItemTemplate}"/>
+    </Style>
+
+
+</ResourceDictionary>

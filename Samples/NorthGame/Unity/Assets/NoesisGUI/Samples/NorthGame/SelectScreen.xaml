@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="NorthGame.SelectScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+             xmlns:local="clr-namespace:NorthGame"
+             d:DesignWidth="1280" d:DesignHeight="720">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="14*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Grid.Column="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <TextBlock Text="NAME" TextAlignment="Right" Foreground="#FF80ECEB" FontFamily="Fonts/#Avenir LT Std" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding Player.Name}" Width="200" Margin="10,0,40,0" Style="{StaticResource Style.TextBox}"/>
+                    <TextBlock Text="RACE" TextAlignment="Right" Foreground="#FF80ECEB" FontFamily="Fonts/#Avenir LT Std" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding Races}" SelectedItem="{Binding Player.Race}" Width="200" Margin="10,0,0,0" Style="{StaticResource Style.ComboBox}"/>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ListBox Style="{StaticResource Style.ListBox.HorizontalList}" HorizontalAlignment="Center"
+                     ItemsSource="{Binding Player.Race.Classes}"
+                     ItemContainerStyle="{StaticResource Style.ListBoxItem.ClassList}"
+                     ItemTemplate="{StaticResource Template.Item.Class}"
+                     SelectedItem="{Binding Player.Class}"/>
+        </Grid>
+    </Grid>
+</UserControl>

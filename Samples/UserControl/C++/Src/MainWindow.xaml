@@ -1,0 +1,103 @@
+<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:UserControl"
+    Title="NoesisGUI - UserControl"
+    x:Class="UserControl.MainWindow"
+    Background="#303439"
+    Foreground="Silver"
+    FontFamily="./#Aero Matics">
+
+    <Viewbox>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="BACKGROUND: " HorizontalAlignment="Center" Margin="0,20,0,0" Padding="10">
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition/>
+                      <ColumnDefinition Width="Auto"/>
+                      <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle Stretch="Fill" Stroke="Black" Width="80">
+                      <Rectangle.Fill>
+                        <SolidColorBrush x:Name="BgColor" Color="White"/>
+                      </Rectangle.Fill>
+                    </Rectangle>
+
+                    <Grid Grid.Column="1" Margin="10,0,4,0">
+                      <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                      </Grid.RowDefinitions>
+                      <TextBlock Text="R:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0"/>
+                      <TextBlock Text="G:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1"/>
+                      <TextBlock Text="B:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2"/>
+                    </Grid>
+
+                    <Grid Grid.Column="2" Width="60">
+                      <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                      </Grid.RowDefinitions>
+                      <local:NumericUpDown x:Name="BgR" MinValue="0" MaxValue="255" StepValue="5" Grid.Row="0" Margin="0,0,0,0"
+                                     Value="255" ValueChanged="BgR_ValueChanged"/>
+                      <local:NumericUpDown x:Name="BgG" MinValue="0" MaxValue="255" StepValue="5" Grid.Row="1" Margin="0,2,0,0"
+                                     Value="255" ValueChanged="BgG_ValueChanged"/>
+                      <local:NumericUpDown x:Name="BgB" MinValue="0" MaxValue="255" StepValue="5" Grid.Row="2" Margin="0,2,0,0"
+                                     Value="255" ValueChanged="BgB_ValueChanged"/>
+                    </Grid>
+
+                  </Grid>
+                </GroupBox>
+                <GroupBox Header="FOREGROUND: " HorizontalAlignment="Center" Margin="20,20,0,0" Padding="10">
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition/>
+                      <ColumnDefinition Width="Auto"/>
+                      <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle Stretch="Fill" Stroke="Black" Width="80">
+                      <Rectangle.Fill>
+                        <SolidColorBrush x:Name="FgColor" Color="Black"/>
+                      </Rectangle.Fill>
+                    </Rectangle>
+
+                    <Grid Grid.Column="1" Margin="10,0,4,0">
+                      <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                      </Grid.RowDefinitions>
+                      <TextBlock Text="R:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0"/>
+                      <TextBlock Text="G:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1"/>
+                      <TextBlock Text="B:" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2"/>
+                    </Grid>
+
+                    <Grid Grid.Column="2" Width="60">
+                      <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                      </Grid.RowDefinitions>
+                      <local:NumericUpDown x:Name="FgR" MinValue="0" MaxValue="255" StepValue="5" Grid.Row="0" Margin="0,0,0,0"
+                                     ValueChanged="FgR_ValueChanged"/>
+                      <local:NumericUpDown x:Name="FgG" MinValue="0" MaxValue="255" StepValue="5" Grid.Row="1" Margin="0,2,0,0"
+                                     ValueChanged="FgG_ValueChanged"/>
+                      <local:NumericUpDown x:Name="FgB" MinValue="0" MaxValue="255" StepValue="5" Grid.Row="2" Margin="0,2,0,0"
+                                     ValueChanged="FgB_ValueChanged"/>
+                    </Grid>
+
+                  </Grid>
+                </GroupBox>
+            </StackPanel>
+            <TextBlock Text="Sample Text" HorizontalAlignment="Center" Margin="20,30,20,0" FontSize="30" Padding="20,10"
+                  VerticalAlignment="Center" Background="{Binding ElementName=BgColor}"
+                  Foreground="{Binding ElementName=FgColor}"/>
+        </StackPanel>
+    </Viewbox>
+
+</Window>

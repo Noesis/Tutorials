@@ -1,0 +1,362 @@
+// !$*UTF8*$!
+{
+    archiveVersion = 1;
+    classes = {};
+    objectVersion = 46;
+    objects = {
+
+/* Begin PBXBuildFile section */
+        AC49813A53B8493BBBC3A65C = {isa = PBXBuildFile; fileRef = 549689AB242D4FF994320B4E /* App.xaml */; };
+        686DB0354E094C28A5BC7BB7 = {isa = PBXBuildFile; fileRef = A0E287DD7BC34DFB88DA3D23 /* MainWindow.xaml */; };
+        8B8E5F089AC04914844F5260 = {isa = PBXBuildFile; fileRef = 8FADFE24AB904F96A8F8F79F /* Roboto-Regular.ttf */; };
+        2E219E927BC6441093F5487D = {isa = PBXBuildFile; fileRef = 8291501D653948AD9D4A83D9 /* Roboto-Bold.ttf */; };
+        FE7636E82BB94F2FADD7B02E = {isa = PBXBuildFile; fileRef = 9BB420D8D6C0478EBE6B9470 /* moons_2.jpg */; };
+        85D636D2512E4A6E81EB86BA = {isa = PBXBuildFile; fileRef = A411FDA2D7424294B237D155 /* earglobe.jpg */; };
+        A81BD4150E6243ECB932E3A6 = {isa = PBXBuildFile; fileRef = AD2FBEFE332C40A3BC38B750 /* jupglobe.jpg */; };
+        4B277002670D48A19A68F5AB = {isa = PBXBuildFile; fileRef = 5DF32C4EBDF54EBE98BC7C9C /* marglobe.jpg */; };
+        5E7E9A55C8B64CA29220C5A6 = {isa = PBXBuildFile; fileRef = A1DAF6294FB84BA881F02072 /* merglobe.jpg */; };
+        CE42AA41EFD84DBB9888BD43 = {isa = PBXBuildFile; fileRef = D157142035124CDD8CCC6858 /* nepglobe.jpg */; };
+        0E4B0EDC914A4E5B9271DF31 = {isa = PBXBuildFile; fileRef = 4EAB67A888DA44379FE54145 /* plutoch_2.jpg */; };
+        DB2DDFDD9CCD4BB690E6F6BE = {isa = PBXBuildFile; fileRef = 546CC627CDA446A997144DB9 /* sun.jpg */; };
+        4D08A057ABCA43F1950E90D9 = {isa = PBXBuildFile; fileRef = FCADF7888F2D467489A89497 /* uraglobe.jpg */; };
+        9D78E83B607643268482AA2D = {isa = PBXBuildFile; fileRef = DBD74B8E9B9F4513BD0F9023 /* venglobe.jpg */; };
+        7929DDA0B1F741C0A88646FD = {isa = PBXBuildFile; fileRef = 326AE0D0EA354E39BA752D25 /* Main.cpp */; };
+        5E9E799899EE400A91B1388C = {isa = PBXBuildFile; fileRef = 40ACA50E7DD54D6AA3DD5F9C /* Metal.framework */; };
+        986DB953D68C4321A4CD18C4 = {isa = PBXBuildFile; fileRef = 03B8EF07DAA64803A99E9830 /* OpenGLES.framework */; };
+        58EF81DF206F4DCC859D2FA7 = {isa = PBXBuildFile; fileRef = 80FB4C60C77246E9ABDE7FBD /* QuartzCore.framework */; };
+        3C30A6141799431182D8E5C0 = {isa = PBXBuildFile; fileRef = 407F9B113DFE4FD8876A8275 /* CoreFoundation.framework */; };
+        7F60AFDA8AE442BE85CBD1DF = {isa = PBXBuildFile; fileRef = 7E1D0E1551344482A9A774AF /* UIKit.framework */; };
+        7052519A23BE49298C6F0A3E = {isa = PBXBuildFile; fileRef = 89C8EE4474394460877326EF /* libNoesis.a */; };
+        D4C7C831B99B445A879B1E98 = {isa = PBXBuildFile; fileRef = 07C35D13D21F4610978457CC /* libNoesisApp.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+        AAF2D275F0C0427D9B588BD0 /* Samples.DataBinding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.DataBinding.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        40ACA50E7DD54D6AA3DD5F9C /* Metal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "Metal.framework"; path = "System/Library/Frameworks/Metal.framework"; sourceTree = SDKROOT; };
+        03B8EF07DAA64803A99E9830 /* OpenGLES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "OpenGLES.framework"; path = "System/Library/Frameworks/OpenGLES.framework"; sourceTree = SDKROOT; };
+        80FB4C60C77246E9ABDE7FBD /* QuartzCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; };
+        407F9B113DFE4FD8876A8275 /* CoreFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "CoreFoundation.framework"; path = "System/Library/Frameworks/CoreFoundation.framework"; sourceTree = SDKROOT; };
+        7E1D0E1551344482A9A774AF /* UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; };
+        89C8EE4474394460877326EF /* libNoesis.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = "libNoesis.a"; path = "../../../../../../Lib/ios/libNoesis.a"; sourceTree = SOURCE_ROOT; };
+        07C35D13D21F4610978457CC /* libNoesisApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = "libNoesisApp.a"; path = "../../../../../../Lib/ios/libNoesisApp.a"; sourceTree = SOURCE_ROOT; };
+        D9E6289FA6184109B57F1AEE /* Common.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Common.xcconfig"; path = "../../../../../../Config/Common.xcconfig"; sourceTree = SOURCE_ROOT; };
+        ECA310E04B784F9091BFAEFB /* Release.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Release.xcconfig"; path = "../../../../../../Config/Release/Release.xcconfig"; sourceTree = SOURCE_ROOT; };
+        8254BED9175C420E9AF88937 /* Profile.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Profile.xcconfig"; path = "../../../../../../Config/Profile/Profile.xcconfig"; sourceTree = SOURCE_ROOT; };
+        CF150C7B38B0498CB6D2B588 /* Debug.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Debug.xcconfig"; path = "../../../../../../Config/Debug/Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
+        326AE0D0EA354E39BA752D25 /* Main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "../../Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
+        549689AB242D4FF994320B4E /* App.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "App.xaml"; path = "../../Src/App.xaml"; sourceTree = SOURCE_ROOT; };
+        A0E287DD7BC34DFB88DA3D23 /* MainWindow.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MainWindow.xaml"; path = "../../Src/MainWindow.xaml"; sourceTree = SOURCE_ROOT; };
+        8FADFE24AB904F96A8F8F79F /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../Src/Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+        8291501D653948AD9D4A83D9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../Src/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+        9BB420D8D6C0478EBE6B9470 /* moons_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "moons_2.jpg"; path = "../../Src/Images/moons_2.jpg"; sourceTree = SOURCE_ROOT; };
+        A411FDA2D7424294B237D155 /* earglobe.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "earglobe.jpg"; path = "../../Src/Images/earglobe.jpg"; sourceTree = SOURCE_ROOT; };
+        AD2FBEFE332C40A3BC38B750 /* jupglobe.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "jupglobe.jpg"; path = "../../Src/Images/jupglobe.jpg"; sourceTree = SOURCE_ROOT; };
+        5DF32C4EBDF54EBE98BC7C9C /* marglobe.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "marglobe.jpg"; path = "../../Src/Images/marglobe.jpg"; sourceTree = SOURCE_ROOT; };
+        A1DAF6294FB84BA881F02072 /* merglobe.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "merglobe.jpg"; path = "../../Src/Images/merglobe.jpg"; sourceTree = SOURCE_ROOT; };
+        D157142035124CDD8CCC6858 /* nepglobe.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "nepglobe.jpg"; path = "../../Src/Images/nepglobe.jpg"; sourceTree = SOURCE_ROOT; };
+        4EAB67A888DA44379FE54145 /* plutoch_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "plutoch_2.jpg"; path = "../../Src/Images/plutoch_2.jpg"; sourceTree = SOURCE_ROOT; };
+        546CC627CDA446A997144DB9 /* sun.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "sun.jpg"; path = "../../Src/Images/sun.jpg"; sourceTree = SOURCE_ROOT; };
+        FCADF7888F2D467489A89497 /* uraglobe.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "uraglobe.jpg"; path = "../../Src/Images/uraglobe.jpg"; sourceTree = SOURCE_ROOT; };
+        DBD74B8E9B9F4513BD0F9023 /* venglobe.jpg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "venglobe.jpg"; path = "../../Src/Images/venglobe.jpg"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+        0AC5F0950BC047D7BF25237B = {
+            isa = PBXGroup;
+            children = (
+                326AE0D0EA354E39BA752D25,
+            );
+            name = Src;
+            sourceTree = "<group>";
+        };
+        14238B4DED0646338A055E51 = {
+            isa = PBXGroup;
+            children = (
+                549689AB242D4FF994320B4E,
+                A0E287DD7BC34DFB88DA3D23,
+                8FADFE24AB904F96A8F8F79F,
+                8291501D653948AD9D4A83D9,
+                9BB420D8D6C0478EBE6B9470,
+                A411FDA2D7424294B237D155,
+                AD2FBEFE332C40A3BC38B750,
+                5DF32C4EBDF54EBE98BC7C9C,
+                A1DAF6294FB84BA881F02072,
+                D157142035124CDD8CCC6858,
+                4EAB67A888DA44379FE54145,
+                546CC627CDA446A997144DB9,
+                FCADF7888F2D467489A89497,
+                DBD74B8E9B9F4513BD0F9023,
+            );
+            name = Data;
+            sourceTree = "<group>";
+        };
+        D0800579F71D4BD2B1D112E6 = {
+            isa = PBXGroup;
+            children = (
+                ECA310E04B784F9091BFAEFB,
+                8254BED9175C420E9AF88937,
+                D9E6289FA6184109B57F1AEE,
+                CF150C7B38B0498CB6D2B588,
+            );
+            name = Config;
+            sourceTree = "<group>";
+        };
+        E4DFBFAD7EE847898A49B675 = {
+            isa = PBXGroup;
+            children = (
+                AAF2D275F0C0427D9B588BD0,
+            );
+            name = Products;
+            sourceTree = "<group>";
+        };
+        FC9354E53FBA4591890BA47D = {
+            isa = PBXGroup;
+            children = (
+                40ACA50E7DD54D6AA3DD5F9C,
+                03B8EF07DAA64803A99E9830,
+                80FB4C60C77246E9ABDE7FBD,
+                407F9B113DFE4FD8876A8275,
+                7E1D0E1551344482A9A774AF,
+                89C8EE4474394460877326EF,
+                07C35D13D21F4610978457CC,
+            );
+            name = Dependencies;
+            sourceTree = "<group>";
+        };
+        D9C7C654F1944D3AABC3889B = {
+            isa = PBXGroup;
+            children = (
+                0AC5F0950BC047D7BF25237B,
+                14238B4DED0646338A055E51,
+                D0800579F71D4BD2B1D112E6,
+                E4DFBFAD7EE847898A49B675,
+                FC9354E53FBA4591890BA47D,
+                7C98F534CE184B98AC15504A,
+            );
+            sourceTree = "<group>";
+        };
+/* End PBXGroup section */
+
+/* Begin PBXSourcesBuildPhase section */
+        31F250EF0F3D4D1FAB55A352 = {
+            isa = PBXSourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                AC49813A53B8493BBBC3A65C,
+                686DB0354E094C28A5BC7BB7,
+                8B8E5F089AC04914844F5260,
+                2E219E927BC6441093F5487D,
+                FE7636E82BB94F2FADD7B02E,
+                85D636D2512E4A6E81EB86BA,
+                A81BD4150E6243ECB932E3A6,
+                4B277002670D48A19A68F5AB,
+                5E7E9A55C8B64CA29220C5A6,
+                CE42AA41EFD84DBB9888BD43,
+                0E4B0EDC914A4E5B9271DF31,
+                DB2DDFDD9CCD4BB690E6F6BE,
+                4D08A057ABCA43F1950E90D9,
+                9D78E83B607643268482AA2D,
+                7929DDA0B1F741C0A88646FD,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXBuildRule section */
+        B9C345E1F22C457F91D698F1 = {
+            isa = PBXBuildRule;
+            compilerSpec = com.apple.compilers.proxy.script;
+            filePatterns = "*.xaml *.xaml *.ttf *.ttf *.jpg *.jpg *.jpg *.jpg *.jpg *.jpg *.jpg *.jpg *.jpg *.jpg";
+            fileType = pattern.proxy;
+            isEditable = 0;
+            outputFiles = (
+                "${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}.bin.h"
+            );
+            script = "../../../../../Tools/Bin2h/bin2h.py \"${INPUT_FILE_PATH}\" > \"${DERIVED_SOURCES_DIR}/${INPUT_FILE_NAME}.bin.h\"";
+        };
+/* End PBXBuildRule section */
+
+/* Begin PBXFrameworksBuildPhase section */
+        2018948976EC4451A868BB45 = {
+            isa = PBXFrameworksBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                5E9E799899EE400A91B1388C,
+                986DB953D68C4321A4CD18C4,
+                58EF81DF206F4DCC859D2FA7,
+                3C30A6141799431182D8E5C0,
+                7F60AFDA8AE442BE85CBD1DF,
+                7052519A23BE49298C6F0A3E,
+                D4C7C831B99B445A879B1E98,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+        01226A61A36A484CAB9ABBD4 = {
+            isa = PBXResourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+        0E4CC1959BF54590B4EFD602 = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = 35948DB3E56549158FA0FF60;
+            buildPhases = (
+                31F250EF0F3D4D1FAB55A352,
+                2018948976EC4451A868BB45,
+                01226A61A36A484CAB9ABBD4,
+            );
+            buildRules = (
+                B9C345E1F22C457F91D698F1,
+            );
+            dependencies = ();
+            name = Samples.DataBinding;
+            productName = Samples.DataBinding;
+            productReference = AAF2D275F0C0427D9B588BD0;
+            productType = "com.apple.product-type.application";
+        };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+        A2C17AF47FF8482D9A302A7D = {
+            isa = PBXProject;
+            attributes = {};
+            buildConfigurationList = 1D28E7F758014607B8ECAAFC;
+            compatibilityVersion = "Xcode 3.2";
+            developmentRegion = English;
+            hasScannedForEncodings = 0;
+            knownRegions = (en,);
+            mainGroup = D9C7C654F1944D3AABC3889B;
+            productRefGroup = E4DFBFAD7EE847898A49B675;
+            projectDirPath = "";
+            projectRoot = "";
+            targets = (0E4CC1959BF54590B4EFD602,);
+        };
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+        3FFB367B5F824FB3BEEC04EA = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = ECA310E04B784F9091BFAEFB;
+            buildSettings = {
+                SDKROOT = iphoneos;
+                ARCHS = "$(ARCHS_STANDARD)";
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../Math/VectorMath/Include,../../../../Gui/DependencySystem/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../Math/Utils/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Gui/CachedFontProvider/Include,../../../../Gui/Core/Include,../../../../../../Include,../../../../App/ApplicationLauncher/Include,../../../../Gui/Providers/Include,../../../../Samples/DataBinding/Include,../../../../App/DisplayLauncher/Include,../../../../Core/Kernel/Include,../../../../Core/Nullable/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Release","NS_VERSION=2.1.0rc3","NS_APP_FRAMEWORK","NS_STATIC_LIBRARY","NS_RELEASE_CFG","NS_ASSERTS_ENABLED=0","NS_INSTRUMENTED_ENABLED=0","NS_MINIMUM_LOG_LEVEL=2","HAVE_GLES2_GL2_H","$(inherited)");
+                LIBRARY_SEARCH_PATHS = (../../../../../../Lib/ios);
+                OTHER_LDFLAGS = ();
+                GCC_PRECOMPILE_PREFIX_HEADER = YES;
+                GCC_PREFIX_HEADER = pch.h;
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/ios";
+                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+                USE_HEADERMAP = NO;
+            };
+            name = Release;
+        };
+        52E68D539FF447FD9FB95F0C = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "Noesis.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 2.1.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                INFOPLIST_FILE = "$(PROJECT_DIR)/../../Resources/iOS/info.plist";
+                TARGETED_DEVICE_FAMILY = "1,2";
+            };
+            name = Release;
+        };
+        BD5ADF5D84414A4CB57B086F = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = 8254BED9175C420E9AF88937;
+            buildSettings = {
+                SDKROOT = iphoneos;
+                ARCHS = "$(ARCHS_STANDARD)";
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../Math/VectorMath/Include,../../../../Gui/DependencySystem/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../Math/Utils/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Gui/CachedFontProvider/Include,../../../../Gui/Core/Include,../../../../../../Include,../../../../App/ApplicationLauncher/Include,../../../../Gui/Providers/Include,../../../../Samples/DataBinding/Include,../../../../App/DisplayLauncher/Include,../../../../Core/Kernel/Include,../../../../Core/Nullable/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Profile","NS_VERSION=2.1.0rc3","NS_APP_FRAMEWORK","NS_STATIC_LIBRARY","NS_PROFILE_CFG","NS_ASSERTS_ENABLED=0","NS_INSTRUMENTED_ENABLED=1","NS_MINIMUM_LOG_LEVEL=2","HAVE_GLES2_GL2_H","$(inherited)");
+                LIBRARY_SEARCH_PATHS = (../../../../../../Lib/ios);
+                OTHER_LDFLAGS = ();
+                GCC_PRECOMPILE_PREFIX_HEADER = YES;
+                GCC_PREFIX_HEADER = pch.h;
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/ios";
+                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+                USE_HEADERMAP = NO;
+            };
+            name = Profile;
+        };
+        BF9851C8DB614ABEA36615E9 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "Noesis.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 2.1.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                INFOPLIST_FILE = "$(PROJECT_DIR)/../../Resources/iOS/info.plist";
+                TARGETED_DEVICE_FAMILY = "1,2";
+            };
+            name = Profile;
+        };
+        C427EA5E07614DE28567C1CA = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = CF150C7B38B0498CB6D2B588;
+            buildSettings = {
+                SDKROOT = iphoneos;
+                ARCHS = "$(ARCHS_STANDARD)";
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../Math/VectorMath/Include,../../../../Gui/DependencySystem/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../Math/Utils/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Gui/CachedFontProvider/Include,../../../../Gui/Core/Include,../../../../../../Include,../../../../App/ApplicationLauncher/Include,../../../../Gui/Providers/Include,../../../../Samples/DataBinding/Include,../../../../App/DisplayLauncher/Include,../../../../Core/Kernel/Include,../../../../Core/Nullable/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Debug","NS_VERSION=2.1.0rc3","NS_APP_FRAMEWORK","NS_STATIC_LIBRARY","NS_DEBUG_CFG","NS_ASSERTS_ENABLED=1","NS_INSTRUMENTED_ENABLED=1","NS_MINIMUM_LOG_LEVEL=1","HAVE_GLES2_GL2_H","$(inherited)");
+                LIBRARY_SEARCH_PATHS = (../../../../../../Lib/ios);
+                OTHER_LDFLAGS = ();
+                GCC_PRECOMPILE_PREFIX_HEADER = YES;
+                GCC_PREFIX_HEADER = pch.h;
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/ios";
+                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+                USE_HEADERMAP = NO;
+            };
+            name = Debug;
+        };
+        B826B25850234DAEB3D130DD = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "Noesis.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 2.1.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                INFOPLIST_FILE = "$(PROJECT_DIR)/../../Resources/iOS/info.plist";
+                TARGETED_DEVICE_FAMILY = "1,2";
+            };
+            name = Debug;
+        };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+        1D28E7F758014607B8ECAAFC = {
+            isa = XCConfigurationList;
+            buildConfigurations = (3FFB367B5F824FB3BEEC04EA,BD5ADF5D84414A4CB57B086F,C427EA5E07614DE28567C1CA);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Release;
+        };
+
+        35948DB3E56549158FA0FF60 = {
+            isa = XCConfigurationList;
+            buildConfigurations = (52E68D539FF447FD9FB95F0C,BF9851C8DB614ABEA36615E9,B826B25850234DAEB3D130DD);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Release;
+        };
+/* End XCConfigurationList section */
+    };
+    rootObject = A2C17AF47FF8482D9A302A7D;
+}

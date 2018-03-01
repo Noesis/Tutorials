@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{86BCC0F4-19B1-9308-B518-A1DCFF47F9EB}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Menu3D</RootNamespace>
+    <AssemblyName>Menu3D</AssemblyName>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>..\..\..\..\Tools\AndroidKeystore\release.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>android</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>release</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>android</AndroidSigningKeyPass>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;__ANDROID__;NOESIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AndroidSupportedAbis>armeabi-v7a</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="NoesisManaged">
+      <HintPath>..\..\..\..\..\Bin\NoesisManaged.dll</HintPath>
+    </Reference>
+    <Reference Include="NoesisAppManaged.Android">
+      <HintPath>..\..\..\..\..\Bin\NoesisAppManaged.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Src\App.xaml.g.cs">
+      <Link>App.xaml.g.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Src\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\StartMenu.xaml.cs">
+      <DependentUpon>StartMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\SettingsMenu.xaml.cs">
+      <DependentUpon>SettingsMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\OptionSelector.xaml.cs">
+      <DependentUpon>OptionSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\DelegateCommand.cs"/>
+    <Compile Include="..\..\Src\ElementExtensions.cs"/>
+    <Compile Include="..\..\Src\ViewModel.cs"/>
+    <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Src\Properties\Resources.Designer.cs">
+      <Link>Properties\Resources.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Properties\Resources.resx">
+      <Link>Properties\Resources.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Src\App.config">
+      <Link>App.config</Link>
+    </None>
+    <None Include="..\..\Src\Fonts\weblysleekuisb.ttf">
+      <Link>Fonts\weblysleekuisb.ttf</Link>
+    </None>
+    <None Include="..\..\Src\Fonts\weblysleekuisl.ttf">
+      <Link>Fonts\weblysleekuisl.ttf</Link>
+    </None>
+    <None Include="..\..\Src\Images\BackClouds.png">
+      <Link>Images\BackClouds.png</Link>
+    </None>
+    <None Include="..\..\Src\Images\FrontClouds.png">
+      <Link>Images\FrontClouds.png</Link>
+    </None>
+    <None Include="..\..\Src\Images\FrontTrees.png">
+      <Link>Images\FrontTrees.png</Link>
+    </None>
+    <None Include="..\..\Src\Images\LakeAndMountains.png">
+      <Link>Images\LakeAndMountains.png</Link>
+    </None>
+    <None Include="..\..\Src\Images\SkyAndSun.jpg">
+      <Link>Images\SkyAndSun.jpg</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Src\App.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\..\Src\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\..\Src\MainMenu.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\..\Src\StartMenu.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\..\Src\SettingsMenu.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\..\Src\OptionSelector.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\..\Src\MenuResources.xaml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidNativeLibrary Include="..\..\..\..\..\Bin\android_arm\libNoesis.so">
+      <Link>lib\armeabi-v7a\libNoesis.so</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>
