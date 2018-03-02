@@ -51,7 +51,7 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <Grid x:Name="LayoutRoot" Background="{StaticResource NoesisLogoBg}">
+    <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="800*"/>
@@ -147,13 +147,6 @@
                     </Border.Background>
                 </Border>
                 <Border Grid.Column="1" Grid.Row="1">
-                    <Border.Background>
-                        <RadialGradientBrush GradientOrigin="0.5,0.1" Center="0.5,0.1" RadiusY="0.7" RadiusX="0.6">
-                            <GradientStop Color="#190F1B24" Offset="0.75"/>
-                            <GradientStop Color="#265983A6"/>
-                            <GradientStop Color="#260F1B24" Offset="1"/>
-                        </RadialGradientBrush>
-                    </Border.Background>
                 </Border>
                 <Grid Grid.Column="1" Grid.Row="1">
                     <Grid.RowDefinitions>
@@ -192,7 +185,7 @@
                         <TextBlock Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,15,0"
                             Style="{StaticResource MessageStyle}" Foreground="#FFD49841" FontSize="8"
                             Text="{Binding Message}" IsEnabled="{Binding NotifyMessage}"/>
-                        <Button Content="LOG IN" Grid.Row="7" VerticalAlignment="Bottom" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PassBox}"/>
+                        <Button x:Name="LogIn" Content="LOG IN" Grid.Row="7" VerticalAlignment="Bottom" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PassBox}"/>
                     </Grid>
                 </Grid>
             </Grid>
