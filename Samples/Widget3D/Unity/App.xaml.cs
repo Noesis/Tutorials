@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace RenderTexture3D
+namespace Widget3D
 {
     /// <summary>
     /// Interaction logic for App.xaml
