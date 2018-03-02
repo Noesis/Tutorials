@@ -4,6 +4,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "LoginFunctionLibrary.h"
+#include "LoginPlayerController.h"
+#include "NoesisRuntime.h"
+
+ALoginPlayerController::ALoginPlayerController(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
+}
 
 ULoginFunctionLibrary::ULoginFunctionLibrary(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
