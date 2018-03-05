@@ -73,24 +73,6 @@
 		<Setter Property="Control.IsTabStop" Value="True"/>
         <Setter Property="Control.OverridesDefaultStyle" Value="False"/>
 	</Style>
-
-	<Style x:Key="RootContainerStyle" TargetType="{x:Type ContentControl}" BasedOn="{StaticResource NoesisControlStyle}">
-		<Setter Property="UseLayoutRounding" Value="True"/>
-		<Setter Property="Foreground" Value="{StaticResource NormalFgBrush}"/>
-		<Setter Property="FontFamily" Value="Fonts/#Roboto"/>
-		<Setter Property="FontSize" Value="12"/>
-		<Setter Property="FontStyle" Value="Normal"/>
-		<Setter Property="FontWeight" Value="Normal"/>
-		<Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ContentControl}">
-                    <ContentPresenter
-                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-	</Style>
     
 	<Style TargetType="{x:Type Control}" BasedOn="{StaticResource NoesisControlStyle}">
 		<Setter Property="Template">
