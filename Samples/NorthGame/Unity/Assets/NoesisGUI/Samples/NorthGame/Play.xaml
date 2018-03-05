@@ -10,7 +10,7 @@
             <ControlTemplate.Resources>
                 <Storyboard x:Key="FadeIn">
                     <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="LayoutRoot">
-                        <DiscreteBooleanKeyFrame KeyTime="0:0:0.8" Value="True"/>
+                        <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="True"/>
                     </BooleanAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="TopMenuGroup">
                         <EasingDoubleKeyFrame KeyTime="0" Value="-450"/>
@@ -81,7 +81,7 @@
                                 <CubicEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.499" Value="-2000"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-2000"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer1">
@@ -91,13 +91,13 @@
                                 <SineEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.499" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayContainer2">
                         <EasingDoubleKeyFrame KeyTime="0" Value="2000"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="2000"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.499" Value="0">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <CubicEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -107,7 +107,7 @@
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer2">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.499" Value="1">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -127,7 +127,7 @@
                                 <CubicEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.499" Value="2000"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2000"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer1">
@@ -137,13 +137,13 @@
                                 <SineEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.499" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayContainer2">
                         <EasingDoubleKeyFrame KeyTime="0" Value="-2000"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-2000"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.499" Value="0">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <CubicEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -153,7 +153,7 @@
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer2">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.499" Value="1">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -218,7 +218,7 @@
                                 <Image x:Name="TopMenuEffects" Source="Images/TopMenuEffects.png" Margin="100,-100,-100,-165" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 <ListBox x:Name="Navigation" Style="{StaticResource Style.ListBox.HorizontalList}" HorizontalAlignment="Center" Height="90" Margin="0,0,0,40"
                                          ItemsSource="{Binding PlayScreens}" ItemContainerStyle="{StaticResource Style.ListBoxItem.Navigation}"
-                                         SelectedIndex="{Binding SelectedPlayScreen}"/>
+                                         SelectedIndex="{Binding SelectedPlayScreen}" BorderThickness="0"/>
                             </Grid>
                         </Viewbox>
                         <Grid Height="{Binding ActualHeight, ElementName=TopMenu}" Grid.Column="2">

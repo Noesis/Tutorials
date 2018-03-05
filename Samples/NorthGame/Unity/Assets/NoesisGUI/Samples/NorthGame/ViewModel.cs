@@ -57,11 +57,6 @@ namespace NorthGame
             get { return _selectedWeapon; }
             set
             {
-                if (value == null || !Weapons.Contains(value))
-                {
-                    return;
-                }
-
                 if (_selectedWeapon != value)
                 {
                     _selectedWeapon = value;
@@ -106,19 +101,7 @@ namespace NorthGame
 
     public class PlayerInfo : NotifyPropertyChangedBase
     {
-        private string _name;
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (_name != value)
-                {
-                    _name = value;
-                    OnPropertyChanged("Name");
-                }
-            }
-        }
+        public string Name { get;  set; }
 
         private Race _race;
         public Race Race
@@ -149,89 +132,12 @@ namespace NorthGame
             }
         }
 
-        private int _strength;
-        public int Strength
-        {
-            get { return _strength; }
-            set
-            {
-                if (_strength != value)
-                {
-                    _strength = value;
-                    OnPropertyChanged("Strength");
-                }
-            }
-        }
-
-        private int _dexterity;
-        public int Dexterity
-        {
-            get { return _dexterity; }
-            set
-            {
-                if (_dexterity != value)
-                {
-                    _dexterity = value;
-                    OnPropertyChanged("Dexterity");
-                }
-            }
-        }
-
-        private int _constitution;
-        public int Constitution
-        {
-            get { return _constitution; }
-            set
-            {
-                if (_constitution != value)
-                {
-                    _constitution = value;
-                    OnPropertyChanged("Constitution");
-                }
-            }
-        }
-
-        private int _intelligence;
-        public int Intelligence
-        {
-            get { return _intelligence; }
-            set
-            {
-                if (_intelligence != value)
-                {
-                    _intelligence = value;
-                    OnPropertyChanged("Intelligence");
-                }
-            }
-        }
-
-        private int _wisdom;
-        public int Wisdom
-        {
-            get { return _wisdom; }
-            set
-            {
-                if (_wisdom != value)
-                {
-                    _wisdom = value;
-                    OnPropertyChanged("Wisdom");
-                }
-            }
-        }
-
-        private int _charisma;
-        public int Charisma
-        {
-            get { return _charisma; }
-            set
-            {
-                if (_charisma != value)
-                {
-                    _charisma = value;
-                    OnPropertyChanged("Charisma");
-                }
-            }
-        }
+        public int Strength { get; set; }
+        public int Dexterity { get; set; }
+        public int Constitution { get; set; }
+        public int Intelligence { get; set; }
+        public int Wisdom { get; set; }
+        public int Charisma { get; set; }
 
         public List<WeaponCategory> WeaponCategories { get; private set; }
 
@@ -249,19 +155,15 @@ namespace NorthGame
             }
         }
 
-        private Location _selectedLocation;
-        public Location SelectedLocation
-        {
-            get { return _selectedLocation; }
-            set
-            {
-                if (_selectedLocation != value)
-                {
-                    _selectedLocation = value;
-                    OnPropertyChanged("SelectedLocation");
-                }
-            }
-        }
+        public Location SelectedLocation { get; set; }
+
+        public int Initiative { get; set; }
+        public int Wins { get; set; }
+        public int Losses { get; set; }
+        public int WinPercentage { get { return (int)(100 * Wins / (float)(Wins + Losses)); } }
+        public string WinRecord { get { return string.Format("{0} ({1}%)", Wins, WinPercentage); } }
+
+        public int Odds { get; set; }
 
         public PlayerInfo() { WeaponCategories = new List<WeaponCategory>(); }
     }
@@ -282,6 +184,10 @@ namespace NorthGame
 
         public PlayerInfo Player { get; private set; }
 
+        public PlayerInfo Opponent { get; private set; }
+
+        public int Initiative { get { return (int)(100.0f * Player.Initiative / (float)(Player.Initiative + Opponent.Initiative)); } }
+
         private State _state;
         public State State
         {
@@ -296,47 +202,11 @@ namespace NorthGame
             }
         }
 
-        private int _newMessages;
-        public int NewMessages
-        {
-            get { return _newMessages; }
-            private set
-            {
-                if (_newMessages != value)
-                {
-                    _newMessages = value;
-                    OnPropertyChanged("NewMessages");
-                }
-            }
-        }
+        public int NewMessages { get; private set; }
 
-        private int _credits;
-        public int Credits
-        {
-            get { return _credits; }
-            private set
-            {
-                if (_credits != value)
-                {
-                    _credits = value;
-                    OnPropertyChanged("Credits");
-                }
-            }
-        }
+        public int Credits { get; private set; }
 
-        private string _nextGame;
-        public string NextGame
-        {
-            get { return _nextGame; }
-            private set
-            {
-                if (_nextGame != value)
-                {
-                    _nextGame = value;
-                    OnPropertyChanged("NextGame");
-                }
-            }
-        }
+        public string NextGame { get; private set; }
 
         public List<string> PlayScreens { get; private set; }
 
@@ -384,8 +254,8 @@ namespace NorthGame
 
             Race human = new Race { Name = "Human" };
             human.Classes.Add(new RaceClass { Name = "Knight", Image = ImagePath("ClassHumanKnight.png") });
-            human.Classes.Add(new RaceClass { Name = "Cleric", Image = ImagePath("ClassHumanCleric.png") });
             human.Classes.Add(new RaceClass { Name = "Thief", Image = ImagePath("ClassHumanThief.png") });
+            human.Classes.Add(new RaceClass { Name = "Cleric", Image = ImagePath("ClassHumanCleric.png") });
 
             Race orc = new Race { Name = "Orc" };
             orc.Classes.Add(new RaceClass { Name = "Warrior", Image = ImagePath("ClassOrcWarrior.png") });
@@ -452,7 +322,22 @@ namespace NorthGame
                 Constitution = 91,
                 Intelligence = 45,
                 Wisdom = 32,
-                Charisma = 56
+                Charisma = 56,
+                Initiative = 120,
+                Wins = 26,
+                Losses = 3,
+                Odds = 103
+            };
+
+            Opponent = new PlayerInfo
+            {
+                Name = "Khorlsendukr",
+                Race = Races[1],
+                Class = Races[1].Classes[1],
+                Initiative = 81,
+                Wins = 97,
+                Losses = 35,
+                Odds = 105
             };
 
             Player.WeaponCategories.Add(closeRange);
@@ -503,11 +388,18 @@ namespace NorthGame
         private void OnOptions(object param)
         {
             //+State = State.Options;
+
+#if NOESIS
+            UnityEngine.Debug.Log("Options screen");
+#else
+            Console.WriteLine("Options screen");
+#endif
         }
 
         private void OnQuit(object param)
         {
 #if NOESIS
+            UnityEngine.Debug.Log("Quit game");
             UnityEngine.Application.Quit();
 #else
             Application.Current.Shutdown();
@@ -517,31 +409,20 @@ namespace NorthGame
         private void OnFadeCompleted(object param)
         {
             UIElement target = (UIElement)param;
-            if (target == null)
+            if (ScreenShown(target))
             {
-                return;
-            }
+                // swap new content to the front container
+                SwapContent(_container2, _container1);
 
+                // focus target
 #if NOESIS
-            if (target.IsEnabled)
-            {
-                // swap new content to the front container
-                SwapContent(_container2, _container1);
-
-                // focus target
                 target.Focus();
-            }
 #else
-            if (!target.IsEnabled)
-            {
-                // swap new content to the front container
-                SwapContent(_container2, _container1);
-
-                // focus target
                 target.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     target.Focus();
                 }));
+#endif
 
                 // load play screen
                 if (State == State.Play)
@@ -549,27 +430,22 @@ namespace NorthGame
                     SelectedPlayScreen = 0;
                 }
             }
-#endif
         }
 
         private void OnSlideCompleted(object param)
         {
-            UIElement target = (UIElement)param;
-            if (target == null)
+            if (ScreenShown((UIElement)param))
             {
-                return;
+                SwapContent(_playContainer2, _playContainer1);
             }
+        }
 
+        private bool ScreenShown(UIElement target)
+        {
 #if NOESIS
-            if (target.IsEnabled)
-            {
-                SwapContent(_playContainer2, _playContainer1);
-            }
+            return target.IsEnabled;
 #else
-            if (!target.IsEnabled)
-            {
-                SwapContent(_playContainer2, _playContainer1);
-            }
+            return !target.IsEnabled;
 #endif
         }
 

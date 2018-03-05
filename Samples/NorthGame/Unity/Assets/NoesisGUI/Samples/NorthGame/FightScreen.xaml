@@ -33,19 +33,9 @@
                                HorizontalAlignment="Center" Panel.ZIndex="10"
                                noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="2.5"/>
                     <Image Height="200" Source="{Binding Player.Class.Image}" Margin="0,-10,0,10" VerticalAlignment="Bottom"/>
-                    <ProgressBar Height="4" Minimum="0" Maximum="100" Value="50" Width="120" Background="#FF245359">
-                        <ProgressBar.BorderBrush>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#00245359" Offset="0"/>
-                                <GradientStop Color="#82316D79" Offset="0.19"/>
-                                <GradientStop Color="#6C4799AE" Offset="0.346"/>
-                                <GradientStop Color="#8C316679" Offset="0.566"/>
-                                <GradientStop Color="#7F4799AE" Offset="0.75"/>
-                                <GradientStop Color="#4C316D79" Offset="0.846"/>
-                                <GradientStop Color="#00245359" Offset="1"/>
-                            </LinearGradientBrush>
-                        </ProgressBar.BorderBrush>
-                    </ProgressBar>
+                    <ProgressBar Height="4" Minimum="0" Maximum="100" Value="{Binding Player.WinPercentage, Mode=OneWay}" Width="120"
+                                 Background="{StaticResource Brush.Progress.Wins}"
+                                 BorderBrush="{StaticResource Brush.Progress.WinsShine}"/>
                     <Grid HorizontalAlignment="Center" TextElement.FontSize="9" Margin="0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -64,11 +54,11 @@
             </Viewbox>
             <Viewbox Grid.Row="0" Grid.Column="3" VerticalAlignment="Bottom">
                 <StackPanel>
-                    <TextBlock Text="{Binding Player.Name, Converter={StaticResource Converter.Uppercase}}"
+                    <TextBlock Text="{Binding Opponent.Name, Converter={StaticResource Converter.Uppercase}}"
                         FontFamily="Fonts/#Avenir LT Std" FontSize="16" Foreground="#FF60DAD6"
                         HorizontalAlignment="Center" Panel.ZIndex="10"
                         noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="2.5"/>
-                    <Image Height="200" Source="{Binding Player.Class.Image}" Margin="0,-10,0,10" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+                    <Image Height="200" Source="{Binding Opponent.Class.Image}" Margin="0,-10,0,10" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleY="1" ScaleX="-1"/>
@@ -78,19 +68,9 @@
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                    <ProgressBar Width="120" Height="4" Minimum="0" Maximum="100" Value="50" Background="#FF245359">
-                        <ProgressBar.BorderBrush>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#00245359" Offset="0"/>
-                                <GradientStop Color="#82316D79" Offset="0.19"/>
-                                <GradientStop Color="#6C4799AE" Offset="0.346"/>
-                                <GradientStop Color="#8C316679" Offset="0.566"/>
-                                <GradientStop Color="#7F4799AE" Offset="0.75"/>
-                                <GradientStop Color="#4C316D79" Offset="0.846"/>
-                                <GradientStop Color="#00245359" Offset="1"/>
-                            </LinearGradientBrush>
-                        </ProgressBar.BorderBrush>
-                    </ProgressBar>
+                    <ProgressBar Width="120" Height="4" Minimum="0" Maximum="100" Value="{Binding Opponent.WinPercentage, Mode=OneWay}"
+                                 Background="{StaticResource Brush.Progress.Wins}"
+                                 BorderBrush="{StaticResource Brush.Progress.WinsShine}"/>
                     <Grid HorizontalAlignment="Center" TextElement.FontSize="9" Margin="0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -101,9 +81,9 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Record:" Foreground="White" Margin="0,0,8,0"/>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Player.WinRecord, FallbackValue=0}" Foreground="#FF6DC3CF"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Opponent.WinRecord, FallbackValue=0}" Foreground="#FF6DC3CF"/>
                         <TextBlock Grid.Row="1" Grid.Column="0" Text="Odds:" Foreground="White"/>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Player.Odds, FallbackValue=0}" Foreground="#FF6DC3CF"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Opponent.Odds, FallbackValue=0}" Foreground="#FF6DC3CF"/>
                     </Grid>
                 </StackPanel>
             </Viewbox>
@@ -124,20 +104,10 @@
                         <TextBlock Grid.Row="1" Grid.Column="0" Text="Credits:" Foreground="#FF6DC3CF" Margin="0,0,8,0"/>
                         <TextBlock Grid.Row="1" Grid.Column="1" Text="12,500 cr" Foreground="White"/>
                     </Grid>
-                    <ProgressBar Width="200" Height="6" Minimum="0" Maximum="100" Value="60" Margin="0,0,0,20" Background="#FFAF6330">
-                        <ProgressBar.BorderBrush>
-                            <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                                <GradientStop Color="#00AF6330" Offset="0"/>
-                                <GradientStop Color="#B2FDB34F" Offset="0.19"/>
-                                <GradientStop Color="#CCFBD658" Offset="0.346"/>
-                                <GradientStop Color="#CCFE9245" Offset="0.566"/>
-                                <GradientStop Color="#7FFBCF56" Offset="0.75"/>
-                                <GradientStop Color="#4CFD9B47" Offset="0.846"/>
-                                <GradientStop Color="#00AF6330" Offset="1"/>
-                            </LinearGradientBrush>
-                        </ProgressBar.BorderBrush>
-                    </ProgressBar>
-                    <StackPanel Orientation="Horizontal" TextElement.FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,30">
+                    <ProgressBar Width="200" Height="6" Minimum="0" Maximum="100" Value="{Binding Initiative, FallbackValue=50, Mode=OneWay}" Margin="0,0,0,20"
+                                 Background="{StaticResource Brush.Progress.Initiative}"
+                                 BorderBrush="{StaticResource Brush.Progress.InitiativeShine}"/>
+                    <StackPanel Orientation="Horizontal" TextElement.FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,20">
                         <TextBlock Text="{Binding Player.Initiative, FallbackValue=120}" Foreground="White"/>
                         <TextBlock Text="Initiative" Foreground="#FF6DC3CF" Margin="30,0"/>
                         <TextBlock Text="{Binding Opponent.Initiative, FallbackValue=90}" Foreground="White"/>

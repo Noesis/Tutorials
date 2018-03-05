@@ -30,7 +30,7 @@
                      ItemsSource="{Binding Player.Race.Classes}"
                      ItemContainerStyle="{StaticResource Style.ListBoxItem.ClassList}"
                      ItemTemplate="{StaticResource Template.Item.Class}"
-                     SelectedItem="{Binding Player.Class}"/>
+                     SelectedItem="{Binding Player.Class}" BorderThickness="0"/>
         </Grid>
     </Grid>
 </UserControl>
