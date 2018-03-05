@@ -57,6 +57,11 @@ namespace NorthGame
             get { return _selectedWeapon; }
             set
             {
+                if (!Weapons.Contains(value))
+                {
+                    return;
+                }
+
                 if (_selectedWeapon != value)
                 {
                     _selectedWeapon = value;
@@ -273,29 +278,29 @@ namespace NorthGame
             closeRange.Weapons.Add(new Weapon { Name = "Double Axe", Image = ImagePath("WeaponDoubleAxe.png") });
             closeRange.Weapons.Add(new Weapon { Name = "Long Sword", Image = ImagePath("WeaponLongSword.png") });
             closeRange.Weapons.Add(new Weapon { Name = "Hand Axe", Image = ImagePath("WeaponHandAxe.png") });
-            closeRange.Weapons.Add(new Weapon { Name = "Hammer", Image = ImagePath("WeaponHammer.png") });
+            closeRange.Weapons.Add(new Weapon { Name = "Double Sword", Image = ImagePath("WeaponDoubleSword.png") });
             closeRange.Weapons.Add(new Weapon { Name = "Mace", Image = ImagePath("WeaponMace.png") });
             closeRange.SelectedWeapon = closeRange.Weapons[0];
 
             WeaponCategory longRange = new WeaponCategory { Name = "Long Range" };
-            longRange.Weapons.Add(new Weapon { Name = "Long Bow", Image = ImagePath("WeaponLongSword.png") });
-            longRange.Weapons.Add(new Weapon { Name = "Crossbow", Image = ImagePath("WeaponDoubleAxe.png") });
-            longRange.Weapons.Add(new Weapon { Name = "Sling", Image = ImagePath("WeaponLongSword.png") });
-            longRange.Weapons.Add(new Weapon { Name = "Spear", Image = ImagePath("WeaponDoubleAxe.png") });
+            longRange.Weapons.Add(new Weapon { Name = "Long Bow", Image = ImagePath("WeaponLongBow.png") });
+            longRange.Weapons.Add(new Weapon { Name = "Crossbow", Image = ImagePath("WeaponCrossbow.png") });
+            longRange.Weapons.Add(new Weapon { Name = "Sling", Image = ImagePath("WeaponSling.png") });
+            longRange.Weapons.Add(new Weapon { Name = "Spear", Image = ImagePath("WeaponSpear.png") });
             longRange.SelectedWeapon = longRange.Weapons[0];
 
             WeaponCategory armor = new WeaponCategory { Name = "Armor" };
-            armor.Weapons.Add(new Weapon { Name = "Shield", Image = ImagePath("WeaponDoubleAxe.png") });
-            armor.Weapons.Add(new Weapon { Name = "Leather Armor", Image = ImagePath("WeaponLongSword.png") });
-            armor.Weapons.Add(new Weapon { Name = "Scale Mail", Image = ImagePath("WeaponDoubleAxe.png") });
-            armor.Weapons.Add(new Weapon { Name = "Breastplate", Image = ImagePath("WeaponLongSword.png") });
+            armor.Weapons.Add(new Weapon { Name = "Round Shield", Image = ImagePath("WeaponRoundShield.png") });
+            armor.Weapons.Add(new Weapon { Name = "Chain Mail", Image = ImagePath("WeaponChainMail.png") });
+            armor.Weapons.Add(new Weapon { Name = "Big Shield", Image = ImagePath("WeaponBigShield.png") });
+            armor.Weapons.Add(new Weapon { Name = "Breastplate", Image = ImagePath("WeaponBreastplate.png") });
+            armor.Weapons.Add(new Weapon { Name = "Helmet", Image = ImagePath("WeaponHelmet.png") });
             armor.SelectedWeapon = armor.Weapons[0];
 
             WeaponCategory magic = new WeaponCategory { Name = "Magic" };
-            magic.Weapons.Add(new Weapon { Name = "Staff", Image = ImagePath("WeaponLongSword.png") });
-            magic.Weapons.Add(new Weapon { Name = "Ring", Image = ImagePath("WeaponDoubleAxe.png") });
-            magic.Weapons.Add(new Weapon { Name = "Amulet", Image = ImagePath("WeaponLongSword.png") });
-            magic.Weapons.Add(new Weapon { Name = "Spell Book", Image = ImagePath("WeaponDoubleAxe.png") });
+            magic.Weapons.Add(new Weapon { Name = "Wand", Image = ImagePath("WeaponWand.png") });
+            magic.Weapons.Add(new Weapon { Name = "Staff", Image = ImagePath("WeaponStaff.png") });
+            magic.Weapons.Add(new Weapon { Name = "Spell Book", Image = ImagePath("WeaponSpellBook.png") });
             magic.SelectedWeapon = magic.Weapons[0];
 
             Locations = new List<Location>();

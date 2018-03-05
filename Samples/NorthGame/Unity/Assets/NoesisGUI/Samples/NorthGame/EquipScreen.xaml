@@ -35,6 +35,33 @@
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="WeaponEffect">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.25">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="WeaponEffect">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.25">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="WeaponEffect">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="WeaponEffect">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
     <Grid>
@@ -129,10 +156,15 @@
                                         <ScaleTransform/>
                                     </Image.RenderTransform>
                                 </Image>
-                                <Image Source="Images/WeaponEffect.png" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="200,20,0,0"
-                                       RenderTransformOrigin="0.5,0.5">
+                                <Image x:Name="WeaponEffect" Source="Images/WeaponEffect.png" VerticalAlignment="Top" HorizontalAlignment="Right"
+                                       RenderTransformOrigin="0.57,0.42" Opacity="0">
                                     <Image.RenderTransform>
-                                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform X="-30" Y="60"/>
+                                        </TransformGroup>
                                     </Image.RenderTransform>
                                 </Image>
                             </Grid>

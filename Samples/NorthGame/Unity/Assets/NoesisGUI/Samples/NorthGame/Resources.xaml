@@ -1188,6 +1188,15 @@
                             <VisualTransition.GeneratedEasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
                             </VisualTransition.GeneratedEasingFunction>
+                            <Storyboard>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="TextGroup">
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="10">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
                         </VisualTransition>
                         <VisualTransition From="Selected" GeneratedDuration="0:0:0.2">
                             <VisualTransition.GeneratedEasingFunction>
@@ -1216,6 +1225,9 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="RaidDifficulty">
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF2AE3E3"/>
                             </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="TextGroup">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="10"/>
+                            </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
                     <VisualState x:Name="SelectedUnfocused">
@@ -1259,7 +1271,15 @@
                         </Border.Background>
                         <StackPanel>
                             <Image Source="{Binding Image}" Width="400" Height="225"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                            <StackPanel x:Name="TextGroup" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0" RenderTransformOrigin="0.5,0.5">
+                                <StackPanel.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </StackPanel.RenderTransform>
                                 <TextBlock x:Name="RaidType" Text="{Binding Type, FallbackValue=Raid}" Foreground="#FF79DFDF" FontSize="18"/>
                                 <TextBlock x:Name="RaidMembers" Text="{Binding Members, FallbackValue=0, StringFormat=Members: {0}}" Margin="40,0" Foreground="#FF79DFDF" FontSize="18"/>
                                 <TextBlock x:Name="RaidDifficulty" Text="{Binding Difficulty, FallbackValue=Hard}" Foreground="#FF79DFDF" FontSize="18"/>
@@ -1276,6 +1296,24 @@
     </Style>
 
     <ControlTemplate x:Key="Template.ProgressBar" TargetType="{x:Type ProgressBar}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="ShineLoop" Duration="0:0:8" RepeatBehavior="Forever" SpeedRatio="1.2">
+                <DoubleAnimationUsingKeyFrames BeginTime="0:0:2" Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ShineMove">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="0:0:2" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Shine">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
         <Grid>
             <Border x:Name="PART_Track"
                     Background="#7F000000"
@@ -1287,9 +1325,30 @@
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.ColumnSpan="2" Background="{TemplateBinding Background}"/>
-                <Border Grid.Column="1" Background="{TemplateBinding BorderBrush}" Margin="0,0,-5,0"/>
+                <Decorator x:Name="ShineMoveWidth" Grid.Column="0"/>
+                <Decorator x:Name="ShineWidth" Grid.Column="1"/>
+                <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <Decorator x:Name="ShineMove" Width="{Binding ActualWidth, ElementName=ShineMoveWidth}">
+                        <Decorator.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Decorator.LayoutTransform>
+                    </Decorator>
+                    <Border x:Name="Shine" Margin="0,0,-5,0" Opacity="0"
+                            Width="{Binding ActualWidth, ElementName=ShineWidth}"
+                            Background="{TemplateBinding BorderBrush}"/>
+                </StackPanel>
             </Grid>
         </Grid>
+        <ControlTemplate.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard x:Name="ShineLoop_BeginStoryboard" Storyboard="{StaticResource ShineLoop}"/>
+            </EventTrigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style TargetType="{x:Type ProgressBar}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
