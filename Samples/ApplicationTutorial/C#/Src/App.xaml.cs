@@ -2,6 +2,7 @@
 using Noesis;
 using NoesisApp;
 #else
+using System;
 using System.Windows;
 #endif
 
@@ -31,6 +32,13 @@ namespace RssReader
                 new EmbeddedFont { folder = "", resource = "Roboto_Bold" }
             };
             return new EmbeddedFontProvider(fonts, Properties.Resources.ResourceManager);
+        }
+#else
+        public App()
+        {
+            // NoesisTheme added to Application.Resources also so it runs exactly the same as inside Noesis
+            ResourceDictionary theme = (ResourceDictionary)LoadComponent(new Uri("NoesisTheme.xaml", UriKind.Relative));
+            Resources.MergedDictionaries.Insert(0, theme);
         }
 #endif
     }
