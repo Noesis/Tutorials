@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
              xmlns:local="clr-namespace:NorthGame"
              xmlns:noesis="clr-namespace:NoesisGUIExtensions"
-             d:DesignWidth="1280" d:DesignHeight="720">
+             d:DesignWidth="1280" d:DesignHeight="720"
+             Tag="WeaponCategories">
     <UserControl.Resources>
         <Storyboard x:Key="WeaponFade">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Weapon">
@@ -74,22 +75,22 @@
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="8*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid x:Name="PlayerImage" Grid.Column="1">
                 <Image Grid.Column="1" Source="{Binding Player.Class.Image}" Margin="20,0" VerticalAlignment="Bottom"/>
             </Grid>
             <Grid x:Name="PlayerInfo" Grid.Column="2">
                 <Viewbox VerticalAlignment="Center">
-                    <StackPanel Margin="20,0,40,0">
+                    <StackPanel Margin="20,0,40,40">
                         <Viewbox StretchDirection="DownOnly" Width="300" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding Player.Name, Converter={StaticResource Converter.Uppercase}}"
                                        Foreground="White" FontFamily="Fonts/#Avenir LT Std" FontSize="40"
@@ -138,7 +139,7 @@
                             <BeginStoryboard Storyboard="{StaticResource WeaponFade}"/>
                         </EventTrigger>
                     </Viewbox.Triggers>
-                    <StackPanel Margin="0,0,30,0">
+                    <StackPanel Margin="0,0,0,20">
                         <ListBox x:Name="WeaponCategories" Style="{StaticResource Style.ListBox.HorizontalList}" BorderThickness="1" Padding="2,1" Margin="0,0,0,2"
                                  ItemContainerStyle="{StaticResource Style.ListBoxItem.WeaponCategory}"
                                  ItemsSource="{Binding Player.WeaponCategories}"

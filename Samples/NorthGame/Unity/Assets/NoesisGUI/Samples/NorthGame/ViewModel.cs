@@ -179,6 +179,10 @@ namespace NorthGame
         public ICommand PlayCommand { get; private set; }
         public ICommand OptionsCommand { get; private set; }
         public ICommand QuitCommand { get; private set; }
+        public ICommand FightCommand { get; private set; }
+
+        public ICommand PrevCommand { get; private set; }
+        public ICommand NextCommand { get; private set; }
 
         public ICommand FadeCompletedCommand { get; private set; }
         public ICommand SlideCompletedCommand { get; private set; }
@@ -253,6 +257,10 @@ namespace NorthGame
             PlayCommand = new DelegateCommand(OnPlay);
             OptionsCommand = new DelegateCommand(OnOptions);
             QuitCommand = new DelegateCommand(OnQuit);
+            FightCommand = new DelegateCommand(OnFight);
+
+            PrevCommand = new DelegateCommand(OnPrev);
+            NextCommand = new DelegateCommand(OnNext);
 
             FadeCompletedCommand = new DelegateCommand(OnFadeCompleted);
             SlideCompletedCommand = new DelegateCommand(OnSlideCompleted);
@@ -411,25 +419,48 @@ namespace NorthGame
 #endif
         }
 
+        private void OnFight(object param)
+        {
+#if NOESIS
+            UnityEngine.Debug.Log("Fight!");
+#else
+            Console.WriteLine("Fight!");
+#endif
+        }
+
+        private void OnPrev(object param)
+        {
+            if (SelectedPlayScreen == 0)
+            {
+                OnMenu(param);
+            }
+            else
+            {
+                SelectedPlayScreen--;
+            }
+        }
+
+        private void OnNext(object param)
+        {
+            if (SelectedPlayScreen < PlayScreens.Count - 1)
+            {
+                SelectedPlayScreen++;
+            }
+            else
+            {
+                OnFight(param);
+            }
+        }
+
         private void OnFadeCompleted(object param)
         {
             UIElement target = (UIElement)param;
             if (ScreenShown(target))
             {
-                // swap new content to the front container
                 SwapContent(_container2, _container1);
 
-                // focus target
-#if NOESIS
-                target.Focus();
-#else
-                target.Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    target.Focus();
-                }));
-#endif
+                FocusTarget(target);
 
-                // load play screen
                 if (State == State.Play)
                 {
                     SelectedPlayScreen = 0;
@@ -442,6 +473,10 @@ namespace NorthGame
             if (ScreenShown((UIElement)param))
             {
                 SwapContent(_playContainer2, _playContainer1);
+
+                FrameworkElement child = _playContainer1.Child as FrameworkElement;
+                UIElement focus = (UIElement)child.FindName((string)child.Tag);
+                FocusTarget(focus);
             }
         }
 
@@ -451,6 +486,18 @@ namespace NorthGame
             return target.IsEnabled;
 #else
             return !target.IsEnabled;
+#endif
+        }
+
+        private void FocusTarget(UIElement target)
+        {
+#if NOESIS
+            target.Focus();
+#else
+            target.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                target.Focus();
+            }));
 #endif
         }
 

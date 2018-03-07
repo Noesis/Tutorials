@@ -12,6 +12,12 @@
     <SolidColorBrush x:Key="Brush.Text.ButtonNormal" Color="#FFADF8F7"/>
     <SolidColorBrush x:Key="Brush.Text.Shadow" Color="#20000000"/>
 
+    <SolidColorBrush x:Key="Brush.Button.Border" Color="#FF1F4147"/>
+    <LinearGradientBrush x:Key="Brush.Button.Background" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF0B191E" Offset="1"/>
+        <GradientStop Color="#FF12252B" Offset="0"/>
+    </LinearGradientBrush>
+
     <SolidColorBrush x:Key="Brush.Progress.Wins" Color="#FF245359"/>
     <LinearGradientBrush x:Key="Brush.Progress.WinsShine" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Color="#00245359" Offset="0"/>
@@ -56,48 +62,27 @@
         <Setter Property="noesis:Text.StrokeThickness" Value="3.5"/>
     </Style>
 
-    <ControlTemplate x:Key="Template.Button.NextPrev" TargetType="{x:Type Button}">
-        <Grid>
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup x:Name="FocusStates">
-                    <VisualStateGroup.Transitions>
-                        <VisualTransition GeneratedDuration="0:0:0.1" To="Focused">
-                            <VisualTransition.GeneratedEasingFunction>
-                                <SineEase EasingMode="EaseInOut"/>
-                            </VisualTransition.GeneratedEasingFunction>
-                        </VisualTransition>
-                        <VisualTransition From="Focused" GeneratedDuration="0:0:0.2">
-                            <VisualTransition.GeneratedEasingFunction>
-                                <SineEase EasingMode="EaseInOut"/>
-                            </VisualTransition.GeneratedEasingFunction>
-                        </VisualTransition>
-                    </VisualStateGroup.Transitions>
-                    <VisualState x:Name="Unfocused"/>
-                    <VisualState x:Name="Focused">
-                        <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Arrows">
-                                <EasingColorKeyFrame KeyTime="0" Value="#FF1BF4F7"/>
-                            </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Arrows">
-                                <EasingColorKeyFrame KeyTime="0" Value="#FF2F9E8C"/>
-                            </ColorAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
-            <Path x:Name="Arrows" Data="M0.020500001,2.4815418E-24 L21.187167,21.239583 21.062167,35.645833 1.3877788E-17,56.791833 0.062166668,42.645833 14.249667,28.427083 0.093416668,14.177083 z M21.2085,8.3266727E-17 L42.375167,21.239583 42.250167,35.645833 21.188,56.791833 21.250167,42.645833 35.437667,28.427083 21.281417,14.177083 z" Stretch="Uniform">
-                <Path.Fill>
-                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
-                        <GradientStop Color="#FF3AF8C9" Offset="0"/>
-                        <GradientStop Color="#FF2E9F79" Offset="1"/>
-                    </LinearGradientBrush>
-                </Path.Fill>
-            </Path>
+    <ControlTemplate x:Key="Template.Button.PrevNext" TargetType="{x:Type Button}">
+        <Grid Background="Transparent">
+            <Viewbox>
+                <ContentPresenter Margin="{TemplateBinding Padding}"
+                    noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="3.5"/>
+            </Viewbox>
         </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#FF1BF4F7"/>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="Foreground" Value="#FF1BF4F7"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
-    <Style x:Key="Style.Button.NextPrev" TargetType="{x:Type Button}">
+    <Style x:Key="Style.Button.PrevNext" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Template" Value="{StaticResource Template.Button.NextPrev}"/>
+        <Setter Property="Template" Value="{StaticResource Template.Button.PrevNext}"/>
     </Style>
 
     <ControlTemplate x:Key="Template.Button.Menu" TargetType="{x:Type Button}">
@@ -332,7 +317,7 @@
     </ControlTemplate>
     <Style x:Key="Style.Button.BackMenu" TargetType="{x:Type Button}">
         <Setter Property="Padding" Value="200,25,120,15"/>
-        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std"/>
+        <Setter Property="FontFamily" Value="Fonts/#Interstate-Bold"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="50"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -377,6 +362,7 @@
     <Style x:Key="Style.ListBox.HorizontalList" TargetType="{x:Type ListBox}">
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="KeyboardNavigation.DirectionalNavigation" Value="Continue"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template" Value="{StaticResource Template.ListBox.HorizontalList}"/>
     </Style>
 
@@ -805,6 +791,12 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.04"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.04"/>
+                </DoubleAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="SelectOff">
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Select">
@@ -817,9 +809,23 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
             </Storyboard>
         </ControlTemplate.Resources>
-        <Viewbox>
+        <Viewbox x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
+            <Viewbox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Viewbox.RenderTransform>
             <Grid Margin="20,0" Background="Transparent">
                 <Ellipse x:Name="Focus" Margin="40,50">
                     <Ellipse.Fill>
@@ -1170,6 +1176,7 @@
     <Style x:Key="Style.ListBox.Location" TargetType="{x:Type ListBox}">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="KeyboardNavigation.DirectionalNavigation" Value="Continue"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template" Value="{StaticResource Template.ListBox.Location}"/>
         <Setter Property="ItemsPanel">
             <Setter.Value>
@@ -1302,7 +1309,7 @@
                     <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1">
                         <EasingDoubleKeyFrame.EasingFunction>
-                            <CubicEase EasingMode="EaseOut"/>
+                            <SineEase EasingMode="EaseOut"/>
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>

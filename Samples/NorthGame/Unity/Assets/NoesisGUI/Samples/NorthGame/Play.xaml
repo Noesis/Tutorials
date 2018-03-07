@@ -39,12 +39,14 @@
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopMenuEffects">
-                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:5.3" Value="1"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:9.3" Value="0.5"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:14" Value="0.8"/>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="KeyHelper">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="60"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
                 </Storyboard>
                 <Storyboard x:Key="FadeOut">
@@ -69,6 +71,13 @@
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="KeyHelper">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2500">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseIn"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
@@ -165,6 +174,60 @@
                         <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="True"/>
                     </BooleanAnimationUsingKeyFrames>
                 </Storyboard>
+                <Storyboard x:Key="TopInfoAnim" RepeatBehavior="Forever">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="MailIcon">
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.1" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.15" Value="4"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.2" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.25" Value="-4"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.3" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.35" Value="4"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.4" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MailMessages">
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.0" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.15" Value="8"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.2" Value="-8"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.4" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MailMessages">
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.0" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.15" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.2" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:4.4" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MoneyIcon">
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.1" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.15" Value="-2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.2" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.25" Value="2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.3" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.35" Value="-2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.4" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MoneyCredits">
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.0" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.15" Value="8"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.2" Value="-8"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.4" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="MoneyCredits">
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.0" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.15" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.2" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:12.4" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopMenuEffectsPanel">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5.3" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:9.3" Value="0.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:14" Value="0.8"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:24" Value="0.8"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:30" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
             </ControlTemplate.Resources>
             <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,-0.1" IsEnabled="False"
                 noesis:EventToCommand.Event="IsEnabledChanged"
@@ -178,11 +241,12 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </Grid.RenderTransform>
-                <Grid>
+                <Grid KeyboardNavigation.DirectionalNavigation="Contained">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50*"/>
                         <RowDefinition Height="100*"/>
-                        <RowDefinition Height="500*"/>
+                        <RowDefinition Height="470*"/>
+                        <RowDefinition Height="30*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Viewbox Height="{Binding ActualHeight, ElementName=TopMenu4th}" VerticalAlignment="Top" HorizontalAlignment="Right">
@@ -215,7 +279,9 @@
                                     </TransformGroup>
                                 </Grid.RenderTransform>
                                 <Image Source="Images/TopMenuBg.png" IsHitTestVisible="False"/>
-                                <Image x:Name="TopMenuEffects" Source="Images/TopMenuEffects.png" Margin="100,-100,-100,-165" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Grid x:Name="TopMenuEffectsPanel" Margin="100,-100,-100,-165">
+                                    <Image x:Name="TopMenuEffects" Source="Images/TopMenuEffects.png" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
                                 <ListBox x:Name="Navigation" Style="{StaticResource Style.ListBox.HorizontalList}" HorizontalAlignment="Center" Height="90" Margin="0,0,0,40"
                                          ItemsSource="{Binding PlayScreens}" ItemContainerStyle="{StaticResource Style.ListBoxItem.Navigation}"
                                          SelectedIndex="{Binding SelectedPlayScreen}" BorderThickness="0"/>
@@ -241,7 +307,15 @@
                         </Grid.ColumnDefinitions>
                         <Viewbox Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                             <StackPanel Orientation="Horizontal" Margin="0,160,0,0">
-                                <Path Data="M17.171,0 C7.704,0 0,7.703 0,17.171 L0,110.829 C0,120.297 7.704,128 17.171,128 L157.658,128 C167.125,128 174.829,120.297 174.829,110.829 L174.829,17.171 C174.829,7.703 167.125,0 157.658,0 z M9.366,110.829 L9.366,17.171 C9.366,12.867 12.866,9.366 17.171,9.366 L157.658,9.366 C161.964,9.366 165.464,12.867 165.464,17.171 L165.464,110.829 C165.464,115.133 161.964,118.634 157.658,118.634 L17.171,118.634 C12.866,118.634 9.366,115.133 9.366,110.829 M85.853,68.336 L16,16 62.311,62.058 17,112 75.613,74.621 85.853,84.293 95.024,75.122 157,111 107.935,62.211 157,16 z" Height="30" Canvas.Left="625.5" Canvas.Top="17.5" Width="46" Stretch="Fill" Margin="0,4,24,4">
+                                <Path x:Name="MailIcon" Data="M17.171,0 C7.704,0 0,7.703 0,17.171 L0,110.829 C0,120.297 7.704,128 17.171,128 L157.658,128 C167.125,128 174.829,120.297 174.829,110.829 L174.829,17.171 C174.829,7.703 167.125,0 157.658,0 z M9.366,110.829 L9.366,17.171 C9.366,12.867 12.866,9.366 17.171,9.366 L157.658,9.366 C161.964,9.366 165.464,12.867 165.464,17.171 L165.464,110.829 C165.464,115.133 161.964,118.634 157.658,118.634 L17.171,118.634 C12.866,118.634 9.366,115.133 9.366,110.829 M85.853,68.336 L16,16 62.311,62.058 17,112 75.613,74.621 85.853,84.293 95.024,75.122 157,111 107.935,62.211 157,16 z" Height="30" Canvas.Left="625.5" Canvas.Top="17.5" Width="46" Stretch="Fill" Margin="0,4,24,4" RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
                                     <Path.Fill>
                                         <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                                             <GradientStop Color="#FF14FFED" Offset="0"/>
@@ -251,13 +325,30 @@
                                 </Path>
                                 <TextBlock Text="New Messages:  " Foreground="#FFFCFCFC" VerticalAlignment="Center" FontSize="24"
                                            noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="3.5"/>
-                                <TextBlock Text="{Binding NewMessages}" Foreground="#FF41B3C0" VerticalAlignment="Center" FontSize="24"
-                                           noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="4.5"/>
+                                <TextBlock x:Name="MailMessages" Text="{Binding NewMessages, FallbackValue=0}" Foreground="#FF41B3C0" VerticalAlignment="Center" FontSize="24"
+                                           noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="4.5" RenderTransformOrigin="0.5,0.5">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
                             </StackPanel>
                         </Viewbox>
                         <Viewbox Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                             <StackPanel Orientation="Horizontal" Margin="0,160,0,0">
-                                <Path Data="M24.4453333333331,79.0250006561279C24.4453333333331,111.758000656128 47.742,135.053667336508 80.4750000000001,135.053667336508 113.208,135.053667336508 136.50466666667,111.758000656128 136.50466666667,79.0250006561279 136.50466666667,46.2920006561279 113.208,22.9953339757489 80.4750000000001,22.9953339757489 47.742,22.9953339757489 24.4453333333331,46.2920006561279 24.4453333333331,79.0250006561279 M43.4010000000001,70.8320006561279L50.9640000000001,70.8320006561279C52.3180000000001,63.9470006561279 55.366,58.0770006561279 59.4280000000001,53.7880006561279 65.5240000000001,47.0160006561279 73.7630000000001,43.1790006561279 83.8090000000001,43.1790006561279 90.5800000000001,43.1790006561279 96.2250000000001,44.8720006561279 99.9490000000001,46.6770006561279L97.1270000000001,57.1740006561279C94.1930000000001,55.5950006561279 89.5650000000001,54.1270006561279 84.485,54.1270006561279 78.842,54.1270006561279 73.8760000000001,56.1590006561279 70.1510000000001,60.3350006561279 67.781,62.8180006561279 66.088,66.5420006561279 65.1850000000001,70.8320006561279L94.757,70.8320006561279 94.757,77.8300006561279 63.8300000000001,77.8300006561279C63.6050000000001,79.0710006561279,63.6050000000001,80.4260006561279,63.6050000000001,81.7800006561279L63.6050000000001,83.6990006561279 94.757,83.6990006561279 94.757,90.5840006561279 64.8460000000001,90.5840006561279C65.6370000000001,95.4370006561279 67.3300000000001,99.0480006561279 69.7,101.645000656128 73.5380000000001,105.820000656128 78.9550000000001,107.741000656128 84.8240000000001,107.741000656128 90.355,107.741000656128 95.5470000000001,105.820000656128 98.1430000000001,104.354000656128L100.513,114.511000656128C96.7890000000001,116.769000656128 90.468,119.027000656128 83.2440000000001,119.027000656128 72.973,119.027000656128 63.7180000000001,114.963000656128 57.7360000000001,107.401000656128 54.1240000000001,103.224000656128 51.641,97.5820006561279 50.6250000000001,90.5840006561279L43.4010000000001,90.5840006561279 43.4010000000001,83.6990006561279 49.722,83.6990006561279 49.722,81.8930006561279C49.722,80.5380006561279,49.835,79.0710006561279,49.948,77.8300006561279L43.4010000000001,77.8300006561279z M2.48689958574826E-14,79.7500006561279C2.48689958574826E-14,123.795000656128 35.7050000000001,159.500000656128 79.7500000000001,159.500000656128 123.795,159.500000656128 159.5,123.795000656128 159.5,79.7500006561279 159.5,35.7060006561279 123.795,6.56127930653838E-07 79.7500000000001,6.56127930653838E-07 35.7050000000001,6.56127930653838E-07 2.48689958574826E-14,35.7060006561279 2.48689958574826E-14,79.7500006561279 M14.9510000000001,79.0250006561279C14.9510000000001,42.8360006561279 44.287,13.5000006561279 80.4750000000001,13.5000006561279 116.664,13.5000006561279 146,42.8360006561279 146,79.0250006561279 146,115.214000656128 116.664,144.550000656128 80.4750000000001,144.550000656128 44.287,144.550000656128 14.9510000000001,115.214000656128 14.9510000000001,79.0250006561279" Height="38" Canvas.Top="3" Width="38" Stretch="Fill" Margin="0,0,24,0">
+                                <Path x:Name="MoneyIcon" Data="M24.4453333333331,79.0250006561279C24.4453333333331,111.758000656128 47.742,135.053667336508 80.4750000000001,135.053667336508 113.208,135.053667336508 136.50466666667,111.758000656128 136.50466666667,79.0250006561279 136.50466666667,46.2920006561279 113.208,22.9953339757489 80.4750000000001,22.9953339757489 47.742,22.9953339757489 24.4453333333331,46.2920006561279 24.4453333333331,79.0250006561279 M43.4010000000001,70.8320006561279L50.9640000000001,70.8320006561279C52.3180000000001,63.9470006561279 55.366,58.0770006561279 59.4280000000001,53.7880006561279 65.5240000000001,47.0160006561279 73.7630000000001,43.1790006561279 83.8090000000001,43.1790006561279 90.5800000000001,43.1790006561279 96.2250000000001,44.8720006561279 99.9490000000001,46.6770006561279L97.1270000000001,57.1740006561279C94.1930000000001,55.5950006561279 89.5650000000001,54.1270006561279 84.485,54.1270006561279 78.842,54.1270006561279 73.8760000000001,56.1590006561279 70.1510000000001,60.3350006561279 67.781,62.8180006561279 66.088,66.5420006561279 65.1850000000001,70.8320006561279L94.757,70.8320006561279 94.757,77.8300006561279 63.8300000000001,77.8300006561279C63.6050000000001,79.0710006561279,63.6050000000001,80.4260006561279,63.6050000000001,81.7800006561279L63.6050000000001,83.6990006561279 94.757,83.6990006561279 94.757,90.5840006561279 64.8460000000001,90.5840006561279C65.6370000000001,95.4370006561279 67.3300000000001,99.0480006561279 69.7,101.645000656128 73.5380000000001,105.820000656128 78.9550000000001,107.741000656128 84.8240000000001,107.741000656128 90.355,107.741000656128 95.5470000000001,105.820000656128 98.1430000000001,104.354000656128L100.513,114.511000656128C96.7890000000001,116.769000656128 90.468,119.027000656128 83.2440000000001,119.027000656128 72.973,119.027000656128 63.7180000000001,114.963000656128 57.7360000000001,107.401000656128 54.1240000000001,103.224000656128 51.641,97.5820006561279 50.6250000000001,90.5840006561279L43.4010000000001,90.5840006561279 43.4010000000001,83.6990006561279 49.722,83.6990006561279 49.722,81.8930006561279C49.722,80.5380006561279,49.835,79.0710006561279,49.948,77.8300006561279L43.4010000000001,77.8300006561279z M2.48689958574826E-14,79.7500006561279C2.48689958574826E-14,123.795000656128 35.7050000000001,159.500000656128 79.7500000000001,159.500000656128 123.795,159.500000656128 159.5,123.795000656128 159.5,79.7500006561279 159.5,35.7060006561279 123.795,6.56127930653838E-07 79.7500000000001,6.56127930653838E-07 35.7050000000001,6.56127930653838E-07 2.48689958574826E-14,35.7060006561279 2.48689958574826E-14,79.7500006561279 M14.9510000000001,79.0250006561279C14.9510000000001,42.8360006561279 44.287,13.5000006561279 80.4750000000001,13.5000006561279 116.664,13.5000006561279 146,42.8360006561279 146,79.0250006561279 146,115.214000656128 116.664,144.550000656128 80.4750000000001,144.550000656128 44.287,144.550000656128 14.9510000000001,115.214000656128 14.9510000000001,79.0250006561279" Height="38" Canvas.Top="3" Width="38" Stretch="Fill" Margin="0,0,24,0" RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
                                     <Path.Fill>
                                         <LinearGradientBrush EndPoint="0.75,0.933" StartPoint="0.25,0.067">
                                             <GradientStop Color="#FF14FFED" Offset="0"/>
@@ -267,8 +358,17 @@
                                 </Path>
                                 <TextBlock Text="Credits:  " Foreground="#FFFCFCFC" VerticalAlignment="Center" FontSize="24"
                                            noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="3.5"/>
-                                <TextBlock Text="{Binding Credits}" Foreground="#FF41B3C0" VerticalAlignment="Center" FontSize="24"
-                                           noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="4.5"/>
+                                <TextBlock x:Name="MoneyCredits" Text="{Binding Credits, FallbackValue=1000}" Foreground="#FF41B3C0" VerticalAlignment="Center" FontSize="24"
+                                           noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="4.5" RenderTransformOrigin="0.5,0.5">
+                                    <TextBlock.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
                             </StackPanel>
                         </Viewbox>
                         <Viewbox Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom">
@@ -282,7 +382,6 @@
                         </Viewbox>
                     </Grid>
                     <Grid x:Name="PlayContainer" Grid.Row="2" IsEnabled="False"
-                          KeyboardNavigation.DirectionalNavigation="Contained"
                           noesis:EventToCommand.Event="IsEnabledChanged"
                           noesis:EventToCommand.Command="{Binding SlideCompletedCommand}"
                           noesis:EventToCommand.CommandParameter="{Binding ElementName=PlayContainer1}">
@@ -307,9 +406,52 @@
                             </Border.RenderTransform>
                         </Border>
                     </Grid>
+                    <Grid Grid.Row="3">
+                        <Viewbox>
+                            <Grid x:Name="KeyHelper" Width="300" RenderTransformOrigin="0.5,0.5">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Rectangle Grid.Column="1" Fill="{StaticResource Brush.Button.Background}" Margin="-1,0,-1,-1"/>
+
+                                <Path Grid.Column="0" Data="M0,50 L50,0 50,50z" Margin="0,0,0,-1" Fill="{StaticResource Brush.Button.Background}"/>
+                                <Path Grid.Column="0" Data="M0.5,50 L49.5,0.5" Stroke="{StaticResource Brush.Button.Border}" Margin="0,0,0,-1" StrokeEndLineCap="Triangle"/>
+
+                                <Path Grid.Column="2" Data="M50,50 L0.5,0.5 0.5,50z" Margin="0,0,0,-1" Fill="{StaticResource Brush.Button.Background}"/>
+                                <Path Grid.Column="2" Data="M50,50 L0.5,0.5" Stroke="{StaticResource Brush.Button.Border}" Margin="0,0,0,-1" StrokeEndLineCap="Triangle"/>
+
+                                <Rectangle Grid.Column="1" Height="1" Fill="{StaticResource Brush.Button.Border}" Margin="-1,0,-1,0" VerticalAlignment="Top"/>
+
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0" Content="BACK" Style="{StaticResource Style.Button.PrevNext}" Padding="10,0,20,0"
+                                             Command="{Binding PrevCommand}"/>
+                                    <Button Grid.Column="1" Content="NEXT" Style="{StaticResource Style.Button.PrevNext}" Padding="20,0,10,0"
+                                             Command="{Binding NextCommand}"/>
+                                </Grid>
+                            </Grid>
+                        </Viewbox>
+                    </Grid>
                 </Grid>
             </Grid>
             <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard x:Name="TopInfoAnim_BeginStoryboard" Storyboard="{StaticResource TopInfoAnim}"/>
+                </EventTrigger>
                 <DataTrigger Binding="{Binding State}" Value="Play">
                     <DataTrigger.EnterActions>
                         <BeginStoryboard Storyboard="{StaticResource FadeIn}"/>
