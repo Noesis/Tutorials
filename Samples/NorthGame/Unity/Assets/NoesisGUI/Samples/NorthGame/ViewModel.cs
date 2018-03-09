@@ -1,14 +1,12 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
 using Noesis;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Input;
 #else
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -17,6 +15,11 @@ using System.Windows.Media.Animation;
 
 namespace NorthGame
 {
+    public static class Randomizer
+    {
+        public static Random r = new Random(DateTime.Now.Ticks.GetHashCode());
+    }
+
     public enum State
     {
         Menu,
@@ -134,8 +137,20 @@ namespace NorthGame
                 {
                     _class = value;
                     OnPropertyChanged("Class");
+
+                    GenerateAttributes();
                 }
             }
+        }
+
+        private void GenerateAttributes()
+        {
+            Strength = Randomizer.r.Next(40, 100);
+            Dexterity = Randomizer.r.Next(40, 100);
+            Constitution = Randomizer.r.Next(40, 100);
+            Intelligence = Randomizer.r.Next(40, 100);
+            Wisdom = Randomizer.r.Next(40, 100);
+            Charisma = Randomizer.r.Next(40, 100);
         }
 
         public int Strength { get; set; }
@@ -331,27 +346,23 @@ namespace NorthGame
                 Name = "Highlander",
                 Race = Races[0],
                 Class = Races[0].Classes[0],
-                Strength = 87,
-                Dexterity = 60,
-                Constitution = 91,
-                Intelligence = 45,
-                Wisdom = 32,
-                Charisma = 56,
-                Initiative = 120,
-                Wins = 26,
-                Losses = 3,
-                Odds = 103
+                Initiative = Randomizer.r.Next(50, 150),
+                Wins = Randomizer.r.Next(20, 30),
+                Losses = Randomizer.r.Next(1, 10),
+                Odds = Randomizer.r.Next(80, 120)
             };
 
+            Race opponentRace = Races[Randomizer.r.Next(0, 2)];
+            string[] opponentNames = { "Khorlsendukr", "Nettala", "Belarlug", "Kumar", "Jiduaz", "Nazzous", "Ookhin", "Gunaq" };
             Opponent = new PlayerInfo
             {
-                Name = "Khorlsendukr",
-                Race = Races[1],
-                Class = Races[1].Classes[1],
-                Initiative = 81,
-                Wins = 97,
-                Losses = 35,
-                Odds = 105
+                Name = opponentNames[Randomizer.r.Next(0, 7)],
+                Race = opponentRace,
+                Class = opponentRace.Classes[Randomizer.r.Next(0, 2)],
+                Initiative = Randomizer.r.Next(50, 150),
+                Wins = Randomizer.r.Next(50, 100),
+                Losses = Randomizer.r.Next(20,50),
+                Odds = Randomizer.r.Next(80, 120)
             };
 
             Player.WeaponCategories.Add(closeRange);

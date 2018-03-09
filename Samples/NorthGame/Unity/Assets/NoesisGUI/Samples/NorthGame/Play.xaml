@@ -124,26 +124,6 @@
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                     </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayContainer2">
-                        <EasingDoubleKeyFrame KeyTime="0" Value="2000"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="2000"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
-                            <EasingDoubleKeyFrame.EasingFunction>
-                                <CubicEase EasingMode="EaseInOut"/>
-                            </EasingDoubleKeyFrame.EasingFunction>
-                        </EasingDoubleKeyFrame>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2000"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer2">
-                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
-                            <EasingDoubleKeyFrame.EasingFunction>
-                                <SineEase EasingMode="EaseInOut"/>
-                            </EasingDoubleKeyFrame.EasingFunction>
-                        </EasingDoubleKeyFrame>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                    </DoubleAnimationUsingKeyFrames>
                     <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="PlayContainer">
                         <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
                         <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="True"/>
@@ -169,26 +149,6 @@
                         </EasingDoubleKeyFrame>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayContainer2">
-                        <EasingDoubleKeyFrame KeyTime="0" Value="-2000"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-2000"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
-                            <EasingDoubleKeyFrame.EasingFunction>
-                                <CubicEase EasingMode="EaseInOut"/>
-                            </EasingDoubleKeyFrame.EasingFunction>
-                        </EasingDoubleKeyFrame>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-2000"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer2">
-                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
-                            <EasingDoubleKeyFrame.EasingFunction>
-                                <SineEase EasingMode="EaseInOut"/>
-                            </EasingDoubleKeyFrame.EasingFunction>
-                        </EasingDoubleKeyFrame>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                     </DoubleAnimationUsingKeyFrames>
                     <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="PlayContainer">
                         <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>

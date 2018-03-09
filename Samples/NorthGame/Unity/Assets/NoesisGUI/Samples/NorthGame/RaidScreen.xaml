@@ -6,6 +6,40 @@
              xmlns:noesis="clr-namespace:NoesisGUIExtensions"
              d:DesignWidth="1280" d:DesignHeight="720"
              Tag="Locations">
+    <UserControl.Resources>
+        <Storyboard x:Key="SlideFromLeft">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Locations">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-1200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.15"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Locations">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="SlideFromRight">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Locations">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.15"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Locations">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -21,6 +55,15 @@
         <ListBox x:Name="Locations" Grid.Row="1" Grid.Column="1" Style="{StaticResource Style.ListBox.Location}"
                  ItemContainerStyle="{StaticResource Style.ListBoxItem.Location}"
                  ItemsSource="{Binding Locations}" SelectedItem="{Binding Player.SelectedLocation}"
-                 MinWidth="{Binding ActualHeight, ElementName=ScrollBarWidth}"/>
+                 MinWidth="{Binding ActualHeight, ElementName=ScrollBarWidth}" RenderTransformOrigin="0.5,0.5">
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+        </ListBox>
     </Grid>
 </UserControl>

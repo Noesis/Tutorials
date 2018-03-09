@@ -85,33 +85,31 @@
         <Setter Property="Template" Value="{StaticResource Template.Button.PrevNext}"/>
     </Style>
 
+    <GradientStopCollection x:Key="Gradient.Hover">
+        <GradientStop Color="#19A5CCCF" Offset="0"/>
+        <GradientStop Color="#1941999C" Offset="1"/>
+    </GradientStopCollection>
+    <GradientStopCollection x:Key="Gradient.Focus">
+        <GradientStop Color="#0C3E2310" Offset="0"/>
+        <GradientStop Color="#3FE56A1F" Offset="0.077"/>
+        <GradientStop Color="#D8F1ECD5" Offset="0.118"/>
+        <GradientStop Color="#8DE56A1F" Offset="0.151"/>
+        <GradientStop Color="#26C96729" Offset="0.195"/>
+        <GradientStop Color="#003E2310" Offset="0.264"/>
+        <GradientStop Color="#003E2310" Offset="0.788"/>
+        <GradientStop Color="#19C7741A" Offset="0.832"/>
+        <GradientStop Color="#99E5821F" Offset="0.879"/>
+        <GradientStop Color="#BFEBD27C" Offset="0.901"/>
+        <GradientStop Color="#F2F1E9D5" Offset="0.922"/>
+        <GradientStop Color="#A5E58B1F" Offset="0.954"/>
+        <GradientStop Color="#0C3E2310" Offset="1"/>
+    </GradientStopCollection>
+    <LinearGradientBrush x:Key="Brush.FocusMask" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#0CFFFFFF" Offset="0.1"/>
+        <GradientStop Color="#CCFFFFFF" Offset="0.5"/>
+        <GradientStop Color="#0CFFFFFF" Offset="0.9"/>
+    </LinearGradientBrush>
     <ControlTemplate x:Key="Template.Button.Menu" TargetType="{x:Type Button}">
-        <ControlTemplate.Resources>
-            <GradientStopCollection x:Key="Gradient.Hover">
-                <GradientStop Color="#19A5CCCF" Offset="0"/>
-                <GradientStop Color="#1941999C" Offset="1"/>
-            </GradientStopCollection>
-            <GradientStopCollection x:Key="Gradient.Focus">
-                <GradientStop Color="#0C3E2310" Offset="0"/>
-                <GradientStop Color="#3FE56A1F" Offset="0.077"/>
-                <GradientStop Color="#D8F1ECD5" Offset="0.118"/>
-                <GradientStop Color="#8DE56A1F" Offset="0.151"/>
-                <GradientStop Color="#26C96729" Offset="0.195"/>
-                <GradientStop Color="#003E2310" Offset="0.264"/>
-                <GradientStop Color="#003E2310" Offset="0.788"/>
-                <GradientStop Color="#19C7741A" Offset="0.832"/>
-                <GradientStop Color="#99E5821F" Offset="0.879"/>
-                <GradientStop Color="#BFEBD27C" Offset="0.901"/>
-                <GradientStop Color="#F2F1E9D5" Offset="0.922"/>
-                <GradientStop Color="#A5E58B1F" Offset="0.954"/>
-                <GradientStop Color="#0C3E2310" Offset="1"/>
-            </GradientStopCollection>
-            <LinearGradientBrush x:Key="Brush.FocusMask" StartPoint="0,0" EndPoint="1,0">
-                <GradientStop Color="#0CFFFFFF" Offset="0.1"/>
-                <GradientStop Color="#CCFFFFFF" Offset="0.5"/>
-                <GradientStop Color="#0CFFFFFF" Offset="0.9"/>
-            </LinearGradientBrush>
-        </ControlTemplate.Resources>
         <Grid x:Name="Root" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
@@ -230,6 +228,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <ControlTemplate x:Key="Template.Button.BackMenu" TargetType="{x:Type Button}">
         <ControlTemplate.Resources>
             <Storyboard x:Key="HoverOn">
@@ -908,15 +907,15 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.04">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot" DecelerationRatio="0.5">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.075">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseOut"/>
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.04">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot" DecelerationRatio="0.5">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.075">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseOut"/>
                         </EasingDoubleKeyFrame.EasingFunction>
@@ -934,14 +933,14 @@
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot" DecelerationRatio="1">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot" DecelerationRatio="1">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
@@ -1401,9 +1400,9 @@
                 </VisualStateGroup>
                 <VisualStateGroup x:Name="SelectionStates">
                     <VisualStateGroup.Transitions>
-                        <VisualTransition GeneratedDuration="0:0:0.1" To="Selected">
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="Selected">
                             <VisualTransition.GeneratedEasingFunction>
-                                <SineEase EasingMode="EaseInOut"/>
+                                <CubicEase EasingMode="EaseInOut"/>
                             </VisualTransition.GeneratedEasingFunction>
                         </VisualTransition>
                         <VisualTransition From="Selected" GeneratedDuration="0:0:0.2">
@@ -1434,34 +1433,34 @@
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF2AE3E3"/>
                             </ColorAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="View" RepeatBehavior="Forever">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="1.01">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.02">
                                     <EasingDoubleKeyFrame.EasingFunction>
                                         <SineEase EasingMode="EaseInOut"/>
                                     </EasingDoubleKeyFrame.EasingFunction>
                                 </EasingDoubleKeyFrame>
-                                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1.05">
+                                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1.1">
                                     <EasingDoubleKeyFrame.EasingFunction>
                                         <SineEase EasingMode="EaseInOut"/>
                                     </EasingDoubleKeyFrame.EasingFunction>
                                 </EasingDoubleKeyFrame>
-                                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1.01">
+                                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1.02">
                                     <EasingDoubleKeyFrame.EasingFunction>
                                         <SineEase EasingMode="EaseInOut"/>
                                     </EasingDoubleKeyFrame.EasingFunction>
                                 </EasingDoubleKeyFrame>
                             </DoubleAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="View" RepeatBehavior="Forever">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="1.01">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.02">
                                     <EasingDoubleKeyFrame.EasingFunction>
                                         <SineEase EasingMode="EaseInOut"/>
                                     </EasingDoubleKeyFrame.EasingFunction>
                                 </EasingDoubleKeyFrame>
-                                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1.05">
+                                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1.1">
                                     <EasingDoubleKeyFrame.EasingFunction>
                                         <SineEase EasingMode="EaseInOut"/>
                                     </EasingDoubleKeyFrame.EasingFunction>
                                 </EasingDoubleKeyFrame>
-                                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1.01">
+                                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1.02">
                                     <EasingDoubleKeyFrame.EasingFunction>
                                         <SineEase EasingMode="EaseInOut"/>
                                     </EasingDoubleKeyFrame.EasingFunction>
@@ -1493,10 +1492,10 @@
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF2AE3E3"/>
                             </ColorAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="View">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="1.01"/>
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.02"/>
                             </DoubleAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="View">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="1.01"/>
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.02"/>
                             </DoubleAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="TitleLine">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>

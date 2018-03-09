@@ -8,16 +8,12 @@
 
     <Grid.Resources>
         <ImageSource x:Key="ImageSource.Smoke">Images/Smoke.png</ImageSource>
-        <Storyboard x:Key="Clouds" SpeedRatio="0.02" RepeatBehavior="Forever">
+        <Storyboard x:Key="Clouds" SpeedRatio="0.025" RepeatBehavior="Forever">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="CloudBig">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.05"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.15"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.18"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.25"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0.21"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.3"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0.15"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.61" Value="0.18"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.05"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="CloudBig">
@@ -27,21 +23,6 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:1.6001" Value="-1150"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-800"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="CloudSmall">
-                <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1150"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-1000"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="300"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="CloudSmall">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.15"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.15"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.19"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0.12"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="0.15"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.15"/>
-            </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="CloudBig">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.25"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
@@ -50,15 +31,32 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.45"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="CloudSmall">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.15"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.15"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.12"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0.10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="0.17"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.15"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="CloudSmall">
+                <EasingDoubleKeyFrame KeyTime="0" Value="300"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1150"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-1000"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="300"/>
+            </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="CloudSmall">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1.5"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.7"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="1.7"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.5"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="CloudSmall">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1.75"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="2.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="2.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.75"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Grid.Resources>
