@@ -446,7 +446,12 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayerImage">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-1200"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-20">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CircleEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
@@ -901,7 +906,12 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayerImage">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1200"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="20">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CircleEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
