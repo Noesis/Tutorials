@@ -34,8 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Assets\NoesisGUI\Samples\NorthGame\ElementExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\UppercaseConverter.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\DelegateCommand.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\FightScreen.xaml.cs">

@@ -87,143 +87,135 @@
 
     <ControlTemplate x:Key="Template.Button.Menu" TargetType="{x:Type Button}">
         <ControlTemplate.Resources>
-            <Storyboard x:Key="HoverOn">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Hover">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.8">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)">
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White">
-                        <EasingColorKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingColorKeyFrame.EasingFunction>
-                    </EasingColorKeyFrame>
-                </ColorAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="HoverOff">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Hover">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)">
-                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFA5CCCF"/>
-                </ColorAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="FocusOn">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Focus">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.8">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)">
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White">
-                        <EasingColorKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingColorKeyFrame.EasingFunction>
-                    </EasingColorKeyFrame>
-                </ColorAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="FocusOff">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Focus">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Foreground).(SolidColorBrush.Color)">
-                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFA5CCCF"/>
-                </ColorAnimationUsingKeyFrames>
-            </Storyboard>
+            <GradientStopCollection x:Key="Gradient.Hover">
+                <GradientStop Color="#19A5CCCF" Offset="0"/>
+                <GradientStop Color="#1941999C" Offset="1"/>
+            </GradientStopCollection>
+            <GradientStopCollection x:Key="Gradient.Focus">
+                <GradientStop Color="#0C3E2310" Offset="0"/>
+                <GradientStop Color="#3FE56A1F" Offset="0.077"/>
+                <GradientStop Color="#D8F1ECD5" Offset="0.118"/>
+                <GradientStop Color="#8DE56A1F" Offset="0.151"/>
+                <GradientStop Color="#26C96729" Offset="0.195"/>
+                <GradientStop Color="#003E2310" Offset="0.264"/>
+                <GradientStop Color="#003E2310" Offset="0.788"/>
+                <GradientStop Color="#19C7741A" Offset="0.832"/>
+                <GradientStop Color="#99E5821F" Offset="0.879"/>
+                <GradientStop Color="#BFEBD27C" Offset="0.901"/>
+                <GradientStop Color="#F2F1E9D5" Offset="0.922"/>
+                <GradientStop Color="#A5E58B1F" Offset="0.954"/>
+                <GradientStop Color="#0C3E2310" Offset="1"/>
+            </GradientStopCollection>
+            <LinearGradientBrush x:Key="Brush.FocusMask" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#0CFFFFFF" Offset="0.1"/>
+                <GradientStop Color="#CCFFFFFF" Offset="0.5"/>
+                <GradientStop Color="#0CFFFFFF" Offset="0.9"/>
+            </LinearGradientBrush>
         </ControlTemplate.Resources>
-        <Grid>
-            <Image Source="Images/MenuButton.png" Grid.RowSpan="3"/>
+        <Grid x:Name="Root" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.2">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition GeneratedDuration="0:0:0.1" To="Pressed">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Hover">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="Text">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FFECFEFF"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Hover">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Root">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0.97"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Root">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0.97"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="FocusStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="Focused">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="Focused" GeneratedDuration="0:0:0.3">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Unfocused"/>
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Focus">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Image Source="Images/MenuButton.png" Grid.RowSpan="3" IsHitTestVisible="False"/>
             <Viewbox>
                 <Grid Margin="0,10,0,12">
-                    <Rectangle x:Name="Hover" Width="114" Margin="0,-4">
-                        <Rectangle.OpacityMask>
-                            <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                                <GradientStop Color="#CCFFFFFF" Offset="0.5"/>
-                                <GradientStop Offset="0.9" Color="#0CFFFFFF"/>
-                                <GradientStop Color="#0CFFFFFF" Offset="0.1"/>
-                            </LinearGradientBrush>
-                        </Rectangle.OpacityMask>
+                    <Rectangle x:Name="Hover" Width="114" Margin="1,0,2,0">
                         <Rectangle.Fill>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0">
-                                <GradientStop Color="#0C3E2310" Offset="0"/>
-                                <GradientStop Color="#3FE56A1F" Offset="0.077"/>
-                                <GradientStop Color="#A5F1E7D5" Offset="0.124"/>
-                                <GradientStop Color="#59E56A1F" Offset="0.164"/>
-                                <GradientStop Color="#003E2310" Offset="0.285"/>
-                                <GradientStop Color="#003E2D10" Offset="0.788"/>
-                                <GradientStop Color="#7FE5821F" Offset="0.879"/>
-                                <GradientStop Color="#BFF1E9D5" Offset="0.922"/>
-                                <GradientStop Color="#A5E58B1F" Offset="0.954"/>
-                                <GradientStop Color="#0C3E2310" Offset="1"/>
+                                <GradientStop Color="#19A5CCCF" Offset="0"/>
+                                <GradientStop Color="#1941999C" Offset="1"/>
                             </LinearGradientBrush>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <Rectangle x:Name="Focus" Width="114" Margin="0,-4">
-                        <Rectangle.OpacityMask>
-                            <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                                <GradientStop Color="#CCFFFFFF" Offset="0.5"/>
-                                <GradientStop Offset="0.9" Color="#0CFFFFFF"/>
-                                <GradientStop Color="#0CFFFFFF" Offset="0.1"/>
-                            </LinearGradientBrush>
-                        </Rectangle.OpacityMask>
+                    <Rectangle x:Name="Focus" Width="114" Margin="0,-4" OpacityMask="{StaticResource Brush.FocusMask}">
                         <Rectangle.Fill>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0">
-                                <GradientStop Color="#0C3E2310" Offset="0"/>
-                                <GradientStop Color="#3FE56A1F" Offset="0.077"/>
-                                <GradientStop Color="#A5F1E7D5" Offset="0.124"/>
-                                <GradientStop Color="#59E56A1F" Offset="0.164"/>
-                                <GradientStop Color="#003E2310" Offset="0.285"/>
-                                <GradientStop Color="#003E2D10" Offset="0.788"/>
-                                <GradientStop Color="#7FE5821F" Offset="0.879"/>
-                                <GradientStop Color="#BFF1E9D5" Offset="0.922"/>
-                                <GradientStop Color="#A5E58B1F" Offset="0.954"/>
-                                <GradientStop Color="#0C3E2310" Offset="1"/>
-                            </LinearGradientBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0" GradientStops="{StaticResource Gradient.Focus}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,4"
-                                      noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="1.5"/>
+                    <TextBlock x:Name="Text" Text="{TemplateBinding Content}" Foreground="#FFA5CCCF"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,4"
+                               noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="1.5"/>
                 </Grid>
             </Viewbox>
         </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource HoverOff}"/>
-                </Trigger.ExitActions>
-                <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource HoverOn}"/>
-                </Trigger.EnterActions>
-            </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True">
-                <Setter Property="Visibility" Value="Collapsed" TargetName="Hover"/>
-                <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource FocusOff}"/>
-                </Trigger.ExitActions>
-                <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource FocusOn}"/>
-                </Trigger.EnterActions>
-            </Trigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="Style.Button.Menu" TargetType="{x:Type Button}">
         <Setter Property="Margin" Value="0,0,0,36"/>
         <Setter Property="Padding" Value="48,4"/>
         <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std"/>
-        <Setter Property="Foreground" Value="#FFA5CCCF"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template" Value="{StaticResource Template.Button.Menu}"/>
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
@@ -483,64 +475,91 @@
         <ScrollContentPresenter Margin="{TemplateBinding Padding}"/>
     </ControlTemplate>
     <ControlTemplate x:Key="Template.TextBox" TargetType="{x:Type TextBox}">
-        <ControlTemplate.Resources>
-            <Storyboard x:Key="FocusOn">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#DD132932">
-                        <EasingColorKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingColorKeyFrame.EasingFunction>
-                    </EasingColorKeyFrame>
-                </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#DD1C3A45">
-                        <EasingColorKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingColorKeyFrame.EasingFunction>
-                    </EasingColorKeyFrame>
-                </ColorAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.95"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.75"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.35"/>
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="FocusOff">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#DD0B1D25">
-                        <EasingColorKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingColorKeyFrame.EasingFunction>
-                    </EasingColorKeyFrame>
-                </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#DD142A33">
-                        <EasingColorKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingColorKeyFrame.EasingFunction>
-                    </EasingColorKeyFrame>
-                </ColorAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.185"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.435"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.741"/>
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
-        </ControlTemplate.Resources>
         <Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="MouseOver">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="Disabled"/>
+                    <VisualState x:Name="ReadOnly"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="BdOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="BgOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="FocusStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="Focused">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="Focused" GeneratedDuration="0:0:0.3" To="Unfocused">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Unfocused"/>
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0" Value="#DD132932">
+                                    <EasingColorKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingColorKeyFrame.EasingFunction>
+                                </EasingColorKeyFrame>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0" Value="#DD1C3A45">
+                                    <EasingColorKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingColorKeyFrame.EasingFunction>
+                                </EasingColorKeyFrame>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0.95"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0.75"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0.35"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <Border x:Name="Bg" BorderThickness="1" BorderBrush="#FF55A6A5">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="#DD0B1D25" Offset="0"/>
                         <GradientStop Color="#DD142A33" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border x:Name="BgOver" BorderThickness="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0">
+                        <GradientStop Color="#264584A0" Offset="0"/>
+                        <GradientStop Color="#264288A4" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
@@ -555,19 +574,14 @@
                 </Border.BorderBrush>
                 <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"
                               Padding="{TemplateBinding Padding}"
-                              Template="{StaticResource Template.ScrollViewer.TextBox}"/>
+                              Template="{StaticResource Template.ScrollViewer.TextBox}" Foreground="#FFA5CCCF"/>
+            </Border>
+            <Border x:Name="BdOver" BorderThickness="1" Margin="0">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="#3380ECEB" Opacity="0"/>
+                </Border.BorderBrush>
             </Border>
         </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="IsKeyboardFocused" Value="True">
-                <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource FocusOff}"/>
-                </Trigger.ExitActions>
-                <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource FocusOn}"/>
-                </Trigger.EnterActions>
-            </Trigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="Style.TextBox" TargetType="{x:Type TextBox}">
         <Setter Property="Padding" Value="4,2"/>
@@ -588,6 +602,35 @@
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid Background="Transparent">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="MouseOver">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="ArrowPath">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF5ECFCE"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ArrowPath">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF498CA0"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed"/>
+                    <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <Border x:Name="Arrow" Margin="4" HorizontalAlignment="Right" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" RenderTransformOrigin="0.5,0.5">
                 <Border.RenderTransform>
                     <TransformGroup>
@@ -597,7 +640,7 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </Border.RenderTransform>
-                <Path Data="M0,0 L6,6 12,0" StrokeThickness="2" Stretch="Uniform">
+                <Path x:Name="ArrowPath" Data="M0,0 L6,6 12,0" StrokeThickness="2" Stretch="Uniform">
                     <Path.Stroke>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF4E8391" Offset="0"/>
@@ -675,11 +718,90 @@
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="MouseOver">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="Disabled"/>
+                    <VisualState x:Name="ReadOnly"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="BdOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="BgOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="FocusStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="Focused">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="Focused" GeneratedDuration="0:0:0.3" To="Unfocused">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Unfocused"/>
+                    <VisualState x:Name="Focused">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0" Value="#DD132932">
+                                    <EasingColorKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingColorKeyFrame.EasingFunction>
+                                </EasingColorKeyFrame>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0" Value="#DD1C3A45">
+                                    <EasingColorKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingColorKeyFrame.EasingFunction>
+                                </EasingColorKeyFrame>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0.95"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0.75"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0.35"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <Border x:Name="Bg" BorderThickness="1" BorderBrush="#FF55A6A5">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="#DD0B1D25" Offset="0"/>
                         <GradientStop Color="#DD142A33" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border x:Name="BgOver" BorderThickness="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0">
+                        <GradientStop Color="#264584A0" Offset="0"/>
+                        <GradientStop Color="#264288A4" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
@@ -694,6 +816,11 @@
                 </Border.BorderBrush>
                 <ContentPresenter ContentSource="SelectionBoxItem" VerticalAlignment="Center"
                                   Margin="{TemplateBinding Padding}"/>
+            </Border>
+            <Border x:Name="BdOver" BorderThickness="1" Margin="0">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="#3380ECEB" Opacity="0"/>
+                </Border.BorderBrush>
             </Border>
             <ToggleButton Style="{StaticResource Style.ComboBox.DropDownButton}"
                           IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
@@ -717,16 +844,6 @@
                 </Border>
             </Popup>
         </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource FocusOff}"/>
-                </Trigger.ExitActions>
-                <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource FocusOn}"/>
-                </Trigger.EnterActions>
-            </Trigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="Style.ComboBox" TargetType="{x:Type ComboBox}">
         <Setter Property="Padding" Value="4,2"/>
@@ -792,10 +909,18 @@
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.04"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.04">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.04"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.04">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="SelectOff">
@@ -810,10 +935,18 @@
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
         </ControlTemplate.Resources>
@@ -826,6 +959,39 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.2">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="Over">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Over">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.1">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <Grid Margin="20,0" Background="Transparent">
                 <Ellipse x:Name="Focus" Margin="40,50">
                     <Ellipse.Fill>
@@ -836,6 +1002,32 @@
                         </RadialGradientBrush>
                     </Ellipse.Fill>
                 </Ellipse>
+                <Border x:Name="Over" Margin="100,0,100,-20" VerticalAlignment="Bottom" Height="90" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                    <Border.OpacityMask>
+                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                            <GradientStop Color="#00000000" Offset="0"/>
+                            <GradientStop Color="Black" Offset="0.4"/>
+                            <GradientStop Color="Black" Offset="0.6"/>
+                            <GradientStop Color="#00000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.OpacityMask>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0">
+                            <GradientStop Color="#00135B55" Offset="0"/>
+                            <GradientStop Color="#660E5F58" Offset="0.4"/>
+                            <GradientStop Color="#480F696C" Offset="0.8"/>
+                            <GradientStop Color="#00152D30" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
                 <ContentPresenter x:Name="ContentHost"
                     TextElement.FontSize="40" TextElement.Foreground="#FF80ECEB"/>
                 <Rectangle x:Name="Select" Height="8" VerticalAlignment="Bottom" Margin="100,0,100,-20" RenderTransformOrigin="0.5,0.5">
@@ -1189,21 +1381,30 @@
     <ControlTemplate x:Key="Template.ListBoxItem.Location" TargetType="{x:Type ListBoxItem}">
         <Grid Margin="10">
             <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver"/>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.2"/>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="BdOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="BdOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
                 <VisualStateGroup x:Name="SelectionStates">
                     <VisualStateGroup.Transitions>
                         <VisualTransition GeneratedDuration="0:0:0.1" To="Selected">
                             <VisualTransition.GeneratedEasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
                             </VisualTransition.GeneratedEasingFunction>
-                            <Storyboard>
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="TextGroup">
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="10">
-                                        <EasingDoubleKeyFrame.EasingFunction>
-                                            <CubicEase EasingMode="EaseOut"/>
-                                        </EasingDoubleKeyFrame.EasingFunction>
-                                    </EasingDoubleKeyFrame>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
                         </VisualTransition>
                         <VisualTransition From="Selected" GeneratedDuration="0:0:0.2">
                             <VisualTransition.GeneratedEasingFunction>
@@ -1232,8 +1433,42 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="RaidDifficulty">
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF2AE3E3"/>
                             </ColorAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="TextGroup">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="10"/>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="View" RepeatBehavior="Forever">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.01">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1.05">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1.01">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="View" RepeatBehavior="Forever">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.01">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1.05">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1.01">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="TitleLine">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -1257,6 +1492,15 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="RaidDifficulty">
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF2AE3E3"/>
                             </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="View">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.01"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="View">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.01"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="TitleLine">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
                 </VisualStateGroup>
@@ -1267,35 +1511,76 @@
             </VisualStateManager.VisualStateGroups>
             <Viewbox>
                 <StackPanel>
-                    <TextBlock x:Name="Title" Text="{Binding Name, Converter={StaticResource Converter.Uppercase}, FallbackValue=Location}"
-                            FontFamily="Fonts/#Avenir LT Std" Foreground="#FF80ECEB" FontSize="20" Margin="5,25,0,10"/>
-                    <Border x:Name="Bd" BorderThickness="2" BorderBrush="#FF1E5A6B" Padding="30,30,30,10">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="#FF0B1D24" Offset="0"/>
-                                <GradientStop Color="#FF142B33" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <StackPanel>
-                            <Image Source="{Binding Image}" Width="400" Height="225"/>
-                            <StackPanel x:Name="TextGroup" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0" RenderTransformOrigin="0.5,0.5">
-                                <StackPanel.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </StackPanel.RenderTransform>
-                                <TextBlock x:Name="RaidType" Text="{Binding Type, FallbackValue=Raid}" Foreground="#FF79DFDF" FontSize="18"/>
-                                <TextBlock x:Name="RaidMembers" Text="{Binding Members, FallbackValue=0, StringFormat=Members: {0}}" Margin="40,0" Foreground="#FF79DFDF" FontSize="18"/>
-                                <TextBlock x:Name="RaidDifficulty" Text="{Binding Difficulty, FallbackValue=Hard}" Foreground="#FF79DFDF" FontSize="18"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="Title" Grid.Column="0" Text="{Binding Name, Converter={StaticResource Converter.Uppercase}, FallbackValue=Location}"
+                            FontFamily="Fonts/#Avenir LT Std" Foreground="#FF80ECEB" FontSize="20" Margin="0" d:LayoutOverrides="Width, Height"/>
+                        <Rectangle x:Name="TitleLine" Grid.Column="1" Height="5" Margin="10,0,0,0" RenderTransformOrigin="0,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="0"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                    <GradientStop Color="#E51AE3E6" Offset="0"/>
+                                    <GradientStop Color="#001AE3E6" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
+                    <Grid>
+                        <Border x:Name="Bd" BorderThickness="2" BorderBrush="#FF1E5A6B" Padding="30,30,30,10">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#FF0B1D24" Offset="0"/>
+                                    <GradientStop Color="#FF142B33" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <Border x:Name="BdOver" BorderThickness="2" Padding="30,30,30,10">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="#26AFEFF0" Opacity="0"/>
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0">
+                                    <GradientStop Color="#26195166" Offset="0"/>
+                                    <GradientStop Color="#26226076" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel>
+                                <Border Width="400" Height="225" ClipToBounds="True">
+                                    <Image x:Name="View" Source="{Binding Image}" RenderTransformOrigin="0.5,0.5">
+                                        <Image.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Image.RenderTransform>
+                                    </Image>
+                                </Border>
+                                <StackPanel x:Name="TextGroup" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                                    <TextBlock x:Name="RaidType" Text="{Binding Type, FallbackValue=Raid}" Foreground="#FF79DFDF" FontSize="18"/>
+                                    <TextBlock x:Name="RaidMembers" Text="{Binding Members, FallbackValue=0, StringFormat=Members: {0}}" Margin="40,0" Foreground="#FF79DFDF" FontSize="18"/>
+                                    <TextBlock x:Name="RaidDifficulty" Text="{Binding Difficulty, FallbackValue=Hard}" Foreground="#FF79DFDF" FontSize="18"/>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                    </Border>
+                        </Border>
+                    </Grid>
                 </StackPanel>
             </Viewbox>
         </Grid>
+        <ControlTemplate.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="Style.ListBoxItem.Location" TargetType="{x:Type ListBoxItem}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>

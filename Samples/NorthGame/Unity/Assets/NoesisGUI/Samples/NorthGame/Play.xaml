@@ -53,20 +53,6 @@
                     <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="LayoutRoot">
                         <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="False"/>
                     </BooleanAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5">
-                            <EasingDoubleKeyFrame.EasingFunction>
-                                <CircleEase EasingMode="EaseInOut"/>
-                            </EasingDoubleKeyFrame.EasingFunction>
-                        </EasingDoubleKeyFrame>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5">
-                            <EasingDoubleKeyFrame.EasingFunction>
-                                <CircleEase EasingMode="EaseInOut"/>
-                            </EasingDoubleKeyFrame.EasingFunction>
-                        </EasingDoubleKeyFrame>
-                    </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutRoot">
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                             <EasingDoubleKeyFrame.EasingFunction>
@@ -75,9 +61,44 @@
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="KeyHelper">
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2500">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="100">
                             <EasingDoubleKeyFrame.EasingFunction>
-                                <SineEase EasingMode="EaseIn"/>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MenuButtonGrid">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="NavigationGrid">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-200">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <BackEase EasingMode="EaseIn" Amplitude="0.4"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="TopInfo">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-100">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <BackEase EasingMode="EaseIn" Amplitude="0.2"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PlayContainer">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <BackEase EasingMode="EaseIn" Amplitude="0.2"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PlayContainer">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <BackEase EasingMode="EaseIn" Amplitude="0.2"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
@@ -85,7 +106,7 @@
                 <Storyboard x:Key="SlideNext">
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayContainer1">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-2000">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-2000">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <CubicEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -95,7 +116,7 @@
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer1">
                         <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -105,7 +126,7 @@
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayContainer2">
                         <EasingDoubleKeyFrame KeyTime="0" Value="2000"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="2000"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="2000"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <CubicEase EasingMode="EaseInOut"/>
@@ -115,7 +136,7 @@
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer2">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
@@ -131,7 +152,7 @@
                 <Storyboard x:Key="SlidePrev">
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayContainer1">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="2000">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="2000">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <CubicEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -141,7 +162,7 @@
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer1">
                         <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -151,7 +172,7 @@
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PlayContainer2">
                         <EasingDoubleKeyFrame KeyTime="0" Value="-2000"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-2000"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-2000"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <CubicEase EasingMode="EaseInOut"/>
@@ -161,7 +182,7 @@
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PlayContainer2">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
@@ -248,7 +269,15 @@
                         <RowDefinition Height="470*"/>
                         <RowDefinition Height="30*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
+                    <Grid x:Name="MenuButtonGrid" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
                         <Viewbox Height="{Binding ActualHeight, ElementName=TopMenu4th}" VerticalAlignment="Top" HorizontalAlignment="Right">
                             <Button x:Name="MenuButton" Content="MENU" Style="{StaticResource Style.Button.BackMenu}" Command="{Binding MenuCommand}" RenderTransformOrigin="0.5,0.5">
                                 <Button.RenderTransform>
@@ -262,7 +291,15 @@
                             </Button>
                         </Viewbox>
                     </Grid>
-                    <Grid Grid.Row="1">
+                    <Grid x:Name="NavigationGrid" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="28*"/>
@@ -297,7 +334,15 @@
                             <Decorator x:Name="TopMenu4th"/>
                         </Grid>
                     </Grid>
-                    <Grid x:Name="TopInfo" Grid.Row="0" Width="{Binding ActualWidth, ElementName=TopMenu}" VerticalAlignment="Bottom" Height="{Binding ActualHeight, ElementName=TopMenu}">
+                    <Grid x:Name="TopInfo" Grid.Row="0" Width="{Binding ActualWidth, ElementName=TopMenu}" VerticalAlignment="Bottom" Height="{Binding ActualHeight, ElementName=TopMenu}" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="12*"/>
@@ -384,7 +429,15 @@
                     <Grid x:Name="PlayContainer" Grid.Row="2" IsEnabled="False"
                           noesis:EventToCommand.Event="IsEnabledChanged"
                           noesis:EventToCommand.Command="{Binding SlideCompletedCommand}"
-                          noesis:EventToCommand.CommandParameter="{Binding ElementName=PlayContainer1}">
+                          noesis:EventToCommand.CommandParameter="{Binding ElementName=PlayContainer1}" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
                         <Border x:Name="PlayContainer1" RenderTransformOrigin="0.5,0.5">
                             <Border.RenderTransform>
                                 <TransformGroup>

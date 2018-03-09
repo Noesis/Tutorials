@@ -12,6 +12,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 #endif
 
 namespace NorthGame
@@ -505,9 +506,28 @@ namespace NorthGame
         {
             if (newScreenIndex >= 0 && newScreenIndex < PlayScreens.Count)
             {
-                _playContainer2.Child = CreatePlayScreen(newScreenIndex);
+                FrameworkElement screen = CreatePlayScreen(newScreenIndex);
+                _playContainer2.Child = screen;
 
-                PlayScreenDirection = oldScreenIndex < newScreenIndex ? PlayScreenDirection.Next : PlayScreenDirection.Prev;
+                if (oldScreenIndex < newScreenIndex)
+                {
+                    PlayScreenDirection = PlayScreenDirection.Next;
+                    Storyboard slide = (Storyboard)screen.TryFindResource("SlideFromRight");
+                    if (slide != null)
+                    {
+                        slide.Begin(screen);
+                    }
+                }
+                else
+                {
+                    PlayScreenDirection = PlayScreenDirection.Prev;
+                    Storyboard slide = (Storyboard)screen.TryFindResource("SlideFromLeft");
+                    if (slide != null)
+                    {
+                        slide.Begin(screen);
+                    }
+                }
+
                 PlayScreenDirection = PlayScreenDirection.Current;
             }
         }
