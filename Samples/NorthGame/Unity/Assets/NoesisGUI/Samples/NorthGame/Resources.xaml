@@ -1084,56 +1084,104 @@
     </DataTemplate>
 
     <ControlTemplate x:Key="Template.ListBoxItem.WeaponCategory" TargetType="{x:Type ListBoxItem}">
-        <ControlTemplate.Resources>
-            <Storyboard x:Key="SelectOn">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF163D42"/>
-                </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF1E5259"/>
-                </ColorAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.1"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.4"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[3].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.7"/>
-                </DoubleAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="Bd">
-                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF99F0ED"/>
-                </ColorAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="SelectOff">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF132932"/>
-                </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF1C3A45"/>
-                </ColorAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.185"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.441"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.735"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[3].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
-                </DoubleAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="Bd">
-                    <EasingColorKeyFrame KeyTime="0" Value="#6699F0ED"/>
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#6699F0ED"/>
-                </ColorAnimationUsingKeyFrames>
-            </Storyboard>
-        </ControlTemplate.Resources>
         <Grid Margin="-1,0">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="MouseOver">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="BgOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="BdOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="FocusStates">
+                    <VisualState x:Name="Unfocused"/>
+                    <VisualState x:Name="Focused"/>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="SelectionStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="Selected">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="Selected" GeneratedDuration="0:0:0.3">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Unselected"/>
+                    <VisualState x:Name="Selected">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF163D42"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF1E5259"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[3].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.7"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="Bd">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF99F0ED"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="SelectedUnfocused">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF163D42"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF1E5259"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[3].(GradientStop.Offset)" Storyboard.TargetName="Bd">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.7"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="Bd">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF99F0ED"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <Border x:Name="Bg" BorderBrush="#FF347E7D" BorderThickness="2">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -1142,7 +1190,15 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
-            <Border x:Name="Bd" BorderThickness="0,1,0,0" Margin="1,0,1,1">
+            <Border x:Name="BgOver" BorderThickness="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0">
+                        <GradientStop Color="#264584A0" Offset="0"/>
+                        <GradientStop Color="#264288A4" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border x:Name="Bd" BorderThickness="0,2,0,0" Margin="1,0,1,1">
                 <Border.BorderBrush>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#FF347E7D" Offset="0.185"/>
@@ -1152,20 +1208,15 @@
                     </LinearGradientBrush>
                 </Border.BorderBrush>
             </Border>
-            <TextBlock Text="{Binding Content.Name, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Converter.Uppercase}}"
+            <Border x:Name="BdOver" BorderThickness="1" Margin="0">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="#3380ECEB" Opacity="0"/>
+                </Border.BorderBrush>
+            </Border>
+            <TextBlock Text="{Binding Content.Name, Converter={StaticResource Converter.Uppercase}, RelativeSource={RelativeSource TemplatedParent}}"
                        HorizontalAlignment="Center" VerticalAlignment="Center"
                        Margin="{TemplateBinding Padding}"/>
         </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="Selector.IsSelected" Value="True">
-                <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource SelectOff}"/>
-                </Trigger.ExitActions>
-                <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource SelectOn}"/>
-                </Trigger.EnterActions>
-            </Trigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="Style.ListBoxItem.WeaponCategory" TargetType="{x:Type ListBoxItem}">
         <Setter Property="Width" Value="98"/>
@@ -1178,31 +1229,76 @@
     </Style>
 
     <ControlTemplate x:Key="Template.ListBoxItem.Weapon" TargetType="{x:Type ListBoxItem}">
-        <ControlTemplate.Resources>
-            <Storyboard x:Key="SelectOn">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF0B2836"/>
-                </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF124359"/>
-                </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF68C9C8"/>
-                </ColorAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="SelectOff">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF06161D"/>
-                </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF06161D"/>
-                </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Bg">
-                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF214E4E"/>
-                </ColorAnimationUsingKeyFrames>
-            </Storyboard>
-        </ControlTemplate.Resources>
         <Grid Margin="2">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="MouseOver">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="BgOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="BgOver">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="SelectionStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="Selected">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="Selected" GeneratedDuration="0:0:0.3">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Unselected"/>
+                    <VisualState x:Name="Selected">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF0B2836"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF124359"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF68C9C8"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="SelectedUnfocused">
+                        <Storyboard>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF0B2836"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF124359"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Bg">
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF68C9C8"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <Border x:Name="Bg" BorderBrush="#FF214E4E" BorderThickness="2">
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -1211,18 +1307,19 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
-            <Image Source="{Binding Image}" Margin="4" Width="40" Height="40" Stretch="Uniform"/>
+            <Border x:Name="BgOver" BorderThickness="2">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0">
+                        <GradientStop Color="#264584A0" Offset="0"/>
+                        <GradientStop Color="#264288A4" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="#3380ECEB" Opacity="0"/>
+                </Border.BorderBrush>
+            </Border>
+            <Image x:Name="image" Source="{Binding Image}" Margin="4" Width="40" Height="40" Stretch="Uniform"/>
         </Grid>
-        <ControlTemplate.Triggers>
-            <Trigger Property="Selector.IsSelected" Value="True">
-                <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource SelectOff}"/>
-                </Trigger.ExitActions>
-                <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource SelectOn}"/>
-                </Trigger.EnterActions>
-            </Trigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="Style.ListBoxItem.Weapon" TargetType="{x:Type ListBoxItem}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -1344,7 +1441,25 @@
     </Style>
 
     <ControlTemplate x:Key="Template.ListBox.Location" TargetType="{x:Type ListBox}">
-        <Border x:Name="OuterBorder" BorderThickness="1">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="FocusOn">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
+                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#CC4895B0"/>
+                </ColorAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="OuterBorder">
+                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#CC4895B0"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="FocusOff">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
+                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#66337C7B"/>
+                </ColorAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="OuterBorder">
+                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004895B0"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Border x:Name="OuterBorder" BorderThickness="1" BorderBrush="#004895B0">
             <Border x:Name="Border"
                 Background="#66010202"
                 BorderBrush="#66337C7B"
@@ -1358,9 +1473,12 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                <Setter Property="BorderBrush" Value="#CC4895B0" TargetName="Border"/>
-                <Setter Property="BorderThickness" Value="2" TargetName="Border"/>
-                <Setter Property="BorderThickness" Value="0" TargetName="OuterBorder"/>
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource FocusOff}"/>
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource FocusOn}"/>
+                </Trigger.EnterActions>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -1405,7 +1523,7 @@
                                 <CubicEase EasingMode="EaseInOut"/>
                             </VisualTransition.GeneratedEasingFunction>
                         </VisualTransition>
-                        <VisualTransition From="Selected" GeneratedDuration="0:0:0.2">
+                        <VisualTransition From="Selected" GeneratedDuration="0:0:0.3">
                             <VisualTransition.GeneratedEasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
                             </VisualTransition.GeneratedEasingFunction>
@@ -1588,12 +1706,17 @@
 
     <ControlTemplate x:Key="Template.ProgressBar" TargetType="{x:Type ProgressBar}">
         <ControlTemplate.Resources>
-            <Storyboard x:Key="ShineLoop" Duration="0:0:8" RepeatBehavior="Forever" SpeedRatio="1.2">
+            <Storyboard x:Key="ShineLoop" Duration="0:0:8" RepeatBehavior="Forever">
                 <DoubleAnimationUsingKeyFrames BeginTime="0:0:2" Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ShineMove">
                     <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1">
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.95">
                         <EasingDoubleKeyFrame.EasingFunction>
                             <SineEase EasingMode="EaseOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                    <EasingDoubleKeyFrame KeyTime="0:0:5" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CircleEase EasingMode="EaseOut"/>
                         </EasingDoubleKeyFrame.EasingFunction>
                     </EasingDoubleKeyFrame>
                 </DoubleAnimationUsingKeyFrames>
@@ -1601,7 +1724,14 @@
                     <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Shine">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1.2"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:5" Value="1.1"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
         </ControlTemplate.Resources>
@@ -1631,13 +1761,22 @@
                     </Decorator>
                     <Border x:Name="Shine" Margin="0,0,-5,0" Opacity="0"
                             Width="{Binding ActualWidth, ElementName=ShineWidth}"
-                            Background="{TemplateBinding BorderBrush}"/>
+                            Background="{TemplateBinding BorderBrush}" RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
                 </StackPanel>
             </Grid>
         </Grid>
         <ControlTemplate.Triggers>
             <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-                <BeginStoryboard x:Name="ShineLoop_BeginStoryboard" Storyboard="{StaticResource ShineLoop}"/>
+                <BeginStoryboard Storyboard="{StaticResource ShineLoop}"/>
             </EventTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
