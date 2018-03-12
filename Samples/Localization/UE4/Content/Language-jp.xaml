@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ImageBrush x:Key="Flag" ImageSource="Flag-jp.png" Stretch="Fill"/>
+
+    <sys:String x:Key="SoundLabel">音</sys:String>
+    <sys:String x:Key="MusicLabel">音楽</sys:String>
+    <sys:String x:Key="TitleLabel">局地化 見本</sys:String>
+    <sys:String x:Key="SubTitleLabel">日本語 局地化</sys:String>
+    <sys:String x:Key="DescLabel">NoesisGUIにローカライゼーションを実装する方法は たくさんあります。 この例では、DataBindingを使 用しています。 各言語は、各エントリのローカライ ズされたテキストを含むResourceDictionaryに格納 されます。 目的の言語がルートDataContextで選択 されます。 言語が変更されるたびに、表示されたテ キストがそれに応じて更新されます。</sys:String>
+
+</ResourceDictionary>
