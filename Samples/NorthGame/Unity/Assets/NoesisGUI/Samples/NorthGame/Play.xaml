@@ -312,7 +312,7 @@
                                     </TransformGroup>
                                 </Grid.RenderTransform>
                                 <Image Source="Images/TopMenuBg.png" IsHitTestVisible="False"/>
-                                <Grid x:Name="TopMenuEffectsPanel" Margin="100,-100,-100,-165">
+                                <Grid x:Name="TopMenuEffectsPanel" Margin="-100,-100,100,-165">
                                     <Image x:Name="TopMenuEffects" Source="Images/TopMenuEffects.png" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Grid>
                                 <ListBox x:Name="Navigation" Style="{StaticResource Style.ListBox.HorizontalList}" HorizontalAlignment="Center" Height="90" Margin="0,0,0,40"
