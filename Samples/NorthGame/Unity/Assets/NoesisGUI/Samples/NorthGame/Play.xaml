@@ -209,6 +209,42 @@
                         <EasingDoubleKeyFrame KeyTime="0:0:30" Value="0"/>
                     </DoubleAnimationUsingKeyFrames>
                 </Storyboard>
+                <Storyboard x:Key="BackOverOn">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="BackBtnOver">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.4">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="BackOverOff">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="BackBtnOver">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="NextOverOn">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="NextBtnOver">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.4">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="NextOverOff">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="NextBtnOver">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
             </ControlTemplate.Resources>
             <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,-0.1" IsEnabled="False"
                 noesis:EventToCommand.Event="IsEnabledChanged"
@@ -311,7 +347,22 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Viewbox Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                            <StackPanel Orientation="Horizontal" Margin="0,160,0,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,160,0,0" Background="Transparent" ToolTipService.InitialShowDelay="10" ToolTipService.BetweenShowDelay="10" ToolTipService.ShowDuration="6000">
+                                <StackPanel.ToolTip>
+                                    <ToolTip BorderBrush="#FF6EB3CE" Background="#E51B4144" BorderThickness="1" Padding="10">
+                                        <StackPanel>
+                                            <TextBlock FontSize="16">
+                                                <Span Foreground="#FFB2E7E3">From:</Span> <Span Foreground="#FF58BDCD">Xilwenys</Span> <Span Foreground="#FFB2E7E3">(Mar 22)</Span>
+                                            </TextBlock>
+                                            <TextBlock FontSize="20" Text="Wanna join a raid tomorrow night?" Foreground="White"/>
+                                            <TextBlock FontSize="16" Margin="0,10,0,0">
+                                                <Span Foreground="#FFB2E7E3">From:</Span> <Span Foreground="#FF58BDCD">Evindal</Span> <Span Foreground="#FFB2E7E3">(Mar 21)</Span>
+                                            </TextBlock>
+                                            <TextBlock FontSize="20" Text="Great team work today!" Foreground="White"/>
+                                            <TextBlock FontSize="20" Margin="0,10,0,0" Text="..."/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </StackPanel.ToolTip>
                                 <Path x:Name="MailIcon" Data="M17.171,0 C7.704,0 0,7.703 0,17.171 L0,110.829 C0,120.297 7.704,128 17.171,128 L157.658,128 C167.125,128 174.829,120.297 174.829,110.829 L174.829,17.171 C174.829,7.703 167.125,0 157.658,0 z M9.366,110.829 L9.366,17.171 C9.366,12.867 12.866,9.366 17.171,9.366 L157.658,9.366 C161.964,9.366 165.464,12.867 165.464,17.171 L165.464,110.829 C165.464,115.133 161.964,118.634 157.658,118.634 L17.171,118.634 C12.866,118.634 9.366,115.133 9.366,110.829 M85.853,68.336 L16,16 62.311,62.058 17,112 75.613,74.621 85.853,84.293 95.024,75.122 157,111 107.935,62.211 157,16 z" Height="30" Canvas.Left="625.5" Canvas.Top="17.5" Width="46" Stretch="Fill" Margin="0,4,24,4" RenderTransformOrigin="0.5,0.5">
                                     <Path.RenderTransform>
                                         <TransformGroup>
@@ -344,7 +395,22 @@
                             </StackPanel>
                         </Viewbox>
                         <Viewbox Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                            <StackPanel Orientation="Horizontal" Margin="0,160,0,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,160,0,0" Background="Transparent" ToolTipService.InitialShowDelay="10" ToolTipService.BetweenShowDelay="10" ToolTipService.ShowDuration="6000">
+                                <StackPanel.ToolTip>
+                                    <ToolTip BorderBrush="#FF6EB3CE" Background="#E51B4144" BorderThickness="1" Padding="10">
+                                        <StackPanel>
+                                            <TextBlock FontSize="20">
+                                                <Span Foreground="#FFE8CD41" FontFamily="Fonts/#Interstate-Bold">GOLD:</Span> <Span Foreground="#FFB2E7E3">1280 coins</Span>
+                                            </TextBlock>
+                                            <TextBlock FontSize="20" Margin="0,10,0,0">
+                                                <Span Foreground="#FFAFBDC1" FontFamily="Fonts/#Interstate-Bold">SILVER:</Span> <Span Foreground="#FFB2E7E3">3547 coins</Span>
+                                            </TextBlock>
+                                            <TextBlock FontSize="20" Margin="0,10,0,0">
+                                                <Span Foreground="#FF91711B" FontFamily="Fonts/#Interstate-Bold">BRONZE:</Span> <Span Foreground="#FFB2E7E3">9415 coins</Span>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </StackPanel.ToolTip>
                                 <Path x:Name="MoneyIcon" Data="M24.4453333333331,79.0250006561279C24.4453333333331,111.758000656128 47.742,135.053667336508 80.4750000000001,135.053667336508 113.208,135.053667336508 136.50466666667,111.758000656128 136.50466666667,79.0250006561279 136.50466666667,46.2920006561279 113.208,22.9953339757489 80.4750000000001,22.9953339757489 47.742,22.9953339757489 24.4453333333331,46.2920006561279 24.4453333333331,79.0250006561279 M43.4010000000001,70.8320006561279L50.9640000000001,70.8320006561279C52.3180000000001,63.9470006561279 55.366,58.0770006561279 59.4280000000001,53.7880006561279 65.5240000000001,47.0160006561279 73.7630000000001,43.1790006561279 83.8090000000001,43.1790006561279 90.5800000000001,43.1790006561279 96.2250000000001,44.8720006561279 99.9490000000001,46.6770006561279L97.1270000000001,57.1740006561279C94.1930000000001,55.5950006561279 89.5650000000001,54.1270006561279 84.485,54.1270006561279 78.842,54.1270006561279 73.8760000000001,56.1590006561279 70.1510000000001,60.3350006561279 67.781,62.8180006561279 66.088,66.5420006561279 65.1850000000001,70.8320006561279L94.757,70.8320006561279 94.757,77.8300006561279 63.8300000000001,77.8300006561279C63.6050000000001,79.0710006561279,63.6050000000001,80.4260006561279,63.6050000000001,81.7800006561279L63.6050000000001,83.6990006561279 94.757,83.6990006561279 94.757,90.5840006561279 64.8460000000001,90.5840006561279C65.6370000000001,95.4370006561279 67.3300000000001,99.0480006561279 69.7,101.645000656128 73.5380000000001,105.820000656128 78.9550000000001,107.741000656128 84.8240000000001,107.741000656128 90.355,107.741000656128 95.5470000000001,105.820000656128 98.1430000000001,104.354000656128L100.513,114.511000656128C96.7890000000001,116.769000656128 90.468,119.027000656128 83.2440000000001,119.027000656128 72.973,119.027000656128 63.7180000000001,114.963000656128 57.7360000000001,107.401000656128 54.1240000000001,103.224000656128 51.641,97.5820006561279 50.6250000000001,90.5840006561279L43.4010000000001,90.5840006561279 43.4010000000001,83.6990006561279 49.722,83.6990006561279 49.722,81.8930006561279C49.722,80.5380006561279,49.835,79.0710006561279,49.948,77.8300006561279L43.4010000000001,77.8300006561279z M2.48689958574826E-14,79.7500006561279C2.48689958574826E-14,123.795000656128 35.7050000000001,159.500000656128 79.7500000000001,159.500000656128 123.795,159.500000656128 159.5,123.795000656128 159.5,79.7500006561279 159.5,35.7060006561279 123.795,6.56127930653838E-07 79.7500000000001,6.56127930653838E-07 35.7050000000001,6.56127930653838E-07 2.48689958574826E-14,35.7060006561279 2.48689958574826E-14,79.7500006561279 M14.9510000000001,79.0250006561279C14.9510000000001,42.8360006561279 44.287,13.5000006561279 80.4750000000001,13.5000006561279 116.664,13.5000006561279 146,42.8360006561279 146,79.0250006561279 146,115.214000656128 116.664,144.550000656128 80.4750000000001,144.550000656128 44.287,144.550000656128 14.9510000000001,115.214000656128 14.9510000000001,79.0250006561279" Height="38" Canvas.Top="3" Width="38" Stretch="Fill" Margin="0,0,24,0" RenderTransformOrigin="0.5,0.5">
                                     <Path.RenderTransform>
                                         <TransformGroup>
@@ -377,7 +443,17 @@
                             </StackPanel>
                         </Viewbox>
                         <Viewbox Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                            <StackPanel Orientation="Horizontal" Margin="0,160,0,0">
+                            <StackPanel Orientation="Horizontal" Margin="0,160,0,0" Background="Transparent" ToolTipService.InitialShowDelay="10" ToolTipService.BetweenShowDelay="10" ToolTipService.ShowDuration="6000">
+                                <StackPanel.ToolTip>
+                                    <ToolTip BorderBrush="#FF6EB3CE" Background="#E51B4144" BorderThickness="1" Padding="10">
+                                        <StackPanel>
+                                            <TextBlock FontSize="20">
+                                                <Span Foreground="#FFB2E7E3">Tournament:</Span> <Span Foreground="#FF58BDCD" FontFamily="Fonts/#Interstate-Bold">Devil's Lair</Span>
+                                            </TextBlock>
+                                            <TextBlock FontSize="16" Foreground="White" Text="21 spots remaining."/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </StackPanel.ToolTip>
                                 <Decorator Height="38"/>
                                 <TextBlock Text="Next Schedule Game:  " Foreground="#FFFCFCFC" VerticalAlignment="Center" FontSize="24"
                                            noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="3.5"/>
@@ -422,6 +498,20 @@
                     <Grid Grid.Row="3">
                         <Viewbox>
                             <Grid x:Name="KeyHelper" Width="300" RenderTransformOrigin="0.5,0.5">
+                                <Grid.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BackBtn">
+                                        <BeginStoryboard Storyboard="{StaticResource BackOverOn}"/>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BackBtn">
+                                        <BeginStoryboard Storyboard="{StaticResource BackOverOff}"/>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="NextBtn">
+                                        <BeginStoryboard Storyboard="{StaticResource NextOverOn}"/>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="NextBtn">
+                                        <BeginStoryboard Storyboard="{StaticResource NextOverOff}"/>
+                                    </EventTrigger>
+                                </Grid.Triggers>
                                 <Grid.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -445,15 +535,40 @@
                                 <Path Grid.Column="2" Data="M50,50 L0.5,0.5" Stroke="{StaticResource Brush.Button.Border}" Margin="0,0,0,-1" StrokeEndLineCap="Triangle"/>
 
                                 <Rectangle Grid.Column="1" Height="1" Fill="{StaticResource Brush.Button.Border}" Margin="-1,0,-1,0" VerticalAlignment="Top"/>
+                                <Path x:Name="BackBtnOver" Grid.Column="1" Data="M294.71907,47.778707 L294.71907,1.1877242 392.27803,1.1877207 438.82706,47.786096 z" HorizontalAlignment="Left" Margin="-48.824,1.046,0,0.089" Stretch="Fill" StrokeEndLineCap="Triangle" Width="147.725" Grid.ColumnSpan="1" RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                            <SkewTransform AngleY="0" AngleX="0"/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform X="0.86200000000002319"/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                    <Path.Fill>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0">
+                                            <GradientStop Color="#FF1E5258" Offset="0"/>
+                                            <GradientStop Color="#FF153D41" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Path.Fill>
+                                </Path>
+                                <Path x:Name="NextBtnOver" Grid.Column="2" Data="M150.84516,47.778707 L150.84516,1.1877242 247.92872,1.1877207 294.95314,47.786096 z" HorizontalAlignment="Stretch" Margin="-99.272,1.046,1.908,0.089" Stretch="Fill" StrokeEndLineCap="Triangle" Width="Auto" Grid.ColumnSpan="1">
+                                    <Path.Fill>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0">
+                                            <GradientStop Color="#FF1E5258" Offset="0"/>
+                                            <GradientStop Color="#FF153D41" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Path.Fill>
+                                </Path>
+
 
                                 <Grid Grid.Column="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Content="BACK" Style="{StaticResource Style.Button.PrevNext}" Padding="10,0,20,0"
+                                    <Button x:Name="BackBtn" Grid.Column="0" Content="BACK" Style="{StaticResource Style.Button.PrevNext}" Padding="10,0,20,0"
                                              Command="{Binding PrevCommand}"/>
-                                    <Button Grid.Column="1" Content="NEXT" Style="{StaticResource Style.Button.PrevNext}" Padding="20,0,10,0"
+                                    <Button x:Name="NextBtn" Grid.Column="1" Content="NEXT" Style="{StaticResource Style.Button.PrevNext}" Padding="20,0,10,0"
                                              Command="{Binding NextCommand}"/>
                                 </Grid>
                             </Grid>

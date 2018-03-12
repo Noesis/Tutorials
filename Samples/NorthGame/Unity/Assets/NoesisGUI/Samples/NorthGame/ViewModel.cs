@@ -88,7 +88,7 @@ namespace NorthGame
     public enum RaidType
     {
         Arena,
-        Discover,
+        Explore,
         Defend
     }
 
@@ -328,18 +328,18 @@ namespace NorthGame
             magic.SelectedWeapon = magic.Weapons[0];
 
             Locations = new List<Location>();
+            Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location1.jpg") });
+            Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Explore, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location2.jpg") });
+            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Arena, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
+            Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location4.jpg") });
+            Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location5.jpg") });
+            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Explore, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location6.jpg") });
             Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location1.jpg") });
             Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location2.jpg") });
-            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Discover, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
+            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Explore, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
             Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location4.jpg") });
             Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location5.jpg") });
-            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Discover, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location6.jpg") });
-            Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location1.jpg") });
-            Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location2.jpg") });
-            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Discover, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
-            Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location4.jpg") });
-            Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location5.jpg") });
-            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Discover, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location6.jpg") });
+            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Explore, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location6.jpg") });
 
             Player = new PlayerInfo
             {
