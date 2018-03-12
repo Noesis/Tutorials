@@ -399,15 +399,22 @@
                                 <StackPanel.ToolTip>
                                     <ToolTip BorderBrush="#FF6EB3CE" Background="#E51B4144" BorderThickness="1" Padding="10">
                                         <StackPanel>
-                                            <TextBlock FontSize="20">
-                                                <Span Foreground="#FFE8CD41" FontFamily="Fonts/#Interstate-Bold">GOLD:</Span> <Span Foreground="#FFB2E7E3">1280 coins</Span>
-                                            </TextBlock>
-                                            <TextBlock FontSize="20" Margin="0,10,0,0">
-                                                <Span Foreground="#FFAFBDC1" FontFamily="Fonts/#Interstate-Bold">SILVER:</Span> <Span Foreground="#FFB2E7E3">3547 coins</Span>
-                                            </TextBlock>
-                                            <TextBlock FontSize="20" Margin="0,10,0,0">
-                                                <Span Foreground="#FF91711B" FontFamily="Fonts/#Interstate-Bold">BRONZE:</Span> <Span Foreground="#FFB2E7E3">9415 coins</Span>
-                                            </TextBlock>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Ellipse Fill="#FFE8CD41" Stroke="#FF91802C" StrokeThickness="3" Width="18" Height="18" Margin="0,0,8,0"/>
+                                                <TextBlock FontSize="20" Foreground="#FFE8CD41" FontFamily="Fonts/#Interstate-Bold" Width="90" Text="GOLD:" Margin="0,0,8,0"/>
+                                                <TextBlock FontSize="20" Foreground="#FFB2E7E3" Text="1280 coins"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                <Ellipse Fill="#FFAFBDC1" Stroke="#FF7A7F81" StrokeThickness="3" Width="18" Height="18" Margin="0,0,8,0"/>
+                                                <TextBlock FontSize="20" Foreground="#FFAFBDC1" FontFamily="Fonts/#Interstate-Bold" Width="90" Text="SILVER:" Margin="0,0,8,0"/>
+                                                <TextBlock FontSize="20" Foreground="#FFB2E7E3" Text="3547 coins"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                <Ellipse Fill="#FF91711B" Stroke="#FF594718" StrokeThickness="3" Width="18" Height="18" Margin="0,0,8,0"/>
+                                                <TextBlock FontSize="20" Foreground="#FF91711B" FontFamily="Fonts/#Interstate-Bold" Width="90" Text="BRONZE:" Margin="0,0,8,0"/>
+                                                <TextBlock FontSize="20" Foreground="#FFB2E7E3" Text="9415 coins"/>
+
+                                            </StackPanel>
                                         </StackPanel>
                                     </ToolTip>
                                 </StackPanel.ToolTip>
@@ -455,7 +462,7 @@
                                     </ToolTip>
                                 </StackPanel.ToolTip>
                                 <Decorator Height="38"/>
-                                <TextBlock Text="Next Schedule Game:  " Foreground="#FFFCFCFC" VerticalAlignment="Center" FontSize="24"
+                                <TextBlock Text="Next Game:  " Foreground="#FFFCFCFC" VerticalAlignment="Center" FontSize="24"
                                            noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="3.5"/>
                                 <TextBlock Text="{Binding NextGame}" Foreground="#FF41B3C0" VerticalAlignment="Center" FontSize="24"
                                            noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="4.5"/>

@@ -59,14 +59,47 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.75"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="Fire" SpeedRatio="0.5" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="FireGlow">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.0" Value="0.08"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0.3"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="0.25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.2" Value="0.35"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Grid.Resources>
     <Grid.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{StaticResource Clouds}"/>
+            <BeginStoryboard Storyboard="{StaticResource Fire}"/>
         </EventTrigger>
     </Grid.Triggers>
     <Grid>
         <Image Source="Images/Background.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" Source="Images/RockFire.png" Stretch="Uniform" HorizontalAlignment="Right"/>
+            <Rectangle x:Name="FireGlow" Grid.Row="1" Width="{Binding ActualHeight, ElementName=FireGlow}" HorizontalAlignment="Right">
+                <Rectangle.Fill>
+                    <RadialGradientBrush Center="0.83,1" GradientOrigin="0.83,1" RadiusX="0.769" RadiusY="1" Opacity="0">
+                        <GradientStop Color="#FFFFFDD1" Offset="0"/>
+                        <GradientStop Color="#FFFF9433" Offset="0.115"/>
+                        <GradientStop Color="#FFB0431D" Offset="0.264"/>
+                        <GradientStop Color="#FF52251A" Offset="0.486"/>
+                        <GradientStop Color="#0052251A" Offset="1"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
         <Viewbox>
             <Grid Margin="150">
                 <Rectangle x:Name="CloudBig" Width="800" Height="500" RenderTransformOrigin="0.5,0.5">
