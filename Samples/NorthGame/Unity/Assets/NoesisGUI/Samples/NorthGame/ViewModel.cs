@@ -1,21 +1,25 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
 using Noesis;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Input;
 #else
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 #endif
 
 namespace NorthGame
 {
+    public static class Randomizer
+    {
+        public static Random r = new Random(DateTime.Now.Ticks.GetHashCode());
+    }
+
     public enum State
     {
         Menu,
@@ -84,7 +88,7 @@ namespace NorthGame
     public enum RaidType
     {
         Arena,
-        Discover,
+        Explore,
         Defend
     }
 
@@ -133,8 +137,20 @@ namespace NorthGame
                 {
                     _class = value;
                     OnPropertyChanged("Class");
+
+                    GenerateAttributes();
                 }
             }
+        }
+
+        private void GenerateAttributes()
+        {
+            Strength = Randomizer.r.Next(40, 100);
+            Dexterity = Randomizer.r.Next(40, 100);
+            Constitution = Randomizer.r.Next(40, 100);
+            Intelligence = Randomizer.r.Next(40, 100);
+            Wisdom = Randomizer.r.Next(40, 100);
+            Charisma = Randomizer.r.Next(40, 100);
         }
 
         public int Strength { get; set; }
@@ -312,45 +328,41 @@ namespace NorthGame
             magic.SelectedWeapon = magic.Weapons[0];
 
             Locations = new List<Location>();
+            Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location1.jpg") });
+            Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Explore, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location2.jpg") });
+            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Arena, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
+            Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location4.jpg") });
+            Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location5.jpg") });
+            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Explore, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location6.jpg") });
             Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location1.jpg") });
             Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location2.jpg") });
-            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Discover, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
+            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Explore, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
             Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location4.jpg") });
             Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location5.jpg") });
-            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Discover, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location6.jpg") });
-            Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location1.jpg") });
-            Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location2.jpg") });
-            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Discover, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
-            Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location4.jpg") });
-            Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location5.jpg") });
-            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Discover, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location6.jpg") });
+            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Explore, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location6.jpg") });
 
             Player = new PlayerInfo
             {
                 Name = "Highlander",
                 Race = Races[0],
                 Class = Races[0].Classes[0],
-                Strength = 87,
-                Dexterity = 60,
-                Constitution = 91,
-                Intelligence = 45,
-                Wisdom = 32,
-                Charisma = 56,
-                Initiative = 120,
-                Wins = 26,
-                Losses = 3,
-                Odds = 103
+                Initiative = Randomizer.r.Next(50, 150),
+                Wins = Randomizer.r.Next(20, 30),
+                Losses = Randomizer.r.Next(1, 10),
+                Odds = Randomizer.r.Next(80, 120)
             };
 
+            Race opponentRace = Races[Randomizer.r.Next(0, 2)];
+            string[] opponentNames = { "Khorlsendukr", "Nettala", "Belarlug", "Kumar", "Jiduaz", "Nazzous", "Ookhin", "Gunaq" };
             Opponent = new PlayerInfo
             {
-                Name = "Khorlsendukr",
-                Race = Races[1],
-                Class = Races[1].Classes[1],
-                Initiative = 81,
-                Wins = 97,
-                Losses = 35,
-                Odds = 105
+                Name = opponentNames[Randomizer.r.Next(0, 7)],
+                Race = opponentRace,
+                Class = opponentRace.Classes[Randomizer.r.Next(0, 2)],
+                Initiative = Randomizer.r.Next(50, 150),
+                Wins = Randomizer.r.Next(50, 100),
+                Losses = Randomizer.r.Next(20,50),
+                Odds = Randomizer.r.Next(80, 120)
             };
 
             Player.WeaponCategories.Add(closeRange);
@@ -362,9 +374,9 @@ namespace NorthGame
 
             PlayScreens = new List<string> { "Select", "Equip", "Raid", "Fight" };
 
-            NewMessages = 7;
-            Credits = 386500;
-            NextGame = "23-03-2018 8:25PM";
+            NewMessages = Randomizer.r.Next(3, 8);
+            Credits = Randomizer.r.Next(30000, 80000);
+            NextGame = string.Format("{0} mins", Randomizer.r.Next(20, 50));
 
             _container1 = (Border)root.FindName("Container1");
             _container2 = (Border)root.FindName("Container2");
@@ -505,10 +517,31 @@ namespace NorthGame
         {
             if (newScreenIndex >= 0 && newScreenIndex < PlayScreens.Count)
             {
-                _playContainer2.Child = CreatePlayScreen(newScreenIndex);
+                FrameworkElement screen = CreatePlayScreen(newScreenIndex);
+                _playContainer2.Child = screen;
 
-                PlayScreenDirection = oldScreenIndex < newScreenIndex ? PlayScreenDirection.Next : PlayScreenDirection.Prev;
+                if (oldScreenIndex < newScreenIndex)
+                {
+                    PlayScreenDirection = PlayScreenDirection.Next;
+                    Storyboard slide = (Storyboard)screen.TryFindResource("SlideFromRight");
+                    if (slide != null)
+                    {
+                        slide.Begin(screen);
+                    }
+                }
+                else
+                {
+                    PlayScreenDirection = PlayScreenDirection.Prev;
+                    Storyboard slide = (Storyboard)screen.TryFindResource("SlideFromLeft");
+                    if (slide != null)
+                    {
+                        slide.Begin(screen);
+                    }
+                }
+
                 PlayScreenDirection = PlayScreenDirection.Current;
+
+                Player.SelectedLocation = Locations[0];
             }
         }
 

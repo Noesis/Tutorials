@@ -10,7 +10,7 @@
             <ControlTemplate.Resources>
                 <Storyboard x:Key="FadeIn">
                     <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="LayoutRoot">
-                        <DiscreteBooleanKeyFrame KeyTime="0:0:2.3" Value="True"/>
+                        <DiscreteBooleanKeyFrame KeyTime="0:0:2" Value="True"/>
                     </BooleanAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Logo">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -62,12 +62,12 @@
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Title">
-                        <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
-                                <BackEase EasingMode="EaseOut" Amplitude="0.1"/>
+                                <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
@@ -77,15 +77,15 @@
                         <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
-                                <BackEase EasingMode="EaseOut" Amplitude="0.1"/>
+                                <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PlayButton">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="1">
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -94,8 +94,8 @@
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PlayButton">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="1">
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -104,8 +104,8 @@
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="OptionsButton">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="1">
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -114,8 +114,8 @@
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="OptionsButton">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="1">
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -124,8 +124,8 @@
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="QuitButton">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="1">
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -134,8 +134,8 @@
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="QuitButton">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="1">
+                        <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
                             </EasingDoubleKeyFrame.EasingFunction>
@@ -149,14 +149,14 @@
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="LayoutRoot">
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5">
                             <EasingDoubleKeyFrame.EasingFunction>
-                                <CircleEase EasingMode="EaseInOut"/>
+                                <BackEase EasingMode="EaseIn" Amplitude="0.6"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="LayoutRoot">
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5">
                             <EasingDoubleKeyFrame.EasingFunction>
-                                <CircleEase EasingMode="EaseInOut"/>
+                                <BackEase EasingMode="EaseIn" Amplitude="0.6"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
@@ -164,6 +164,13 @@
                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                             <EasingDoubleKeyFrame.EasingFunction>
                                 <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MenuButtons">
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <CubicEase EasingMode="EaseIn"/>
                             </EasingDoubleKeyFrame.EasingFunction>
                         </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
@@ -238,7 +245,15 @@
                         </StackPanel>
                     </StackPanel>
                 </Viewbox>
-                <Viewbox x:Name="MenuButtons" Grid.Row="2">
+                <Viewbox x:Name="MenuButtons" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+                    <Viewbox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Viewbox.RenderTransform>
                     <StackPanel
                         KeyboardNavigation.TabNavigation="Cycle"
                         KeyboardNavigation.DirectionalNavigation="Cycle">

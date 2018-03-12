@@ -34,8 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Assets\NoesisGUI\Samples\NorthGame\ElementExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\UppercaseConverter.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\DelegateCommand.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\FightScreen.xaml.cs">
@@ -154,66 +157,35 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Background.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\RockFire.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\FloorTilesL.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\FloorTilesR.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\TopMenuEffects.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\LogoIceEffect.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\LogoFireEffect.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\MenuButton.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\TopMenuBg.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Smoke.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassHumanKnight.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassHumanCleric.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassHumanThief.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassOrcWarrior.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassOrcShaman.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassOrcHunter.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassElfRanger.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassElfWizard.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassElfPriest.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponDoubleAxe.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponEffect.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassHumanCleric.png" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassHumanThief.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponDoubleSword.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponHandAxe.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponLongSword.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponMace.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassElfRanger.png" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassElfWizard.png" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassElfPriest.png" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassOrcWarrior.png" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassOrcShaman.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassOrcHunter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location1.jpg" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location2.jpg" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location3.jpg" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location4.jpg" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location5.jpg" />
-    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location6.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponBigShield.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponBreastplate.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponChainMail.png" />
@@ -225,6 +197,14 @@
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponSpear.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponStaff.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponWand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location1.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location2.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location3.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location4.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location5.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location6.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
