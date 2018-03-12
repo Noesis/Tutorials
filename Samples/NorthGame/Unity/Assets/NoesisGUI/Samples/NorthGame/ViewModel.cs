@@ -374,9 +374,9 @@ namespace NorthGame
 
             PlayScreens = new List<string> { "Select", "Equip", "Raid", "Fight" };
 
-            NewMessages = 7;
-            Credits = 386500;
-            NextGame = "23-03-2018 8:25PM";
+            NewMessages = Randomizer.r.Next(3, 8);
+            Credits = Randomizer.r.Next(30000, 80000);
+            NextGame = string.Format("{0} mins", Randomizer.r.Next(20, 50));
 
             _container1 = (Border)root.FindName("Container1");
             _container2 = (Border)root.FindName("Container2");
@@ -540,6 +540,8 @@ namespace NorthGame
                 }
 
                 PlayScreenDirection = PlayScreenDirection.Current;
+
+                Player.SelectedLocation = Locations[0];
             }
         }
 

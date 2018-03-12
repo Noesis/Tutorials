@@ -7,7 +7,6 @@
              d:DesignWidth="1280" d:DesignHeight="720"
              Tag="Fight">
     <UserControl.Resources>
-        <Storyboard x:Key="SlideFromLeft"/>
         <Storyboard x:Key="SlideFromRight">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="FloorTilesL">
                 <EasingDoubleKeyFrame KeyTime="0" Value="400"/>
@@ -21,7 +20,7 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="FloorTilesL">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <SineEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
@@ -108,7 +107,7 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="FloorTilesR">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <SineEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
