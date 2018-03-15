@@ -3,6 +3,7 @@
 using Noesis;
 #else
 using System;
+using System.Windows;
 using System.Windows.Controls;
 #endif
 
@@ -17,12 +18,23 @@ namespace NorthGame
         {
             Initialized += OnInitialized;
             InitializeComponent();
+
+            UIElement cursor = (UIElement)FindName("Cursor");
+
+            PreviewMouseMove += (o, e) =>
+            {
+                Point p = e.GetPosition(this);
+                Canvas.SetLeft(cursor, p.X);
+                Canvas.SetTop(cursor, p.Y);
+            };
         }
 
 #if NOESIS
         private void InitializeComponent()
         {
             Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/NorthGame/MainWindow.xaml");
+
+            UnityEngine.Cursor.visible = false;
         }
 #endif
 
