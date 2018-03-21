@@ -1,0 +1,96 @@
+####################################################################################################
+# PROJECT: Samples.Localization
+####################################################################################################
+
+ifeq ($(V), 1)
+ Q =
+else
+ Q = @
+endif
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/pch.h.gch: $(PREFIX)/Samples/Localization/Projects/linux_x86_64/pch.h
+	@echo [PH] Samples.Localization/$(notdir $<)
+	$(Q)g++ $(CPPFLAGS_RELEASE) -I$(PREFIX)/Gui/Core/Include/ -I$(PREFIX)/App/Display/Include/ -I$(PREFIX)/Gui/DependencySystem/Include/ -I$(PREFIX)/Samples/Localization/Include/ -I$(PREFIX)/Drawing/Types/Include/ -I$(PREFIX)/Core/Kernel/Include/ -I$(PREFIX)/Math/VectorMath/Include/ -I$(PREFIX)/Gui/CachedFontProvider/Include/ -I$(PREFIX)/../../Include/ -I$(PREFIX)/Gui/Providers/Include/ -I$(PREFIX)/Core/NSTL/Include/ -I$(PREFIX)/Core/Nullable/Include/ -I$(PREFIX)/App/DisplayLauncher/Include/ -I$(PREFIX)/Math/Utils/Include/ -I$(PREFIX)/App/ApplicationLauncher/Include/ -I$(PREFIX)/App/Launcher/Include/ -I$(PREFIX)/../../3rdParty/EASTL/local/include/ -I$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.1.0f1 -DNS_APP_FRAMEWORK -DNS_RELEASE_CFG -DNS_ASSERTS_ENABLED=0 -DNS_INSTRUMENTED_ENABLED=0 -DNS_MINIMUM_LOG_LEVEL=2 -march=x86-64 -m64 -c -MMD -fPIC -o $@ $<
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/%.o: $(PREFIX)/Samples/Localization/Src/%.cpp $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/pch.h.gch
+	@echo [CC] Samples/Localization/$(notdir $<)
+	$(Q)g++ $(CPPFLAGS_RELEASE) -I$(PREFIX)/Gui/Core/Include/ -I$(PREFIX)/App/Display/Include/ -I$(PREFIX)/Gui/DependencySystem/Include/ -I$(PREFIX)/Samples/Localization/Include/ -I$(PREFIX)/Drawing/Types/Include/ -I$(PREFIX)/Core/Kernel/Include/ -I$(PREFIX)/Math/VectorMath/Include/ -I$(PREFIX)/Gui/CachedFontProvider/Include/ -I$(PREFIX)/../../Include/ -I$(PREFIX)/Gui/Providers/Include/ -I$(PREFIX)/Core/NSTL/Include/ -I$(PREFIX)/Core/Nullable/Include/ -I$(PREFIX)/App/DisplayLauncher/Include/ -I$(PREFIX)/Math/Utils/Include/ -I$(PREFIX)/App/ApplicationLauncher/Include/ -I$(PREFIX)/App/Launcher/Include/ -I$(PREFIX)/../../3rdParty/EASTL/local/include/ -I$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.1.0f1 -DNS_APP_FRAMEWORK -DNS_RELEASE_CFG -DNS_ASSERTS_ENABLED=0 -DNS_INSTRUMENTED_ENABLED=0 -DNS_MINIMUM_LOG_LEVEL=2 -march=x86-64 -m64 -c -MMD -fPIC -o $@ $< -include pch.h
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/%.o: $(PREFIX)/Samples/Localization/Src/%.c
+	@echo [CC] Samples/Localization/$(notdir $<)
+	$(Q)gcc $(CFLAGS_RELEASE) -I$(PREFIX)/Gui/Core/Include/ -I$(PREFIX)/App/Display/Include/ -I$(PREFIX)/Gui/DependencySystem/Include/ -I$(PREFIX)/Samples/Localization/Include/ -I$(PREFIX)/Drawing/Types/Include/ -I$(PREFIX)/Core/Kernel/Include/ -I$(PREFIX)/Math/VectorMath/Include/ -I$(PREFIX)/Gui/CachedFontProvider/Include/ -I$(PREFIX)/../../Include/ -I$(PREFIX)/Gui/Providers/Include/ -I$(PREFIX)/Core/NSTL/Include/ -I$(PREFIX)/Core/Nullable/Include/ -I$(PREFIX)/App/DisplayLauncher/Include/ -I$(PREFIX)/Math/Utils/Include/ -I$(PREFIX)/App/ApplicationLauncher/Include/ -I$(PREFIX)/App/Launcher/Include/ -I$(PREFIX)/../../3rdParty/EASTL/local/include/ -I$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.1.0f1 -DNS_APP_FRAMEWORK -DNS_RELEASE_CFG -DNS_ASSERTS_ENABLED=0 -DNS_INSTRUMENTED_ENABLED=0 -DNS_MINIMUM_LOG_LEVEL=2 -march=x86-64 -m64 -c -MMD -fPIC -o $@ $<
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/App.xaml.bin.h: $(PREFIX)/Samples/Localization/Data/App.xaml
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/App.xaml > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/App.xaml.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/MainWindow.xaml.bin.h: $(PREFIX)/Samples/Localization/Data/MainWindow.xaml
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/MainWindow.xaml > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/MainWindow.xaml.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/ControlResources.xaml.bin.h: $(PREFIX)/Samples/Localization/Data/ControlResources.xaml
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/ControlResources.xaml > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/ControlResources.xaml.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/LogoResources.xaml.bin.h: $(PREFIX)/Samples/Localization/Data/LogoResources.xaml
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/LogoResources.xaml > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/LogoResources.xaml.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-en.xaml.bin.h: $(PREFIX)/Samples/Localization/Data/Language-en.xaml
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/Language-en.xaml > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-en.xaml.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-fr.xaml.bin.h: $(PREFIX)/Samples/Localization/Data/Language-fr.xaml
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/Language-fr.xaml > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-fr.xaml.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-jp.xaml.bin.h: $(PREFIX)/Samples/Localization/Data/Language-jp.xaml
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/Language-jp.xaml > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-jp.xaml.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-en.png.bin.h: $(PREFIX)/Samples/Localization/Data/Flag-en.png
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/Flag-en.png > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-en.png.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-fr.png.bin.h: $(PREFIX)/Samples/Localization/Data/Flag-fr.png
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/Flag-fr.png > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-fr.png.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-jp.png.bin.h: $(PREFIX)/Samples/Localization/Data/Flag-jp.png
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/Flag-jp.png > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-jp.png.bin.h 
+
+$(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/rounded-mgenplus-1c-regular.ttf.bin.h: $(PREFIX)/Samples/Localization/Data/rounded-mgenplus-1c-regular.ttf
+	@echo [BH] Samples/Localization/$(notdir $<)
+	$(Q)mkdir -p $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release 
+	$(Q)$(PREFIX)/../Tools/Bin2h/bin2h.py $(PREFIX)/Samples/Localization/Data/rounded-mgenplus-1c-regular.ttf > $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/rounded-mgenplus-1c-regular.ttf.bin.h 
+
+$(BINDIR)/Samples.Localization: $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/App.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/MainWindow.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/ControlResources.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/LogoResources.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-en.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-fr.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-jp.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-en.png.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-fr.png.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-jp.png.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/rounded-mgenplus-1c-regular.ttf.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Main.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/ViewModel.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/MainWindow.xaml.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/App.xaml.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/NotifyPropertyChangedBase.o $(BINDIR)/libNoesis.so $(BINDIR)/libNoesisApp.so
+	@echo [LD] $(notdir $@)
+	$(Q)g++ $(LFLAGS_RELEASE) -m64 -pie -Wl,-rpath,\$$ORIGIN -Wl,-rpath,$(PREFIX)/../../Bin/linux_x86_64 -L$(PREFIX)/../../Bin/linux_x86_64  -o $(BINDIR)/Samples.Localization $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Main.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/ViewModel.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/MainWindow.xaml.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/App.xaml.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/NotifyPropertyChangedBase.o -lNoesisApp -lNoesis
+	@echo [STRIP] $(notdir $@)
+	$(Q)objcopy --only-keep-debug $(BINDIR)/Samples.Localization $(BINDIR)/Samples.Localization.debug 
+	$(Q)strip --strip-unneeded $(BINDIR)/Samples.Localization
+	$(Q)objcopy --add-gnu-debuglink=$(BINDIR)/Samples.Localization.debug $(BINDIR)/Samples.Localization
+
+RELEASE_CLEAN_SAMPLES_LOCALIZATION:
+	@rm -f $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Main.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/ViewModel.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/MainWindow.xaml.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/App.xaml.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/NotifyPropertyChangedBase.o $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/App.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/MainWindow.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/ControlResources.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/LogoResources.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-en.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-fr.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Language-jp.xaml.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-en.png.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-fr.png.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Flag-jp.png.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/rounded-mgenplus-1c-regular.ttf.bin.h $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/pch.h.gch
+	@rm -f $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/pch.h.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Main.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/ViewModel.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/MainWindow.xaml.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/App.xaml.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/NotifyPropertyChangedBase.d
+	@rm -f $(BINDIR)/Samples.Localization
+	@rm -f $(BINDIR)/Samples.Localization.debug
+
+RELEASE_COMPILE_TARGETS += $(BINDIR)/Samples.Localization
+RELEASE_ADDITIONAL_DEPS += $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/pch.h.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/Main.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/ViewModel.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/MainWindow.xaml.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/App.xaml.d $(PREFIX)/Samples/Localization/Projects/linux_x86_64/_build/Release/NotifyPropertyChangedBase.d
+RELEASE_CLEAN_TARGETS += RELEASE_CLEAN_SAMPLES_LOCALIZATION
+
+

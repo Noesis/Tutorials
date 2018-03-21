@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ImageBrush x:Key="Flag" ImageSource="Flag-fr.png" Stretch="Fill"/>
+
+    <sys:String x:Key="SoundLabel">Son</sys:String>
+    <sys:String x:Key="MusicLabel">Musique</sys:String>
+    <sys:String x:Key="TitleLabel">EXAMPLE DE LOCALISATION</sys:String>
+    <sys:String x:Key="SubTitleLabel">La localisation Français</sys:String>
+    <sys:String x:Key="DescLabel">Il existe plusieurs façons d'implémenter la localisation dans NoesisGUI. Dans cet exemple, nous utilisons DataBinding. Chaque langue est stockée dans un ResourceDictionary contenant des textes localisés pour chaque entrée. La langue souhaitée est sélectionnée dans la racine DataContext. Chaque fois que la langue est modifiée, le texte affiché est mis à jour en conséquence.</sys:String>
+
+</ResourceDictionary>
