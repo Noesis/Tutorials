@@ -69,13 +69,13 @@
   <ItemGroup>
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="ElementExtensions.cs" />
-    <Compile Include="NoesisGUIExtensions.cs" />
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NoesisGUIExtensions.cs" />
     <Compile Include="OptionSelector.xaml.cs">
       <DependentUpon>OptionSelector.xaml</DependentUpon>
     </Compile>
@@ -135,9 +135,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\BigPlanet.png" />
-    <Resource Include="Images\CloseUpPlanet.png" />
-    <Resource Include="Images\SpaceBg.jpg" />
+    <Resource Include="Images\BackClouds.png" />
+    <Resource Include="Images\FrontClouds.png" />
+    <Resource Include="Images\FrontTrees.png" />
+    <Resource Include="Images\LakeAndMountains.png" />
+    <Resource Include="Images\SkyAndSun.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

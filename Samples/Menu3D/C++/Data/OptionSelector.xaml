@@ -4,7 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
     x:Name="OptionSelectorControl"
     d:DesignWidth="500" d:DesignHeight="100"
-    Background="Transparent" Foreground="{StaticResource TransparentWhiteBrush70}">
+    Background="Transparent" Foreground="{StaticResource TransparentWhiteBrush95}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ControlTemplate x:Key="OptionSelectorButtonTemplate" TargetType="{x:Type RepeatButton}">
@@ -62,7 +62,7 @@
                                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                                     </DoubleAnimationUsingKeyFrames>
                                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="Arrow">
-                                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource TransparentWhiteColor50}"/>
+                                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource TransparentWhiteColor75}"/>
                                     </ColorAnimationUsingKeyFrames>
                                 </Storyboard>
                             </VisualState>

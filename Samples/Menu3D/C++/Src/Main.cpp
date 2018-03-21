@@ -27,9 +27,11 @@
 #include "SettingsMenu.xaml.bin.h"
 #include "StartMenu.xaml.bin.h"
 #include "OptionSelector.xaml.bin.h"
-#include "SpaceBg.jpg.bin.h"
-#include "BigPlanet.png.bin.h"
-#include "CloseUpPlanet.png.bin.h"
+#include "BackClouds.png.bin.h"
+#include "FrontClouds.png.bin.h"
+#include "FrontTrees.png.bin.h"
+#include "LakeAndMountains.png.bin.h"
+#include "SkyAndSun.jpg.bin.h"
 #include "weblysleekuisb.ttf.bin.h"
 #include "weblysleekuisl.ttf.bin.h"
 
@@ -89,9 +91,11 @@ private:
     {
         EmbeddedTexture textures[] = 
         {
-            { "Images/BigPlanet.png", BigPlanet_png, sizeof(BigPlanet_png) },
-            { "Images/CloseUpPlanet.png", CloseUpPlanet_png, sizeof(CloseUpPlanet_png) },
-            { "Images/SpaceBg.jpg", SpaceBg_jpg, sizeof(SpaceBg_jpg) }
+            { "Images/BackClouds.png", BackClouds_png, sizeof(BackClouds_png) },
+            { "Images/FrontClouds.png", FrontClouds_png, sizeof(FrontClouds_png) },
+            { "Images/FrontTrees.png", FrontTrees_png, sizeof(FrontTrees_png) },
+            { "Images/LakeAndMountains.png", LakeAndMountains_png, sizeof(LakeAndMountains_png) },
+            { "Images/SkyAndSun.jpg", SkyAndSun_jpg, sizeof(SkyAndSun_jpg) }
         };
 
         return *new EmbeddedTextureProvider(textures, NS_COUNTOF(textures));

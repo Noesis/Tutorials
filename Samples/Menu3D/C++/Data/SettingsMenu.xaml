@@ -156,13 +156,14 @@
                 <StackPanel x:Name="MenuTitle" Orientation="Vertical" HorizontalAlignment="Left">
                     <Viewbox x:Name="Logo" Stretch="Uniform" Height="100" Margin="0,-9,0,0">
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoMagentaBg}" Stretch="Uniform"/>
+                            <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoBlue}" Stretch="Uniform"/>
                             <Path Data="{StaticResource NoesisTextGeometry}" Fill="White" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
-                            <Path Data="{StaticResource NoesisGuiTextGeometry}" Fill="{StaticResource NoesisLogoMagentaBg}" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                            <Path Data="{StaticResource NoesisGuiTextGeometry}" Fill="{StaticResource NoesisLogoBlue}" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Viewbox>
-                    <TextBlock Text="MENU DEMO" FontSize="50" HorizontalAlignment="Right" Margin="0,-19,-2,0" Foreground="{StaticResource TransparentWhiteBrush70}"/>
+                    <TextBlock Text="MENU DEMO" FontSize="50" HorizontalAlignment="Right" Margin="0,-19,-2,0" Foreground="{StaticResource TransparentWhiteBrush95}"/>
                 </StackPanel>
+                <Border Grid.Row="1" Margin="-20,0" Background="{StaticResource OptionsBg}"  OpacityMask="{StaticResource OptionsMask}"/>
                 <StackPanel x:Name="MenuOptions" Grid.Row="1" Margin="0,30,0,0" RenderTransformOrigin="0.5,0.5"
                     KeyboardNavigation.TabNavigation="Cycle"
                     KeyboardNavigation.ControlTabNavigation="Cycle"
@@ -310,17 +311,17 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </StackPanel.RenderTransform>
-                    <TextBlock Text="SETTINGS" FontSize="64" Foreground="{StaticResource TransparentWhiteBrush30}" FontFamily="Fonts/#WeblySleek UI Semibold"/>
+                    <TextBlock Text="SETTINGS" FontSize="64" Foreground="{StaticResource TransparentWhiteBrush50}" FontFamily="Fonts/#WeblySleek UI Semibold"/>
                     <Rectangle Height="12" Margin="0,8,0,0" Fill="{StaticResource DiagonalLinesBg}"/>
                     <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
-                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="{StaticResource TransparentWhiteBrush50}" Padding="8,2" VerticalAlignment="Center">
-                            <TextBlock Text="ENTER" Foreground="{StaticResource TransparentWhiteBrush50}" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold"/>
+                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="{StaticResource TransparentWhiteBrush75}" Padding="8,2" VerticalAlignment="Center">
+                            <TextBlock Text="ENTER" Foreground="{StaticResource TransparentWhiteBrush75}" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold"/>
                         </Border>
-                        <TextBlock Text="ACCEPT" Foreground="{StaticResource TransparentWhiteBrush50}" VerticalAlignment="Center" Margin="10,-10,0,-7" FontSize="30"/>
-                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="{StaticResource TransparentWhiteBrush50}" Padding="8,2" VerticalAlignment="Center" Margin="50,0,0,0">
-                            <TextBlock Text="ESC" Foreground="{StaticResource TransparentWhiteBrush50}" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold"/>
+                        <TextBlock Text="ACCEPT" Foreground="{StaticResource TransparentWhiteBrush75}" VerticalAlignment="Center" Margin="10,-10,0,-7" FontSize="30"/>
+                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="{StaticResource TransparentWhiteBrush75}" Padding="8,2" VerticalAlignment="Center" Margin="50,0,0,0">
+                            <TextBlock Text="ESC" Foreground="{StaticResource TransparentWhiteBrush75}" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold"/>
                         </Border>
-                        <TextBlock Text="BACK" Foreground="{StaticResource TransparentWhiteBrush50}" VerticalAlignment="Center" Margin="10,-10,0,-7" FontSize="30"/>
+                        <TextBlock Text="BACK" Foreground="{StaticResource TransparentWhiteBrush75}" VerticalAlignment="Center" Margin="10,-10,0,-7" FontSize="30"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
