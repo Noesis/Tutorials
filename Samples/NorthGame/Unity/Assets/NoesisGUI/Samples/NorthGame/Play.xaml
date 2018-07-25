@@ -200,13 +200,109 @@
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TopMenuEffectsPanel">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:5.3" Value="1"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:9.3" Value="0.5"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:14" Value="0.8"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="0.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="0.8"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:15.5" Value="0.8"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:20" Value="0"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:24" Value="0.8"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:30" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="TopMenuGlow2">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="-1200"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1300">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="-1000"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1100">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="TopMenuGlow2">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="1.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="2.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:15.5" Value="2.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="TopMenuGlow2">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="1.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="2.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:15.5" Value="2.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="TopMenuGlow">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="1.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="2.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:15.5" Value="2.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="TopMenuGlow">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="1.2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:15.5" Value="1.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="TopMenuDimGlow">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="-1200"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1300">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="-1000"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1100">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="TopMenuDimGlow">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="1.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="2.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:15.5" Value="2.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="TopMenuDimGlow">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="1.2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="2"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:15.5" Value="1.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="TopMenuGlow">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="-1200"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1300">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="-1000"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="1100">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
                     </DoubleAnimationUsingKeyFrames>
                 </Storyboard>
                 <Storyboard x:Key="BackOverOn">
@@ -275,7 +371,7 @@
                             </TransformGroup>
                         </Grid.RenderTransform>
                         <Viewbox Height="{Binding ActualHeight, ElementName=TopMenu4th}" VerticalAlignment="Top" HorizontalAlignment="Right">
-                            <Button x:Name="MenuButton" Content="MENU" Style="{StaticResource Style.Button.BackMenu}" Command="{Binding MenuCommand}" RenderTransformOrigin="0.5,0.5">
+                            <Button x:Name="MenuButton" Content="MENU" Style="{StaticResource Style.Button.BackMenu}" Command="{Binding MenuCommand}" RenderTransformOrigin="0.5,0.5" IsTabStop="False">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -312,8 +408,67 @@
                                     </TransformGroup>
                                 </Grid.RenderTransform>
                                 <Image Source="Images/TopMenuBg.png" IsHitTestVisible="False"/>
-                                <Grid x:Name="TopMenuEffectsPanel" Margin="-100,-100,100,-165">
-                                    <Image x:Name="TopMenuEffects" Source="Images/TopMenuEffects.png" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Grid x:Name="TopMenuEffectsPanel" Margin="0,-140,0,-190">
+                                    <Image x:Name="TopMenuEffects" Source="Images/TopMenuEffects.png" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+                                    <Rectangle x:Name="TopMenuDimGlow" RenderTransformOrigin="0.7,0.5" Height="10" Width="60" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,202">
+                                        <Rectangle.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Rectangle.RenderTransform>
+                                        <Rectangle.Fill>
+                                            <RadialGradientBrush Center="0.4,0.5" GradientOrigin="0.7,0.5" Opacity="0.4">
+                                                <GradientStop Color="#FFFFFED3" Offset="0"/>
+                                                <GradientStop Color="#7F623C2E" Offset="0.827"/>
+                                                <GradientStop Color="#E5FFF460" Offset="0.104"/>
+                                                <GradientStop Color="#CCF5B257" Offset="0.261"/>
+                                                <GradientStop Color="#99CC3E15" Offset="0.604"/>
+                                                <GradientStop Color="#00623C2E" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <Rectangle x:Name="TopMenuGlow2" RenderTransformOrigin="0.5,0.5" Height="60" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="32,35,0,0">
+                                        <Rectangle.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Rectangle.RenderTransform>
+                                        <Rectangle.Fill>
+                                            <RadialGradientBrush Center="0.5,0.4" GradientOrigin="0.5,0.49" Opacity="0.6">
+                                                <GradientStop Color="#7FFFF4D3" Offset="0"/>
+                                                <GradientStop Color="#26704A1E" Offset="0.827"/>
+                                                <GradientStop Color="#72FFCA60" Offset="0.104"/>
+                                                <GradientStop Color="#4CF5B257" Offset="0.261"/>
+                                                <GradientStop Color="#0070471E" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <Rectangle x:Name="TopMenuGlow" RenderTransformOrigin="0.7,0.5" Height="15" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,35,0,0">
+                                        <Rectangle.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Rectangle.RenderTransform>
+                                        <Rectangle.Fill>
+                                            <RadialGradientBrush Center="0.4,0.5" GradientOrigin="0.7,0.5">
+                                                <GradientStop Color="#FFFFFED3" Offset="0"/>
+                                                <GradientStop Color="#66623C2E" Offset="0.827"/>
+                                                <GradientStop Color="#E5FFF460" Offset="0.104"/>
+                                                <GradientStop Color="#B2F5B257" Offset="0.261"/>
+                                                <GradientStop Color="#7FCC3E15" Offset="0.604"/>
+                                                <GradientStop Color="#00623C2E" Offset="1"/>
+                                            </RadialGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
                                 </Grid>
                                 <ListBox x:Name="Navigation" Style="{StaticResource Style.ListBox.HorizontalList}" HorizontalAlignment="Center" Height="90" Margin="0,0,0,40"
                                          ItemsSource="{Binding PlayScreens}" ItemContainerStyle="{StaticResource Style.ListBoxItem.Navigation}"

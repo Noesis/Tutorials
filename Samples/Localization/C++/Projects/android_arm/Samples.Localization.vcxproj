@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|ARM">
+      <Configuration>Profile</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C2A76AA7-B1BB-3DE6-8ADE-3775E59D5CF0}</ProjectGuid>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <Keyword>Android</Keyword>
+    <RootNamespace>Samples_Localization</RootNamespace>
+    <ApplicationType>Android</ApplicationType>
+    <ApplicationTypeRevision>2.0</ApplicationTypeRevision>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>Clang_3_8</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <AndroidAPILevel>android-23</AndroidAPILevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|ARM'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>Clang_3_8</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <AndroidAPILevel>android-23</AndroidAPILevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>Clang_3_8</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <AndroidAPILevel>android-23</AndroidAPILevel>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="PropertySheets">
+    <Import Project="..\..\..\..\..\..\Config\Common.Android.props" />
+    <Import Project="..\..\..\..\..\..\Config\Debug\Debug.Android.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|ARM'" Label="PropertySheets">
+    <Import Project="..\..\..\..\..\..\Config\Common.Android.props" />
+    <Import Project="..\..\..\..\..\..\Config\Profile\Profile.Android.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="PropertySheets">
+    <Import Project="..\..\..\..\..\..\Config\Common.Android.props" />
+    <Import Project="..\..\..\..\..\..\Config\Release\Release.Android.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <OutDir>bin\</OutDir>
+    <TargetName>libSamples_Localization</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|ARM'">
+    <OutDir>bin\</OutDir>
+    <TargetName>libSamples_Localization</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <OutDir>bin\</OutDir>
+    <TargetName>libSamples_Localization</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\App\Display\Include;..\..\..\..\Core\Kernel\Include;..\..\..\..\..\..\Include;..\..\..\..\Samples\Localization\Include;..\..\..\..\Core\Nullable\Include;..\..\..\..\Gui\Providers\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\CachedFontProvider\Include;$(IntermediateOutputPath);$(AndroidAPILevelPath)\..\sources\android\native_app_glue;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=2.1.0f1;NS_APP_FRAMEWORK;NS_DEBUG_CFG;NS_ASSERTS_ENABLED=1;NS_INSTRUMENTED_ENABLED=1;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>Noesis;NoesisApp;android;GLESv2;EGL;$(StlLibraryName);%(LibraryDependencies)</LibraryDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\Lib\android_arm;..\..\..\..\..\..\Bin\android_arm;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+<AdditionalOptions>-lm</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /B/Y $(IntDir)$(TargetName).so $(ProjectDir)build</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|ARM'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\App\Display\Include;..\..\..\..\Core\Kernel\Include;..\..\..\..\..\..\Include;..\..\..\..\Samples\Localization\Include;..\..\..\..\Core\Nullable\Include;..\..\..\..\Gui\Providers\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\CachedFontProvider\Include;$(IntermediateOutputPath);$(AndroidAPILevelPath)\..\sources\android\native_app_glue;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=2.1.0f1;NS_APP_FRAMEWORK;NS_PROFILE_CFG;NS_ASSERTS_ENABLED=0;NS_INSTRUMENTED_ENABLED=1;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>Noesis;NoesisApp;android;GLESv2;EGL;$(StlLibraryName);%(LibraryDependencies)</LibraryDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\Lib\android_arm;..\..\..\..\..\..\Bin\android_arm;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+<AdditionalOptions>-lm</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /B/Y $(IntDir)$(TargetName).so $(ProjectDir)build</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\App\Display\Include;..\..\..\..\Core\Kernel\Include;..\..\..\..\..\..\Include;..\..\..\..\Samples\Localization\Include;..\..\..\..\Core\Nullable\Include;..\..\..\..\Gui\Providers\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\CachedFontProvider\Include;$(IntermediateOutputPath);$(AndroidAPILevelPath)\..\sources\android\native_app_glue;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=2.1.0f1;NS_APP_FRAMEWORK;NS_RELEASE_CFG;NS_ASSERTS_ENABLED=0;NS_INSTRUMENTED_ENABLED=0;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>Noesis;NoesisApp;android;GLESv2;EGL;$(StlLibraryName);%(LibraryDependencies)</LibraryDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\Lib\android_arm;..\..\..\..\..\..\Bin\android_arm;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+<AdditionalOptions>-lm</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /B/Y $(IntDir)$(TargetName).so $(ProjectDir)build</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\App.xaml.cpp">
+    </ClCompile>
+    <ClInclude Include="..\..\Src\App.xaml.h" />
+    <ClCompile Include="..\..\Src\Main.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\Src\MainWindow.xaml.cpp">
+    </ClCompile>
+    <ClInclude Include="..\..\Src\MainWindow.xaml.h" />
+    <ClCompile Include="..\..\Src\NotifyPropertyChangedBase.cpp">
+    </ClCompile>
+    <ClInclude Include="..\..\Src\NotifyPropertyChangedBase.h" />
+    <ClCompile Include="..\..\Src\ViewModel.cpp">
+    </ClCompile>
+    <ClInclude Include="..\..\Src\ViewModel.h" />
+    <ClInclude Include="pch.h" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClInclude Include="$(AndroidAPILevelPath)\..\sources\android\native_app_glue\android_native_app_glue.h" />
+    <ClCompile Include="$(AndroidAPILevelPath)\..\sources\android\native_app_glue\android_native_app_glue.c">
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles></ForcedIncludeFiles>
+    </ClCompile>
+    <CustomBuild Include="..\..\Data\App.xaml">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\ControlResources.xaml">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\LogoResources.xaml">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Language-en.xaml">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Language-fr.xaml">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Language-jp.xaml">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Flag-en.png">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Flag-fr.png">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Flag-jp.png">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\rounded-mgenplus-1c-regular.ttf">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\..\..\..\Bin\android_arm\libNoesis.so" />
+    <Library Include="..\..\..\..\..\..\Bin\android_arm\libNoesisApp.so" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -3,19 +3,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Menu3D">
     <Color x:Key="TransparentWhiteColor5">#0CFFFFFF</Color>
-    <Color x:Key="TransparentWhiteColor30">#4CFFFFFF</Color>
-    <Color x:Key="TransparentWhiteColor50">#7FFFFFFF</Color>
-    <Color x:Key="TransparentWhiteColor70">#B3FFFFFF</Color>
-    <Color x:Key="TransparentOrangeColor4">#08FFC100</Color>
-    <Color x:Key="TransparentOrangeColor15">#26FFC400</Color>
-    <Color x:Key="TransparentOrangeColor70">#B2FFC400</Color>
-    <Color x:Key="GlowOrangeColor0">#00FFD500</Color>
-    <Color x:Key="GlowOrangeColor30">#4CFFD500</Color>
-    <Color x:Key="SolidOrangeColor">#FFFF9900</Color>
-    <SolidColorBrush x:Key="TransparentWhiteBrush30" Color="{StaticResource TransparentWhiteColor30}"/>
-    <SolidColorBrush x:Key="TransparentWhiteBrush50" Color="{StaticResource TransparentWhiteColor50}"/>
-    <SolidColorBrush x:Key="TransparentWhiteBrush70" Color="{StaticResource TransparentWhiteColor70}"/>
-    <SolidColorBrush x:Key="NoesisLogoMagentaBg" Color="#E5EA2E72"/>
+    <Color x:Key="TransparentWhiteColor30">#7FFFFFFF</Color>
+    <Color x:Key="TransparentWhiteColor75">#BFFFFFFF</Color>
+    <Color x:Key="TransparentWhiteColor95">#F2FFFFFF</Color>
+    <Color x:Key="TransparentOrangeColor4">#0A00E1FF</Color>
+    <Color x:Key="TransparentOrangeColor15">#2600E6FF</Color>
+    <Color x:Key="TransparentOrangeColor70">#B200E6FF</Color>
+    <Color x:Key="GlowOrangeColor0">#0000F7FF</Color>
+    <Color x:Key="GlowOrangeColor30">#4C00F7FF</Color>
+    <Color x:Key="SolidOrangeColor">#FF00BBFF</Color>
+    <Color x:Key="BadgeDarkColor90">#E5132A39</Color>
+    <Color x:Key="BadgeDarkColor80">#CC4D6B80</Color>
+    <SolidColorBrush x:Key="TransparentWhiteBrush50" Color="{StaticResource TransparentWhiteColor30}"/>
+    <SolidColorBrush x:Key="TransparentWhiteBrush75" Color="{StaticResource TransparentWhiteColor75}"/>
+    <SolidColorBrush x:Key="TransparentWhiteBrush95" Color="{StaticResource TransparentWhiteColor95}"/>
+    <SolidColorBrush x:Key="NoesisLogoBlue" Color="#FF2AA6E2"/>
     <LinearGradientBrush x:Key="HorizontalLineBg" EndPoint="1,0" StartPoint="0,0">
         <GradientStop Color="{StaticResource TransparentWhiteColor5}" Offset="0"/>
         <GradientStop Color="{StaticResource TransparentWhiteColor30}" Offset="0.01"/>
@@ -34,6 +36,18 @@
         <GradientStop Color="{StaticResource TransparentWhiteColor30}" Offset="0"/>
         <GradientStop Color="{StaticResource TransparentWhiteColor30}" Offset="0.5"/>
         <GradientStop Color="{StaticResource TransparentWhiteColor5}" Offset="0.51"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="OptionsMask" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#00000000" Offset="0"/>
+        <GradientStop Color="Black" Offset="0.04"/>
+        <GradientStop Color="Black" Offset="0.86"/>
+        <GradientStop Color="#00000000" Offset="0.98"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="OptionsBg" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#00083A5E"/>
+        <GradientStop Color="#66083A5E" Offset="0.08"/>
+        <GradientStop Color="#4C083A5E" Offset="0.8"/>
+        <GradientStop Color="#00083A5E" Offset="1"/>
     </LinearGradientBrush>
     <Geometry x:Key="CircledArrowGeometry">M28,14 C28,21.731986 21.731986,28 14,28 C6.2680135,28 0,21.731986 0,14 C0,6.2680135 6.2680135,0 14,0 C21.731986,0 28,6.2680135 28,14 z M14.929275,5.1930316 C15.711196,5.1892318 16.550394,5.5276265 17.209368,6.186623 L22.865916,11.843366 C22.99405,11.971505 23.110062,12.106457 23.213795,12.246478 L23.258229,12.308828 23.307655,12.361349 C23.47743,12.553123 23.607453,12.770321 23.69852,13.004146 L23.721193,13.067543 23.725551,13.07624 C23.861988,13.362011 23.937,13.673705 23.937,14 23.937,14.302024 23.872732,14.59154 23.754971,14.859567 L23.723389,14.92632 23.69852,14.995853 C23.605553,15.234549 23.471994,15.455919 23.296991,15.650602 L23.259771,15.689855 23.2575,15.693207 C23.142962,15.854845 23.012354,16.010189 22.865916,16.156633 L17.209368,21.813376 C16.037859,22.984926 14.296749,23.143215 13.320491,22.166923 12.344233,21.190631 12.502516,19.449461 13.674026,18.277912 L15.451926,16.499951 7.0628376,16.499951 C5.406073,16.499951 4.063,15.380684 4.063,14 4.063,12.619315 5.406073,11.500049 7.0628376,11.500049 L15.451926,11.500049 13.674026,9.7220875 C12.502516,8.5505376 12.344233,6.8093682 13.320491,5.8330767 13.747604,5.4059491 14.321114,5.195987 14.929275,5.1930316 z</Geometry>
     <Geometry x:Key="NoesisLogoGeometry">
@@ -149,7 +163,7 @@
                                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
                             </DoubleAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ContentHost">
-                                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="{StaticResource TransparentWhiteColor70}"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="{StaticResource TransparentWhiteColor95}"/>
                             </ColorAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Group">
                                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.025"/>
@@ -193,7 +207,7 @@
             </ContentPresenter>
             <Path x:Name="CircledArrow" Data="{StaticResource CircledArrowGeometry}" Stretch="Fill" Width="24" Height="24" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2" Margin="8,0" Visibility="Visible">
                 <Path.Fill>
-                    <SolidColorBrush Color="{StaticResource TransparentWhiteColor70}" Opacity="0"/>
+                    <SolidColorBrush Color="{StaticResource TransparentWhiteColor95}" Opacity="0"/>
                 </Path.Fill>
             </Path>
         </Grid>
@@ -238,7 +252,7 @@
         </ControlTemplate.Resources>
         <ContentPresenter x:Name="ContentHost">
             <TextElement.Foreground>
-                <SolidColorBrush Color="{StaticResource TransparentWhiteColor70}" Opacity="0"/>
+                <SolidColorBrush Color="{StaticResource TransparentWhiteColor95}" Opacity="0"/>
             </TextElement.Foreground>
         </ContentPresenter>
         <ControlTemplate.Triggers>
@@ -343,7 +357,7 @@
             </VisualStateManager.VisualStateGroups>
             <Border x:Name="Bd" BorderThickness="2" Padding="4,5,4,7" Width="36" Height="36" Background="Transparent">
                 <Border.BorderBrush>
-                    <SolidColorBrush Color="{StaticResource TransparentWhiteColor70}"/>
+                    <SolidColorBrush Color="{StaticResource TransparentWhiteColor95}"/>
                 </Border.BorderBrush>
                 <Path x:Name="CheckMark" Data="M0,12 L10,24 24,0" StrokeThickness="5" Stretch="Fill">
                     <Path.Stroke>

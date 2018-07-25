@@ -13,7 +13,7 @@ using System.Windows.Media.Animation;
 
 namespace NoesisGUIExtensions
 {
-    /// <summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// Adds stroke capabilities to text elements.
     ///
     /// Usage:
@@ -25,7 +25,7 @@ namespace NoesisGUIExtensions
     ///         <TextBlock noesis:Text.Stroke="Red" noesis:Text.StrokeThickness="1" Text="Hello"/>
     ///     </Grid>
     ///
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     public class Text
     {
         public Text()
@@ -75,17 +75,17 @@ namespace NoesisGUIExtensions
         #endregion
     }
 
-    /// <summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// Provides a base class for projections, which describe how to transform an object
     /// in 3-D space using perspective transforms.
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     public abstract class Projection : Animatable
     {
     }
 
-    /// <summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// Represents a perspective transform (a 3-D-like effect) on an object.
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     public class PlaneProjection : Projection
     {
         /// <summary>
@@ -290,9 +290,9 @@ namespace NoesisGUIExtensions
         #endregion
     }
 
-    /// <summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// Extends UI elements with properties not supported by WPF but included in Noesis
-    /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     public static class Element
     {
         /// <summary>
@@ -392,15 +392,8 @@ namespace NoesisGUIExtensions
         #endregion
     }
 
-    /// <summary>
-    /// Allows executing a Command in response to an event raised by the target object
-    /// </summary>
     class EventToCommand
     {
-        /// <summary>
-        /// Specified the Command that will be executed when event is raised
-        /// </summary>
-        #region Command attached property
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.RegisterAttached("Command", typeof(ICommand), typeof(EventToCommand));
 
@@ -413,12 +406,7 @@ namespace NoesisGUIExtensions
         {
             obj.SetValue(CommandProperty, value);
         }
-        #endregion
 
-        /// <summary>
-        /// Specifies a parameter that will be passed to the Command execution
-        /// </summary>
-        #region CommandParameter attached property
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.RegisterAttached("CommandParameter", typeof(object), typeof(EventToCommand));
 
@@ -431,12 +419,7 @@ namespace NoesisGUIExtensions
         {
             obj.SetValue(CommandParameterProperty, value);
         }
-        #endregion
 
-        /// <summary>
-        /// Event that triggers the command execution
-        /// </summary>
-        #region Event attached property
         public static readonly DependencyProperty EventProperty =
             DependencyProperty.RegisterAttached("Event", typeof(string), typeof(EventToCommand),
                 new PropertyMetadata(OnEventChanged));
@@ -454,11 +437,6 @@ namespace NoesisGUIExtensions
         private static void OnEventChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
             string eventName = (string)args.NewValue;
-            if (string.IsNullOrEmpty(eventName))
-            {
-                return;
-            }
-
             var eventInfo = obj.GetType().GetEvent(eventName);
             if (eventInfo != null)
             {
@@ -476,9 +454,7 @@ namespace NoesisGUIExtensions
                 }
             }
         }
-        #endregion
 
-        #region Event handlers
         private static void RegisterHandler(DependencyObject target, EventInfo eventInfo, string methodName)
         {
             var methodInfo = typeof(EventToCommand).GetMethod(methodName, BindingFlags.Static | BindingFlags.NonPublic);
@@ -521,6 +497,5 @@ namespace NoesisGUIExtensions
 
             return false;
         }
-        #endregion
     }
 }

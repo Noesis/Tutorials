@@ -15,7 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B70D53E3-717D-3703-8588-E176C6335D88}</ProjectGuid>
+    <ProjectGuid>{A028D8B3-457A-321D-B426-5AA466AA6664}</ProjectGuid>
     <DefaultLanguage>en-US</DefaultLanguage>
     <Keyword>Android</Keyword>
     <RootNamespace>Samples_Menu3D</RootNamespace>
@@ -77,7 +77,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\App\Display\Include;..\..\..\..\Core\Kernel\Include;..\..\..\..\..\..\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\Samples\Menu3D\Include;..\..\..\..\Core\Nullable\Include;..\..\..\..\Gui\Animation\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Core\TypeConverter\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\CachedFontProvider\Include;..\..\..\..\Gui\Providers\Include;$(IntermediateOutputPath);$(AndroidAPILevelPath)\..\sources\android\native_app_glue;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=2.1.0rc3;NS_APP_FRAMEWORK;NS_DEBUG_CFG;NS_ASSERTS_ENABLED=1;NS_INSTRUMENTED_ENABLED=1;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=2.1.0f1;NS_APP_FRAMEWORK;NS_DEBUG_CFG;NS_ASSERTS_ENABLED=1;NS_INSTRUMENTED_ENABLED=1;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
@@ -94,7 +94,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x86'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\App\Display\Include;..\..\..\..\Core\Kernel\Include;..\..\..\..\..\..\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\Samples\Menu3D\Include;..\..\..\..\Core\Nullable\Include;..\..\..\..\Gui\Animation\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Core\TypeConverter\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\CachedFontProvider\Include;..\..\..\..\Gui\Providers\Include;$(IntermediateOutputPath);$(AndroidAPILevelPath)\..\sources\android\native_app_glue;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=2.1.0rc3;NS_APP_FRAMEWORK;NS_PROFILE_CFG;NS_ASSERTS_ENABLED=0;NS_INSTRUMENTED_ENABLED=1;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=2.1.0f1;NS_APP_FRAMEWORK;NS_PROFILE_CFG;NS_ASSERTS_ENABLED=0;NS_INSTRUMENTED_ENABLED=1;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
@@ -111,7 +111,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\App\Display\Include;..\..\..\..\Core\Kernel\Include;..\..\..\..\..\..\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\Samples\Menu3D\Include;..\..\..\..\Core\Nullable\Include;..\..\..\..\Gui\Animation\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Core\TypeConverter\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\CachedFontProvider\Include;..\..\..\..\Gui\Providers\Include;$(IntermediateOutputPath);$(AndroidAPILevelPath)\..\sources\android\native_app_glue;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=2.1.0rc3;NS_APP_FRAMEWORK;NS_RELEASE_CFG;NS_ASSERTS_ENABLED=0;NS_INSTRUMENTED_ENABLED=0;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=2.1.0f1;NS_APP_FRAMEWORK;NS_RELEASE_CFG;NS_ASSERTS_ENABLED=0;NS_INSTRUMENTED_ENABLED=0;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
@@ -210,19 +210,31 @@
       <Message>%(Filename)%(Extension)</Message>
       <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
     </CustomBuild>
-    <CustomBuild Include="..\..\Data\Images\BigPlanet.png">
+    <CustomBuild Include="..\..\Data\Images\BackClouds.png">
       <FileType>Document</FileType>
       <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
       <Message>%(Filename)%(Extension)</Message>
       <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
     </CustomBuild>
-    <CustomBuild Include="..\..\Data\Images\CloseUpPlanet.png">
+    <CustomBuild Include="..\..\Data\Images\FrontClouds.png">
       <FileType>Document</FileType>
       <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
       <Message>%(Filename)%(Extension)</Message>
       <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
     </CustomBuild>
-    <CustomBuild Include="..\..\Data\Images\SpaceBg.jpg">
+    <CustomBuild Include="..\..\Data\Images\FrontTrees.png">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Images\LakeAndMountains.png">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Images\SkyAndSun.jpg">
       <FileType>Document</FileType>
       <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
       <Message>%(Filename)%(Extension)</Message>

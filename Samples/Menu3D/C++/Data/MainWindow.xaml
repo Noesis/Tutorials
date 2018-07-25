@@ -5,89 +5,98 @@
     xmlns:local="clr-namespace:Menu3D"
     xmlns:noesis="clr-namespace:NoesisGUIExtensions"
     Title="NoesisGUI - Menu3D">
-  <Window.Resources>
-    <Storyboard x:Key="BackgroundAnim">
-      <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                Storyboard.TargetName="SpaceBg"
-                AutoReverse="True"
-                RepeatBehavior="Forever">
-        <EasingDoubleKeyFrame KeyTime="0:1:0" Value="-100">
-          <EasingDoubleKeyFrame.EasingFunction>
-            <SineEase EasingMode="EaseInOut"/>
-          </EasingDoubleKeyFrame.EasingFunction>
-        </EasingDoubleKeyFrame>
-      </DoubleAnimationUsingKeyFrames>
-      <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                Storyboard.TargetName="BigPlanet"
-                AutoReverse="True"
-                RepeatBehavior="Forever"
-                DecelerationRatio="0.1"
-                AccelerationRatio="0.1">
-        <EasingDoubleKeyFrame KeyTime="0:1:0" Value="-350"/>
-      </DoubleAnimationUsingKeyFrames>
-      <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                Storyboard.TargetName="CloseUpPlanet"
-                AutoReverse="True"
-                RepeatBehavior="Forever"
-                DecelerationRatio="0.1"
-                AccelerationRatio="0.1">
-        <EasingDoubleKeyFrame KeyTime="0:1:0" Value="400"/>
-      </DoubleAnimationUsingKeyFrames>
-    </Storyboard>
-  </Window.Resources>
+    <Window.Resources>
+        <Storyboard x:Key="BackgroundAnim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="SkyAndSun" RepeatBehavior="Forever">
+                <EasingDoubleKeyFrame KeyTime="0:3:20" Value="-3000"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="BackClouds" RepeatBehavior="Forever">
+                <EasingDoubleKeyFrame KeyTime="0:3:20" Value="2244"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="Mountains" RepeatBehavior="Forever">
+                <EasingDoubleKeyFrame KeyTime="0:2:30" Value="-1920"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="FrontClouds" RepeatBehavior="Forever">
+                <EasingDoubleKeyFrame KeyTime="0:1:40" Value="1920"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="FrontTrees" RepeatBehavior="Forever">
+                <EasingDoubleKeyFrame KeyTime="0:1:12" Value="-1920"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
 
-  <Window.Triggers>
-    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-      <BeginStoryboard Storyboard="{StaticResource BackgroundAnim}"/>
-    </EventTrigger>
-  </Window.Triggers>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource BackgroundAnim}"/>
+        </EventTrigger>
+    </Window.Triggers>
 
   <Grid>
     <Viewbox Stretch="UniformToFill">
-      <Grid>
-        <Canvas Width="1820" Height="1080">
-          <Image x:Name="SpaceBg" Source="Images/SpaceBg.jpg" Stretch="Fill" Width="1920" Height="1080">
-            <Image.RenderTransform>
-              <TranslateTransform/>
-            </Image.RenderTransform>
-          </Image>
+        <Canvas Width="2098" Height="1180">
+            <Canvas.Resources>
+                <ImageSource x:Key="Image.SkyAndSun">Images/SkyAndSun.jpg</ImageSource>
+                <ImageSource x:Key="Image.Mountains">Images/LakeAndMountains.png</ImageSource>
+                <ImageSource x:Key="Image.FrontTrees">Images/FrontTrees.png</ImageSource>
+                <ImageSource x:Key="Image.BackClouds">Images/BackClouds.png</ImageSource>
+                <ImageSource x:Key="Image.FrontClouds">Images/FrontClouds.png</ImageSource>
+            </Canvas.Resources>
+            <StackPanel x:Name="SkyAndSun" Orientation="Horizontal">
+                <StackPanel.RenderTransform>
+                    <TranslateTransform/>
+                </StackPanel.RenderTransform>
+                <Image Source="{StaticResource Image.SkyAndSun}" Width="3000" Height="500" Stretch="Fill"/>
+                <Image Source="{StaticResource Image.SkyAndSun}" Width="3000" Height="500" Stretch="Fill" Margin="-1,0,0,0"/>
+            </StackPanel>
+            <StackPanel x:Name="BackClouds" Orientation="Horizontal" Canvas.Top="24" Canvas.Right="0">
+                <StackPanel.RenderTransform>
+                    <TranslateTransform/>
+                </StackPanel.RenderTransform>
+                <Image Source="{StaticResource Image.BackClouds}" Width="2244" Height="277" Stretch="Fill"/>
+                <Image Source="{StaticResource Image.BackClouds}" Width="2244" Height="277" Stretch="Fill"/>
+            </StackPanel>
+            <StackPanel x:Name="Mountains" Orientation="Horizontal" Canvas.Top="260">
+                <StackPanel.RenderTransform>
+                    <TranslateTransform/>
+                </StackPanel.RenderTransform>
+                <Image Source="{StaticResource Image.Mountains}" Width="1920" Height="920" Stretch="Fill"/>
+                <Image Source="{StaticResource Image.Mountains}" Width="1920" Height="920" Stretch="Fill" Margin="-1,0,0,0"/>
+                <Image Source="{StaticResource Image.Mountains}" Width="1920" Height="920" Stretch="Fill" Margin="-1,0,0,0"/>
+            </StackPanel>
+            <StackPanel x:Name="FrontClouds" Orientation="Horizontal" Canvas.Top="250" Canvas.Right="0">
+                <StackPanel.RenderTransform>
+                    <TranslateTransform/>
+                </StackPanel.RenderTransform>
+                <Image Source="{StaticResource Image.FrontClouds}" Width="1920" Height="120" Stretch="Fill"/>
+                <Image Source="{StaticResource Image.FrontClouds}" Width="1920" Height="120" Stretch="Fill"/>
+                <Image Source="{StaticResource Image.FrontClouds}" Width="1920" Height="120" Stretch="Fill"/>
+            </StackPanel>
+            <StackPanel x:Name="FrontTrees" Orientation="Horizontal" Canvas.Bottom="-3">
+                <StackPanel.RenderTransform>
+                    <TranslateTransform/>
+                </StackPanel.RenderTransform>
+                <Image Source="{StaticResource Image.FrontTrees}" Width="1920" Height="365" Stretch="Fill"/>
+                <Image Source="{StaticResource Image.FrontTrees}" Width="1920" Height="365" Stretch="Fill" Margin="-1,0,0,0"/>
+            </StackPanel>
         </Canvas>
-        <Canvas Width="1820" Height="1080">
-          <Image x:Name="BigPlanet" Source="Images/BigPlanet.png" Stretch="Fill" Width="800" Height="800" Canvas.Left="990" Canvas.Top="85">
-            <Image.RenderTransform>
-              <TranslateTransform/>
-            </Image.RenderTransform>
-          </Image>
-        </Canvas>
-        <Canvas Width="1820" Height="1080">
-          <Image x:Name="CloseUpPlanet" Source="Images/CloseUpPlanet.png" Stretch="Fill" Canvas.Right="0" Canvas.Bottom="0">
-            <Image.RenderTransform>
-              <TranslateTransform/>
-            </Image.RenderTransform>
-          </Image>
-        </Canvas>
-      </Grid>
     </Viewbox>
     <Grid>
-      <noesis:Element.Projection>
-        <noesis:PlaneProjection RotationY="-10"/>
-      </noesis:Element.Projection>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="1*"/>
-        <RowDefinition Height="9*"/>
-        <RowDefinition Height="1*"/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="1*"/>
-        <ColumnDefinition Width="5*"/>
-        <ColumnDefinition Width="1*"/>
-      </Grid.ColumnDefinitions>
-      <local:MainMenu x:Name="Main" Grid.Row="1" Grid.Column="1"/>
-      <local:StartMenu x:Name="Start" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
-      <local:SettingsMenu x:Name="Settings" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
+        <noesis:Element.Projection>
+            <noesis:PlaneProjection RotationY="-10"/>
+        </noesis:Element.Projection>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <local:MainMenu x:Name="Main" Grid.Row="1" Grid.Column="1"/>
+        <local:StartMenu x:Name="Start" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
+        <local:SettingsMenu x:Name="Settings" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
     </Grid>
   </Grid>
 </Window>
