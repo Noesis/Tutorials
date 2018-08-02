@@ -24,4 +24,4 @@ class LocalizationGameModule : public FDefaultGameModuleImpl
 	}
 };
 
-IMPLEMENT_PRIMARY_GAME_MODULE(LocalizationGameModule, Localization, "Localization" );
+IMPLEMENT_PRIMARY_GAME_MODULE(LocalizationGameModule, LocalizationGame, "LocalizationGame" );

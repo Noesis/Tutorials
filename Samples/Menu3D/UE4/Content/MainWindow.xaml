@@ -29,6 +29,8 @@
             <BeginStoryboard Storyboard="{StaticResource BackgroundAnim}"/>
         </EventTrigger>
     </Grid.Triggers>
+
+  <Grid>
     <Viewbox Stretch="UniformToFill">
         <Canvas Width="2098" Height="1180">
             <Canvas.Resources>
@@ -95,4 +97,5 @@
         <local:StartMenu x:Name="Start" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
         <local:SettingsMenu x:Name="Settings" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
     </Grid>
+  </Grid>
 </Grid>
