@@ -1,5 +1,6 @@
 ﻿#if NOESIS
 using Noesis;
+using NoesisApp;
 #else
 using System.Windows;
 #endif
