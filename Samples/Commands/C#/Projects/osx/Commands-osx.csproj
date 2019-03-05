@@ -6,17 +6,17 @@
     <ProjectGuid>{2E00DE02-2347-4872-B302-540484C134FA}</ProjectGuid>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RssReader</RootNamespace>
-    <AssemblyName>ApplicationTutorial</AssemblyName>
+    <RootNamespace>Commands</RootNamespace>
+    <AssemblyName>Commands</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
-    <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;NOESIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,6 +33,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
     <DefineConstants>NOESIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -54,9 +55,9 @@
     <Reference Include="Xamarin.Mac" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Src\App.xaml.g.cs">
-      <Link>App.xaml.g.cs</Link>
-    </Compile>
+    <Compile Include="..\..\Src\DelegateCommand.cs" />
+    <Compile Include="..\..\Src\ViewModel.cs" />
+    <Compile Include="..\..\Src\App.xaml.g.cs" />
     <Compile Include="..\..\Src\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -68,15 +69,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\Src\Roboto-Bold.ttf">
-      <Link>Roboto-Bold.ttf</Link>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\..\Src\Roboto-Regular.ttf">
-      <Link>Roboto-Regular.ttf</Link>
-    </EmbeddedResource>
-    <None Include="Info.plist" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="..\..\Src\App.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -85,10 +77,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Aero Matics Regular.ttf">
+      <Link>Aero Matics Regular.ttf</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.AppKit">
       <Version>2.2.0-beta7</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.MTL">
+      <Version>2.2.0-beta7</Version>
+    </PackageReference>
+    <PackageReference Include="Noesis.App.RenderContexts.NSGL">
       <Version>2.2.0-beta7</Version>
     </PackageReference>
   </ItemGroup>

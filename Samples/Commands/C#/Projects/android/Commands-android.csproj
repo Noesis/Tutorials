@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86BCC0F4-19B1-4308-B518-A1DCFF47F9EB}</ProjectGuid>
+    <ProjectGuid>{86BCC0F4-19B1-4308-B518-A1DCFF47E9E6}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>RssReader</RootNamespace>
-    <AssemblyName>ApplicationTutorial</AssemblyName>
+    <RootNamespace>Commands</RootNamespace>
+    <AssemblyName>Commands</AssemblyName>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -15,6 +15,7 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
     <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
@@ -36,13 +37,13 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>ARM</PlatformTarget>
-    <AndroidSupportedAbis>armeabi-v7a</AndroidSupportedAbis>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
+    <PlatformTarget>ARM</PlatformTarget>
+    <AndroidSupportedAbis>armeabi-v7a</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM64' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,13 +64,13 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>ARM64</PlatformTarget>
-    <AndroidSupportedAbis>arm64-v8a</AndroidSupportedAbis>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <AndroidSupportedAbis>arm64-v8a</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,13 +91,13 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <AndroidSupportedAbis>x86</AndroidSupportedAbis>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <AndroidSupportedAbis>x86</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -105,9 +106,9 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Src\App.xaml.g.cs">
-      <Link>App.xaml.g.cs</Link>
-    </Compile>
+    <Compile Include="..\..\Src\DelegateCommand.cs" />
+    <Compile Include="..\..\Src\ViewModel.cs" />
+    <Compile Include="..\..\Src\App.xaml.g.cs" />
     <Compile Include="..\..\Src\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -119,20 +120,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Src\App.config">
-      <Link>App.config</Link>
-    </None>
-    <EmbeddedResource Include="..\..\Src\Roboto-Bold.ttf">
-      <Link>Roboto-Bold.ttf</Link>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\..\Src\Roboto-Regular.ttf">
-      <Link>Roboto-Regular.ttf</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="..\..\Src\App.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -141,7 +128,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Aero Matics Regular.ttf">
+      <Link>Aero Matics Regular.ttf</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.Android">

@@ -7,8 +7,8 @@
     <ProjectGuid>{743D749B-EFAB-4F7A-9AEA-C1AF7A16786A}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RssReader</RootNamespace>
-    <AssemblyName>ApplicationTutorial</AssemblyName>
+    <RootNamespace>Commands</RootNamespace>
+    <AssemblyName>Commands</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
@@ -17,9 +17,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <PackageCertificateKeyFile>ApplicationTutorial_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <OutputPath>bin/$(Configuration)/$(Platform)/</OutputPath>
+    <PackageCertificateKeyFile>Commands_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <OutputPath>bin/$(Configuration)/$(Platform)</OutputPath>
     <PackageCertificateThumbprint>E770A9582F0F3A45DCB88332B57D81860113BDBC</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -85,10 +84,13 @@
     <Prefer32Bit>true</Prefer32Bit>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\Src\App.xaml.g.cs">
-      <Link>App.xaml.g.cs</Link>
-    </Compile>
+    <Compile Include="..\..\Src\DelegateCommand.cs" />
+    <Compile Include="..\..\Src\ViewModel.cs" />
+    <Compile Include="..\..\Src\App.xaml.g.cs" />
     <Compile Include="..\..\Src\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -100,14 +102,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\Src\Roboto-Bold.ttf">
-      <Link>Roboto-Bold.ttf</Link>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\..\Src\Roboto-Regular.ttf">
-      <Link>Roboto-Regular.ttf</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="..\..\Src\App.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -116,10 +110,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Aero Matics Regular.ttf">
+      <Link>Aero Matics Regular.ttf</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="ApplicationTutorial_TemporaryKey.pfx" />
+    <None Include="Commands_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
