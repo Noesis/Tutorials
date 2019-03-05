@@ -132,18 +132,6 @@
     <Compile Include="..\..\Src\DelegateCommand.cs">
       <Link>DelegateCommand.cs</Link>
     </Compile>
-    <Compile Include="Resources\Resource.designer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\Src\AudioClick.mp3">
-      <Link>AudioClick.mp3</Link>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\..\Src\AudioSlide.mp3">
-      <Link>AudioSlide.mp3</Link>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Src\App.xaml">
@@ -160,7 +148,23 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\AudioClick.mp3">
+      <Link>AudioClick.mp3</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\AudioSlide.mp3">
+      <Link>AudioSlide.mp3</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
+    <Compile Include="Resources\Resource.designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.Android">
@@ -169,18 +173,6 @@
     <PackageReference Include="Noesis.App.RenderContexts.EGL">
       <Version>2.2.0-beta7</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
