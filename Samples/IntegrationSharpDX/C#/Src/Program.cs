@@ -1,52 +1,23 @@
-﻿namespace IntegrationSharpDX
+﻿using System;
+using System.Windows.Forms;
+using SharpDX;
+using SharpDX.Direct3D;
+using SharpDX.Direct3D11;
+using SharpDX.DXGI;
+using SharpDX.Windows;
+using Device = SharpDX.Direct3D11.Device;
+
+namespace IntegrationSharpDX
 {
-    #region
+    // This is a minimal integration example. For simplification purposes only basic input events are
+    // handled, no resource providers are used and the shutdown procedure is omitted.
 
-    using System;
-    using System.Windows.Forms;
-    using Noesis;
-    using NoesisApp;
-    using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
-    using View = Noesis.View;
-
-    #endregion
-
-    public static class Program
+    internal static class Program
     {
-        private static App app;
-
-        private static bool isRunning;
-
-        private static View view;
-        private static Renderer renderer;
-        private static readonly DeviceStateD3D11 deviceState = new DeviceStateD3D11();
-
-
+        [STAThread]
         private static void Main()
         {
-            try
-            {
-                Run();
-            }
-            catch (Exception e)
-            {
-                LogError(e.Message);
-
-                OnClose();
-            }
-        }
-
-        private static void Run()
-        {
-            // Prepare and run D3D11 wrapper
-            var configuration = new DemoConfiguration("NoesisGUI Integration Sample", 1280, 720);
-            app = new App();
-            app.Run(configuration, contentLoadCallback: OnContentLoaded);
-        }
-
-        private static void OnContentLoaded()
-        {
-            Log.LogCallback += (level, channel, message) =>
+            Noesis.Log.SetLogCallback((level, channel, message) =>
             {
                 if (channel == "")
                 {
@@ -55,151 +26,144 @@
                     string prefix = (int)level < prefixes.Length ? prefixes[(int)level] : " ";
                     Console.WriteLine("[NOESIS/" + prefix + "] " + message);
                 }
+            });
+
+            // Noesis initialization. This must be the first step before using any NoesisGUI functionality
+            Noesis.GUI.Init();
+
+            // For simplicity purposes we are not using resource providers in this sample. ParseXaml() is
+            // enough if there is no extra XAML dependencies
+            Noesis.Grid xaml = (Noesis.Grid)Noesis.GUI.ParseXaml(@"
+                <Grid xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint=""0,0"" EndPoint=""0,1"">
+                            <GradientStop Offset=""0"" Color=""#FF123F61""/>
+                            <GradientStop Offset=""0.6"" Color=""#FF0E4B79""/>
+                            <GradientStop Offset=""0.7"" Color=""#FF106097""/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Viewbox>
+                        <StackPanel Margin=""50"">
+                            <Button Content=""Hello World!"" Margin=""0,30,0,0""/>
+                            <Rectangle Height=""5"" Margin=""-10,20,-10,0"">
+                                <Rectangle.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Offset=""0"" Color=""#40000000""/>
+                                        <GradientStop Offset=""1"" Color=""#00000000""/>
+                                    </RadialGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </StackPanel>
+                    </Viewbox>
+                </Grid>");
+
+            // View creation to render and interact with the user interface
+            // We transfer the ownership to a global pointer instead of a Ptr<> because there is no way
+            // in GLUT to do shutdown and we don't want the Ptr<> to be released at global time
+            Noesis.View view = Noesis.GUI.CreateView(xaml);
+            view.SetIsPPAAEnabled(true);
+
+            // Creation of the system window
+            RenderForm form = new RenderForm("NoesisGUI - IntegrationSharpDX D3D11")
+            {
+                Width = 1000,
+                Height = 600,
+                Icon = new System.Drawing.Icon("Noesis.ico")
+            };
+            view.SetSize(form.ClientSize.Width, form.ClientSize.Height);
+
+            // SwapChain description
+            SwapChainDescription desc = new SwapChainDescription()
+            {
+                BufferCount = 1,
+                ModeDescription = new ModeDescription(form.ClientSize.Width, form.ClientSize.Height,
+                    new Rational(60, 1), Format.R8G8B8A8_UNorm),
+                IsWindowed = true,
+                OutputHandle = form.Handle,
+                SampleDescription = new SampleDescription(1, 0),
+                SwapEffect = SwapEffect.Discard,
+                Usage = Usage.RenderTargetOutput
             };
 
-            GUI.Init();
+            // Create Device and SwapChain
+            Device device;
+            SwapChain swapChain;
+            Device.CreateWithSwapChain(DriverType.Hardware, DeviceCreationFlags.None, desc, out device, out swapChain);
+            DeviceContext context = device.ImmediateContext;
 
-            // Setup embedded resource providers
-            EmbeddedXaml[] xamls = new EmbeddedXaml[]
+            Factory factory = swapChain.GetParent<Factory>();
+            factory.MakeWindowAssociation(form.Handle, WindowAssociationFlags.IgnoreAll);
+            factory.Dispose();
+
+            // Renderer initialization with a Direct3D11 device
+            view.Renderer.Init(new Noesis.RenderDeviceD3D11(context.NativePointer));
+
+            // New RenderTargetView from the backbuffer
+            Texture2D backBuffer = Texture2D.FromSwapChain<Texture2D>(swapChain, 0);
+            RenderTargetView renderView = new RenderTargetView(device, backBuffer);
+            backBuffer.Dispose();
+
+            // Register window events
+            form.SizeChanged += (s, e) =>
             {
-                new EmbeddedXaml { filename = "Reflections.xaml", resource = "Reflections" }
+                context.OutputMerger.SetRenderTargets(null, (RenderTargetView)null);
+                renderView.Dispose();
+
+                swapChain.ResizeBuffers(0, 0, 0, Format.Unknown, SwapChainFlags.None);
+
+                backBuffer = Texture2D.FromSwapChain<Texture2D>(swapChain, 0);
+                renderView = new RenderTargetView(device, backBuffer);
+                backBuffer.Dispose();
+
+                view.SetSize(form.ClientSize.Width, form.ClientSize.Height);
             };
-            GUI.SetXamlProvider(new EmbeddedXamlProvider(xamls, Properties.Resources.ResourceManager));
-
-            // Data loading
+            form.MouseMove += (s, e) => { view.MouseMove(e.X, e.Y); };
+            form.MouseDown += (s, e) =>
             {
-                var content = (Noesis.Grid)Noesis.GUI.LoadXaml("Reflections.xaml");
-                view = Noesis.GUI.CreateView(content);
-                IntPtr deviceContext = app.Device.ImmediateContext.NativePointer;
-                RenderDevice device = new RenderDeviceD3D11(deviceContext);
-                renderer = view.Renderer;
-                renderer.Init(device);
-            }
-
-            // Attach to Application events
-            app.Close += OnClose;
-            app.Tick += OnTick;
-            app.PreRender += OnPreRender;
-            app.PostRender += OnPostRender;
-            app.Resize += OnResize;
-            app.MouseMove += OnMouseMove;
-            app.MouseDown += OnMouseDown;
-            app.MouseUp += OnMouseUp;
-
-            OnResize(app.Size.Width, app.Size.Height);
-
-            isRunning = true;
-        }
-
-        private static void OnTick(double timeInSeconds)
-        {
-            view.Update(timeInSeconds);
-        }
-
-        private static void OnPreRender()
-        {
-            deviceState.Save(app.Device.ImmediateContext);
-
-            try
-            {
-                renderer.UpdateRenderTree();
-
-                if (renderer.NeedsOffscreen())
+                if (e.Button == MouseButtons.Left)
                 {
-                    renderer.RenderOffscreen();
+                    view.MouseButtonDown(e.X, e.Y, Noesis.MouseButton.Left);
                 }
-            }
-            finally
+            };
+            form.MouseUp += (s, e) =>
             {
-                deviceState.Restore(app.Device.ImmediateContext);
-            }
-        }
+                if (e.Button == MouseButtons.Left)
+                {
+                    view.MouseButtonUp(e.X, e.Y, Noesis.MouseButton.Left);
+                }
+            };
 
-        private static void OnPostRender()
-        {
-            deviceState.Save(app.Device.ImmediateContext);
-            try
+            // Main loop
+            DateTime start = DateTime.Now;
+            RenderLoop.Run(form, () =>
             {
-                renderer.Render();
-            }
-            finally
-            {
-                deviceState.Restore(app.Device.ImmediateContext);
-            }
-        }
+                // Update view (layout, animations, ...)
+                view.Update((DateTime.Now - start).TotalSeconds);
 
-        private static void OnClose()
-        {
-            // Detach from Application events
-            if (!isRunning)
-            {
-                return;
-            }
+                // Offscreen rendering phase populates textures needed by the on-screen rendering
+                view.Renderer.UpdateRenderTree();
+                view.Renderer.RenderOffscreen();
 
-            isRunning = false;
-            app.Close -= OnClose;
-            app.Tick -= OnTick;
-            app.PreRender -= OnPreRender;
-            app.PostRender -= OnPostRender;
-            app.Resize -= OnResize;
-            app.MouseMove -= OnMouseMove;
-            app.MouseDown -= OnMouseDown;
-            app.MouseUp -= OnMouseUp;
+                // If you are going to render here with your own engine you need to restore the GPU state
+                // because noesis changes it. In this case only framebuffer and viewport need to be restored
+                context.Rasterizer.SetViewport(new Viewport(0, 0, form.ClientSize.Width, form.ClientSize.Height, 0.0f, 1.0f));
+                context.OutputMerger.SetTargets(renderView);
+                context.ClearRenderTargetView(renderView, Color.Black);
 
-            renderer?.Shutdown();
-            view = null;
+                // Rendering is done in the active framebuffer
+                view.Renderer.Render();
 
-            try
-            {
-                GUI.Shutdown();
-            }
-            catch (Exception e)
-            {
-                LogError(e.Message);
-            }
-        }
+                // Present and swap buffers
+                swapChain.Present(0, PresentFlags.None);
+            });
 
-        private static void OnResize(int width, int height)
-        {
-            view.SetSize(width, height);
-        }
-
-        private static Noesis.MouseButton NoesisButton(MouseButtons b)
-        {
-            switch (b)
-            {
-                default:
-                case MouseButtons.Left: return Noesis.MouseButton.Left;
-                case MouseButtons.Middle: return Noesis.MouseButton.Middle;
-                case MouseButtons.Right: return Noesis.MouseButton.Right;
-                case MouseButtons.XButton1: return Noesis.MouseButton.XButton1;
-                case MouseButtons.XButton2: return Noesis.MouseButton.XButton2;
-            }
-        }
-
-        private static void OnMouseDown(MouseEventArgs args)
-        {
-            view.MouseButtonDown(args.X, args.Y, NoesisButton(args.Button));
-        }
-
-        private static void OnMouseMove(MouseEventArgs args)
-        {
-            view.MouseMove(args.X, args.Y);
-        }
-
-        private static void OnMouseUp(MouseEventArgs args)
-        {
-            view.MouseButtonUp(args.X, args.Y, NoesisButton(args.Button));
-        }
-
-        private static void LogError(string msg)
-        {
-            Console.WriteLine("ERROR!");
-            Console.WriteLine("--------------------------------------------------------");
-            Console.WriteLine(msg);
-            Console.WriteLine("--------------------------------------------------------");
-            Console.WriteLine("PRESS ANY KEY TO CONTINUE");
-            Console.ReadKey();
+            // Release all resources
+            renderView.Dispose();
+            context.ClearState();
+            context.Flush();
+            device.Dispose();
+            context.Dispose();
+            swapChain.Dispose();
         }
     }
 }
