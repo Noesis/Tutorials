@@ -1,5 +1,4 @@
 Repository containing examples and snippets for [NoesisGUI](https://www.noesisengine.com/).
-
 > NOTE: Prerequisistes to run samples for each SDK:
 > - For `C++` you need to download the latest [C++ SDK](https://www.noesisengine.com/developers/downloads.php).
 > - For `Unity`, you need to install the official [Unity package](https://www.noesisengine.com/developers/downloads.php) in each sample project.
