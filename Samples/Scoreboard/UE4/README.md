@@ -25,3 +25,9 @@ This is a demo that shows how you can use `Binding` with properties implemented 
 * `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`, adds it to the viewport and captures mouse and keyboard input. It also creates and initializes an instance of `Blueprint'/Game/Game.Game` and sets it as its `DataContext`, and several instances of `Blueprint'/Game/Player.Player'` that it adds and removes calling the functions `AddPlayer` and `RemovePlayer` discussed above. It adds and removes players over the course of 10 seconds, so the effect of the notifications is visible. You can experiment by removing the manual notifications and observing that the team scores at the top don't change as the number of players varies.
 
 ![TestLevel - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Scoreboard/UE4/LevelBlueprint.PNG)
+
+### Project Settings
+
+* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/NoesisTheme.NoesisTheme'` as the global application `ResourceDictionary`.
+
+![Project Settings](https://noesis.github.io/NoesisGUI/Samples/Scoreboard/UE4/ProjectSettings.PNG)
