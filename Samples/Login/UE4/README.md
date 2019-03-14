@@ -14,8 +14,6 @@ This is a demo that shows how to implement a more complex interaction between na
 
 ### C++ Code
 
-* [ElementExtensions.h](Source/Login/ElementExtensions.h) and [ElementExtensions.cpp](Source/Login/ElementExtensions.cpp): Implements a `DependencyObject` that allows modifying the behaviour of standard controls via `DependencyProperty`s.
-
 * [MainWindow.h](Source/Login/MainWindow.h): Implements a minimal code-behind for [MainWindow.xaml](Content/MainWindow.xaml).
 
 * [LoginFunctionLibrary.h](Source/Login/LoginFunctionLibrary.h) and [LoginFunctionLibrary.cpp](Source/Login/LoginFunctionLibrary.cpp): Implements a `BlueprintFunctionLibrary` that exposes the function `IsPasswordValid` to `Blueprint`s. This function uses `NoesisCreateComponentForUObject` to obtain a `BaseComponent` from the `Object` passed from the `Blueprint` code.
@@ -35,3 +33,9 @@ This is a demo that shows how to implement a more complex interaction between na
 * `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`, adds it to the viewport and captures mouse and keyboard input.
 
 ![TestLevel - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Login/UE4/LevelBlueprint.PNG)
+
+### Project Settings
+
+* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Resources.Resources'` as the global application `ResourceDictionary`.
+
+![Project Settings](https://noesis.github.io/NoesisGUI/Samples/Login/UE4/ProjectSettings.PNG)

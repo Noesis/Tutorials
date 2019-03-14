@@ -13,11 +13,11 @@ namespace Menu3D
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Grid
+    public partial class MainWindow : UserControl
     {
         public MainWindow()
         {
-            this.Initialized += OnInitialized;
+            this.Loaded += OnLoaded;
             this.InitializeComponent();
         }
 
@@ -28,7 +28,7 @@ namespace Menu3D
         }
 #endif
 
-        private void OnInitialized(object sender, EventArgs e)
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
             DataContext = new ViewModel();
         }

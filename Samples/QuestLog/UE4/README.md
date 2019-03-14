@@ -12,14 +12,6 @@ This is a demo that shows how you can use `Binding` with user defined types and 
 
 ## Demo Breakdown
 
-### C++ Code
-
-* [ElementExtensions.h](Source/QuestLog/ElementExtensions.h) and [ElementExtensions.cpp](Source/QuestLog/ElementExtensions.cpp): Implements a `DependencyObject` that allows modifying the behaviour of standard controls via `DependencyProperty`s.
-
-* [MainWindow.h](Source/QuestLog/MainWindow.h): Implements a minimal code-behind for [MainWindow.xaml](Content/MainWindow.xaml).
-
-* [QuestLogGame.cpp](Source/QuestLog/QuestLogGame.cpp): Implements a minimal game module that registers the NoesisGUI native components.
-
 ### Blueprint
 
 * `UserDefinedEnum'/Game/QuestDifficulty.QuestDifficulty'`: It's an `UserDefinedEnum` used by `Blueprint'/Game/Quest.Quest'`. Its symbolic values are used within the XAML and are automatically converted to text.
@@ -37,3 +29,9 @@ This is a demo that shows how you can use `Binding` with user defined types and 
 * `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`, adds it to the viewport and captures mouse and keyboard input. It also creates and initializes several instances of `Blueprint'/Game/Quest.Quest'` that it adds to the `Quests` and `SelectedQuest` variables of the `NoesisBlueprint'/Game/MainWindowView.MainWindowView'` instance. Note the use of the plugin functions `ADDUNIQUE w/ NotifyArrayChanged` and `Set w/ NotifyChanged` instead of the standard `ADDUNIQUE` and `SET`. This is fundamental to let the NoesisGUI runtime that data has changed so it can update its internal data to match.
 
 ![TestLevel - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/LevelBlueprint.PNG)
+
+### Project Settings
+
+* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Resources.Resources'` as the global application `ResourceDictionary`.
+
+![Project Settings](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/ProjectSettings.PNG)

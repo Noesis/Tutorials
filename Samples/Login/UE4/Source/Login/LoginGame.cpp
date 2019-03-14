@@ -4,24 +4,21 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "LoginGame.h"
-#include "ElementExtensions.h"
 #include "MainWindow.h"
 
 DEFINE_LOG_CATEGORY(LogNoesisLogin)
 
 class LoginGameModule : public FDefaultGameModuleImpl
 {
-	virtual void StartupModule() override
-	{
-		NsRegisterComponent<Login::ElementExtensions>();
-		NsRegisterComponent<Login::MainWindow>();
-	}
+    virtual void StartupModule() override
+    {
+        NsRegisterComponent<Login::MainWindow>();
+    }
 
-	virtual void ShutdownModule() override
-	{
-		NsUnregisterComponent<Login::ElementExtensions>();
-		NsUnregisterComponent<Login::MainWindow>();
-	}
+    virtual void ShutdownModule() override
+    {
+        NsUnregisterComponent<Login::MainWindow>();
+    }
 };
 
 IMPLEMENT_PRIMARY_GAME_MODULE(LoginGameModule, Login, "Login" );

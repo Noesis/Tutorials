@@ -23,7 +23,7 @@ namespace Widget3D
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Widget3D/MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Buttons/MainWindow.xaml");
         }
 #endif
 

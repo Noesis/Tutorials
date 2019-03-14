@@ -10,12 +10,6 @@ This is a minimal demo that presents a Noesis Xaml to the user. The main focus p
 
 ## Demo Breakdown
 
-### C++ Code
-
-* [MainWindow.h](Source/HelloWorld/MainWindow.h): Implements a minimal code-behind for [MainWindow.xaml](Content/MainWindow.xaml).
-
-* [HelloWorldGame.cpp](Source/HelloWorld/HelloWorldGame.cpp): Implements a minimal game module that registers the NoesisGUI native components.
-
 ### Blueprint
 
 * `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`: It's a `NoesisView` for `NoesisXaml'/Game/MainWindow.MainWindow'` ([MainWindow.xaml](Content/MainWindow.xaml)).
