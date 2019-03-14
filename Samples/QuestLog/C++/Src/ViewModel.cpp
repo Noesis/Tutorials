@@ -166,7 +166,7 @@ ViewModel::ViewModel()
         _quests->Add(q);
     }
 
-    _selectedQuest.Reset(_quests->Get(0));
+    _selectedQuest = _quests->Get(0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -174,7 +174,7 @@ void ViewModel::SetSelectedQuest(Quest* value)
 {
     if (_selectedQuest != value)
     {
-        _selectedQuest.Reset(value);
+        _selectedQuest = value;
         OnPropertyChanged("SelectedQuest");
     }
 }
@@ -186,13 +186,14 @@ ViewModel::Quest* ViewModel::GetSelectedQuest() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(ViewModel)
 {
     NsProp("Quests", &ViewModel::_quests);
     NsProp("SelectedQuest", &ViewModel::GetSelectedQuest, &ViewModel::SetSelectedQuest);
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_IMPLEMENT_REFLECTION_ENUM(QuestDifficulty)
 {
     NsVal("Easy", QuestDifficulty::Easy);

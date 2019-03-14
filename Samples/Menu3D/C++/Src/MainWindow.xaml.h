@@ -23,7 +23,7 @@ public:
 
 private:
     void InitializeComponent();
-    void OnInitialized(Noesis::BaseComponent*, const Noesis::EventArgs&);
+    void OnLoaded(Noesis::BaseComponent*, const Noesis::RoutedEventArgs&);
 
 private:
     NS_DECLARE_REFLECTION(MainWindow, Window)

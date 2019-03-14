@@ -49,27 +49,6 @@ void NumericUpDown::OnValueChanged(const Noesis::RoutedPropertyChangedEventArgs<
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-bool NumericUpDown::OnPropertyChanged(const Noesis::DependencyPropertyChangedEventArgs& args)
-{
-    bool handled = ParentClass::OnPropertyChanged(args);
-
-    if (!handled)
-    {
-        if (args.prop == ValueProperty)
-        {
-            int oldValue = *static_cast<const int*>(args.oldValue);
-            int newValue = *static_cast<const int*>(args.newValue);
-
-            RoutedPropertyChangedEventArgs<int> e(this, ValueChangedEvent, oldValue, newValue);
-            OnValueChanged(e);
-            return true;
-        }
-    }
-
-    return handled;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 void NumericUpDown::InitializeComponent()
 {
     GUI::LoadComponent(this, "NumericUpDown.xaml");
@@ -98,7 +77,20 @@ void NumericUpDown::DownButton_Click(BaseComponent*, const Noesis::RoutedEventAr
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-bool NumericUpDown::CoerceValue(const DependencyObject* object, const void* value, void* coercedValue)
+void NumericUpDown::OnValueChangedStatic(DependencyObject* d,
+    const DependencyPropertyChangedEventArgs& args)
+{
+    NumericUpDown* control = static_cast<NumericUpDown*>(d);
+    int oldValue = *static_cast<const int*>(args.oldValue);
+    int newValue = *static_cast<const int*>(args.newValue);
+
+    RoutedPropertyChangedEventArgs<int> e(control, ValueChangedEvent, oldValue, newValue);
+    control->OnValueChanged(e);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+bool NumericUpDown::CoerceValue(const DependencyObject* object, const void* value,
+    void* coercedValue)
 {
     int maxValue = object->GetValue<int>(MaxValueProperty);
     int minValue = object->GetValue<int>(MinValueProperty);
@@ -111,21 +103,24 @@ bool NumericUpDown::CoerceValue(const DependencyObject* object, const void* valu
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(NumericUpDown)
 {
     NsMeta<TypeId>("UserControl.NumericUpDown");
 
-    Ptr<UIElementData> data = NsMeta<UIElementData>(TypeOf<SelfClass>());
+    UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<int>(ValueProperty, "Value",
-        FrameworkPropertyMetadata::Create(int(0), &CoerceValue));
+        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None,
+            &OnValueChangedStatic, &CoerceValue));
     data->RegisterProperty<int>(MaxValueProperty, "MaxValue",
-        FrameworkPropertyMetadata::Create(int(255), FrameworkOptions_None));
+        FrameworkPropertyMetadata::Create(int(255), FrameworkPropertyMetadataOptions_None));
     data->RegisterProperty<int>(MinValueProperty, "MinValue",
-        FrameworkPropertyMetadata::Create(int(0), FrameworkOptions_None));
+        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None));
     data->RegisterProperty<int>(StepValueProperty, "StepValue",
-        FrameworkPropertyMetadata::Create(int(1), FrameworkOptions_None));
+        FrameworkPropertyMetadata::Create(int(1), FrameworkPropertyMetadataOptions_None));
 
-    data->RegisterEvent(ValueChangedEvent, "ValueChanged", RoutingStrategy_Bubbling);
+    data->RegisterEvent(ValueChangedEvent, "ValueChanged", RoutingStrategy_Bubble);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

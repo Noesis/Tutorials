@@ -2,20 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{20956603-ad47-4f32-a973-e151e77636db}</UniqueIdentifier>
+      <UniqueIdentifier>{4a641f23-8056-4a54-95dd-2ea52b1a5282}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{b9b9e788-fc5e-49d4-8cf9-ef2ba132a8a5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{7208bbb1-bab1-4d89-97f8-7b555c291b8d}</UniqueIdentifier>
+      <UniqueIdentifier>{2db8d5c6-75de-4336-87fe-529a3f735c8a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
     <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>

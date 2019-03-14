@@ -1,0 +1,83 @@
+<Window
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+   xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+   Title="NoesisGUI - RSS Reader" Width="487" Height="630" ResizeMode="NoResize"
+   Background="{StaticResource Background0}"
+   Foreground="{StaticResource Foreground0}"
+   FontFamily="{StaticResource DefaultFont}"
+   x:Class="RssReader.MainWindow">
+
+  <Viewbox>
+    <DockPanel LastChildFill="True"
+               KeyboardNavigation.TabNavigation="Contained"
+               KeyboardNavigation.DirectionalNavigation="Contained"
+               Width="325" Height="420">
+      <TextBlock DockPanel.Dock="Top" Text="RSS Reader" FontSize="32" FontWeight="Bold"
+                 TextAlignment="Center" Margin="0,10,0,0"/>
+      <Border DockPanel.Dock="Top" Background="{StaticResource Background1}"
+              BorderBrush="{StaticResource Border}" BorderThickness="1" CornerRadius="2"
+              Margin="10" Padding="15,5">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <TextBlock Grid.Column="0" Text="URL: " VerticalAlignment="Center"/>
+          <TextBox x:Name="Address" Grid.Column="1" Text="http://www.metacritic.com/"/>
+          <Button x:Name="GoTo" Grid.Column="2" Content="Go" Margin="2,0,0,0">
+            <i:Interaction.Triggers>
+              <i:EventTrigger EventName="Click">
+                <ei:LaunchUriOrFileAction Path="{Binding Text, ElementName=Address}"/>
+              </i:EventTrigger>
+            </i:Interaction.Triggers>
+          </Button>
+        </Grid>
+      </Border>
+      <Grid DockPanel.Dock="Bottom" Margin="10">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="BorderBrush" Value="{StaticResource Background1}"/>
+            </Style>
+        </Grid.Resources>
+        <Button x:Name="Prev" Grid.Column="0" Content="Prev" Click="OnPrevClicked" Margin="0,0,5,0"/>
+        <Button x:Name="Next" Grid.Column="1" Content="Next" Click="OnNextClicked" Margin="5,0,0,0"/>
+      </Grid>
+      <Border Background="{StaticResource Background1}" BorderBrush="{StaticResource Border}"
+              BorderThickness="1" CornerRadius="2" Margin="10,0" Padding="5">
+        <Grid x:Name="ContentPanel" Margin="10,0">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+          <TextBlock x:Name="EntryTitle" Text="Article Title"
+                     Grid.Row="0" FontSize="20" FontWeight="Bold"
+                     Foreground="{StaticResource Foreground1}" TextAlignment="Center"
+                     Margin="0,5,0,5"/>
+          <ScrollViewer Grid.Row="1" Margin="0,0,0,10" Padding="10" IsTabStop="True"
+                        HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Auto">
+            <ScrollViewer.Style>
+              <Style TargetType="{x:Type ScrollViewer}">
+                <Style.Triggers>
+                  <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="Background" Value="#10FFFFFF"/>
+                  </Trigger>
+                </Style.Triggers>
+              </Style>
+            </ScrollViewer.Style>
+            <TextBlock x:Name="EntryDesc" Text="Article text" TextWrapping="Wrap"
+                       Foreground="{StaticResource Foreground2}" FontSize="14"/>
+          </ScrollViewer>
+        </Grid>
+      </Border>
+    </DockPanel>
+  </Viewbox>
+
+</Window>

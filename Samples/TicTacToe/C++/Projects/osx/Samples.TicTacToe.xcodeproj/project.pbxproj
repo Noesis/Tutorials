@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+    archiveVersion = 1;
+    classes = {};
+    objectVersion = 46;
+    objects = {
+
+/* Begin PBXBuildFile section */
+        29802BAA3AD4493FB8296B60 /* App.xaml in Sources */ = {isa = PBXBuildFile; fileRef = FDFA4A8354DC469DA9DA4BE5 /* App.xaml */; };
+        FF9E3A77D1104794BAC080C2 /* MainWindow.xaml in Sources */ = {isa = PBXBuildFile; fileRef = 96E0838C15EA432CB12B4501 /* MainWindow.xaml */; };
+        C724481AA71B43C8B99306CB /* Multicolore.otf in Sources */ = {isa = PBXBuildFile; fileRef = 2A66C933E59041B583443280 /* Multicolore.otf */; };
+        AF3A1AD32A654EBA8089C08B /* NoughtEffect.mp3 in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A88B4B8854594BA709A6B /* NoughtEffect.mp3 */; };
+        8C71FA08CC8C4578977E9A0A /* CrossEffect.mp3 in Sources */ = {isa = PBXBuildFile; fileRef = FA7DAA861B044534B4A62561 /* CrossEffect.mp3 */; };
+        DF64E6177A3F4BD3A74862DB /* WinEffect.mp3 in Sources */ = {isa = PBXBuildFile; fileRef = 24C2529739DC4CED83CE9D9F /* WinEffect.mp3 */; };
+        A281AC8E2437443DBC439D72 /* TieEffect.mp3 in Sources */ = {isa = PBXBuildFile; fileRef = 34F9C8BDF3F4464BBF87C514 /* TieEffect.mp3 */; };
+        6599EEF18BB64202884D9A6D /* App.xaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69F5FD2CF47F4A439EAD9186 /* App.xaml.cpp */; };
+        769E010BC9CC403FB94AE5B8 /* ViewModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A38C0B333A8B487DAA591118 /* ViewModel.cpp */; };
+        C09E7C3A79D64F4C9B5C627E /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A42DC120F05349E0B1F809A4 /* Main.cpp */; };
+        148C226ECC9940E6ABEA6370 /* MainWindow.xaml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 273F3D1C62554C918C5D6E18 /* MainWindow.xaml.cpp */; };
+        28A6A899A828489AA8F08F06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C903AB47B9B54C62B9683884 /* Assets.xcassets */; };
+        03D77FA7ACB34EE49591AEFF /* Noesis.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F6172133AF2F4905BC74E29E /* Noesis.dylib */; };
+        538F77E55F774D1CAAD21090 /* NoesisApp.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = AF5055D0343449F7A06CA1CB /* NoesisApp.dylib */; };
+        CA07ECAB37204999BC742C8E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8061C62FD914E8CA81DA43E /* AppKit.framework */; };
+        A87FFFDAF9EE453C92A1300F /* Noesis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6172133AF2F4905BC74E29E /* Noesis.dylib */; };
+        CC8BD44047DD4B37B53B6E89 /* NoesisApp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5055D0343449F7A06CA1CB /* NoesisApp.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+        8B49AB44552443CC864BB3BA /* Samples.TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        A8061C62FD914E8CA81DA43E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AppKit.framework"; path = "System/Library/Frameworks/AppKit.framework"; sourceTree = SDKROOT; };
+        F6172133AF2F4905BC74E29E /* Noesis.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "Noesis.dylib"; path = "../../../../../../Bin/osx/Noesis.dylib"; sourceTree = SOURCE_ROOT; };
+        AF5055D0343449F7A06CA1CB /* NoesisApp.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "NoesisApp.dylib"; path = "../../../../../../Bin/osx/NoesisApp.dylib"; sourceTree = SOURCE_ROOT; };
+        5D164206E1B746D880AF6D0B /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Common.xcconfig"; path = "../../../../../../Config/Common.xcconfig"; sourceTree = SOURCE_ROOT; };
+        1BA5EFE44BCC40C5A906951C /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release.xcconfig"; path = "../../../../../../Config/Release/Release.xcconfig"; sourceTree = SOURCE_ROOT; };
+        AD19F75BCB7E4078BF02FEE7 /* Profile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile.xcconfig"; path = "../../../../../../Config/Profile/Profile.xcconfig"; sourceTree = SOURCE_ROOT; };
+        ADB5F485F2444B0A8DF06965 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug.xcconfig"; path = "../../../../../../Config/Debug/Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
+        69F5FD2CF47F4A439EAD9186 /* App.xaml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "App.xaml.cpp"; path = "../../Src/App.xaml.cpp"; sourceTree = SOURCE_ROOT; };
+        9ABB22B50FE548BF88F8E98A /* App.xaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "App.xaml.h"; path = "../../Src/App.xaml.h"; sourceTree = SOURCE_ROOT; };
+        67F1D87DCD6142BCA359158A /* ViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ViewModel.h"; path = "../../Src/ViewModel.h"; sourceTree = SOURCE_ROOT; };
+        A38C0B333A8B487DAA591118 /* ViewModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "ViewModel.cpp"; path = "../../Src/ViewModel.cpp"; sourceTree = SOURCE_ROOT; };
+        B11EC037DBAA4510966132D7 /* MainWindow.xaml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MainWindow.xaml.h"; path = "../../Src/MainWindow.xaml.h"; sourceTree = SOURCE_ROOT; };
+        A42DC120F05349E0B1F809A4 /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "../../Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
+        273F3D1C62554C918C5D6E18 /* MainWindow.xaml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "MainWindow.xaml.cpp"; path = "../../Src/MainWindow.xaml.cpp"; sourceTree = SOURCE_ROOT; };
+        FDFA4A8354DC469DA9DA4BE5 /* App.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "App.xaml"; path = "../../Data/App.xaml"; sourceTree = SOURCE_ROOT; };
+        96E0838C15EA432CB12B4501 /* MainWindow.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MainWindow.xaml"; path = "../../Data/MainWindow.xaml"; sourceTree = SOURCE_ROOT; };
+        2A66C933E59041B583443280 /* Multicolore.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Multicolore.otf"; path = "../../Data/Fonts/Multicolore.otf"; sourceTree = SOURCE_ROOT; };
+        8F6A88B4B8854594BA709A6B /* NoughtEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NoughtEffect.mp3"; path = "../../Data/Sounds/NoughtEffect.mp3"; sourceTree = SOURCE_ROOT; };
+        FA7DAA861B044534B4A62561 /* CrossEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CrossEffect.mp3"; path = "../../Data/Sounds/CrossEffect.mp3"; sourceTree = SOURCE_ROOT; };
+        24C2529739DC4CED83CE9D9F /* WinEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "WinEffect.mp3"; path = "../../Data/Sounds/WinEffect.mp3"; sourceTree = SOURCE_ROOT; };
+        34F9C8BDF3F4464BBF87C514 /* TieEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "TieEffect.mp3"; path = "../../Data/Sounds/TieEffect.mp3"; sourceTree = SOURCE_ROOT; };
+        227784CA72564591A688BA2E /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "info.plist"; path = "info.plist"; sourceTree = SOURCE_ROOT; };
+        C903AB47B9B54C62B9683884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+        6C70E1F32E6D4FCDB0D8F104 = {
+            isa = PBXGroup;
+            children = (
+                69F5FD2CF47F4A439EAD9186,
+                9ABB22B50FE548BF88F8E98A,
+                67F1D87DCD6142BCA359158A,
+                A38C0B333A8B487DAA591118,
+                B11EC037DBAA4510966132D7,
+                A42DC120F05349E0B1F809A4,
+                273F3D1C62554C918C5D6E18,
+            );
+            name = Src;
+            sourceTree = "<group>";
+        };
+        B33E22E43B984096BC49E76A = {
+            isa = PBXGroup;
+            children = (
+                FDFA4A8354DC469DA9DA4BE5,
+                96E0838C15EA432CB12B4501,
+                2A66C933E59041B583443280,
+                8F6A88B4B8854594BA709A6B,
+                FA7DAA861B044534B4A62561,
+                24C2529739DC4CED83CE9D9F,
+                34F9C8BDF3F4464BBF87C514,
+            );
+            name = Data;
+            sourceTree = "<group>";
+        };
+        F269CBB808C54A339526ACAA = {
+            isa = PBXGroup;
+            children = (
+                227784CA72564591A688BA2E,
+                C903AB47B9B54C62B9683884,
+            );
+            name = Resources;
+            sourceTree = "<group>";
+        };
+        AA343B40ED034BC6A9E622F2 = {
+            isa = PBXGroup;
+            children = (
+                1BA5EFE44BCC40C5A906951C,
+                AD19F75BCB7E4078BF02FEE7,
+                5D164206E1B746D880AF6D0B,
+                ADB5F485F2444B0A8DF06965,
+            );
+            name = Config;
+            sourceTree = "<group>";
+        };
+        DC894333B0174A75AE1CBF45 = {
+            isa = PBXGroup;
+            children = (
+                8B49AB44552443CC864BB3BA,
+            );
+            name = Products;
+            sourceTree = "<group>";
+        };
+        D7EB8E70B65641EDAC429940 = {
+            isa = PBXGroup;
+            children = (
+                A8061C62FD914E8CA81DA43E,
+                F6172133AF2F4905BC74E29E,
+                AF5055D0343449F7A06CA1CB,
+            );
+            name = Dependencies;
+            sourceTree = "<group>";
+        };
+        6EF90565B03548D39755DFEF = {
+            isa = PBXGroup;
+            children = (
+                6C70E1F32E6D4FCDB0D8F104,
+                B33E22E43B984096BC49E76A,
+                F269CBB808C54A339526ACAA,
+                AA343B40ED034BC6A9E622F2,
+                DC894333B0174A75AE1CBF45,
+                D7EB8E70B65641EDAC429940,
+                11F17DCA2C6A4C7195223B0C,
+            );
+            sourceTree = "<group>";
+        };
+/* End PBXGroup section */
+
+/* Begin PBXSourcesBuildPhase section */
+        0870C9C39CF04AF5867BC5DC = {
+            isa = PBXSourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                29802BAA3AD4493FB8296B60,
+                FF9E3A77D1104794BAC080C2,
+                C724481AA71B43C8B99306CB,
+                AF3A1AD32A654EBA8089C08B,
+                8C71FA08CC8C4578977E9A0A,
+                DF64E6177A3F4BD3A74862DB,
+                A281AC8E2437443DBC439D72,
+                6599EEF18BB64202884D9A6D,
+                769E010BC9CC403FB94AE5B8,
+                C09E7C3A79D64F4C9B5C627E,
+                148C226ECC9940E6ABEA6370,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXBuildRule section */
+        6DE5C0554FBA409F897977EB = {
+            isa = PBXBuildRule;
+            compilerSpec = com.apple.compilers.proxy.script;
+            filePatterns = "*.xaml *.otf *.mp3";
+            fileType = pattern.proxy;
+            isEditable = 0;
+            outputFiles = (
+                "${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}.bin.h"
+            );
+            script = "../../../../../Tools/Bin2h/bin2h.py \"${INPUT_FILE_PATH}\" > \"${DERIVED_SOURCES_DIR}/${INPUT_FILE_NAME}.bin.h\"";
+        };
+/* End PBXBuildRule section */
+
+/* Begin PBXFrameworksBuildPhase section */
+        2D3D72FEB7914041863D4303 = {
+            isa = PBXFrameworksBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                CA07ECAB37204999BC742C8E,
+                A87FFFDAF9EE453C92A1300F,
+                CC8BD44047DD4B37B53B6E89,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+        4E88CADFF7514B338DD71480 = {
+            isa = PBXResourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                28A6A899A828489AA8F08F06,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+        53949C9900D2425DBC4CC1D3 = {
+            isa = PBXCopyFilesBuildPhase;
+            buildActionMask = 2147483647;
+            dstPath = "";
+            dstSubfolderSpec = 10;
+            files = (
+                03D77FA7ACB34EE49591AEFF,
+                538F77E55F774D1CAAD21090,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+        56635815442035B8B2137AC7 = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = FEC4E1BFD206455995A0C1B0;
+            buildPhases = (
+                0870C9C39CF04AF5867BC5DC,
+                2D3D72FEB7914041863D4303,
+                4E88CADFF7514B338DD71480,
+                53949C9900D2425DBC4CC1D3,
+            );
+            buildRules = (
+                6DE5C0554FBA409F897977EB,
+            );
+            dependencies = ();
+            name = Samples.TicTacToe;
+            productName = Samples.TicTacToe;
+            productReference = 8B49AB44552443CC864BB3BA;
+            productType = "com.apple.product-type.application";
+        };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+        8A37CF60DAAB48019435B651 = {
+            isa = PBXProject;
+            attributes = {};
+            buildConfigurationList = EC3ECBFB6C914463AB238891;
+            compatibilityVersion = "Xcode 3.2";
+            developmentRegion = English;
+            hasScannedForEncodings = 0;
+            knownRegions = (en,);
+            mainGroup = 6EF90565B03548D39755DFEF;
+            productRefGroup = DC894333B0174A75AE1CBF45;
+            projectDirPath = "";
+            projectRoot = "";
+            targets = (56635815442035B8B2137AC7,);
+        };
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+        5940F93E5F984376A8D73FC3 = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = 1BA5EFE44BCC40C5A906951C;
+            buildSettings = {
+                SDKROOT = macosx;
+                MACOSX_DEPLOYMENT_TARGET = 10.7;
+                ARCHS = "$(ARCHS_STANDARD)";
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../Math/Utils/Include,../../../../Math/VectorMath/Include,../../../../Gui/DependencySystem/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../App/Interactivity/Include,../../../../Core/TypeConverter/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../App/DisplayLauncher/Include,../../../../Gui/CachedFontProvider/Include,../../../../App/ApplicationLauncher/Include,../../../../Samples/TicTacToe/Include,../../../../Gui/Providers/Include,../../../../Gui/Core/Include,../../../../Core/Kernel/Include,../../../../App/Providers/Include,../../../../../../Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Release","NS_VERSION=2.2.0","NS_APP_FRAMEWORK","$(inherited)");
+                LIBRARY_SEARCH_PATHS = ();
+                OTHER_LDFLAGS = ();
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/osx";
+                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+                USE_HEADERMAP = NO;
+            };
+            name = Release;
+        };
+        398FC092CE894FD4899B5015 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 2.2.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                INFOPLIST_FILE = "$(PROJECT_DIR)/info.plist";
+                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../ @executable_path/../Frameworks/";
+            };
+            name = Release;
+        };
+        0C75AC7F10F346FDB1FAB70E = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = AD19F75BCB7E4078BF02FEE7;
+            buildSettings = {
+                SDKROOT = macosx;
+                MACOSX_DEPLOYMENT_TARGET = 10.7;
+                ARCHS = "$(ARCHS_STANDARD)";
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../Math/Utils/Include,../../../../Math/VectorMath/Include,../../../../Gui/DependencySystem/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../App/Interactivity/Include,../../../../Core/TypeConverter/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../App/DisplayLauncher/Include,../../../../Gui/CachedFontProvider/Include,../../../../App/ApplicationLauncher/Include,../../../../Samples/TicTacToe/Include,../../../../Gui/Providers/Include,../../../../Gui/Core/Include,../../../../Core/Kernel/Include,../../../../App/Providers/Include,../../../../../../Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Profile","NS_VERSION=2.2.0","NS_APP_FRAMEWORK","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=2","$(inherited)");
+                LIBRARY_SEARCH_PATHS = ();
+                OTHER_LDFLAGS = ();
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/osx";
+                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+                USE_HEADERMAP = NO;
+            };
+            name = Profile;
+        };
+        A086DBCCB5454FF4A1E650FB = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 2.2.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                INFOPLIST_FILE = "$(PROJECT_DIR)/info.plist";
+                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../ @executable_path/../Frameworks/";
+            };
+            name = Profile;
+        };
+        E193A054014C400F97C4B145 = {
+            isa = XCBuildConfiguration;
+            baseConfigurationReference = ADB5F485F2444B0A8DF06965;
+            buildSettings = {
+                SDKROOT = macosx;
+                MACOSX_DEPLOYMENT_TARGET = 10.7;
+                ARCHS = "$(ARCHS_STANDARD)";
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../Math/Utils/Include,../../../../Math/VectorMath/Include,../../../../Gui/DependencySystem/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../App/Interactivity/Include,../../../../Core/TypeConverter/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../App/DisplayLauncher/Include,../../../../Gui/CachedFontProvider/Include,../../../../App/ApplicationLauncher/Include,../../../../Samples/TicTacToe/Include,../../../../Gui/Providers/Include,../../../../Gui/Core/Include,../../../../Core/Kernel/Include,../../../../App/Providers/Include,../../../../../../Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Debug","NS_VERSION=2.2.0","NS_APP_FRAMEWORK","NS_DEBUG","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=1","$(inherited)");
+                LIBRARY_SEARCH_PATHS = ();
+                OTHER_LDFLAGS = ();
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/osx";
+                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+                USE_HEADERMAP = NO;
+            };
+            name = Debug;
+        };
+        1EC93BB05A0E45A483670B27 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 2.2.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                INFOPLIST_FILE = "$(PROJECT_DIR)/info.plist";
+                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../ @executable_path/../Frameworks/";
+            };
+            name = Debug;
+        };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+        EC3ECBFB6C914463AB238891 = {
+            isa = XCConfigurationList;
+            buildConfigurations = (5940F93E5F984376A8D73FC3,0C75AC7F10F346FDB1FAB70E,E193A054014C400F97C4B145);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Release;
+        };
+
+        FEC4E1BFD206455995A0C1B0 = {
+            isa = XCConfigurationList;
+            buildConfigurations = (398FC092CE894FD4899B5015,A086DBCCB5454FF4A1E650FB,1EC93BB05A0E45A483670B27);
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Release;
+        };
+/* End XCConfigurationList section */
+    };
+    rootObject = 8A37CF60DAAB48019435B651;
+}

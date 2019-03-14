@@ -19,9 +19,6 @@ namespace Localization
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public NoesisApp::Application
 {
-private:
-    const char* GetTitleOverride(Noesis::UIElement* root) const override;
-
     NS_DECLARE_REFLECTION(App, Application)
 };
 

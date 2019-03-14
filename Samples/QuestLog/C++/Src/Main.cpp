@@ -13,18 +13,18 @@
 #include <NsApp/EmbeddedTextureProvider.h>
 #include <NsApp/EntryPoint.h>
 
-#include "ElementExtensions.h"
 #include "MainWindow.xaml.h"
 #include "App.xaml.h"
 #include "ViewModel.h"
 
 #include "App.xaml.bin.h"
-#include "LogoResources.xaml.bin.h"
+#include "Resources.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
 #include "Aero Matics Regular.ttf.bin.h"
 #include "Image0.png.bin.h"
 #include "Image1.png.bin.h"
 #include "Image2.png.bin.h"
+#include "WaterDropSmall.mp3.bin.h"
 
 
 using namespace QuestLog;
@@ -38,7 +38,6 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<QuestLog::ElementExtensions>();
         NsRegisterComponent<QuestLog::MainWindow>();
         NsRegisterComponent<QuestLog::App>();
         NsRegisterComponent<EnumConverter<QuestLog::QuestDifficulty>>();
@@ -49,8 +48,9 @@ private:
         EmbeddedXaml xamls[] = 
         {
             { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "LogoResources.xaml", LogoResources_xaml, sizeof(LogoResources_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) }
+            { "Resources.xaml", Resources_xaml, sizeof(Resources_xaml) },
+            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
+            { "Sounds/WaterDropSmall.mp3", WaterDropSmall_mp3, sizeof(WaterDropSmall_mp3) }
         };
 
         return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));

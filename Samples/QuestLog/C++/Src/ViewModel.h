@@ -12,8 +12,7 @@
 #include <NsCore/Ptr.h>
 #include <NsCore/ReflectionDeclareEnum.h>
 #include <NsGui/ObservableCollection.h>
-
-#include "NotifyPropertyChangedBase.h"
+#include <NsApp/NotifyPropertyChangedBase.h>
 
 
 namespace QuestLog
@@ -27,7 +26,7 @@ enum class QuestDifficulty
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-class ViewModel final: public NotifyPropertyChangedBase
+class ViewModel final: public NoesisApp::NotifyPropertyChangedBase
 {
 public:
     ViewModel();
@@ -39,7 +38,7 @@ private:
 
 private:
     Noesis::Ptr<Noesis::ObservableCollection<Quest>> _quests;
-    Noesis::Ptr<Quest> _selectedQuest;
+    Quest* _selectedQuest;
 
 private:
 

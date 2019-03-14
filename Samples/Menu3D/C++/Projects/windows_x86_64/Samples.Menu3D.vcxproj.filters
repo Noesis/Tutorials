@@ -2,10 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{0b8865ca-cf73-4861-9276-84204b582f17}</UniqueIdentifier>
+      <UniqueIdentifier>{1b10f11f-b3ac-4cf9-bdb6-14c6ac9c52d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{4b0942c7-8add-4344-b8b7-68cfa826a63b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{b8f816eb-804b-4c38-ac46-29f948c6488b}</UniqueIdentifier>
+      <UniqueIdentifier>{564fd4ac-22f2-42e2-828f-d7d1a2512699}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -13,18 +16,6 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Src\App.xaml.h">
-      <Filter>Src</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Src\DelegateCommand.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Src\DelegateCommand.h">
-      <Filter>Src</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Src\ElementExtensions.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Src\ElementExtensions.h">
       <Filter>Src</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Src\Main.cpp">
@@ -42,10 +33,16 @@
     <ClInclude Include="..\..\Src\MainWindow.xaml.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Src\NotifyPropertyChangedBase.cpp">
+    <ClCompile Include="..\..\Src\MenuDescription.xaml.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\Src\NotifyPropertyChangedBase.h">
+    <ClInclude Include="..\..\Src\MenuDescription.xaml.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Src\MultiplierConverter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Src\MultiplierConverter.h">
       <Filter>Src</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Src\OptionSelector.xaml.cpp">
@@ -72,10 +69,12 @@
     <ClInclude Include="..\..\Src\ViewModel.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
     <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
@@ -83,6 +82,9 @@
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\MenuResources.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\MenuDescription.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\MainMenu.xaml">
@@ -116,6 +118,15 @@
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Fonts\weblysleekuisl.ttf">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Sounds\SoundTrack.mp3">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Sounds\WaterDropBig.mp3">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Sounds\WaterDropSmall.mp3">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

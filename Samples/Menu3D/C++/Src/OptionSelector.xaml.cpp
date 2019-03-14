@@ -157,7 +157,7 @@ void OptionSelector::OnOptionsChanged(BaseComponent*, const NotifyCollectionChan
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void OptionSelector::OnIndexChanged(DependencyObject* d, const DependencyPropertyChangedEventArgs&)
 {
-    OptionSelector* selector = NsDynamicCast<OptionSelector*>(d);
+    OptionSelector* selector = DynamicCast<OptionSelector*>(d);
     if (selector != 0)
     {
         selector->UpdateSelectedOption();
@@ -219,6 +219,8 @@ void OptionSelector::SetSelectedOption(BaseComponent* value)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Menu3D::OptionSelector)
 {
     NsMeta<TypeId>("Menu3D.OptionSelector");
@@ -227,7 +229,7 @@ NS_IMPLEMENT_REFLECTION(Menu3D::OptionSelector)
     NsProp("LastIndex", &OptionSelector::GetLastIndex);
     NsProp("Index", &OptionSelector::GetIndex);
 
-    Ptr<UIElementData> data = NsMeta<UIElementData>(TypeOf<SelfClass>());
+    UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<int>(SelectedIndexProperty, "SelectedIndex",
         PropertyMetadata::Create(-1, &OptionSelector::OnIndexChanged));
     data->RegisterProperty<Ptr<BaseComponent>>(SelectedOptionProperty, "SelectedOption",

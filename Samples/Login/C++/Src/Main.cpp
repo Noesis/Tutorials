@@ -11,14 +11,14 @@
 #include <NsApp/EmbeddedFontProvider.h>
 #include <NsApp/EntryPoint.h>
 
-#include "ElementExtensions.h"
 #include "MainWindow.xaml.h"
 #include "App.xaml.h"
 
 #include "App.xaml.bin.h"
-#include "ControlResources.xaml.bin.h"
-#include "LogoResources.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
+#include "Resources.xaml.bin.h"
+#include "Login.mp3.bin.h"
+#include "Fail.mp3.bin.h"
 #include "Aero Matics Regular.ttf.bin.h"
 
 
@@ -33,7 +33,6 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<Login::ElementExtensions>();
         NsRegisterComponent<Login::MainWindow>();
         NsRegisterComponent<Login::App>();
     }
@@ -43,9 +42,10 @@ private:
         EmbeddedXaml xamls[] = 
         {
             { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "ControlResources.xaml", ControlResources_xaml, sizeof(ControlResources_xaml) },
-            { "LogoResources.xaml", LogoResources_xaml, sizeof(LogoResources_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) }
+            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
+            { "Resources.xaml", Resources_xaml, sizeof(Resources_xaml) },
+            { "Login.mp3", Login_mp3, sizeof(Login_mp3) },
+            { "Fail.mp3", Fail_mp3, sizeof(Fail_mp3) }
         };
 
         return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));

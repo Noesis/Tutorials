@@ -35,13 +35,6 @@ ResourceDictionary* Language::GetResources() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-NS_IMPLEMENT_REFLECTION(Language)
-{
-    NsProp("Name", &Language::GetName);
-    NsProp("Resources", &Language::GetResources);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 ViewModel::ViewModel()
 {
     _languages = *new ObservableCollection<Language>();
@@ -69,7 +62,7 @@ void ViewModel::SetSelectedLanguage(Language* language)
 {
     if (_selectedLanguage != language)
     {
-        _selectedLanguage.Reset(language);
+        _selectedLanguage = language;
         OnPropertyChanged("SelectedLanguage");
     }
 }
@@ -113,10 +106,18 @@ float ViewModel::GetMusicLevel() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(ViewModel)
 {
     NsProp("Languages", &ViewModel::GetLanguages);
     NsProp("SelectedLanguage", &ViewModel::GetSelectedLanguage, &ViewModel::SetSelectedLanguage);
     NsProp("SoundLevel", &ViewModel::GetSoundLevel, &ViewModel::SetSoundLevel);
     NsProp("MusicLevel", &ViewModel::GetMusicLevel, &ViewModel::SetMusicLevel);
+}
+
+NS_IMPLEMENT_REFLECTION(Language)
+{
+    NsProp("Name", &Language::GetName);
+    NsProp("Resources", &Language::GetResources);
 }

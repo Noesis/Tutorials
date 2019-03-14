@@ -11,8 +11,7 @@
 #include <NsCore/Noesis.h>
 #include <NsCore/Ptr.h>
 #include <NsCore/String.h>
-
-#include "NotifyPropertyChangedBase.h"
+#include <NsApp/NotifyPropertyChangedBase.h>
 
 
 namespace Noesis
@@ -41,7 +40,7 @@ private:
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-class ViewModel final: public NotifyPropertyChangedBase
+class ViewModel final: public NoesisApp::NotifyPropertyChangedBase
 {
 public:
     ViewModel();
@@ -59,7 +58,7 @@ public:
 
 private:
     Noesis::Ptr<Noesis::ObservableCollection<Language>> _languages;
-    Noesis::Ptr<Language> _selectedLanguage;
+    Language* _selectedLanguage;
     float _soundLevel;
     float _musicLevel;
 

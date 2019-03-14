@@ -2,60 +2,65 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{84270760-95af-4008-95be-8014d8a5c831}</UniqueIdentifier>
+      <UniqueIdentifier>{b7c229c8-d0f3-401f-a99b-f80b1292ff5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{7cd80fc9-fe58-4ea6-ba97-30925205e1cf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{96111b7c-5606-4332-8024-73336064ef3b}</UniqueIdentifier>
+      <UniqueIdentifier>{f2cec2b8-fc8f-47bd-854b-4447079d1e62}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
-    <CustomBuild Include="..\..\Src\App.xaml">
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
+    <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\MainWindow.xaml">
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Roboto-Regular.ttf">
+    <CustomBuild Include="..\..\Data\Roboto-Regular.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Roboto-Bold.ttf">
+    <CustomBuild Include="..\..\Data\Roboto-Bold.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\moons_2.jpg">
+    <CustomBuild Include="..\..\Data\Images\moons_2.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\earglobe.jpg">
+    <CustomBuild Include="..\..\Data\Images\earglobe.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\jupglobe.jpg">
+    <CustomBuild Include="..\..\Data\Images\jupglobe.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\marglobe.jpg">
+    <CustomBuild Include="..\..\Data\Images\marglobe.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\merglobe.jpg">
+    <CustomBuild Include="..\..\Data\Images\merglobe.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\nepglobe.jpg">
+    <CustomBuild Include="..\..\Data\Images\nepglobe.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\plutoch_2.jpg">
+    <CustomBuild Include="..\..\Data\Images\plutoch_2.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\sun.jpg">
+    <CustomBuild Include="..\..\Data\Images\sun.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\uraglobe.jpg">
+    <CustomBuild Include="..\..\Data\Images\uraglobe.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Images\venglobe.jpg">
+    <CustomBuild Include="..\..\Data\Images\venglobe.jpg">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -51,7 +51,7 @@ public:
 
     void OnManipulationStarting(const ManipulationStartingEventArgs& e) override
     {
-        Noesis::Rectangle* rectangle = NsDynamicCast<Noesis::Rectangle*>(e.source);
+        Noesis::Rectangle* rectangle = DynamicCast<Noesis::Rectangle*>(e.source);
         if (rectangle != 0)
         {
             Panel::SetZIndex(rectangle, ++_index);
@@ -66,7 +66,7 @@ public:
 
     void OnManipulationInertiaStarting(const ManipulationInertiaStartingEventArgs& e) override
     {
-        Noesis::Rectangle* rectangle = NsDynamicCast<Noesis::Rectangle*>(e.source);
+        Noesis::Rectangle* rectangle = DynamicCast<Noesis::Rectangle*>(e.source);
         if (rectangle != 0)
         {
             e.translationBehavior.desiredDeceleration = 360.0f / (100.0f * 1000.0f);
@@ -80,7 +80,7 @@ public:
 
     void OnManipulationDelta(const ManipulationDeltaEventArgs& e) override
     {
-        Noesis::Rectangle* rectangle = NsDynamicCast<Noesis::Rectangle*>(e.source);
+        Noesis::Rectangle* rectangle = DynamicCast<Noesis::Rectangle*>(e.source);
         if (rectangle != 0)
         {
             MatrixTransform* transform = (MatrixTransform*)rectangle->GetRenderTransform();
@@ -102,7 +102,7 @@ public:
 
     void OnManipulationCompleted(const ManipulationCompletedEventArgs& e) override
     {
-        Noesis::Rectangle* rectangle = NsDynamicCast<Noesis::Rectangle*>(e.source);
+        Noesis::Rectangle* rectangle = DynamicCast<Noesis::Rectangle*>(e.source);
         if (rectangle != 0)
         {
             rectangle->SetStroke(0);

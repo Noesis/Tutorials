@@ -2,10 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{fb79b699-5dde-46bf-b7b6-6255f596b03e}</UniqueIdentifier>
+      <UniqueIdentifier>{c3b1ca6f-af30-4e95-be72-f6ca9a328727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{fd6ff524-e6ab-4ada-96fe-ba0f2d7b11df}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{bb530635-e7b5-4c72-8c42-643e4ade41ce}</UniqueIdentifier>
+      <UniqueIdentifier>{a2e5d343-d929-4f98-bcc8-ce6e8ca71be0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -24,25 +27,18 @@
     <ClInclude Include="..\..\Src\MainWindow.xaml.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Src\NotifyPropertyChangedBase.cpp">
+    <ClCompile Include="..\..\Src\ViewModel.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\Src\NotifyPropertyChangedBase.h">
+    <ClInclude Include="..\..\Src\ViewModel.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Player.h">
-      <Filter>Src</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Src\ThousandConverter.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Src\ThousandConverter.h">
-      <Filter>Src</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
     <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>

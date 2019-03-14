@@ -10,14 +10,14 @@
 
 #include <NsCore/Noesis.h>
 #include <NsCore/ReflectionDeclare.h>
-#include <NsGui/UserControl.h>
+#include <NsApp/Window.h>
 
 
 namespace Buttons
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-class MainWindow final: public Noesis::UserControl
+class MainWindow final: public NoesisApp::Window
 {
 public:
     MainWindow();
@@ -27,7 +27,7 @@ private:
     void OnInitialized(BaseComponent*, const Noesis::EventArgs&);
 
 private:
-    NS_DECLARE_REFLECTION(MainWindow, UserControl)
+    NS_DECLARE_REFLECTION(MainWindow, Window)
 };
 
 

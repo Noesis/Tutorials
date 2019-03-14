@@ -12,39 +12,35 @@
 #include <NsCore/Ptr.h>
 #include <NsCore/String.h>
 #include <NsGui/PasswordBox.h>
-
-#include "NotifyPropertyChangedBase.h"
+#include <NsApp/DelegateCommand.h>
+#include <NsApp/NotifyPropertyChangedBase.h>
 
 
 namespace Login
 {
 
-class DelegateCommand;
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-class ViewModel final: public NotifyPropertyChangedBase
+class ViewModel final: public NoesisApp::NotifyPropertyChangedBase
 {
 public:
     ViewModel();
 
 private:
+    void SetAccountName(const char* value); 
+    const char* GetAccountName() const;
+
     void SetMessage(const char* value); 
     const char* GetMessage() const;
 
-    void SetNotifyMessage(bool value);
-    bool GetNotifyMessage() const;
-
-    DelegateCommand* GetLoginCommand() const;
+    const NoesisApp::DelegateCommand* GetLoginCommand() const;
 
     void Login(BaseComponent* param);
     bool CheckCredentials(Noesis::PasswordBox* passwordBox);
-    void OnNotifyMessage(const char* message);
 
 private:
-    NsString _accountName;
-    NsString _message;
-    bool _notifyMessage;
-    Noesis::Ptr<DelegateCommand> _loginCommand;
+    char _accountName[256];
+    char _message[256];
+    NoesisApp::DelegateCommand _loginCommand;
 
     NS_DECLARE_REFLECTION(ViewModel, NotifyPropertyChangedBase)
 };

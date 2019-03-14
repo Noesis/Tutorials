@@ -2,10 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{0797f8ae-dc83-406e-87c1-e8136ca9a356}</UniqueIdentifier>
+      <UniqueIdentifier>{5432c5f5-90e1-4861-a61e-4afff88fe6e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{ed12cb6f-a592-4acd-bfcd-1e94d34ccc05}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{87932cd4-55cb-4506-9b28-1b30f096384c}</UniqueIdentifier>
+      <UniqueIdentifier>{cfbda727-0859-4b2b-86e8-a519553b3bc6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -18,10 +21,12 @@
     <ClCompile Include="..\..\Src\NumericUpDown.xaml.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
     <CustomBuild Include="..\..\Src\MainWindow.xaml">
       <Filter>Data</Filter>
     </CustomBuild>

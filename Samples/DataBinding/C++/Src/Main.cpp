@@ -166,7 +166,7 @@ private:
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-class ConvertOrbit: public BaseValueConverter
+class OrbitConverter: public BaseValueConverter
 {
 public:
     bool TryConvert(BaseComponent* value, const Type* targetType, BaseComponent* parameter,
@@ -184,9 +184,9 @@ public:
     }
 
 private:
-    NS_IMPLEMENT_INLINE_REFLECTION(ConvertOrbit, BaseValueConverter)
+    NS_IMPLEMENT_INLINE_REFLECTION(OrbitConverter, BaseValueConverter)
     {
-        NsMeta<TypeId>("DataBinding.ConvertOrbit");
+        NsMeta<TypeId>("DataBinding.OrbitConverter");
     }
 };
 
@@ -201,7 +201,9 @@ private:
         NsRegisterComponent<DataBinding::App>();
         NsRegisterComponent<DataBinding::MainWindow>();
         NsRegisterComponent<DataBinding::SolarSystem>();
-        NsRegisterComponent<DataBinding::ConvertOrbit>();
+        NsRegisterComponent<DataBinding::OrbitConverter>();
+
+        TypeOf<DataBinding::SolarSystemObject>();
     }
 
     Ptr<XamlProvider> GetXamlProvider() const override

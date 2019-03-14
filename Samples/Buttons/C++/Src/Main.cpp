@@ -11,15 +11,15 @@
 #include <NsApp/EmbeddedFontProvider.h>
 #include <NsApp/EntryPoint.h>
 
-#include "ElementExtensions.h"
 #include "MainWindow.xaml.h"
 #include "App.xaml.h"
 
 #include "App.xaml.bin.h"
-#include "ControlResources.xaml.bin.h"
-#include "LogoResources.xaml.bin.h"
+#include "Resources.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
 #include "Aero Matics Regular.ttf.bin.h"
+#include "AudioSlide.mp3.bin.h"
+#include "AudioClick.mp3.bin.h"
 
 
 using namespace Buttons;
@@ -33,7 +33,6 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<Buttons::ElementExtensions>();
         NsRegisterComponent<Buttons::MainWindow>();
         NsRegisterComponent<Buttons::App>();
     }
@@ -43,9 +42,10 @@ private:
         EmbeddedXaml xamls[] = 
         {
             { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "ControlResources.xaml", ControlResources_xaml, sizeof(ControlResources_xaml) },
-            { "LogoResources.xaml", LogoResources_xaml, sizeof(LogoResources_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) }
+            { "Resources.xaml", Resources_xaml, sizeof(Resources_xaml) },
+            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
+            { "AudioSlide.mp3", AudioSlide_mp3, sizeof(AudioSlide_mp3) },
+            { "AudioClick.mp3", AudioClick_mp3, sizeof(AudioClick_mp3) }
         };
 
         return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));

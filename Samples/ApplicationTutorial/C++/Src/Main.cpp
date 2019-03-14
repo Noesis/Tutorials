@@ -11,6 +11,7 @@
 #include <NsGui/Button.h>
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/TextBlock.h>
+#include <NsGui/TextBox.h>
 #include <NsApp/EmbeddedXamlProvider.h>
 #include <NsApp/EmbeddedFontProvider.h>
 #include <NsApp/ApplicationLauncher.h>
@@ -27,6 +28,13 @@
 using namespace Noesis;
 using namespace NoesisApp;
 
+
+static const char* const gURLs[] =
+{
+    "https://goo.gl/fDQNZa",
+    "https://goo.gl/t256CG",
+    "https://goo.gl/mJcay9"
+};
 
 static const char* const gTitles[] =
 {
@@ -79,9 +87,13 @@ public:
         InitializeComponent();
 
         _title = FindName<TextBlock>("EntryTitle");
-        _desc = FindName<TextBlock>("EntryDesc");
         _title->SetText(gTitles[0]);
+
+        _desc = FindName<TextBlock>("EntryDesc");
         _desc->SetText(gBodies[0]);
+
+        _url = FindName<TextBox>("Address");
+        _url->SetText(gURLs[0]);
     }
 
 private:
@@ -92,14 +104,9 @@ private:
 
     bool ConnectEvent(BaseComponent* source, const char* event, const char* handler) override
     {
-        NS_CONNECT_EVENT(Button, Click, OnGoToClicked);
         NS_CONNECT_EVENT(Button, Click, OnPrevClicked);
         NS_CONNECT_EVENT(Button, Click, OnNextClicked);
         return false;
-    }
-
-    void OnGoToClicked(BaseComponent* /*sender*/, const RoutedEventArgs& /*e*/)
-    {
     }
 
     void OnPrevClicked(BaseComponent* /*sender*/, const RoutedEventArgs& /*e*/)
@@ -107,6 +114,7 @@ private:
         _index = _index == 0 ? 2 : _index - 1;
         _title->SetText(gTitles[_index]);
         _desc->SetText(gBodies[_index]);
+        _url->SetText(gURLs[_index]);
     }
 
     void OnNextClicked(BaseComponent* /*sender*/, const RoutedEventArgs& /*e*/)
@@ -114,12 +122,14 @@ private:
         _index = _index == 2 ? 0 : _index + 1;
         _title->SetText(gTitles[_index]);
         _desc->SetText(gBodies[_index]);
+        _url->SetText(gURLs[_index]);
     }
 
 private:
     int _index;
     TextBlock* _title;
     TextBlock* _desc;
+    TextBox* _url;
 
     NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
     {

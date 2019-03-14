@@ -2,10 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{e85acdcc-4c83-46bc-b2bc-593a394d793f}</UniqueIdentifier>
+      <UniqueIdentifier>{9ff39bfa-5219-4c28-8198-8707af57b73b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{ee7ada68-6d8e-4d91-9fa3-821126617011}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{01bc0534-62df-4a2e-90dd-1e75b2d9bc0f}</UniqueIdentifier>
+      <UniqueIdentifier>{db572b0d-97e2-4f15-940c-6fb1c861331a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -13,12 +16,6 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Src\App.xaml.h">
-      <Filter>Src</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Src\ElementExtensions.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Src\ElementExtensions.h">
       <Filter>Src</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Src\Main.cpp">
@@ -30,29 +27,25 @@
     <ClInclude Include="..\..\Src\MainWindow.xaml.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Src\NotifyPropertyChangedBase.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Src\NotifyPropertyChangedBase.h">
-      <Filter>Src</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Src\ViewModel.cpp">
       <Filter>Src</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Src\ViewModel.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
     <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Aero Matics Regular.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Data\LogoResources.xaml">
+    <CustomBuild Include="..\..\Data\Resources.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\MainWindow.xaml">
@@ -65,6 +58,9 @@
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Images\Image2.png">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Sounds\WaterDropSmall.mp3">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

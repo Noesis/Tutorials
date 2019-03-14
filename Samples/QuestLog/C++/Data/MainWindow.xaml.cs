@@ -12,7 +12,7 @@ namespace QuestLog
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : UserControl
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
@@ -29,7 +29,7 @@ namespace QuestLog
 
         private void OnInitialized(object sender, EventArgs args)
         {
-            this.DataContext = new ViewModel((ResourceDictionary)Resources.MergedDictionaries[0]);
+            this.DataContext = new ViewModel();
         }
     }
 }

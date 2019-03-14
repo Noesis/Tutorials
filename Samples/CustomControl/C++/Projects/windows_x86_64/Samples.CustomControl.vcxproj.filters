@@ -2,10 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{c0e5e3bc-5405-4bc9-920f-bdb4a7a018ee}</UniqueIdentifier>
+      <UniqueIdentifier>{2945d48f-95f5-43fc-b7fe-d0de76b8a29f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{0924f919-8e50-487e-ab5f-2b78cf58c264}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{846cdd34-145a-444a-8399-3dbb83c73686}</UniqueIdentifier>
+      <UniqueIdentifier>{49a2b658-4a97-4474-846c-ad44b78356c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -18,17 +21,19 @@
     <ClCompile Include="..\..\Src\Main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
-    <CustomBuild Include="..\..\Src\MainWindow.xaml">
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\App.xaml">
+    <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Aero Matics Regular.ttf">
+    <CustomBuild Include="..\..\Data\Aero Matics Regular.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -1,28 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Changes made to Package Name should also be reflected in the Debugging - Package Name property, in the Property Pages -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.noesis.$(ApplicationName)"
-        android:versionCode="1"
-        android:versionName="1.0">
+<manifest
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.noesis.Samples.Scoreboard">
 
-    <!-- This is the platform API where NativeActivity was introduced. -->
-    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="23"/>
+  <uses-sdk android:minSdkVersion="17" />
 
-    <!-- This .apk has no Java code itself, so set hasCode to false. -->
-    <application android:label="@string/app_name" android:hasCode="false">
+  <application
+    android:icon="@mipmap/ic_launcher"
+    android:debuggable="false"
+    android:label="Scoreboard">
 
-        <!-- Our activity is the built-in NativeActivity framework class.
-             This will take care of integrating with our NDK code. -->
-        <activity android:name="android.app.NativeActivity"
-                android:label="@string/app_name"
-                android:configChanges="screenSize|orientation|keyboardHidden">
-            <!-- Tell NativeActivity the name of our .so -->
-            <meta-data android:name="android.app.lib_name"
-                    android:value="$(AndroidAppLibName)" />
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+    <activity
+      android:name=".NoesisNativeActivity"
+      android:label="Scoreboard"
+      android:configChanges="screenSize|orientation|keyboardHidden"
+      android:screenOrientation="landscape"
+      android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+
+      <meta-data
+        android:name="android.app.lib_name"
+        android:value="Samples_Scoreboard" />
+
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+
+    </activity>
+  </application>
 </manifest>

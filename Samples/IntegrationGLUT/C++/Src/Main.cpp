@@ -4,115 +4,111 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// Minimal integration sample using GLUT and NoesisGUI. For simplification purposes, this example
-// is not complete (for example, only mouse input events are handled). For a full multiplatform
-// integration code with step by step comments have a look at 'Samples/Integration'
+// This is a minimal integration example. For simplification purposes only basic input events are
+// handled, no resource providers are used and the shutdown procedure is omitted. A more complete
+// multiplatform integration sample with step by step comments can be found at 'Samples/Integration'
 
 
 #ifdef _WIN32
 #include "glut.h"
+#pragma comment(linker,"/SUBSYSTEM:CONSOLE")
 #endif
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #endif
 
-#if defined(__linux__)
+#ifdef __EMSCRIPTEN__
+#include <GL/glut.h>
+#include <GLES3/gl32.h>
+#include <emscripten/html5.h>
+#endif
+
+#ifdef __linux__
 #define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
 #include <GL/glut.h>
 #endif
 
-#ifdef _WIN32
-#pragma comment(linker,"/SUBSYSTEM:CONSOLE")
-#endif
-
-#ifdef _WIN32
+#ifdef _MSC_VER
 #define UNUSED_ARGS(...) (void)(true ? (void)0 : ((void)(__VA_ARGS__)))
 #else
 #define UNUSED_ARGS(...)
 #endif
 
-// Comment this out to totally disable NoesisGUI
-#define NOESIS_GUI
 
-#ifdef NOESIS_GUI
-
-#include <NsCore/Noesis.h>
-#include <NsGui/IntegrationAPI.h>
-#include <NsGui/IView.h>
-#include <NsGui/IRenderer.h>
-#include <NsGui/FrameworkElement.h>
 #include <NsRender/GLFactory.h>
-#include <NsApp/EmbeddedXamlProvider.h>
+#include <NsGui/IntegrationAPI.h>
+#include <NsGui/IRenderer.h>
+#include <NsGui/IView.h>
+#include <NsGui/Grid.h>
 
-#include "Reflections.xaml.bin.h"
 
-
-Noesis::Ptr<Noesis::IView> _view;
+static Noesis::IView* _view;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-void Noesis_Init()
+static void NoesisInit()
 {
-    // Noesis initialization. This must be the first step before using any NoesisGUI functionality
-    auto logHandler = [](const char*, uint32_t, uint32_t level, const char* channel,
-        const char* message)
+    auto logHandler = [](const char*, uint32_t, uint32_t level, const char*, const char* message)
     {
-        if (strcmp(channel, "") == 0)
-        {
-            // [TRACE] [DEBUG] [INFO] [WARNING] [ERROR]
-            const char* prefixes[] = { "T", "D", "I", "W", "E" };
-            const char* prefix = level < NS_COUNTOF(prefixes) ? prefixes[level] : " ";
-            fprintf(stderr, "[NOESIS/%s] %s\n", prefix, message);
-        }
+        // [TRACE] [DEBUG] [INFO] [WARNING] [ERROR]
+        const char* prefixes[] = { "T", "D", "I", "W", "E" };
+        printf("[NOESIS/%s] %s\n", prefixes[level], message);
     };
 
+    // Noesis initialization. This must be the first step before using any NoesisGUI functionality
     Noesis::GUI::Init(nullptr, logHandler, nullptr);
 
-    // Setup C array embedded XAMLs provider
-    NoesisApp::EmbeddedXaml content =
-    {
-        "Reflections.xaml", Reflections_xaml, sizeof(Reflections_xaml)
-    };
-
-    Noesis::GUI::SetXamlProvider(Noesis::MakePtr<NoesisApp::EmbeddedXamlProvider>(&content, 1));
+    // For simplicity purposes we are not using resource providers in this sample. ParseXaml() is
+    // enough if there is no extra XAML dependencies
+    Noesis::Ptr<Noesis::Grid> xaml(Noesis::GUI::ParseXaml<Noesis::Grid>(R"(
+        <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="#FF123F61"/>
+                    <GradientStop Offset="0.6" Color="#FF0E4B79"/>
+                    <GradientStop Offset="0.7" Color="#FF106097"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Viewbox>
+                <StackPanel Margin="50">
+                    <Button Content="Hello World!" Margin="0,30,0,0"/>
+                    <Rectangle Height="5" Margin="-10,20,-10,0">
+                        <Rectangle.Fill>
+                            <RadialGradientBrush>
+                                <GradientStop Offset="0" Color="#40000000"/>
+                                <GradientStop Offset="1" Color="#00000000"/>
+                            </RadialGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+    )"));
 
     // View creation to render and interact with the user interface
-    auto xaml = Noesis::GUI::LoadXaml<Noesis::FrameworkElement>("Reflections.xaml");
-    _view = Noesis::GUI::CreateView(xaml);
+    // We transfer the ownership to a global pointer instead of a Ptr<> because there is no way
+    // in GLUT to do shutdown and we don't want the Ptr<> to be released at global time
+    _view = Noesis::GUI::CreateView(xaml).GiveOwnership();
     _view->SetIsPPAAEnabled(true);
 
     // Renderer initialization with an OpenGL device
-    Noesis::Ptr<Noesis::RenderDevice> device = NoesisApp::GLFactory::CreateDevice();
-    _view->GetRenderer()->Init(device);
+    _view->GetRenderer()->Init(NoesisApp::GLFactory::CreateDevice());
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-void Noesis_Shutdown()
+static void DisplayFunc(void)
 {
-    // It is mandatory to release all noesis objects before shutting down
-    _view->GetRenderer()->Shutdown();
-    _view.Reset();
-    Noesis::GUI::Shutdown();
-}
-
-#endif
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-void DisplayFunc(void)
-{
-#ifdef NOESIS_GUI
     // Update view (layout, animations, ...)
     _view->Update(glutGet(GLUT_ELAPSED_TIME) / 1000.0);
 
     // Offscreen rendering phase populates textures needed by the on-screen rendering
     _view->GetRenderer()->UpdateRenderTree();
     _view->GetRenderer()->RenderOffscreen();
-#endif
 
     // If you are going to render here with your own engine you need to restore the GPU state
-    // because noesis changes it. The framebuffer and viewport are restored here
+    // because noesis changes it. In this case only framebuffer and viewport need to be restored
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glViewport(0, 0, glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
 
@@ -120,48 +116,29 @@ void DisplayFunc(void)
     glClearStencil(0);
     glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-#ifdef NOESIS_GUI
     // Rendering is done in the active framebuffer
     _view->GetRenderer()->Render();
-#endif
 
     glutSwapBuffers();
     glutPostRedisplay();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void ReshapeFunc(int width, int height)
+static void ReshapeFunc(int width, int height)
 {
-    UNUSED_ARGS(width, height);
-
-#ifdef NOESIS_GUI
-    if (_view != 0)
-    {
-        _view->SetSize(width, height);
-    }
-#endif
+    _view->SetSize(width, height);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void MouseMoveFunc(int x, int y)
+static void MouseMoveFunc(int x, int y)
 {
-    UNUSED_ARGS(x, y);
-
-#ifdef NOESIS_GUI
-    if (_view != 0)
-    {
-        _view->MouseMove(x, y);
-    }
-#endif
+    _view->MouseMove(x, y);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void MouseFunc(int button, int state, int x, int y)
+static void MouseFunc(int button, int state, int x, int y)
 {
-    UNUSED_ARGS(button, state, x , y);
-
-#ifdef NOESIS_GUI
-    if (_view != 0 && button == GLUT_LEFT_BUTTON)
+    if (button == GLUT_LEFT_BUTTON)
     {
         if (state == GLUT_DOWN)
         {
@@ -172,21 +149,24 @@ void MouseFunc(int button, int state, int x, int y)
             _view->MouseButtonUp(x, y, Noesis::MouseButton_Left);
         }
     }
-#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_STENCIL);
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_STENCIL);
     glutInitWindowSize(1000, 600);
-    glutCreateWindow("NoesisGUI - GLUT integration");
 
-#ifdef NOESIS_GUI
-    Noesis_Init();
-    atexit(Noesis_Shutdown);
+#ifdef __EMSCRIPTEN__
+    double width, height;
+    emscripten_get_element_css_size("#canvas", &width, &height);
+    emscripten_set_canvas_element_size("#canvas", (uint32_t)width, (uint32_t)height);
+    glutInitWindowSize((uint32_t)width, (uint32_t)height);
 #endif
+
+    glutCreateWindow("NoesisGUI - GLUT integration");
+    NoesisInit();
 
     glutDisplayFunc(&DisplayFunc);
     glutReshapeFunc(&ReshapeFunc);

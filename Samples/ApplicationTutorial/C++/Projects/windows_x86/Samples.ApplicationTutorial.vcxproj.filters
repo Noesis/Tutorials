@@ -2,42 +2,35 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{6624785c-5144-4697-b906-93431854f7fb}</UniqueIdentifier>
+      <UniqueIdentifier>{bbf068fe-f476-4637-95c4-e7068f034adf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
-      <UniqueIdentifier>{8cc6c932-88e5-4bdc-aa40-8448ffd0abaa}</UniqueIdentifier>
+      <UniqueIdentifier>{a31e7f71-24dc-404d-ac45-2b10d8738418}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{97932b63-d0d3-4b6a-af7a-4edbf684dda5}</UniqueIdentifier>
+      <UniqueIdentifier>{4c2819e0-24bd-4833-a520-b5320004ff60}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
-    <ClInclude Include="..\..\Resources\Win32\resource.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
-    <ResourceCompile Include="..\..\Resources\Win32\Resources.rc">
+    <ResourceCompile Include="resources.rc">
       <Filter>Resources</Filter>
     </ResourceCompile>
-    <None Include="..\..\Resources\Win32\rss.ico">
+    <None Include="Noesis.ico">
       <Filter>Resources</Filter>
     </None>
-    <CustomBuild Include="..\..\Src\App.xaml">
+    <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\MainWindow.xaml">
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Roboto-Regular.ttf">
+    <CustomBuild Include="..\..\Data\Roboto-Regular.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Roboto-Bold.ttf">
+    <CustomBuild Include="..\..\Data\Roboto-Bold.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

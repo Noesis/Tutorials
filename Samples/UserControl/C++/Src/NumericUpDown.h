@@ -39,7 +39,6 @@ public:
 
 protected:
     virtual void OnValueChanged(const Noesis::RoutedPropertyChangedEventArgs<int>& args);
-    bool OnPropertyChanged(const Noesis::DependencyPropertyChangedEventArgs& args) override;
 
 private:
     void InitializeComponent();
@@ -47,6 +46,8 @@ private:
 
     void UpButton_Click(BaseComponent* sender, const Noesis::RoutedEventArgs& e);
     void DownButton_Click(BaseComponent* sender, const Noesis::RoutedEventArgs& e);
+    static void OnValueChangedStatic(DependencyObject* d,
+        const Noesis::DependencyPropertyChangedEventArgs& args);
     static bool CoerceValue(const DependencyObject* object, const void* value, void* coercedValue);
 
     NS_DECLARE_REFLECTION(NumericUpDown, UserControl)
