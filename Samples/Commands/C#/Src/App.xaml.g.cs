@@ -12,10 +12,25 @@ namespace Commands
 #if __ANDROID__
     using NoesisApp;
 
-    [Android.App.Activity(Label = "Samples.Commands", MainLauncher = true, ConfigurationChanges =
+    partial class App : Application
+    {
+        protected override Display CreateDisplay()
+        {
+            return new AndroidDisplay();
+        }
+
+        protected override RenderContext CreateRenderContext()
+        {
+            return new RenderContextEGL();
+        }
+    }
+
+    [Android.App.Activity(Label = "Commands", MainLauncher = true, ConfigurationChanges =
         Android.Content.PM.ConfigChanges.ScreenSize |
         Android.Content.PM.ConfigChanges.Orientation |
-        Android.Content.PM.ConfigChanges.KeyboardHidden)]
+        Android.Content.PM.ConfigChanges.KeyboardHidden,
+        Theme = "@android:style/Theme.NoTitleBar.Fullscreen",
+        LaunchMode = Android.Content.PM.LaunchMode.SingleInstance)]
     public class MainActivity : AndroidActivity
     {
         protected override void Main()
@@ -25,11 +40,147 @@ namespace Commands
             app.Run();
         }
     }
-#elif __IOS__
-    // TODO
 
-#elif __UWP__
-    // TODO
+#elif __IOS__
+    using NoesisApp;
+    using UIKit;
+    using Foundation;
+    using CoreFoundation;
+    using ObjCRuntime;
+    using System.IO;
+
+    [Register ("AppDelegate")]
+    public partial class AppDelegate : UIApplicationDelegate
+    {
+        public override bool FinishedLaunching(UIApplication application, NSDictionary options)
+        {
+            UIApplication.SharedApplication.StatusBarHidden = true;
+            PerformSelector(new Selector("PerformInit:"), null, 0.2f);
+            return true;
+        }
+
+        [Export("PerformInit:")]
+        private void PerformInit(NSObject @object)
+        {
+            App app = new App();
+            app.Uri = "App.xaml";
+            app.Run();
+        }
+    }
+
+    partial class App : Application
+    {
+        protected override Display CreateDisplay()
+        {
+            return new UIKitDisplay();
+        }
+
+        protected override RenderContext CreateRenderContext()
+        {
+            return new RenderContextMTL();
+        }
+
+        static void Main (string[] args)
+        {
+            Directory.SetCurrentDirectory(NSBundle.MainBundle.BundlePath);
+            UIApplication.Main(args, null, "AppDelegate");
+        }
+    }
+
+#elif __MACOS__
+    using System;
+    using NoesisApp;
+
+    partial class App : Application
+    {
+        protected override Display CreateDisplay()
+        {
+            return new AppKitDisplay();
+        }
+
+        protected override RenderContext CreateRenderContext()
+        {
+            return new RenderContextMTL();
+        }
+
+        static void Main(string[] args)
+        {
+            App app = new App();
+            app.Uri = "App.xaml";
+            app.Run();
+        }
+    }
+
+#elif WINDOWS_UWP
+    using System;
+    using NoesisApp;
+    using Windows.ApplicationModel.Core;
+    using Windows.UI.Core;
+
+    partial class App : Application
+    {
+        protected override Display CreateDisplay()
+        {
+            return new WinRTDisplay();
+        }
+
+        protected override RenderContext CreateRenderContext()
+        {
+            return new RenderContextD3D11();
+        }
+
+        static void Main()
+        {
+            CoreApplication.Run(new FrameworkViewSource());
+        }
+
+        public class FrameworkViewSource : IFrameworkViewSource
+        {
+            public IFrameworkView CreateView()
+            {
+                return new FrameworkView();
+            }
+        }
+
+        public class FrameworkView : IFrameworkView
+        {
+            public void SetWindow(CoreWindow window) { }
+            public void Load(string entryPoint) { }
+            public void Uninitialize() { }
+            public void Initialize(CoreApplicationView applicationView) { }
+
+            public void Run()
+            {
+                App app = new App();
+                app.Uri = "App.xaml";
+                app.Run();
+            }
+        }
+    }
+
+#elif __LINUX__
+    using System;
+    using NoesisApp;
+
+    partial class App : Application
+    {
+        protected override Display CreateDisplay()
+        {
+            return new XDisplay();
+        }
+
+        protected override RenderContext CreateRenderContext()
+        {
+            return new RenderContextGLX();
+        }
+
+        static void Main(string[] args)
+        {
+            App app = new App();
+            app.Uri = "App.xaml";
+            app.Run();
+        }
+    }
 
 #else // Windows
     using System;
@@ -37,6 +188,16 @@ namespace Commands
 
     partial class App : Application
     {
+        protected override Display CreateDisplay()
+        {
+            return new Win32Display();
+        }
+
+        protected override RenderContext CreateRenderContext()
+        {
+            return new RenderContextD3D11();
+        }
+
         [STAThread]
         static void Main()
         {

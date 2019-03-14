@@ -13,27 +13,7 @@ namespace RssReader
     /// </summary>
     public partial class App : Application
     {
-#if NOESIS
-        protected override XamlProvider GetXamlProvider()
-        {
-            EmbeddedXaml[] xamls =
-            {
-                new EmbeddedXaml { filename = "App.xaml", resource = "App" },
-                new EmbeddedXaml { filename = "MainWindow.xaml", resource = "MainWindow" }
-            };
-            return new EmbeddedXamlProvider(xamls, Properties.Resources.ResourceManager);
-        }
-
-        protected override FontProvider GetFontProvider()
-        {
-            EmbeddedFont[] fonts =
-            {
-                new EmbeddedFont { folder = "", resource = "Roboto_Regular" },
-                new EmbeddedFont { folder = "", resource = "Roboto_Bold" }
-            };
-            return new EmbeddedFontProvider(fonts, Properties.Resources.ResourceManager);
-        }
-#else
+#if !NOESIS
         public App()
         {
             // NoesisTheme added to Application.Resources also so it runs exactly the same as inside Noesis
