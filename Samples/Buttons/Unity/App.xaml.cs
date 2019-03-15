@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿#if NOESIS
+using Noesis;
+using NoesisApp;
+#else
+using System.Windows;
+#endif
 
 namespace Buttons
 {

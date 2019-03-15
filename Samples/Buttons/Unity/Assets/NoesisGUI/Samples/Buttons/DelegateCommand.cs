@@ -1,8 +1,4 @@
-﻿#if UNITY_5_3_OR_NEWER
-#define NOESIS
-using Noesis;
-#endif
-using System;
+﻿using System;
 using System.Windows.Input;
 
 namespace Buttons
@@ -18,7 +14,7 @@ namespace Buttons
             
             _execute = execute;
         }
-        
+
         public DelegateCommand(Func<object, bool> canExecute, Action<object> execute)
         {
             if (canExecute == null)
@@ -29,18 +25,18 @@ namespace Buttons
             {
                 throw new ArgumentNullException("execute");
             }
-            
+
             _canExecute = canExecute;
             _execute = execute;
         }
-        
+
         public event EventHandler CanExecuteChanged;
-        
+
         public bool CanExecute(object parameter)
         {
             return _canExecute == null || _canExecute(parameter);
         }
-        
+
         public void Execute(object parameter)
         {
             _execute(parameter);

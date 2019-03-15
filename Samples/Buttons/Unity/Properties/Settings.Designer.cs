@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SamplesWPF.Properties
+namespace Buttons.Properties
 {
 
 
