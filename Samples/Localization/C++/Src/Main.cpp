@@ -21,15 +21,15 @@
 
 #include "App.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
-#include "ControlResources.xaml.bin.h"
-#include "LogoResources.xaml.bin.h"
+#include "Resources.xaml.bin.h"
 #include "Language-en.xaml.bin.h"
 #include "Language-fr.xaml.bin.h"
 #include "Language-jp.xaml.bin.h"
 #include "Flag-en.png.bin.h"
 #include "Flag-fr.png.bin.h"
 #include "Flag-jp.png.bin.h"
-#include "rounded-mgenplus-1c-regular.ttf.bin.h"
+#include "Oxygen-Regular.ttf.bin.h"
+#include "FontopoNIHONGO.otf.bin.h"
 
 
 using namespace Localization;
@@ -86,8 +86,7 @@ private:
         {
             { "App.xaml", App_xaml, sizeof(App_xaml) },
             { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
-            { "ControlResources.xaml", ControlResources_xaml, sizeof(ControlResources_xaml) },
-            { "LogoResources.xaml", LogoResources_xaml, sizeof(LogoResources_xaml) },
+            { "Resources.xaml", Resources_xaml, sizeof(Resources_xaml) },
             { "Language-en.xaml", Language_en_xaml, sizeof(Language_en_xaml) },
             { "Language-fr.xaml", Language_fr_xaml, sizeof(Language_fr_xaml) },
             { "Language-jp.xaml", Language_jp_xaml, sizeof(Language_jp_xaml) }
@@ -112,7 +111,8 @@ private:
     {
         EmbeddedFont fonts[] = 
         {
-            { "", rounded_mgenplus_1c_regular_ttf, sizeof(rounded_mgenplus_1c_regular_ttf) }
+            { "", FontopoNIHONGO_otf, sizeof(FontopoNIHONGO_otf) },
+            { "", Oxygen_Regular_ttf, sizeof(Oxygen_Regular_ttf) }
         };
 
         return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));

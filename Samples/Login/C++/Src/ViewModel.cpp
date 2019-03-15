@@ -5,7 +5,6 @@
 
 
 #include "ViewModel.h"
-#include "DelegateCommand.h"
 
 #include <NsCore/ReflectionImplement.h>
 #include <NsGui/PasswordBox.h>
@@ -13,20 +12,39 @@
 
 using namespace Login;
 using namespace Noesis;
+using namespace NoesisApp;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ViewModel::ViewModel()
 {
-    _loginCommand = *new DelegateCommand(MakeDelegate(this, &ViewModel::Login));
+    String::Copy(_accountName, sizeof(_accountName), "");
+    String::Copy(_message, sizeof(_message), "");
+    _loginCommand.SetExecuteFunc(MakeDelegate(this, &ViewModel::Login));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void ViewModel::SetAccountName(const char* value)
+{
+    if (!String::Equals(_accountName, value))
+    {
+        String::Copy(_accountName, sizeof(_accountName), value);
+        OnPropertyChanged("AccountName");
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+const char* ViewModel::GetAccountName() const
+{
+    return _accountName;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void ViewModel::SetMessage(const char* value)
 {
-    if (_message != value)
+    if (!String::Equals(_message, value))
     {
-        _message = value;
+        String::Copy(_message, sizeof(_message), value);
         OnPropertyChanged("Message");
     }
 }
@@ -34,38 +52,21 @@ void ViewModel::SetMessage(const char* value)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const char* ViewModel::GetMessage() const
 {
-    return _message.c_str();
+    return _message;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void ViewModel::SetNotifyMessage(bool value)
+const DelegateCommand* ViewModel::GetLoginCommand() const
 {
-    if (_notifyMessage != value)
-    {
-        _notifyMessage = value;
-        OnPropertyChanged("NotifyMessage");
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-bool ViewModel::GetNotifyMessage() const
-{
-    return _notifyMessage;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetLoginCommand() const
-{
-    return _loginCommand;
+    return &_loginCommand;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void ViewModel::Login(BaseComponent* param)
 {
-    PasswordBox* passwordBox = NsDynamicCast<PasswordBox*>(param);
-    if (CheckCredentials(passwordBox))
+    if (CheckCredentials(static_cast<PasswordBox*>(param)))
     {
-        OnNotifyMessage("LOGIN SUCCESSFUL");
+        SetMessage("LOGIN SUCCESSFUL");
     }
 }
 
@@ -74,15 +75,15 @@ bool ViewModel::CheckCredentials(PasswordBox* passwordBox)
 {
     const char* password = passwordBox->GetPassword();
 
-    if (_accountName.empty() && !String::IsNullOrEmpty(password))
+    if (String::IsNullOrEmpty(_accountName) && !String::IsNullOrEmpty(password))
     {
-        OnNotifyMessage("ACCOUNT NAME CANNOT BE EMPTY");
+        SetMessage("ACCOUNT NAME CANNOT BE EMPTY");
         return false;
     }
 
-    if (_accountName != "NoesisGUI" || !String::Equals(password, "noesis"))
+    if (!String::Equals(_accountName,"noesis") || !String::Equals(password, "12345"))
     {
-        OnNotifyMessage("ACCOUNT NAME OR PASSWORD IS INCORRECT");
+        SetMessage("ACCOUNT NAME OR PASSWORD IS INCORRECT");
         return false;
     }
 
@@ -90,20 +91,11 @@ bool ViewModel::CheckCredentials(PasswordBox* passwordBox)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void ViewModel::OnNotifyMessage(const char* message)
-{
-    SetMessage(message);
+NS_BEGIN_COLD_REGION
 
-    // Pulse the boolean to laucn the animation
-    SetNotifyMessage(true);
-    SetNotifyMessage(false);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_IMPLEMENT_REFLECTION(ViewModel)
 {
-    NsProp("AccountName", &ViewModel::_accountName);
+    NsProp("AccountName", &ViewModel::GetAccountName, &ViewModel::SetAccountName);
     NsProp("Message", &ViewModel::GetMessage, &ViewModel::SetMessage);
-    NsProp("NotifyMessage", &ViewModel::GetNotifyMessage, &ViewModel::SetNotifyMessage);
     NsProp("LoginCommand", &ViewModel::GetLoginCommand);
 }

@@ -6,135 +6,148 @@
     objects = {
 
 /* Begin PBXBuildFile section */
-        7CD63D743E6C41CD99B1FF51 = {isa = PBXBuildFile; fileRef = AB84FE5080D14DE3AF32E550 /* MainWindow.xaml */; };
-        0A41BE2DACC7479BA97BD6C2 = {isa = PBXBuildFile; fileRef = 04AC6DCF351F4896A629B69B /* App.xaml */; };
-        C5236E9951D04B899BB435E3 = {isa = PBXBuildFile; fileRef = 8208B88A763148A18ED3C7D3 /* Aero Matics Regular.ttf */; };
-        72700DD349044E9A8737BB51 = {isa = PBXBuildFile; fileRef = 1A5B72175B5B4F33A42C63AA /* NotifyPropertyChangedBase.cpp */; };
-        6087DE7854D742BBA2DFA6A6 = {isa = PBXBuildFile; fileRef = AAF855DC8AEF438B93942D1A /* DelegateCommand.cpp */; };
-        22CE24ECA7F64A97B7D9DE22 = {isa = PBXBuildFile; fileRef = 7D61B0F0D1594E0A8B319EAE /* Main.cpp */; };
-        7DE175C9AB1D48BBB329D5EA = {isa = PBXBuildFile; fileRef = A1CA4237D1B84E7794FBCAC8 /* Metal.framework */; };
-        45DF8F9775994979B92489CD = {isa = PBXBuildFile; fileRef = 3DDA3AF34F464B9A8B2DDE82 /* OpenGLES.framework */; };
-        79BB08C0EAD74BA69997FEB4 = {isa = PBXBuildFile; fileRef = 54CC545142C3470EB7CE7C2B /* QuartzCore.framework */; };
-        2FC63ADB353448C48FA26D54 = {isa = PBXBuildFile; fileRef = D8DBCAA364D54FFF82462F49 /* CoreFoundation.framework */; };
-        9394F2A4E0A64565A921B50D = {isa = PBXBuildFile; fileRef = 5AA27D82CBBC4BA784DF03C5 /* UIKit.framework */; };
-        1D17D57891C644ADA9F66234 = {isa = PBXBuildFile; fileRef = 94F0A2E4198A436498D55AE0 /* libNoesis.a */; };
-        F9F3E7E67F82410EA764AD62 = {isa = PBXBuildFile; fileRef = 40CFFBC80B824C258F032F90 /* libNoesisApp.a */; };
+        F68F6D154A3A43F3B0360D40 /* MainWindow.xaml in Sources */ = {isa = PBXBuildFile; fileRef = E0949513F7404198AA9489E7 /* MainWindow.xaml */; };
+        F5FDFC2F7EC1425C82201FF5 /* App.xaml in Sources */ = {isa = PBXBuildFile; fileRef = AFE23F7985FF4FA7B1B934A9 /* App.xaml */; };
+        DA209FD5C9814AF690D8AD78 /* Aero Matics Regular.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 4A718A1EB3C04AF98AA2FC83 /* Aero Matics Regular.ttf */; };
+        8635A269894641C9BBCBF609 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 954593BC3006449FB2EC04F7 /* Main.cpp */; };
+        37609BF2C7154BE6AC10A4AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5ABB12313724942894D2E84 /* LaunchScreen.storyboard */; };
+        F0FC54EC12E84AD48B32C264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8D554C93DB040479FD2CD99 /* Assets.xcassets */; };
+        B963FB9454A641C58EFB2944 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21466D5832E498DB788D78C /* CoreGraphics.framework */; };
+        F63BF7A7AFFA4CC0B1545911 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCE965954BA49898687DC76 /* UIKit.framework */; };
+        A836E033362B4D6B94A381CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9D11340EA44FFF8068E531 /* OpenGLES.framework */; };
+        89B90FC77BDB44CCAD7E04AE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8FE25770D44323BD1D10EA /* AudioToolbox.framework */; };
+        A01B017E57544BD28B9B593E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF13FC91CAD48D8BC8884CF /* CoreFoundation.framework */; };
+        630C1525D33144EA8F94D963 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB433BB0D2143A099C37B30 /* CoreText.framework */; };
+        6D6CBFC9500447F7B73CF038 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CBC3C02F8F4F3BA1A5C7C7 /* QuartzCore.framework */; };
+        DEDFB6022F5A4FB4A0625666 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6990207427D427CAE1AC9D9 /* AVFoundation.framework */; };
+        BBADEE3F3EBD48D5B2611A87 /* libNoesis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B4AA7D431034CCAAEDBF327 /* libNoesis.a */; };
+        51244A70ECAC4854BB36B05B /* libNoesisApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F60D38C97B441BAAA9CD7D /* libNoesisApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-        FC334DDF29314851BD7D6C7D /* Samples.Commands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.Commands.app; sourceTree = BUILT_PRODUCTS_DIR; };
-        A1CA4237D1B84E7794FBCAC8 /* Metal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "Metal.framework"; path = "System/Library/Frameworks/Metal.framework"; sourceTree = SDKROOT; };
-        3DDA3AF34F464B9A8B2DDE82 /* OpenGLES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "OpenGLES.framework"; path = "System/Library/Frameworks/OpenGLES.framework"; sourceTree = SDKROOT; };
-        54CC545142C3470EB7CE7C2B /* QuartzCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; };
-        D8DBCAA364D54FFF82462F49 /* CoreFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "CoreFoundation.framework"; path = "System/Library/Frameworks/CoreFoundation.framework"; sourceTree = SDKROOT; };
-        5AA27D82CBBC4BA784DF03C5 /* UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; };
-        94F0A2E4198A436498D55AE0 /* libNoesis.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = "libNoesis.a"; path = "../../../../../../Lib/ios/libNoesis.a"; sourceTree = SOURCE_ROOT; };
-        40CFFBC80B824C258F032F90 /* libNoesisApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = "libNoesisApp.a"; path = "../../../../../../Lib/ios/libNoesisApp.a"; sourceTree = SOURCE_ROOT; };
-        9F439CF86BF043A69AFA396E /* Common.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Common.xcconfig"; path = "../../../../../../Config/Common.xcconfig"; sourceTree = SOURCE_ROOT; };
-        806B0DBCFEA94184956A1910 /* Release.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Release.xcconfig"; path = "../../../../../../Config/Release/Release.xcconfig"; sourceTree = SOURCE_ROOT; };
-        6A2BC578AA934679B863FB2A /* Profile.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Profile.xcconfig"; path = "../../../../../../Config/Profile/Profile.xcconfig"; sourceTree = SOURCE_ROOT; };
-        6524DDD9326E404EA65208CB /* Debug.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; name = "Debug.xcconfig"; path = "../../../../../../Config/Debug/Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
-        1A5B72175B5B4F33A42C63AA /* NotifyPropertyChangedBase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "NotifyPropertyChangedBase.cpp"; path = "../../Src/NotifyPropertyChangedBase.cpp"; sourceTree = SOURCE_ROOT; };
-        A960DA1A034342FBAC5F48D7 /* NotifyPropertyChangedBase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "NotifyPropertyChangedBase.h"; path = "../../Src/NotifyPropertyChangedBase.h"; sourceTree = SOURCE_ROOT; };
-        AAF855DC8AEF438B93942D1A /* DelegateCommand.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "DelegateCommand.cpp"; path = "../../Src/DelegateCommand.cpp"; sourceTree = SOURCE_ROOT; };
-        3B72BF9FB8484703978EDAFB /* DelegateCommand.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; name = "DelegateCommand.h"; path = "../../Src/DelegateCommand.h"; sourceTree = SOURCE_ROOT; };
-        7D61B0F0D1594E0A8B319EAE /* Main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "../../Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
-        AB84FE5080D14DE3AF32E550 /* MainWindow.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MainWindow.xaml"; path = "../../Src/MainWindow.xaml"; sourceTree = SOURCE_ROOT; };
-        04AC6DCF351F4896A629B69B /* App.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "App.xaml"; path = "../../Src/App.xaml"; sourceTree = SOURCE_ROOT; };
-        8208B88A763148A18ED3C7D3 /* Aero Matics Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Aero Matics Regular.ttf"; path = "../../Src/Aero Matics Regular.ttf"; sourceTree = SOURCE_ROOT; };
+        A02D0E5696FC4F878ADDBF8A /* Samples.Commands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.Commands.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        E21466D5832E498DB788D78C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreGraphics.framework"; path = "System/Library/Frameworks/CoreGraphics.framework"; sourceTree = SDKROOT; };
+        8CCE965954BA49898687DC76 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; };
+        3A9D11340EA44FFF8068E531 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGLES.framework"; path = "System/Library/Frameworks/OpenGLES.framework"; sourceTree = SDKROOT; };
+        DF8FE25770D44323BD1D10EA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; };
+        5DF13FC91CAD48D8BC8884CF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreFoundation.framework"; path = "System/Library/Frameworks/CoreFoundation.framework"; sourceTree = SDKROOT; };
+        DFB433BB0D2143A099C37B30 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreText.framework"; path = "System/Library/Frameworks/CoreText.framework"; sourceTree = SDKROOT; };
+        25CBC3C02F8F4F3BA1A5C7C7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; };
+        E6990207427D427CAE1AC9D9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; };
+        6B4AA7D431034CCAAEDBF327 /* libNoesis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libNoesis.a"; path = "../../../../../../Lib/ios/libNoesis.a"; sourceTree = SOURCE_ROOT; };
+        A3F60D38C97B441BAAA9CD7D /* libNoesisApp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libNoesisApp.a"; path = "../../../../../../Lib/ios/libNoesisApp.a"; sourceTree = SOURCE_ROOT; };
+        4EC5923DE72F4F8996AA89BD /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Common.xcconfig"; path = "../../../../../../Config/Common.xcconfig"; sourceTree = SOURCE_ROOT; };
+        37135329F2514B2CB22FEBDF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release.xcconfig"; path = "../../../../../../Config/Release/Release.xcconfig"; sourceTree = SOURCE_ROOT; };
+        88621D775F534D798ED76420 /* Profile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile.xcconfig"; path = "../../../../../../Config/Profile/Profile.xcconfig"; sourceTree = SOURCE_ROOT; };
+        110E5E99BD6C439D98D9A2AA /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug.xcconfig"; path = "../../../../../../Config/Debug/Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
+        954593BC3006449FB2EC04F7 /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "../../Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
+        E0949513F7404198AA9489E7 /* MainWindow.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MainWindow.xaml"; path = "../../Data/MainWindow.xaml"; sourceTree = SOURCE_ROOT; };
+        AFE23F7985FF4FA7B1B934A9 /* App.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "App.xaml"; path = "../../Data/App.xaml"; sourceTree = SOURCE_ROOT; };
+        4A718A1EB3C04AF98AA2FC83 /* Aero Matics Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Aero Matics Regular.ttf"; path = "../../Data/Aero Matics Regular.ttf"; sourceTree = SOURCE_ROOT; };
+        8D376455D2974A04A4B79B6A /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "info.plist"; path = "info.plist"; sourceTree = SOURCE_ROOT; };
+        F5ABB12313724942894D2E84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "LaunchScreen.storyboard"; path = "LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
+        A8D554C93DB040479FD2CD99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-        13D303B1C3164D3784413D94 = {
+        4D44722354CC429DB5F2B50D = {
             isa = PBXGroup;
             children = (
-                1A5B72175B5B4F33A42C63AA,
-                A960DA1A034342FBAC5F48D7,
-                AAF855DC8AEF438B93942D1A,
-                3B72BF9FB8484703978EDAFB,
-                7D61B0F0D1594E0A8B319EAE,
+                954593BC3006449FB2EC04F7,
             );
             name = Src;
             sourceTree = "<group>";
         };
-        F164E8E30D594BBC9A42DCA9 = {
+        F977E66293C3474B85EBB67A = {
             isa = PBXGroup;
             children = (
-                AB84FE5080D14DE3AF32E550,
-                04AC6DCF351F4896A629B69B,
-                8208B88A763148A18ED3C7D3,
+                E0949513F7404198AA9489E7,
+                AFE23F7985FF4FA7B1B934A9,
+                4A718A1EB3C04AF98AA2FC83,
             );
             name = Data;
             sourceTree = "<group>";
         };
-        36CF9A84877748C6A8A179B3 = {
+        9A4F87B1B1F84E03B63E59CD = {
             isa = PBXGroup;
             children = (
-                806B0DBCFEA94184956A1910,
-                6A2BC578AA934679B863FB2A,
-                9F439CF86BF043A69AFA396E,
-                6524DDD9326E404EA65208CB,
+                8D376455D2974A04A4B79B6A,
+                F5ABB12313724942894D2E84,
+                A8D554C93DB040479FD2CD99,
+            );
+            name = Resources;
+            sourceTree = "<group>";
+        };
+        6D9927E4C7884C49BC1B33AE = {
+            isa = PBXGroup;
+            children = (
+                37135329F2514B2CB22FEBDF,
+                88621D775F534D798ED76420,
+                4EC5923DE72F4F8996AA89BD,
+                110E5E99BD6C439D98D9A2AA,
             );
             name = Config;
             sourceTree = "<group>";
         };
-        822695360BD74576B8215A98 = {
+        FB5903C3E9B74350ADDAC391 = {
             isa = PBXGroup;
             children = (
-                FC334DDF29314851BD7D6C7D,
+                A02D0E5696FC4F878ADDBF8A,
             );
             name = Products;
             sourceTree = "<group>";
         };
-        318FCC06BD184ED8A6E89D4C = {
+        2F0952324E4B4D7485AD54D3 = {
             isa = PBXGroup;
             children = (
-                A1CA4237D1B84E7794FBCAC8,
-                3DDA3AF34F464B9A8B2DDE82,
-                54CC545142C3470EB7CE7C2B,
-                D8DBCAA364D54FFF82462F49,
-                5AA27D82CBBC4BA784DF03C5,
-                94F0A2E4198A436498D55AE0,
-                40CFFBC80B824C258F032F90,
+                E21466D5832E498DB788D78C,
+                8CCE965954BA49898687DC76,
+                3A9D11340EA44FFF8068E531,
+                DF8FE25770D44323BD1D10EA,
+                5DF13FC91CAD48D8BC8884CF,
+                DFB433BB0D2143A099C37B30,
+                25CBC3C02F8F4F3BA1A5C7C7,
+                E6990207427D427CAE1AC9D9,
+                6B4AA7D431034CCAAEDBF327,
+                A3F60D38C97B441BAAA9CD7D,
             );
             name = Dependencies;
             sourceTree = "<group>";
         };
-        5955FAA1E6A74F8F912C8EC5 = {
+        E134DFDB351546B38AD30F21 = {
             isa = PBXGroup;
             children = (
-                13D303B1C3164D3784413D94,
-                F164E8E30D594BBC9A42DCA9,
-                36CF9A84877748C6A8A179B3,
-                822695360BD74576B8215A98,
-                318FCC06BD184ED8A6E89D4C,
-                607F9D703DF34FA79BBE5A91,
+                4D44722354CC429DB5F2B50D,
+                F977E66293C3474B85EBB67A,
+                9A4F87B1B1F84E03B63E59CD,
+                6D9927E4C7884C49BC1B33AE,
+                FB5903C3E9B74350ADDAC391,
+                2F0952324E4B4D7485AD54D3,
+                E99CC21BF3574566B852ECC0,
             );
             sourceTree = "<group>";
         };
 /* End PBXGroup section */
 
 /* Begin PBXSourcesBuildPhase section */
-        E86B54578FD34742A4B92A87 = {
+        6B3387A6FEF744DCA37E2EE0 = {
             isa = PBXSourcesBuildPhase;
             buildActionMask = 2147483647;
             files = (
-                7CD63D743E6C41CD99B1FF51,
-                0A41BE2DACC7479BA97BD6C2,
-                C5236E9951D04B899BB435E3,
-                72700DD349044E9A8737BB51,
-                6087DE7854D742BBA2DFA6A6,
-                22CE24ECA7F64A97B7D9DE22,
+                F68F6D154A3A43F3B0360D40,
+                F5FDFC2F7EC1425C82201FF5,
+                DA209FD5C9814AF690D8AD78,
+                8635A269894641C9BBCBF609,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXBuildRule section */
-        DAB00726B9A44E0C8B8EC9D4 = {
+        8F1B03FA1A154134B15DD989 = {
             isa = PBXBuildRule;
             compilerSpec = com.apple.compilers.proxy.script;
-            filePatterns = "*.xaml *.xaml *.ttf";
+            filePatterns = "*.xaml *.ttf";
             fileType = pattern.proxy;
             isEditable = 0;
             outputFiles = (
@@ -145,82 +158,99 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXFrameworksBuildPhase section */
-        E64ADAD5DDC24359AE038D5C = {
+        FA93FF50D19442B1B792BECC = {
             isa = PBXFrameworksBuildPhase;
             buildActionMask = 2147483647;
             files = (
-                7DE175C9AB1D48BBB329D5EA,
-                45DF8F9775994979B92489CD,
-                79BB08C0EAD74BA69997FEB4,
-                2FC63ADB353448C48FA26D54,
-                9394F2A4E0A64565A921B50D,
-                1D17D57891C644ADA9F66234,
-                F9F3E7E67F82410EA764AD62,
+                B963FB9454A641C58EFB2944,
+                F63BF7A7AFFA4CC0B1545911,
+                A836E033362B4D6B94A381CC,
+                89B90FC77BDB44CCAD7E04AE,
+                A01B017E57544BD28B9B593E,
+                630C1525D33144EA8F94D963,
+                6D6CBFC9500447F7B73CF038,
+                DEDFB6022F5A4FB4A0625666,
+                BBADEE3F3EBD48D5B2611A87,
+                51244A70ECAC4854BB36B05B,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXResourcesBuildPhase section */
-        AB6FAC65F0564C2E8C0483DB = {
+        A13CA838A8814BBB8994D6A9 = {
             isa = PBXResourcesBuildPhase;
             buildActionMask = 2147483647;
             files = (
+                37609BF2C7154BE6AC10A4AD,
+                F0FC54EC12E84AD48B32C264,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+        349A92D33BF2461782F3BD25 = {
+            isa = PBXCopyFilesBuildPhase;
+            buildActionMask = 2147483647;
+            dstPath = "";
+            dstSubfolderSpec = 10;
+            files = (
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-        B3355CF3552940D4A12405E7 = {
+        840873AAEA77327FADF85D8C = {
             isa = PBXNativeTarget;
-            buildConfigurationList = AD070DA16477410FA7E84A26;
+            buildConfigurationList = 5074B43373AE4175BC4A5A2D;
             buildPhases = (
-                E86B54578FD34742A4B92A87,
-                E64ADAD5DDC24359AE038D5C,
-                AB6FAC65F0564C2E8C0483DB,
+                6B3387A6FEF744DCA37E2EE0,
+                FA93FF50D19442B1B792BECC,
+                A13CA838A8814BBB8994D6A9,
+                349A92D33BF2461782F3BD25,
             );
             buildRules = (
-                DAB00726B9A44E0C8B8EC9D4,
+                8F1B03FA1A154134B15DD989,
             );
             dependencies = ();
             name = Samples.Commands;
             productName = Samples.Commands;
-            productReference = FC334DDF29314851BD7D6C7D;
+            productReference = A02D0E5696FC4F878ADDBF8A;
             productType = "com.apple.product-type.application";
         };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-        502DB3EEE310482F8F338574 = {
+        5868E4CA869F4F788A80010D = {
             isa = PBXProject;
             attributes = {};
-            buildConfigurationList = 12660603EEFF42B2BD90B51C;
+            buildConfigurationList = 1DC1CC0FE8F8459693F1B63E;
             compatibilityVersion = "Xcode 3.2";
             developmentRegion = English;
             hasScannedForEncodings = 0;
             knownRegions = (en,);
-            mainGroup = 5955FAA1E6A74F8F912C8EC5;
-            productRefGroup = 822695360BD74576B8215A98;
+            mainGroup = E134DFDB351546B38AD30F21;
+            productRefGroup = FB5903C3E9B74350ADDAC391;
             projectDirPath = "";
             projectRoot = "";
-            targets = (B3355CF3552940D4A12405E7,);
+            targets = (840873AAEA77327FADF85D8C,);
         };
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
-        77D7E9CF65D94708B761E1FE = {
+        9F399B04170E47E8916996DE = {
             isa = XCBuildConfiguration;
-            baseConfigurationReference = 806B0DBCFEA94184956A1910;
+            baseConfigurationReference = 37135329F2514B2CB22FEBDF;
             buildSettings = {
                 SDKROOT = iphoneos;
+                IPHONEOS_DEPLOYMENT_TARGET = 7.0;
                 ARCHS = "$(ARCHS_STANDARD)";
-                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../App/ApplicationLauncher/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../Math/Utils/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../App/DisplayLauncher/Include,../../../../../../Include,../../../../Math/VectorMath/Include,../../../../Gui/Providers/Include,../../../../Samples/Commands/Include,../../../../Gui/Core/Include,../../../../Core/Kernel/Include,../../../../Gui/CachedFontProvider/Include,../../../../Gui/DependencySystem/Include);
-                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Release","NS_VERSION=2.1.0rc3","NS_APP_FRAMEWORK","NS_STATIC_LIBRARY","NS_RELEASE_CFG","NS_ASSERTS_ENABLED=0","NS_INSTRUMENTED_ENABLED=0","NS_MINIMUM_LOG_LEVEL=2","HAVE_GLES2_GL2_H","$(inherited)");
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../App/ApplicationLauncher/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../Math/Utils/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../App/DisplayLauncher/Include,../../../../Gui/CachedFontProvider/Include,../../../../Math/VectorMath/Include,../../../../Gui/Providers/Include,../../../../Samples/Commands/Include,../../../../Gui/Core/Include,../../../../Core/Kernel/Include,../../../../App/Providers/Include,../../../../../../Include,../../../../Gui/DependencySystem/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Release","NS_VERSION=2.2.0","NS_APP_FRAMEWORK","NS_STATIC_LIBRARY","HAVE_GLES2_GL2_H","$(inherited)");
                 LIBRARY_SEARCH_PATHS = (../../../../../../Lib/ios);
                 OTHER_LDFLAGS = ();
-                GCC_PRECOMPILE_PREFIX_HEADER = YES;
-                GCC_PREFIX_HEADER = pch.h;
                 STRIP_STYLE = all;
                 CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/ios";
                 CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
@@ -228,32 +258,34 @@
             };
             name = Release;
         };
-        251147F411504DDF8766E530 = {
+        9C3DA89C0E9D47CEAA465695 = {
             isa = XCBuildConfiguration;
             buildSettings = {
-                PRODUCT_BUNDLE_IDENTIFIER = "Noesis.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.Samples-Sample";
                 PRODUCT_NAME = "$(TARGET_NAME)";
-                CURRENT_PROJECT_VERSION = 2.1.0;
+                CURRENT_PROJECT_VERSION = 2.2.0;
                 DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
-                INFOPLIST_FILE = "$(PROJECT_DIR)/../../Resources/iOS/info.plist";
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                CODE_SIGN_STYLE = Automatic;
+                CODE_SIGN_IDENTITY = "iPhone Developer";
+                INFOPLIST_FILE = "$(PROJECT_DIR)/info.plist";
                 TARGETED_DEVICE_FAMILY = "1,2";
             };
             name = Release;
         };
-        88B078766F394739A80372C1 = {
+        17B04D577B1A4B12BF4A05D6 = {
             isa = XCBuildConfiguration;
-            baseConfigurationReference = 6A2BC578AA934679B863FB2A;
+            baseConfigurationReference = 88621D775F534D798ED76420;
             buildSettings = {
                 SDKROOT = iphoneos;
+                IPHONEOS_DEPLOYMENT_TARGET = 7.0;
                 ARCHS = "$(ARCHS_STANDARD)";
-                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../App/ApplicationLauncher/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../Math/Utils/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../App/DisplayLauncher/Include,../../../../../../Include,../../../../Math/VectorMath/Include,../../../../Gui/Providers/Include,../../../../Samples/Commands/Include,../../../../Gui/Core/Include,../../../../Core/Kernel/Include,../../../../Gui/CachedFontProvider/Include,../../../../Gui/DependencySystem/Include);
-                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Profile","NS_VERSION=2.1.0rc3","NS_APP_FRAMEWORK","NS_STATIC_LIBRARY","NS_PROFILE_CFG","NS_ASSERTS_ENABLED=0","NS_INSTRUMENTED_ENABLED=1","NS_MINIMUM_LOG_LEVEL=2","HAVE_GLES2_GL2_H","$(inherited)");
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../App/ApplicationLauncher/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../Math/Utils/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../App/DisplayLauncher/Include,../../../../Gui/CachedFontProvider/Include,../../../../Math/VectorMath/Include,../../../../Gui/Providers/Include,../../../../Samples/Commands/Include,../../../../Gui/Core/Include,../../../../Core/Kernel/Include,../../../../App/Providers/Include,../../../../../../Include,../../../../Gui/DependencySystem/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Profile","NS_VERSION=2.2.0","NS_APP_FRAMEWORK","NS_STATIC_LIBRARY","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=2","HAVE_GLES2_GL2_H","$(inherited)");
                 LIBRARY_SEARCH_PATHS = (../../../../../../Lib/ios);
                 OTHER_LDFLAGS = ();
-                GCC_PRECOMPILE_PREFIX_HEADER = YES;
-                GCC_PREFIX_HEADER = pch.h;
                 STRIP_STYLE = all;
                 CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/ios";
                 CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
@@ -261,32 +293,34 @@
             };
             name = Profile;
         };
-        2ECF4C883CB84AA3A16A774E = {
+        7D2BDB8CFD814D688AE05C8D = {
             isa = XCBuildConfiguration;
             buildSettings = {
-                PRODUCT_BUNDLE_IDENTIFIER = "Noesis.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.Samples-Sample";
                 PRODUCT_NAME = "$(TARGET_NAME)";
-                CURRENT_PROJECT_VERSION = 2.1.0;
+                CURRENT_PROJECT_VERSION = 2.2.0;
                 DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
-                INFOPLIST_FILE = "$(PROJECT_DIR)/../../Resources/iOS/info.plist";
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                CODE_SIGN_STYLE = Automatic;
+                CODE_SIGN_IDENTITY = "iPhone Developer";
+                INFOPLIST_FILE = "$(PROJECT_DIR)/info.plist";
                 TARGETED_DEVICE_FAMILY = "1,2";
             };
             name = Profile;
         };
-        A3901151E71143429A36D83E = {
+        99A0FE10062E4E9D9EA8E74F = {
             isa = XCBuildConfiguration;
-            baseConfigurationReference = 6524DDD9326E404EA65208CB;
+            baseConfigurationReference = 110E5E99BD6C439D98D9A2AA;
             buildSettings = {
                 SDKROOT = iphoneos;
+                IPHONEOS_DEPLOYMENT_TARGET = 7.0;
                 ARCHS = "$(ARCHS_STANDARD)";
-                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../App/ApplicationLauncher/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../Math/Utils/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../App/DisplayLauncher/Include,../../../../../../Include,../../../../Math/VectorMath/Include,../../../../Gui/Providers/Include,../../../../Samples/Commands/Include,../../../../Gui/Core/Include,../../../../Core/Kernel/Include,../../../../Gui/CachedFontProvider/Include,../../../../Gui/DependencySystem/Include);
-                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Debug","NS_VERSION=2.1.0rc3","NS_APP_FRAMEWORK","NS_STATIC_LIBRARY","NS_DEBUG_CFG","NS_ASSERTS_ENABLED=1","NS_INSTRUMENTED_ENABLED=1","NS_MINIMUM_LOG_LEVEL=1","HAVE_GLES2_GL2_H","$(inherited)");
+                HEADER_SEARCH_PATHS = (../../../../Core/NSTL/Include,../../../../App/ApplicationLauncher/Include,../../../../../../3rdParty/EASTL/local/include,../../../../Drawing/Types/Include,../../../../Math/Utils/Include,../../../../App/Display/Include,../../../../App/Launcher/Include,../../../../Core/Nullable/Include,../../../../App/DisplayLauncher/Include,../../../../Gui/CachedFontProvider/Include,../../../../Math/VectorMath/Include,../../../../Gui/Providers/Include,../../../../Samples/Commands/Include,../../../../Gui/Core/Include,../../../../Core/Kernel/Include,../../../../App/Providers/Include,../../../../../../Include,../../../../Gui/DependencySystem/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Debug","NS_VERSION=2.2.0","NS_APP_FRAMEWORK","NS_STATIC_LIBRARY","NS_DEBUG","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=1","HAVE_GLES2_GL2_H","$(inherited)");
                 LIBRARY_SEARCH_PATHS = (../../../../../../Lib/ios);
                 OTHER_LDFLAGS = ();
-                GCC_PRECOMPILE_PREFIX_HEADER = YES;
-                GCC_PREFIX_HEADER = pch.h;
                 STRIP_STYLE = all;
                 CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/ios";
                 CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
@@ -294,16 +328,19 @@
             };
             name = Debug;
         };
-        C237AB324118443BBB1C3CCD = {
+        DE03EAAF32F74D23BEB04323 = {
             isa = XCBuildConfiguration;
             buildSettings = {
-                PRODUCT_BUNDLE_IDENTIFIER = "Noesis.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.Samples-Sample";
                 PRODUCT_NAME = "$(TARGET_NAME)";
-                CURRENT_PROJECT_VERSION = 2.1.0;
+                CURRENT_PROJECT_VERSION = 2.2.0;
                 DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
-                INFOPLIST_FILE = "$(PROJECT_DIR)/../../Resources/iOS/info.plist";
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                CODE_SIGN_STYLE = Automatic;
+                CODE_SIGN_IDENTITY = "iPhone Developer";
+                INFOPLIST_FILE = "$(PROJECT_DIR)/info.plist";
                 TARGETED_DEVICE_FAMILY = "1,2";
             };
             name = Debug;
@@ -311,20 +348,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-        12660603EEFF42B2BD90B51C = {
+        1DC1CC0FE8F8459693F1B63E = {
             isa = XCConfigurationList;
-            buildConfigurations = (77D7E9CF65D94708B761E1FE,88B078766F394739A80372C1,A3901151E71143429A36D83E);
+            buildConfigurations = (9F399B04170E47E8916996DE,17B04D577B1A4B12BF4A05D6,99A0FE10062E4E9D9EA8E74F);
             defaultConfigurationIsVisible = 0;
             defaultConfigurationName = Release;
         };
 
-        AD070DA16477410FA7E84A26 = {
+        5074B43373AE4175BC4A5A2D = {
             isa = XCConfigurationList;
-            buildConfigurations = (251147F411504DDF8766E530,2ECF4C883CB84AA3A16A774E,C237AB324118443BBB1C3CCD);
+            buildConfigurations = (9C3DA89C0E9D47CEAA465695,7D2BDB8CFD814D688AE05C8D,DE03EAAF32F74D23BEB04323);
             defaultConfigurationIsVisible = 0;
             defaultConfigurationName = Release;
         };
 /* End XCConfigurationList section */
     };
-    rootObject = 502DB3EEE310482F8F338574;
+    rootObject = 5868E4CA869F4F788A80010D;
 }

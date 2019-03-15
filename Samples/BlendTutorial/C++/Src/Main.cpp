@@ -7,13 +7,11 @@
 #include <NsCore/Noesis.h>
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/RegisterComponent.h>
-#include <NsCore/TypeId.h>
 #include <NsCore/Nullable.h>
 #include <NsGui/UIElementData.h>
-#include <NsGui/PropertyMetadata.h>
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/UserControl.h>
-#include <NsGui/StackPanel.h>
+#include <NsGui/UIElementCollection.h>
 #include <NsGui/Button.h>
 #include <NsGui/RadioButton.h>
 #include <NsGui/Rectangle.h>
@@ -23,6 +21,7 @@
 #include <NsGui/Brushes.h>
 #include <NsGui/SolidColorBrush.h>
 #include <NsGui/Binding.h>
+#include <NsGui/BindingOperations.h>
 #include <NsGui/VisualTreeHelper.h>
 #include <NsApp/EmbeddedXamlProvider.h>
 #include <NsApp/EmbeddedFontProvider.h>
@@ -61,14 +60,9 @@ class App final: public Application
 class ColorSelector final: public UserControl
 {
 public:
-    ColorSelector(): _isUpdatingColor(false), _isUpdatingSliders(false), _r(0), _g(0), _b(0), _a(0)
+    ColorSelector()
     {
         InitializeComponent();
-
-        _r = FindName<Slider>("R"); NS_ASSERT(_r);
-        _g = FindName<Slider>("G"); NS_ASSERT(_g);
-        _b = FindName<Slider>("B"); NS_ASSERT(_b);
-        _a = FindName<Slider>("A"); NS_ASSERT(_a);
     }
 
     SolidColorBrush* GetColor() const
@@ -88,6 +82,11 @@ private:
     void InitializeComponent()
     {
         Noesis::GUI::LoadComponent(this, "ColorSelector.xaml");
+
+        _r = FindName<Slider>("R"); NS_ASSERT(_r);
+        _g = FindName<Slider>("G"); NS_ASSERT(_g);
+        _b = FindName<Slider>("B"); NS_ASSERT(_b);
+        _a = FindName<Slider>("A"); NS_ASSERT(_a);
     }
 
     bool ConnectEvent(BaseComponent* source, const char* event, const char* handler) override
@@ -98,20 +97,19 @@ private:
 
     static void OnColorChanged(DependencyObject* d, const DependencyPropertyChangedEventArgs& /*e*/)
     {
-        ColorSelector* colorSelector = NsDynamicCast<ColorSelector*>(d);
-        if (colorSelector != 0 && !colorSelector->_isUpdatingColor)
+        ColorSelector* colorSelector = DynamicCast<ColorSelector*>(d);
+        if (colorSelector != nullptr && !colorSelector->_isUpdatingColor)
         {
             colorSelector->UpdateSliders(colorSelector->GetColor()->GetColor());
         }
     }
 
-    void Slider_ValueChanged(BaseComponent* /*sender*/,
-        const RoutedPropertyChangedEventArgs<float>& /*e*/)
+    void Slider_ValueChanged(BaseComponent* /*sender*/, const RoutedPropertyChangedEventArgs<float>& /*e*/)
     {
         if (!_isUpdatingSliders)
         {
             SolidColorBrush* color = GetColor();
-            if (color == 0 || color->IsFrozen())
+            if (color == nullptr || color->IsFrozen())
             {
                 _isUpdatingColor = true;
                 SetColor(MakePtr<SolidColorBrush>());
@@ -140,18 +138,19 @@ private:
     }
 
 private:
-    bool _isUpdatingColor;
-    bool _isUpdatingSliders;
-    Slider* _r;
-    Slider* _g;
-    Slider* _b;
-    Slider* _a;
+    bool _isUpdatingColor = false;
+    bool _isUpdatingSliders = false;
+
+    Slider* _r = nullptr;
+    Slider* _g = nullptr;
+    Slider* _b = nullptr;
+    Slider* _a = nullptr;
 
     NS_IMPLEMENT_INLINE_REFLECTION(ColorSelector, UserControl)
     {
         NsMeta<TypeId>("BlendTutorial.ColorSelector");
 
-        Ptr<UIElementData> data = NsMeta<UIElementData>(TypeOf<SelfClass>());
+        UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
         data->RegisterProperty<Ptr<SolidColorBrush>>(ColorProperty, "Color",
             PropertyMetadata::Create(Brushes::Transparent()->Clone(),
                 &ColorSelector::OnColorChanged));
@@ -168,14 +167,6 @@ public:
     {
         InitializeComponent();
 
-        _containerCanvas = FindName<Canvas>("ContainerCanvas"); NS_ASSERT(_containerCanvas != 0);
-        _positionLeft = FindName<Slider>("PositionLeft"); NS_ASSERT(_positionLeft != 0);
-        _positionTop = FindName<Slider>("PositionTop"); NS_ASSERT(_positionTop != 0);
-        _sizeWidth = FindName<Slider>("SizeWidth"); NS_ASSERT(_sizeWidth != 0);
-        _sizeHeight = FindName<Slider>("SizeHeight"); NS_ASSERT(_sizeHeight != 0);
-        _fillSelected = FindName<RadioButton>("FillSelected"); NS_ASSERT(_fillSelected != 0);
-        _colorSelect = FindName<ColorSelector>("ColorSelect"); NS_ASSERT(_colorSelect != 0);
-
         _selectionBorder = *new Border();
         _selectionBorder->SetBorderBrush(Brushes::Black()->Clone());
         _selectionBorder->GetBorderBrush()->SetOpacity(0.5f);
@@ -189,6 +180,15 @@ private:
     void InitializeComponent()
     {
         Noesis::GUI::LoadComponent(this, "MainWindow.xaml");
+
+        _positionLeft = FindName<Slider>("PositionLeft"); NS_ASSERT(_positionLeft != 0);
+        _positionTop = FindName<Slider>("PositionTop"); NS_ASSERT(_positionTop != 0);
+        _sizeWidth = FindName<Slider>("SizeWidth"); NS_ASSERT(_sizeWidth != 0);
+        _sizeHeight = FindName<Slider>("SizeHeight"); NS_ASSERT(_sizeHeight != 0);
+        _colorSelect = FindName<ColorSelector>("ColorSelect"); NS_ASSERT(_colorSelect != 0);
+        _containerBorder = FindName<Border>("ContainerBorder"); NS_ASSERT(_colorSelect != 0);
+        _containerCanvas = FindName<Canvas>("ContainerCanvas"); NS_ASSERT(_containerCanvas != 0);
+        _fillSelected = FindName<RadioButton>("FillSelected"); NS_ASSERT(_fillSelected != 0);
     }
 
     bool ConnectEvent(BaseComponent* source, const char* event, const char* handler) override
@@ -196,7 +196,9 @@ private:
         NS_CONNECT_EVENT(Button, Click, AddButton_Click);
         NS_CONNECT_EVENT(Button, Click, RemoveButton_Click);
         NS_CONNECT_EVENT(Border, PreviewMouseLeftButtonDown, ContainerBorder_MouseDown);
-        NS_CONNECT_ATTACHED_EVENT(ToggleButton, Checked, RadioButton_Checked);
+        NS_CONNECT_EVENT(Border, PreviewMouseLeftButtonUp, ContainerBorder_MouseUp);
+        NS_CONNECT_EVENT(Border, PreviewMouseMove, ContainerBorder_MouseMove);
+        NS_CONNECT_ATTACHED_EVENT(RadioButton, Checked, RadioButton_Checked);
         return false;
     }
 
@@ -213,7 +215,6 @@ private:
         _positionTop->SetValue(0.0f);
         _sizeWidth->SetValue(100.0f);
         _sizeHeight->SetValue(100.0f);
-
         _colorSelect->SetColor(Brushes::Red()->Clone());
 
         BindSelection();
@@ -225,19 +226,20 @@ private:
 
     void RemoveButton_Click(BaseComponent* /*sender*/, const RoutedEventArgs& /*e*/)
     {
-        if (_selectedRectangle != 0)
+        if (_selectedRectangle != nullptr)
         {
             _containerCanvas->GetChildren()->Remove(_selectedRectangle);
             _containerCanvas->GetChildren()->Remove(_selectionBorder);
 
             _selectedRectangle.Reset();
-            _selectionBorder->SetChild(0);
+            _selectionBorder->SetChild(nullptr);
         }
     }
 
     void ContainerBorder_MouseDown(BaseComponent* /*sender*/, const MouseButtonEventArgs& e)
     {
-        Noesis::Rectangle* newSelection = NsDynamicCast<Noesis::Rectangle*>(e.source);
+        Noesis::Rectangle* newSelection = DynamicCast<Noesis::Rectangle*>(e.source);
+
         if (newSelection != _selectedRectangle)
         {
             ClearSelection();
@@ -250,17 +252,42 @@ private:
                 _positionTop->SetValue(Canvas::GetTop(_selectedRectangle));
                 _sizeWidth->SetValue(_selectedRectangle->GetWidth());
                 _sizeHeight->SetValue(_selectedRectangle->GetHeight());
-                _colorSelect->SetColor(NsStaticCast<SolidColorBrush*>(
-                    _fillSelected->GetIsChecked().GetValue() ?
+                _colorSelect->SetColor((SolidColorBrush*)(_fillSelected->GetIsChecked().GetValue() ?
                     _selectedRectangle->GetFill() : _selectedRectangle->GetStroke()));
 
                 BindSelection();
-
                 SetSelection();
             }
         }
 
-        e.handled = true;
+        if (_selectedRectangle != nullptr)
+        {
+            _containerBorder->CaptureMouse();
+            _isDragging = true;
+            _offset = _selectedRectangle->PointFromScreen(e.position);
+        }
+    }
+
+    void ContainerBorder_MouseUp(BaseComponent* /*sender*/, const MouseButtonEventArgs& /*e*/)
+    {
+        if (_isDragging)
+        {
+            _containerBorder->ReleaseMouseCapture();
+            _isDragging = false;
+        }
+    }
+
+    void ContainerBorder_MouseMove(BaseComponent* /*sender*/, const MouseEventArgs& e)
+    {
+        if (_isDragging && _selectedRectangle != nullptr)
+        {
+            Noesis::Point max_(
+                _containerBorder->GetActualWidth() - _selectedRectangle->GetActualWidth() - 5,
+                _containerBorder->GetActualHeight() - _selectedRectangle->GetActualHeight() - 5);
+            Noesis::Point p = _containerBorder->PointFromScreen(e.position);
+            Canvas::SetLeft(_selectedRectangle, eastl::min_alt(p.x - _offset.x - 2, max_.x));
+            Canvas::SetTop(_selectedRectangle, eastl::min_alt(p.y - _offset.y - 2, max_.y));
+        }
     }
 
     void RadioButton_Checked(BaseComponent* /*sender*/, const RoutedEventArgs& /*e*/)
@@ -270,16 +297,14 @@ private:
             if (_fillSelected->GetIsChecked().GetValue())
             {
                 _selectedRectangle->SetStroke(_colorSelect->GetColor()->Clone());
-                _colorSelect->SetColor(NsStaticCast<SolidColorBrush*>(
-                    _selectedRectangle->GetFill()));
+                _colorSelect->SetColor((SolidColorBrush*)_selectedRectangle->GetFill());
                 Ptr<Binding> binding = *new Binding("Color", _colorSelect);
                 _selectedRectangle->SetBinding(Shape::FillProperty, binding);
             }
             else
             {
                 _selectedRectangle->SetFill(_colorSelect->GetColor()->Clone());
-                _colorSelect->SetColor(NsStaticCast<SolidColorBrush*>(
-                    _selectedRectangle->GetStroke()));
+                _colorSelect->SetColor((SolidColorBrush*)_selectedRectangle->GetStroke());
                 Ptr<Binding> binding = *new Binding("Color", _colorSelect);
                 _selectedRectangle->SetBinding(Shape::StrokeProperty, binding);
             }
@@ -288,38 +313,55 @@ private:
 
     void BindSelection()
     {
-        Ptr<Binding> binding;
-
-        binding = *new Binding("Value", _positionLeft);
-        _selectedRectangle->SetBinding(Canvas::LeftProperty, binding);
-        binding = *new Binding("Value", _positionTop);
-        _selectedRectangle->SetBinding(Canvas::TopProperty, binding);
-        binding = *new Binding("Value", _sizeWidth);
-        _selectedRectangle->SetBinding(FrameworkElement::WidthProperty, binding);
-        binding = *new Binding("Value", _sizeHeight);
-        _selectedRectangle->SetBinding(FrameworkElement::HeightProperty, binding);
-        binding = *new Binding("Color", _colorSelect);
-        _selectedRectangle->SetBinding(_fillSelected->GetIsChecked().GetValue() ?
-            Shape::FillProperty : Shape::StrokeProperty, binding);
+        {
+            Ptr<Binding> binding = *new Binding("Value", _positionLeft);
+            binding->SetMode(BindingMode_TwoWay);
+            _selectedRectangle->SetBinding(Canvas::LeftProperty, binding);
+        }
+        {
+            Ptr<Binding> binding = *new Binding("Value", _positionTop);
+            binding->SetMode(BindingMode_TwoWay);
+            _selectedRectangle->SetBinding(Canvas::TopProperty, binding);
+        }
+        {
+            Ptr<Binding> binding = *new Binding("Value", _sizeWidth);
+            _selectedRectangle->SetBinding(FrameworkElement::WidthProperty, binding);
+        }
+        {
+            Ptr<Binding> binding = *new Binding("Value", _sizeHeight);
+            _selectedRectangle->SetBinding(FrameworkElement::HeightProperty, binding); \
+        }
+        {
+            Ptr<Binding> binding = *new Binding("Color", _colorSelect);
+            _selectedRectangle->SetBinding(_fillSelected->GetIsChecked().GetValue() ?
+                Shape::FillProperty : Shape::StrokeProperty, binding);
+        }
     }
 
     void SetSelection()
     {
         Ptr<Border> selection = *new Border();
 
-        Ptr<Binding> binding;
+        {
+            Ptr<Binding> binding = *new Binding("Width", _selectedRectangle);
+            selection->SetBinding(FrameworkElement::WidthProperty, binding);
+        }
 
-        binding = *new Binding("Width", _selectedRectangle);
-        selection->SetBinding(FrameworkElement::WidthProperty, binding);
-        binding = *new Binding("Height", _selectedRectangle);
-        selection->SetBinding(FrameworkElement::HeightProperty, binding);
+        {
+            Ptr<Binding> binding = *new Binding("Height", _selectedRectangle);
+            selection->SetBinding(FrameworkElement::HeightProperty, binding);
+        }
 
         _selectionBorder->SetChild(selection);
 
-        binding = *new Binding("(Canvas.Left)", _selectedRectangle);
-        _selectionBorder->SetBinding(Canvas::LeftProperty, binding);
-        binding = *new Binding("(Canvas.Top)", _selectedRectangle);
-        _selectionBorder->SetBinding(Canvas::TopProperty, binding);
+        {
+            Ptr<Binding> binding = *new Binding("(Canvas.Left)", _selectedRectangle);
+            _selectionBorder->SetBinding(Canvas::LeftProperty, binding);
+        }
+        {
+             Ptr<Binding> binding = *new Binding("(Canvas.Top)", _selectedRectangle);
+            _selectionBorder->SetBinding(Canvas::TopProperty, binding);
+        }
 
         _containerCanvas->GetChildren()->Add(_selectionBorder);
     }
@@ -328,6 +370,11 @@ private:
     {
         if (_selectedRectangle != 0)
         {
+            BindingOperations::ClearBinding(_selectedRectangle, Canvas::LeftProperty);
+            BindingOperations::ClearBinding(_selectedRectangle, Canvas::TopProperty);
+            BindingOperations::ClearBinding(_selectedRectangle, WidthProperty);
+            BindingOperations::ClearBinding(_selectedRectangle, HeightProperty);
+
             Canvas::SetLeft(_selectedRectangle, _positionLeft->GetValue());
             Canvas::SetTop(_selectedRectangle, _positionTop->GetValue());
             _selectedRectangle->SetWidth(_sizeWidth->GetValue());
@@ -348,16 +395,17 @@ private:
 private:
     Ptr<Noesis::Rectangle> _selectedRectangle;
     Ptr<Border> _selectionBorder;
-    Canvas* _containerCanvas;
+    bool _isDragging = false;
+    Noesis::Point _offset = Noesis::Point(0, 0);
 
-    Slider* _positionLeft;
-    Slider* _positionTop;
-    Slider* _sizeWidth;
-    Slider* _sizeHeight;
-
-    RadioButton* _fillSelected;
-
-    ColorSelector* _colorSelect;
+    Slider* _positionLeft = nullptr;
+    Slider* _positionTop = nullptr;
+    Slider* _sizeWidth = nullptr;
+    Slider* _sizeHeight = nullptr;
+    ColorSelector* _colorSelect = nullptr;
+    Border* _containerBorder = nullptr;
+    Canvas* _containerCanvas = nullptr;
+    RadioButton* _fillSelected = nullptr;
 
     NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
     {

@@ -5,7 +5,6 @@
   xmlns:local="clr-namespace:Integration"
   d:DesignWidth="1280" d:DesignHeight="720"
   Background="#FF242C32"
-  Foreground="{StaticResource NormalFgBrush}"
   FontFamily="./#Hermeneus One">
     <UserControl.Resources>
         <SolidColorBrush x:Key="Brush.Primary" Color="#4580A3"/>
@@ -13,7 +12,11 @@
         <SolidColorBrush x:Key="Brush.Primary.Shade25" Color="#2D6C92"/>
         <SolidColorBrush x:Key="Brush.Primary.Shade75" Color="#6CA2C2"/>
         <SolidColorBrush x:Key="Brush.Primary.Shade100" Color="#A0C7DF"/>
+        <SolidColorBrush x:Key="Brush.Foreground" Color="Silver"/>
     </UserControl.Resources>
+    <UserControl.Foreground>
+        <StaticResource ResourceKey="Brush.Foreground"/>
+    </UserControl.Foreground>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -33,7 +36,7 @@
                 <Border Background="#FF1E2225" BorderThickness="1,0,1,1" BorderBrush="{StaticResource Brush.Primary}" Height="240" Padding="10">
                     <TabControl Padding="10">
                         <TabItem Header="Game">
-                            <Grid TextElement.Foreground="{StaticResource OverFgBrush}" TextElement.FontSize="11">
+                            <Grid TextElement.Foreground="{StaticResource Brush.Foreground}" TextElement.FontSize="11">
                                 <StackPanel>
                                     <Border Background="{StaticResource Brush.Primary.Shade0}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource Brush.Primary.Shade25}">
                                         <TextBlock Text="B A T T L E" FontSize="9" HorizontalAlignment="Center"/>
@@ -81,7 +84,7 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Video">
-                            <Grid TextElement.Foreground="{StaticResource OverFgBrush}" TextElement.FontSize="11">
+                            <Grid TextElement.Foreground="{StaticResource Brush.Foreground}" TextElement.FontSize="11">
                                 <StackPanel>
                                     <Border Background="{StaticResource Brush.Primary.Shade0}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource Brush.Primary.Shade25}">
                                         <TextBlock Text="" FontSize="9" HorizontalAlignment="Center"/>
@@ -165,7 +168,7 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Audio">
-                            <Grid TextElement.Foreground="{StaticResource OverFgBrush}" TextElement.FontSize="11">
+                            <Grid TextElement.Foreground="{StaticResource Brush.Foreground}" TextElement.FontSize="11">
                                 <StackPanel>
                                     <Border Background="{StaticResource Brush.Primary.Shade0}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource Brush.Primary.Shade25}">
                                         <TextBlock Text="" FontSize="9" HorizontalAlignment="Center"/>

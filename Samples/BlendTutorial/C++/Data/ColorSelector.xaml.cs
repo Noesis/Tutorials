@@ -14,10 +14,10 @@ namespace BlendTutorial
         {
             this.InitializeComponent();
         }
-        
+
         public static DependencyProperty ColorProperty = DependencyProperty.Register("Color", typeof(SolidColorBrush), typeof(ColorSelector),
             new PropertyMetadata(Brushes.Transparent, new PropertyChangedCallback(OnColorChanged)));
-        
+
         public SolidColorBrush Color
         {
             get { return (SolidColorBrush)GetValue(ColorProperty); }
@@ -27,7 +27,7 @@ namespace BlendTutorial
         private bool IsUpdatingColor = false;
         private bool IsUpdatingSliders = false;
         
-        private static void OnColorChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        private static void OnColorChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             ColorSelector colorSelector = sender as ColorSelector;
             if (colorSelector != null && !colorSelector.IsUpdatingColor)
@@ -36,7 +36,7 @@ namespace BlendTutorial
             }
         }
 
-        private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e)
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (!this.IsUpdatingSliders)
             {
@@ -51,7 +51,7 @@ namespace BlendTutorial
             }
         }
         
-        private void UpdateSliders(System.Windows.Media.Color color)
+        private void UpdateSliders(Color color)
         {
             this.IsUpdatingSliders = true;
             this.R.Value = (Double)color.R;
@@ -64,7 +64,7 @@ namespace BlendTutorial
         private void UpdateColor(Double r, Double g, Double b, Double a)
         {
             this.IsUpdatingColor = true;
-            this.Color.Color = System.Windows.Media.Color.FromArgb((byte)a, (byte)r, (byte)g, (byte)b);
+            this.Color.Color = new Color() { R = (byte)r, G = (byte)g, B = (byte)b, A = (byte)a };
             this.IsUpdatingColor = false;
         }
     }

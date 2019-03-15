@@ -2,10 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{c5e761b1-bb47-4ebf-a6bf-68253a105b12}</UniqueIdentifier>
+      <UniqueIdentifier>{2d96b74f-58c3-4883-9b0b-eb5a53c22b0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{6796c5fc-b869-49c2-815c-21f8ba7d2fc6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{ba894740-de2f-4c03-a73b-bb5e52b69be9}</UniqueIdentifier>
+      <UniqueIdentifier>{ed34297a-81e0-4de7-a8d9-5cea8029ee0b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -24,32 +27,25 @@
     <ClInclude Include="..\..\Src\MainWindow.xaml.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Src\NotifyPropertyChangedBase.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Src\NotifyPropertyChangedBase.h">
-      <Filter>Src</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Src\ViewModel.cpp">
       <Filter>Src</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Src\ViewModel.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
     <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\MainWindow.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Data\ControlResources.xaml">
-      <Filter>Data</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Data\LogoResources.xaml">
+    <CustomBuild Include="..\..\Data\Resources.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Language-en.xaml">
@@ -70,7 +66,10 @@
     <CustomBuild Include="..\..\Data\Flag-jp.png">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Data\rounded-mgenplus-1c-regular.ttf">
+    <CustomBuild Include="..\..\Data\Oxygen-Regular.ttf">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\FontopoNIHONGO.otf">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

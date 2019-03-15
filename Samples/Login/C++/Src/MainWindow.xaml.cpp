@@ -35,6 +35,8 @@ void MainWindow::OnInitialized(BaseComponent*, const EventArgs&)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Login::MainWindow)
 {
     NsMeta<TypeId>("Login.MainWindow");

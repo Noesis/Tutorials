@@ -27,6 +27,8 @@ void MainMenu::InitializeComponent()
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Menu3D::MainMenu)
 {
     NsMeta<TypeId>("Menu3D.MainMenu");

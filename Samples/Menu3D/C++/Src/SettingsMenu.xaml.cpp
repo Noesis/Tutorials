@@ -28,6 +28,8 @@ void SettingsMenu::InitializeComponent()
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Menu3D::SettingsMenu)
 {
     NsMeta<TypeId>("Menu3D.SettingsMenu");

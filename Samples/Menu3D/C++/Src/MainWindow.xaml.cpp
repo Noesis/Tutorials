@@ -18,7 +18,7 @@ using namespace Noesis;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 MainWindow::MainWindow()
 {
-    Initialized() += MakeDelegate(this, &MainWindow::OnInitialized);
+    Loaded() += MakeDelegate(this, &MainWindow::OnLoaded);
     InitializeComponent();
 }
 
@@ -29,12 +29,14 @@ void MainWindow::InitializeComponent()
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void MainWindow::OnInitialized(Noesis::BaseComponent*, const Noesis::EventArgs&)
+void MainWindow::OnLoaded(Noesis::BaseComponent*, const Noesis::RoutedEventArgs&)
 {
     SetDataContext(MakePtr<ViewModel>());
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Menu3D::MainWindow)
 {
     NsMeta<TypeId>("Menu3D.MainWindow");

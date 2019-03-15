@@ -9,15 +9,16 @@
 #include <NsCore/RegisterComponent.h>
 #include <NsCore/TypeId.h>
 #include <NsCore/Delegate.h>
+#include <NsGui/IntegrationAPI.h>
 #include <NsApp/EmbeddedXamlProvider.h>
 #include <NsApp/EmbeddedFontProvider.h>
 #include <NsApp/ApplicationLauncher.h>
 #include <NsApp/EntryPoint.h>
 #include <NsApp/Application.h>
 #include <NsApp/Window.h>
+#include <NsApp/DelegateCommand.h>
+#include <NsApp/NotifyPropertyChangedBase.h>
 
-#include "DelegateCommand.h"
-#include "NotifyPropertyChangedBase.h"
 #include "App.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
 #include "Aero Matics Regular.ttf.bin.h"
@@ -31,41 +32,45 @@ namespace Commands
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-class ViewModel: public NotifyPropertyChangedBase
+class ViewModel: public NoesisApp::NotifyPropertyChangedBase
 {
 public:
     ViewModel()
     {
-        _command = *new DelegateCommand(MakeDelegate(this, &ViewModel::SayHello));
+        _command.SetExecuteFunc(MakeDelegate(this, &ViewModel::SayHello));
     }
 
     const char* GetInput() const
     {
-        return _input.c_str();
+        return _input;
     }
 
-    void SetInput(const char* input)
+    void SetInput(const char* value)
     {
-        _input = input;
+        if (!String::Equals(_input, value))
+        {
+            String::Copy(_input, sizeof(_input), value);
+            OnPropertyChanged("Input");
+        }
     }
 
     const char* GetOutput() const
     {
-        return _output.c_str();
+        return _output;
     }
 
-    void SetOutput(const char* output)
+    void SetOutput(const char* value)
     {
-        if (_output != output)
+        if (!String::Equals(_output, value))
         {
-            _output = output;
+            String::Copy(_output, sizeof(_output), value);
             OnPropertyChanged("Output");
         }
     }
 
-    DelegateCommand* GetSayHelloCommand() const
+    const DelegateCommand* GetSayHelloCommand() const
     {
-        return _command.GetPtr();
+        return &_command;
     }
 
 private:
@@ -75,17 +80,16 @@ private:
         {
             const char* param = Boxing::Unbox<NsString>(param_).c_str();
 
-            char text[256];
-            String::FormatBuffer(text, sizeof(text), "Hello, %s (%s)", _input.c_str(), param);
+            char text[512];
+            snprintf(text, sizeof(text), "Hello, %s (%s)", _input, param);
             SetOutput(text);
         }
     }
 
 private:
-    Ptr<DelegateCommand> _command;
-
-    NsString _input;
-    NsString _output;
+    DelegateCommand _command;
+    char _input[256] = "";
+    char _output[256] = "";
 
     NS_IMPLEMENT_INLINE_REFLECTION(ViewModel, NotifyPropertyChangedBase)
     {
@@ -108,6 +112,23 @@ class App final: public Application
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class MainWindow final: public Window
 {
+public:
+    MainWindow()
+    {
+        Initialized() += MakeDelegate(this, &MainWindow::OnInitialized);
+        InitializeComponent();
+    }
+
+    void InitializeComponent()
+    {
+        Noesis::GUI::LoadComponent(this, "MainWindow.xaml");
+    }
+
+    void OnInitialized(BaseComponent*, const EventArgs&)
+    {
+        SetDataContext(MakePtr<ViewModel>());
+    }
+
     NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
     {
         NsMeta<TypeId>("Commands.MainWindow");
@@ -124,7 +145,6 @@ private:
     {
         NsRegisterComponent<Commands::App>();
         NsRegisterComponent<Commands::MainWindow>();
-        NsRegisterComponent<Commands::ViewModel>();
     }
 
     Ptr<XamlProvider> GetXamlProvider() const override

@@ -12,13 +12,14 @@ namespace Login
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : UserControl
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
             this.Initialized += OnInitialized;
             this.InitializeComponent();
         }
+
 #if NOESIS
         void InitializeComponent()
         {

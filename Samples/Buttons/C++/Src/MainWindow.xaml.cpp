@@ -35,6 +35,8 @@ void MainWindow::OnInitialized(BaseComponent*, const EventArgs&)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Buttons::MainWindow)
 {
     NsMeta<TypeId>("Buttons.MainWindow");

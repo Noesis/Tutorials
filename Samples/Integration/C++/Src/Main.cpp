@@ -10,29 +10,26 @@
 // few abstraction classes (Display and RenderContext) are used to remain multiplatform
 
 
-// NoesisGUI, the core library you integrate inside your application, is exposed in the namespace
+// Noesis, the core library you integrate inside your application, is exposed in the namespace
 // 'Noesis'. The application framework, a helper library with source code, is inside the namespace
 // 'NoesisApp'. For the namespace Noesis a single header library ('Noesis_pch.h') is provided in
 // case you are interested in just including one file, for example when using precompiled headers
+#include <NsRender/RenderContext.h>
 #include <NsCore/HighResTimer.h>
 #include <NsGui/IntegrationAPI.h>
-#include <NsGui/IView.h>
+#include <NsGui/UserControl.h>
 #include <NsGui/IRenderer.h>
-#include <NsGui/FrameworkElement.h>
-#include <NsRender/RenderContext.h>
+#include <NsGui/IView.h>
 #include <NsApp/EntryPoint.h>
 #include <NsApp/Launcher.h>
 #include <NsApp/Display.h>
 #include <NsApp/EmbeddedXamlProvider.h>
 #include <NsApp/EmbeddedFontProvider.h>
 
-// For this sample we are embedding needed resources using our tool binh
+// For this sample we are embedding needed resources using our tool 'binh'
 #include "Settings.xaml.bin.h"
 #include "HermeneusOne-Regular.ttf.bin.h"
 
-#ifdef _WIN32
-#pragma comment(linker,"/SUBSYSTEM:CONSOLE")
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void InstallResourceProviders()
@@ -64,7 +61,7 @@ Noesis::Ptr<NoesisApp::RenderContext> CreateContext(NoesisApp::Display* display)
     // class, not part of core. The only mandatory part that you need is an implementation of the
     // RenderDevice base class. We provide reference implementation for many subsystems
     uint32_t samples = 1;
-    Noesis::Ptr<NoesisApp::RenderContext> context = NoesisApp::FindBestRenderContext();
+    Noesis::Ptr<NoesisApp::RenderContext> context = NoesisApp::RenderContext::Create();
     context->Init(display->GetNativeHandle(), samples, true, false);
     return context;
 }
@@ -72,10 +69,11 @@ Noesis::Ptr<NoesisApp::RenderContext> CreateContext(NoesisApp::Display* display)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 Noesis::Ptr<Noesis::IView> CreateView(Noesis::RenderDevice* device)
 {
+    Noesis::Ptr<Noesis::IView> view;
+
     // You need a view to render the user interface and interact with it. A view holds a tree of
     // elements. The easiest way to construct a tree is from a XAML file
-    auto xaml = Noesis::GUI::LoadXaml<Noesis::FrameworkElement>("Settings.xaml");
-    Noesis::Ptr<Noesis::IView> view = Noesis::GUI::CreateView(xaml);
+    view = Noesis::GUI::CreateView(Noesis::GUI::LoadXaml<Noesis::UserControl>("Settings.xaml"));
 
     // As we are not using MSAA in this sample, we enable PPAA here. PPAA is a cheap antialising
     // technique that extrudes the contours of the geometry smoothing them
@@ -180,7 +178,7 @@ void RenderView(Noesis::IView* view, NoesisApp::RenderContext* ctx, uint32_t wid
     view->GetRenderer()->RenderOffscreen();
 
     // Bind framebuffer and viewport. Do this per frame because the offscreen phase alters them
-    ctx->SetDefaultRenderTarget(width, height);
+    ctx->SetDefaultRenderTarget(width, height, true);
 
     // -> # At this point, you can render your 3D scene... # <-
     // Note that each function invocation of the renderer modifies the GPU state, you must
@@ -200,21 +198,16 @@ int NsMain(int argc, char** argv)
 {
     NS_UNUSED(argc, argv);
 
+    auto logHandler = [](const char*, uint32_t, uint32_t level, const char*, const char* message)
+    {
+        // [TRACE] [DEBUG] [INFO] [WARNING] [ERROR]
+        const char* prefixes[] = { "T", "D", "I", "W", "E" };
+        printf("[NOESIS/%s] %s\n", prefixes[level], message);
+    };
+
     // Noesis initialization. This must be the first step before using any NoesisGUI functionality.
     // A logging handler is installed here. You can also install a custom error handler and memory
     // allocator. By default errors are redirected to the logging handler
-    auto logHandler = [](const char*, uint32_t, uint32_t level, const char* channel,
-        const char* message)
-    {
-        if (strcmp(channel, "") == 0)
-        {
-            // [TRACE] [DEBUG] [INFO] [WARNING] [ERROR]
-            const char* prefixes[] = { "T", "D", "I", "W", "E" };
-            const char* prefix = level < NS_COUNTOF(prefixes) ? prefixes[level] : " ";
-            fprintf(stderr, "[NOESIS/%s] %s\n", prefix, message);
-        }
-    };
-
     Noesis::GUI::Init(nullptr, logHandler, nullptr);
 
     // Register app components. We need a few in this example, like Display and RenderContext
@@ -224,7 +217,7 @@ int NsMain(int argc, char** argv)
     InstallResourceProviders();
 
     // A display is an abstraction over a system window (HWND, NSWindow, UIWindow, XWindow, ...).
-    // This is a helper class, not part of core
+    // As this is a helper class, not part of core, it goes in the 'NoesisApp' namespace
     Noesis::Ptr<NoesisApp::Display> display = NoesisApp::CreateDisplay();
     display->SetTitle("NoesisGUI Integration Sample");
 
@@ -240,10 +233,9 @@ int NsMain(int argc, char** argv)
     // Main loop
     display->Render() += [&view, &context](NoesisApp::Display* display)
     {
-        NS_MSVC_WARNING_SUPPRESS(4640)
         static uint64_t startTime = Noesis::HighResTimer::Ticks();
 
-        // Update (layout, animations, ...). Note that global time is used, not a delta
+        // Update (layout, animations). Note that global time is used, not a delta
         uint64_t time = Noesis::HighResTimer::Ticks();
         view->Update(Noesis::HighResTimer::Seconds(time - startTime));
 
@@ -251,7 +243,7 @@ int NsMain(int argc, char** argv)
         RenderView(view, context, display->GetClientWidth(), display->GetClientHeight());
     };
 
-    display->EnterMessageLoop();
+    display->EnterMessageLoop(false);
 
     // Close view. This step must be done in the same thread where initialization was performed
     view->GetRenderer()->Shutdown();

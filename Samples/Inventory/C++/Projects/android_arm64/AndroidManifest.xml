@@ -1,0 +1,30 @@
+<manifest
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.noesis.Samples.Inventory">
+
+  <uses-sdk android:minSdkVersion="17" />
+
+  <application
+    android:icon="@mipmap/ic_launcher"
+    android:debuggable="false"
+    android:label="Inventory">
+
+    <activity
+      android:name=".NoesisNativeActivity"
+      android:label="Inventory"
+      android:configChanges="screenSize|orientation|keyboardHidden"
+      android:screenOrientation="landscape"
+      android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+
+      <meta-data
+        android:name="android.app.lib_name"
+        android:value="Samples_Inventory" />
+
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+
+    </activity>
+  </application>
+</manifest>

@@ -5,7 +5,6 @@
 
 
 #include "ViewModel.h"
-#include "DelegateCommand.h"
 
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/ReflectionImplementEnum.h>
@@ -16,69 +15,82 @@
 
 using namespace Menu3D;
 using namespace Noesis;
+using namespace NoesisApp;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ViewModel::ViewModel()
 {
-    _start = *new DelegateCommand(MakeDelegate(this, &ViewModel::OnStart));
-    _startCasual = *new DelegateCommand(MakeDelegate(this, &ViewModel::OnStartCasual));
-    _startNormal = *new DelegateCommand(MakeDelegate(this, &ViewModel::OnStartNormal));
-    _startVeteran = *new DelegateCommand(MakeDelegate(this, &ViewModel::OnStartVeteran));
-    _settings = *new DelegateCommand(MakeDelegate(this, &ViewModel::OnSettings));
-    _exit = *new DelegateCommand(MakeDelegate(this, &ViewModel::OnExit));
-    _back = *new DelegateCommand(MakeDelegate(this, &ViewModel::OnBack));
-    _fadeInCompleted = *new DelegateCommand(MakeDelegate(this, &ViewModel::OnFadeInCompleted));
+    _start.SetExecuteFunc(MakeDelegate(this, &ViewModel::OnStart));
+    _startCasual.SetExecuteFunc(MakeDelegate(this, &ViewModel::OnStartCasual));
+    _startNormal.SetExecuteFunc(MakeDelegate(this, &ViewModel::OnStartNormal));
+    _startExpert.SetExecuteFunc(MakeDelegate(this, &ViewModel::OnStartExpert));
+    _settings.SetExecuteFunc(MakeDelegate(this, &ViewModel::OnSettings));
+    _exit.SetExecuteFunc(MakeDelegate(this, &ViewModel::OnExit));
+    _back.SetExecuteFunc(MakeDelegate(this, &ViewModel::OnBack));
+    _fadeInCompleted.SetExecuteFunc(MakeDelegate(this, &ViewModel::OnFadeInCompleted));
 
     _state = State::Main;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetStart() const
+const DelegateCommand* ViewModel::GetStart() const
 {
-    return _start;
+    return &_start;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetStartCasual() const
+const DelegateCommand* ViewModel::GetStartCasual() const
 {
-    return _startCasual;
+    return &_startCasual;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetStartNormal() const
+const DelegateCommand* ViewModel::GetStartNormal() const
 {
-    return _startNormal;
+    return &_startNormal;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetStartVeteran() const
+const DelegateCommand* ViewModel::GetStartExpert() const
 {
-    return _startVeteran;
+    return &_startExpert;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetSettings() const
+const DelegateCommand* ViewModel::GetSettings() const
 {
-    return _settings;
+    return &_settings;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetExit() const
+const DelegateCommand* ViewModel::GetExit() const
 {
-    return _exit;
+    return &_exit;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetBack() const
+const DelegateCommand* ViewModel::GetBack() const
 {
-    return _back;
+    return &_back;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetFadeInCompleted() const
+const DelegateCommand* ViewModel::GetFadeInCompleted() const
 {
-    return _fadeInCompleted;
+    return &_fadeInCompleted;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+const char* ViewModel::GetPlatform() const
+{
+#if defined(NS_PLATFORM_XBOX_ONE) || defined(NS_PLATFORM_NX)
+    return "XBOX";
+#elif defined(NS_PLATFORM_PS4)
+    return "PS4";
+#else
+    return "PC";
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,9 +112,9 @@ void ViewModel::OnStartNormal(BaseComponent*)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void ViewModel::OnStartVeteran(BaseComponent*)
+void ViewModel::OnStartExpert(BaseComponent*)
 {
-    NS_LOG_INFO("Start Veteran");
+    NS_LOG_INFO("Start Expert");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,22 +175,26 @@ void ViewModel::SetState(State value)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(ViewModel)
 {
     NsProp("Start", &ViewModel::GetStart);
     NsProp("StartCasual", &ViewModel::GetStartCasual);
     NsProp("StartNormal", &ViewModel::GetStartNormal);
-    NsProp("StartVeteran", &ViewModel::GetStartVeteran);
+    NsProp("StartExpert", &ViewModel::GetStartExpert);
     NsProp("Settings", &ViewModel::GetSettings);
     NsProp("Exit", &ViewModel::GetExit);
     NsProp("Back", &ViewModel::GetBack);
     NsProp("FadeInCompleted", &ViewModel::GetFadeInCompleted);
     NsProp("State", &ViewModel::GetState, &ViewModel::SetState);
+    NsProp("Platform", &ViewModel::GetPlatform);
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_IMPLEMENT_REFLECTION_ENUM(State)
 {
+    NsMeta<TypeId>("Menu3D.State");
+
     NsVal("Main", State::Main);
     NsVal("Start", State::Start);
     NsVal("Settings", State::Settings);

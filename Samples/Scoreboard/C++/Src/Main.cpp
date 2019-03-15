@@ -15,8 +15,7 @@
 
 #include "MainWindow.xaml.h"
 #include "App.xaml.h"
-#include "ThousandConverter.h"
-#include "Player.h"
+#include "ViewModel.h"
 
 #include "App.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
@@ -37,7 +36,6 @@ private:
     {
         NsRegisterComponent<Scoreboard::MainWindow>();
         NsRegisterComponent<Scoreboard::App>();
-        NsRegisterComponent<Scoreboard::ThousandConverter>();
         NsRegisterComponent<EnumConverter<Scoreboard::Team>>();
         NsRegisterComponent<EnumConverter<Scoreboard::Class>>();
     }

@@ -5,39 +5,39 @@
 
 
 #include "ViewModel.h"
-#include "DelegateCommand.h"
 
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/Log.h>
 
 
+using namespace NoesisApp;
 using namespace Buttons;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ViewModel::ViewModel()
 {
-    _startCommand = *new DelegateCommand(MakeDelegate(this, &ViewModel::Start));
-    _settingsCommand = *new DelegateCommand(MakeDelegate(this, &ViewModel::Settings));
-    _exitCommand = *new DelegateCommand(MakeDelegate(this, &ViewModel::Exit));
+    _startCommand.SetExecuteFunc(MakeDelegate(this, &ViewModel::Start));
+    _settingsCommand.SetExecuteFunc(MakeDelegate(this, &ViewModel::Settings));
+    _exitCommand.SetExecuteFunc(MakeDelegate(this, &ViewModel::Exit));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetStartCommand() const
+const DelegateCommand* ViewModel::GetStartCommand() const
 {
-    return _startCommand;
+    return &_startCommand;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetSettingsCommand() const
+const DelegateCommand* ViewModel::GetSettingsCommand() const
 {
-    return _settingsCommand;
+    return &_settingsCommand;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-DelegateCommand* ViewModel::GetExitCommand() const
+const DelegateCommand* ViewModel::GetExitCommand() const
 {
-    return _exitCommand;
+    return &_exitCommand;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,6 +59,8 @@ void ViewModel::Exit(BaseComponent*)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(ViewModel)
 {
     NsProp("StartCommand", &ViewModel::GetStartCommand);

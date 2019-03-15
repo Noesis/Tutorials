@@ -1,9 +1,9 @@
 ﻿#if NOESIS
 using Noesis;
+using NoesisApp;
 #else
 using System;
 using System.Windows;
-using System.Windows.Controls;
 #endif
 
 namespace Localization
@@ -11,7 +11,7 @@ namespace Localization
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : UserControl
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
@@ -21,7 +21,7 @@ namespace Localization
 #if NOESIS
         void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Localization/MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "MainWindow.xaml");
         }
 #endif
 

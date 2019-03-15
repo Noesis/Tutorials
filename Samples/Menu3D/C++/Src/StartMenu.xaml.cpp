@@ -27,6 +27,8 @@ void StartMenu::InitializeComponent()
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Menu3D::StartMenu)
 {
     NsMeta<TypeId>("Menu3D.StartMenu");

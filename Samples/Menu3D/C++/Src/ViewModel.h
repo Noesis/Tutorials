@@ -12,14 +12,12 @@
 #include <NsCore/Ptr.h>
 #include <NsCore/ReflectionDeclare.h>
 #include <NsCore/ReflectionDeclareEnum.h>
-
-#include "NotifyPropertyChangedBase.h"
+#include <NsApp/DelegateCommand.h>
+#include <NsApp/NotifyPropertyChangedBase.h>
 
 
 namespace Menu3D
 {
-
-class DelegateCommand;
 
 enum class State
 {
@@ -29,25 +27,27 @@ enum class State
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-class ViewModel final: public NotifyPropertyChangedBase
+class ViewModel final: public NoesisApp::NotifyPropertyChangedBase
 {
 public:
     ViewModel();
 
 private:
-    DelegateCommand* GetStart() const;
-    DelegateCommand* GetStartCasual() const;
-    DelegateCommand* GetStartNormal() const;
-    DelegateCommand* GetStartVeteran() const;
-    DelegateCommand* GetSettings() const;
-    DelegateCommand* GetExit() const;
-    DelegateCommand* GetBack() const;
-    DelegateCommand* GetFadeInCompleted() const;
+    const NoesisApp::DelegateCommand* GetStart() const;
+    const NoesisApp::DelegateCommand* GetStartCasual() const;
+    const NoesisApp::DelegateCommand* GetStartNormal() const;
+    const NoesisApp::DelegateCommand* GetStartExpert() const;
+    const NoesisApp::DelegateCommand* GetSettings() const;
+    const NoesisApp::DelegateCommand* GetExit() const;
+    const NoesisApp::DelegateCommand* GetBack() const;
+    const NoesisApp::DelegateCommand* GetFadeInCompleted() const;
+
+    const char* GetPlatform() const;
 
     void OnStart(BaseComponent* param);
     void OnStartCasual(BaseComponent* param);
     void OnStartNormal(BaseComponent* param);
-    void OnStartVeteran(BaseComponent* param);
+    void OnStartExpert(BaseComponent* param);
     void OnSettings(BaseComponent* param);
     void OnExit(BaseComponent* param);
     void OnBack(BaseComponent* param);
@@ -57,14 +57,14 @@ private:
     void SetState(State value);
 
 private:
-    Noesis::Ptr<DelegateCommand> _start;
-    Noesis::Ptr<DelegateCommand> _startCasual;
-    Noesis::Ptr<DelegateCommand> _startNormal;
-    Noesis::Ptr<DelegateCommand> _startVeteran;
-    Noesis::Ptr<DelegateCommand> _settings;
-    Noesis::Ptr<DelegateCommand> _exit;
-    Noesis::Ptr<DelegateCommand> _back;
-    Noesis::Ptr<DelegateCommand> _fadeInCompleted;
+    NoesisApp::DelegateCommand _start;
+    NoesisApp::DelegateCommand _startCasual;
+    NoesisApp::DelegateCommand _startNormal;
+    NoesisApp::DelegateCommand _startExpert;
+    NoesisApp::DelegateCommand _settings;
+    NoesisApp::DelegateCommand _exit;
+    NoesisApp::DelegateCommand _back;
+    NoesisApp::DelegateCommand _fadeInCompleted;
 
     State _state;
 

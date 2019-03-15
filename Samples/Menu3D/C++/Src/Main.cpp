@@ -13,15 +13,17 @@
 #include <NsApp/EntryPoint.h>
 
 #include "App.xaml.h"
-#include "ElementExtensions.h"
 #include "MainWindow.xaml.h"
+#include "MenuDescription.xaml.h"
 #include "MainMenu.xaml.h"
 #include "StartMenu.xaml.h"
 #include "SettingsMenu.xaml.h"
 #include "OptionSelector.xaml.h"
+#include "MultiplierConverter.h"
 
 #include "App.xaml.bin.h"
 #include "MenuResources.xaml.bin.h"
+#include "MenuDescription.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
 #include "MainMenu.xaml.bin.h"
 #include "SettingsMenu.xaml.bin.h"
@@ -34,6 +36,9 @@
 #include "SkyAndSun.jpg.bin.h"
 #include "weblysleekuisb.ttf.bin.h"
 #include "weblysleekuisl.ttf.bin.h"
+#include "SoundTrack.mp3.bin.h"
+#include "WaterDropBig.mp3.bin.h"
+#include "WaterDropSmall.mp3.bin.h"
 
 #include <NsCore/EnumConverter.h>
 #include "ViewModel.h"
@@ -52,12 +57,13 @@ private:
     {
         NsRegisterComponent<Menu3D::App>();
         NsRegisterComponent<Menu3D::MainWindow>();
-        NsRegisterComponent<Menu3D::ElementExtensions>();
+        NsRegisterComponent<Menu3D::MenuDescription>();
         NsRegisterComponent<Menu3D::MainMenu>();
         NsRegisterComponent<Menu3D::StartMenu>();
         NsRegisterComponent<Menu3D::SettingsMenu>();
         NsRegisterComponent<Menu3D::OptionSelector>();
         NsRegisterComponent<EnumConverter<Menu3D::State>>();
+        NsRegisterComponent<MultiplierConverter>();
     }
 
     Ptr<XamlProvider> GetXamlProvider() const override
@@ -67,10 +73,14 @@ private:
             { "App.xaml", App_xaml, sizeof(App_xaml) },
             { "MenuResources.xaml", MenuResources_xaml, sizeof(MenuResources_xaml) },
             { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
+            { "MenuDescription.xaml", MenuDescription_xaml, sizeof(MenuDescription_xaml) },
             { "MainMenu.xaml", MainMenu_xaml, sizeof(MainMenu_xaml) },
             { "StartMenu.xaml", StartMenu_xaml, sizeof(StartMenu_xaml) },
             { "SettingsMenu.xaml", SettingsMenu_xaml, sizeof(SettingsMenu_xaml) },
-            { "OptionSelector.xaml", OptionSelector_xaml, sizeof(OptionSelector_xaml) }
+            { "OptionSelector.xaml", OptionSelector_xaml, sizeof(OptionSelector_xaml) },
+            { "Sounds/SoundTrack.mp3", SoundTrack_mp3, sizeof(SoundTrack_mp3) },
+            { "Sounds/WaterDropBig.mp3", WaterDropBig_mp3, sizeof(WaterDropBig_mp3) },
+            { "Sounds/WaterDropSmall.mp3", WaterDropSmall_mp3, sizeof(WaterDropSmall_mp3) }
         };
 
         return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));

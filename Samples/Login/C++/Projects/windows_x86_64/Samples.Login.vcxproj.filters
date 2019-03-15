@@ -2,10 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{80adfe27-6f8b-4095-8121-b5d119ec08a5}</UniqueIdentifier>
+      <UniqueIdentifier>{a4db4cc3-6973-4702-aab9-f131e729f518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{60bac2ef-700d-40fa-bcfe-d124e856ceac}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{d208c16e-39b3-4e78-ba67-6f4a42a4da3c}</UniqueIdentifier>
+      <UniqueIdentifier>{3f52f0dc-4ac5-4dba-8f8d-e896411857f7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -13,18 +16,6 @@
       <Filter>Src</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Src\App.xaml.h">
-      <Filter>Src</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Src\DelegateCommand.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Src\DelegateCommand.h">
-      <Filter>Src</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Src\ElementExtensions.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Src\ElementExtensions.h">
       <Filter>Src</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Src\Main.cpp">
@@ -36,35 +27,34 @@
     <ClInclude Include="..\..\Src\MainWindow.xaml.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Src\NotifyPropertyChangedBase.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Src\NotifyPropertyChangedBase.h">
-      <Filter>Src</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Src\ViewModel.cpp">
       <Filter>Src</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Src\ViewModel.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-    </ClInclude>
-    <ClCompile Include="pch.cpp">
-    </ClCompile>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
     <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Data\Aero Matics Regular.ttf">
-      <Filter>Data</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Data\ControlResources.xaml">
-      <Filter>Data</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\Data\LogoResources.xaml">
-      <Filter>Data</Filter>
-    </CustomBuild>
     <CustomBuild Include="..\..\Data\MainWindow.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Resources.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Login.mp3">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Fail.mp3">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Aero Matics Regular.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

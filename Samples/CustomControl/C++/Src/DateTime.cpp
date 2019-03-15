@@ -7,7 +7,6 @@
 #include "DateTime.h"
 
 #include <NsCore/ReflectionImplement.h>
-#include <NsGui/ResourceKeyType.h>
 #include <NsGui/UIElementData.h>
 #include <NsGui/FrameworkPropertyMetadata.h>
 
@@ -89,29 +88,26 @@ void DateTime::SetSecond(int second)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(DateTime)
 {
     NsMeta<TypeId>("CustomControl.DateTime");
 
     const TypeClass* type = TypeOf<SelfClass>();
-    Ptr<ResourceKeyType> defaultStyleKey = ResourceKeyType::Create(type);
-
-    Ptr<UIElementData> data = NsMeta<UIElementData>(type);
+    UIElementData* data = NsMeta<UIElementData>(type);
     data->RegisterProperty<int>(DayProperty, "Day",
-        FrameworkPropertyMetadata::Create(int(1), FrameworkOptions_None));
+        FrameworkPropertyMetadata::Create(int(1), FrameworkPropertyMetadataOptions_None));
     data->RegisterProperty<int>(MonthProperty, "Month",
-        FrameworkPropertyMetadata::Create(int(1), FrameworkOptions_None));
+        FrameworkPropertyMetadata::Create(int(1), FrameworkPropertyMetadataOptions_None));
     data->RegisterProperty<int>(YearProperty, "Year",
-        FrameworkPropertyMetadata::Create(int(2000), FrameworkOptions_None));
+        FrameworkPropertyMetadata::Create(int(2000), FrameworkPropertyMetadataOptions_None));
     data->RegisterProperty<int>(HourProperty, "Hour",
-        FrameworkPropertyMetadata::Create(int(0), FrameworkOptions_None));
+        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None));
     data->RegisterProperty<int>(MinuteProperty, "Minute",
-        FrameworkPropertyMetadata::Create(int(0), FrameworkOptions_None));
+        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None));
     data->RegisterProperty<int>(SecondProperty, "Second",
-        FrameworkPropertyMetadata::Create(int(0), FrameworkOptions_None));
-    data->OverrideMetadata<Ptr<ResourceKeyType>>(FrameworkElement::DefaultStyleKeyProperty,
-        "DefaultStyleKey", FrameworkPropertyMetadata::Create(defaultStyleKey,
-        FrameworkOptions_None));
+        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
