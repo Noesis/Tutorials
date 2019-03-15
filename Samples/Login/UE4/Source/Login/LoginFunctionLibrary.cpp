@@ -5,6 +5,9 @@
 
 #include "LoginFunctionLibrary.h"
 
+// Noesis includes
+#include "NoesisRuntime.h"
+
 ULoginFunctionLibrary::ULoginFunctionLibrary(const FObjectInitializer& ObjectInitializer)
     : Super(ObjectInitializer)
 {
