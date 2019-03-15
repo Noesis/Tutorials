@@ -1,14 +1,14 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
 using Noesis;
+using System.ComponentModel;
+using System.Windows.Input;
 #else
 using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Threading;
-#endif
 using System.ComponentModel;
 using System.Windows.Input;
+#endif
 
 namespace Menu3D
 {
@@ -26,25 +26,25 @@ namespace Menu3D
         public ICommand Start { get; private set; }
         public ICommand StartCasual { get; private set; }
         public ICommand StartNormal { get; private set; }
-        public ICommand StartVeteran { get; private set; }
+        public ICommand StartExpert { get; private set; }
         public ICommand Settings { get; private set; }
         public ICommand Exit { get; private set; }
         public ICommand Back { get; private set; }
-        public ICommand FadeInCompleted { get; private set; }
 
         public ViewModel()
         {
             Start = new DelegateCommand(OnStart);
             StartCasual = new DelegateCommand(OnStartCasual);
             StartNormal = new DelegateCommand(OnStartNormal);
-            StartVeteran = new DelegateCommand(OnStartVeteran);
+            StartExpert = new DelegateCommand(OnStartExpert);
             Settings = new DelegateCommand(OnSettings);
             Exit = new DelegateCommand(OnExit);
             Back = new DelegateCommand(OnBack);
-            FadeInCompleted = new DelegateCommand(OnFadeInCompleted);
 
             State = State.Main;
         }
+
+        public string Platform { get { return "PC"; } }
 
         private State _state;
         public State State
@@ -92,12 +92,12 @@ namespace Menu3D
             #endif
         }
 
-        private void OnStartVeteran(object parameter)
+        private void OnStartExpert(object parameter)
         {
             #if NOESIS
-            UnityEngine.Debug.Log("Start Veteran");
+            UnityEngine.Debug.Log("Start Expert");
             #else
-            Console.WriteLine("Start Veteran");
+            Console.WriteLine("Start Expert");
             #endif
         }
 
@@ -135,19 +135,6 @@ namespace Menu3D
                     break;
                 }
             }
-        }
-
-        private void OnFadeInCompleted(object parameter)
-        {
-            UIElement target = (UIElement)parameter;
-#if NOESIS
-            target.Focus();
-#else
-            target.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                target.Focus();
-            }));
-#endif
         }
     }
 }

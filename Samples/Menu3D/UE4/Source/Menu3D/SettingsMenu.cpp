@@ -24,10 +24,12 @@ SettingsMenu::SettingsMenu()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void SettingsMenu::InitializeComponent()
 {
-    GUI::LoadComponent(this, "/Game/SettingsMenu.SettingsMenu");
+    GUI::LoadComponent(this, "/Game/SettingsMenu.xaml");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Menu3D::SettingsMenu)
 {
     NsMeta<TypeId>("Menu3D.SettingsMenu");

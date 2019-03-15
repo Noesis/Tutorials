@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Widget3D
+namespace Buttons
 {
     /// <summary>
     /// Interaction logic for App.xaml

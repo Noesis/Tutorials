@@ -23,10 +23,12 @@ MainMenu::MainMenu()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void MainMenu::InitializeComponent()
 {
-    GUI::LoadComponent(this, "/Game/MainMenu.MainMenu");
+    GUI::LoadComponent(this, "/Game/MainMenu.xaml");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Menu3D::MainMenu)
 {
     NsMeta<TypeId>("Menu3D.MainMenu");

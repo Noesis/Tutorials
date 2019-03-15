@@ -34,25 +34,11 @@ namespace Login
             }
         }
 
-        private bool _notifyMessage;
-        public bool NotifyMessage
-        {
-            get { return _notifyMessage; }
-            set
-            {
-                if (_notifyMessage != value)
-                {
-                    _notifyMessage = value;
-                    OnPropertyChanged("NotifyMessage");
-                }
-            }
-        }
-
         private void Login(object parameter)
         {
             if (CheckCredentials((PasswordBox)parameter))
             {
-                OnNotifyMessage("LOGIN SUCCESSFUL");
+                Message = "LOGIN SUCCESSFUL";
             }
         }
 
@@ -61,25 +47,18 @@ namespace Login
             string password = passwordBox.Password;
             if (string.IsNullOrEmpty(AccountName) && !string.IsNullOrEmpty(password))
             {
-                OnNotifyMessage("ACCOUNT NAME CANNOT BE EMPTY");
+                Message = "ACCOUNT NAME CANNOT BE EMPTY";
                 return false;
             }
 
             // Verify login and password
-            if (AccountName != "NoesisGUI" || password != "noesis")
+            if (AccountName != "noesis" || password != "12345")
             {
-                OnNotifyMessage("ACCOUNT NAME OR PASSWORD IS INCORRECT");
+                Message = "ACCOUNT NAME OR PASSWORD IS INCORRECT";
                 return false;
             }
 
             return true;
-        }
-
-        private void OnNotifyMessage(string message)
-        {
-            Message = message;
-            NotifyMessage = true;
-            NotifyMessage = false;
         }
     }
 }

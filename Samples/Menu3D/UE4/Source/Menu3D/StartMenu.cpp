@@ -23,10 +23,12 @@ StartMenu::StartMenu()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void StartMenu::InitializeComponent()
 {
-    GUI::LoadComponent(this, "/Game/StartMenu.StartMenu");
+    GUI::LoadComponent(this, "/Game/StartMenu.xaml");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+NS_BEGIN_COLD_REGION
+
 NS_IMPLEMENT_REFLECTION(Menu3D::StartMenu)
 {
     NsMeta<TypeId>("Menu3D.StartMenu");

@@ -5,14 +5,17 @@
 
 #pragma once
 
+// Engine includes
+#include "Kismet/BlueprintFunctionLibrary.h"
+
 // Generated header include
 #include "LoginFunctionLibrary.generated.h"
 
 UCLASS()
 class ULoginFunctionLibrary : public UBlueprintFunctionLibrary
 {
-	GENERATED_UCLASS_BODY()
+    GENERATED_UCLASS_BODY()
 
-	UFUNCTION(BlueprintCallable, Category = "NoesisGui", meta = (HidePin = "Target"))
-	static bool IsPasswordValid(UObject* PasswordBox, FString AccountName);
+    UFUNCTION(BlueprintCallable, Category = "NoesisGui", meta = (HidePin = "Target"))
+    static bool IsPasswordValid(UObject* PasswordBox, FString AccountName);
 };

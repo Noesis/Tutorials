@@ -9,7 +9,7 @@ using System;
 namespace Widget3D
 {
     /// <summary>
-    /// Widget3D sample view model
+    /// Buttons sample view model
     /// </summary>
     public class ViewModel
     {

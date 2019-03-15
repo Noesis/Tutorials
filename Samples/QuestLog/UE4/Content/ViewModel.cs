@@ -31,15 +31,13 @@ namespace QuestLog
 
     public class ViewModel : NotifyPropertyChangedBase
     {
-        public ViewModel() { } // used in design time DataContext
-
-        public ViewModel(ResourceDictionary questImages)
+        public ViewModel()
         {
             Quests = new ObservableCollection<Quest>();
 
-            ImageSource image0 = new BitmapImage(new Uri("pack://application:,,,/Images/Image0.png"));
-            ImageSource image1 = new BitmapImage(new Uri("pack://application:,,,/Images/Image1.png"));
-            ImageSource image2 = new BitmapImage(new Uri("pack://application:,,,/Images/Image2.png"));
+            ImageSource image0 = new BitmapImage(new Uri("Images/Image0.png", UriKind.Relative));
+            ImageSource image1 = new BitmapImage(new Uri("Images/Image1.png", UriKind.Relative));
+            ImageSource image2 = new BitmapImage(new Uri("Images/Image2.png", UriKind.Relative));
 
             // Should be filled by application
             Quests.Add(new Quest

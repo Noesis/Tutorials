@@ -11,17 +11,17 @@ DEFINE_LOG_CATEGORY(LogNoesisLocalization)
 
 class LocalizationGameModule : public FDefaultGameModuleImpl
 {
-	virtual void StartupModule() override
-	{
-		NsRegisterComponent<Localization::LevelToColorConverter>();
-		NsRegisterComponent<Localization::MainWindow>();
-	}
+    virtual void StartupModule() override
+    {
+        NsRegisterComponent<Localization::LevelToColorConverter>();
+        NsRegisterComponent<Localization::MainWindow>();
+    }
 
-	virtual void ShutdownModule() override
-	{
-		NsUnregisterComponent<Localization::LevelToColorConverter>();
-		NsUnregisterComponent<Localization::MainWindow>();
-	}
+    virtual void ShutdownModule() override
+    {
+        NsUnregisterComponent<Localization::LevelToColorConverter>();
+        NsUnregisterComponent<Localization::MainWindow>();
+    }
 };
 
 IMPLEMENT_PRIMARY_GAME_MODULE(LocalizationGameModule, LocalizationGame, "LocalizationGame" );

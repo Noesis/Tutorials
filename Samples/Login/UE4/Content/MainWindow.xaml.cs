@@ -19,6 +19,7 @@ namespace Login
             this.Initialized += OnInitialized;
             this.InitializeComponent();
         }
+
 #if NOESIS
         void InitializeComponent()
         {

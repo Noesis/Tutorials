@@ -18,11 +18,9 @@ This is a demo that shows how you can use `UserControl`s to implement a multi-pa
 
 ### C++ Code
 
-* [MainMenu.h](Source/Menu3D/MainMenu.h), [MainMenu.cpp](Source/Menu3D/MainMenu.cpp), [OptionSelector.h](Source/Menu3D/OptionSelector.h), [OptionSelector.cpp](Source/Menu3D/OptionSelector.cpp), [SettingsMenu.h](Source/Menu3D/SettingsMenu.h), [SettingsMenu.cpp](Source/Menu3D/SettingsMenu.cpp), [StartMenu.h](Source/Menu3D/StartMenu.h) and [StartMenu.cpp](Source/Menu3D/StartMenu.cpp): Implement the code-behind classes for the `UserControl`s in the `NoesisXaml`s `NoesisXaml'/Game/MainMenu.MainMenu'`, `NoesisXaml'/Game/OptionSelector.OptionSelector'`, `NoesisXaml'/Game/SettingsMenu.SettingsMenu'` and `NoesisXaml'/Game/StartMenu.StartMenu'`. The most interesting bit is the way in which the classes reference the `NoesisXaml`s that define their structure. This happens in the `InitializeComponent` functions each of these classes have. Note how the Unreal asset is referenced, and not the original XAML file.
+* [MainMenu.h](Source/Menu3D/MainMenu.h), [MainMenu.cpp](Source/Menu3D/MainMenu.cpp), [OptionSelector.h](Source/Menu3D/OptionSelector.h), [OptionSelector.cpp](Source/Menu3D/OptionSelector.cpp), [SettingsMenu.h](Source/Menu3D/SettingsMenu.h), [SettingsMenu.cpp](Source/Menu3D/SettingsMenu.cpp), [StartMenu.h](Source/Menu3D/StartMenu.h) and [StartMenu.cpp](Source/Menu3D/StartMenu.cpp): Implement the code-behind classes for the `UserControl`s in the `NoesisXaml`s `NoesisXaml'/Game/MainMenu.MainMenu'`, `NoesisXaml'/Game/OptionSelector.OptionSelector'`, `NoesisXaml'/Game/SettingsMenu.SettingsMenu'` and `NoesisXaml'/Game/StartMenu.StartMenu'`. The most interesting bit is the way in which the classes reference the `NoesisXaml`s that define their structure. This happens in the `InitializeComponent` functions each of these classes have.
 
 * [MainWindow.h](Source/Menu3D/MainWindow.h): Implements a minimal code-behind for [MainWindow.xaml](Content/MainWindow.xaml).
-
-* [Menu3DFunctionLibrary.h](Source/Menu3D/Menu3DFunctionLibrary.h) and [Menu3DFunctionLibrary.cpp](Source/Menu3D/Menu3DFunctionLibrary.cpp): Implements a `BlueprintFunctionLibrary` that exposes the function `SetFocus` to `Blueprint`s. This function uses `NoesisCreateComponentForUObject` to obtain a `BaseComponent` from the `Object` passed from the `Blueprint` code.
 
 * [Menu3DGame.cpp](Source/Menu3D/Menu3DGame.cpp): Implements a minimal game module that registers the NoesisGUI native components.
 
