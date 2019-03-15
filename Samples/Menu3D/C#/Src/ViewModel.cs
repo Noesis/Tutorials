@@ -1,5 +1,6 @@
 ﻿#if NOESIS
 using Noesis;
+using NoesisApp;
 using System;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -26,25 +27,25 @@ namespace Menu3D
         public ICommand Start { get; private set; }
         public ICommand StartCasual { get; private set; }
         public ICommand StartNormal { get; private set; }
-        public ICommand StartVeteran { get; private set; }
+        public ICommand StartExpert { get; private set; }
         public ICommand Settings { get; private set; }
         public ICommand Exit { get; private set; }
         public ICommand Back { get; private set; }
-        public ICommand FadeInCompleted { get; private set; }
 
         public ViewModel()
         {
             Start = new DelegateCommand(OnStart);
             StartCasual = new DelegateCommand(OnStartCasual);
             StartNormal = new DelegateCommand(OnStartNormal);
-            StartVeteran = new DelegateCommand(OnStartVeteran);
+            StartExpert = new DelegateCommand(OnStartExpert);
             Settings = new DelegateCommand(OnSettings);
             Exit = new DelegateCommand(OnExit);
             Back = new DelegateCommand(OnBack);
-            FadeInCompleted = new DelegateCommand(OnFadeInCompleted);
 
             State = State.Main;
         }
+
+        public string Platform { get { return "PC"; } }
 
         private State _state;
         public State State
@@ -84,9 +85,9 @@ namespace Menu3D
             Console.WriteLine("Start Normal");
         }
 
-        private void OnStartVeteran(object parameter)
+        private void OnStartExpert(object parameter)
         {
-            Console.WriteLine("Start Veteran");
+            Console.WriteLine("Start Expert");
         }
 
         private void OnSettings(object parameter)
@@ -115,19 +116,6 @@ namespace Menu3D
                     break;
                 }
             }
-        }
-
-        private void OnFadeInCompleted(object parameter)
-        {
-            UIElement target = (UIElement)parameter;
-#if NOESIS
-            target.Focus();
-#else
-            target.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                target.Focus();
-            }));
-#endif
         }
     }
 }

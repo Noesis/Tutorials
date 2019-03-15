@@ -1,0 +1,60 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Menu3D"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="Menu3D.MenuDescription"
+             mc:Ignorable="d"
+             x:Name="Root"
+             d:DesignWidth="800" d:DesignHeight="240">
+    <StackPanel Orientation="Vertical">
+        <TextBlock Text="{Binding Description, ElementName=Root, FallbackValue=DESCRIPTION}" FontSize="64" Foreground="{StaticResource TransparentWhiteBrush50}" FontFamily="Fonts/#WeblySleek UI Semibold"/>
+        <Rectangle Height="12" Margin="0,8,0,0" Fill="{StaticResource DiagonalLinesBg}"/>
+        <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+            <i:Interaction.Triggers>
+                <ei:DataTrigger Binding="{Binding Platform}" Value="PC">
+                    <ei:ChangePropertyAction TargetName="XBOXAccept" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="XBOXCancel" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="PS4Accept" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="PS4Cancel" PropertyName="Visibility" Value="Collapsed"/>
+                </ei:DataTrigger>
+                <ei:DataTrigger Binding="{Binding Platform}" Value="XBOX">
+                    <ei:ChangePropertyAction TargetName="PCAccept" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="PCCancel" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="PS4Accept" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="PS4Cancel" PropertyName="Visibility" Value="Collapsed"/>
+                </ei:DataTrigger>
+                <ei:DataTrigger Binding="{Binding Platform}" Value="PS4">
+                    <ei:ChangePropertyAction TargetName="PCAccept" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="PCCancel" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="XBOXAccept" PropertyName="Visibility" Value="Collapsed"/>
+                    <ei:ChangePropertyAction TargetName="XBOXCancel" PropertyName="Visibility" Value="Collapsed"/>
+                </ei:DataTrigger>
+            </i:Interaction.Triggers>
+            <Border x:Name="PCAccept" CornerRadius="4" BorderThickness="2" BorderBrush="{StaticResource TransparentWhiteBrush75}" Padding="8,2" VerticalAlignment="Center">
+                <TextBlock Text="ENTER" Foreground="{StaticResource TransparentWhiteBrush75}" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold"/>
+            </Border>
+            <Grid x:Name="XBOXAccept">
+                <Ellipse Width="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" StrokeThickness="1.7" Stroke="{StaticResource TransparentWhiteBrush75}" Margin="0,-2"/>
+                <TextBlock Text="A" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,0" Foreground="#FFAEFF80"/>
+            </Grid>
+            <Grid x:Name="PS4Accept">
+                <Ellipse Width="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" StrokeThickness="1.7" Stroke="{StaticResource TransparentWhiteBrush75}" Margin="0,-2"/>
+                <TextBlock Text="X" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,0" Foreground="#BF9ABAFF"/>
+            </Grid>
+            <TextBlock Text="{Binding AcceptText, ElementName=Root, FallbackValue=ACCEPT}" Foreground="{StaticResource TransparentWhiteBrush75}" VerticalAlignment="Center" Margin="10,-10,50,-7" FontSize="30"/>
+            <Border x:Name="PCCancel" CornerRadius="4" BorderThickness="2" BorderBrush="{StaticResource TransparentWhiteBrush75}" Padding="8,2" VerticalAlignment="Center">
+                <TextBlock Text="ESC" Foreground="{StaticResource TransparentWhiteBrush75}" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold"/>
+            </Border>
+            <Grid x:Name="XBOXCancel" Margin="0,-2">
+                <Ellipse Width="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" StrokeThickness="1.7" Stroke="{StaticResource TransparentWhiteBrush75}"/>
+                <TextBlock Text="B" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,0" Foreground="#FFF37572"/>
+            </Grid>
+            <Grid x:Name="PS4Cancel">
+                <Ellipse Width="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" StrokeThickness="1.7" Stroke="{StaticResource TransparentWhiteBrush75}" Margin="0,-2"/>
+                <TextBlock Text="O" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,0" Foreground="#BFFFA0CB"/>
+            </Grid>
+            <TextBlock Text="{Binding CancelText, ElementName=Root, FallbackValue=CANCEL}" Foreground="{StaticResource TransparentWhiteBrush75}" VerticalAlignment="Center" Margin="10,-10,0,-7" FontSize="30"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

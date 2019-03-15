@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E1D351F-0D23-9669-87F2-9D1A4A0F1A61}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Menu3D</RootNamespace>
+    <AssemblyName>Menu3D</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="..\..\Src\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="..\..\Src\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\Src\MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\Src\MenuDescription.xaml">
+      <Link>MenuDescription.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\Src\StartMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\Src\SettingsMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\Src\OptionSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\Src\MenuResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="..\..\Src\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Src\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\MenuDescription.xaml.cs">
+      <DependentUpon>MenuDescription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\MultiplierConverter.cs" />
+    <Compile Include="..\..\Src\StartMenu.xaml.cs">
+      <DependentUpon>StartMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\SettingsMenu.xaml.cs">
+      <DependentUpon>SettingsMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\OptionSelector.xaml.cs">
+      <DependentUpon>OptionSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\DelegateCommand.cs" />
+    <Compile Include="..\..\Src\ViewModel.cs" />
+    <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
+      <Link>Properties/AssemblyInfo.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\..\Src\Fonts\weblysleekuisb.ttf">
+      <Link>Fonts/weblysleekuisb.ttf</Link>
+    </Resource>
+    <Resource Include="..\..\Src\Fonts\weblysleekuisl.ttf">
+      <Link>Fonts\weblysleekuisl.ttf</Link>
+    </Resource>
+    <Resource Include="..\..\Src\Images\BackClouds.png">
+      <Link>Images/BackClouds.png</Link>
+    </Resource>
+    <Resource Include="..\..\Src\Images\FrontClouds.png">
+      <Link>Images/FrontClouds.png</Link>
+    </Resource>
+    <Resource Include="..\..\Src\Images\FrontTrees.png">
+      <Link>Images/FrontTrees.png</Link>
+    </Resource>
+    <Resource Include="..\..\Src\Images\LakeAndMountains.png">
+      <Link>Images/LakeAndMountains.png</Link>
+    </Resource>
+    <Resource Include="..\..\Src\Images\SkyAndSun.jpg">
+      <Link>Images/SkyAndSun.jpg</Link>
+    </Resource>
+    <Content Include="..\..\Src\Sounds\SoundTrack.mp3">
+      <Link>Sounds/SoundTrack.mp3</Link>
+    </Content>
+    <Content Include="..\..\Src\Sounds\WaterDropBig.mp3">
+      <Link>Sounds/WaterDropBig.mp3</Link>
+    </Content>
+    <Content Include="..\..\Src\Sounds\WaterDropSmall.mp3">
+      <Link>Sounds/WaterDropSmall.mp3</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="..\..\Src\Properties\" />
+    <None Include="..\..\Src\App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Noesis.GUI.Extensions">
+      <Version>2.2.0-rc2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

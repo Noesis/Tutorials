@@ -1,6 +1,7 @@
 ﻿#if NOESIS
 using Noesis;
 #else
+using System;
 using System.Windows.Controls;
 #endif
 
