@@ -3,8 +3,10 @@
 using Noesis;
 #else
 using System;
+using System.Windows;
 using System.Windows.Controls;
 #endif
+
 
 namespace TicTacToe
 {
@@ -15,9 +17,8 @@ namespace TicTacToe
     {
         public MainWindow()
         {
+            Initialized += OnInitialized;
             InitializeComponent();
-
-            DataContext = new ViewModel();
         }
 
 #if NOESIS
@@ -26,5 +27,10 @@ namespace TicTacToe
             Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/TicTacToe/MainWindow.xaml");
         }
 #endif
+
+        private void OnInitialized(object sender, EventArgs e)
+        {
+            DataContext = new ViewModel();
+        }
     }
 }

@@ -11,10 +11,10 @@ namespace TicTacToe
             {
                 throw new ArgumentNullException("execute");
             }
-            
+
             _execute = execute;
         }
-        
+
         public DelegateCommand(Func<object, bool> canExecute, Action<object> execute)
         {
             if (canExecute == null)
@@ -25,18 +25,18 @@ namespace TicTacToe
             {
                 throw new ArgumentNullException("execute");
             }
-            
+
             _canExecute = canExecute;
             _execute = execute;
         }
         
         public event EventHandler CanExecuteChanged;
-        
+
         public bool CanExecute(object parameter)
         {
             return _canExecute == null || _canExecute(parameter);
         }
-        
+
         public void Execute(object parameter)
         {
             _execute(parameter);
@@ -51,7 +51,9 @@ namespace TicTacToe
             }
         }
 
+        #region Private members
         private Func<object, bool> _canExecute;
         private Action<object> _execute;
+        #endregion
     }
 }
