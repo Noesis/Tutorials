@@ -99,7 +99,7 @@ namespace Localization
         {
             public static object LoadXaml(string filename)
             {
-                return Application.LoadComponent(new Uri(filename, UriKind.Relative));
+                return Application.LoadComponent(new Uri("/Localization;component/" + filename, UriKind.Relative));
             }
         }
 #endif
