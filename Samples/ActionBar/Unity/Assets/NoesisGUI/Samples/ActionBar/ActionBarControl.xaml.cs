@@ -25,7 +25,7 @@ namespace ActionBar
 
         private void OnInitialized(object sender, EventArgs e)
         {
-            foreach (UIElement spell in this.Spells.Children.Cast<UIElement>())
+            foreach (UIElement spell in this.Spells.Children)
             {
                 spell.MouseDown += OnSpellMouseDown;
             }
