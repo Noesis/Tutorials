@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &5
@@ -124,7 +125,6 @@ GameObject:
   - component: {fileID: 869819807}
   - component: {fileID: 869819806}
   - component: {fileID: 869819805}
-  - component: {fileID: 869819808}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -144,9 +144,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xaml: {fileID: 11400000, guid: fe834d42711dc2b468d5eb276e7a5996, type: 2}
-  _antiAliasingMode: 0
-  _tessellationQuality: 1
+  _texture: {fileID: 0}
+  _isPPAAEnabled: 1
+  _tessellationMaxPixelError: 0.2
   _renderFlags: 0
+  _continuousRendering: 1
   _enableKeyboard: 1
   _enableMouse: 1
   _enableTouch: 1
@@ -166,22 +168,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 869819804}
   m_Enabled: 1
---- !u!114 &869819808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 869819804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd5a8d86bda7954d9ad0cf87676a016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xamls:
-  - {fileID: 11400000, guid: a874142e217234e4a8c45fda9c20bba5, type: 2}
-  - {fileID: 11400000, guid: 8267a3acbd42b594baa905e909574c5e, type: 2}
-  - {fileID: 11400000, guid: 751626cf8f5e1044c992e9172d9a112d, type: 2}
-  - {fileID: 11400000, guid: b47b824ef8ee98547a28d76dd3b14f9c, type: 2}
 --- !u!20 &869819809
 Camera:
   m_ObjectHideFlags: 0
@@ -213,6 +199,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

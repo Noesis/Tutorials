@@ -60,15 +60,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NoesisGUIExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\DelegateCommand.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\ElementExtensions.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\MenuDescription.xaml.cs">
+      <DependentUpon>MenuDescription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\NoesisGUI\Samples\Menu3D\MultiplierConverter.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\ViewModel.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Menu3D\OptionSelector.xaml.cs">
       <DependentUpon>OptionSelector.xaml</DependentUpon>
@@ -82,27 +84,8 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Fonts\weblysleekuisb.ttf" />
     <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Fonts\weblysleekuisl.ttf" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +97,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Assets\NoesisGUI\Samples\Menu3D\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\Menu3D\MenuDescription.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -140,6 +127,16 @@
     <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\FrontTrees.png" />
     <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\LakeAndMountains.png" />
     <Resource Include="Assets\NoesisGUI\Samples\Menu3D\Images\SkyAndSun.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\NoesisGUI\Samples\Menu3D\Sounds\SoundTrack.mp3" />
+    <Content Include="Assets\NoesisGUI\Samples\Menu3D\Sounds\WaterDropBig.mp3" />
+    <Content Include="Assets\NoesisGUI\Samples\Menu3D\Sounds\WaterDropSmall.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Noesis.GUI.Extensions">
+      <Version>2.2.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

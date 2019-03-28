@@ -1,98 +1,135 @@
-﻿<Grid x:Class="Menu3D.MainWindow"
+﻿<UserControl x:Class="Menu3D.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
     xmlns:local="clr-namespace:Menu3D"
-    xmlns:noesis="clr-namespace:NoesisGUIExtensions">
-    <Grid.Resources>
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    FontFamily="Fonts/#WeblySleek UI Semilight">
+
+    <UserControl.Resources>
+        <local:MultiplierConverter x:Key="MultiplierConverter"/>
         <Storyboard x:Key="BackgroundAnim">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="SkyAndSun" RepeatBehavior="Forever">
-                <EasingDoubleKeyFrame KeyTime="0:3:20" Value="-3000"/>
+                <EasingDoubleKeyFrame KeyTime="0:5:00" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="BackClouds" RepeatBehavior="Forever">
-                <EasingDoubleKeyFrame KeyTime="0:3:20" Value="2244"/>
+                <EasingDoubleKeyFrame KeyTime="0:3:20" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="Mountains" RepeatBehavior="Forever">
-                <EasingDoubleKeyFrame KeyTime="0:2:30" Value="-1920"/>
+                <EasingDoubleKeyFrame KeyTime="0:2:30" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="FrontClouds" RepeatBehavior="Forever">
-                <EasingDoubleKeyFrame KeyTime="0:1:40" Value="1920"/>
+                <EasingDoubleKeyFrame KeyTime="0:1:40" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="FrontTrees" RepeatBehavior="Forever">
-                <EasingDoubleKeyFrame KeyTime="0:1:12" Value="-1920"/>
+                <EasingDoubleKeyFrame KeyTime="0:1:12" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-    </Grid.Resources>
+    </UserControl.Resources>
 
-    <Grid.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource BackgroundAnim}"/>
-        </EventTrigger>
-    </Grid.Triggers>
-    <Viewbox Stretch="UniformToFill">
-        <Canvas Width="2098" Height="1180">
-            <Canvas.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:PlaySoundAction Source="Sounds/SoundTrack.mp3" Volume="1"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid x:Name="BackgroundImages">
+        <Grid Margin="0,0,0,-1" d:IsLocked="True">
+            <Grid.Resources>
                 <ImageSource x:Key="Image.SkyAndSun">Images/SkyAndSun.jpg</ImageSource>
                 <ImageSource x:Key="Image.Mountains">Images/LakeAndMountains.png</ImageSource>
                 <ImageSource x:Key="Image.FrontTrees">Images/FrontTrees.png</ImageSource>
                 <ImageSource x:Key="Image.BackClouds">Images/BackClouds.png</ImageSource>
                 <ImageSource x:Key="Image.FrontClouds">Images/FrontClouds.png</ImageSource>
-            </Canvas.Resources>
-            <StackPanel x:Name="SkyAndSun" Orientation="Horizontal">
-                <StackPanel.RenderTransform>
-                    <TranslateTransform/>
-                </StackPanel.RenderTransform>
-                <Image Source="{StaticResource Image.SkyAndSun}" Width="3000" Height="500" Stretch="Fill"/>
-                <Image Source="{StaticResource Image.SkyAndSun}" Width="3000" Height="500" Stretch="Fill" Margin="-1,0,0,0"/>
-            </StackPanel>
-            <StackPanel x:Name="BackClouds" Orientation="Horizontal" Canvas.Top="24" Canvas.Right="0">
-                <StackPanel.RenderTransform>
-                    <TranslateTransform/>
-                </StackPanel.RenderTransform>
-                <Image Source="{StaticResource Image.BackClouds}" Width="2244" Height="277" Stretch="Fill"/>
-                <Image Source="{StaticResource Image.BackClouds}" Width="2244" Height="277" Stretch="Fill"/>
-            </StackPanel>
-            <StackPanel x:Name="Mountains" Orientation="Horizontal" Canvas.Top="260">
-                <StackPanel.RenderTransform>
-                    <TranslateTransform/>
-                </StackPanel.RenderTransform>
-                <Image Source="{StaticResource Image.Mountains}" Width="1920" Height="920" Stretch="Fill"/>
-                <Image Source="{StaticResource Image.Mountains}" Width="1920" Height="920" Stretch="Fill" Margin="-1,0,0,0"/>
-                <Image Source="{StaticResource Image.Mountains}" Width="1920" Height="920" Stretch="Fill" Margin="-1,0,0,0"/>
-            </StackPanel>
-            <StackPanel x:Name="FrontClouds" Orientation="Horizontal" Canvas.Top="250" Canvas.Right="0">
-                <StackPanel.RenderTransform>
-                    <TranslateTransform/>
-                </StackPanel.RenderTransform>
-                <Image Source="{StaticResource Image.FrontClouds}" Width="1920" Height="120" Stretch="Fill"/>
-                <Image Source="{StaticResource Image.FrontClouds}" Width="1920" Height="120" Stretch="Fill"/>
-                <Image Source="{StaticResource Image.FrontClouds}" Width="1920" Height="120" Stretch="Fill"/>
-            </StackPanel>
-            <StackPanel x:Name="FrontTrees" Orientation="Horizontal" Canvas.Bottom="-3">
-                <StackPanel.RenderTransform>
-                    <TranslateTransform/>
-                </StackPanel.RenderTransform>
-                <Image Source="{StaticResource Image.FrontTrees}" Width="1920" Height="365" Stretch="Fill"/>
-                <Image Source="{StaticResource Image.FrontTrees}" Width="1920" Height="365" Stretch="Fill" Margin="-1,0,0,0"/>
-            </StackPanel>
-        </Canvas>
-    </Viewbox>
-    <Grid>
-        <noesis:Element.Projection>
-            <noesis:PlaneProjection RotationY="-10"/>
-        </noesis:Element.Projection>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <local:MainMenu x:Name="Main" Grid.Row="1" Grid.Column="1"/>
-        <local:StartMenu x:Name="Start" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
-        <local:SettingsMenu x:Name="Settings" Grid.Row="1" Grid.Column="1" d:IsHidden="True"/>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="135*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="24*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="190*"/>
+                <RowDefinition Height="221*"/>
+            </Grid.RowDefinitions>
+            <Decorator x:Name="SkyAndSunRef" Grid.Row="0" Grid.RowSpan="6"/>
+            <Canvas Grid.Row="0" Grid.RowSpan="6">
+                <StackPanel x:Name="SkyAndSun" Orientation="Horizontal" Height="{Binding ActualHeight, ElementName=SkyAndSunRef}"
+                            Canvas.Left="{Binding ActualWidth, ElementName=SkyAndSunWidth, Converter={StaticResource MultiplierConverter}, ConverterParameter=-1}">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform X="{Binding ActualWidth, ElementName=SkyAndSunWidth}"/>
+                    </StackPanel.RenderTransform>
+                    <Image x:Name="SkyAndSunWidth" Source="{StaticResource Image.SkyAndSun}" />
+                    <Image Source="{StaticResource Image.SkyAndSun}" Margin="0,0,0,0"/>
+                </StackPanel>
+            </Canvas>
+            <Decorator x:Name="BackCloudsRef" Grid.Row="1" Grid.RowSpan="3"/>
+            <Canvas Grid.Row="1" Grid.RowSpan="4">
+                <StackPanel x:Name="BackClouds" Orientation="Horizontal" Height="{Binding ActualHeight, ElementName=BackCloudsRef}"
+                            Canvas.Right="{Binding ActualWidth, ElementName=BackCloudsWidth, Converter={StaticResource MultiplierConverter}, ConverterParameter=-1}">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform X="{Binding ActualWidth, ElementName=BackCloudsWidth, Converter={StaticResource MultiplierConverter}, ConverterParameter=-1}"/>
+                    </StackPanel.RenderTransform>
+                    <Image x:Name="BackCloudsWidth" Source="{StaticResource Image.BackClouds}"/>
+                    <Image Source="{StaticResource Image.BackClouds}"/>
+                    <Image Source="{StaticResource Image.BackClouds}"/>
+                </StackPanel>
+            </Canvas>
+            <Decorator x:Name="MountainsRef" Grid.Row="3" Grid.RowSpan="5"/>
+            <Canvas Grid.Row="3" Grid.RowSpan="5">
+                <StackPanel x:Name="Mountains" Orientation="Horizontal" Height="{Binding ActualHeight, ElementName=MountainsRef}"
+                            Canvas.Left="{Binding ActualWidth, ElementName=MountainsWidth, Converter={StaticResource MultiplierConverter}, ConverterParameter=-1}">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform X="{Binding ActualWidth, ElementName=MountainsWidth}"/>
+                    </StackPanel.RenderTransform>
+                    <Image x:Name="MountainsWidth" Source="{StaticResource Image.Mountains}"/>
+                    <Image Source="{StaticResource Image.Mountains}" Margin="0,0,0,0"/>
+                    <Image Source="{StaticResource Image.Mountains}" Margin="0,0,0,0"/>
+                </StackPanel>
+            </Canvas>
+            <Decorator x:Name="FrontCloudsRef" Grid.Row="2" Grid.RowSpan="3"/>
+            <Canvas Grid.Row="2" Grid.RowSpan="3">
+                <StackPanel x:Name="FrontClouds" Orientation="Horizontal" Height="{Binding ActualHeight, ElementName=FrontCloudsRef}"
+                            Canvas.Right="{Binding ActualWidth, ElementName=FrontCloudsWidth, Converter={StaticResource MultiplierConverter}, ConverterParameter=-1}">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform X="{Binding ActualWidth, ElementName=FrontCloudsWidth, Converter={StaticResource MultiplierConverter}, ConverterParameter=-1}"/>
+                    </StackPanel.RenderTransform>
+                    <Image x:Name="FrontCloudsWidth" Source="{StaticResource Image.FrontClouds}"/>
+                    <Image Source="{StaticResource Image.FrontClouds}"/>
+                    <Image Source="{StaticResource Image.FrontClouds}"/>
+                </StackPanel>
+            </Canvas>
+            <Decorator x:Name="FrontTreesRef" Grid.Row="7"/>
+            <Canvas Grid.Row="7">
+                <StackPanel x:Name="FrontTrees" Orientation="Horizontal" Height="{Binding ActualHeight, ElementName=FrontTreesRef}"
+                            Canvas.Left="{Binding ActualWidth, ElementName=FrontTreesWidth, Converter={StaticResource MultiplierConverter}, ConverterParameter=-1}">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform X="{Binding ActualWidth, ElementName=FrontTreesWidth}"/>
+                    </StackPanel.RenderTransform>
+                    <Image x:Name="FrontTreesWidth" Source="{StaticResource Image.FrontTrees}"/>
+                    <Image Source="{StaticResource Image.FrontTrees}" Margin="0,0,0,0"/>
+                    <Image Source="{StaticResource Image.FrontTrees}" Margin="0,0,0,0"/>
+                </StackPanel>
+            </Canvas>
+        </Grid>
+        <Grid>
+            <noesis:Element.Projection>
+                <noesis:PlaneProjection RotationY="-10"/>
+            </noesis:Element.Projection>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <local:MainMenu x:Name="Main" Grid.Row="1" Grid.Column="1"/>
+            <local:StartMenu x:Name="Start" Grid.Row="1" Grid.Column="1" Visibility="Hidden"/>
+            <local:SettingsMenu x:Name="Settings" Grid.Row="1" Grid.Column="1" Visibility="Hidden"/>
+        </Grid>
     </Grid>
-</Grid>
+</UserControl>
