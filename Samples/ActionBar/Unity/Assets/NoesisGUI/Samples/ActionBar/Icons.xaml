@@ -1,13 +1,14 @@
 ﻿<ResourceDictionary
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<ImageBrush x:Key="RayHelix" ImageSource="IconAtlas.png" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="350,0,46,46"/>
-    <ImageBrush x:Key="FireStorm" ImageSource="IconAtlas.png" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="450,300,46,46"/>
-    <ImageBrush x:Key="Hurricane" ImageSource="IconAtlas.png" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="300,400,46,46"/>
-    <ImageBrush x:Key="Strength" ImageSource="IconAtlas.png" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="450,0,46,46"/>
-    <ImageBrush x:Key="Defense" ImageSource="IconAtlas.png" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="100,50,46,46"/>
-    <ImageBrush x:Key="MindControl" ImageSource="IconAtlas.png" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="350,200,46,46"/>
-    <ImageBrush x:Key="FireShield" ImageSource="IconAtlas.png" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="50,50,46,46"/>
-	<ImageBrush x:Key="RayShield" ImageSource="IconAtlas.png" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="0,200,46,46"/>
-	<ImageBrush x:Key="IceShield" ImageSource="IconAtlas.png" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="50,200,46,46"/>
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ImageSource x:Key="Atlas">IconAtlas.png</ImageSource>
+    <ImageBrush x:Key="RayHelix" ImageSource="{StaticResource Atlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="2,2,46,46"/>
+    <ImageBrush x:Key="FireStorm" ImageSource="{StaticResource Atlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="452,302,46,46"/>
+    <ImageBrush x:Key="Hurricane" ImageSource="{StaticResource Atlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="302,402,46,46"/>
+    <ImageBrush x:Key="Strength" ImageSource="{StaticResource Atlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="452,2,46,46"/>
+    <ImageBrush x:Key="Defense" ImageSource="{StaticResource Atlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="102,52,46,46"/>
+    <ImageBrush x:Key="MindControl" ImageSource="{StaticResource Atlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="352,202,46,46"/>
+    <ImageBrush x:Key="FireShield" ImageSource="{StaticResource Atlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="52,52,46,46"/>
+    <ImageBrush x:Key="RayShield" ImageSource="{StaticResource Atlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="2,202,46,46"/>
+    <ImageBrush x:Key="IceShield" ImageSource="{StaticResource Atlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="52,202,46,46"/>
 </ResourceDictionary>

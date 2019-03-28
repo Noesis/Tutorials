@@ -1,62 +1,63 @@
 ﻿<UserControl
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-	x:Class="ActionBar.ActionBarControl"
-	d:DesignWidth="640" d:DesignHeight="480">
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+  x:Class="ActionBar.ActionBarControl"
+  d:DesignWidth="640" d:DesignHeight="480"
+  Background="Black">
 
-	<UserControl.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="Icons.xaml"/>
-				<ResourceDictionary Source="Brushes.xaml"/>
-			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Icons.xaml"/>
+                <ResourceDictionary Source="Brushes.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
 
-	<Viewbox Stretch="Uniform">
-		<Canvas x:Name="Canvas" Width="640" Height="400" Tag="{Binding ElementName=EmptySlot}">
-			<Border BorderThickness="4" BorderBrush="#FF202020" Canvas.Top="30" Canvas.Left="50">
-				<Border Padding="15" BorderThickness="4" BorderBrush="#FF303030" Background="#FF202020">
-					<WrapPanel x:Name="Spells" Width="162">
-						<Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GoldBd}" BorderThickness="2" Background="{StaticResource RayHelix}" ToolTip="Ray Helix"/>
-						<Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GoldBd}" BorderThickness="2" Background="{StaticResource FireStorm}" ToolTip="Fire Storm"/>
-						<Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GoldBd}" BorderThickness="2" Background="{StaticResource Hurricane}" ToolTip="Hurricane"/>
-						<Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GreenBd}" BorderThickness="2" Background="{StaticResource Strength}" ToolTip="Strength"/>
-						<Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GreenBd}" BorderThickness="2" Background="{StaticResource Defense}" ToolTip="Magic Defense"/>
-						<Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GreenBd}" BorderThickness="2" Background="{StaticResource MindControl}" ToolTip="Mind Control"/>
-						<Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource BlueBd}" BorderThickness="2" Background="{StaticResource FireShield}" ToolTip="Fire Shield"/>
-						<Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource BlueBd}" BorderThickness="2" Background="{StaticResource RayShield}" ToolTip="Ray Shield"/>
-						<Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource BlueBd}" BorderThickness="2" Background="{StaticResource IceShield}" ToolTip="Ice Shield"/>
-					</WrapPanel>
-				</Border>
-			</Border>
-			<Border BorderThickness="4" BorderBrush="#FF202020" Canvas.Bottom="0" Canvas.Left="150">
-				<Border Padding="7" BorderThickness="4" BorderBrush="#FF303030" Background="#FF202020">
-					<StackPanel Orientation="Horizontal" Width="324">
-						<Border x:Name="Slot1" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
-							<TextBlock TextWrapping="Wrap" Text="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
-						</Border>
-						<Border x:Name="Slot2" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
-							<TextBlock TextWrapping="Wrap" Text="2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
-						</Border>
-						<Border x:Name="Slot3" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
-							<TextBlock TextWrapping="Wrap" Text="3" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
-						</Border>
-						<Border x:Name="Slot4" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
-							<TextBlock TextWrapping="Wrap" Text="4" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
-						</Border>
-						<Border x:Name="Slot5" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
-							<TextBlock TextWrapping="Wrap" Text="5" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
-						</Border>
-						<Border x:Name="Slot6" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
-							<TextBlock TextWrapping="Wrap" Text="6" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
-						</Border>
-					</StackPanel>
-				</Border>
-			</Border>
-			<Border x:Name="Floating" Width="50" Height="50" Opacity="0.7" BorderThickness="2" Visibility="Collapsed"/>
-		</Canvas>
-	</Viewbox>
+    <Viewbox Stretch="Uniform">
+        <Canvas x:Name="Screen" Width="640" Height="400" Tag="{Binding ElementName=EmptySlot}">
+            <Border BorderThickness="4" BorderBrush="#FF202020" Canvas.Top="30" Canvas.Left="50">
+                <Border Padding="15" BorderThickness="4" BorderBrush="#FF303030" Background="#FF202020">
+                    <WrapPanel x:Name="Spells" Width="162">
+                        <Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GoldBd}" BorderThickness="2" Background="{StaticResource RayHelix}" ToolTip="Ray Helix"/>
+                        <Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GoldBd}" BorderThickness="2" Background="{StaticResource FireStorm}" ToolTip="Fire Storm"/>
+                        <Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GoldBd}" BorderThickness="2" Background="{StaticResource Hurricane}" ToolTip="Hurricane"/>
+                        <Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GreenBd}" BorderThickness="2" Background="{StaticResource Strength}" ToolTip="Strength"/>
+                        <Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GreenBd}" BorderThickness="2" Background="{StaticResource Defense}" ToolTip="Magic Defense"/>
+                        <Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource GreenBd}" BorderThickness="2" Background="{StaticResource MindControl}" ToolTip="Mind Control"/>
+                        <Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource BlueBd}" BorderThickness="2" Background="{StaticResource FireShield}" ToolTip="Fire Shield"/>
+                        <Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource BlueBd}" BorderThickness="2" Background="{StaticResource RayShield}" ToolTip="Ray Shield"/>
+                        <Border Width="50" Height="50" Margin="2" BorderBrush="{StaticResource BlueBd}" BorderThickness="2" Background="{StaticResource IceShield}" ToolTip="Ice Shield"/>
+                    </WrapPanel>
+                </Border>
+            </Border>
+            <Border BorderThickness="4" BorderBrush="#FF202020" Canvas.Bottom="0" Canvas.Left="150">
+                <Border Padding="7" BorderThickness="4" BorderBrush="#FF303030" Background="#FF202020">
+                    <StackPanel Orientation="Horizontal" Width="324">
+                        <Border x:Name="Slot1" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
+                            <TextBlock TextWrapping="Wrap" Text="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
+                        </Border>
+                        <Border x:Name="Slot2" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
+                            <TextBlock TextWrapping="Wrap" Text="2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
+                        </Border>
+                        <Border x:Name="Slot3" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
+                            <TextBlock TextWrapping="Wrap" Text="3" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
+                        </Border>
+                        <Border x:Name="Slot4" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
+                            <TextBlock TextWrapping="Wrap" Text="4" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
+                        </Border>
+                        <Border x:Name="Slot5" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
+                            <TextBlock TextWrapping="Wrap" Text="5" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
+                        </Border>
+                        <Border x:Name="Slot6" Height="50" BorderThickness="2" Margin="2" Width="50" Background="{StaticResource EmptySlotBg}" BorderBrush="{StaticResource EmptySlotBd}">
+                            <TextBlock TextWrapping="Wrap" Text="6" HorizontalAlignment="Right" VerticalAlignment="Top" Width="16" FontWeight="Bold" Height="16" Background="{StaticResource SlotTextBg}" TextAlignment="Center" Foreground="{StaticResource SlotTextFg}" IsHitTestVisible="False"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Border>
+            <Border x:Name="Floating" Width="50" Height="50" Opacity="0.7" BorderThickness="2" Visibility="Collapsed"/>
+        </Canvas>
+    </Viewbox>
 
 </UserControl>
