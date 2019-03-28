@@ -42,7 +42,11 @@ namespace Inventory
 
         protected void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 
@@ -62,7 +66,11 @@ namespace Inventory
         public event SlotItemChangedHandler ItemChanged;
         private void OnItemChanged(Item oldItem, Item newItem)
         {
-            ItemChanged?.Invoke(this, oldItem, newItem);
+            SlotItemChangedHandler handler = ItemChanged;
+            if (handler != null)
+            {
+                handler(this, oldItem, newItem);
+            }
         }
 
         private bool _isDragOver = false;
@@ -96,7 +104,7 @@ namespace Inventory
             {
                 Slot sourceSlot = ViewModel.Instance.SelectedSlot;
 
-                IsDropAllowed = sourceSlot == this || (AllowedCategory == ItemCategory.All && 
+                IsDropAllowed = sourceSlot == this || (AllowedCategory == ItemCategory.All &&
                     (Item == null || Item.Category == sourceSlot.AllowedCategory));
             }
         }
