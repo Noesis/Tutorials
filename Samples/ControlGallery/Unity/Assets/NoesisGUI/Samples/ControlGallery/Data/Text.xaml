@@ -1,0 +1,58 @@
+<Grid
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions">
+  
+  <Viewbox Margin="50">
+  
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Margin="5" Grid.Column="0" FontSize="21" Background="#80272B30">
+            <GroupBox.Header>
+                <TextBlock Text="TEXT STYLE &amp; WEIGHT" FontSize="12" FontWeight="Bold"/>
+            </GroupBox.Header>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Normal" TextAlignment="Center" FontStyle="Normal" FontWeight="Normal"/>
+                <TextBlock Text="Italic" TextAlignment="Center" FontStyle="Italic" FontWeight="Normal"/>
+                <TextBlock Text="Bold" TextAlignment="Center" FontStyle="Normal" FontWeight="Bold"/>
+                <TextBlock Text="Bold Italic" TextAlignment="Center" FontStyle="Italic" FontWeight="Bold"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Margin="5" Grid.Column="1" FontSize="21" Background="#80272B30">
+            <GroupBox.Header>
+                <TextBlock Text="TEXT ALIGNMENT" FontSize="12" FontWeight="Bold"/>
+            </GroupBox.Header>
+            <StackPanel VerticalAlignment="Center">
+                <Border BorderBrush="DodgerBlue" BorderThickness="1" Margin="2" Padding="1">
+                    <TextBlock Text="Left" TextAlignment="Left"/>
+                </Border>
+                <Border BorderBrush="DodgerBlue" BorderThickness="1" Margin="2" Padding="1">
+                    <TextBlock Text="Center" TextAlignment="Center"/>
+                </Border>
+                <Border BorderBrush="DodgerBlue" BorderThickness="1" Margin="2" Padding="1">
+                    <TextBlock Text="Right" TextAlignment="Right"/>
+                </Border>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Margin="5" Grid.Column="2" FontSize="21" Background="#80272B30">
+            <GroupBox.Header>
+                <TextBlock Text="TEXT COLORING" FontSize="12" FontWeight="Bold"/>
+            </GroupBox.Header>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Foreground" TextAlignment="Center" Margin="4" Foreground="DodgerBlue"/>
+                <TextBlock Text="Background" TextAlignment="Center" Margin="3" Padding="1" Background="DodgerBlue"/>
+                <TextBlock Text="Stroke" TextAlignment="Center" Margin="4" noesis:Text.Stroke="DodgerBlue" noesis:Text.StrokeThickness="2.5"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+    
+  </Viewbox>
+  
+</Grid>

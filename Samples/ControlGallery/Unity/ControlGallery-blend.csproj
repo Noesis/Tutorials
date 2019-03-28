@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E1D351F-0D23-4669-87F2-9D1A4A0F1A67}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ControlGallery</RootNamespace>
+    <AssemblyName>ControlGallery</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\LogoResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Assets\NoesisGUI\Samples\ControlGallery\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Butterfly.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Canvas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\CarHud.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\ContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\DockPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Grid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\ImageAtlas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\ImageBrushStretch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\ImageBrushTile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\ImageBrushViewbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Aladin\aladin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Lion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\NoesisStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Palette.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\PasswordBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\ProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Projection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Reflections.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\SimpleStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Slider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\StackPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\StatusBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\StylesOrbButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Text.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Tiger.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Time.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\ToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\TreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Tux.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\UniformGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\WindowsStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\NoesisGUI\Samples\ControlGallery\Data\WrapPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Fonts\K22 Ambelyn Condensed.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Fonts\LCDMono2.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Fonts\LetMeRide.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Aladin\aladin-atlas.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\advertising.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\archives.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\attributes.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\billing.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\calendar.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\check.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\communication.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\config.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\consulting.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\database.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\featured.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\folder.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\freelance.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\future-projects.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\payment-card.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\plus.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\premium.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\print.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\product.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\project.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\refresh.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\search.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\sitemap.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Icons\twitter.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\bear.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\cat.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\chipmunk.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\dog.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\dolphin.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\gorilla.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\iguana.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\snake.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\tiger.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\Touch\zebra.jpg" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\folder.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\game_pad.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\melon1.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\melon2-viewbox.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\melon2.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\monitor.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\recycle_bin.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\tile.png" />
+    <Resource Include="Assets\NoesisGUI\Samples\ControlGallery\Data\Images\transparent-img.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Noesis.GUI.Extensions">
+      <Version>2.2.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

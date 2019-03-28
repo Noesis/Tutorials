@@ -2,9 +2,51 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-    FontFamily="Resources/Fonts/#Roboto"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    FontFamily="Data/Fonts/#Roboto"
     Foreground="#FFC9CCCF"
     d:DesignWidth="1280" d:DesignHeight="720">
+
+    <noesis:Xaml.Dependencies>
+        <noesis:Dependency Source="Data/Brushes.xaml"/>
+        <noesis:Dependency Source="Data/Butterfly.xaml"/>
+        <noesis:Dependency Source="Data/Button.xaml"/>
+        <noesis:Dependency Source="Data/Canvas.xaml"/>
+        <noesis:Dependency Source="Data/CarHud.xaml"/>
+        <noesis:Dependency Source="Data/CheckBox.xaml"/>
+        <noesis:Dependency Source="Data/ComboBox.xaml"/>
+        <noesis:Dependency Source="Data/ContextMenu.xaml"/>
+        <noesis:Dependency Source="Data/DockPanel.xaml"/>
+        <noesis:Dependency Source="Data/Expander.xaml"/>
+        <noesis:Dependency Source="Data/Grid.xaml"/>
+        <noesis:Dependency Source="Data/ImageAtlas.xaml"/>
+        <noesis:Dependency Source="Data/ImageBrushStretch.xaml"/>
+        <noesis:Dependency Source="Data/ImageBrushTile.xaml"/>
+        <noesis:Dependency Source="Data/ImageBrushViewbox.xaml"/>
+        <noesis:Dependency Source="Data/Lion.xaml"/>
+        <noesis:Dependency Source="Data/ListBox.xaml"/>
+        <noesis:Dependency Source="Data/Menu.xaml"/>
+        <noesis:Dependency Source="Data/Palette.xaml"/>
+        <noesis:Dependency Source="Data/PasswordBox.xaml"/>
+        <noesis:Dependency Source="Data/ProgressBar.xaml"/>
+        <noesis:Dependency Source="Data/Projection.xaml"/>
+        <noesis:Dependency Source="Data/RadioButton.xaml"/>
+        <noesis:Dependency Source="Data/Reflections.xaml"/>
+        <noesis:Dependency Source="Data/Slider.xaml"/>
+        <noesis:Dependency Source="Data/StackPanel.xaml"/>
+        <noesis:Dependency Source="Data/StatusBar.xaml"/>
+        <noesis:Dependency Source="Data/Styles.xaml"/>
+        <noesis:Dependency Source="Data/Text.xaml"/>
+        <noesis:Dependency Source="Data/TextBox.xaml"/>
+        <noesis:Dependency Source="Data/Tiger.xaml"/>
+        <noesis:Dependency Source="Data/Time.xaml"/>
+        <noesis:Dependency Source="Data/ToolBar.xaml"/>
+        <noesis:Dependency Source="Data/TreeView.xaml"/>
+        <noesis:Dependency Source="Data/Tux.xaml"/>
+        <noesis:Dependency Source="Data/UniformGrid.xaml"/>
+        <noesis:Dependency Source="Data/WrapPanel.xaml"/>
+
+    </noesis:Xaml.Dependencies>
 
     <UserControl.Resources>
         <Geometry x:Key="SelectorExpandGeometry">M2,2L8,2M2,5L8,5M2,8L8,8</Geometry>
@@ -851,7 +893,7 @@
     <Grid>
         <Grid>
             <Grid.Resources>
-                <ResourceDictionary Source="Resources/LogoResources.xaml"/>
+                <ResourceDictionary Source="Data/LogoResources.xaml"/>
             </Grid.Resources>
             <Border Background="{StaticResource NoesisLogoBg}"/>
             <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoFg}" RenderTransform="{StaticResource NoesisLogoTransform}" RenderTransformOrigin="0.5,0.5" Stretch="Uniform" StrokeLineJoin="Round" UseLayoutRounding="False"/>

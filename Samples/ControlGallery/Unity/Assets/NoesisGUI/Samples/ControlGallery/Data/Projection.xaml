@@ -1,0 +1,135 @@
+<Grid
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions">
+
+    <Viewbox Margin="50">
+        <GroupBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="250" Padding="10">
+            <Grid x:Name="LayoutRoot">
+                
+                <Grid.Resources>
+                    <noesis:PlaneProjection x:Key="ProjMtx"
+                            CenterOfRotationX="{Binding Value, ElementName=CenterX}"
+                            CenterOfRotationY="{Binding Value, ElementName=CenterY}"
+                            CenterOfRotationZ="{Binding Value, ElementName=CenterZ}"
+                            RotationX="{Binding Value, ElementName=RotX}"
+                            RotationY="{Binding Value, ElementName=RotY}"
+                            RotationZ="{Binding Value, ElementName=RotZ}"
+                            LocalOffsetX="{Binding Value, ElementName=OffX}"
+                            LocalOffsetY="{Binding Value, ElementName=OffY}"
+                            LocalOffsetZ="{Binding Value, ElementName=OffZ}"
+                            GlobalOffsetX="{Binding Value, ElementName=GOffX}"
+                            GlobalOffsetY="{Binding Value, ElementName=GOffY}"
+                            GlobalOffsetZ="{Binding Value, ElementName=GOffZ}"/>
+                    <Style x:Key="PanelStyle" TargetType="{x:Type Grid}">
+                        <Setter Property="Background" Value="#CC808080"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#CC606060"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Resources>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Viewbox>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,20,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Text="CenterOfRotationX" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Slider Grid.Column="1" x:Name="CenterX" Minimum="0" Maximum="1" Value="0.5" Margin="2" LargeChange="0.1"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Value, ElementName=CenterX, StringFormat=F2}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+                        <TextBlock Grid.Row="1" Text="CenterOfRotationY" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Slider Grid.Column="1" Grid.Row="1" x:Name="CenterY" Minimum="0" Maximum="1" Value="0.5" Margin="2" LargeChange="0.1"/>
+                        <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding Value, ElementName=CenterY, StringFormat=F2}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+                        <TextBlock Grid.Row="2" Text="CenterOfRotationZ" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Slider Grid.Column="1" Grid.Row="2" x:Name="CenterZ" Minimum="-300" Maximum="300" Value="0" Margin="2" LargeChange="10"/>
+                        <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding Value, ElementName=CenterZ, StringFormat=F2}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+                        <TextBlock Grid.Row="3" Text="RotationX" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Slider Grid.Column="1" Grid.Row="3" x:Name="RotX" Minimum="-180" Maximum="180" Value="0" Margin="2"/>
+                        <TextBlock Grid.Column="2" Grid.Row="3" Text="{Binding Value, ElementName=RotX, StringFormat=F2}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+                        <TextBlock Grid.Row="4" Text="RotationY" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Slider Grid.Column="1" Grid.Row="4" x:Name="RotY" Minimum="-180" Maximum="180" Value="0" Margin="2"/>
+                        <TextBlock Grid.Column="2" Grid.Row="4" Text="{Binding Value, ElementName=RotY, StringFormat=F2}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+                        <TextBlock Grid.Row="5" Text="RotationZ" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Slider Grid.Column="1" Grid.Row="5" x:Name="RotZ" Minimum="-180" Maximum="180" Value="0" Margin="2"/>
+                        <TextBlock Grid.Column="2" Grid.Row="5" Text="{Binding Value, ElementName=RotZ, StringFormat=F2}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+                        <TextBlock Grid.Row="6" Text="LocalOffsetX" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Slider Grid.Column="1" Grid.Row="6" x:Name="OffX" Minimum="-50" Maximum="50" Value="0" Margin="2"/>
+                        <TextBlock Grid.Column="2" Grid.Row="6" Text="{Binding Value, ElementName=OffX, StringFormat=F2}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+                        <TextBlock Grid.Row="7" Text="LocalOffsetY" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Slider Grid.Column="1" Grid.Row="7" x:Name="OffY" Minimum="-100" Maximum="100" Value="0" Margin="2"/>
+                        <TextBlock Grid.Column="2" Grid.Row="7" Text="{Binding Value, ElementName=OffY, StringFormat=F2}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+                        <TextBlock Grid.Row="8" Text="LocalOffsetZ" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Slider Grid.Column="1" Grid.Row="8" x:Name="OffZ" Minimum="-600" Maximum="600" Value="0" Margin="2"/>
+                        <TextBlock Grid.Column="2" Grid.Row="8" Text="{Binding Value, ElementName=OffZ, StringFormat=F2}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+                    </Grid>
+                </Viewbox>
+
+                <Rectangle Grid.Column="1" Stretch="Fill">
+                    <Rectangle.Fill>
+                        <RadialGradientBrush Center="0.5,0.846" GradientOrigin="0.5,0.846" RadiusX="0.881" RadiusY="0.653">
+                            <GradientStop Color="WhiteSmoke" Offset="0"/>
+                            <GradientStop Color="#FFB4B4B4" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+                <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" noesis:Element.Projection="{StaticResource ProjMtx}" Style="{StaticResource PanelStyle}">
+                    <Button Width="150" Height="40" Margin="80" Content="Click Me">
+                        <noesis:Element.Projection>
+                            <noesis:PlaneProjection/>
+                        </noesis:Element.Projection>
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="ButtonBase.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Projection).(noesis:PlaneProjection.RotationX)">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:5" Value="-1800">
+                                                <EasingDoubleKeyFrame.EasingFunction>
+                                                    <CircleEase EasingMode="EaseOut"/>
+                                                </EasingDoubleKeyFrame.EasingFunction>
+                                            </EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </Grid>
+            </Grid>
+        </GroupBox>
+    </Viewbox>
+    
+</Grid>

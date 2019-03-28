@@ -88,14 +88,9 @@ namespace ControlGallery
             args.Handled = true;
         }
 
-#if NOESIS
-        void OnSamplesSelectionChanged(object oldValue, object newValue)
-        {
-#else
         void OnSamplesSelectionChanged(object sender, RoutedPropertyChangedEventArgs<object> args)
         {
             object newValue = args.NewValue;
-#endif
             TreeViewItem tvi = (TreeViewItem)newValue;
             if (tvi != null && !tvi.HasItems)
             {
@@ -133,11 +128,10 @@ namespace ControlGallery
         object LoadXaml(string xaml)
         {
 #if NOESIS
-            NoesisXaml xamlUnity = (NoesisXaml)UnityEngine.Resources.Load(xaml, typeof(NoesisXaml));
-            return xamlUnity.Load();
+            return Noesis.GUI.LoadXaml("Assets/NoesisGUI/Samples/ControlGallery/Data/" + xaml + ".xaml");
 #else
-            string path = "/ControlGallery;component/Assets/NoesisGUI/Samples/ControlGallery/Resources/" + xaml + ".xaml";
-            return Application.LoadComponent(new Uri(path, UriKind.RelativeOrAbsolute));
+            string path = "/Assets/NoesisGUI/Samples/ControlGallery/Data/" + xaml + ".xaml";
+            return Application.LoadComponent(new Uri(path, UriKind.Relative));
 #endif
         }
 
