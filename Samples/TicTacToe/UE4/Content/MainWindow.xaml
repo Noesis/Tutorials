@@ -1,0 +1,1508 @@
+﻿<UserControl x:Class="TicTacToe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:TicTacToe"
+        xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+        Foreground="White" FontFamily="Fonts/#Multicolore "
+        d:DataContext="{d:DesignInstance {x:Type local:ViewModel}, IsDesignTimeCreatable=True}">
+
+    <UserControl.Resources>
+
+        <!--Cell indices-->
+        <sys:Int32 x:Key="Index0">0</sys:Int32>
+        <sys:Int32 x:Key="Index1">1</sys:Int32>
+        <sys:Int32 x:Key="Index2">2</sys:Int32>
+        <sys:Int32 x:Key="Index3">3</sys:Int32>
+        <sys:Int32 x:Key="Index4">4</sys:Int32>
+        <sys:Int32 x:Key="Index5">5</sys:Int32>
+        <sys:Int32 x:Key="Index6">6</sys:Int32>
+        <sys:Int32 x:Key="Index7">7</sys:Int32>
+        <sys:Int32 x:Key="Index8">8</sys:Int32>
+
+        <!--Cell style-->
+        <Style TargetType="ToggleButton">
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <ControlTemplate.Resources>
+                            <Geometry x:Key="CrossGeometry">M5.9972302,8.8379496 L8.8379328,6.0009854 25.338824,22.513108 41.847229,5.9970086 44.672782,8.8377386 28.183817,25.350064 44.665872,41.83577 41.848676,44.676558 25.339185,28.160435 8.8419424,44.687937 5.9900543,41.834826 22.513228,25.334886 z</Geometry>
+                            <Storyboard x:Key="OverAnimOn">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="OverGroup">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="OverGroup">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                                        <EasingDoubleKeyFrame.EasingFunction>
+                                            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+                                        </EasingDoubleKeyFrame.EasingFunction>
+                                    </EasingDoubleKeyFrame>
+                                </DoubleAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="OverNought">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#00FFFFFF"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#40FFFFFF">
+                                        <EasingColorKeyFrame.EasingFunction>
+                                            <SineEase EasingMode="EaseInOut"/>
+                                        </EasingColorKeyFrame.EasingFunction>
+                                    </EasingColorKeyFrame>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="OverCross">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#00FFFFFF"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#40FFFFFF">
+                                        <EasingColorKeyFrame.EasingFunction>
+                                            <SineEase EasingMode="EaseInOut"/>
+                                        </EasingColorKeyFrame.EasingFunction>
+                                    </EasingColorKeyFrame>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="OverAnimOff">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="OverNought">
+                                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#00FFFFFF">
+                                        <EasingColorKeyFrame.EasingFunction>
+                                            <SineEase EasingMode="EaseInOut"/>
+                                        </EasingColorKeyFrame.EasingFunction>
+                                    </EasingColorKeyFrame>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="OverCross">
+                                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#00FFFFFF">
+                                        <EasingColorKeyFrame.EasingFunction>
+                                            <SineEase EasingMode="EaseInOut"/>
+                                        </EasingColorKeyFrame.EasingFunction>
+                                    </EasingColorKeyFrame>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="CheckAnimOn">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="CheckNought">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#40FFFFFF"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FFFFFFFF">
+                                        <EasingColorKeyFrame.EasingFunction>
+                                            <SineEase EasingMode="EaseInOut"/>
+                                        </EasingColorKeyFrame.EasingFunction>
+                                    </EasingColorKeyFrame>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="CheckCross">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#40FFFFFF"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FFFFFFFF">
+                                        <EasingColorKeyFrame.EasingFunction>
+                                            <SineEase EasingMode="EaseInOut"/>
+                                        </EasingColorKeyFrame.EasingFunction>
+                                    </EasingColorKeyFrame>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="CheckAnimOff">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="CheckNought">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#00FFFFFF">
+                                        <EasingColorKeyFrame.EasingFunction>
+                                            <SineEase EasingMode="EaseInOut"/>
+                                        </EasingColorKeyFrame.EasingFunction>
+                                    </EasingColorKeyFrame>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="CheckCross">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#00FFFFFF">
+                                        <EasingColorKeyFrame.EasingFunction>
+                                            <SineEase EasingMode="EaseInOut"/>
+                                        </EasingColorKeyFrame.EasingFunction>
+                                    </EasingColorKeyFrame>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid Background="Transparent">
+                            <Grid x:Name="OverGroup" RenderTransformOrigin="0.5,0.5">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <Ellipse x:Name="OverNought" Stroke="#00FFFFFF" StrokeThickness="4" Margin="15"/>
+                                <Path x:Name="OverCross" Fill="#00FFFFFF" Data="{StaticResource CrossGeometry}" Stretch="Fill" Margin="16"/>
+                            </Grid>
+                            <Grid x:Name="CheckGroup" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <Ellipse x:Name="CheckNought" Stroke="#00FFFFFF" StrokeThickness="4" Margin="15"/>
+                                <Path x:Name="CheckCross" Fill="#00FFFFFF" Data="{StaticResource CrossGeometry}" Stretch="Fill" Margin="16"/>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding State}" Value="Player1">
+                                <Setter Property="Visibility" Value="Collapsed" TargetName="OverCross"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding State}" Value="Player2">
+                                <Setter Property="Visibility" Value="Collapsed" TargetName="OverNought"/>
+                            </DataTrigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource OverAnimOn}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource OverAnimOff}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="Content" Value="{x:Static local:State.Player1}">
+                                <Setter Property="Visibility" Value="Collapsed" TargetName="CheckCross"/>
+                            </Trigger>
+                            <Trigger Property="Content" Value="{x:Static local:State.Player2}">
+                                <Setter Property="Visibility" Value="Collapsed" TargetName="CheckNought"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource CheckAnimOn}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource CheckAnimOff}"/>
+                                </Trigger.ExitActions>
+                                <Setter Property="Visibility" Value="Collapsed" TargetName="OverGroup"/>
+                                <Setter Property="Visibility" Value="Visible" TargetName="CheckGroup"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Score changed animation-->
+        <Storyboard x:Key="ScorePlayer1ChangedAnim">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ScorePlayer1">
+                <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ScorePlayer1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ScorePlayer1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ScorePlayer1Fade">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.7">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ScorePlayer1Fade">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ScorePlayer1Fade">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#00066BC1"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#80066BC1"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="#00066BC1">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="ScoreTiesChangedAnim">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ScoreTies">
+                <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ScoreTies">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ScoreTies">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ScoreTiesFade">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.7">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ScoreTiesFade">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ScoreTiesFade">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#00066BC1"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#80066BC1"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="#00066BC1">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="ScorePlayer2ChangedAnim">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ScorePlayer2">
+                <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ScorePlayer2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ScorePlayer2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ScorePlayer2Fade">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.7">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ScorePlayer2Fade">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ScorePlayer2Fade">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#00066BC1"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#80066BC1"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="#00066BC1">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Win Row 0 animation-->
+        <Storyboard x:Key="WinRow0Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell00">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell00">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell00">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell01">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell02">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Win Row 1 animation-->
+        <Storyboard x:Key="WinRow1Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell10">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell10">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell12">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell12">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell10">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell12">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Win Row 2 animation-->
+        <Storyboard x:Key="WinRow2Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell20">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell20">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell21">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell21">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell22">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell22">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell20">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell21">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell22">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Win Col 0 animation-->
+        <Storyboard x:Key="WinCol0Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell00">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell00">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell10">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell10">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell20">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell20">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell00">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell10">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell20">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Win Col 1 animation-->
+        <Storyboard x:Key="WinCol1Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell01">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell01">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell21">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell21">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell01">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell21">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Win Col 2 animation-->
+        <Storyboard x:Key="WinCol2Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell02">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell02">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell12">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell12">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell22">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell22">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell02">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell12">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell22">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Win Diag 1 animation-->
+        <Storyboard x:Key="WinDiag1Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell00">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell00">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell22">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell22">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell00">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell22">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Win Diag 2 animation-->
+        <Storyboard x:Key="WinDiag2Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell20">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell20">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cell02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cell02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell20">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell11">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cell02">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Tie animation-->
+        <Storyboard x:Key="TieAnim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Board">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.07" Value="0.95"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.14" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.21" Value="0.9"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.28" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Board">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.07" Value="0.95"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.14" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.21" Value="0.9"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.28" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Status text animation-->
+        <Storyboard x:Key="StatusAnim">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="Status">
+                <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Status">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-2">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="BoardFlip1Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Projection).(noesis:PlaneProjection.RotationY)" Storyboard.TargetName="Board">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-90">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="BoardFlip2Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Projection).(noesis:PlaneProjection.RotationY)" Storyboard.TargetName="Board">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-360">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Offset="0" Color="#FF184C79"/>
+                <GradientStop Offset="0.05" Color="#FF1B5688"/>
+                <GradientStop Offset="1" Color="#FF123859"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="250*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <Viewbox>
+            <TextBlock x:Name="Status" Text="" Foreground="#00FFFFFF" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,20,0,0" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+                <i:Interaction.Triggers>
+                    <ei:PropertyChangedTrigger Binding="{Binding Text, ElementName=Status}">
+                        <ei:ControlStoryboardAction Storyboard="{StaticResource StatusAnim}"/>
+                    </ei:PropertyChangedTrigger>
+                    <ei:DataTrigger Binding="{Binding State}" Value="Player1">
+                        <ei:ChangePropertyAction PropertyName="Text" Value="PLAYER 1 TURN"/>
+                        <ei:ChangePropertyAction PropertyName="Tag" Value="1"/>
+                    </ei:DataTrigger>
+                    <ei:DataTrigger Binding="{Binding State}" Value="Player2">
+                        <ei:ChangePropertyAction PropertyName="Text" Value="PLAYER 2 TURN"/>
+                        <ei:ChangePropertyAction PropertyName="Tag" Value="2"/>
+                    </ei:DataTrigger>
+                    <ei:DataTrigger Binding="{Binding State}" Value="Tie">
+                        <ei:ChangePropertyAction PropertyName="Text" Value="GAME TIED!"/>
+                        <ei:PlaySoundAction Source="Sounds/TieEffect.wav" Volume="0.3"/>
+                    </ei:DataTrigger>
+                    <ei:DataTrigger Binding="{Binding State}" Comparison="GreaterThanOrEqual" Value="WinRow0">
+                        <i:Interaction.Behaviors>
+                            <ei:ConditionBehavior>
+                                <ei:ConditionalExpression>
+                                    <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=Status}" RightOperand="1"/>
+                                </ei:ConditionalExpression>
+                            </ei:ConditionBehavior>
+                        </i:Interaction.Behaviors>
+                        <ei:ChangePropertyAction PropertyName="Text" Value="PLAYER 1 WON!"/>
+                        <ei:PlaySoundAction Source="Sounds/WinEffect.wav" Volume="0.3"/>
+                    </ei:DataTrigger>
+                    <ei:DataTrigger Binding="{Binding State}" Comparison="GreaterThanOrEqual" Value="WinRow0">
+                        <i:Interaction.Behaviors>
+                            <ei:ConditionBehavior>
+                                <ei:ConditionalExpression>
+                                    <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=Status}" RightOperand="2"/>
+                                </ei:ConditionalExpression>
+                            </ei:ConditionBehavior>
+                        </i:Interaction.Behaviors>
+                        <ei:ChangePropertyAction PropertyName="Text" Value="PLAYER 2 WON!"/>
+                        <ei:PlaySoundAction Source="Sounds/WinEffect.wav" Volume="0.3"/>
+                    </ei:DataTrigger>
+                </i:Interaction.Triggers>
+            </TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Row="1">
+            <Grid x:Name="Board" Height="200" Width="200" Margin="15" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <noesis:Element.Projection>
+                    <noesis:PlaneProjection/>
+                </noesis:Element.Projection>
+                <UniformGrid x:Name="Cells" Rows="3" Columns="3" KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.DirectionalNavigation="Cycle">
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow0">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinRow0Anim}"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow1">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinRow1Anim}"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow2">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinRow2Anim}"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinCol0">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinCol0Anim}"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinCol1">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinCol1Anim}"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinCol2">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinCol2Anim}"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinDiag1">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinDiag1Anim}"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinDiag2">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinDiag2Anim}"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="Tie">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource TieAnim}"/>
+                        </ei:DataTrigger>
+                    </i:Interaction.Triggers>
+                    <ToggleButton x:Name="Cell00" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <noesis:SetFocusAction/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index0}"/>
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell00}" Value="{x:Static local:State.Player1}">
+                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell00}" Value="{x:Static local:State.Player2}">
+                                <ei:PlaySoundAction Source="Sounds/CrossEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <ToggleButton x:Name="Cell01" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <noesis:SetFocusAction/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index1}"/>
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell01}" Value="{x:Static local:State.Player1}">
+                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell01}" Value="{x:Static local:State.Player2}">
+                                <ei:PlaySoundAction Source="Sounds/CrossEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <ToggleButton x:Name="Cell02" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <noesis:SetFocusAction/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index2}"/>
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell02}" Value="{x:Static local:State.Player1}">
+                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell02}" Value="{x:Static local:State.Player2}">
+                                <ei:PlaySoundAction Source="Sounds/CrossEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <ToggleButton x:Name="Cell10" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <noesis:SetFocusAction/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index3}"/>
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell10}" Value="{x:Static local:State.Player1}">
+                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell10}" Value="{x:Static local:State.Player2}">
+                                <ei:PlaySoundAction Source="Sounds/CrossEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <ToggleButton x:Name="Cell11" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <noesis:SetFocusAction/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index4}"/>
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell11}" Value="{x:Static local:State.Player1}">
+                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell11}" Value="{x:Static local:State.Player2}">
+                                <ei:PlaySoundAction Source="Sounds/CrossEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <ToggleButton x:Name="Cell12" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <noesis:SetFocusAction/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index5}"/>
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell12}" Value="{x:Static local:State.Player1}">
+                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell12}" Value="{x:Static local:State.Player2}">
+                                <ei:PlaySoundAction Source="Sounds/CrossEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <ToggleButton x:Name="Cell20" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <noesis:SetFocusAction/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index6}"/>
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell20}" Value="{x:Static local:State.Player1}">
+                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell20}" Value="{x:Static local:State.Player2}">
+                                <ei:PlaySoundAction Source="Sounds/CrossEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <ToggleButton x:Name="Cell21" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <noesis:SetFocusAction/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index7}"/>
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell21}" Value="{x:Static local:State.Player1}">
+                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell21}" Value="{x:Static local:State.Player2}">
+                                <ei:PlaySoundAction Source="Sounds/CrossEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                    <ToggleButton x:Name="Cell22" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <noesis:SetFocusAction/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index8}"/>
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell22}" Value="{x:Static local:State.Player1}">
+                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell22}" Value="{x:Static local:State.Player2}">
+                                <ei:PlaySoundAction Source="Sounds/CrossEffect.wav" Volume="0.1"/>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </ToggleButton>
+                </UniformGrid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Rectangle x:Name="GridH1" Fill="#FF2AA6E2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="4" Margin="0,0,0,-2"/>
+                    <Rectangle x:Name="GridH2" Fill="#FF2AA6E2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="4" Margin="0,0,0,-2" Grid.Row="1"/>
+                    <Rectangle x:Name="GridV1" Fill="#FF2AA6E2" Grid.RowSpan="3" HorizontalAlignment="Right" Width="4" Margin="0,0,-2,0"/>
+                    <Rectangle x:Name="GridV2" Fill="#FF2AA6E2" Grid.RowSpan="3" HorizontalAlignment="Right" Width="4" Margin="0,0,-2,0" Grid.Column="1"/>
+                </Grid>
+                <Button x:Name="Start" Visibility="Collapsed" FocusVisualStyle="{x:Null}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="#00FF0000"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Binding="{Binding State}" Comparison="GreaterThanOrEqual" Value="Tie">
+                            <ei:ChangePropertyAction PropertyName="Visibility" Value="Visible"/>
+                            <ei:ChangePropertyAction PropertyName="IsEnabled" Value="False" TargetName="Cells"/>
+                            <noesis:SetFocusAction/>
+                        </ei:DataTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <ei:ChangePropertyAction PropertyName="Visibility" Value="Collapsed"/>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource BoardFlip1Anim}"/>
+                        </i:EventTrigger>
+                        <ei:StoryboardCompletedTrigger Storyboard="{StaticResource BoardFlip1Anim}">
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell00"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell01"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell02"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell10"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell11"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell12"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell20"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell21"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell22"/>
+                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell00"/>
+                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell01"/>
+                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell02"/>
+                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell10"/>
+                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell11"/>
+                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell12"/>
+                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell20"/>
+                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell21"/>
+                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell22"/>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource BoardFlip2Anim}"/>
+                            <i:InvokeCommandAction Command="{Binding Start}"/>
+                            <ei:ChangePropertyAction PropertyName="IsEnabled" Value="True" TargetName="Cells"/>
+                        </ei:StoryboardCompletedTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+        </Viewbox>
+        <Viewbox Grid.Row="2">
+            <Grid Width="300" Height="100" Margin="20,0,20,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="PLAYER 1" Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="TIES" Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="PLAYER 2" Grid.Row="0" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="ScorePlayer1Fade" Text="{Binding ScorePlayer1}" Foreground="#00FFFFFF" Grid.Row="1" Grid.Column="0" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="ScoreTiesFade" Text="{Binding ScoreTies}" Foreground="#00FFFFFF" Grid.Row="1" Grid.Column="1" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="ScorePlayer2Fade" Text="{Binding ScorePlayer2}" Foreground="#00FFFFFF" Grid.Row="1" Grid.Column="2" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="ScorePlayer1" Text="{Binding ScorePlayer1, FallbackValue=0}" Foreground="White" Grid.Row="1" Grid.Column="0" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Binding="{Binding Text, ElementName=ScorePlayer1}" Comparison="NotEqual" Value="0">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource ScorePlayer1ChangedAnim}"/>
+                        </ei:DataTrigger>
+                    </i:Interaction.Triggers>
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="ScoreTies" Text="{Binding ScoreTies, FallbackValue=0}" Foreground="White" Grid.Row="1" Grid.Column="1" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Binding="{Binding Text, ElementName=ScoreTies}" Comparison="NotEqual" Value="0">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource ScoreTiesChangedAnim}"/>
+                        </ei:DataTrigger>
+                    </i:Interaction.Triggers>
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="ScorePlayer2" Text="{Binding ScorePlayer2, FallbackValue=0}" Foreground="White" Grid.Row="1" Grid.Column="2" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Binding="{Binding Text, ElementName=ScorePlayer2}" Comparison="NotEqual" Value="0">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource ScorePlayer2ChangedAnim}"/>
+                        </ei:DataTrigger>
+                    </i:Interaction.Triggers>
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>
