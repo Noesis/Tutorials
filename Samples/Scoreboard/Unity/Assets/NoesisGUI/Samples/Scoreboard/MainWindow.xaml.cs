@@ -30,7 +30,7 @@ namespace Scoreboard
 
         private void OnInitialized(object sender, EventArgs args)
         {
-            var game = new Game { ElapsedTime = 16, Name = "Silvershard Mines" };
+            Game game = new Game { ElapsedTime = 16, Name = "Silvershard Mines" };
             game.Players.Add(new Player { Class = Class.Mage, Deaths = 96, Damage = 8134124, Heal = 1831, Kills = 43, Name = "Nam cras aenean", Score = 476, Team = Team.Alliance });
             game.Players.Add(new Player { Class = Class.Rogue, Deaths = 98, Damage = 8324715, Heal = 2954, Kills = 79, Name = "Sed class vestibulum", Score = 414, Team = Team.Horde });
             game.Players.Add(new Player { Class = Class.Hunter, Deaths = 45, Damage = 797117, Heal = 2615, Kills = 99, Name = "Curae praesent", Score = 383, Team = Team.Horde });
