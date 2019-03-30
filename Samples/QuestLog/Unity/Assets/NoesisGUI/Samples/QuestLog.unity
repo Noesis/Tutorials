@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 0
 --- !u!196 &4
@@ -142,13 +143,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29355477be96127469aed699dd82b4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xaml: {fileID: 11400000, guid: 1f7546bcf4a3ca2498263a15e7134045, type: 2}
-  _antiAliasingMode: 0
-  _tessellationQuality: 1
+  _xaml: {fileID: 11400000, guid: aeed18e2dae63594ab0fe5e229820dd1, type: 2}
+  _texture: {fileID: 0}
+  _isPPAAEnabled: 1
+  _tessellationMaxPixelError: 0.4
   _renderFlags: 0
+  _continuousRendering: 1
   _enableKeyboard: 1
   _enableMouse: 1
   _enableTouch: 1
+  _enableGamepad: 1
   _emulateTouch: 0
   _useRealTimeClock: 0
 --- !u!81 &2141655595
@@ -195,9 +199,10 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &2141655599
