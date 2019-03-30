@@ -7,7 +7,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5E1D351F-0D23-4669-87F2-9D1A4A0F1A67}</ProjectGuid>
+    <ProjectGuid>{D9DFB112-1F8D-4822-921B-96AEA07D43E9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Blend\QuestLog\Properties</AppDesignerFolder>
     <RootNamespace>QuestLog</RootNamespace>
@@ -36,7 +36,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Noesis.GUI.Extensions, Version=2.2.2.7961, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Noesis.GUI.Extensions.2.2.2\lib\net45\Noesis.GUI.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -81,6 +92,7 @@
     </Compile>
     <AppDesigner Include="Blend\QuestLog\Properties\" />
     <None Include="Blend\QuestLog\App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\QuestLog\Aero Matics Regular.ttf" />
@@ -90,11 +102,6 @@
     <Resource Include="Assets\NoesisGUI\Samples\QuestLog\Sounds\WaterDropSmall.mp3" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <PackageReference Include="Noesis.GUI.Extensions">
-      <Version>2.2.1</Version>
-    </PackageReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
