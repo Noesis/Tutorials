@@ -70,7 +70,7 @@ public class DraggablePanel : MonoBehaviour
         if (this._titleBar.Mouse.Captured == this._titleBar)
         {
             Point pos = e.GetPosition(null);
-            Point delta = pos - this._lastPosition;
+            Vector delta = pos - this._lastPosition;
             this._lastPosition = pos;
 
             this._panelPosition.X += delta.X;
