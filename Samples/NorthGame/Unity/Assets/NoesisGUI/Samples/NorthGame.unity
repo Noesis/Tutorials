@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -125,7 +125,6 @@ GameObject:
   - component: {fileID: 1153634462}
   - component: {fileID: 1153634461}
   - component: {fileID: 1153634460}
-  - component: {fileID: 1153634465}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -145,9 +144,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xaml: {fileID: 11400000, guid: 9803691905f247b44930b6a8b5c113ec, type: 2}
-  _isPPAAEnabled: 0
-  _tessellationQuality: 1
+  _texture: {fileID: 0}
+  _isPPAAEnabled: 1
+  _tessellationMaxPixelError: 0.4
   _renderFlags: 0
+  _continuousRendering: 1
   _enableKeyboard: 1
   _enableMouse: 1
   _enableTouch: 1
@@ -196,11 +197,11 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &1153634464
@@ -216,22 +217,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1153634465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1153634459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 034f6165c38d4d64fab763f66016efa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xamls:
-  - {fileID: 11400000, guid: 15e885b80ef2b2a4a865d6b5c85c1ef6, type: 2}
-  - {fileID: 11400000, guid: 635c5cf692d7dc2418decd3c410cc566, type: 2}
-  - {fileID: 11400000, guid: 29a671663accad341a05994fbc9a1ef6, type: 2}
-  - {fileID: 11400000, guid: f2fdbcc489474bd4fa414037965c8fbf, type: 2}
-  - {fileID: 11400000, guid: 32a923b9402c9544abd576e4322fb6fe, type: 2}
-  - {fileID: 11400000, guid: bc31bf6f708e6e14ab8a8772239b66b3, type: 2}
-  - {fileID: 11400000, guid: 2e34ee54aa53f3445877e7c457bdbc0c, type: 2}

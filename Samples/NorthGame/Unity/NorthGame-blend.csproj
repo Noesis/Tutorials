@@ -1,25 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <BaseIntermediateOutputPath>Blend\NorthGame\obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A56BDAB3-4B62-4E46-A21C-869C0CE66060}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AppDesignerFolder>Blend\NorthGame\Properties</AppDesignerFolder>
     <RootNamespace>NorthGame</RootNamespace>
     <AssemblyName>NorthGame</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <OutputPath>Blend\NorthGame\bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,16 +31,25 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Noesis.GUI.Extensions, Version=2.2.2.7961, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Noesis.GUI.Extensions.2.2.2\lib\net45\Noesis.GUI.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -52,11 +64,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Blend\NorthGame\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Assets\NoesisGUI\Samples\NorthGame\ElementExtensions.cs" />
+    <Compile Include="Blend\NorthGame\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\UppercaseConverter.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\DelegateCommand.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\FightScreen.xaml.cs">
@@ -85,16 +100,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Assets\NoesisGUI\Samples\NorthGame\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Assets\NoesisGUI\Samples\NorthGame\Play.xaml.cs">
+      <DependentUpon>Play.xaml</DependentUpon>
     </Compile>
     <Page Include="Assets\NoesisGUI\Samples\NorthGame\Play.xaml">
       <SubType>Designer</SubType>
@@ -122,40 +136,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NoesisGUI\Samples\NorthGame\Play.xaml.cs">
-      <DependentUpon>Play.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="NoesisGUIExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
+    <None Include="Blend\NorthGame\App.config" />
+    <AppDesigner Include="Blend\NorthGame\Properties\" />
+    <Compile Include="Blend\NorthGame\Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Fonts\Interstate-Bold.ttf" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Fonts\Interstate-Light.ttf" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Fonts\AvenirLTStd-Heavy.otf" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Background.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\RockFire.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\FloorTilesL.png" />
@@ -167,8 +158,6 @@
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\MenuButton.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\TopMenuBg.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Smoke.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassHumanKnight.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassHumanCleric.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassHumanThief.png" />
@@ -178,8 +167,6 @@
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassElfRanger.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassElfWizard.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\ClassElfPriest.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponDoubleAxe.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponEffect.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponDoubleSword.png" />
@@ -197,8 +184,6 @@
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponSpear.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponStaff.png" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponWand.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location1.jpg" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location2.jpg" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location3.jpg" />

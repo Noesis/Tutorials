@@ -2,12 +2,44 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
              xmlns:local="clr-namespace:NorthGame"
-             xmlns:noesis="clr-namespace:NoesisGUIExtensions"
-             d:DesignWidth="1280" d:DesignHeight="720"
-             Tag="WeaponCategories">
+             d:DesignWidth="1280" d:DesignHeight="720">
+
+    <noesis:Xaml.Dependencies>
+        <noesis:Dependency Source="Images/ClassElfPriest.png"/>
+        <noesis:Dependency Source="Images/ClassElfRanger.png"/>
+        <noesis:Dependency Source="Images/ClassElfWizard.png"/>
+        <noesis:Dependency Source="Images/ClassHumanCleric.png"/>
+        <noesis:Dependency Source="Images/ClassHumanKnight.png"/>
+        <noesis:Dependency Source="Images/ClassHumanThief.png"/>
+        <noesis:Dependency Source="Images/ClassOrcHunter.png"/>
+        <noesis:Dependency Source="Images/ClassOrcShaman.png"/>
+        <noesis:Dependency Source="Images/ClassOrcWarrior.png"/>
+        <noesis:Dependency Source="Images/WeaponBigShield.png"/>
+        <noesis:Dependency Source="Images/WeaponBreastplate.png"/>
+        <noesis:Dependency Source="Images/WeaponChainMail.png"/>
+        <noesis:Dependency Source="Images/WeaponCrossbow.png"/>
+        <noesis:Dependency Source="Images/WeaponDoubleAxe.png"/>
+        <noesis:Dependency Source="Images/WeaponDoubleSword.png"/>
+        <noesis:Dependency Source="Images/WeaponHandAxe.png"/>
+        <noesis:Dependency Source="Images/WeaponHelmet.png"/>
+        <noesis:Dependency Source="Images/WeaponLongBow.png"/>
+        <noesis:Dependency Source="Images/WeaponLongSword.png"/>
+        <noesis:Dependency Source="Images/WeaponMace.png"/>
+        <noesis:Dependency Source="Images/WeaponRoundShield.png"/>
+        <noesis:Dependency Source="Images/WeaponSling.png"/>
+        <noesis:Dependency Source="Images/WeaponSpear.png"/>
+        <noesis:Dependency Source="Images/WeaponStaff.png"/>
+        <noesis:Dependency Source="Images/WeaponWand.png"/>
+    </noesis:Xaml.Dependencies>
+
     <UserControl.Resources>
         <Storyboard x:Key="SlideFromLeft">
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Focusable)" Storyboard.TargetName="LayoutRoot">
+                <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="False"/>
+            </BooleanAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StrengthPanel">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-400"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-400"/>
@@ -467,7 +499,10 @@
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <Storyboard x:Key="SlideFromRight" SpeedRatio="1">
+        <Storyboard x:Key="SlideFromRight">
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Focusable)" Storyboard.TargetName="LayoutRoot">
+                <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="False"/>
+            </BooleanAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StrengthPanel">
                 <EasingDoubleKeyFrame KeyTime="0" Value="400"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="400"/>
@@ -1405,7 +1440,35 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </UserControl.Resources>
-    <Grid>
+
+    <Grid x:Name="LayoutRoot" Focusable="True">
+
+        <i:Interaction.Triggers>
+            <ei:DataTrigger Binding="{Binding PlayScreenDirection}" Value="{x:Static local:PlayScreenDirection.Next}">
+                <i:Interaction.Behaviors>
+                    <ei:ConditionBehavior>
+                        <ei:ConditionalExpression>
+                            <ei:ComparisonCondition LeftOperand="{Binding Focusable, ElementName=LayoutRoot}" RightOperand="True"/>
+                        </ei:ConditionalExpression>
+                    </ei:ConditionBehavior>
+                </i:Interaction.Behaviors>
+                <ei:ControlStoryboardAction Storyboard="{StaticResource SlideFromRight}"/>
+            </ei:DataTrigger>
+            <ei:DataTrigger Binding="{Binding PlayScreenDirection}" Value="{x:Static local:PlayScreenDirection.Prev}">
+                <i:Interaction.Behaviors>
+                    <ei:ConditionBehavior>
+                        <ei:ConditionalExpression>
+                            <ei:ComparisonCondition LeftOperand="{Binding Focusable, ElementName=LayoutRoot}" RightOperand="True"/>
+                        </ei:ConditionalExpression>
+                    </ei:ConditionBehavior>
+                </i:Interaction.Behaviors>
+                <ei:ControlStoryboardAction Storyboard="{StaticResource SlideFromLeft}"/>
+            </ei:DataTrigger>
+            <ei:DataTrigger Binding="{Binding Focusable, ElementName=LayoutRoot}" Value="False">
+                <noesis:SetFocusAction TargetName="WeaponCategories"/>
+            </ei:DataTrigger>
+        </i:Interaction.Triggers>
+
         <Grid x:Name="Floor" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
