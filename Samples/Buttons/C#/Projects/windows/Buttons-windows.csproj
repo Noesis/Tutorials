@@ -75,9 +75,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Src\App.xaml.g.cs">
-      <Link>App.xaml.g.cs</Link>
-    </Compile>
     <Compile Include="..\..\Src\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -93,6 +90,7 @@
     <Compile Include="..\..\Src\DelegateCommand.cs">
       <Link>DelegateCommand.cs</Link>
     </Compile>
+    <Compile Include="App.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Src\App.config">

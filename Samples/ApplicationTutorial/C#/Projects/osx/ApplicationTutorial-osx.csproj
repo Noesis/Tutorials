@@ -54,9 +54,6 @@
     <Reference Include="Xamarin.Mac" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Src\App.xaml.g.cs">
-      <Link>App.xaml.g.cs</Link>
-    </Compile>
     <Compile Include="..\..\Src\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -66,6 +63,7 @@
     <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="App.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Src\Roboto-Bold.ttf">

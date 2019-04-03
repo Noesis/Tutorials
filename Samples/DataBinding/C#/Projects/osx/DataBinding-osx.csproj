@@ -57,7 +57,6 @@
   <ItemGroup>
     <Compile Include="..\..\Src\ViewModel.cs" />
     <Compile Include="..\..\Src\OrbitConverter.cs" />
-    <Compile Include="..\..\Src\App.xaml.g.cs" />
     <Compile Include="..\..\Src\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -67,6 +66,7 @@
     <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="App.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Src\App.xaml">

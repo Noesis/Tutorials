@@ -206,7 +206,6 @@ namespace BlendTutorial
 
             this.ContainerCanvas.Children.Add(this.SelectionBorder);
         }
-    }
 
 #if NOESIS
         private void InitializeComponent()
@@ -267,4 +266,5 @@ namespace BlendTutorial
         private Canvas ContainerCanvas = null;
         private RadioButton FillSelected = null;
 #endif
+    }
 }

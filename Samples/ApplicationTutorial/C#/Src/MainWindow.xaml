@@ -62,7 +62,8 @@
                      Margin="0,5,0,5"/>
           <ScrollViewer Grid.Row="1" Margin="0,0,0,10" Padding="10" IsTabStop="True"
                         HorizontalScrollBarVisibility="Disabled"
-                        VerticalScrollBarVisibility="Auto">
+                        VerticalScrollBarVisibility="Auto"
+                        PanningMode="VerticalFirst">
             <ScrollViewer.Style>
               <Style TargetType="{x:Type ScrollViewer}">
                 <Style.Triggers>
