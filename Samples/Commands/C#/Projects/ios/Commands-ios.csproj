@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>{4AA80AAC-C54C-4667-9E36-7BD0E5F5C686}</ProjectGuid>
+    <ProjectGuid>{36780BAA-C8AB-4E25-B5F8-B529A9C2C578}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>Commands</RootNamespace>
@@ -115,10 +115,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.UIKit">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.MTL">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -37,66 +37,6 @@ namespace BlendTutorial
             this.SelectionBorder.Padding = new Thickness(2, 2, 0, 0);
         }
 
-#if NOESIS
-        private Slider PositionLeft = null;
-        private Slider PositionTop = null;
-        private Slider SizeWidth = null;
-        private Slider SizeHeight = null;
-        private ColorSelector ColorSelect = null;
-        private Border ContainerBorder = null;
-        private Canvas ContainerCanvas = null;
-        private RadioButton FillSelected = null;
-
-        private void InitializeComponent()
-        {
-            Noesis.GUI.LoadComponent(this, "MainWindow.xaml");
-
-            PositionLeft = (Slider)FindName("PositionLeft");
-            PositionTop = (Slider)FindName("PositionTop");
-            SizeWidth = (Slider)FindName("SizeWidth");
-            SizeHeight = (Slider)FindName("SizeHeight");
-            ColorSelect = (ColorSelector)FindName("ColorSelect");
-            ContainerBorder = (Border)FindName("ContainerBorder");
-            ContainerCanvas = (Canvas)FindName("ContainerCanvas");
-            FillSelected = (RadioButton)FindName("FillSelected");
-        }
-
-        protected override bool ConnectEvent(object source, string eventName, string handlerName)
-        {
-            if (eventName == "Click" && handlerName == "AddButton_Click")
-            {
-                ((Button)source).Click += AddButton_Click;
-                return true;
-            }
-            if (eventName == "Click" && handlerName == "RemoveButton_Click")
-            {
-                ((Button)source).Click += RemoveButton_Click;
-                return true;
-            }
-            if (eventName == "PreviewMouseLeftButtonDown" && handlerName == "ContainerBorder_MouseDown")
-            {
-                ((Border)source).PreviewMouseLeftButtonDown += ContainerBorder_MouseDown;
-                return true;
-            }
-            if (eventName == "PreviewMouseLeftButtonUp" && handlerName == "ContainerBorder_MouseUp")
-            {
-                ((Border)source).PreviewMouseLeftButtonUp += ContainerBorder_MouseUp;
-                return true;
-            }
-            if (eventName == "PreviewMouseMove" && handlerName == "ContainerBorder_MouseMove")
-            {
-                ((Border)source).PreviewMouseMove += ContainerBorder_MouseMove;
-                return true;
-            }
-            if (eventName == "Checked" && handlerName == "RadioButton_Checked")
-            {
-                ((StackPanel)source).AddHandler(RadioButton.CheckedEvent, new RoutedEventHandler(RadioButton_Checked));
-                return true;
-            }
-            return false;
-        }
-#endif
-
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             ClearSelection();
@@ -133,9 +73,7 @@ namespace BlendTutorial
 
         private void ContainerBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            HitTestResult hr = VisualTreeHelper.HitTest(this.ContainerBorder, e.GetPosition(this.ContainerBorder));
-            
-            Rectangle newSelection = hr.VisualHit as Rectangle;
+            Rectangle newSelection = e.Source as Rectangle;
             if (newSelection != this.SelectedRectangle)
             {
                 ClearSelection();
@@ -162,8 +100,6 @@ namespace BlendTutorial
                 this.IsDragging = true;
                 this.Offset = e.GetPosition(this.SelectedRectangle);
             }
-
-            e.Handled = true;
         }
 
         private void ContainerBorder_MouseUp(object sender, MouseButtonEventArgs e)
@@ -173,8 +109,6 @@ namespace BlendTutorial
                 this.ContainerBorder.ReleaseMouseCapture();
                 this.IsDragging = false;
             }
-
-            e.Handled = true;
         }
 
         private void ContainerBorder_MouseMove(object sender, MouseEventArgs e)
@@ -185,10 +119,8 @@ namespace BlendTutorial
                     this.ContainerBorder.ActualWidth - this.SelectedRectangle.ActualWidth - 5,
                     this.ContainerBorder.ActualHeight - this.SelectedRectangle.ActualHeight - 5);
                 Point p = e.GetPosition(this.ContainerBorder);
-                Canvas.SetLeft(this.SelectedRectangle, Math.Min(p.X - this.Offset.X, max.X));
-                Canvas.SetTop(this.SelectedRectangle, Math.Min(p.Y - this.Offset.Y, max.Y));
-
-                e.Handled = true;
+                Canvas.SetLeft(this.SelectedRectangle, Math.Min(p.X - this.Offset.X - 2, max.X));
+                Canvas.SetTop(this.SelectedRectangle, Math.Min(p.Y - this.Offset.Y - 2, max.Y));
             }
         }
 
@@ -275,4 +207,64 @@ namespace BlendTutorial
             this.ContainerCanvas.Children.Add(this.SelectionBorder);
         }
     }
+
+#if NOESIS
+        private void InitializeComponent()
+        {
+            Noesis.GUI.LoadComponent(this, "MainWindow.xaml");
+
+            PositionLeft = (Slider)FindName("PositionLeft");
+            PositionTop = (Slider)FindName("PositionTop");
+            SizeWidth = (Slider)FindName("SizeWidth");
+            SizeHeight = (Slider)FindName("SizeHeight");
+            ColorSelect = (ColorSelector)FindName("ColorSelect");
+            ContainerBorder = (Border)FindName("ContainerBorder");
+            ContainerCanvas = (Canvas)FindName("ContainerCanvas");
+            FillSelected = (RadioButton)FindName("FillSelected");
+        }
+
+        protected override bool ConnectEvent(object source, string eventName, string handlerName)
+        {
+            if (eventName == "Click" && handlerName == "AddButton_Click")
+            {
+                ((Button)source).Click += AddButton_Click;
+                return true;
+            }
+            if (eventName == "Click" && handlerName == "RemoveButton_Click")
+            {
+                ((Button)source).Click += RemoveButton_Click;
+                return true;
+            }
+            if (eventName == "PreviewMouseLeftButtonDown" && handlerName == "ContainerBorder_MouseDown")
+            {
+                ((Border)source).PreviewMouseLeftButtonDown += ContainerBorder_MouseDown;
+                return true;
+            }
+            if (eventName == "PreviewMouseLeftButtonUp" && handlerName == "ContainerBorder_MouseUp")
+            {
+                ((Border)source).PreviewMouseLeftButtonUp += ContainerBorder_MouseUp;
+                return true;
+            }
+            if (eventName == "PreviewMouseMove" && handlerName == "ContainerBorder_MouseMove")
+            {
+                ((Border)source).PreviewMouseMove += ContainerBorder_MouseMove;
+                return true;
+            }
+            if (eventName == "Checked" && handlerName == "RadioButton_Checked")
+            {
+                ((StackPanel)source).AddHandler(RadioButton.CheckedEvent, new RoutedEventHandler(RadioButton_Checked));
+                return true;
+            }
+            return false;
+        }
+
+        private Slider PositionLeft = null;
+        private Slider PositionTop = null;
+        private Slider SizeWidth = null;
+        private Slider SizeHeight = null;
+        private ColorSelector ColorSelect = null;
+        private Border ContainerBorder = null;
+        private Canvas ContainerCanvas = null;
+        private RadioButton FillSelected = null;
+#endif
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{344F0E07-6B47-4E30-98C9-987C6833F428}</ProjectGuid>
+    <ProjectGuid>{BBE633DD-01F2-4165-A666-4938A08FE426}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Menu3D</RootNamespace>
@@ -155,10 +155,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.X11">
-      <Version>2.2.0</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.GLX">
-      <Version>2.2.0</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -18,7 +18,7 @@ namespace DataBinding
     {
         public SolarSystemObject(string image)
         {
-            Image = new BitmapImage(new Uri(image, UriKind.Relative));
+            Image = new BitmapImage(new Uri("pack://application:,,,/DataBinding;component/" + image));
         }
 
         public string Name { get; set; }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86BCC0F4-19B1-7308-B518-A1DCFF47F9EB}</ProjectGuid>
+    <ProjectGuid>{32B51C49-5796-4CE7-84D9-241BB4061D30}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>Menu3D</RootNamespace>
@@ -206,10 +206,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.Android">
-      <Version>2.2.0</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.EGL">
-      <Version>2.2.0</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

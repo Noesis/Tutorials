@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{11A5F6A0-A38E-40A0-A662-8DDA40504A0D}</ProjectGuid>
+    <ProjectGuid>{61EC5DCE-1FD9-4048-B497-6D257E4DFFF7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BlendTutorial</RootNamespace>
@@ -113,10 +113,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.0" />
     <PackageReference Include="Noesis.App.Displays.Win32">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.D3D11">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

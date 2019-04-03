@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{2E00DE02-2347-4872-B302-540484C134FA}</ProjectGuid>
+    <ProjectGuid>{CFA01F4A-B7E0-4C82-8E05-92CBD748C34A}</ProjectGuid>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>BlendTutorial</RootNamespace>
@@ -95,13 +95,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.AppKit">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.MTL">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.NSGL">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />

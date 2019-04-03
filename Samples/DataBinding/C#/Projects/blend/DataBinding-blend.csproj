@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8429DBC8-7B07-466F-B814-C5F158CF0A61}</ProjectGuid>
+    <ProjectGuid>{3FAAEED8-A33B-4F4D-9CB9-00C911A4EFBA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataBinding</RootNamespace>
@@ -113,6 +113,11 @@
     <Resource Include="..\..\Src\Images\venglobe.jpg">
       <Link>Images\venglobe.jpg</Link>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Noesis.GUI.Extensions">
+      <Version>2.2.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

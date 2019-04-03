@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86BCC0F4-19B1-4308-B518-A1DCFF47E9E6}</ProjectGuid>
+    <ProjectGuid>{1A2AEEDE-A40B-4B9F-943E-7B78889A2481}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>CustomControl</RootNamespace>
@@ -131,7 +131,7 @@
       <Link>Aero Matics Regular.ttf</Link>
     </EmbeddedResource>
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
     <Compile Include="Resources\Resource.designer.cs" />
   </ItemGroup>
@@ -144,10 +144,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.Android">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.EGL">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

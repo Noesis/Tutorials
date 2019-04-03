@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{344F0E07-6B47-4E30-98C9-987C6833F428}</ProjectGuid>
+    <ProjectGuid>{DD9D9907-D6D4-4DD5-B45D-06B15C168CFB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Buttons</RootNamespace>
@@ -28,8 +28,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
-    <OutputPath>bin/$(Configuration)/$(Platform).\</OutputPath>
+    <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
+    <NoesisTargetSystem>linux</NoesisTargetSystem>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>
@@ -41,7 +41,6 @@
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <DefineConstants>TRACE;__LINUX__;NOESIS</DefineConstants>
@@ -49,7 +48,6 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -57,7 +55,6 @@
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <DefineConstants>TRACE;__LINUX__;NOESIS</DefineConstants>
@@ -65,7 +62,6 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -93,14 +89,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Src\App.config">
-      <Link>App.config</Link>
-    </None>
-    <EmbeddedResource Include="..\..\Src\Aero Matics Regular.ttf">
-      <Link>Aero Matics Regular.ttf</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="..\..\Src\App.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -120,12 +108,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Aero Matics Regular.ttf">
+      <Link>Aero Matics Regular.ttf</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.0" />
     <PackageReference Include="Noesis.App.Displays.X11">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.GLX">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -140,4 +133,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="AfterBuild">
+    <Message Text="Hello world" />
+  </Target>
+  <Target Name="TestMessage" BeforeTargets="Build">
+    <Message Text="$(NoesisNativeLibrary)" Importance="high" />
+  </Target>
 </Project>
