@@ -9,7 +9,7 @@
 
 DEFINE_LOG_CATEGORY(LogNoesisLocalization)
 
-class LocalizationGameModule : public FDefaultGameModuleImpl
+class LocalizationSampleModule : public FDefaultGameModuleImpl
 {
     virtual void StartupModule() override
     {
@@ -24,4 +24,4 @@ class LocalizationGameModule : public FDefaultGameModuleImpl
     }
 };
 
-IMPLEMENT_PRIMARY_GAME_MODULE(LocalizationGameModule, LocalizationGame, "LocalizationGame" );
+IMPLEMENT_PRIMARY_GAME_MODULE(LocalizationSampleModule, LocalizationSample, "LocalizationSample" );
