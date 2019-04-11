@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>{4AA80AAC-C54C-4667-9E36-7BD0E5F5C686}</ProjectGuid>
+    <ProjectGuid>{BB0B6723-A3B6-4227-9E19-6B2B9D13D183}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>CustomControl</RootNamespace>
@@ -86,7 +86,6 @@
   <ItemGroup>
     <Compile Include="..\..\Src\DateTime.cs" />
     <Compile Include="..\..\Src\TimeConverters.cs" />
-    <Compile Include="..\..\Src\App.xaml.g.cs" />
     <Compile Include="..\..\Src\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -96,6 +95,7 @@
     <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="App.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Src\App.xaml">
@@ -115,10 +115,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.UIKit">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.MTL">
-      <Version>2.2.0-beta7</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

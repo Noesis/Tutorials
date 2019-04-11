@@ -85,17 +85,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="..\..\Src\Fonts\WeblySleek_UI_Normal.ttf">
+        <Link>Fonts/WeblySleek_UI_Normal.ttf</Link>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Src\App.config" />
+    <AppDesigner Include="..\..\Src\Properties\" />
     <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
         <Link>Properties/AssemblyInfo.cs</Link>
       <SubType>Code</SubType>
     </Compile>
-    <Resource Include="..\..\Src\Fonts\WeblySleek_UI_Normal.ttf">
-        <Link>Fonts/WeblySleek_UI_Normal.ttf</Link>
-    </Resource>
-    <AppDesigner Include="..\..\Src\Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Src\App.config" />
+    <PackageReference Include="Noesis.GUI.Extensions">
+      <Version>2.2.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

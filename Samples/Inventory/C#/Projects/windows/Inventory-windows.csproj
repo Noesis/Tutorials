@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{11A5F6A0-A38E-40A0-A662-8DDA40504A0D}</ProjectGuid>
+    <ProjectGuid>{A234BE57-7C8C-4EAB-868B-1C8CD3B86523}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Inventory</RootNamespace>
@@ -127,10 +127,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.0" />
     <PackageReference Include="Noesis.App.Displays.Win32">
-      <Version>2.2.0-beta9a</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.D3D11">
-      <Version>2.2.0-beta9a</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

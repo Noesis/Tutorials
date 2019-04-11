@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -59,6 +60,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="..\..\Src\Properties\DesignTimeResources.xaml">
+      <Link>Properties\DesignTimeResources.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Src\App.xaml.cs">
@@ -69,10 +76,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="..\..\Src\DelegateCommand.cs">
-        <Link>DelegateCommand.cs</Link>
+      <Link>DelegateCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Src\Properties\Settings.Designer.cs">
+      <Link>Properties\Settings.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="..\..\Src\ViewModel.cs">
-        <Link>ViewModel.cs</Link>
+      <Link>ViewModel.cs</Link>
     </Compile>
     <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
       <Link>Properties/AssemblyInfo.cs</Link>
@@ -81,12 +94,21 @@
     <AppDesigner Include="..\..\Src\Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Src\Properties\Settings.settings">
+      <Link>Properties\Settings.settings</Link>
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
     <Resource Include="..\..\Src\Aero Matics Regular.ttf">
       <Link>Aero Matics Regular.ttf</Link>
     </Resource>
     <None Include="..\..\Src\App.config">
       <Link>App.config</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Noesis.GUI.Extensions">
+      <Version>2.2.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

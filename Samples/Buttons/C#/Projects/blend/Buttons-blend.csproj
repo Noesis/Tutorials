@@ -48,8 +48,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Src\App.config" />
@@ -73,20 +71,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="..\..\Src\DelegateCommand.cs" />
-    <Compile Include="..\..\Src\NoesisGUIExtensions.cs" />
     <Compile Include="..\..\Src\ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="..\..\Src\Properties\" />
     <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
+      <Link>Properties/AssemblyInfo.cs</Link>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="..\..\Src\Properties\Settings.Designer.cs">
+      <Link>Properties/Settings.Designer.cs</Link>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="..\..\Src\Properties\Settings.settings">
+      <Link>Properties/Settings.settings</Link>
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
@@ -99,6 +99,11 @@
     <Content Include="..\..\Src\AudioSlide.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Noesis.GUI.Extensions">
+      <Version>2.2.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

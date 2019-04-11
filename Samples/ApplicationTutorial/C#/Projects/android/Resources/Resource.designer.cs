@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("ApplicationTutorial.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("RssReader.Resource", IsApplication=true)]
 
-namespace ApplicationTutorial
+namespace RssReader
 {
 	
 	
@@ -45,7 +45,7 @@ namespace ApplicationTutorial
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int ic_launcher = 2130837504;
 			
 			static Mipmap()
 			{
@@ -60,8 +60,8 @@ namespace ApplicationTutorial
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			// aapt resource value: 0x7f030000
+			public const int app_name = 2130903040;
 			
 			static String()
 			{

@@ -34,10 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,6 +56,10 @@
     </ApplicationDefinition>
     <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Src\Properties\Settings.Designer.cs">
+      <Link>Properties\Settings.Designer.cs</Link>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Page Include="..\..\Src\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -77,18 +81,25 @@
       <Link>Properties\DesignTimeResources.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Src\NoesisGUIExtensions.cs" />
     <AppDesigner Include="..\..\Src\Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Src\App.config" />
+    <None Include="..\..\Src\Properties\Settings.settings">
+      <Link>Properties\Settings.settings</Link>
+    </None>
     <Resource Include="..\..\Src\Roboto-Bold.ttf" />
     <Resource Include="..\..\Src\Roboto-Regular.ttf" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Noesis.GUI.Extensions">
+      <Version>2.2.2</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -12,6 +12,13 @@ namespace RssReader
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string[] _urls =
+        {
+            "https://goo.gl/fDQNZa",
+            "https://goo.gl/t256CG",
+            "https://goo.gl/mJcay9"
+        };
+
         private string[] _titles =
         {
             "Monkey Island 1",
@@ -45,11 +52,13 @@ namespace RssReader
         {
             InitializeComponent();
 
+            this.Address.Text = _urls[0];
             this.EntryTitle.Text = _titles[0];
             this.EntryDesc.Text = _bodies[0];
         }
 
 #if NOESIS
+        TextBox Address;
         TextBlock EntryTitle;
         TextBlock EntryDesc;
 
@@ -57,17 +66,13 @@ namespace RssReader
         {
             GUI.LoadComponent(this, "MainWindow.xaml");
 
+            this.Address = (TextBox)FindName("Address");
             this.EntryTitle = (TextBlock)FindName("EntryTitle");
             this.EntryDesc = (TextBlock)FindName("EntryDesc");
         }
 
         protected override bool ConnectEvent(object source, string eventName, string handlerName)
         {
-            if (eventName == "Click" && handlerName == "OnGoToClicked")
-            {
-                ((Button)source).Click += OnGoToClicked;
-                return true;
-            }
             if (eventName == "Click" && handlerName == "OnPrevClicked")
             {
                 ((Button)source).Click += OnPrevClicked;
@@ -82,14 +87,10 @@ namespace RssReader
         }
 #endif
 
-        void OnGoToClicked(object sender, RoutedEventArgs e)
-        {
-            System.Console.WriteLine("Go To Clicked");
-        }
-
         void OnPrevClicked(object sender, RoutedEventArgs e)
         {
             _index = _index == 0 ? 2 : _index - 1;
+            this.Address.Text = _urls[_index];
             this.EntryTitle.Text = _titles[_index];
             this.EntryDesc.Text = _bodies[_index];
         }
@@ -97,6 +98,7 @@ namespace RssReader
         void OnNextClicked(object sender, RoutedEventArgs e)
         {
             _index = _index == 2 ? 0 : _index + 1;
+            this.Address.Text = _urls[_index];
             this.EntryTitle.Text = _titles[_index];
             this.EntryDesc.Text = _bodies[_index];
         }

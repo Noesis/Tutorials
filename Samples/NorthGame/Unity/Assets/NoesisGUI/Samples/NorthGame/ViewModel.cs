@@ -213,19 +213,7 @@ namespace NorthGame
 
         public int Initiative { get { return (int)(100.0f * Player.Initiative / (float)(Player.Initiative + Opponent.Initiative)); } }
 
-        private State _state;
-        public State State
-        {
-            get { return _state; }
-            private set
-            {
-                if (_state != value)
-                {
-                    _state = value;
-                    OnPropertyChanged("State");
-                }
-            }
-        }
+        public State State { get; private set; }
 
         public int NewMessages { get; private set; }
 
@@ -253,19 +241,7 @@ namespace NorthGame
             }
         }
 
-        private PlayScreenDirection _playScreenDirection;
-        public PlayScreenDirection PlayScreenDirection
-        {
-            get { return _playScreenDirection; }
-            set
-            {
-                if (_playScreenDirection != value)
-                {
-                    _playScreenDirection = value;
-                    OnPropertyChanged("PlayScreenDirection");
-                }
-            }
-        }
+        public PlayScreenDirection PlayScreenDirection { get; private set; }
 
         public ViewModel(FrameworkElement root)
         {
@@ -282,64 +258,64 @@ namespace NorthGame
             SlideCompletedCommand = new DelegateCommand(OnSlideCompleted);
 
             Race human = new Race { Name = "Human" };
-            human.Classes.Add(new RaceClass { Name = "Knight", Image = ImagePath("ClassHumanKnight.png") });
-            human.Classes.Add(new RaceClass { Name = "Thief", Image = ImagePath("ClassHumanThief.png") });
-            human.Classes.Add(new RaceClass { Name = "Cleric", Image = ImagePath("ClassHumanCleric.png") });
+            human.Classes.Add(new RaceClass { Name = "Knight", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/ClassHumanKnight.png" });
+            human.Classes.Add(new RaceClass { Name = "Thief", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/ClassHumanThief.png" });
+            human.Classes.Add(new RaceClass { Name = "Cleric", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/ClassHumanCleric.png" });
 
             Race orc = new Race { Name = "Orc" };
-            orc.Classes.Add(new RaceClass { Name = "Warrior", Image = ImagePath("ClassOrcWarrior.png") });
-            orc.Classes.Add(new RaceClass { Name = "Hunter", Image = ImagePath("ClassOrcHunter.png") });
-            orc.Classes.Add(new RaceClass { Name = "Shaman", Image = ImagePath("ClassOrcShaman.png") });
+            orc.Classes.Add(new RaceClass { Name = "Warrior", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/ClassOrcWarrior.png" });
+            orc.Classes.Add(new RaceClass { Name = "Hunter", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/ClassOrcHunter.png" });
+            orc.Classes.Add(new RaceClass { Name = "Shaman", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/ClassOrcShaman.png" });
 
             Race elf = new Race { Name = "Elf" };
-            elf.Classes.Add(new RaceClass { Name = "Ranger", Image = ImagePath("ClassElfRanger.png") });
-            elf.Classes.Add(new RaceClass { Name = "Priest", Image = ImagePath("ClassElfPriest.png") });
-            elf.Classes.Add(new RaceClass { Name = "Wizard", Image = ImagePath("ClassElfWizard.png") });
+            elf.Classes.Add(new RaceClass { Name = "Ranger", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/ClassElfRanger.png" });
+            elf.Classes.Add(new RaceClass { Name = "Priest", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/ClassElfPriest.png" });
+            elf.Classes.Add(new RaceClass { Name = "Wizard", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/ClassElfWizard.png" });
 
             Races = new List<Race> { human, orc, elf };
 
             WeaponCategory closeRange = new WeaponCategory { Name = "Close Range" };
-            closeRange.Weapons.Add(new Weapon { Name = "Double Axe", Image = ImagePath("WeaponDoubleAxe.png") });
-            closeRange.Weapons.Add(new Weapon { Name = "Long Sword", Image = ImagePath("WeaponLongSword.png") });
-            closeRange.Weapons.Add(new Weapon { Name = "Hand Axe", Image = ImagePath("WeaponHandAxe.png") });
-            closeRange.Weapons.Add(new Weapon { Name = "Double Sword", Image = ImagePath("WeaponDoubleSword.png") });
-            closeRange.Weapons.Add(new Weapon { Name = "Mace", Image = ImagePath("WeaponMace.png") });
+            closeRange.Weapons.Add(new Weapon { Name = "Double Axe", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponDoubleAxe.png" });
+            closeRange.Weapons.Add(new Weapon { Name = "Long Sword", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponLongSword.png" });
+            closeRange.Weapons.Add(new Weapon { Name = "Hand Axe", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponHandAxe.png" });
+            closeRange.Weapons.Add(new Weapon { Name = "Double Sword", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponDoubleSword.png" });
+            closeRange.Weapons.Add(new Weapon { Name = "Mace", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponMace.png" });
             closeRange.SelectedWeapon = closeRange.Weapons[0];
 
             WeaponCategory longRange = new WeaponCategory { Name = "Long Range" };
-            longRange.Weapons.Add(new Weapon { Name = "Long Bow", Image = ImagePath("WeaponLongBow.png") });
-            longRange.Weapons.Add(new Weapon { Name = "Crossbow", Image = ImagePath("WeaponCrossbow.png") });
-            longRange.Weapons.Add(new Weapon { Name = "Sling", Image = ImagePath("WeaponSling.png") });
-            longRange.Weapons.Add(new Weapon { Name = "Spear", Image = ImagePath("WeaponSpear.png") });
+            longRange.Weapons.Add(new Weapon { Name = "Long Bow", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponLongBow.png" });
+            longRange.Weapons.Add(new Weapon { Name = "Crossbow", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponCrossbow.png" });
+            longRange.Weapons.Add(new Weapon { Name = "Sling", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponSling.png" });
+            longRange.Weapons.Add(new Weapon { Name = "Spear", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponSpear.png" });
             longRange.SelectedWeapon = longRange.Weapons[0];
 
             WeaponCategory armor = new WeaponCategory { Name = "Armor" };
-            armor.Weapons.Add(new Weapon { Name = "Round Shield", Image = ImagePath("WeaponRoundShield.png") });
-            armor.Weapons.Add(new Weapon { Name = "Chain Mail", Image = ImagePath("WeaponChainMail.png") });
-            armor.Weapons.Add(new Weapon { Name = "Big Shield", Image = ImagePath("WeaponBigShield.png") });
-            armor.Weapons.Add(new Weapon { Name = "Breastplate", Image = ImagePath("WeaponBreastplate.png") });
-            armor.Weapons.Add(new Weapon { Name = "Helmet", Image = ImagePath("WeaponHelmet.png") });
+            armor.Weapons.Add(new Weapon { Name = "Round Shield", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponRoundShield.png" });
+            armor.Weapons.Add(new Weapon { Name = "Chain Mail", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponChainMail.png" });
+            armor.Weapons.Add(new Weapon { Name = "Big Shield", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponBigShield.png" });
+            armor.Weapons.Add(new Weapon { Name = "Breastplate", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponBreastplate.png" });
+            armor.Weapons.Add(new Weapon { Name = "Helmet", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponHelmet.png" });
             armor.SelectedWeapon = armor.Weapons[0];
 
             WeaponCategory magic = new WeaponCategory { Name = "Magic" };
-            magic.Weapons.Add(new Weapon { Name = "Wand", Image = ImagePath("WeaponWand.png") });
-            magic.Weapons.Add(new Weapon { Name = "Staff", Image = ImagePath("WeaponStaff.png") });
-            magic.Weapons.Add(new Weapon { Name = "Spell Book", Image = ImagePath("WeaponSpellBook.png") });
+            magic.Weapons.Add(new Weapon { Name = "Wand", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponWand.png" });
+            magic.Weapons.Add(new Weapon { Name = "Staff", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponStaff.png" });
+            magic.Weapons.Add(new Weapon { Name = "Spell Book", Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/WeaponSpellBook.png" });
             magic.SelectedWeapon = magic.Weapons[0];
 
             Locations = new List<Location>();
-            Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location1.jpg") });
-            Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Explore, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location2.jpg") });
-            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Arena, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
-            Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location4.jpg") });
-            Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location5.jpg") });
-            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Explore, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location6.jpg") });
-            Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location1.jpg") });
-            Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location2.jpg") });
-            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Explore, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location3.jpg") });
-            Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = ImagePath("Location4.jpg") });
-            Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = ImagePath("Location5.jpg") });
-            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Explore, Difficulty = RaidDifficulty.Normal, Image = ImagePath("Location6.jpg") });
+            Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location1.jpg" });
+            Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Explore, Difficulty = RaidDifficulty.Easy, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location2.jpg" });
+            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Arena, Difficulty = RaidDifficulty.Normal, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location3.jpg" });
+            Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location4.jpg" });
+            Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Hard, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location5.jpg" });
+            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Explore, Difficulty = RaidDifficulty.Easy, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location6.jpg" });
+            Locations.Add(new Location { Name = "The Spark Range", Members = 45, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location1.jpg" });
+            Locations.Add(new Location { Name = "Frirf Woods", Members = 20, Type = RaidType.Defend, Difficulty = RaidDifficulty.Normal, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location2.jpg" });
+            Locations.Add(new Location { Name = "The Ymart Plains", Members = 30, Type = RaidType.Explore, Difficulty = RaidDifficulty.Normal, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location3.jpg" });
+            Locations.Add(new Location { Name = "Rusty Wallaby Grove", Members = 5, Type = RaidType.Defend, Difficulty = RaidDifficulty.Hard, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location4.jpg" });
+            Locations.Add(new Location { Name = "Sapphire Shallows", Members = 40, Type = RaidType.Arena, Difficulty = RaidDifficulty.Easy, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location5.jpg" });
+            Locations.Add(new Location { Name = "The Seagrass Islet", Members = 25, Type = RaidType.Explore, Difficulty = RaidDifficulty.Normal, Image = "pack://application:,,,/Assets/NoesisGUI/Samples/NorthGame/Images/Location6.jpg" });
 
             Player = new PlayerInfo
             {
@@ -373,6 +349,7 @@ namespace NorthGame
             Player.SelectedLocation = Locations[0];
 
             PlayScreens = new List<string> { "Select", "Equip", "Raid", "Fight" };
+            PlayScreenDirection = PlayScreenDirection.Current;
 
             NewMessages = Randomizer.r.Next(3, 8);
             Credits = Randomizer.r.Next(30000, 80000);
@@ -388,6 +365,7 @@ namespace NorthGame
         {
             _container2.Child = new Menu();
             State = State.Menu;
+            OnPropertyChanged("State");
 
             _playContainer1 = null;
             _playContainer2 = null;
@@ -403,16 +381,18 @@ namespace NorthGame
             Play play = new Play();
             _container2.Child = play;
             State = State.Play;
+            OnPropertyChanged("State");
 
             play.UpdateLayout();
 
-            _playContainer1 = (Border)play.Template.FindName("PlayContainer1", play);
-            _playContainer2 = (Border)play.Template.FindName("PlayContainer2", play);
+            _playContainer1 = (Border)play.FindName("PlayContainer1");
+            _playContainer2 = (Border)play.FindName("PlayContainer2");
         }
 
         private void OnOptions(object param)
         {
             //+State = State.Options;
+            //+OnPropertyChanged("State");
 
 #if NOESIS
             UnityEngine.Debug.Log("Options screen");
@@ -466,51 +446,21 @@ namespace NorthGame
 
         private void OnFadeCompleted(object param)
         {
-            UIElement target = (UIElement)param;
-            if (ScreenShown(target))
-            {
-                SwapContent(_container2, _container1);
-
-                FocusTarget(target);
-
-                if (State == State.Play)
-                {
-                    SelectedPlayScreen = 0;
-                }
-            }
+            SwapContent(_container2, _container1);
         }
 
         private void OnSlideCompleted(object param)
         {
-            if (ScreenShown((UIElement)param))
-            {
-                SwapContent(_playContainer2, _playContainer1);
-
-                FrameworkElement child = _playContainer1.Child as FrameworkElement;
-                UIElement focus = (UIElement)child.FindName((string)child.Tag);
-                FocusTarget(focus);
-            }
+            SwapContent(_playContainer2, _playContainer1);
         }
 
-        private bool ScreenShown(UIElement target)
+        private void SwapContent(Border src, Border dst)
         {
-#if NOESIS
-            return target.IsEnabled;
-#else
-            return !target.IsEnabled;
-#endif
-        }
-
-        private void FocusTarget(UIElement target)
-        {
-#if NOESIS
-            target.Focus();
-#else
-            target.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                target.Focus();
-            }));
-#endif
+            FrameworkElement content = (FrameworkElement)src.Child;
+            content.DataContext = this;
+            src.Child = null;
+            dst.Child = content;
+            content.ClearValue(FrameworkElement.DataContextProperty);
         }
 
         private void ShowPlayScreen(int oldScreenIndex, int newScreenIndex)
@@ -519,27 +469,20 @@ namespace NorthGame
             {
                 FrameworkElement screen = CreatePlayScreen(newScreenIndex);
                 _playContainer2.Child = screen;
+                screen.UpdateLayout();
 
                 if (oldScreenIndex < newScreenIndex)
                 {
                     PlayScreenDirection = PlayScreenDirection.Next;
-                    Storyboard slide = (Storyboard)screen.TryFindResource("SlideFromRight");
-                    if (slide != null)
-                    {
-                        slide.Begin(screen);
-                    }
                 }
                 else
                 {
                     PlayScreenDirection = PlayScreenDirection.Prev;
-                    Storyboard slide = (Storyboard)screen.TryFindResource("SlideFromLeft");
-                    if (slide != null)
-                    {
-                        slide.Begin(screen);
-                    }
                 }
+                OnPropertyChanged("PlayScreenDirection");
 
                 PlayScreenDirection = PlayScreenDirection.Current;
+                OnPropertyChanged("PlayScreenDirection");
 
                 Player.SelectedLocation = Locations[0];
             }
@@ -558,31 +501,10 @@ namespace NorthGame
             return null;
         }
 
-        private void SwapContent(Border src, Border dst)
-        {
-            FrameworkElement content = (FrameworkElement)src.Child;
-            content.DataContext = this;
-            src.Child = null;
-            dst.Child = content;
-            content.ClearValue(FrameworkElement.DataContextProperty);
-        }
-
         private Border _container1;
         private Border _container2;
 
         private Border _playContainer1;
         private Border _playContainer2;
-
-#if NOESIS
-        private string ImagePath(string name)
-        {
-            return "Assets/NoesisGUI/Samples/NorthGame/Images/" + name;
-        }
-#else
-        private string ImagePath(string name)
-        {
-            return "Images/" + name;
-        }
-#endif
     }
 }

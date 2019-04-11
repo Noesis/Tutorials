@@ -18,29 +18,18 @@ namespace NorthGame
         {
             Initialized += OnInitialized;
             InitializeComponent();
+        }
 
-            UIElement cursor = (UIElement)FindName("Cursor");
-
-            PreviewMouseMove += (o, e) =>
-            {
-                Point p = e.GetPosition(this);
-                Canvas.SetLeft(cursor, p.X);
-                Canvas.SetTop(cursor, p.Y);
-            };
+        private void OnInitialized(object sender, EventArgs e)
+        {
+            DataContext = new ViewModel(this);
         }
 
 #if NOESIS
         private void InitializeComponent()
         {
             Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/NorthGame/MainWindow.xaml");
-
-            UnityEngine.Cursor.visible = false;
         }
 #endif
-
-        private void OnInitialized(object sender, EventArgs e)
-        {
-            DataContext = new ViewModel(this);
-        }
     }
 }

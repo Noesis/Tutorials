@@ -45,7 +45,7 @@ namespace Commands
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int ic_launcher = 2130837504;
 			
 			static Mipmap()
 			{
@@ -60,8 +60,8 @@ namespace Commands
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			// aapt resource value: 0x7f030000
+			public const int app_name = 2130903040;
 			
 			static String()
 			{

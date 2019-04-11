@@ -7,6 +7,7 @@
     xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
     Title="NoesisGUI - Menu3D"
     FontFamily="Fonts/#WeblySleek UI Semilight">
+
     <Window.Resources>
         <local:MultiplierConverter x:Key="MultiplierConverter"/>
         <Storyboard x:Key="BackgroundAnim">
@@ -30,7 +31,6 @@
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <!--<ei:ControlStoryboardAction Storyboard="{StaticResource BackgroundAnim}"/>-->
             <ei:PlaySoundAction Source="Sounds/SoundTrack.mp3" Volume="1"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
