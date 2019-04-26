@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
@@ -60,6 +60,9 @@
     <SolidColorBrush x:Key="ToolTipBdBrush" Color="#FF3A5E79"/>
     <SolidColorBrush x:Key="CaretBrush" Color="{StaticResource OverFgColor}"/>
     <SolidColorBrush x:Key="SelectionBrush" Color="{StaticResource CheckBgColor}"/>
+	<SolidColorBrush x:Key="LinkNormalBrush" Color="{StaticResource CheckBgColor}"/>
+	<SolidColorBrush x:Key="LinkOverBrush" Color="{StaticResource OverFgColor}"/>
+	<SolidColorBrush x:Key="LinkDisabledBrush" Color="{StaticResource DisabledCheckBgColor}"/>
 
     
     <!-- ============== DEFAULT CONTROL STLYE ============== -->
@@ -2133,7 +2136,7 @@
                             Visibility="Hidden">
                             <Grid x:Name="ContentPanel" Opacity="0">
                                 <Grid.LayoutTransform>
-                                    <ScaleTransform ScaleY="0.01" CenterX="0.5" CenterY="0"/>
+									<ScaleTransform ScaleY="0" CenterX="0.5" CenterY="0"/>
                                 </Grid.LayoutTransform>
                                 <Border x:Name="ContentDisabledBorder"
                                     Margin="-1,0,-1,-1"
@@ -2498,6 +2501,13 @@
         <Setter Property="Background" Value="{StaticResource TrackBgBrush}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Menu}">
@@ -2526,9 +2536,7 @@
                         <Border
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="{TemplateBinding Padding}">
-                            <StackPanel
-                                IsItemsHost="True"
-                                Orientation="Horizontal"/>
+							<ItemsPresenter/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -2623,10 +2631,7 @@
                     <Border.Background>
                         <SolidColorBrush Color="{StaticResource TrackBgColor}" Opacity="0.95"/>
                     </Border.Background>
-                    <StackPanel
-                        IsItemsHost="True"
-                        Grid.IsSharedSizeScope="True"
-                        KeyboardNavigation.DirectionalNavigation="Cycle"/>
+					<ItemsPresenter/>
                 </Border>
             </Popup>
         </Grid>
@@ -2830,10 +2835,7 @@
                     <Border.Background>
                         <SolidColorBrush Color="{StaticResource TrackBgColor}" Opacity="0.95"/>
                     </Border.Background>
-                    <StackPanel
-                        IsItemsHost="True"
-                        Grid.IsSharedSizeScope="True"
-                        KeyboardNavigation.DirectionalNavigation="Cycle"/>
+					<ItemsPresenter/>
                 </Border>
             </Popup>
         </Grid>
@@ -2991,11 +2993,16 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     
+    <ItemsPanelTemplate x:Key="MenuItemsPanelTemplate">
+        <StackPanel Grid.IsSharedSizeScope="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
+    </ItemsPanelTemplate>
+
     <!-- MenuItem Style -->
     <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource NoesisControlStyle}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="ItemsPanel" Value="{StaticResource MenuItemsPanelTemplate}"/>
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
                 <Setter Property="Padding" Value="6,4"/>
@@ -3023,6 +3030,7 @@
 
     <!-- ContextMenu Style -->
     <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource NoesisControlStyle}">
+        <Setter Property="ItemsPanel" Value="{StaticResource MenuItemsPanelTemplate}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
@@ -3044,10 +3052,7 @@
                         <Border x:Name="Border"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="{TemplateBinding Padding}">
-                            <StackPanel
-                                IsItemsHost="True"
-                                Grid.IsSharedSizeScope="True"
-                                KeyboardNavigation.DirectionalNavigation="Cycle"/>
+							<ItemsPresenter/>
                         </Border>
                     </Grid>
                 </ControlTemplate>
@@ -3275,11 +3280,7 @@
                             <ContentPresenter x:Name="ContentHost"
                                 ContentSource="Header"
                                 HorizontalAlignment="Left"
-                                VerticalAlignment="Center">
-                                <TextElement.Foreground>
-                                    <SolidColorBrush Color="{StaticResource NormalFgColor}"/>
-                                </TextElement.Foreground>
-                            </ContentPresenter>
+								VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -3387,6 +3388,7 @@
             </Border>
             <Border BorderThickness="{TemplateBinding BorderThickness}">
                 <ScrollViewer x:Name="PART_ContentHost"
+					Focusable="False"
                     Padding="{TemplateBinding Padding}"
                     Foreground="{TemplateBinding Foreground}"/>
             </Border>
@@ -3452,6 +3454,9 @@
                     <BeginStoryboard Storyboard="{StaticResource OnDisabled}"/>
                 </Trigger.EnterActions>
             </Trigger>
+			<Trigger Property="IsEnabled" Value="True">
+				<Setter Property="Cursor" Value="IBeam" />
+			</Trigger>
         </Style.Triggers>
     </Style>
     
@@ -3549,6 +3554,7 @@
             </Border>
             <Border BorderThickness="{TemplateBinding BorderThickness}">
                 <ScrollViewer x:Name="PART_ContentHost"
+					Focusable="False"
                     Template="{StaticResource SimpleScrollViewer}"
                     Padding="{TemplateBinding Padding}"
                     Foreground="{TemplateBinding Foreground}"/>
@@ -3616,6 +3622,9 @@
                     <BeginStoryboard Storyboard="{StaticResource OnDisabled}"/>
                 </Trigger.EnterActions>
             </Trigger>
+			<Trigger Property="IsEnabled" Value="True">
+				<Setter Property="Cursor" Value="IBeam" />
+			</Trigger>
         </Style.Triggers>
     </Style>
     
@@ -3648,6 +3657,7 @@
                         Background="Transparent"
                         Focusable="False">
                         <ScrollViewer x:Name="PART_ContentHost"
+							Focusable="False"
                             Template="{StaticResource SimpleScrollViewer}"
                             Foreground="{TemplateBinding Foreground}"/>
                     </Border>
@@ -3664,6 +3674,13 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel KeyboardNavigation.DirectionalNavigation="Contained"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -3988,9 +4005,7 @@
                                     <SolidColorBrush Color="{StaticResource TrackBgColor}" Opacity="0.95"/>
                                 </Border.Background>
                                 <ScrollViewer>
-                                    <StackPanel
-                                        IsItemsHost="True"
-                                        KeyboardNavigation.DirectionalNavigation="Contained"/>
+									<ItemsPresenter/>
                                 </ScrollViewer>
                             </Border>
                         </Popup>
@@ -4111,7 +4126,7 @@
                         <Border
                             BorderThickness="{TemplateBinding BorderThickness}">
                             <ScrollViewer Focusable="False">
-                                <StackPanel IsItemsHost="True"/>
+								<ItemsPresenter/>
                             </ScrollViewer>
                         </Border>
                     </Grid>
@@ -5259,6 +5274,7 @@
                         </Border>
                         <Border BorderThickness="{TemplateBinding BorderThickness}">
                             <ScrollViewer x:Name="PART_ContentHost"
+								Focusable="False"
                                 Template="{StaticResource SimpleScrollViewer}"
                                 Padding="{TemplateBinding Padding}"
                                 Foreground="{TemplateBinding Foreground}"/>
@@ -5990,7 +6006,7 @@
         <Setter Property="BorderBrush" Value="{StaticResource TrackBdBrush}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+		<Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling"/>
         <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
@@ -6025,6 +6041,7 @@
                         <Border x:Name="Border"
                             BorderThickness="{TemplateBinding BorderThickness}">
                             <ScrollViewer x:Name="GridViewScroll"
+								Focusable="False"
                                 Padding="{TemplateBinding Padding}"
                                 Style="{StaticResource GridViewScrollViewerStyleKey}">
                                 <ItemsPresenter />
@@ -6170,5 +6187,24 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+	<!-- ========== HYPERLINK ============== -->
+
+	<Style TargetType="{x:Type Hyperlink}">
+		<Setter Property="Foreground" Value="{StaticResource LinkNormalBrush}" />
+		<Setter Property="TextDecorations" Value="Underline" />
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Foreground" Value="{StaticResource LinkOverBrush}" />
+			</Trigger>
+			<Trigger Property="IsEnabled" Value="False">
+				<Setter Property="Foreground" Value="{StaticResource LinkDisabledBrush}" />
+			</Trigger>
+			<Trigger Property="IsEnabled" Value="True">
+				<Setter Property="Cursor" Value="Hand" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
 
 </ResourceDictionary>
