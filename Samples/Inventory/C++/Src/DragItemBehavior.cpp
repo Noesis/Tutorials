@@ -5,12 +5,15 @@
 
 
 #include "DragItemBehavior.h"
-#include "ViewModel.h"
 
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/TypeId.h>
 #include <NsCore/Delegate.h>
 #include <NsGui/DragDrop.h>
+#include <NsGui/UIElementData.h>
+#include <NsGui/PropertyMetadata.h>
+#include <NsGui/BaseCommand.h>
+#include <NsDrawing/Point.h>
 
 
 using namespace Inventory;
@@ -20,6 +23,42 @@ using namespace Noesis;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 DragItemBehavior::DragItemBehavior(): _mouseClicked(false)
 {
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+const Point& DragItemBehavior::GetDragStartOffset() const
+{
+    return GetValue<Point>(DragStartOffsetProperty);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void DragItemBehavior::SetDragStartOffset(const Point& offset)
+{
+    SetValue<Point>(DragStartOffsetProperty, offset);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+BaseCommand* DragItemBehavior::GetStartDragCommand() const
+{
+    return GetValue<Ptr<BaseCommand>>(StartDragCommandProperty);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void DragItemBehavior::SetStartDragCommand(BaseCommand* command)
+{
+    SetValue<Ptr<BaseCommand>>(StartDragCommandProperty, command);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+BaseCommand* DragItemBehavior::GetEndDragCommand() const
+{
+    return GetValue<Ptr<BaseCommand>>(EndDragCommandProperty);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void DragItemBehavior::SetEndDragCommand(BaseCommand* command)
+{
+    SetValue<Ptr<BaseCommand>>(EndDragCommandProperty, command);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,23 +72,21 @@ void DragItemBehavior::OnAttached()
 {
     ParentClass::OnAttached();
 
-    ContentControl* control = GetAssociatedObject();
-    control->GiveFeedback() += MakeDelegate(this, &DragItemBehavior::OnGiveFeedback);
-    control->PreviewMouseLeftButtonDown() += MakeDelegate(this, &DragItemBehavior::OnMouseDown);
-    control->PreviewMouseLeftButtonUp() += MakeDelegate(this, &DragItemBehavior::OnMouseUp);
-    control->PreviewMouseMove() += MakeDelegate(this, &DragItemBehavior::OnMouseMove);
-    control->PreviewKeyDown() += MakeDelegate(this, &DragItemBehavior::OnKeyDown);
+    FrameworkElement* element = GetAssociatedObject();
+    element->GiveFeedback() += MakeDelegate(this, &DragItemBehavior::OnGiveFeedback);
+    element->PreviewMouseLeftButtonDown() += MakeDelegate(this, &DragItemBehavior::OnMouseDown);
+    element->PreviewMouseLeftButtonUp() += MakeDelegate(this, &DragItemBehavior::OnMouseUp);
+    element->PreviewMouseMove() += MakeDelegate(this, &DragItemBehavior::OnMouseMove);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void DragItemBehavior::OnDetaching()
 {
-    ContentControl* control = GetAssociatedObject();
-    control->GiveFeedback() -= MakeDelegate(this, &DragItemBehavior::OnGiveFeedback);
-    control->PreviewMouseLeftButtonDown() -= MakeDelegate(this, &DragItemBehavior::OnMouseDown);
-    control->PreviewMouseLeftButtonUp() -= MakeDelegate(this, &DragItemBehavior::OnMouseUp);
-    control->PreviewMouseMove() -= MakeDelegate(this, &DragItemBehavior::OnMouseMove);
-    control->PreviewKeyDown() -= MakeDelegate(this, &DragItemBehavior::OnKeyDown);
+    FrameworkElement* element = GetAssociatedObject();
+    element->GiveFeedback() -= MakeDelegate(this, &DragItemBehavior::OnGiveFeedback);
+    element->PreviewMouseLeftButtonDown() -= MakeDelegate(this, &DragItemBehavior::OnMouseDown);
+    element->PreviewMouseLeftButtonUp() -= MakeDelegate(this, &DragItemBehavior::OnMouseUp);
+    element->PreviewMouseMove() -= MakeDelegate(this, &DragItemBehavior::OnMouseMove);
 
     ParentClass::OnAttached();
 }
@@ -76,37 +113,35 @@ void DragItemBehavior::OnMouseUp(BaseComponent*, const MouseButtonEventArgs&)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void DragItemBehavior::OnMouseMove(BaseComponent*, const MouseEventArgs& e)
 {
-    if (_mouseClicked)
+    if (!_mouseClicked)
     {
-        ContentControl* control = GetAssociatedObject();
-        Slot* slot = (Slot*)control->GetContent();
-        if (slot != 0 && slot->GetItem() != 0)
+        return;
+    }
+
+    _mouseClicked = false;
+
+    FrameworkElement* element = GetAssociatedObject();
+    BaseComponent* item = element->GetDataContext();
+    if (item != 0)
+    {
+        BaseCommand* startDrag = GetStartDragCommand();
+        if (startDrag != 0 && startDrag->CanExecute(item))
         {
-            if (ViewModel::Instance()->StartDragging(slot, e.position))
+            SetDragStartOffset(element->PointFromScreen(e.position));
+
+            startDrag->Execute(item);
+
+            DragDrop::DoDragDrop(element, item, DragDropEffects_Move, [this](DependencyObject*,
+                BaseComponent*, UIElement*, const Point&, uint32_t effects)
             {
-                DragDrop::DoDragDrop(control, slot, DragDropEffects_Move, [](DependencyObject*,
-                    BaseComponent*, UIElement*, const Point&, uint32_t effects)
+                Ptr<BaseComponent> dragSuccess = Boxing::Box<bool>(effects != DragDropEffects_None);
+                BaseCommand* endDrag = GetEndDragCommand();
+                if (endDrag != 0 && endDrag->CanExecute(dragSuccess))
                 {
-                    ViewModel::Instance()->EndDragging(effects == DragDropEffects_None);
-                });
-            }
+                    endDrag->Execute(dragSuccess);
+                }
+            });
         }
-
-        _mouseClicked = false;
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-void DragItemBehavior::OnKeyDown(BaseComponent*, const Noesis::KeyEventArgs& e)
-{
-    if (e.key == Key_Space || e.key == Key_Enter)
-    {
-        Slot* slot = (Slot*)GetAssociatedObject()->GetContent();
-        ViewModel::Instance()->SelectSlot(slot);
-    }
-    else if (e.key == Key_Escape)
-    {
-        ViewModel::Instance()->SelectSlot(0);
     }
 }
 
@@ -116,4 +151,17 @@ NS_BEGIN_COLD_REGION
 NS_IMPLEMENT_REFLECTION(DragItemBehavior)
 {
     NsMeta<TypeId>("Inventory.DragItemBehavior");
+
+    UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
+    data->RegisterProperty<Point>(DragStartOffsetProperty, "DragStartOffset",
+        PropertyMetadata::Create(Point(0.0f, 0.0f)));
+    data->RegisterProperty<Ptr<BaseCommand>>(StartDragCommandProperty, "StartDragCommand",
+        PropertyMetadata::Create(Ptr<BaseCommand>()));
+    data->RegisterProperty<Ptr<BaseCommand>>(EndDragCommandProperty, "EndDragCommand",
+        PropertyMetadata::Create(Ptr<BaseCommand>()));
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+const Noesis::DependencyProperty* DragItemBehavior::DragStartOffsetProperty;
+const Noesis::DependencyProperty* DragItemBehavior::StartDragCommandProperty;
+const Noesis::DependencyProperty* DragItemBehavior::EndDragCommandProperty;

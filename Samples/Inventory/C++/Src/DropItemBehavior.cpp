@@ -5,17 +5,43 @@
 
 
 #include "DropItemBehavior.h"
-#include "ViewModel.h"
 
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/TypeId.h>
 #include <NsCore/Delegate.h>
+#include <NsGui/BaseCommand.h>
 #include <NsGui/DragDrop.h>
+#include <NsGui/UIElementData.h>
+#include <NsGui/PropertyMetadata.h>
 
 
 using namespace Inventory;
 using namespace Noesis;
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+bool DropItemBehavior::GetIsDragOver() const
+{
+    return GetValue<bool>(IsDragOverProperty);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void DropItemBehavior::SetIsDragOver(bool value)
+{
+    SetValue<bool>(IsDragOverProperty, value);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+BaseCommand* DropItemBehavior::GetDropCommand() const
+{
+    return GetValue<Ptr<BaseCommand>>(DropCommandProperty);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void DropItemBehavior::SetDropCommand(BaseCommand* value)
+{
+    SetValue<Ptr<BaseCommand>>(DropCommandProperty, value);
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 Ptr<Freezable> DropItemBehavior::CreateInstanceCore() const
@@ -28,63 +54,49 @@ void DropItemBehavior::OnAttached()
 {
     ParentClass::OnAttached();
 
-    ContentControl* control = GetAssociatedObject();
-    control->SetAllowDrop(true);
-    control->PreviewDragEnter() += MakeDelegate(this, &DropItemBehavior::OnDragEnter);
-    control->PreviewDragLeave() += MakeDelegate(this, &DropItemBehavior::OnDragLeave);
-    control->PreviewDrop() += MakeDelegate(this, &DropItemBehavior::OnDrop);
+    FrameworkElement* element = GetAssociatedObject();
+    element->SetAllowDrop(true);
+    element->PreviewDragEnter() += MakeDelegate(this, &DropItemBehavior::OnDragEnter);
+    element->PreviewDragLeave() += MakeDelegate(this, &DropItemBehavior::OnDragLeave);
+    element->PreviewDrop() += MakeDelegate(this, &DropItemBehavior::OnDrop);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void DropItemBehavior::OnDetaching()
 {
-    ContentControl* control = GetAssociatedObject();
-    control->ClearLocalValue(UIElement::AllowDropProperty);
-    control->PreviewDragEnter() -= MakeDelegate(this, &DropItemBehavior::OnDragEnter);
-    control->PreviewDragLeave() -= MakeDelegate(this, &DropItemBehavior::OnDragLeave);
-    control->PreviewDrop() -= MakeDelegate(this, &DropItemBehavior::OnDrop);
+    FrameworkElement* element = GetAssociatedObject();
+    element->ClearLocalValue(UIElement::AllowDropProperty);
+    element->PreviewDragEnter() -= MakeDelegate(this, &DropItemBehavior::OnDragEnter);
+    element->PreviewDragLeave() -= MakeDelegate(this, &DropItemBehavior::OnDragLeave);
+    element->PreviewDrop() -= MakeDelegate(this, &DropItemBehavior::OnDrop);
 
     ParentClass::OnDetaching();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void DropItemBehavior::OnDragEnter(BaseComponent* sender, const DragEventArgs& e)
+void DropItemBehavior::OnDragEnter(BaseComponent*, const DragEventArgs& e)
 {
-    ContentControl* control = (ContentControl*)sender;
-    Slot* slot = (Slot*)control->GetContent();
-
-    slot->SetIsDragOver(true);
-
+    SetIsDragOver(true);
     e.handled = true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void DropItemBehavior::OnDragLeave(BaseComponent* sender, const DragEventArgs& e)
+void DropItemBehavior::OnDragLeave(BaseComponent*, const DragEventArgs& e)
 {
-    ContentControl* control = (ContentControl*)sender;
-    Slot* slot = (Slot*)control->GetContent();
-
-    slot->SetIsDragOver(false);
-
+    SetIsDragOver(false);
     e.handled = true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void DropItemBehavior::OnDrop(BaseComponent*, const DragEventArgs& e)
 {
-    ContentControl* control = GetAssociatedObject();
+    SetIsDragOver(false);
 
-    Slot* sourceSlot = (Slot*)e.data;
-    Slot* targetSlot = (Slot*)control->GetContent();
-    targetSlot->SetIsDragOver(false);
-
-    if (targetSlot->GetIsDropAllowed())
+    BaseComponent* item = GetAssociatedObject()->GetDataContext();
+    BaseCommand* drop = GetDropCommand();
+    if (item != 0 && drop != 0 && drop->CanExecute(item))
     {
-        // Move any item in target slot to the source slot
-        sourceSlot->SetItem(targetSlot->GetItem());
-
-        // Move dragged item to the target slot
-        targetSlot->SetItem(ViewModel::Instance()->GetDraggedItem());
+        drop->Execute(item);
     }
     else
     {
@@ -100,4 +112,14 @@ NS_BEGIN_COLD_REGION
 NS_IMPLEMENT_REFLECTION(DropItemBehavior)
 {
     NsMeta<TypeId>("Inventory.DropItemBehavior");
+
+    UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
+    data->RegisterProperty<bool>(IsDragOverProperty, "IsDragOver",
+        PropertyMetadata::Create(false));
+    data->RegisterProperty<Ptr<BaseCommand>>(DropCommandProperty, "DropCommand",
+        PropertyMetadata::Create(Ptr<BaseCommand>()));
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+const Noesis::DependencyProperty* DropItemBehavior::IsDragOverProperty;
+const Noesis::DependencyProperty* DropItemBehavior::DropCommandProperty;

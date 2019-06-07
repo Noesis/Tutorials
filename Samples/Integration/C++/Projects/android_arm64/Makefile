@@ -63,7 +63,7 @@ ifeq ($(CONFIG), Debug)
   LIBS = -lNoesisApp -landroid -llog -lNoesis
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
   INCLUDES = -I../../../../Core/Kernel/Include -I../../../../Samples/Integration/Include -I../../../../../../Include -I../../../../Core/Nullable/Include -I../../../../App/Providers/Include -I../../../../Math/Utils/Include -I../../../../App/Display/Include -I../../../../Gui/Core/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../Math/VectorMath/Include -I../../../../Gui/DependencySystem/Include -I../../../../App/Launcher/Include -I../../../../Drawing/Types/Include -I../../../../Render/RenderContext/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../Core/NSTL/Include -I../../../../Gui/Providers/Include -Ibuild/Debug -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.2.1 -DNS_APP_FRAMEWORK -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.2.3 -DNS_APP_FRAMEWORK -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
   CFLAGS = $(CFLAGS_DEBUG)
   CXXFLAGS = $(CXXFLAGS_DEBUG)
   LDFLAGS = $(LDFLAGS_DEBUG)
@@ -76,7 +76,7 @@ else ifeq ($(CONFIG), Profile)
   LIBS = -lNoesisApp -landroid -llog -lNoesis
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
   INCLUDES = -I../../../../Core/Kernel/Include -I../../../../Samples/Integration/Include -I../../../../../../Include -I../../../../Core/Nullable/Include -I../../../../App/Providers/Include -I../../../../Math/Utils/Include -I../../../../App/Display/Include -I../../../../Gui/Core/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../Math/VectorMath/Include -I../../../../Gui/DependencySystem/Include -I../../../../App/Launcher/Include -I../../../../Drawing/Types/Include -I../../../../Render/RenderContext/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../Core/NSTL/Include -I../../../../Gui/Providers/Include -Ibuild/Profile -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=2.2.1 -DNS_APP_FRAMEWORK -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=2.2.3 -DNS_APP_FRAMEWORK -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_PROFILE)
   CXXFLAGS = $(CXXFLAGS_PROFILE)
   LDFLAGS = $(LDFLAGS_PROFILE)
@@ -89,7 +89,7 @@ else ifeq ($(CONFIG), Release)
   LIBS = -lNoesisApp -landroid -llog -lNoesis
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
   INCLUDES = -I../../../../Core/Kernel/Include -I../../../../Samples/Integration/Include -I../../../../../../Include -I../../../../Core/Nullable/Include -I../../../../App/Providers/Include -I../../../../Math/Utils/Include -I../../../../App/Display/Include -I../../../../Gui/Core/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../Math/VectorMath/Include -I../../../../Gui/DependencySystem/Include -I../../../../App/Launcher/Include -I../../../../Drawing/Types/Include -I../../../../Render/RenderContext/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../Core/NSTL/Include -I../../../../Gui/Providers/Include -Ibuild/Release -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.2.1 -DNS_APP_FRAMEWORK
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.2.3 -DNS_APP_FRAMEWORK
   CFLAGS = $(CFLAGS_RELEASE)
   CXXFLAGS = $(CXXFLAGS_RELEASE)
   LDFLAGS = $(LDFLAGS_RELEASE)
