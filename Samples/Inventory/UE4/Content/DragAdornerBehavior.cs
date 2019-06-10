@@ -1,46 +1,71 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Interactivity;
+using System.Windows.Media;
 
 namespace Inventory
 {
-    class DragAdornerBehavior : Behavior<ContentControl>
+    class DragAdornerBehavior : Behavior<FrameworkElement>
     {
+        public Point DragStartOffset
+        {
+            get { return (Point)GetValue(DragStartOffsetProperty); }
+            set { SetValue(DragStartOffsetProperty, value); }
+        }
+
+        public static readonly DependencyProperty DragStartOffsetProperty = DependencyProperty.Register(
+            "DragStartOffset", typeof(Point), typeof(DragAdornerBehavior),
+            new PropertyMetadata(new Point(0, 0)));
+
+        public double DraggedItemX
+        {
+            get { return (double)GetValue(DraggedItemXProperty); }
+            private set { SetValue(DraggedItemXPropertyKey, value); }
+        }
+
+        private static readonly DependencyPropertyKey DraggedItemXPropertyKey =
+            DependencyProperty.RegisterReadOnly("DraggedItemX",
+                typeof(double), typeof(DragAdornerBehavior), new PropertyMetadata(0.0));
+
+        public static readonly DependencyProperty DraggedItemXProperty =
+            DraggedItemXPropertyKey.DependencyProperty;
+
+        public double DraggedItemY
+        {
+            get { return (double)GetValue(DraggedItemYProperty); }
+            private set { SetValue(DraggedItemYPropertyKey, value); }
+        }
+
+        private static readonly DependencyPropertyKey DraggedItemYPropertyKey =
+            DependencyProperty.RegisterReadOnly("DraggedItemY",
+                typeof(double), typeof(DragAdornerBehavior), new PropertyMetadata(0.0));
+
+        public static readonly DependencyProperty DraggedItemYProperty =
+            DraggedItemYPropertyKey.DependencyProperty;
+
         protected override void OnAttached()
         {
             base.OnAttached();
 
             this.AssociatedObject.AllowDrop = true;
-            this.AssociatedObject.DragEnter += OnDragEnter;
             this.AssociatedObject.DragOver += OnDragOver;
-            this.AssociatedObject.DragLeave += OnDragLeave;
             this.AssociatedObject.Drop += OnDrop;
         }
 
         protected override void OnDetaching()
         {
             this.AssociatedObject.AllowDrop = false;
-            this.AssociatedObject.DragEnter -= OnDragEnter;
-            this.AssociatedObject.DragLeave -= OnDragLeave;
+            this.AssociatedObject.DragOver -= OnDragOver;
             this.AssociatedObject.Drop -= OnDrop;
 
             base.OnDetaching();
         }
 
-        private void OnDragEnter(object sender, DragEventArgs e)
-        {
-        }
-
         private void OnDragOver(object sender, DragEventArgs e)
         {
             Point position = e.GetPosition(this.AssociatedObject);
-            ViewModel.Instance.DraggedItemX = position.X;
-            ViewModel.Instance.DraggedItemY = position.Y;
-        }
-
-        private void OnDragLeave(object sender, DragEventArgs e)
-        {
+            DraggedItemX = position.X - DragStartOffset.X;
+            DraggedItemY = position.Y - DragStartOffset.Y;
         }
 
         private void OnDrop(object sender, DragEventArgs e)

@@ -689,8 +689,12 @@
         <Setter Property="noesis:StyleInteraction.Behaviors">
             <Setter.Value>
                 <noesis:StyleBehaviorCollection>
-                    <local:DragItemBehavior/>
-                    <local:DropItemBehavior/>
+                    <local:DragItemBehavior
+                        StartDragCommand="{Binding DataContext.StartDragItem, ElementName=Root}"
+                        EndDragCommand="{Binding DataContext.EndDragItem, ElementName=Root}"/>
+                    <local:DropItemBehavior
+                        IsDragOver="{Binding IsDragOver, Mode=OneWayToSource}"
+                        DropCommand="{Binding DataContext.DropItem, ElementName=Root}"/>
                 </noesis:StyleBehaviorCollection>
             </Setter.Value>
         </Setter>
@@ -703,6 +707,15 @@
                     <ei:PropertyChangedTrigger Binding="{Binding MoveFocus}">
                         <noesis:SetFocusAction/>
                     </ei:PropertyChangedTrigger>
+                    <ei:KeyTrigger Key="Enter" ActiveOnFocus="True">
+                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                    </ei:KeyTrigger>
+                    <ei:KeyTrigger Key="Space" ActiveOnFocus="True">
+                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                    </ei:KeyTrigger>
+                    <ei:KeyTrigger Key="Escape" ActiveOnFocus="True">
+                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{x:Null}"/>
+                    </ei:KeyTrigger>
                 </noesis:StyleTriggerCollection>
             </Setter.Value>
         </Setter>

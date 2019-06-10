@@ -5,7 +5,6 @@
 
 
 #include "MainWindow.h"
-#include "ViewModel.h"
 
 #include <NsGui/IntegrationAPI.h>
 #include <NsCore/ReflectionImplement.h>
@@ -25,13 +24,12 @@ MainWindow::MainWindow()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void MainWindow::InitializeComponent()
 {
-    GUI::LoadComponent(this, "/Game/MainWindow.xaml");
+    GUI::LoadComponent(this, "MainWindow.xaml");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void MainWindow::OnInitialized(Noesis::BaseComponent*, const Noesis::EventArgs&)
 {
-    SetDataContext(MakePtr<ViewModel>());
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
