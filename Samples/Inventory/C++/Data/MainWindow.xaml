@@ -946,7 +946,7 @@
                 </Grid.RowDefinitions>
                 <Decorator Grid.Row="0" Grid.Column="0" Width="{Binding ActualWidth, ElementName=MarginRef}" Height="{Binding ActualHeight, ElementName=MarginRef}"/>
                 <Decorator Grid.Row="2" Grid.Column="2" Width="{Binding ActualWidth, ElementName=MarginRef}" Height="{Binding ActualHeight, ElementName=MarginRef}"/>
-                <ScrollViewer Grid.Row="1" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Template="{StaticResource Template.ScrollViewer}" Focusable="False">
+                <ScrollViewer Grid.Row="1" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Template="{StaticResource Template.ScrollViewer}" PanningMode="VerticalFirst" Focusable="False">
                     <ItemsControl x:Name="InventoryList" ItemsSource="{Binding Inventory}" Focusable="False">
                         <ItemsControl.OpacityMask>
                             <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
