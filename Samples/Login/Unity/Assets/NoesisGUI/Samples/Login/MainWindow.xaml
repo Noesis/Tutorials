@@ -273,7 +273,7 @@
                                 <i:EventTrigger EventName="GotKeyboardFocus">
                                     <noesis:SelectAllAction/>
                                 </i:EventTrigger>
-                                <ei:KeyTrigger Key="Return">
+                                <ei:KeyTrigger Key="Return" ActiveOnFocus="True">
                                     <ei:ChangePropertyAction TargetName="Message" PropertyName="Text" Value=""/>
                                     <i:InvokeCommandAction Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PassBox}"/>
                                 </ei:KeyTrigger>
@@ -288,7 +288,7 @@
                                 <i:EventTrigger EventName="GotKeyboardFocus">
                                     <noesis:SelectAllAction/>
                                 </i:EventTrigger>
-                                <ei:KeyTrigger Key="Return">
+                                <ei:KeyTrigger Key="Return" ActiveOnFocus="True">
                                     <ei:ChangePropertyAction TargetName="Message" PropertyName="Text" Value=""/>
                                     <i:InvokeCommandAction Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PassBox}"/>
                                 </ei:KeyTrigger>

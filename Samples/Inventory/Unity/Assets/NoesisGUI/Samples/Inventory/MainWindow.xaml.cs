@@ -1,7 +1,6 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
 using Noesis;
-using NoesisApp;
 #else
 using System;
 using System.Windows.Controls;

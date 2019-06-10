@@ -2,17 +2,36 @@
 #define NOESIS
 using Noesis;
 using NoesisApp;
+using System.Windows.Input;
 #else
 using System;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Interactivity;
 #endif
 
 namespace Inventory
 {
-    class DropItemBehavior : Behavior<ContentControl>
+    class DropItemBehavior : Behavior<FrameworkElement>
     {
+        public bool IsDragOver
+        {
+            get { return (bool)GetValue(IsDragOverProperty); }
+            set { SetValue(IsDragOverProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsDragOverProperty = DependencyProperty.Register(
+            "IsDragOver", typeof(bool), typeof(DropItemBehavior), new PropertyMetadata(false));
+
+        public ICommand DropCommand
+        {
+            get { return (ICommand)GetValue(DropCommandProperty); }
+            set { SetValue(DropCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty DropCommandProperty = DependencyProperty.Register(
+            "DropCommand", typeof(ICommand), typeof(DropItemBehavior), new PropertyMetadata(null));
+
         protected override void OnAttached()
         {
             base.OnAttached();
@@ -35,37 +54,24 @@ namespace Inventory
 
         private void OnDragEnter(object sender, DragEventArgs e)
         {
-            ContentControl control = (ContentControl)sender;
-            Slot slot = (Slot)control.Content;
-
-            slot.IsDragOver = true;
-
+            IsDragOver = true;
             e.Handled = true;
         }
 
         private void OnDragLeave(object sender, DragEventArgs e)
         {
-            ContentControl control = (ContentControl)sender;
-            Slot slot = (Slot)control.Content;
-
-            slot.IsDragOver = false;
-
+            IsDragOver = false;
             e.Handled = true;
         }
 
         private void OnDrop(object sender, DragEventArgs e)
         {
-            Slot sourceSlot = (Slot)e.Data.GetData(typeof(Slot));
-            Slot targetSlot = (Slot)this.AssociatedObject.Content;
-            targetSlot.IsDragOver = false;
+            IsDragOver = false;
 
-            if (targetSlot.IsDropAllowed)
+            object item = this.AssociatedObject.DataContext;
+            if (item != null && DropCommand != null && DropCommand.CanExecute(item))
             {
-                // Move any item in target slot to the source slot
-                sourceSlot.Item = targetSlot.Item;
-
-                // Move dragged item to the target slot
-                targetSlot.Item = ViewModel.Instance.DraggedItem;
+                DropCommand.Execute(item);
             }
             else
             {

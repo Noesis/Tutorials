@@ -142,7 +142,7 @@
         <Setter Property="Foreground" Value="{StaticResource Brush.StatsValueText}"/>
         <Setter Property="Template" Value="{StaticResource Template.StatsValue}"/>
     </Style>
-    
+
     <!--Item ToolTip-->
     <ControlTemplate x:Key="Template.ItemToolTip" TargetType="{x:Type ContentControl}">
         <ControlTemplate.Resources>
@@ -421,7 +421,7 @@
         <Setter Property="FontSize" Value="10"/>
         <Setter Property="Template" Value="{StaticResource Template.ItemToolTip}"/>
     </Style>
-    
+
     <!--Equip Slot-->
     <ControlTemplate x:Key="Template.EquipSlot" TargetType="{x:Type ContentControl}">
         <ControlTemplate.Resources>
@@ -689,8 +689,12 @@
         <Setter Property="noesis:StyleInteraction.Behaviors">
             <Setter.Value>
                 <noesis:StyleBehaviorCollection>
-                    <local:DragItemBehavior/>
-                    <local:DropItemBehavior/>
+                    <local:DragItemBehavior
+                        StartDragCommand="{Binding DataContext.StartDragItem, ElementName=Root}"
+                        EndDragCommand="{Binding DataContext.EndDragItem, ElementName=Root}"/>
+                    <local:DropItemBehavior
+                        IsDragOver="{Binding IsDragOver, Mode=OneWayToSource}"
+                        DropCommand="{Binding DataContext.DropItem, ElementName=Root}"/>
                 </noesis:StyleBehaviorCollection>
             </Setter.Value>
         </Setter>
@@ -703,11 +707,20 @@
                     <ei:PropertyChangedTrigger Binding="{Binding MoveFocus}">
                         <noesis:SetFocusAction/>
                     </ei:PropertyChangedTrigger>
+                    <ei:KeyTrigger Key="Enter" ActiveOnFocus="True">
+                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                    </ei:KeyTrigger>
+                    <ei:KeyTrigger Key="Space" ActiveOnFocus="True">
+                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                    </ei:KeyTrigger>
+                    <ei:KeyTrigger Key="Escape" ActiveOnFocus="True">
+                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{x:Null}"/>
+                    </ei:KeyTrigger>
                 </noesis:StyleTriggerCollection>
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!--Inventory Slot-->
     <ControlTemplate x:Key="Template.InventorySlot" TargetType="{x:Type ContentControl}">
         <ControlTemplate.Resources>
@@ -921,7 +934,7 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template" Value="{StaticResource Template.InventorySlot}"/>
     </Style>
-    
+
     <!--Dragged Item-->
     <ControlTemplate x:Key="Template.DraggedItem" TargetType="{x:Type ContentControl}">
         <Grid>
@@ -960,7 +973,7 @@
         <Setter Property="IsHitTestVisible" Value="False"/>
         <Setter Property="Template" Value="{StaticResource Template.DraggedItem}"/>
     </Style>
-    
+
     <!--ScrollBar-->
     <Style x:Key="Style.ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="IsTabStop" Value="False"/>
@@ -1067,7 +1080,7 @@
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Template" Value="{StaticResource Template.ScrollBar}"/>
     </Style>
-    
+
     <!--ScrollViewer-->
     <ControlTemplate x:Key="Template.ScrollViewer" TargetType="{x:Type ScrollViewer}">
         <Grid Background="Transparent">
