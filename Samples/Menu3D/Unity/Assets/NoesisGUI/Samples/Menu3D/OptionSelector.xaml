@@ -17,57 +17,6 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualStateGroup.Transitions>
-                                <VisualTransition GeneratedDuration="0" To="Pressed">
-                                    <Storyboard>
-                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Root">
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-8">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <SineEase EasingMode="EaseOut"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <SineEase EasingMode="EaseIn"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
-                                        </DoubleAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualTransition>
-                                <VisualTransition GeneratedDuration="0:0:0.2" To="Disabled"/>
-                                <VisualTransition From="Disabled" GeneratedDuration="0:0:0.2"/>
-                                <VisualTransition GeneratedDuration="0:0:0.2" To="MouseOver"/>
-                                <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.2"/>
-                            </VisualStateGroup.Transitions>
-                            <VisualState x:Name="Normal"/>
-                            <VisualState x:Name="MouseOver">
-                                <Storyboard>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="ArrowGlow">
-                                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                                    </DoubleAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Root">
-                                        <EasingDoubleKeyFrame KeyTime="0" Value="1.05"/>
-                                    </DoubleAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Root">
-                                        <EasingDoubleKeyFrame KeyTime="0" Value="1.05"/>
-                                    </DoubleAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </VisualState>
-                            <VisualState x:Name="Pressed"/>
-                            <VisualState x:Name="Disabled">
-                                <Storyboard>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="ArrowGlow">
-                                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    </DoubleAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="Arrow">
-                                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource TransparentWhiteColor75}"/>
-                                    </ColorAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
                     <Ellipse x:Name="ArrowGlow" Width="26" Height="36" Margin="10,-2">
                         <Ellipse.Fill>
                             <RadialGradientBrush Opacity="0">
@@ -78,10 +27,66 @@
                     </Ellipse>
                     <Path x:Name="Arrow" Data="M12,0L0,12 12,24" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeThickness="8" Width="20" Height="30" Stretch="Fill" Margin="10,0">
                         <Path.Stroke>
-                            <SolidColorBrush Color="{StaticResource SolidOrangeColor}"/>
+                            <SolidColorBrush Color="{StaticResource TransparentWhiteColor75}"/>
                         </Path.Stroke>
                     </Path>
                 </Grid>
+                <ControlTemplate.Resources>
+                    <Storyboard x:Key="HoverOn">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="ArrowGlow">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Root">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.05"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Root">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.05"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                    <Storyboard x:Key="HoverOff">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="ArrowGlow">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Root">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Root">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                    <Storyboard x:Key="ActiveOn">
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="Arrow">
+                            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="{StaticResource SolidOrangeColor}"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                    <Storyboard x:Key="ActiveOff">
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="Arrow">
+                            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="{StaticResource TransparentWhiteColor75}"/>
+                        </ColorAnimationUsingKeyFrames>
+                    </Storyboard>
+                </ControlTemplate.Resources>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard Storyboard="{StaticResource HoverOn}"/>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard Storyboard="{StaticResource HoverOff}"/>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="True"/>
+                            <Condition Binding="{Binding IsKeyboardFocused, ElementName=OptionSelectorControl}" Value="True"/>
+                        </MultiDataTrigger.Conditions>
+                        <MultiDataTrigger.EnterActions>
+                            <BeginStoryboard Storyboard="{StaticResource ActiveOn}"/>
+                        </MultiDataTrigger.EnterActions>
+                        <MultiDataTrigger.ExitActions>
+                            <BeginStoryboard Storyboard="{StaticResource ActiveOff}"/>
+                        </MultiDataTrigger.ExitActions>
+                    </MultiDataTrigger>
+                </ControlTemplate.Triggers>
             </ControlTemplate>
             <Style x:Key="OptionSelectorButtonStyle" TargetType="{x:Type RepeatButton}">
                 <Setter Property="Focusable" Value="False"/>
@@ -91,15 +96,6 @@
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot">
-        <Grid.Style>
-            <Style TargetType="Grid">
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding IsKeyboardFocused, ElementName=OptionSelectorControl}" Value="False">
-                        <Setter Property="IsEnabled" Value="False"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </Grid.Style>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
