@@ -202,8 +202,6 @@ private:
         NsRegisterComponent<DataBinding::MainWindow>();
         NsRegisterComponent<DataBinding::SolarSystem>();
         NsRegisterComponent<DataBinding::OrbitConverter>();
-
-        TypeOf<DataBinding::SolarSystemObject>();
     }
 
     Ptr<XamlProvider> GetXamlProvider() const override

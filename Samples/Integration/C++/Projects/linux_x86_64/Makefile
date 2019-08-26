@@ -54,7 +54,7 @@ ifeq ($(CONFIG), Profile)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
   INCLUDES = -I../../../../Samples/Integration/Include -I../../../../Core/NSTL/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../App/Providers/Include -I../../../../Drawing/Types/Include -I../../../../Math/Utils/Include -I../../../../App/Display/Include -I../../../../Render/RenderContext/Include -I../../../../App/Launcher/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../../../Include -I../../../../Math/VectorMath/Include -I../../../../Gui/Providers/Include -I../../../../Gui/Core/Include -I../../../../Core/Kernel/Include -I../../../../Core/Nullable/Include -I../../../../Gui/DependencySystem/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=2.2.3 -DNS_APP_FRAMEWORK -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=2.2.4 -DNS_APP_FRAMEWORK -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_PROFILE)
   CXXFLAGS = $(CXXFLAGS_PROFILE)
   LDFLAGS = $(LDFLAGS_PROFILE)
@@ -66,7 +66,7 @@ else ifeq ($(CONFIG), Release)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
   INCLUDES = -I../../../../Samples/Integration/Include -I../../../../Core/NSTL/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../App/Providers/Include -I../../../../Drawing/Types/Include -I../../../../Math/Utils/Include -I../../../../App/Display/Include -I../../../../Render/RenderContext/Include -I../../../../App/Launcher/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../../../Include -I../../../../Math/VectorMath/Include -I../../../../Gui/Providers/Include -I../../../../Gui/Core/Include -I../../../../Core/Kernel/Include -I../../../../Core/Nullable/Include -I../../../../Gui/DependencySystem/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.2.3 -DNS_APP_FRAMEWORK
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.2.4 -DNS_APP_FRAMEWORK
   CFLAGS = $(CFLAGS_RELEASE)
   CXXFLAGS = $(CXXFLAGS_RELEASE)
   LDFLAGS = $(LDFLAGS_RELEASE)
@@ -78,7 +78,7 @@ else ifeq ($(CONFIG), Debug)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
   INCLUDES = -I../../../../Samples/Integration/Include -I../../../../Core/NSTL/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../App/Providers/Include -I../../../../Drawing/Types/Include -I../../../../Math/Utils/Include -I../../../../App/Display/Include -I../../../../Render/RenderContext/Include -I../../../../App/Launcher/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../../../Include -I../../../../Math/VectorMath/Include -I../../../../Gui/Providers/Include -I../../../../Gui/Core/Include -I../../../../Core/Kernel/Include -I../../../../Core/Nullable/Include -I../../../../Gui/DependencySystem/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.2.3 -DNS_APP_FRAMEWORK -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.2.4 -DNS_APP_FRAMEWORK -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
   CFLAGS = $(CFLAGS_DEBUG)
   CXXFLAGS = $(CXXFLAGS_DEBUG)
   LDFLAGS = $(LDFLAGS_DEBUG)
