@@ -9,10 +9,12 @@
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/ReflectionImplementEnum.h>
 #include <NsCore/TypeId.h>
+#include <NsApp/DelegateCommand.h>
 
 
 using namespace Inventory;
 using namespace Noesis;
+using namespace NoesisApp;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -97,38 +99,29 @@ bool Slot::GetIsDropAllowed() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void Slot::SetIsDropAllowed(bool dropAllowed)
+void Slot::UpdateIsDropAllowed(Slot* selected, Slot* source, Item* draggedItem)
 {
-    if (_isDropAllowed != dropAllowed)
+    if (source == 0 && selected == 0)
     {
-        _isDropAllowed = dropAllowed;
-        OnPropertyChanged("IsDropAllowed");
+        _isDropAllowed = true;
     }
-}
+    else if (source != 0)
+    {
+        Slot* sourceSlot = source;
+        Item* sourceItem = draggedItem;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-void Slot::UpdateIsDropAllowed()
-{
-    ViewModel* vm = ViewModel::Instance();
-    if (vm->GetDragSource() == 0 && vm->GetSelectedSlot() == 0)
-    {
-        SetIsDropAllowed(true);
+        _isDropAllowed = _allowedCategory == sourceSlot->_allowedCategory ||
+            (IsItemAllowed(sourceItem) && sourceSlot->IsItemAllowed(_item));
     }
-    else if (vm->GetDragSource() != 0)
+    else // selected != 0
     {
-        Slot* sourceSlot = vm->GetDragSource();
-        Item* sourceItem = vm->GetDraggedItem();
+        Slot* sourceSlot = selected;
 
-        SetIsDropAllowed(_allowedCategory == sourceSlot->_allowedCategory ||
-            (IsItemAllowed(sourceItem) && sourceSlot->IsItemAllowed(_item)));
+        _isDropAllowed = sourceSlot == this || (_allowedCategory == ItemCategory_All &&
+            _item != 0 && sourceSlot->_allowedCategory == _item->category);
     }
-    else // vm->GetSelectedSlot() != 0
-    {
-        Slot* sourceSlot = vm->GetSelectedSlot();
 
-        SetIsDropAllowed(sourceSlot == this || (_allowedCategory == ItemCategory_All &&
-            _item != 0 && sourceSlot->_allowedCategory == _item->category));
-    }
+    OnPropertyChanged("IsDropAllowed");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -288,8 +281,6 @@ void Player::UpdateStats(Slot*, Item* oldItem, Item* newItem)
 
 namespace
 {
-ViewModel* gViewModel = 0;
-
 ItemCategory GetCategory(int index)
 {
     if (index < 13) return ItemCategory_Hand;
@@ -303,8 +294,6 @@ ItemCategory GetCategory(int index)
 ViewModel::ViewModel(): _player(*new Player("Morgan Hearson", 1423, 361, 2174, 218)),
     _inventory(*new ObservableCollection<Slot>()), _items(*new ObservableCollection<Item>())
 {
-    gViewModel = this;
-
     for (int i = 0; i < 45; ++i)
     {
         _inventory->Add(MakePtr<Slot>("Slot", ItemCategory_All));
@@ -326,12 +315,15 @@ ViewModel::ViewModel(): _player(*new Player("Morgan Hearson", 1423, 361, 2174, 2
 
         _inventory->Get(i)->SetItem(item);
     }
-}
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-ViewModel* ViewModel::Instance()
-{
-    return gViewModel;
+    _startDragItem = MakePtr<DelegateCommand>(
+        MakeDelegate(this, &ViewModel::OnCanStartDragItem),
+        MakeDelegate(this, &ViewModel::OnStartDragItem));
+    _endDragItem = MakePtr<DelegateCommand>(MakeDelegate(this, &ViewModel::OnEndDragItem));
+    _dropItem = MakePtr<DelegateCommand>(
+        MakeDelegate(this, &ViewModel::OnCanDropItem),
+        MakeDelegate(this, &ViewModel::OnDropItem));
+    _selectSlot = MakePtr<DelegateCommand>(MakeDelegate(this, &ViewModel::OnSelectSlot));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -364,33 +356,30 @@ ObservableCollection<Item>* ViewModel::GetItems() const
     return _items;
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-bool ViewModel::StartDragging(Slot* source, const Point& position)
+bool ViewModel::OnCanStartDragItem(BaseComponent*)
 {
-    if (_dragSource == 0 && _selectedSlot == 0)
-    {
-        SetDraggedItemX(position.x);
-        SetDraggedItemY(position.y);
-
-        _draggedItem.Reset(source->GetItem());
-        _dragSource.Reset(source);
-        _dragSource->SetItem(0);
-
-        OnPropertyChanged("DraggedItem");
-
-        UpdateDropSlots();
-
-        return true;
-    }
-
-    return false;
+    return _dragSource == 0 && _selectedSlot == 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void ViewModel::EndDragging(bool dropCancelled)
+void ViewModel::OnStartDragItem(BaseComponent* param)
 {
-    if (dropCancelled)
+    Slot* source = (Slot*)param;
+    _draggedItem.Reset(source->GetItem());
+    _dragSource.Reset(source);
+    _dragSource->SetItem(0);
+
+    OnPropertyChanged("DraggedItem");
+
+    UpdateDropSlots();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void ViewModel::OnEndDragItem(BaseComponent* param)
+{
+    bool dragSuccess = Boxing::Unbox<bool>(param);
+    if (!dragSuccess)
     {
         // Drop was cancelled
         if (_dragSource->GetAllowedCategory() == ItemCategory_All)
@@ -423,74 +412,49 @@ void ViewModel::EndDragging(bool dropCancelled)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+bool ViewModel::OnCanDropItem(Noesis::BaseComponent* param)
+{
+    Slot* targetSlot = (Slot*)param;
+    return targetSlot->GetIsDropAllowed();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void ViewModel::OnDropItem(BaseComponent* param)
+{
+    Slot* targetSlot = (Slot*)param;
+
+    // Move any item in target slot to the source slot
+    _dragSource->SetItem(targetSlot->GetItem());
+
+    // Move dragged item to the target slot
+    targetSlot->SetItem(_draggedItem);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void ViewModel::OnSelectSlot(BaseComponent* param)
+{
+    UpdateSelectedSlot((Slot*)param);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 void ViewModel::UpdateDropSlots()
 {
     ObservableCollection<Slot>* playerSlots = _player->GetSlots();
     int numPlayerSlots = playerSlots->Count();
     for (int i = 0; i < numPlayerSlots; ++i)
     {
-        playerSlots->Get(i)->UpdateIsDropAllowed();
+        playerSlots->Get(i)->UpdateIsDropAllowed(_selectedSlot, _dragSource, _draggedItem);
     }
 
     int numInventorySlots = _inventory->Count();
     for (int i = 0; i < numInventorySlots; ++i)
     {
-        _inventory->Get(i)->UpdateIsDropAllowed();
+        _inventory->Get(i)->UpdateIsDropAllowed(_selectedSlot, _dragSource, _draggedItem);
     }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-Slot* ViewModel::GetDragSource() const
-{
-    return _dragSource;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-Item* ViewModel::GetDraggedItem() const
-{
-    return _draggedItem;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-float ViewModel::GetDraggedItemX() const
-{
-    return _draggedItemX;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-void ViewModel::SetDraggedItemX(float x)
-{
-    if (_draggedItemX != x)
-    {
-        _draggedItemX = x;
-        OnPropertyChanged("DraggedItemX");
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-float ViewModel::GetDraggedItemY() const
-{
-    return _draggedItemY;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-void ViewModel::SetDraggedItemY(float y)
-{
-    if (_draggedItemY != y)
-    {
-        _draggedItemY = y;
-        OnPropertyChanged("DraggedItemY");
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-Slot* ViewModel::GetSelectedSlot() const
-{
-    return _selectedSlot;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-void ViewModel::SelectSlot(Slot* slot)
+void ViewModel::UpdateSelectedSlot(Slot* slot)
 {
     if (slot != 0)
     {
@@ -542,6 +506,48 @@ void ViewModel::SelectSlot(Slot* slot)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+DelegateCommand* ViewModel::GetStartDragItem() const
+{
+    return _startDragItem;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+DelegateCommand* ViewModel::GetEndDragItem() const
+{
+    return _endDragItem;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+DelegateCommand* ViewModel::GetDropItem() const
+{
+    return _dropItem;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+DelegateCommand* ViewModel::GetSelectSlot() const
+{
+    return _selectSlot;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+Slot* ViewModel::GetDragSource() const
+{
+    return _dragSource;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+Item* ViewModel::GetDraggedItem() const
+{
+    return _draggedItem;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+Slot* ViewModel::GetSelectedSlot() const
+{
+    return _selectedSlot;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION(ViewModel)
@@ -549,9 +555,11 @@ NS_IMPLEMENT_REFLECTION(ViewModel)
     NsProp("Platform", &ViewModel::GetPlatform);
     NsProp("Player", &ViewModel::GetPlayer);
     NsProp("Inventory", &ViewModel::GetInventory);
+    NsProp("StartDragItem", &ViewModel::GetStartDragItem);
+    NsProp("EndDragItem", &ViewModel::GetEndDragItem);
+    NsProp("DropItem", &ViewModel::GetDropItem);
+    NsProp("SelectSlot", &ViewModel::GetSelectSlot);
     NsProp("DraggedItem", &ViewModel::GetDraggedItem);
-    NsProp("DraggedItemX", &ViewModel::GetDraggedItemX, &ViewModel::SetDraggedItemX);
-    NsProp("DraggedItemY", &ViewModel::GetDraggedItemY, &ViewModel::SetDraggedItemY);
 }
 
 NS_IMPLEMENT_REFLECTION_ENUM(ItemCategory)
@@ -588,11 +596,11 @@ NS_IMPLEMENT_REFLECTION(NotifierBase)
 NS_IMPLEMENT_REFLECTION(Slot)
 {
     NsProp("Name", &Slot::_name);
-    NsProp("AllowedCategory", &Slot::_allowedCategory);
-    NsProp("Item", &Slot::GetItem, &Slot::SetItem);
+    NsProp("AllowedCategory", &Slot::GetAllowedCategory);
+    NsProp("Item", &Slot::GetItem);
     NsProp("IsDragOver", &Slot::GetIsDragOver, &Slot::SetIsDragOver);
-    NsProp("IsDropAllowed", &Slot::GetIsDropAllowed, &Slot::SetIsDropAllowed);
-    NsProp("IsSelected", &Slot::GetIsSelected, &Slot::SetIsSelected);
+    NsProp("IsDropAllowed", &Slot::GetIsDropAllowed);
+    NsProp("IsSelected", &Slot::GetIsSelected);
     NsProp("MoveFocus", &Slot::GetMoveFocus);
 }
 

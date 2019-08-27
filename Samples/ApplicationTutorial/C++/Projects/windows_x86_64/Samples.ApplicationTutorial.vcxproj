@@ -15,7 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9C1ADDE9-C021-3445-AF81-E7C30C5AD2E2}</ProjectGuid>
+    <ProjectGuid>{CDEB03CC-7C15-35A9-BD87-1B9C2C620D87}</ProjectGuid>
     <DefaultLanguage>en-US</DefaultLanguage>
     <ProjectName>ApplicationTutorial</ProjectName>
   </PropertyGroup>
@@ -69,7 +69,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\Core\Nullable\Include;..\..\..\..\Core\Kernel\Include;..\..\..\..\..\..\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Providers\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\CachedFontProvider\Include;..\..\..\..\Gui\Providers\Include;..\..\..\..\Samples\ApplicationTutorial\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=2.2.1;NS_APP_FRAMEWORK;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=2.2.4;NS_APP_FRAMEWORK;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -80,7 +80,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\Core\Nullable\Include;..\..\..\..\Core\Kernel\Include;..\..\..\..\..\..\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Providers\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\CachedFontProvider\Include;..\..\..\..\Gui\Providers\Include;..\..\..\..\Samples\ApplicationTutorial\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=2.2.1;NS_APP_FRAMEWORK;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=2.2.4;NS_APP_FRAMEWORK;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -91,7 +91,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\Core\Nullable\Include;..\..\..\..\Core\Kernel\Include;..\..\..\..\..\..\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Providers\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\CachedFontProvider\Include;..\..\..\..\Gui\Providers\Include;..\..\..\..\Samples\ApplicationTutorial\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=2.2.1;NS_APP_FRAMEWORK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=2.2.4;NS_APP_FRAMEWORK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>

@@ -54,7 +54,7 @@ ifeq ($(CONFIG), Profile)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
   INCLUDES = -I../../../../Core/NSTL/Include -I../../../../App/ApplicationLauncher/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../Drawing/Types/Include -I../../../../Math/Utils/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../Samples/Localization/Include -I../../../../Core/Nullable/Include -I../../../../App/DisplayLauncher/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../Math/VectorMath/Include -I../../../../Gui/Providers/Include -I../../../../Gui/Core/Include -I../../../../Core/Kernel/Include -I../../../../App/Providers/Include -I../../../../../../Include -I../../../../Gui/DependencySystem/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=2.2.1 -DNS_APP_FRAMEWORK -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=2.2.4 -DNS_APP_FRAMEWORK -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_PROFILE)
   CXXFLAGS = $(CXXFLAGS_PROFILE)
   LDFLAGS = $(LDFLAGS_PROFILE)
@@ -66,7 +66,7 @@ else ifeq ($(CONFIG), Release)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
   INCLUDES = -I../../../../Core/NSTL/Include -I../../../../App/ApplicationLauncher/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../Drawing/Types/Include -I../../../../Math/Utils/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../Samples/Localization/Include -I../../../../Core/Nullable/Include -I../../../../App/DisplayLauncher/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../Math/VectorMath/Include -I../../../../Gui/Providers/Include -I../../../../Gui/Core/Include -I../../../../Core/Kernel/Include -I../../../../App/Providers/Include -I../../../../../../Include -I../../../../Gui/DependencySystem/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.2.1 -DNS_APP_FRAMEWORK
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.2.4 -DNS_APP_FRAMEWORK
   CFLAGS = $(CFLAGS_RELEASE)
   CXXFLAGS = $(CXXFLAGS_RELEASE)
   LDFLAGS = $(LDFLAGS_RELEASE)
@@ -78,7 +78,7 @@ else ifeq ($(CONFIG), Debug)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
   INCLUDES = -I../../../../Core/NSTL/Include -I../../../../App/ApplicationLauncher/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../Drawing/Types/Include -I../../../../Math/Utils/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../Samples/Localization/Include -I../../../../Core/Nullable/Include -I../../../../App/DisplayLauncher/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../Math/VectorMath/Include -I../../../../Gui/Providers/Include -I../../../../Gui/Core/Include -I../../../../Core/Kernel/Include -I../../../../App/Providers/Include -I../../../../../../Include -I../../../../Gui/DependencySystem/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.2.1 -DNS_APP_FRAMEWORK -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.2.4 -DNS_APP_FRAMEWORK -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
   CFLAGS = $(CFLAGS_DEBUG)
   CXXFLAGS = $(CXXFLAGS_DEBUG)
   LDFLAGS = $(LDFLAGS_DEBUG)
@@ -108,12 +108,12 @@ $(TARGET_DIR):
 
 $(INTERMEDIATE)/%.o: ../../../../Samples/Localization/Src/%.cpp $(PCH) | $(INTERMEDIATE) data
 	@echo [CXX] [Samples/Localization] $(notdir $<)
-	$(Q)$(CXX) $(CXXFLAGS) $(PCHFLAGS) $(INCLUDES) $(DEFINES) -march=x86-64 -m64 -fPIC -c -MMD -MP -o $@ $<
+	$(Q)$(CXX) $(CXXFLAGS) $(PCHFLAGS) $(INCLUDES) $(DEFINES) -march=x86-64 -msse2 -mfpmath=sse -m64 -fPIC -c -MMD -MP -o $@ $<
 	$(call FIXSLASHES,$(@:.o=.d))
 
 $(INTERMEDIATE)/%.o: ../../../../Samples/Localization/Src/%.c | $(INTERMEDIATE) data
 	@echo [CC] [Samples/Localization] $(notdir $<)
-	$(Q)$(CC) $(CFLAGS) $(INCLUDES) $(DEFINES) -march=x86-64 -m64 -fPIC -c -MMD -MP -o $@ $<
+	$(Q)$(CC) $(CFLAGS) $(INCLUDES) $(DEFINES) -march=x86-64 -msse2 -mfpmath=sse -m64 -fPIC -c -MMD -MP -o $@ $<
 	$(call FIXSLASHES,$(@:.o=.d))
 
 $(INTERMEDIATE)/App.xaml.bin.h: ../../../../Samples/Localization/Data/App.xaml | $(INTERMEDIATE)
@@ -162,7 +162,7 @@ $(INTERMEDIATE)/FontopoNIHONGO.otf.bin.h: ../../../../Samples/Localization/Data/
 
 $(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/ViewModel.o $(INTERMEDIATE)/App.xaml.o $(INTERMEDIATE)/MainWindow.xaml.o | $(TARGET_DIR)
 	@echo [LD] $(notdir $@)
-	+$(Q)$(CXX) $(LDFLAGS) -march=x86-64 -m64 -pie -Wl,-rpath,\$$ORIGIN -Wl,-rpath,../../../../../../Bin/linux_x86_64 -L../../../../../../Bin/linux_x86_64 $(LIB_DIRS) -o $(TARGET) @$(CONFIG).rsp $(LIBS)
+	+$(Q)$(CXX) $(LDFLAGS) -march=x86-64 -msse2 -mfpmath=sse -m64 -pie -Wl,-rpath,\$$ORIGIN -Wl,-rpath,../../../../../../Bin/linux_x86_64 -L../../../../../../Bin/linux_x86_64 $(LIB_DIRS) -o $(TARGET) @$(CONFIG).rsp $(LIBS)
 	@echo [STRIP] $(notdir $@)
 	$(Q)objcopy --only-keep-debug $(TARGET) $(TARGET).debug
 	$(Q)strip --strip-unneeded $(TARGET)

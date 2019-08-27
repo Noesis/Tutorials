@@ -18,6 +18,11 @@
 #include <NsDrawing/Rect.h>
 
 
+namespace NoesisApp
+{
+class DelegateCommand;
+}
+
 namespace Inventory
 {
 
@@ -87,9 +92,7 @@ public:
     void SetIsDragOver(bool over);
 
     bool GetIsDropAllowed() const;
-    void SetIsDropAllowed(bool dropAllowed);
-
-    void UpdateIsDropAllowed();
+    void UpdateIsDropAllowed(Slot* selected, Slot* source, Item* draggedItem);
 
     bool GetIsSelected() const;
     void SetIsSelected(bool select);
@@ -159,41 +162,43 @@ class ViewModel final: public NotifierBase
 public:
     ViewModel();
 
-    static ViewModel* Instance();
-
     const char* GetPlatform() const;
 
     Player* GetPlayer() const;
     Noesis::ObservableCollection<Slot>* GetInventory() const;
     Noesis::ObservableCollection<Item>* GetItems() const;
 
-    bool StartDragging(Slot* source, const Noesis::Point& position);
-    void EndDragging(bool dropCancelled);
+    NoesisApp::DelegateCommand* GetStartDragItem() const;
+    NoesisApp::DelegateCommand* GetEndDragItem() const;
+    NoesisApp::DelegateCommand* GetDropItem() const;
+    NoesisApp::DelegateCommand* GetSelectSlot() const;
 
     Slot* GetDragSource() const;
     Item* GetDraggedItem() const;
-
-    float GetDraggedItemX() const;
-    void SetDraggedItemX(float x);
-
-    float GetDraggedItemY() const;
-    void SetDraggedItemY(float y);
-
     Slot* GetSelectedSlot() const;
-    void SelectSlot(Slot* slot);
 
 private:
+    bool OnCanStartDragItem(Noesis::BaseComponent* param);
+    void OnStartDragItem(Noesis::BaseComponent* param);
+    void OnEndDragItem(Noesis::BaseComponent* param);
+    bool OnCanDropItem(Noesis::BaseComponent* param);
+    void OnDropItem(Noesis::BaseComponent* param);
+    void OnSelectSlot(Noesis::BaseComponent* param);
+
     void UpdateDropSlots();
+    void UpdateSelectedSlot(Slot* slot);
 
 private:
     Noesis::Ptr<Player> _player;
     Noesis::Ptr<Noesis::ObservableCollection<Slot>> _inventory;
     Noesis::Ptr<Noesis::ObservableCollection<Item>> _items;
+    Noesis::Ptr<NoesisApp::DelegateCommand> _startDragItem;
+    Noesis::Ptr<NoesisApp::DelegateCommand> _endDragItem;
+    Noesis::Ptr<NoesisApp::DelegateCommand> _dropItem;
+    Noesis::Ptr<NoesisApp::DelegateCommand> _selectSlot;
     Noesis::Ptr<Slot> _selectedSlot;
     Noesis::Ptr<Slot> _dragSource;
     Noesis::Ptr<Item> _draggedItem;
-    float _draggedItemX;
-    float _draggedItemY;
 
     NS_DECLARE_REFLECTION(ViewModel, NotifierBase)
 };

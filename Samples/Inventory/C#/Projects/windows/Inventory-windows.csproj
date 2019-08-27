@@ -69,6 +69,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Src\DelegateCommand.cs">
+      <Link>DelegateCommand.cs</Link>
+    </Compile>
     <Compile Include="App.cs" />
     <Compile Include="..\..\Src\DragAdornerBehavior.cs" />
     <Compile Include="..\..\Src\DragItemBehavior.cs" />
@@ -125,12 +128,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.1" />
     <PackageReference Include="Noesis.App.Displays.Win32">
-      <Version>2.2.1</Version>
+      <Version>2.2.4</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.D3D11">
-      <Version>2.2.1</Version>
+      <Version>2.2.4</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

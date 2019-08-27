@@ -9,12 +9,14 @@
 
 
 #include <NsCore/Noesis.h>
-#include <NsGui/ContentControl.h>
+#include <NsGui/FrameworkElement.h>
 #include <NsApp/Behavior.h>
 
 
 namespace Noesis
 {
+class BaseCommand;
+class DependencyProperty;
 struct DragEventArgs;
 }
 
@@ -22,8 +24,19 @@ namespace Inventory
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-class DropItemBehavior final: public NoesisApp::BehaviorT<Noesis::ContentControl>
+class DropItemBehavior final: public NoesisApp::BehaviorT<Noesis::FrameworkElement>
 {
+public:
+    bool GetIsDragOver() const;
+    void SetIsDragOver(bool value);
+
+    Noesis::BaseCommand* GetDropCommand() const;
+    void SetDropCommand(Noesis::BaseCommand* value);
+
+public:
+    static const Noesis::DependencyProperty* IsDragOverProperty;
+    static const Noesis::DependencyProperty* DropCommandProperty;
+
 protected:
     Noesis::Ptr<Freezable> CreateInstanceCore() const override;
     void OnAttached() override;

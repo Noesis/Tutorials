@@ -2482,7 +2482,7 @@
             <Border x:Name="BorderBase" Background="{TemplateBinding Background}" BorderBrush="{StaticResource TextBoxNorm}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1"/>
             <Border x:Name="Over" BorderBrush="{StaticResource TextBoxOver}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1" Opacity="0"/>
             <Border x:Name="Disabled" Background="{StaticResource DisabledBackgroundBrush}" BorderBrush="{StaticResource DisabledBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1" Visibility="Collapsed"/>
-            <ScrollViewer Margin="2" x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" />
+            <ScrollViewer Margin="2" x:Name="PART_ContentHost" Focusable="False" Padding="{TemplateBinding Padding}" />
             <Border x:Name="Highlight" Margin="1" BorderBrush="{TemplateBinding Background}" BorderThickness="1" CornerRadius="1"/>
             <Border x:Name="FocusVisualElement" BorderBrush="{StaticResource TextBoxFocus}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="1" IsHitTestVisible="False" Opacity="0"/>
         </Grid>
@@ -2561,7 +2561,7 @@
                     <Grid UseLayoutRounding="True">
                         <Border x:Name="BorderBase" Background="{TemplateBinding Background}" BorderBrush="{StaticResource TextBoxNorm}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3"/>
                         <Border x:Name="Over" BorderBrush="{StaticResource TextBoxOver}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" Opacity="0"/>
-                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" />
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" Focusable="False" Padding="{TemplateBinding Padding}" />
                         <Border x:Name="DisabledVisualElement" Background="#A5FFFFFF" BorderBrush="#59C0C0C0" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" IsHitTestVisible="False" Visibility="Collapsed"/>
                         <Border x:Name="FocusVisualElement" BorderBrush="{StaticResource TextBoxFocus}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" IsHitTestVisible="False" Opacity="0"/>
                     </Grid>
@@ -4327,7 +4327,7 @@
                     <Border BorderThickness="{TemplateBinding BorderThickness}" Background="#FFFFFFFF" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="2" UseLayoutRounding="True">
                         
                         <!--ScrollViewer Padding="{TemplateBinding Padding}" Style="{StaticResource {x:Static GridView.GridViewScrollViewerStyleKey}}"-->
-                        <ScrollViewer Padding="{TemplateBinding Padding}" Style="{StaticResource GridViewScrollViewerStyleKey}">
+                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="False" Style="{StaticResource GridViewScrollViewerStyleKey}">
                             <ItemsPresenter UseLayoutRounding="{TemplateBinding UseLayoutRounding}" />
                         </ScrollViewer>
                     </Border>

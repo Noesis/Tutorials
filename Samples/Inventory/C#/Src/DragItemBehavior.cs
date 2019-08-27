@@ -1,19 +1,48 @@
 ﻿#if NOESIS
 using Noesis;
 using NoesisApp;
+using System.Windows.Input;
 #else
 using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
-using System.Windows.Media;
 #endif
 
 namespace Inventory
 {
-    class DragItemBehavior : Behavior<ContentControl>
+    class DragItemBehavior : Behavior<FrameworkElement>
     {
+        public Point DragStartOffset
+        {
+            get { return (Point)GetValue(DragStartOffsetProperty); }
+            set { SetValue(DragStartOffsetProperty, value); }
+        }
+
+        public static readonly DependencyProperty DragStartOffsetProperty = DependencyProperty.Register(
+            "DragStartOffset", typeof(Point), typeof(DragItemBehavior),
+            new PropertyMetadata(new Point(0, 0)));
+
+        public ICommand StartDragCommand
+        {
+            get { return (ICommand)GetValue(StartDragCommandProperty); }
+            set { SetValue(StartDragCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty StartDragCommandProperty = DependencyProperty.Register(
+            "StartDragCommand", typeof(ICommand), typeof(DragItemBehavior),
+            new PropertyMetadata(null));
+
+        public ICommand EndDragCommand
+        {
+            get { return (ICommand)GetValue(EndDragCommandProperty); }
+            set { SetValue(EndDragCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty EndDragCommandProperty = DependencyProperty.Register(
+            "EndDragCommand", typeof(ICommand), typeof(DragItemBehavior),
+            new PropertyMetadata(null));
+
         protected override void OnAttached()
         {
             base.OnAttached();
@@ -22,20 +51,6 @@ namespace Inventory
             this.AssociatedObject.PreviewMouseLeftButtonDown += OnMouseDown;
             this.AssociatedObject.PreviewMouseLeftButtonUp += OnMouseUp;
             this.AssociatedObject.PreviewMouseMove += OnMouseMove;
-            this.AssociatedObject.PreviewKeyDown += OnKeyDown;
-        }
-
-        private void OnKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space || e.Key == Key.Enter)
-            {
-                Slot slot = (Slot)this.AssociatedObject.Content;
-                ViewModel.Instance.SelectSlot(slot);
-            }
-            else if (e.Key == Key.Escape)
-            {
-                ViewModel.Instance.SelectSlot(null);
-            }
         }
 
         private void OnGiveFeedback(object sender, GiveFeedbackEventArgs e)
@@ -66,26 +81,42 @@ namespace Inventory
 
         private void OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (_mouseClicked)
+            if (!_mouseClicked)
             {
-                Slot slot = (Slot)this.AssociatedObject.Content;
-                if (slot != null && slot.Item != null)
+                return;
+            }
+
+            _mouseClicked = false;
+
+            object item = this.AssociatedObject.DataContext;
+            if (item != null)
+            {
+                if (StartDragCommand != null && StartDragCommand.CanExecute(item))
                 {
-                    ViewModel.Instance.StartDragging(slot, e.GetPosition(null));
+                    DragStartOffset = e.GetPosition(this.AssociatedObject);
+
+                    StartDragCommand.Execute(item);
 
 #if NOESIS
-                    DragDrop.DoDragDrop(this.AssociatedObject, slot, DragDropEffects.Move,
+                    DragDrop.DoDragDrop(this.AssociatedObject, item, DragDropEffects.Move,
                         (source, data, target, dropPoint, effects) =>
-                    {
-                        ViewModel.Instance.EndDragging(effects == DragDropEffects.None);
-                    });
+                        {
+                            bool dragSuccess = effects != DragDropEffects.None;
+                            if (EndDragCommand != null && EndDragCommand.CanExecute(dragSuccess))
+                            {
+                                EndDragCommand.Execute(dragSuccess);
+                            }
+                        });
 #else
-                    DragDropEffects effects = DragDrop.DoDragDrop(this.AssociatedObject, slot, DragDropEffects.Move);
-                    ViewModel.Instance.EndDragging(effects == DragDropEffects.None);
+                    DragDropEffects effects = DragDrop.DoDragDrop(this.AssociatedObject, item, DragDropEffects.Move);
+
+                    bool dragSuccess = effects != DragDropEffects.None;
+                    if (EndDragCommand != null && EndDragCommand.CanExecute(dragSuccess))
+                    {
+                        EndDragCommand.Execute(dragSuccess);
+                    }
 #endif
                 }
-
-                _mouseClicked = false;
             }
         }
 

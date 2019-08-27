@@ -118,10 +118,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Assets\NoesisGUI\Samples\NorthGame\Images.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Assets\NoesisGUI\Samples\NorthGame\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,6 +186,9 @@
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location4.jpg" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location5.jpg" />
     <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\Location6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\NoesisGUI\Samples\NorthGame\Images\WeaponSpellBook.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

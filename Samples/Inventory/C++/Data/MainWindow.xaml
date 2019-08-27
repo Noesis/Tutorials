@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:Inventory"
         xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
         mc:Ignorable="d"
+        x:Name="Root"
         Title="NoesisGUI - Inventory"
         FontFamily="Fonts/#Gidole"
         Foreground="White"
@@ -520,10 +521,10 @@
     </Window.Triggers>
 
     <i:Interaction.Behaviors>
-        <local:DragAdornerBehavior/>
+        <local:DragAdornerBehavior x:Name="DragAdorner"/>
     </i:Interaction.Behaviors>
 
-    <Grid x:Name="LayoutRoot">
+    <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Images/Background.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
@@ -945,7 +946,7 @@
                 </Grid.RowDefinitions>
                 <Decorator Grid.Row="0" Grid.Column="0" Width="{Binding ActualWidth, ElementName=MarginRef}" Height="{Binding ActualHeight, ElementName=MarginRef}"/>
                 <Decorator Grid.Row="2" Grid.Column="2" Width="{Binding ActualWidth, ElementName=MarginRef}" Height="{Binding ActualHeight, ElementName=MarginRef}"/>
-                <ScrollViewer Grid.Row="1" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Template="{StaticResource Template.ScrollViewer}" Focusable="False">
+                <ScrollViewer Grid.Row="1" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Template="{StaticResource Template.ScrollViewer}" PanningMode="VerticalFirst" Focusable="False">
                     <ItemsControl x:Name="InventoryList" ItemsSource="{Binding Inventory}" Focusable="False">
                         <ItemsControl.OpacityMask>
                             <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
@@ -962,8 +963,11 @@
                             <DataTemplate>
                                 <ContentControl Content="{Binding}" Style="{StaticResource Style.InventorySlot}">
                                     <i:Interaction.Behaviors>
-                                        <local:DragItemBehavior/>
-                                        <local:DropItemBehavior/>
+                                        <local:DragItemBehavior
+                                            StartDragCommand="{Binding DataContext.StartDragItem, ElementName=Root}"
+                                            EndDragCommand="{Binding DataContext.EndDragItem, ElementName=Root}"/>
+                                        <local:DropItemBehavior
+                                            DropCommand="{Binding DataContext.DropItem, ElementName=Root}"/>
                                     </i:Interaction.Behaviors>
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseEnter">
@@ -972,6 +976,15 @@
                                         <ei:PropertyChangedTrigger Binding="{Binding MoveFocus}">
                                             <noesis:SetFocusAction/>
                                         </ei:PropertyChangedTrigger>
+                                        <ei:KeyTrigger Key="Enter" ActiveOnFocus="True">
+                                            <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                                        </ei:KeyTrigger>
+                                        <ei:KeyTrigger Key="Space" ActiveOnFocus="True">
+                                            <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                                        </ei:KeyTrigger>
+                                        <ei:KeyTrigger Key="Escape" ActiveOnFocus="True">
+                                            <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{x:Null}"/>
+                                        </ei:KeyTrigger>
                                     </i:Interaction.Triggers>
                                 </ContentControl>
                             </DataTemplate>
@@ -1026,7 +1039,7 @@
                         <ei:ChangePropertyAction TargetName="CancelPS4" PropertyName="Visibility" Value="Collapsed"/>
                     </ei:DataTrigger>
                     <ei:DataTrigger Binding="{Binding Platform}" Value="XBOX">
-                        <ei:ChangePropertyAction TargetName="SelectPX" PropertyName="Visibility" Value="Collapsed"/>
+                        <ei:ChangePropertyAction TargetName="SelectPC" PropertyName="Visibility" Value="Collapsed"/>
                         <ei:ChangePropertyAction TargetName="SelectPS4" PropertyName="Visibility" Value="Collapsed"/>
                         <ei:ChangePropertyAction TargetName="CancelPC" PropertyName="Visibility" Value="Collapsed"/>
                         <ei:ChangePropertyAction TargetName="CancelPS4" PropertyName="Visibility" Value="Collapsed"/>
@@ -1080,7 +1093,9 @@
                             BorderThickness="{Binding ActualWidth, ElementName=DragItemBorderRef}"
                             Style="{StaticResource Style.DraggedItem}">
                 <ContentControl.RenderTransform>
-                    <TranslateTransform X="{Binding DraggedItemX}" Y="{Binding DraggedItemY}"/>
+                    <TranslateTransform
+                        X="{Binding DraggedItemX, ElementName=DragAdorner}"
+                        Y="{Binding DraggedItemY, ElementName=DragAdorner}"/>
                 </ContentControl.RenderTransform>
             </ContentControl>
         </Grid>

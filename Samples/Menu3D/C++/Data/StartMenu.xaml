@@ -67,6 +67,69 @@
                     <EasingDoubleKeyFrame KeyTime="0" Value="400"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
                 </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="CasualTitle">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="CasualBorder">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CasualTree">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="CasualBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="CasualBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="CasualBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="CasualBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="NormalTitle">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="NormalBorder">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.15"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="NormalTree">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.15"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="NormalBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="700"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="NormalBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="-50"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="NormalBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="NormalBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="ExpertTitle">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="ExpertBorder">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.07"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ExpertTree">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.07"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ExpertBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1400"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ExpertBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="-100"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ExpertBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1.4"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ExpertBadge">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1.4"/>
+                </DoubleAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="FadeOut">
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="StartMenuControl">
@@ -506,9 +569,6 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="FrameworkElement.Loaded">
-            <ei:ControlStoryboardAction Storyboard="{StaticResource ActivateCasual}"/>
-        </i:EventTrigger>
         <i:EventTrigger EventName="Checked" SourceName="Casual">
             <ei:ControlStoryboardAction Storyboard="{StaticResource ActivateCasual}"/>
         </i:EventTrigger>
@@ -518,9 +578,6 @@
         <i:EventTrigger EventName="Checked" SourceName="Expert">
             <ei:ControlStoryboardAction Storyboard="{StaticResource ActivateExpert}"/>
         </i:EventTrigger>
-        <i:EventTrigger EventName="Click" SourceName="Back">
-            <ei:ControlStoryboardAction Storyboard="{StaticResource ActivateCasual}"/>
-        </i:EventTrigger>
         <ei:DataTrigger Binding="{Binding State}" Value="{x:Static local:State.Start}">
             <ei:ControlStoryboardAction Storyboard="{StaticResource FadeIn}"/>
         </ei:DataTrigger>
@@ -528,7 +585,6 @@
             <ei:ControlStoryboardAction Storyboard="{StaticResource FadeOut}"/>
         </ei:DataTrigger>
         <ei:KeyTrigger Key="Esc" ActiveOnFocus="True">
-            <ei:ControlStoryboardAction Storyboard="{StaticResource ActivateCasual}"/>
             <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
             <i:InvokeCommandAction Command="{Binding Back}"/>
         </ei:KeyTrigger>

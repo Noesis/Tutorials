@@ -48,14 +48,27 @@ namespace Inventory
     public delegate void SlotItemChangedHandler(Slot slot, Item oldItem, Item newItem);
     public class Slot : NotifierBase
     {
-        public string Name { get; set; }
-        public ItemCategory AllowedCategory { get; set; }
+        public Slot()
+        {
+            IsDropAllowed = true;
+        }
+
+        public string Name { get; internal set; }
+        public ItemCategory AllowedCategory { get; internal set; }
 
         private Item _item;
         public Item Item
         {
             get { return _item; }
-            set { if (_item != value) { OnItemChanged(_item, value); _item = value; OnPropertyChanged("Item"); } }
+            internal set
+            {
+                if (_item != value)
+                {
+                    OnItemChanged(_item, value);
+                    _item = value;
+                    OnPropertyChanged("Item");
+                }
+            }
         }
 
         public event SlotItemChangedHandler ItemChanged;
@@ -68,48 +81,54 @@ namespace Inventory
         public bool IsDragOver
         {
             get { return _isDragOver; }
-            set { if (_isDragOver != value) { _isDragOver = value; OnPropertyChanged("IsDragOver"); } }
+            set
+            {
+                if (_isDragOver != value)
+                {
+                    _isDragOver = value;
+                    OnPropertyChanged("IsDragOver");
+                }
+            }
         }
 
-        private bool _isDropAllowed = true;
-        public bool IsDropAllowed
-        {
-            get { return _isDropAllowed; }
-            set { if (_isDropAllowed != value) { _isDropAllowed = value; OnPropertyChanged("IsDropAllowed"); } }
-        }
+        public bool IsDropAllowed { get; private set; }
 
-        public void UpdateIsDropAllowed()
+        public void UpdateIsDropAllowed(Slot selected, Slot source, Item draggedItem)
         {
-            if (ViewModel.Instance.DragSource == null && ViewModel.Instance.SelectedSlot == null)
+            if (source == null && selected == null)
             {
                 IsDropAllowed = true;
             }
-            else if (ViewModel.Instance.DragSource != null)
+            else if (source != null)
             {
-                Slot sourceSlot = ViewModel.Instance.DragSource;
-                Item sourceItem = ViewModel.Instance.DraggedItem;
+                Slot sourceSlot = source;
+                Item sourceItem = draggedItem;
 
-                IsDropAllowed = IsItemAllowed(sourceItem) && sourceSlot.IsItemAllowed(Item);
+                IsDropAllowed = AllowedCategory == sourceSlot.AllowedCategory ||
+                    (IsItemAllowed(sourceItem) && sourceSlot.IsItemAllowed(Item));
             }
-            else // ViewModel.Instance.SelectedSlot != null
+            else // selected != null
             {
-                Slot sourceSlot = ViewModel.Instance.SelectedSlot;
+                Slot sourceSlot = selected;
 
-                IsDropAllowed = sourceSlot == this || (AllowedCategory == ItemCategory.All && 
-                    (Item == null || Item.Category == sourceSlot.AllowedCategory));
+                IsDropAllowed = sourceSlot == this || (AllowedCategory == ItemCategory.All &&
+                    Item != null && sourceSlot.AllowedCategory == Item.Category);
             }
+
+            OnPropertyChanged("IsDropAllowed");
         }
 
         private bool IsItemAllowed(Item item)
         {
-            return item == null || AllowedCategory == ItemCategory.All || AllowedCategory == item.Category;
+            return AllowedCategory == ItemCategory.All ||
+                (item != null && AllowedCategory == item.Category);
         }
 
-        private bool _isSelected = false;
-        public bool IsSelected
+        public bool IsSelected { get; private set; }
+        public void Select(bool selected)
         {
-            get { return _isSelected; }
-            set { if (_isSelected != value) { _isSelected = value; OnPropertyChanged("IsSelected"); } }
+            IsSelected = selected;
+            OnPropertyChanged("IsSelected");
         }
 
         public bool MoveFocus { get; private set; }
@@ -164,8 +183,13 @@ namespace Inventory
         }
 
         public Slot[] Slots { get; private set; }
-        private string[] SlotNames = { "HEAD", "RING", "CHEST", "ARMS", "LEFT", "RIGHT", "LEGS", "FEET" };
-        private ItemCategory[] SlotCategories =
+
+        private readonly string[] SlotNames =
+        {
+            "HEAD", "RING", "CHEST", "ARMS", "LEFT", "RIGHT", "LEGS", "FEET"
+        };
+
+        private readonly ItemCategory[] SlotCategories =
         {
             ItemCategory.Head, ItemCategory.Ring, ItemCategory.Chest, ItemCategory.Arms,
             ItemCategory.Hand, ItemCategory.Hand, ItemCategory.Legs, ItemCategory.Feet
@@ -204,8 +228,6 @@ namespace Inventory
     {
         public ViewModel()
         {
-            Instance = this;
-
             Platform = "PC"; // PC, XBOX, PS4
 
             Player = new Player { Name = "Morgan Hearson", Life = 1423, Mana = 345, Dps = 2164, Armor = 218 };
@@ -233,6 +255,11 @@ namespace Inventory
 
                 Inventory[i].Item = Items[i];
             }
+
+            StartDragItem = new DelegateCommand(this.OnCanStartDragItem, this.OnStartDragItem);
+            EndDragItem = new DelegateCommand(this.OnEndDragItem);
+            DropItem = new DelegateCommand(this.OnCanDropItem, this.OnDropItem);
+            SelectSlot = new DelegateCommand(this.OnSelectSlot);
         }
 
         private ItemCategory GetCategory(int index)
@@ -243,8 +270,6 @@ namespace Inventory
             return (ItemCategory)(index % 5);
         }
 
-        public static ViewModel Instance { get; private set; }
-
         public string Platform { get; private set; }
 
         public Player Player { get; private set; }
@@ -253,12 +278,20 @@ namespace Inventory
 
         public List<Item> Items { get; private set; }
 
-        public void StartDragging(Slot source, Point position)
+        public DelegateCommand StartDragItem { get; private set; }
+        public DelegateCommand EndDragItem { get; private set; }
+        public DelegateCommand DropItem { get; private set; }
+        public DelegateCommand SelectSlot { get; private set; }
+
+        private bool OnCanStartDragItem(object param)
         {
-            DraggedItemX = position.X;
-            DraggedItemY = position.Y;
-            DraggedItem = source.Item;
-            DragSource = source;
+            return DragSource == null && DraggedItem == null;
+        }
+
+        private void OnStartDragItem(object param)
+        {
+            DragSource = (Slot)param;
+            DraggedItem = DragSource.Item;
             DragSource.Item = null;
 
             OnPropertyChanged("DraggedItem");
@@ -266,9 +299,10 @@ namespace Inventory
             UpdateDropSlots();
         }
 
-        public void EndDragging(bool dropCancelled)
+        private void OnEndDragItem(object param)
         {
-            if (dropCancelled)
+            bool dragSuccess = (bool)param;
+            if (!dragSuccess)
             {
                 // Drop was cancelled
                 if (DragSource.AllowedCategory == ItemCategory.All)
@@ -298,46 +332,54 @@ namespace Inventory
             UpdateDropSlots();
         }
 
+        private bool OnCanDropItem(object param)
+        {
+            Slot targetSlot = (Slot)param;
+            return targetSlot.IsDropAllowed;
+        }
+
+        private void OnDropItem(object param)
+        {
+            Slot targetSlot = (Slot)param;
+
+            // Move any item in target slot to the source slot
+            DragSource.Item = targetSlot.Item;
+
+            // Move dragged item to the target slot
+            targetSlot.Item = DraggedItem;
+        }
+
+        private void OnSelectSlot(object param)
+        {
+            UpdateSelectedSlot((Slot)param);
+        }
+
         private void UpdateDropSlots()
         {
             foreach (Slot s in Player.Slots)
             {
-                s.UpdateIsDropAllowed();
+                s.UpdateIsDropAllowed(SelectedSlot, DragSource, DraggedItem);
             }
 
             foreach (Slot s in Inventory)
             {
-                s.UpdateIsDropAllowed();
+                s.UpdateIsDropAllowed(SelectedSlot, DragSource, DraggedItem);
             }
         }
 
         public Slot DragSource { get; private set; }
         public Item DraggedItem { get; private set; }
 
-        private double _draggedItemX = -100;
-        public double DraggedItemX
-        {
-            get { return _draggedItemX; }
-            set { if (_draggedItemX != value) { _draggedItemX = value; OnPropertyChanged("DraggedItemX"); } }
-        }
-
-        private double _draggedItemY = -100;
-        public double DraggedItemY
-        {
-            get { return _draggedItemY; }
-            set { if (_draggedItemY != value) { _draggedItemY = value; OnPropertyChanged("DraggedItemY"); } }
-        }
-
         public Slot SelectedSlot { get; private set; }
 
-        public void SelectSlot(Slot slot)
+        public void UpdateSelectedSlot(Slot slot)
         {
             if (slot != null)
             {
                 if (slot.AllowedCategory != ItemCategory.All)
                 {
                     // Player slot, initiate a selection
-                    slot.IsSelected = true;
+                    slot.Select(true);
                     SelectedSlot = slot;
                     UpdateDropSlots();
 
@@ -358,7 +400,7 @@ namespace Inventory
                     SelectedSlot.Item = slot.Item;
                     slot.Item = selectedItem;
 
-                    SelectedSlot.IsSelected = false;
+                    SelectedSlot.Select(false);
                     SelectedSlot.Focus();
                     SelectedSlot = null;
 
@@ -370,7 +412,7 @@ namespace Inventory
                 // Cancel selection
                 if (SelectedSlot != null)
                 {
-                    SelectedSlot.IsSelected = false;
+                    SelectedSlot.Select(false);
                     SelectedSlot.Focus();
                     SelectedSlot = null;
 
