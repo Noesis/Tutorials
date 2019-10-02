@@ -86,20 +86,20 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="..\..\Src\Fonts\WeblySleek_UI_Normal.ttf">
-        <Link>Fonts/WeblySleek_UI_Normal.ttf</Link>
+      <Link>Fonts/WeblySleek_UI_Normal.ttf</Link>
     </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Src\App.config" />
     <AppDesigner Include="..\..\Src\Properties\" />
     <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
-        <Link>Properties/AssemblyInfo.cs</Link>
+      <Link>Properties/AssemblyInfo.cs</Link>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.GUI.Extensions">
-      <Version>2.2.2</Version>
+      <Version>2.2.5</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
 ﻿using NoesisApp;
+using System.Runtime.InteropServices;
 
 namespace DataBinding
 {
@@ -11,7 +12,15 @@ namespace DataBinding
 
         protected override RenderContext CreateRenderContext()
         {
-            return new RenderContextGLX();
+            if (RuntimeInformation.OSArchitecture == Architecture.Arm ||
+                RuntimeInformation.OSArchitecture == Architecture.Arm64)
+            {
+                return new RenderContextEGL();
+            }
+            else
+            {
+                return new RenderContextGLX();
+            }
         }
 
         static void Main(string[] args)
