@@ -120,16 +120,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.1" />
-    <PackageReference Include="Noesis.App.Displays.Win32">
-      <Version>2.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="Noesis.App.RenderContexts.D3D11">
-      <Version>2.2.5</Version>
-    </PackageReference>
-    <PackageReference Include="Noesis.App.RenderContexts.WGL">
-      <Version>2.2.5</Version>
-    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="*" />
+    <PackageReference Include="Noesis.App.Displays.Win32" Version="2.2.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.D3D11" Version="2.2.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.WGL" Version="2.2.*" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Noesis.ico" />
