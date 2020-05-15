@@ -1,0 +1,69 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="TextBox"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._TextBox.html">
+
+    <StackPanel>
+        <TextBlock Style="{StaticResource SampleSectionDesc}" Text="Use a TextBox to let user enter simple text input in your app. It supports text selection and copy-paste commands."/>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/097d7c18e387a10dfea3f0dbdef89f8c" TabIndex="100">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Simple TextBox"/>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold">Text</Run>
+                        <Run>property is used to specify the string content of the TextBox.</Run>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>By setting the extension property</Run>
+                        <Run FontWeight="Bold">noesis:Text.Placeholder</Run>
+                        <Run>a hint text will be shown when TextBox text is empty.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox noesis:Text.Placeholder="Enter your name" MinWidth="200" MaxWidth="350"/>
+            </Grid>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/6791c0003e3e2e349ae64f6adb63bcba" TabIndex="200">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Multi-line TextBox"/>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold">TextWrapping</Run>
+                        <Run>property specifies how text should wrap inside the TextBox.</Run>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>To insert a line break when</Run>
+                        <Run FontWeight="Bold">Enter</Run>
+                        <Run>key is pressed, the</Run>
+                        <Run FontWeight="Bold">AcceptsReturn</Run>
+                        <Run>property must be set to true.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <CheckBox x:Name="AcceptsReturn" Content="Accepts Return" Margin="0,0,0,8"/>
+                <TextBox Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consectetur metus tortor, non accumsan ligula aliquet eu. Nam eu orci sed justo pretium malesuada quis sit amet justo. Vivamus congue, turpis ut sagittis rutrum, est ipsum facilisis massa, id dictum nisi mi vel dolor. Duis eu massa iaculis, laoreet lacus non, tempor tortor. Donec eget risus dignissim, porta risus ac, facilisis nibh." TextWrapping="Wrap" MaxLength="512" MaxLines="5" Width="350" ScrollViewer.VerticalScrollBarVisibility="Auto" AcceptsReturn="{Binding IsChecked, ElementName=AcceptsReturn}"/>
+            </StackPanel>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/47449c7baf104e0ea59118cb52a659cf" TabIndex="300">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="IsReadOnly"/>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold">Read-only </Run>
+                        <Run>property indicates if TextBox is read-only to a user interacting with the control. Although the contents of the TextBox can always be modified programmatically.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <TextBox Width="350" Text="This is a read-only TextBox, but text can be selected." IsReadOnly="True" SelectionBrush="BurlyWood" SelectionOpacity="0.5" FontSize="12"/>
+        </HeaderedContentControl>
+    </StackPanel>
+</HeaderedContentControl>

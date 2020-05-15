@@ -1,0 +1,85 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="Hyperlink"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._Hyperlink.html">
+
+    <StackPanel>
+        <TextBlock Style="{StaticResource SampleSectionDesc}" Text="A Hyperlink is an inline element that hosts links within a TextBlock."/>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/14d1e8bfc7e1c3cbc1459365c8954f83" TabIndex="100">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="NavigateUri"/>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>When user clicks the Hyperlink, it opens the page specified in the</Run>
+                        <Run FontWeight="Bold">NavigateUri</Run>
+                        <Run>property inside the default browser.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock>
+                    <Hyperlink NavigateUri="http://www.noesisengine.com">NoesisGUI home page</Hyperlink>
+                </TextBlock>
+            </Grid>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/74d1354e1393b5198f8d4531b9d0d2e2" TabIndex="200">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Click event"/>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>If NavigateUri property is not set users can handle</Run>
+                        <Run FontWeight="Bold">Click</Run>
+                        <Run>event, typically to navigate within their application.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.Resources>
+                    <Border x:Key="Content1" Background="{DynamicResource Brush.Border.FocusAccent}">
+                        <TextBlock Text="We are in page 1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border x:Key="Content2" Background="{DynamicResource Brush.Background.Normal}">
+                        <TextBlock Text="We are in page 2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Grid.Row="0" Grid.Column="0">
+                        <Hyperlink>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ChangePropertyAction PropertyName="Content" Value="{StaticResource Content1}" TargetName="ContentHost"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            Page 1
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Margin="16,0,0,0">
+                        <Hyperlink>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ChangePropertyAction PropertyName="Content" Value="{StaticResource Content2}" TargetName="ContentHost"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            Page 2
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+                <Border Grid.Row="1" Width="350" Height="70" Margin="0,8,0,0">
+                    <ContentPresenter x:Name="ContentHost"/>
+                </Border>
+            </Grid>
+        </HeaderedContentControl>
+    </StackPanel>
+</HeaderedContentControl>

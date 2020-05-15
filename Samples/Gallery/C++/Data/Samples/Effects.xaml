@@ -1,0 +1,110 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="1720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="Effects"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._BlurEffect.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="Effects enable designers and developers to apply visual effects to UI elements. Effects are simple pixel processing operations."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/26ac351d3d40525f7e4ed14f6aa3e9f4" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="BlurEffect"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>This effect blurs the target using the specified</Run>
+            <Run FontWeight="Bold">Radius</Run><Run>.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Image Width="360" Height="180" Stretch="UniformToFill" Source="Images/Nature.png" Margin="0,10,0,0">
+          <Image.Effect>
+            <BlurEffect Radius="{Binding Value, ElementName=radius}"/>
+          </Image.Effect>
+        </Image>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+          <TextBlock Text="Blur Radius:" Foreground="Black" Margin="0,0,20,0"/>
+          <Slider x:Name="radius" Minimum="0" Maximum="50" Value="0" Width="180"/>
+          <TextBlock Text="{Binding Value, ElementName=radius, StringFormat=F1}" Width="50" TextAlignment="Right" Foreground="Black"/>
+        </StackPanel>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/012449ce12e6c2ad5cfa09020add4791" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="DropShadowEffect"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>This effect paints a drop shadow around the target.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Viewbox Width="200" Height="200">
+          <Viewbox.Effect>
+            <DropShadowEffect
+            BlurRadius="{Binding Value, ElementName=blurRadius}"
+            Direction="{Binding Value, ElementName=direction}"
+            ShadowDepth="{Binding Value, ElementName=depth}"
+            Opacity="{Binding Value, ElementName=opacity}"
+            Color="{Binding SelectedItem.Color, ElementName=color}"/>
+          </Viewbox.Effect>
+          <Canvas Width="512" Height="512">
+            <Canvas.Resources>
+              <RadialGradientBrush x:Key="fill">
+                <GradientStop Offset="0" Color="#FF2892FC"/>
+                <GradientStop Offset="1" Color="#FF63B0FD"/>
+              </RadialGradientBrush>
+            </Canvas.Resources>
+            <Path Fill="{StaticResource fill}" Data="M484.512 143.416c-15.228-17.399-35.387-29.555-57.572-34.89  C411.459 52.307 360.013 12.5 300.91 12.5c-34.072 0-66.456 13.224-90.709 36.675c-14.924-8.461-31.718-12.88-49.262-12.88  c-51.057 0-93.635 38.84-99.477 88.547c-16.17 6.832-30.547 17.963-41.2 32.052C7.007 174.424 0 195.313 0 217.301  c0 55.28 44.932 100.254 100.159 100.254c14.055 0 27.91-2.987 40.71-8.718c27.378 31.324 67.337 49.687 109.289 49.687  c38.442 0 75.062-15.271 102.246-42.275c15.148 7.44 31.744 11.327 48.647 11.327c61.177 0 110.948-49.819 110.948-111.053  C512 189.633 502.238 163.67 484.512 143.416z"/>
+            <Path Fill="{StaticResource fill}" Data="M354 349.49c-30.327 0-55 24.675-55 55.004c0 30.329 24.673 55.004 55 55.004s55-24.675 55-55.004 C409 374.164 384.327 349.49 354 349.49z"/>
+            <Path Fill="{StaticResource fill}" Data="M467 409.494c-24.813 0-45 20.188-45 45.003s20.187 45.003 45 45.003s45-20.188 45-45.003 S491.813 409.494 467 409.494z"/>
+          </Canvas>
+        </Viewbox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+          <TextBlock Text="Blur Radius:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <Slider x:Name="blurRadius" Minimum="0" Maximum="50" Value="10" Width="180"/>
+          <TextBlock Text="{Binding Value, ElementName=blurRadius, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+          <TextBlock Text="Depth:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <Slider x:Name="depth" Minimum="0" Maximum="30" Value="10" Width="180"/>
+          <TextBlock Text="{Binding Value, ElementName=depth, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+          <TextBlock Text="Direction:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <Slider x:Name="direction" Minimum="0" Maximum="360" Value="315" Width="180"/>
+          <TextBlock Text="{Binding Value, ElementName=direction, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+          <TextBlock Text="Opacity:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <Slider x:Name="opacity" Minimum="0" Maximum="1" Value="1" LargeChange="0.1" Width="180"/>
+          <TextBlock Text="{Binding Value, ElementName=opacity, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+          <TextBlock Text="Color:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <ListBox x:Name="color" Margin="0,5,0,0" Width="230" SelectedIndex="0">
+            <ListBox.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal"/>
+              </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <Rectangle Fill="{Binding}" Width="32" Height="10"/>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+            <SolidColorBrush Color="Black"/>
+            <SolidColorBrush Color="Red"/>
+            <SolidColorBrush Color="Green"/>
+            <SolidColorBrush Color="Blue"/>
+          </ListBox>
+        </StackPanel>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>

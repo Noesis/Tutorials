@@ -1,0 +1,615 @@
+﻿<Window x:Class="Gallery.ThemeTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+        xmlns:local="clr-namespace:Gallery"
+        mc:Ignorable="d"
+        Title="Theme Test" Height="650" Width="1200"
+        FontFamily="{DynamicResource Font.Family.Default}"
+        FontSize="{DynamicResource Font.Size.Normal}"
+        UseLayoutRounding="True">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+            <CheckBox x:Name="enable" Content="Enable controls" IsChecked="True" VerticalAlignment="Top"/>
+            <ComboBox x:Name="tabpos" SelectedIndex="0">
+                <ComboBoxItem Content="{x:Static Dock.Top}"/>
+                <ComboBoxItem Content="{x:Static Dock.Bottom}"/>
+                <ComboBoxItem Content="{x:Static Dock.Left}"/>
+                <ComboBoxItem Content="{x:Static Dock.Right}"/>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="{Binding IsChecked, ElementName=enable}" Height="500">
+            <Border Margin="10,0" Padding="20">
+                <TabControl TabStripPlacement="{Binding SelectedItem.Content, ElementName=tabpos}">
+                    <TabItem Header="Buttons">
+                        <StackPanel Margin="8">
+                            <Label Content="This is a Label"/>
+                            <Button Content="Button"/>
+                            <ToggleButton Content="ToggleButton" Margin="0,10"/>
+                            <GroupBox>
+                                <StackPanel>
+                                    <CheckBox Content="CheckBox" />
+                                    <CheckBox Content="CheckBox" IsChecked="True"/>
+                                    <CheckBox Content="CheckBox" IsThreeState="True" IsChecked="{x:Null}"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Some options: " Margin="0,10,0,0">
+                                <StackPanel>
+                                    <RadioButton Content="RadioButton 1" IsChecked="True"/>
+                                    <RadioButton Content="RadioButton 2" Margin="0,0" />
+                                </StackPanel>
+                            </GroupBox>
+                            <TextBox Margin="0,10" noesis:Text.Placeholder="Hint text" />
+                            <PasswordBox noesis:Text.Placeholder="Type password" />
+                            <TextBlock Margin="0,10"><Hyperlink NavigateUri="http://www.noesisengine.com"><Run Text="noesisengine.com"/></Hyperlink></TextBlock>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Sliders">
+                        <StackPanel Margin="10" MinWidth="100">
+                            <ProgressBar Value="{Binding Value, ElementName=slider1}" Minimum="0" Maximum="100" Margin="0,10" />
+                            <ProgressBar Value="40" Minimum="0" Maximum="100" IsIndeterminate="True" />
+                            <StackPanel Margin="0,10" Orientation="Horizontal" HorizontalAlignment="Center" Height="40">
+                                <ProgressBar Value="40" Minimum="0" Maximum="100" Margin="10,0" Orientation="Vertical" />
+                                <ProgressBar Value="40" Minimum="0" Maximum="100" IsIndeterminate="True" Orientation="Vertical" />
+                            </StackPanel>
+                            <Slider x:Name="slider1" Value="20" Minimum="0" Maximum="100" />
+                            <Slider Value="4" TickPlacement="TopLeft" Margin="0,10" />
+                            <Slider Value="6" TickPlacement="BottomRight" />
+                            <Slider Value="8" TickPlacement="Both" Margin="0,10" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="50">
+                                <Slider Value="2" TickFrequency="2" TickPlacement="TopLeft" Orientation="Vertical" />
+                                <Slider Value="4" TickFrequency="2" TickPlacement="BottomRight" Orientation="Vertical" Margin="10,0" />
+                                <Slider Value="6" TickFrequency="2" TickPlacement="Both" Orientation="Vertical" IsDirectionReversed="True" />
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Scroll">
+                        <StackPanel Margin="10" MinWidth="100">
+                            <ScrollBar Orientation="Horizontal" Margin="0,10" />
+                            <ScrollBar Orientation="Vertical" Height="80" Margin="0,10"/>
+                            <ScrollViewer Width="100" Height="100" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#FFE7E7E7">
+                                <Ellipse Fill="#8080FF" Width="200" Height="300"/>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Selectors">
+                        <StackPanel Margin="10">
+                            <StackPanel Orientation="Horizontal" Height="200">
+                                <StackPanel.Resources>
+                                    <GradientStopCollection x:Key="list">
+                                        <GradientStop Offset="0" Color="Red"/>
+                                        <GradientStop Offset="1" Color="Orange"/>
+                                        <GradientStop Offset="2" Color="Yellow"/>
+                                        <GradientStop Offset="3" Color="Lime"/>
+                                        <GradientStop Offset="4" Color="Green"/>
+                                        <GradientStop Offset="5" Color="Cyan"/>
+                                        <GradientStop Offset="6" Color="Blue"/>
+                                        <GradientStop Offset="7" Color="Magenta"/>
+                                        <GradientStop Offset="8" Color="Purple"/>
+                                    </GradientStopCollection>
+                                </StackPanel.Resources>
+                                <ListBox Width="150" Margin="10,0">
+                                    <ListBoxItem Content="ListBox Item 1" />
+                                    <ListBoxItem Content="ListBox Item 2" />
+                                    <ListBoxItem Content="ListBox Item 3" />
+                                    <ListBoxItem Content="ListBox Item 4" />
+                                    <ListBoxItem Content="ListBox Item 5" />
+                                    <ListBoxItem Content="ListBox Item 6" />
+                                    <ListBoxItem Content="ListBox Item 7" />
+                                    <ListBoxItem Content="ListBox Item 8" />
+                                    <ListBoxItem Content="ListBox Item 9" />
+                                </ListBox>
+                                <ListView ItemsSource="{StaticResource list}" Width="300">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Name"/>
+                                            <GridViewColumn Header="Offset">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Slider Value="{Binding Offset}" Width="80" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Color">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Rectangle Width="80" Height="10">
+                                                            <Rectangle.Fill>
+                                                                <SolidColorBrush Color="{Binding Color}"/>
+                                                            </Rectangle.Fill>
+                                                        </Rectangle>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </StackPanel>
+                            <ComboBox Margin="0,10" SelectedIndex="0">
+                                <ComboBoxItem Content="ComboBox Item 1"/>
+                                <ComboBoxItem Content="ComboBox Item 2"/>
+                                <ComboBoxItem Content="ComboBox Item 3"/>
+                                <ComboBoxItem Content="ComboBox Item 4"/>
+                                <ComboBoxItem Content="ComboBox Item 5"/>
+                                <ComboBoxItem Content="ComboBox Item 6"/>
+                                <ComboBoxItem Content="ComboBox Item 7"/>
+                                <ComboBoxItem Content="ComboBox Item 8"/>
+                                <ComboBoxItem Content="ComboBox Item 9"/>
+                                <ComboBoxItem Content="ComboBox Item 0"/>
+                                <ComboBoxItem Content="ComboBox Item 1"/>
+                                <ComboBoxItem Content="ComboBox Item 2"/>
+                                <ComboBoxItem Content="ComboBox Item 3"/>
+                                <ComboBoxItem Content="ComboBox Item 4"/>
+                                <ComboBoxItem Content="ComboBox Item 5"/>
+                                <ComboBoxItem Content="ComboBox Item 6"/>
+                                <ComboBoxItem Content="ComboBox Item 7"/>
+                                <ComboBoxItem Content="ComboBox Item 8"/>
+                                <ComboBoxItem Content="ComboBox Item 9"/>
+                                <ComboBoxItem Content="ComboBox Item 0"/>
+                            </ComboBox>
+                            <ComboBox IsEditable="True" Text="ComboBox Item 1">
+                                <ComboBoxItem Content="ComboBox Item 1"/>
+                                <ComboBoxItem Content="ComboBox Item 2"/>
+                                <ComboBoxItem Content="ComboBox Item 3"/>
+                                <ComboBoxItem Content="ComboBox Item 4"/>
+                                <ComboBoxItem Content="ComboBox Item 5"/>
+                                <ComboBoxItem Content="ComboBox Item 6"/>
+                                <ComboBoxItem Content="ComboBox Item 7"/>
+                                <ComboBoxItem Content="ComboBox Item 8"/>
+                                <ComboBoxItem Content="ComboBox Item 9"/>
+                                <ComboBoxItem Content="ComboBox Item 0"/>
+                                <ComboBoxItem Content="ComboBox Item 1"/>
+                                <ComboBoxItem Content="ComboBox Item 2"/>
+                                <ComboBoxItem Content="ComboBox Item 3"/>
+                                <ComboBoxItem Content="ComboBox Item 4"/>
+                                <ComboBoxItem Content="ComboBox Item 5"/>
+                                <ComboBoxItem Content="ComboBox Item 6"/>
+                                <ComboBoxItem Content="ComboBox Item 7"/>
+                                <ComboBoxItem Content="ComboBox Item 8"/>
+                                <ComboBoxItem Content="ComboBox Item 9"/>
+                                <ComboBoxItem Content="ComboBox Item 0"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Menus&amp;Bars">
+                        <DockPanel Width="395">
+                            <Menu DockPanel.Dock="Top">
+                                <MenuItem Header="File">
+                                    <MenuItem Header="New" InputGestureText="Ctrl+N"/>
+                                    <MenuItem Header="Open" InputGestureText="Ctrl+O"/>
+                                    <Separator/>
+                                    <MenuItem Header="Save" InputGestureText="Ctrl+S" Icon="[S]"/>
+                                    <MenuItem Header="Save All" InputGestureText="Ctrl+Shift+S"/>
+                                    <Separator/>
+                                    <MenuItem Header="Exit" Icon="[>]"/>
+                                </MenuItem>
+                                <MenuItem Header="Edit">
+                                    <MenuItem Header="Copy" InputGestureText="Ctrl+C"/>
+                                    <MenuItem Header="Cut" InputGestureText="Ctrl+X"/>
+                                    <MenuItem Header="Paste" InputGestureText="Ctrl+V"/>
+                                    <Separator/>
+                                    <MenuItem Header="Find" InputGestureText="Ctrl+F"/>
+                                    <MenuItem Header="Replace" InputGestureText="Ctrl+R"/>
+                                    <Separator/>
+                                    <MenuItem Header="Advanced">
+                                        <MenuItem Header="Word Wrap"/>
+                                        <MenuItem Header="Make Lowercase"/>
+                                        <MenuItem Header="Make Uppercase"/>
+                                    </MenuItem>
+                                </MenuItem>
+                                <MenuItem Header="View">
+                                    <MenuItem Header="Show ToolBars" IsCheckable="True" IsChecked="True"/>
+                                </MenuItem>
+                                <MenuItem Header="Help">
+                                    <MenuItem Header="About..."/>
+                                </MenuItem>
+                            </Menu>
+                            <ToolBar Header="ToolBar" DockPanel.Dock="Top" ToolBarTray.IsLocked="False">
+                                <Button Content="B" />
+                                <ToggleButton Content="T" />
+                                <CheckBox Content="C" />
+                                <Separator/>
+                                <RadioButton Content="R1" />
+                                <RadioButton Content="R2" />
+                                <Separator/>
+                                <TextBox MinWidth="120" />
+                                <Menu>
+                                    <MenuItem Header="M">
+                                        <MenuItem Header="MI1" />
+                                        <MenuItem Header="MI2" />
+                                        <MenuItem Header="MI3" />
+                                        <Separator />
+                                        <MenuItem Header="MI4" />
+                                    </MenuItem>
+                                </Menu>
+                            </ToolBar>
+                            <ToolBar DockPanel.Dock="Top" ToolBarTray.IsLocked="True">
+                                <Button Content="B1" />
+                                <Button Content="B2" />
+                                <Button Content="B3" />
+                                <Separator/>
+                                <ComboBox MinWidth="100">
+                                    <ComboBoxItem Content="ComboBox1"/>
+                                    <ComboBoxItem Content="ComboBox2"/>
+                                    <ComboBoxItem Content="ComboBox3"/>
+                                </ComboBox>
+                                <ComboBox MinWidth="150" IsEditable="True">
+                                    <ComboBoxItem Content="ComboBox1"/>
+                                    <ComboBoxItem Content="ComboBox2"/>
+                                    <ComboBoxItem Content="ComboBox3"/>
+                                </ComboBox>
+                                <Separator/>
+                                <Button Content="B5" />
+                                <Button Content="B6" />
+                                <Button Content="B7" />
+                                <Button Content="B8" />
+                                <Button Content="B9" />
+                            </ToolBar>
+                            <Border Background="#FFDDDDDD">
+                                <Border.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Add">
+                                            <MenuItem Header="New Item..." />
+                                            <MenuItem Header="Existing Item..." />
+                                            <Separator/>
+                                            <MenuItem Header="New Folder..." />
+                                        </MenuItem>
+                                        <MenuItem Header="View Code" IsCheckable="True" />
+                                        <MenuItem Header="View Designer" IsCheckable="True" />
+                                        <Separator/>
+                                        <MenuItem Header="Cut" InputGestureText="Ctrl+X"/>
+                                        <MenuItem Header="Copy" InputGestureText="Ctrl+C"/>
+                                        <MenuItem Header="Paste" InputGestureText="Ctrl+V"/>
+                                    </ContextMenu>
+                                </Border.ContextMenu>
+                            </Border>
+                        </DockPanel>
+                    </TabItem>
+                </TabControl>
+            </Border>
+            <Border Margin="10,0" Padding="20" Background="{DynamicResource ResourceKey=Brush.TextBox.Focused}">
+                <Border.Resources>
+                    <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}" BasedOn="{StaticResource Style.ToolTip}" />
+                    <Style x:Key="{x:Type Label}" TargetType="{x:Type Label}" BasedOn="{StaticResource Style.Label}" />
+                    <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}" BasedOn="{StaticResource Style.Button}" />
+                    <Style x:Key="{x:Type RepeatButton}" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource Style.RepeatButton}" />
+                    <Style x:Key="{x:Type ToggleButton}" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource Style.ToggleButton}" />
+                    <Style x:Key="{x:Type CheckBox}" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource Style.CheckBox}" />
+                    <Style x:Key="{x:Type RadioButton}" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource Style.RadioButton}" />
+                    <Style x:Key="{x:Type ProgressBar}" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource Style.ProgressBar}" />
+                    <Style x:Key="{x:Type Slider}" TargetType="{x:Type Slider}" BasedOn="{StaticResource Style.Slider}" />
+                    <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource Style.ScrollBar}" />
+                    <Style x:Key="{x:Type ScrollViewer}" TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource Style.ScrollViewer}" />
+                    <Style x:Key="{x:Type GroupBox}" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource Style.GroupBox}" />
+                    <Style x:Key="{x:Type Expander}" TargetType="{x:Type Expander}" BasedOn="{StaticResource Style.Expander}" />
+                    <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}" BasedOn="{StaticResource Style.Hyperlink}" />
+                    <Style x:Key="{x:Type ContextMenu}" TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource Style.ContextMenu}" />
+                    <Style x:Key="{x:Type Menu}" TargetType="{x:Type Menu}" BasedOn="{StaticResource Style.Menu}" />
+                    <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource Style.MenuItem}" />
+                    <Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBox}" BasedOn="{StaticResource Style.TextBox}" />
+                    <Style x:Key="{x:Type PasswordBox}" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource Style.PasswordBox}" />
+                    <Style x:Key="{x:Type ListBox}" TargetType="{x:Type ListBox}" BasedOn="{StaticResource Style.ListBox}" />
+                    <Style x:Key="{x:Type ListBoxItem}" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource Style.ListBoxItem}" />
+                    <Style x:Key="{x:Type ListView}" TargetType="{x:Type ListView}" BasedOn="{StaticResource Style.ListView}" />
+                    <Style x:Key="{x:Type ListViewItem}" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource Style.ListViewItem}" />
+                    <Style x:Key="{x:Type GridViewColumnHeader}" TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource Style.GridViewColumnHeader}" />
+                    <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource Style.ComboBox}" />
+                    <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource Style.ComboBoxItem}" />
+                    <Style x:Key="{x:Type TabControl}" TargetType="{x:Type TabControl}" BasedOn="{StaticResource Style.TabControl}" />
+                    <Style x:Key="{x:Type TabItem}" TargetType="{x:Type TabItem}" BasedOn="{StaticResource Style.TabItem}" />
+                    <Style x:Key="{x:Type TreeView}" TargetType="{x:Type TreeView}" BasedOn="{StaticResource Style.TreeView}" />
+                    <Style x:Key="{x:Type TreeViewItem}" TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource Style.TreeViewItem}" />
+                    <Style x:Key="{x:Type ToolBar}" TargetType="{x:Type ToolBar}" BasedOn="{StaticResource Style.ToolBar}" />
+                </Border.Resources>
+                <TabControl TabStripPlacement="{Binding SelectedItem.Content, ElementName=tabpos}">
+                    <TabItem Header="Buttons">
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource Style.Button}"/>
+                                <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource Style.ToggleButton}"/>
+                            </StackPanel.Resources>
+                            <Label Content="This is a Label" Margin="0,0,0,10"/>
+                            <Button Content="Button"/>
+                            <ToggleButton Content="ToggleButton" Margin="0,10"/>
+                            <GroupBox>
+                                <StackPanel>
+                                    <ToggleButton Style="{StaticResource Style.ToggleSwitch}" Content="ToggleSwitch" Margin="0,0" />
+                                    <CheckBox Content="CheckBox" Margin="0,4,0,0" IsThreeState="True" />
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Some options:" Margin="0,10,0,0">
+                                <StackPanel>
+                                    <RadioButton Content="RadioButton 1" IsChecked="True" Margin="0,0" />
+                                    <RadioButton Content="RadioButton 2" Margin="0,4,0,0" />
+                                </StackPanel>
+                            </GroupBox>
+                            <TextBox Margin="0,10" noesis:Text.Placeholder="Hint text" />
+                            <PasswordBox noesis:Text.Placeholder="Type password" />
+                            <TextBlock Margin="0,10"><Hyperlink NavigateUri="http://www.noesisengine.com"><Run Text="noesisengine.com"/></Hyperlink></TextBlock>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Sliders">
+                        <StackPanel Margin="10" MinWidth="100">
+                            <Expander Header="ProgressBars">
+                                <StackPanel>
+                                    <ProgressBar Value="{Binding Value, ElementName=slider2}" Minimum="0" Maximum="100" Margin="0,10" />
+                                    <ProgressBar Value="40" Minimum="0" Maximum="100" IsIndeterminate="True" />
+                                </StackPanel>
+                            </Expander>
+                            <Expander Header="ProgressBars" ExpandDirection="Right">
+                                <StackPanel Margin="0,10" Orientation="Horizontal" HorizontalAlignment="Center" Height="40">
+                                    <ProgressBar Value="40" Minimum="0" Maximum="100" Margin="10,0" Orientation="Vertical" />
+                                    <ProgressBar Value="40" Minimum="0" Maximum="100" IsIndeterminate="True" Orientation="Vertical" />
+                                </StackPanel>
+                            </Expander>
+                            <Expander Header="Sliders" ExpandDirection="Up" IsExpanded="False">
+                                <StackPanel>
+                                    <Slider x:Name="slider2" Value="20" Minimum="0" Maximum="100" />
+                                    <Slider Value="4" TickPlacement="TopLeft" Margin="0,10" />
+                                    <Slider Value="6" TickPlacement="BottomRight" />
+                                    <Slider Value="8" TickPlacement="Both" Margin="0,10" IsDirectionReversed="True" />
+                                </StackPanel>
+                            </Expander>
+                            <Expander Header="Sliders" ExpandDirection="Left">
+                                <StackPanel Margin="0,10" Orientation="Horizontal" HorizontalAlignment="Center" Height="50">
+                                    <Slider Value="2" TickFrequency="2" TickPlacement="TopLeft" Orientation="Vertical" />
+                                    <Slider Value="4" TickFrequency="2" TickPlacement="BottomRight" Orientation="Vertical" Margin="10,0" />
+                                    <Slider Value="6" TickFrequency="2" TickPlacement="Both" Orientation="Vertical" IsDirectionReversed="True" />
+                                </StackPanel>
+                            </Expander>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Scroll">
+                        <StackPanel Margin="10" MinWidth="100">
+                            <ScrollBar Orientation="Horizontal" Width="100" Margin="0,10" />
+                            <ScrollBar Orientation="Vertical" Height="80" Margin="0,10" />
+                            <ScrollViewer Width="200" Height="200" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#FFE7E7E7">
+                                <Ellipse Fill="#8080FF" Width="400" Height="600" ToolTip="Inline ToolTip Text" />
+                            </ScrollViewer>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Selectors">
+                        <StackPanel Margin="10">
+                            <StackPanel Orientation="Horizontal" Height="200">
+                                <StackPanel.Resources>
+                                    <GradientStopCollection x:Key="list">
+                                        <GradientStop Offset="0" Color="Red"/>
+                                        <GradientStop Offset="1" Color="Orange"/>
+                                        <GradientStop Offset="2" Color="Yellow"/>
+                                        <GradientStop Offset="3" Color="Lime"/>
+                                        <GradientStop Offset="4" Color="Green"/>
+                                        <GradientStop Offset="5" Color="Cyan"/>
+                                        <GradientStop Offset="6" Color="Blue"/>
+                                        <GradientStop Offset="7" Color="Magenta"/>
+                                        <GradientStop Offset="8" Color="Purple"/>
+                                    </GradientStopCollection>
+                                </StackPanel.Resources>
+                                <ListBox Width="150" Margin="10,0">
+                                    <ListBoxItem Content="ListBox Item 1" />
+                                    <ListBoxItem Content="ListBox Item 2" />
+                                    <ListBoxItem Content="ListBox Item 3" />
+                                    <ListBoxItem Content="ListBox Item 4" />
+                                    <ListBoxItem Content="ListBox Item 5" />
+                                    <ListBoxItem Content="ListBox Item 6" />
+                                    <ListBoxItem Content="ListBox Item 7" />
+                                    <ListBoxItem Content="ListBox Item 8" />
+                                    <ListBoxItem Content="ListBox Item 9" />
+                                </ListBox>
+                                <ListView ItemsSource="{StaticResource list}" Width="300">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Name"/>
+                                            <GridViewColumn Header="Offset">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Slider Value="{Binding Offset}" Width="80" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Color">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Rectangle Width="80" Height="10">
+                                                            <Rectangle.Fill>
+                                                                <SolidColorBrush Color="{Binding Color}"/>
+                                                            </Rectangle.Fill>
+                                                        </Rectangle>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </StackPanel>
+                            <ComboBox Margin="0,10" SelectedIndex="0">
+                                <ComboBoxItem Content="ComboBox Item 1"/>
+                                <ComboBoxItem Content="ComboBox Item 2"/>
+                                <ComboBoxItem Content="ComboBox Item 3"/>
+                                <ComboBoxItem Content="ComboBox Item 4"/>
+                                <ComboBoxItem Content="ComboBox Item 5"/>
+                                <ComboBoxItem Content="ComboBox Item 6"/>
+                                <ComboBoxItem Content="ComboBox Item 7"/>
+                                <ComboBoxItem Content="ComboBox Item 8"/>
+                                <ComboBoxItem Content="ComboBox Item 9"/>
+                                <ComboBoxItem Content="ComboBox Item 0"/>
+                                <ComboBoxItem Content="ComboBox Item 1"/>
+                                <ComboBoxItem Content="ComboBox Item 2"/>
+                                <ComboBoxItem Content="ComboBox Item 3"/>
+                                <ComboBoxItem Content="ComboBox Item 4"/>
+                                <ComboBoxItem Content="ComboBox Item 5"/>
+                                <ComboBoxItem Content="ComboBox Item 6"/>
+                                <ComboBoxItem Content="ComboBox Item 7"/>
+                                <ComboBoxItem Content="ComboBox Item 8"/>
+                                <ComboBoxItem Content="ComboBox Item 9"/>
+                                <ComboBoxItem Content="ComboBox Item 0"/>
+                            </ComboBox>
+                            <ComboBox IsEditable="True" Text="ComboBox Item 1">
+                                <ComboBoxItem Content="ComboBox Item 1"/>
+                                <ComboBoxItem Content="ComboBox Item 2"/>
+                                <ComboBoxItem Content="ComboBox Item 3"/>
+                                <ComboBoxItem Content="ComboBox Item 4"/>
+                                <ComboBoxItem Content="ComboBox Item 5"/>
+                                <ComboBoxItem Content="ComboBox Item 6"/>
+                                <ComboBoxItem Content="ComboBox Item 7"/>
+                                <ComboBoxItem Content="ComboBox Item 8"/>
+                                <ComboBoxItem Content="ComboBox Item 9"/>
+                                <ComboBoxItem Content="ComboBox Item 0"/>
+                                <ComboBoxItem Content="ComboBox Item 1"/>
+                                <ComboBoxItem Content="ComboBox Item 2"/>
+                                <ComboBoxItem Content="ComboBox Item 3"/>
+                                <ComboBoxItem Content="ComboBox Item 4"/>
+                                <ComboBoxItem Content="ComboBox Item 5"/>
+                                <ComboBoxItem Content="ComboBox Item 6"/>
+                                <ComboBoxItem Content="ComboBox Item 7"/>
+                                <ComboBoxItem Content="ComboBox Item 8"/>
+                                <ComboBoxItem Content="ComboBox Item 9"/>
+                                <ComboBoxItem Content="ComboBox Item 0"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="TreeView">
+                        <TreeView>
+                            <TreeViewItem Header="TreeView Item 1">
+                                <TreeViewItem Header="TreeView Item A" />
+                                <TreeViewItem Header="TreeView Item B" />
+                                <TreeViewItem Header="TreeView Item C" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="TreeView Item 2">
+                                <TreeViewItem Header="TreeView Item D" />
+                                <TreeViewItem Header="TreeView Item E" />
+                                <TreeViewItem Header="TreeView Item F" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="TreeView Item 3">
+                                <TreeViewItem Header="TreeView Item G" />
+                                <TreeViewItem Header="TreeView Item H" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="TreeView Item 4">
+                                <TreeViewItem Header="TreeView Item I" />
+                                <TreeViewItem Header="TreeView Item J" />
+                                <TreeViewItem Header="TreeView Item K" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="TreeView Item 5">
+                                <TreeViewItem Header="TreeView Item L" />
+                                <TreeViewItem Header="TreeView Item M" />
+                                <TreeViewItem Header="TreeView Item N" />
+                                <TreeViewItem Header="TreeView Item O">
+                                    <TreeViewItem Header="TreeView Item I" />
+                                    <TreeViewItem Header="TreeView Item II" />
+                                    <TreeViewItem Header="TreeView Item III" />
+                                </TreeViewItem>
+                            </TreeViewItem>
+                            <TreeViewItem Header="TreeView Item 6">
+                                <TreeViewItem Header="TreeView Item P" />
+                                <TreeViewItem Header="TreeView Item Q" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="TreeView Item 7">
+                                <TreeViewItem Header="TreeView Item R" />
+                                <TreeViewItem Header="TreeView Item S" />
+                                <TreeViewItem Header="TreeView Item T" />
+                            </TreeViewItem>
+                        </TreeView>
+                    </TabItem>
+                    <TabItem Header="Menus&amp;Bars">
+                        <DockPanel Width="495">
+                            <Menu DockPanel.Dock="Top">
+                                <MenuItem Header="File">
+                                    <MenuItem Header="New" InputGestureText="Ctrl+N"/>
+                                    <MenuItem Header="Open" InputGestureText="Ctrl+O"/>
+                                    <Separator/>
+                                    <MenuItem Header="Save" InputGestureText="Ctrl+S" Icon="[S]"/>
+                                    <MenuItem Header="Save All" InputGestureText="Ctrl+Shift+S"/>
+                                    <Separator/>
+                                    <MenuItem Header="Exit" Icon="[>]"/>
+                                </MenuItem>
+                                <MenuItem Header="Edit">
+                                    <MenuItem Header="Copy" InputGestureText="Ctrl+C"/>
+                                    <MenuItem Header="Cut" InputGestureText="Ctrl+X"/>
+                                    <MenuItem Header="Paste" InputGestureText="Ctrl+V"/>
+                                    <Separator/>
+                                    <MenuItem Header="Find" InputGestureText="Ctrl+F"/>
+                                    <MenuItem Header="Replace" InputGestureText="Ctrl+R"/>
+                                    <Separator/>
+                                    <MenuItem Header="Advanced">
+                                        <MenuItem Header="Word Wrap"/>
+                                        <MenuItem Header="Make Lowercase"/>
+                                        <MenuItem Header="Make Uppercase"/>
+                                    </MenuItem>
+                                </MenuItem>
+                                <MenuItem Header="View">
+                                    <MenuItem Header="Show ToolBars" IsCheckable="True" IsChecked="True"/>
+                                    <Separator/>
+                                    <MenuItem Header="View Whitespaces" />
+                                </MenuItem>
+                                <MenuItem Header="Help">
+                                    <MenuItem Header="About..."/>
+                                </MenuItem>
+                            </Menu>
+                            <ToolBar Header="ToolBar" DockPanel.Dock="Top" ToolBarTray.IsLocked="False">
+                                <Button Content="B" />
+                                <ToggleButton Content="T" />
+                                <CheckBox Content="C" IsChecked="True" />
+                                <Separator/>
+                                <RadioButton Content="R1" />
+                                <RadioButton Content="R2" />
+                                <Separator/>
+                                <TextBox MinWidth="120" />
+                                <Menu>
+                                    <MenuItem Header="M">
+                                        <MenuItem Header="MI1" />
+                                        <MenuItem Header="MI2" />
+                                        <MenuItem Header="MI3" />
+                                        <Separator />
+                                        <MenuItem Header="MI4" />
+                                    </MenuItem>
+                                </Menu>
+                            </ToolBar>
+                            <ToolBar DockPanel.Dock="Top" ToolBarTray.IsLocked="True">
+                                <Button Content="B1" />
+                                <Button Content="B2" />
+                                <Button Content="B3" />
+                                <Separator/>
+                                <ComboBox MinWidth="100">
+                                    <ComboBoxItem Content="ComboBox1"/>
+                                    <ComboBoxItem Content="ComboBox2"/>
+                                    <ComboBoxItem Content="ComboBox3"/>
+                                </ComboBox>
+                                <ComboBox MinWidth="150" IsEditable="True">
+                                    <ComboBoxItem Content="ComboBox1"/>
+                                    <ComboBoxItem Content="ComboBox2"/>
+                                    <ComboBoxItem Content="ComboBox3"/>
+                                </ComboBox>
+                                <Separator/>
+                                <Button Content="B5" />
+                                <Button Content="B6" />
+                                <Button Content="B7" />
+                                <Button Content="B8" />
+                                <Button Content="B9" />
+                            </ToolBar>
+                            <Border Background="#FFCCCCCC">
+                                <Border.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Add">
+                                            <MenuItem Header="New Item..." />
+                                            <MenuItem Header="Existing Item..." />
+                                            <Separator/>
+                                            <MenuItem Header="New Folder..." />
+                                        </MenuItem>
+                                        <MenuItem Header="View Code" IsCheckable="True" />
+                                        <MenuItem Header="View Designer" IsCheckable="True" />
+                                        <Separator/>
+                                        <MenuItem Header="Cut" InputGestureText="Ctrl+X"/>
+                                        <MenuItem Header="Copy" InputGestureText="Ctrl+C"/>
+                                        <MenuItem Header="Paste" InputGestureText="Ctrl+V"/>
+                                    </ContextMenu>
+                                </Border.ContextMenu>
+                            </Border>
+                        </DockPanel>
+                    </TabItem>
+                </TabControl>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>
