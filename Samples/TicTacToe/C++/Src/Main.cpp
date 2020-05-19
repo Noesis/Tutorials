@@ -36,34 +36,34 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<TicTacToe::MainWindow>();
-        NsRegisterComponent<TicTacToe::App>();
-        NsRegisterComponent<Noesis::EnumConverter<TicTacToe::State>>();
+        RegisterComponent<TicTacToe::MainWindow>();
+        RegisterComponent<TicTacToe::App>();
+        RegisterComponent<Noesis::EnumConverter<TicTacToe::State>>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
-            { "Sounds/NoughtEffect.mp3", NoughtEffect_mp3, sizeof(NoughtEffect_mp3) },
-            { "Sounds/CrossEffect.mp3", CrossEffect_mp3, sizeof(CrossEffect_mp3) },
-            { "Sounds/WinEffect.mp3", WinEffect_mp3, sizeof(WinEffect_mp3) },
-            { "Sounds/TieEffect.mp3", TieEffect_mp3, sizeof(TieEffect_mp3) }
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml },
+            { "Sounds/NoughtEffect.mp3", NoughtEffect_mp3 },
+            { "Sounds/CrossEffect.mp3", CrossEffect_mp3 },
+            { "Sounds/WinEffect.mp3", WinEffect_mp3 },
+            { "Sounds/TieEffect.mp3", TieEffect_mp3 }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] = 
         {
-            { "Fonts", Multicolore_otf, sizeof(Multicolore_otf) }
+            { "Fonts", Multicolore_otf }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

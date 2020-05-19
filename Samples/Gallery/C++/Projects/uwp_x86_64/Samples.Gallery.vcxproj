@@ -15,7 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FC30610B-473B-3056-BCD2-CFE3652D56D7}</ProjectGuid>
+    <ProjectGuid>{E8B005F7-32B1-30BF-BD04-1D8C08B80D53}</ProjectGuid>
     <DefaultLanguage>en-US</DefaultLanguage>
     <ProjectName>Gallery</ProjectName>
     <AppContainerApplication>true</AppContainerApplication>
@@ -76,7 +76,7 @@
     <ClCompile>
       <ExceptionHandling>Sync</ExceptionHandling>
       <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Interactivity\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=3.0.0rc7;NS_APP_FRAMEWORK;NS_LICENSE;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=3.0.0;NS_APP_FRAMEWORK;NS_LICENSE;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>vccorlibd.lib;msvcrtd.lib;Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -88,7 +88,7 @@
     <ClCompile>
       <ExceptionHandling>Sync</ExceptionHandling>
       <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Interactivity\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=3.0.0rc7;NS_APP_FRAMEWORK;NS_LICENSE;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=3.0.0;NS_APP_FRAMEWORK;NS_LICENSE;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>vccorlib.lib;msvcrt.lib;Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -100,7 +100,7 @@
     <ClCompile>
       <ExceptionHandling>Sync</ExceptionHandling>
       <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Interactivity\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=3.0.0rc7;NS_APP_FRAMEWORK;NS_LICENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=3.0.0;NS_APP_FRAMEWORK;NS_LICENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>vccorlib.lib;msvcrt.lib;Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -119,7 +119,7 @@
     <ClInclude Include="..\..\Src\MainWindow.xaml.h" />
     <AppxManifest Include="Package.appxmanifest" />
     <Image Include="SplashScreen.scale-200.png" />
-    <Image Include="Square44x44Logo.scale-400.png" />
+    <Image Include="Square44x44Logo.scale-200.png" />
     <Image Include="Square44x44Logo.targetsize-24.png" />
     <Image Include="Square44x44Logo.targetsize-48.png" />
     <Image Include="Square44x44Logo.targetsize-256.png" />
@@ -384,6 +384,12 @@
       <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Samples\Fonts\CourierPrime-Regular.ttf">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Samples\Fonts\Aero Matics Regular.ttf">
       <FileType>Document</FileType>
       <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
       <Message>%(Filename)%(Extension)</Message>

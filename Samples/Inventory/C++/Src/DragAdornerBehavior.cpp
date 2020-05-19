@@ -7,7 +7,6 @@
 #include "DragAdornerBehavior.h"
 
 #include <NsCore/ReflectionImplement.h>
-#include <NsCore/TypeId.h>
 #include <NsCore/Delegate.h>
 #include <NsGui/DragDrop.h>
 #include <NsGui/UIElementData.h>
@@ -101,10 +100,8 @@ void DragAdornerBehavior::OnDrop(BaseComponent*, const DragEventArgs& e)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(DragAdornerBehavior)
+NS_IMPLEMENT_REFLECTION(DragAdornerBehavior, "Inventory.DragAdornerBehavior")
 {
-    NsMeta<TypeId>("Inventory.DragAdornerBehavior");
-
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<Point>(DragStartOffsetProperty, "DragStartOffset",
         PropertyMetadata::Create(Point(0.0f, 0.0f)));

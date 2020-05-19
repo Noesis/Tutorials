@@ -105,10 +105,8 @@ bool NumericUpDown::CoerceValue(const DependencyObject* object, const void* valu
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(NumericUpDown)
+NS_IMPLEMENT_REFLECTION(NumericUpDown, "UserControl.NumericUpDown")
 {
-    NsMeta<TypeId>("UserControl.NumericUpDown");
-
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<int>(ValueProperty, "Value",
         FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None,

@@ -151,7 +151,11 @@
                         ViewportSize="{TemplateBinding ViewportHeight}"
                         Minimum="0"
                         Maximum="{TemplateBinding ScrollableHeight}"/>
-            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.Column="1"/>
+            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.Column="1"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                    CanContentScroll="{TemplateBinding CanContentScroll}"/>
         </Grid>
     </ControlTemplate>
     <Style x:Key="QuestListScrollStyle" TargetType="{x:Type ScrollViewer}">
@@ -186,6 +190,13 @@
     </ControlTemplate>
     <Style x:Key="QuestListStyle" TargetType="{x:Type ListBox}">
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling"/>
+        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel"/>
+        <Setter Property="KeyboardNavigation.DirectionalNavigation" Value="Contained"/>
         <Setter Property="Template" Value="{StaticResource QuestListTemplate}"/>
     </Style>
     <ControlTemplate x:Key="QuestListItemCompletedTemplate" TargetType="{x:Type CheckBox}">

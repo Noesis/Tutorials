@@ -4,282 +4,91 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignWidth="1280" d:DesignHeight="720"
+    d:DesignWidth="1280" d:DesignHeight="920"
     Style="{StaticResource SampleControlStyle}"
     Header="Grid"
     Tag="https://www.noesisengine.com/docs/Gui.Core._Grid.html">
 
-    <StackPanel>
-        <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The Grid is used to arrange controls and content in rows and columns."/>
-        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.pabloescriva.com/XamlPlayer/f61cab2616dc3a165783aef687cae8a2" TabIndex="100">
-            <HeaderedContentControl.Header>
-                <StackPanel>
-                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
-                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
-                        <Run>Content is positioned in the Grid using</Run>
-                        <Run FontWeight="Bold">Grid.Row</Run><Run>,</Run>
-                        <Run FontWeight="Bold">Grid.RowSpan</Run><Run>,</Run>
-                        <Run FontWeight="Bold">Grid.Column</Run>
-                        <Run>and</Run>
-                        <Run FontWeight="Bold">Grid.ColumnSpan</Run>
-                        <Run>attached properties.</Run>
-                    </TextBlock>
-                </StackPanel>
-            </HeaderedContentControl.Header>
-            <Viewbox StretchDirection="DownOnly">
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" TextElement.Foreground="Black">
-                    <Grid.Resources>
-                        <LinearGradientBrush x:Key="BgBrush" StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Offset="0" Color="#FF9BDEFF"/>
-                            <GradientStop Offset="1" Color="#FF69B5FF"/>
-                        </LinearGradientBrush>
-                    </Grid.Resources>
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The Grid is used to arrange controls and content in rows and columns."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/dbeb809f71a08058eed818b1618995d2" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Content is positioned in the Grid using</Run>
+            <Run FontWeight="Bold">Grid.Row</Run><Run>,</Run>
+            <Run FontWeight="Bold">Grid.RowSpan</Run><Run>,</Run>
+            <Run FontWeight="Bold">Grid.Column</Run>
+            <Run>and</Run>
+            <Run FontWeight="Bold">Grid.ColumnSpan</Run>
+            <Run>attached properties.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <Viewbox StretchDirection="DownOnly">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+          </Grid.ColumnDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+          </Grid.RowDefinitions>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0" Grid.ColumnSpan="2">
-                        <TextBlock Text="Grid size: "/>
-                        <TextBlock Text="{Binding ActualWidth, ElementName=Grid}"/>
-                        <TextBlock Text="x"/>
-                        <TextBlock Text="{Binding ActualHeight, ElementName=Grid}"/>
-                    </StackPanel>
-                    <Grid Grid.Column="1" Grid.Row="1" Margin="8,8,8,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="77"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
-                        <TextBlock Text="*" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
-                        <TextBlock Text="2*" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3"/>
-                    </Grid>
-                    <Grid Grid.Column="0" Grid.Row="2" Margin="8,8,0,8">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="140"/>
-                            <RowDefinition Height="74"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="140" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
-                        <TextBlock Text="0.333*" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
-                        <TextBlock Text="0.667*" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"/>
-                    </Grid>
-                    <Grid x:Name="Grid" Width="600" Height="500" Grid.Row="2" Background="White" Margin="8" Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="140"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="0.3333*"/>
-                            <RowDefinition Height="0.6667*"/>
-                        </Grid.RowDefinitions>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Margin="4" Padding="0">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="row="/>
-                                    <TextBlock Text="{Binding (Grid.Row), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="col="/>
-                                    <TextBlock Text="{Binding (Grid.Column), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="rowSpan="/>
-                                    <TextBlock Text="{Binding (Grid.RowSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="colSpan="/>
-                                    <TextBlock Text="{Binding (Grid.ColumnSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Grid.Column="1" Margin="4" Padding="0">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="row="/>
-                                    <TextBlock Text="{Binding (Grid.Row), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="col="/>
-                                    <TextBlock Text="{Binding (Grid.Column), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="rowSpan="/>
-                                    <TextBlock Text="{Binding (Grid.RowSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="colSpan="/>
-                                    <TextBlock Text="{Binding (Grid.ColumnSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Grid.Column="2" Margin="4" Padding="0">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="row="/>
-                                    <TextBlock Text="{Binding (Grid.Row), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="col="/>
-                                    <TextBlock Text="{Binding (Grid.Column), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="rowSpan="/>
-                                    <TextBlock Text="{Binding (Grid.RowSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="colSpan="/>
-                                    <TextBlock Text="{Binding (Grid.ColumnSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Grid.Column="3" Margin="4" Padding="0">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="row="/>
-                                    <TextBlock Text="{Binding (Grid.Row), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="col="/>
-                                    <TextBlock Text="{Binding (Grid.Column), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="rowSpan="/>
-                                    <TextBlock Text="{Binding (Grid.RowSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="colSpan="/>
-                                    <TextBlock Text="{Binding (Grid.ColumnSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Margin="4" Padding="0" Grid.Row="1" Grid.ColumnSpan="2">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="row="/>
-                                    <TextBlock Text="{Binding (Grid.Row), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="col="/>
-                                    <TextBlock Text="{Binding (Grid.Column), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="rowSpan="/>
-                                    <TextBlock Text="{Binding (Grid.RowSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="colSpan="/>
-                                    <TextBlock Text="{Binding (Grid.ColumnSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Grid.Column="2" Margin="4" Padding="0" Grid.Row="1">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="row="/>
-                                    <TextBlock Text="{Binding (Grid.Row), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="col="/>
-                                    <TextBlock Text="{Binding (Grid.Column), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="rowSpan="/>
-                                    <TextBlock Text="{Binding (Grid.RowSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="colSpan="/>
-                                    <TextBlock Text="{Binding (Grid.ColumnSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Grid.Column="3" Margin="4" Padding="0" Grid.Row="1" Grid.RowSpan="2">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="row="/>
-                                    <TextBlock Text="{Binding (Grid.Row), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="col="/>
-                                    <TextBlock Text="{Binding (Grid.Column), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="rowSpan="/>
-                                    <TextBlock Text="{Binding (Grid.RowSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <TextBlock Text="colSpan="/>
-                                    <TextBlock Text="{Binding (Grid.ColumnSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Margin="4" Padding="0" Grid.Row="2" Grid.ColumnSpan="3">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,4,8,3" Orientation="Horizontal">
-                                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                    <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                        <TextBlock Text="row="/>
-                                        <TextBlock Text="{Binding (Grid.Row), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                        <TextBlock Text="col="/>
-                                        <TextBlock Text="{Binding (Grid.Column), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                    <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                        <TextBlock Text="rowSpan="/>
-                                        <TextBlock Text="{Binding (Grid.RowSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                        <TextBlock Text="colSpan="/>
-                                        <TextBlock Text="{Binding (Grid.ColumnSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Margin="4" Padding="0" Grid.Row="3" Grid.ColumnSpan="4">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,4,8,3" Orientation="Horizontal">
-                                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                    <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                        <TextBlock Text="row="/>
-                                        <TextBlock Text="{Binding (Grid.Row), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                        <TextBlock Text="col="/>
-                                        <TextBlock Text="{Binding (Grid.Column), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                    <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                        <TextBlock Text="rowSpan="/>
-                                        <TextBlock Text="{Binding (Grid.RowSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                        <TextBlock Text="colSpan="/>
-                                        <TextBlock Text="{Binding (Grid.ColumnSpan), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                    </Grid>
-                </Grid>
-            </Viewbox>
-        </HeaderedContentControl>
-    </StackPanel>
+          <Grid Grid.Column="1" Grid.Row="0" Margin="8,8,8,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="100"/>
+              <ColumnDefinition Width="64"/>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
+            <TextBlock Text="*" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
+            <TextBlock Text="2*" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3"/>
+          </Grid>
+          <Grid Grid.Column="0" Grid.Row="1" Margin="8,8,0,8">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="80"/>
+              <RowDefinition Height="104"/>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="80" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+            <TextBlock Text="0.333*" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
+            <TextBlock Text="0.667*" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"/>
+          </Grid>
+          <Border Grid.Row="1" Grid.Column="1" Background="{DynamicResource Brush.Background.Popup}" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1" Margin="8">
+            <Grid Width="400" Height="350">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0.3333*"/>
+                <RowDefinition Height="0.6667*"/>
+              </Grid.RowDefinitions>
+              <Rectangle Grid.Row="0" Grid.Column="0" Fill="Turquoise" Margin="2"/>
+              <Rectangle Grid.Row="0" Grid.Column="1" Fill="LightSeaGreen" Width="60" Margin="2"/>
+              <Rectangle Grid.Row="0" Grid.Column="2" Fill="Teal" Margin="2"/>
+              <Rectangle Grid.Row="0" Grid.Column="3" Fill="LightSeaGreen" Margin="2"/>
+              <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Fill="Teal" Height="100" Margin="2"/>
+              <Rectangle Grid.Row="1" Grid.Column="2" Fill="LightSeaGreen" Margin="2"/>
+              <Rectangle Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Fill="Teal" Margin="2"/>
+              <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Fill="Turquoise" Margin="2"/>
+              <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Fill="LightSeaGreen" Margin="2"/>
+            </Grid>
+          </Border>
+        </Grid>
+      </Viewbox>
+    </HeaderedContentControl>
+  </StackPanel>
 </HeaderedContentControl>

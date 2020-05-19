@@ -7,7 +7,6 @@
 #include <NsCore/Noesis.h>
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/RegisterComponent.h>
-#include <NsCore/TypeId.h>
 #include <NsCore/Delegate.h>
 #include <NsGui/IntegrationAPI.h>
 #include <NsApp/EmbeddedXamlProvider.h>
@@ -47,9 +46,9 @@ public:
 
     void SetInput(const char* value)
     {
-        if (!String::Equals(_input, value))
+        if (!StrEquals(_input, value))
         {
-            String::Copy(_input, sizeof(_input), value);
+            StrCopy(_input, sizeof(_input), value);
             OnPropertyChanged("Input");
         }
     }
@@ -61,9 +60,9 @@ public:
 
     void SetOutput(const char* value)
     {
-        if (!String::Equals(_output, value))
+        if (!StrEquals(_output, value))
         {
-            String::Copy(_output, sizeof(_output), value);
+            StrCopy(_output, sizeof(_output), value);
             OnPropertyChanged("Output");
         }
     }
@@ -76,9 +75,9 @@ public:
 private:
     void SayHello(BaseComponent* param_)
     {
-        if (Boxing::CanUnbox<NsString>(param_))
+        if (Boxing::CanUnbox<String>(param_))
         {
-            const char* param = Boxing::Unbox<NsString>(param_).c_str();
+            const char* param = Boxing::Unbox<String>(param_).Str();
 
             char text[512];
             snprintf(text, sizeof(text), "Hello, %s (%s)", _input, param);
@@ -91,9 +90,8 @@ private:
     char _input[256] = "";
     char _output[256] = "";
 
-    NS_IMPLEMENT_INLINE_REFLECTION(ViewModel, NotifyPropertyChangedBase)
+    NS_IMPLEMENT_INLINE_REFLECTION(ViewModel, NotifyPropertyChangedBase, "Commands.ViewModel")
     {
-        NsMeta<TypeId>("Commands.ViewModel");
         NsProp("Input", &ViewModel::GetInput, &ViewModel::SetInput);
         NsProp("Output", &ViewModel::GetOutput, &ViewModel::SetOutput);
         NsProp("SayHelloCommand", &ViewModel::GetSayHelloCommand);
@@ -103,10 +101,7 @@ private:
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public Application
 {
-    NS_IMPLEMENT_INLINE_REFLECTION(App, Application)
-    {
-        NsMeta<TypeId>("Commands.App");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application,"Commands.App")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -129,10 +124,7 @@ public:
         SetDataContext(MakePtr<ViewModel>());
     }
 
-    NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
-    {
-        NsMeta<TypeId>("Commands.MainWindow");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "Commands.MainWindow")
 };
 
 }
@@ -143,29 +135,29 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<Commands::App>();
-        NsRegisterComponent<Commands::MainWindow>();
+        RegisterComponent<Commands::App>();
+        RegisterComponent<Commands::MainWindow>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) }
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] =
         {
-            { "", Aero_Matics_Regular_ttf, sizeof(Aero_Matics_Regular_ttf) }
+            { "", Aero_Matics_Regular_ttf }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

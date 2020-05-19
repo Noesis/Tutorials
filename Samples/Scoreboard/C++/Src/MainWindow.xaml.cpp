@@ -8,8 +8,7 @@
 #include "ViewModel.h"
 
 #include <NsGui/IntegrationAPI.h>
-#include <NsCore/ReflectionImplement.h>
-#include <NsCore/ReflectionImplementEnum.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 
 
 using namespace Scoreboard;
@@ -53,8 +52,4 @@ void MainWindow::OnInitialized(BaseComponent*, const EventArgs&)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Scoreboard::MainWindow)
-{
-    NsMeta<TypeId>("Scoreboard.MainWindow");
-}
-
+NS_IMPLEMENT_REFLECTION_(Scoreboard::MainWindow, "Scoreboard.MainWindow")

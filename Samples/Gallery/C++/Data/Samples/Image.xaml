@@ -27,7 +27,7 @@
       </HeaderedContentControl.Header>
       <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-          <TextBlock Text="Stretch" Width="120" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,10,0"/>
+          <TextBlock Text="Stretch" Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
           <ComboBox x:Name="stretch" SelectedIndex="0" Width="180">
             <ComboBoxItem Content="None"/>
             <ComboBoxItem Content="Fill"/>
@@ -36,7 +36,7 @@
           </ComboBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-          <TextBlock Text="StretchDirection" Width="120" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,10,0"/>
+          <TextBlock Text="StretchDirection" Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
           <ComboBox x:Name="stretchDirection" SelectedIndex="0" Width="180">
             <ComboBoxItem Content="UpOnly"/>
             <ComboBoxItem Content="DownOnly"/>

@@ -188,7 +188,7 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="56"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Rectangle x:Name="Flag" Grid.Row="0" Fill="{Binding SelectedLanguage.Resources[Flag]}" Margin="8,0" Height="32" Width="32" HorizontalAlignment="Right" noesis:Element.PPAAMode="Disabled"/>

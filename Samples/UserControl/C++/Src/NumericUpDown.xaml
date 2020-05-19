@@ -4,6 +4,31 @@
    x:Class="UserControl.NumericUpDown"
    x:Name="NumericUpDownControl">
 
+  <UserControl.Resources>
+    <ControlTemplate x:Key="ArrowButtonTemplate" TargetType="{x:Type RepeatButton}">
+        <Grid>
+            <Border x:Name="Border" Background="{TemplateBinding Background}" CornerRadius="1" />
+            <ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,1" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Brush.Border.Over}" TargetName="Border" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Brush.Background.Pressed}" TargetName="Border" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type RepeatButton}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground.Normal}" />
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Normal}" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Template" Value="{StaticResource ArrowButtonTemplate}" />
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource Style.Focus.Outer.Uniform}" />
+    </Style>
+  </UserControl.Resources>
+
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition/>
@@ -19,19 +44,14 @@
     <TextBlock Grid.RowSpan="2" VerticalAlignment="Center" Margin="5,3,4,3"
            Text="{Binding Value, ElementName=NumericUpDownControl}"/>
 
-    <RepeatButton Name="UpButton" Grid.Column="1" Grid.Row="0" Padding="4,1"
+    <RepeatButton Name="UpButton" Grid.Column="1" Grid.Row="0"
            Margin="0,2,2,0" Click="UpButton_Click">
-      <Path Data="M1,1L4,4 7,1" Stroke="Black" StrokeThickness="2"
-               StrokeStartLineCap="Round" StrokeEndLineCap="Round"
-               RenderTransformOrigin="0.5,0.5">
-        <Path.RenderTransform>
-          <ScaleTransform ScaleY="-1"/>
-        </Path.RenderTransform>
-      </Path>
+        <Path Data="M1,4L4,1 7,4" Stroke="Black" StrokeThickness="2"
+               StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
     </RepeatButton>
 
-    <RepeatButton Name="DownButton" Grid.Column="1" Grid.Row="1" Padding="4,1"
-           Margin="0,0,2,2" Click="DownButton_Click">
+    <RepeatButton Name="DownButton" Grid.Column="1" Grid.Row="1"
+           Margin="0,1,2,2" Click="DownButton_Click">
       <Path Data="M1,1L4,4 7,1" Stroke="Black" StrokeThickness="2"
                StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
     </RepeatButton>

@@ -9,93 +9,78 @@
     Header="Canvas"
     Tag="https://www.noesisengine.com/docs/Gui.Core._Canvas.html">
 
-    <StackPanel>
-        <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The Canvas is a panel that provides absolute positioning of children controls."/>
-        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.pabloescriva.com/XamlPlayer/f61cab2616dc3a165783aef687cae8a2" TabIndex="100">
-            <HeaderedContentControl.Header>
-                <StackPanel>
-                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
-                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
-                        <Run>Content is placed relative to the Canvas using</Run>
-                        <Run FontWeight="Bold">Canvas.Top</Run><Run>,</Run>
-                        <Run FontWeight="Bold">Canvas.Left</Run><Run>,</Run>
-                        <Run FontWeight="Bold">Canvas.Bottom</Run><Run>,</Run>
-                        <Run>or</Run>
-                        <Run FontWeight="Bold">Canvas.Right</Run>
-                        <Run> attached properties.</Run>
-                    </TextBlock>
-                </StackPanel>
-            </HeaderedContentControl.Header>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" TextElement.Foreground="Black">
-                <Grid.Resources>
-                    <LinearGradientBrush x:Key="BgBrush" StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Offset="0" Color="#FF9BDEFF"/>
-                        <GradientStop Offset="1" Color="#FF69B5FF"/>
-                    </LinearGradientBrush>
-                    <Style x:Key="BorderStyle" TargetType="Border">
-                        <Setter Property="BorderBrush" Value="Black"/>
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Background" Value="{StaticResource BgBrush}"/>
-                        <Setter Property="Height" Value="50"/>
-                    </Style>
-                </Grid.Resources>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center">
-                            <Run Text="{Binding ActualWidth, ElementName=Canvas, StringFormat=Canvas size: {0}, Mode=OneWay}"/><Run Text="{Binding ActualHeight, ElementName=Canvas, StringFormat=x{0}, Mode=OneWay}"/>
-                </TextBlock>
-                <Canvas x:Name="Canvas" Width="350" Height="300" Grid.Row="1" Background="White" Margin="8">
-                    <Border Canvas.Left="20" Canvas.Top="15" Style="{StaticResource BorderStyle}" CornerRadius="0,4,4,4">
-                        <Grid>
-                            <TextBlock VerticalAlignment="Top" Margin="2,0,10,0">
-                                        <Run Text="{Binding (Canvas.Left), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='(left={0},', Mode=OneWay}"/>
-                                        <Run Text="{Binding (Canvas.Top), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='top={0})', Mode=OneWay}"/>
-                            </TextBlock>
-                            <Ellipse Fill="Black" Stroke="#00000000" Width="4" Height="4" HorizontalAlignment="Left" VerticalAlignment="Top" StrokeThickness="0" Margin="-2,-2,0,0"/>
-                        </Grid>
-                    </Border>
-                    <Border Canvas.Right="15" Canvas.Top="35" Style="{StaticResource BorderStyle}" CornerRadius="4,0,4,4">
-                        <Grid>
-                            <TextBlock VerticalAlignment="Top" Margin="10,0,2,0">
-                                        <Run Text="{Binding (Canvas.Right), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='(right={0},', Mode=OneWay}"/>
-                                        <Run Text="{Binding (Canvas.Top), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='top={0})', Mode=OneWay}"/>
-                            </TextBlock>
-                            <Ellipse Fill="Black" Stroke="#00000000" Width="4" Height="4" HorizontalAlignment="Right" VerticalAlignment="Top" StrokeThickness="0" Margin="0,-2,-2,0"/>
-                        </Grid>
-                    </Border>
-                    <Border Canvas.Left="10" Canvas.Bottom="35" Style="{StaticResource BorderStyle}" CornerRadius="4,4,4,0">
-                        <Grid>
-                            <TextBlock VerticalAlignment="Bottom" Margin="2,0,10,0">
-                                        <Run Text="{Binding (Canvas.Left), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='(left={0},', Mode=OneWay}"/>
-                                        <Run Text="{Binding (Canvas.Bottom), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='bottom={0})', Mode=OneWay}"/>
-                            </TextBlock>
-                            <Ellipse Fill="Black" Stroke="#00000000" Width="4" Height="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" StrokeThickness="0" Margin="-2,0,0,-2"/>
-                        </Grid>
-                    </Border>
-                    <Border Canvas.Right="10" Canvas.Bottom="5" Style="{StaticResource BorderStyle}" CornerRadius="4,4,0,4">
-                        <Grid>
-                            <TextBlock VerticalAlignment="Bottom" Margin="10,0,2,0">
-                                        <Run Text="{Binding (Canvas.Right), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='(right={0},', Mode=OneWay}"/>
-                                        <Run Text="{Binding (Canvas.Bottom), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='bottom={0})', Mode=OneWay}"/>
-                            </TextBlock>
-                            <Ellipse Fill="Black" Stroke="#00000000" Width="4" Height="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" StrokeThickness="0" Margin="0,0,-2,-2"/>
-                        </Grid>
-                    </Border>
-                    <Border Canvas.Left="160" Canvas.Top="115" Style="{StaticResource BorderStyle}" CornerRadius="0,4,4,4">
-                        <Grid>
-                            <TextBlock VerticalAlignment="Top" Margin="2,0,10,0">
-                                        <Run Text="{Binding (Canvas.Left), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='(left={0},', Mode=OneWay}"/>
-                                        <Run Text="{Binding (Canvas.Top), RelativeSource={RelativeSource AncestorType={x:Type Border}}, StringFormat='top={0})', Mode=OneWay}"/>
-                            </TextBlock>
-                            <Ellipse Fill="Black" Stroke="#00000000" Width="4" Height="4" HorizontalAlignment="Left" VerticalAlignment="Top" StrokeThickness="0" Margin="-2,-2,0,0"/>
-                        </Grid>
-                    </Border>
-                </Canvas>
-            </Grid>
-        </HeaderedContentControl>
-    </StackPanel>
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The Canvas is a panel that provides absolute positioning of children controls."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/8d59b2feb96d35d6af631afa7e2aabce" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+              <Run>Content is placed relative to the Canvas using</Run>
+              <Run FontWeight="Bold">Canvas.Top</Run><Run>,</Run>
+              <Run FontWeight="Bold">Canvas.Left</Run><Run>,</Run>
+              <Run FontWeight="Bold">Canvas.Bottom</Run><Run>,</Run>
+              <Run>or</Run>
+              <Run FontWeight="Bold">Canvas.Right</Run>
+              <Run>attached properties.</Run>
+          </TextBlock>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+              <Run>Panel base class defines</Run>
+              <Run FontWeight="Bold">Panel.ZIndex</Run>
+              <Run>attached property to modify the Z order in which panel children are rendered. By default, order is determined by its position in the Children collection.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <GroupBox Header="Rectangle 1" Margin="0,0,0,20" Padding="0,10">
+          <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+              <TextBlock Text="Canvas.Top" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="top" Minimum="0" Maximum="150" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+              <TextBlock Text="Canvas.Left" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="left" Minimum="0" Maximum="150" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="Panel.ZIndex" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="zIndex1" Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+          </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Rectangle 4" Margin="0,0,0,20" Padding="0,10">
+          <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+              <TextBlock Text="Canvas.Bottom" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="bottom" Minimum="0" Maximum="150" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+              <TextBlock Text="Canvas.Right" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="right" Minimum="0" Maximum="150" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="Panel.ZIndex" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="zIndex4" Minimum="0" Maximum="5" Value="3" SmallChange="1" LargeChange="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+          </StackPanel>
+        </GroupBox>
+        <Border Background="{DynamicResource Brush.Background.Popup}" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1">
+          <Canvas Width="350" Height="250">
+            <Border Background="Teal" Width="200" Height="100" Canvas.Left="{Binding Value, ElementName=left}" Canvas.Top="{Binding Value, ElementName=top}" Canvas.ZIndex="{Binding Value, ElementName=zIndex1}" Padding="10">
+              <TextBlock Text="1" FontSize="24" Foreground="Black"/>
+            </Border>
+            <Border Background="LightSeaGreen" Width="200" Height="100" Canvas.Left="50" Canvas.Top="50" Panel.ZIndex="1" Padding="10">
+              <TextBlock Text="2" FontSize="24" Foreground="Black"/>
+            </Border>
+            <Border Background="Turquoise" Width="200" Height="100" Canvas.Left="100" Canvas.Top="100" Panel.ZIndex="2" Padding="10">
+              <TextBlock Text="3" FontSize="24" Foreground="Black"/>
+            </Border>
+            <Border Background="#7FFFEC" Width="200" Height="100" Canvas.Right="{Binding Value, ElementName=right}" Canvas.Bottom="{Binding Value, ElementName=bottom}" Canvas.ZIndex="{Binding Value, ElementName=zIndex4}" Padding="10">
+              <TextBlock Text="4" FontSize="24" Foreground="Black"/>
+            </Border>
+          </Canvas>
+        </Border>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
 </HeaderedContentControl>

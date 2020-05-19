@@ -135,7 +135,7 @@ MainWindow::MainWindow(): mSelectedSample(0), mSelectedThemeColor(0), mSelectedT
         mCategories.Add(category);
     }
 
-    mThemeColors.Add(MakePtr<ColorItem>("Dark", Color(32, 40, 47)));
+    mThemeColors.Add(MakePtr<ColorItem>("Dark", Color(16, 20, 24)));
     mThemeColors.Add(MakePtr<ColorItem>("Light", Color(246, 247, 248)));
 
     mThemeAccents.Add(MakePtr<ColorItem>("Red", Color(222, 43, 16)));
@@ -157,20 +157,17 @@ MainWindow::MainWindow(): mSelectedSample(0), mSelectedThemeColor(0), mSelectedT
 
     SizeChanged() += [this](BaseComponent*, const SizeChangedEventArgs& e)
     {
+        float dpi = GetDisplay()->GetScale();
         float scale;
 
         if (GetActualWidth() > GetActualHeight())
         {
-            mSampleOffset->SetWidth(250.0f);
+            mSampleOffset->SetWidth(mSelectorBar->GetWidth());
             mSelectorExpanderButton->SetVisibility(Visibility_Hidden);
             mSelectorExpanderButton->SetIsChecked(false);
             mSelectorExpanderButton->SetIsChecked(true);
 
-            #if defined(NS_PLATFORM_ANDROID) || defined(NS_PLATFORM_IPHONE)
-            scale = 3.0f;
-            #else
-            scale = Max(1.0f, e.newSize.width / 1280.0f);
-            #endif
+            scale = Max(1.0f, e.newSize.width / (1280.0f * dpi)) * dpi;
         }
         else
         {
@@ -179,16 +176,12 @@ MainWindow::MainWindow(): mSelectedSample(0), mSelectedThemeColor(0), mSelectedT
             mSelectorExpanderButton->SetIsChecked(false);
             mSelectorExpanderButton->SetVisibility(Visibility_Visible);
 
-            #if defined(NS_PLATFORM_ANDROID) || defined(NS_PLATFORM_IPHONE)
-            scale = 3.0f;
-            #else
-            scale = Max(1.0f, e.newSize.height / 720.0f);
-            #endif
+            scale = Max(1.0f, e.newSize.height / (720.0f * dpi)) * dpi;
         }
 
-        ScaleTransform* dpi = (ScaleTransform*)mLayoutRoot->GetLayoutTransform();
-        dpi->SetScaleX(scale);
-        dpi->SetScaleY(scale);
+        ScaleTransform* rootScale = (ScaleTransform*)mLayoutRoot->GetLayoutTransform();
+        rootScale->SetScaleX(scale);
+        rootScale->SetScaleY(scale);
     };
 }
 
@@ -259,18 +252,6 @@ void MainWindow::SetSelectedThemeAccent(ColorItem* value)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-float MainWindow::GetSampleAvailableWidth() const
-{
-    return GetValue<float>(SampleAvailableWidthProperty);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-void MainWindow::SetSampleAvailableWidth(float value)
-{
-    SetValue<float>(SampleAvailableWidthProperty, value);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 void MainWindow::InitializeComponent()
 {
     GUI::LoadComponent(this, "MainWindow.xaml");
@@ -282,6 +263,7 @@ void MainWindow::InitializeComponent()
     mSampleContainer2 = FindName<ContentControl>("SampleContainer2");
 
     mSampleOffset = FindName<FrameworkElement>("SampleOffset");
+    mSelectorBar = FindName<FrameworkElement>("SelectorBar");
     mSelectorExpanderButton = FindName<ToggleButton>("SelectorExpanderButton");
 }
 
@@ -349,11 +331,4 @@ NS_IMPLEMENT_REFLECTION(Gallery::MainWindow, "Gallery.MainWindow")
         &MainWindow::SetSelectedThemeColor);
     NsProp("SelectedThemeAccent", &MainWindow::GetSelectedThemeAccent,
         &MainWindow::SetSelectedThemeAccent);
-
-    UIElementData* data = NsMeta<UIElementData>(TypeOf<Gallery::MainWindow>());
-    data->RegisterProperty<float>(SampleAvailableWidthProperty, "SampleAvailableWidth",
-        PropertyMetadata::Create(1280.0f));
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-const DependencyProperty* Gallery::MainWindow::SampleAvailableWidthProperty;

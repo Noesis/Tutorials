@@ -6,7 +6,7 @@
 
 #include "App.xaml.h"
 
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 
 
 using namespace Localization;
@@ -16,7 +16,4 @@ using namespace Noesis;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Localization::App)
-{
-    NsMeta<TypeId>("Localization.App");
-}
+NS_IMPLEMENT_REFLECTION_(Localization::App,"Localization.App")

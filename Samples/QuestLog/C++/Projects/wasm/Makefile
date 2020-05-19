@@ -3,10 +3,10 @@
 # Parallel builds can be enabled using the environment variable MAKEFLAGS (eg: MAKEFLAGS="-j 4")
 # For parallel execution in Windows, Make 4.0 or better is required
 
-include ../../../../../../Config/Common.wasm.makeprops
-include ../../../../../../Config/Debug/Debug.wasm.makeprops
-include ../../../../../../Config/Profile/Profile.wasm.makeprops
-include ../../../../../../Config/Release/Release.wasm.makeprops
+include ../../../../../Config/Common.wasm.makeprops
+include ../../../../../Config/Debug/Debug.wasm.makeprops
+include ../../../../../Config/Profile/Profile.wasm.makeprops
+include ../../../../../Config/Release/Release.wasm.makeprops
 
 CC = emcc
 CXX = em++
@@ -23,20 +23,34 @@ ifeq (/bin, $(findstring /bin, $(MAKESHELL)))
 endif
 
 ifeq (posix, $(SHELLTYPE))
-  MKDIR = $(Q)mkdir -p "$(1)"
+  DEVNUL = /dev/null
+  WHICH = which
+  MKDIR = mkdir -p "$(1)"
   BIN2H = ../../../../../Tools/Bin2h/bin2h.py
-  CP = $(Q)cp "$(1)" "$(2)"
-  RM = $(Q)rm -f "$(1)"
-  RMTREE = $(Q)rm -rf "$(1)"
+  CP = cp "$(1)" "$(2)"
+  MV = mv "$(1)" "$(2)"
+  RM = rm -f "$(1)"
+  RMTREE = rm -rf "$(1)"
   FIXSLASHES = 
 else
-  MKDIR = $(Q)mkdir "$(subst /,\,$(1))" 2> nul || exit 0
+  DEVNUL = NUL
+  WHICH = where
+  MKDIR = mkdir "$(subst /,\,$(1))" 2> nul || exit 0
   BIN2H = ..\..\..\..\..\Tools\Bin2h\bin2h.exe
-  CP = $(Q)copy /Y "$(subst /,\,$(1))" "$(subst /,\,$(2))" > nul
-  RM = $(Q)del /Q "$(subst /,\,$(1))" 2> nul || exit 0
-  RMTREE = $(Q)rmdir /S /Q "$(subst /,\,$(1))" 2> nul || exit 0
+  CP = copy /Y "$(subst /,\,$(1))" "$(subst /,\,$(2))" > nul
+  MV = move /Y "$(subst /,\,$(1))" "$(subst /,\,$(2))" > nul
+  RM = del /Q "$(subst /,\,$(1))" 2> nul || exit 0
+  RMTREE = rmdir /S /Q "$(subst /,\,$(1))" 2> nul || exit 0
   SED = ..\..\..\..\..\Tools\sed\sed.exe
-  FIXSLASHES = $(Q)$(SED) -i "s/\(\S\)\\/\1\//g" "$(1)"
+  FIXSLASHES = $(SED) -i "s/\(\S\)\\\(\S\)/\1\/\2/g" "$(1)"
+endif
+
+ifeq (, $(shell ${WHICH} $(CC) 2> $(DEVNUL) ))
+$(error $(CC) not found in PATH)
+endif
+
+ifeq (, $(shell ${WHICH} $(CXX) 2> $(DEVNUL) ))
+$(error $(CXX) not found in PATH)
 endif
 
 ifeq ($(V), 1)
@@ -57,8 +71,8 @@ ifeq ($(CONFIG), Debug)
   LIB_DIRS = 
   LIBS = 
   LIBS_DEPS = 
-  INCLUDES = -I../../../../App/Display/Include -I../../../../Core/Kernel/Include -I../../../../../../Include -I../../../../Gui/DependencySystem/Include -I../../../../Core/Nullable/Include -I../../../../App/Providers/Include -I../../../../Math/Utils/Include -I../../../../App/ApplicationLauncher/Include -I../../../../Gui/Core/Include -I../../../../Samples/QuestLog/Include -I../../../../App/DisplayLauncher/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../Math/VectorMath/Include -I../../../../Core/TypeConverter/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../Drawing/Types/Include -I../../../../Core/NSTL/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../Gui/Providers/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=2.2.4 -DNS_APP_FRAMEWORK -DNS_STATIC_LIBRARY -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
   CFLAGS = $(CFLAGS_DEBUG)
   CXXFLAGS = $(CXXFLAGS_DEBUG)
   LDFLAGS = $(LDFLAGS_DEBUG)
@@ -70,8 +84,8 @@ else ifeq ($(CONFIG), Profile)
   LIB_DIRS = 
   LIBS = 
   LIBS_DEPS = 
-  INCLUDES = -I../../../../App/Display/Include -I../../../../Core/Kernel/Include -I../../../../../../Include -I../../../../Gui/DependencySystem/Include -I../../../../Core/Nullable/Include -I../../../../App/Providers/Include -I../../../../Math/Utils/Include -I../../../../App/ApplicationLauncher/Include -I../../../../Gui/Core/Include -I../../../../Samples/QuestLog/Include -I../../../../App/DisplayLauncher/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../Math/VectorMath/Include -I../../../../Core/TypeConverter/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../Drawing/Types/Include -I../../../../Core/NSTL/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../Gui/Providers/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=2.2.4 -DNS_APP_FRAMEWORK -DNS_STATIC_LIBRARY -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Profile
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_PROFILE)
   CXXFLAGS = $(CXXFLAGS_PROFILE)
   LDFLAGS = $(LDFLAGS_PROFILE)
@@ -83,8 +97,8 @@ else ifeq ($(CONFIG), Release)
   LIB_DIRS = 
   LIBS = 
   LIBS_DEPS = 
-  INCLUDES = -I../../../../App/Display/Include -I../../../../Core/Kernel/Include -I../../../../../../Include -I../../../../Gui/DependencySystem/Include -I../../../../Core/Nullable/Include -I../../../../App/Providers/Include -I../../../../Math/Utils/Include -I../../../../App/ApplicationLauncher/Include -I../../../../Gui/Core/Include -I../../../../Samples/QuestLog/Include -I../../../../App/DisplayLauncher/Include -I../../../../../../3rdParty/EASTL/local/include -I../../../../Math/VectorMath/Include -I../../../../Core/TypeConverter/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../Drawing/Types/Include -I../../../../Core/NSTL/Include -I../../../../Gui/CachedFontProvider/Include -I../../../../Gui/Providers/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=2.2.4 -DNS_APP_FRAMEWORK -DNS_STATIC_LIBRARY
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Release
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY
   CFLAGS = $(CFLAGS_RELEASE)
   CXXFLAGS = $(CXXFLAGS_RELEASE)
   LDFLAGS = $(LDFLAGS_RELEASE)
@@ -97,6 +111,7 @@ PCHFLAGS =
 DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/Aero\ Matics\ Regular.ttf.bin.h $(INTERMEDIATE)/Resources.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Image0.png.bin.h $(INTERMEDIATE)/Image1.png.bin.h $(INTERMEDIATE)/Image2.png.bin.h $(INTERMEDIATE)/WaterDropSmall.mp3.bin.h
 
 .SUFFIXES:
+.DELETE_ON_ERROR:
 .PHONY: all prebuild data clean
 
 all: prebuild $(TARGET_HTML)
@@ -107,20 +122,22 @@ prebuild:
 data: $(DATA)
 
 $(INTERMEDIATE):
-	$(call MKDIR,$(INTERMEDIATE))
+	$(Q)$(call MKDIR,$(INTERMEDIATE))
 
 $(TARGET_DIR):
-	$(call MKDIR,$(TARGET_DIR))
+	$(Q)$(call MKDIR,$(TARGET_DIR))
 
 $(INTERMEDIATE)/%.o: ../../../../Samples/QuestLog/Src/%.cpp $(PCH) | $(INTERMEDIATE) data
 	@echo [CXX] [Samples/QuestLog] $(notdir $<)
-	$(Q)$(CXX) $(CXXFLAGS) $(PCHFLAGS) $(INCLUDES) $(DEFINES)  -c -MMD -MP -o $@ $<
-	$(call FIXSLASHES,$(@:.o=.d))
+	$(Q)$(CXX) $(CXXFLAGS) $(PCHFLAGS) $(INCLUDES) $(DEFINES) -c -MMD -MF $(basename $@).d.tmp -MP -o $@ $< && $(call MV,$(basename $@).d.tmp,$(basename $@).d)
+
+	$(Q)$(call FIXSLASHES,$(@:.o=.d))
 
 $(INTERMEDIATE)/%.o: ../../../../Samples/QuestLog/Src/%.c | $(INTERMEDIATE) data
 	@echo [CC] [Samples/QuestLog] $(notdir $<)
-	$(Q)$(CC) $(CFLAGS) $(INCLUDES) $(DEFINES)  -c -MMD -MP -o $@ $<
-	$(call FIXSLASHES,$(@:.o=.d))
+	$(Q)$(CC) $(CFLAGS) $(INCLUDES) $(DEFINES) -c -MMD -MF $(basename $@).d.tmp -MP -o $@ $< && $(call MV,$(basename $@).d.tmp,$(basename $@).d)
+
+	$(Q)$(call FIXSLASHES,$(@:.o=.d))
 
 $(INTERMEDIATE)/App.xaml.bin.h: ../../../../Samples/QuestLog/Data/App.xaml | $(INTERMEDIATE)
 	@echo [BIN] [Samples/QuestLog] $(notdir $<)
@@ -156,19 +173,19 @@ $(INTERMEDIATE)/WaterDropSmall.mp3.bin.h: ../../../../Samples/QuestLog/Data/Soun
 
 $(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/App.xaml.o $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/MainWindow.xaml.o $(INTERMEDIATE)/ViewModel.o | $(TARGET_DIR)
 	@echo [LD] $(notdir $@)
-	+$(Q)$(CXX) $(LDFLAGS)  -L../../../../../../Bin/wasm $(LIB_DIRS) -o $(TARGET) @$(CONFIG).rsp $(LIBS)
+	+$(Q)$(CXX) $(LDFLAGS) -r $(LIB_DIRS) -o $(TARGET) @$(CONFIG).rsp $(LIBS)
 
 $(TARGET_HTML): $(TARGET) ../../../../../../Bin/wasm/Noesis.bc ../../../../../../Bin/wasm/NoesisApp.bc
 	@echo [HTML] $(notdir $@)
-	$(Q)emcc $(LDFLAGS) $(TARGET) ../../../../../../Bin/wasm/Noesis.bc ../../../../../../Bin/wasm/NoesisApp.bc -o $(basename $(TARGET)).html --shell-file shell.html
+	$(Q)$(CC) $(LDFLAGS) $(TARGET) ../../../../../../Bin/wasm/Noesis.bc ../../../../../../Bin/wasm/NoesisApp.bc -o $(basename $(TARGET)).html --shell-file shell.html
 
 -include $(INTERMEDIATE)/App.xaml.d $(INTERMEDIATE)/Main.d $(INTERMEDIATE)/MainWindow.xaml.d $(INTERMEDIATE)/ViewModel.d
 
 clean:
 	@echo ==== [Samples.QuestLog] Cleaning '$(CONFIG)' configuration ====
-	$(call RMTREE,$(INTERMEDIATE))
-	$(call RM,$(TARGET))
-	$(call RM,$(TARGET).js)
-	$(call RM,$(TARGET).wasm)
-	$(call RM,$(TARGET).wast)
-	$(call RM,$(TARGET).html)
+	$(Q)$(call RMTREE,$(INTERMEDIATE))
+	$(Q)$(call RM,$(TARGET))
+	$(Q)$(call RM,$(basename $(TARGET)).js)
+	$(Q)$(call RM,$(basename $(TARGET)).wasm)
+	$(Q)$(call RM,$(basename $(TARGET)).wast)
+	$(Q)$(call RM,$(basename $(TARGET)).html)

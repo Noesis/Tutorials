@@ -9,108 +9,57 @@
     Header="DockPanel"
     Tag="https://www.noesisengine.com/docs/Gui.Core._DockPanel.html">
 
-    <StackPanel>
-        <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The DockPanel defines an area where you can arrange child elements either horizontally or vertically, relative to each other."/>
-        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.pabloescriva.com/XamlPlayer/f61cab2616dc3a165783aef687cae8a2" TabIndex="100">
-            <HeaderedContentControl.Header>
-                <StackPanel>
-                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
-                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
-                        <Run FontWeight="Bold">Dock</Run>
-                        <Run>attached property changes the position of an element relative to other elements in the same DockPanel.</Run>
-                    </TextBlock>
-                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
-                        <Run>Using property</Run>
-                        <Run FontWeight="Bold">LastChildFill</Run>
-                        <Run>the last child element of the DockPanel will fill the remaining space, regardless of any other dock value set on that element.</Run>
-                    </TextBlock>
-                </StackPanel>
-            </HeaderedContentControl.Header>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" TextElement.Foreground="Black">
-                <Grid.Resources>
-                    <LinearGradientBrush x:Key="BgBrush" StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Offset="0" Color="#FF9BDEFF"/>
-                        <GradientStop Offset="1" Color="#FF69B5FF"/>
-                    </LinearGradientBrush>
-                </Grid.Resources>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
-                    <TextBlock Text="DockPanel size: "/>
-                    <TextBlock Text="{Binding ActualWidth, ElementName=DockPanel}"/>
-                    <TextBlock Text="x"/>
-                    <TextBlock Text="{Binding ActualHeight, ElementName=DockPanel}"/>
-                </StackPanel>
-                <DockPanel x:Name="DockPanel" Background="White" Height="240" Margin="8" Grid.Row="1" Width="360" LastChildFill="{Binding IsChecked, ElementName=LastChildFills}">
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="Top" Margin="4" Padding="0">
-                        <Grid>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <TextBlock Text="dock="/>
-                                <TextBlock Text="{Binding (DockPanel.Dock), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="Bottom" Margin="4" Padding="0">
-                        <Grid>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <TextBlock Text="dock="/>
-                                <TextBlock Text="{Binding (DockPanel.Dock), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" Margin="4" Padding="0">
-                        <Grid>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <TextBlock Text="dock="/>
-                                <TextBlock Text="{Binding (DockPanel.Dock), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="Right" Margin="4" Padding="0">
-                        <Grid>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <TextBlock Text="dock="/>
-                                <TextBlock Text="{Binding (DockPanel.Dock), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="Top" Margin="4" Padding="0">
-                        <Grid>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <TextBlock Text="dock="/>
-                                <TextBlock Text="{Binding (DockPanel.Dock), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource BgBrush}" DockPanel.Dock="{Binding SelectedItem.Content, ElementName=Positioning}" Margin="4" Padding="0">
-                        <Grid>
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8">
-                                <TextBlock Text="Last Child" FontWeight="Bold"/>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="dock="/>
-                                    <TextBlock Text="{Binding (DockPanel.Dock), RelativeSource={RelativeSource AncestorType={x:Type Border}}}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </DockPanel>
-                <StackPanel Grid.Row="2" Margin="8,0,8,8" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="Last Child" Margin="0,0,16,0" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="Dock: " Margin="0,0,4,0" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="Positioning" Padding="4,5,0,5" Margin="0,0,16,0" VerticalAlignment="Center" Width="90">
-                        <ComboBoxItem Content="Left"/>
-                        <ComboBoxItem Content="Right"/>
-                        <ComboBoxItem Content="Top"/>
-                        <ComboBoxItem Content="Bottom" IsSelected="True"/>
-                    </ComboBox>
-                    <CheckBox x:Name="LastChildFills" Content="Fill space" IsChecked="False" VerticalAlignment="Center" Margin="0,0,8,0" Foreground="Black"/>
-                </StackPanel>
-            </Grid>
-        </HeaderedContentControl>
-    </StackPanel>
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The DockPanel defines an area where you can arrange child elements either horizontally or vertically, relative to each other."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/e6a94a8e1249ee3b2827c3f146960fc7" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run FontWeight="Bold">Dock</Run>
+            <Run>attached property changes the position of an element relative to other elements in the same DockPanel.</Run>
+          </TextBlock>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Using property</Run>
+            <Run FontWeight="Bold">LastChildFill</Run>
+            <Run>the last child element of the DockPanel will fill the remaining space, regardless of any other dock value set on that element.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+          <TextBlock Text="Dock" VerticalAlignment="Center"/>
+          <ComboBox x:Name="dock" Width="120" Margin="10,0,0,0" SelectedIndex="0">
+            <ComboBoxItem Content="Left"/>
+            <ComboBoxItem Content="Top"/>
+            <ComboBoxItem Content="Right"/>
+            <ComboBoxItem Content="Bottom"/>
+          </ComboBox>
+          <CheckBox x:Name="fill" Content="Fill remaining space" IsChecked="False" Margin="20,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+        <Border Background="{DynamicResource Brush.Background.Popup}" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1">
+          <DockPanel Width="350" Height="240" LastChildFill="{Binding IsChecked, ElementName=fill}">
+            <Border Background="Turquoise" Padding="10" DockPanel.Dock="Top" Margin="2">
+              <TextBlock Text="Top" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="LightSeaGreen" Padding="10" DockPanel.Dock="Bottom" Margin="2">
+              <TextBlock Text="Bottom" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Teal" Padding="20,10" DockPanel.Dock="Left" Margin="2">
+              <TextBlock Text="Left" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Teal" Padding="20,10" DockPanel.Dock="Right" Margin="2">
+              <TextBlock Text="Right" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="LightSeaGreen" Padding="10" DockPanel.Dock="Top" Margin="2">
+              <TextBlock Text="Top" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Turquoise" Padding="20,10" DockPanel.Dock="{Binding SelectedItem.Content, ElementName=dock}" Margin="2">
+              <TextBlock Text="{Binding SelectedItem.Content, ElementName=dock}" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </DockPanel>
+        </Border>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
 </HeaderedContentControl>

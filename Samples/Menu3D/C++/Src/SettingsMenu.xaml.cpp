@@ -7,7 +7,7 @@
 #include "SettingsMenu.xaml.h"
 #include "OptionSelector.xaml.h"
 
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 #include <NsGui/IntegrationAPI.h>
 
 
@@ -30,7 +30,4 @@ void SettingsMenu::InitializeComponent()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Menu3D::SettingsMenu)
-{
-    NsMeta<TypeId>("Menu3D.SettingsMenu");
-}
+NS_IMPLEMENT_REFLECTION_(Menu3D::SettingsMenu, "Menu3D.SettingsMenu")

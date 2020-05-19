@@ -19,10 +19,10 @@ using namespace Noesis;
 struct ViewModel::Quest: public BaseComponent
 {
 public:
-    NsString title;
+    String title;
     Ptr<ImageSource> image;
     QuestDifficulty difficulty;
-    NsString description;
+    String description;
     bool completed;
 
 private:

@@ -60,6 +60,7 @@
 #include "Muli-Italic.ttf.bin.h"
 #include "Caladea-Regular.ttf.bin.h"
 #include "CourierPrime-Regular.ttf.bin.h"
+#include "Aero Matics Regular.ttf.bin.h"
 #include "WidgetIcons.ttf.bin.h"
 
 #include "file.png.bin.h"
@@ -142,6 +143,7 @@ public:
             { "Samples/Fonts", Muli_Italic_ttf },
             { "Samples/Fonts", Caladea_Regular_ttf },
             { "Samples/Fonts", CourierPrime_Regular_ttf },
+            { "Samples/Fonts", Aero_Matics_Regular_ttf },
             { "Samples/Fonts", WidgetIcons_ttf }
         };
 

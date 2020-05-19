@@ -70,43 +70,57 @@
                 <GradientStop Color="White" Offset="0"/>
                 <GradientStop Color="Transparent" Offset="0"/>
             </LinearGradientBrush>
-            <SolidColorBrush x:Key="AccentBrush" Color="#AA87A0AC"/>
+            <SolidColorBrush x:Key="AccentBrush" Color="#AAACA987"/>
+            <SolidColorBrush x:Key="BackgroundNormalBrush" Color="#FF3E4146"/>
+            <SolidColorBrush x:Key="BackgroundOverBrush" Color="#FF5D6064"/>
+            <SolidColorBrush x:Key="BackgroundPressedBrush" Color="#FF393B40"/>
+            <SolidColorBrush x:Key="BackgroundPopupBrush" Color="#FF393B40"/>
+            <SolidColorBrush x:Key="BackgroundTrackBrush" Color="#FF31353C"/>
+            <SolidColorBrush x:Key="BorderPopupBrush" Color="#FF5D6064"/>
+            <LinearGradientBrush x:Key="FocusBrush" StartPoint="0,0" EndPoint="1,0.2">
+                <GradientStop Offset="0" Color="#18FFFFFF"/>
+                <GradientStop Offset="0.5" Color="#30FFFFFF"/>
+                <GradientStop Offset="1" Color="#20FFFFFF"/>
+            </LinearGradientBrush>
+            <Style x:Key="FocusStyle" TargetType="{x:Type Control}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Control}">
+                            <Border BorderThickness="1" BorderBrush="{StaticResource FocusBrush}"
+                                    CornerRadius="1"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style x:Key="PlayersHeaderStyle" TargetType="{x:Type TextBlock}">
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="Foreground" Value="{StaticResource PlayersHeaderFg}"/>
             </Style>
-            <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}" BasedOn="{StaticResource DefaultControlStyle}">
+            <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
                 <Setter Property="IsTabStop" Value="False"/>
                 <Setter Property="Focusable" Value="False"/>
+                <Setter Property="Background" Value="{StaticResource BackgroundNormalBrush}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Thumb}">
                             <Border x:Name="Border"
-                        CornerRadius="1"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"/>
+                                CornerRadius="1"
+                                Background="{TemplateBinding Background}"/>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource OverBdBrush}"/>
-                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource OverBgBrush}"/>
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource BackgroundOverBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsDragging" Value="True">
-                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource NormalBdBrush}"/>
-                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource OverBdBrush}"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBdBrush}"/>
-                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBgBrush}"/>
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource BackgroundPressedBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}" BasedOn="{StaticResource DefaultControlStyle}">
+            <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
                 <Setter Property="Focusable" Value="False"/>
                 <Setter Property="ClickMode" Value="Press"/>
                 <Setter Property="Delay" Value="250"/>
@@ -121,53 +135,56 @@
                                 <Path x:Name="Arrow"
                                         Stretch="Fill"
                                         Margin="1"
-                                        Stroke="{StaticResource NormalBdBrush}"
                                         Fill="{StaticResource AccentBrush}"
                                         Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource OverBdBrush}"/>
-                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource OverBgBrush}"/>
-                                    <Setter TargetName="Arrow" Property="Stroke" Value="{StaticResource OverBdBrush}"/>
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource BackgroundOverBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource NormalBdBrush}"/>
-                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource OverBdBrush}"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="false">
-                                    <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource DisabledCheckBgBrush}"/>
+                                    <Setter Property="Background" TargetName="Border" Value="{StaticResource BackgroundPressedBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
+            <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+                <Setter Property="IsTabStop" Value="False"/>
+                <Setter Property="Focusable" Value="False"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RepeatButton}">
+                            <Border Background="Transparent"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="ScrollBarStyle" TargetType="{x:Type ScrollBar}">
                 <Style.Triggers>
                     <Trigger Property="Orientation" Value="Vertical">
                         <Setter Property="MaxWidth" Value="15"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ScrollBar}">
-                                    <Grid MinWidth="{TemplateBinding MaxWidth}" MaxWidth="{TemplateBinding MaxWidth}">
+                                    <Grid>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition MinHeight="{TemplateBinding MaxWidth}" MaxHeight="{TemplateBinding MaxWidth}"/>
+                                            <RowDefinition Height="15"/>
                                             <RowDefinition Height="*"/>
-                                            <RowDefinition MinHeight="{TemplateBinding MaxWidth}" MaxHeight="{TemplateBinding MaxWidth}"/>
+                                            <RowDefinition Height="15"/>
                                         </Grid.RowDefinitions>
                                         <Border x:Name="Bg"
                                                 Grid.RowSpan="3"
-                                                Background="{StaticResource TrackBgBrush}"/>
+                                                Background="{StaticResource BackgroundTrackBrush}"/>
                                         <Track x:Name="PART_Track" Grid.Row="1" Margin="0,1" Orientation="Vertical" IsDirectionReversed="True">
                                             <Track.DecreaseRepeatButton>
                                                 <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageUpCommand"/>
                                             </Track.DecreaseRepeatButton>
                                             <Track.Thumb>
                                                 <Thumb x:Name="Thumb" Style="{StaticResource ScrollBarThumb}"
-                                                        Background="{TemplateBinding Background}"
                                                         BorderBrush="{TemplateBinding BorderBrush}"
-                                                        BorderThickness="{TemplateBinding BorderThickness}"/>
+                                                        BorderThickness="{TemplateBinding BorderThickness}" Margin="1,0"/>
                                             </Track.Thumb>
                                             <Track.IncreaseRepeatButton>
                                                 <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageDownCommand"/>
@@ -190,21 +207,17 @@
                                             </RepeatButton.Content>
                                         </RepeatButton>
                                     </Grid>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsEnabled" Value="False">
-                                            <Setter TargetName="Bg" Property="Background" Value="{StaticResource DisabledTrackBgBrush}"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <Style x:Key="ComboBoxDropDownButtonStyle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource DefaultControlStyle}">
+            <Style x:Key="ComboBoxDropDownButtonStyle" TargetType="{x:Type ToggleButton}">
                 <Setter Property="ClickMode" Value="Press"/>
                 <Setter Property="Focusable" Value="False"/>
                 <Setter Property="IsTabStop" Value="False"/>
+                <Setter Property="Background" Value="{StaticResource BackgroundNormalBrush}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -216,12 +229,10 @@
                                 <Border x:Name="Border"
                                     Grid.ColumnSpan="2"
                                     Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
                                     CornerRadius="1"/>
                                 <Border x:Name="Separator"
                                     Grid.Column="0"
-                                    Background="{StaticResource TrackBgBrush}"
+                                    Background="{StaticResource BorderPopupBrush}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="0,0,1,0"
                                     Margin="1,1,0,1"
@@ -236,7 +247,6 @@
                                     <Path x:Name="Arrow"
                                         Margin="-1,0"
                                         Stretch="Fill"
-                                        Stroke="{StaticResource NormalBdBrush}"
                                         Fill="{StaticResource AccentBrush}"
                                         Data="M0,0 L8,0 4,4 Z"/>
                                 </Border>
@@ -246,34 +256,24 @@
                                     <Setter TargetName="Separator" Property="Visibility" Value="Visible"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="BorderBrush" Value="{StaticResource OverBdBrush}"/>
-                                    <Setter Property="Background" Value="{StaticResource OverBgBrush}"/>
-                                    <Setter Property="Stroke" TargetName="Arrow" Value="{StaticResource OverBdBrush}"/>
+                                    <Setter Property="Background" Value="{StaticResource BackgroundOverBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsChecked" Value="true">
-                                    <Setter Property="Background" Value="{StaticResource OverBdBrush}"/>
-                                    <Setter Property="BorderBrush" Value="{StaticResource NormalBdBrush}"/>
-                                    <Setter Property="Stroke" TargetName="Arrow" Value="{StaticResource OverBdBrush}"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="BorderBrush" Value="{StaticResource DisabledBdBrush}"/>
-                                    <Setter Property="Background" Value="{StaticResource DisabledBgBrush}"/>
-                                    <Setter TargetName="Separator" Property="Background" Value="{StaticResource DisabledTrackBgBrush}"/>
-                                    <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource DisabledCheckBgBrush}"/>
+                                    <Setter Property="Background" Value="{StaticResource BackgroundOverBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource DefaultControlStyle}">
+            <Style TargetType="{x:Type ComboBox}">
                 <Setter Property="MinHeight" Value="15"/>
                 <Setter Property="Padding" Value="2,4"/>
                 <Setter Property="FontSize" Value="24"/>
                 <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
                 <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
                 <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
-                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
                 <Setter Property="ItemsPanel">
                     <Setter.Value>
                         <ItemsPanelTemplate>
@@ -285,11 +285,6 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ComboBox}">
                             <Grid>
-                                <Rectangle x:Name="FocusEngagementBd"
-                                    Grid.ColumnSpan="3"
-                                    Stroke="{StaticResource FocusBdBrush}"
-                                    Margin="-2"
-                                    Visibility="Collapsed"/>
                                 <ToggleButton x:Name="DropDownButton"
                                     Style="{StaticResource ComboBoxDropDownButtonStyle}"
                                     MinWidth="{TemplateBinding MinHeight}"
@@ -307,22 +302,8 @@
                                             IsHitTestVisible="False"
                                             Margin="{TemplateBinding Padding}"/>
                                     </Border>
-                                    <TextBox x:Name="PART_EditableTextBox"
-                                        Focusable="True"
-                                        IsReadOnly="{TemplateBinding IsReadOnly}"
-                                        Style="{StaticResource ComboBoxTextBox}"
-                                        Padding="{TemplateBinding Padding}"
-                                        Foreground="{TemplateBinding Foreground}"
-                                        IsHitTestVisible="False"
-                                        Visibility="Hidden"/>
                                     <Border Grid.Column="1" MinWidth="{TemplateBinding MinHeight}" IsHitTestVisible="False"/>
                                 </Grid>
-                                <Border x:Name="Focus"
-                                    BorderBrush="{StaticResource AccentBrush}"
-                                    BorderThickness="1"
-                                    CornerRadius="1"
-                                    IsHitTestVisible="False"
-                                    Visibility="Collapsed"/>
                                 <Popup x:Name="PART_Popup"
                                     IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                                     Focusable="False"
@@ -331,99 +312,68 @@
                                     VerticalOffset="1"
                                     AllowsTransparency="True">
                                     <Border x:Name="DropDownBorder"
-                                        Background="{StaticResource TrackBgBrush}"
-                                        BorderBrush="{StaticResource TrackBdBrush}"
+                                        Background="{StaticResource BackgroundPopupBrush}"
+                                        BorderBrush="{StaticResource BorderPopupBrush}"
                                         MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                         MinWidth="{TemplateBinding ActualWidth}"
                                         BorderThickness="1"
                                         CornerRadius="1">
-                                        <ScrollViewer>
-                                            <ItemsPresenter/>
-                                        </ScrollViewer>
+                                        <ItemsPresenter/>
                                     </Border>
                                 </Popup>
                             </Grid>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="TextElement.Foreground" Value="{StaticResource OverFgBrush}" TargetName="ContentSite"/>
-                                </Trigger>
                                 <Trigger Property="HasItems" Value="False">
                                     <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
-                                </Trigger>
-                                <MultiTrigger>
-                                    <MultiTrigger.Conditions>
-                                        <Condition Property="noesis:Element.IsFocusEngagementEnabled" Value="False"/>
-                                        <Condition Property="IsKeyboardFocusWithin" Value="True"/>
-                                    </MultiTrigger.Conditions>
-                                    <Setter TargetName="Focus" Property="Visibility" Value="Visible"/>
-                                </MultiTrigger>
-                                <MultiTrigger>
-                                    <MultiTrigger.Conditions>
-                                        <Condition Property="noesis:Element.IsFocusEngagementEnabled" Value="True"/>
-                                        <Condition Property="noesis:Element.IsFocusEngaged" Value="False"/>
-                                    </MultiTrigger.Conditions>
-                                    <Setter TargetName="FocusEngagementBd" Property="Visibility" Value="Visible"/>
-                                </MultiTrigger>
-                                <MultiTrigger>
-                                    <MultiTrigger.Conditions>
-                                        <Condition Property="noesis:Element.IsFocusEngagementEnabled" Value="True"/>
-                                        <Condition Property="noesis:Element.IsFocusEngaged" Value="True"/>
-                                    </MultiTrigger.Conditions>
-                                    <Setter TargetName="Focus" Property="Visibility" Value="Visible"/>
-                                </MultiTrigger>
-                                <Trigger Property="IsEditable" Value="True">
-                                    <Setter Property="IsTabStop" Value="False"/>
-                                    <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
-                                    <Setter TargetName="PART_EditableTextBox" Property="IsHitTestVisible" Value="True"/>
-                                    <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
-                                    <Setter TargetName="DropDownButton" Property="IsTabStop" Value="True"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Foreground" Value="{StaticResource DisabledFgBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
-                <Setter Property="Padding" Value="10,4"/>
+            <Style TargetType="{x:Type ComboBoxItem}">
                 <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                            <Border x:Name="Border" Background="{TemplateBinding Background}" Padding="10,4">
+                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource BackgroundOverBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
-            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="{StaticResource BackgroundNormalBrush}"/>
                 <Setter Property="Foreground" Value="{StaticResource ScoreFg}"/>
                 <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ButtonBase}">
                             <Border x:Name="Bg"
                                     Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    Padding="{TemplateBinding Padding}"
+                                    Padding="10,4"
                                     CornerRadius="1">
                                 <ContentPresenter
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="BorderBrush" Value="{StaticResource OverBdBrush}"/>
-                                    <Setter Property="Background" Value="{StaticResource OverBgBrush}"/>
-                                    <Setter Property="Foreground" Value="{StaticResource OverFgBrush}"/>
+                                    <Setter Property="Background" Value="{StaticResource BackgroundOverBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Foreground" Value="{StaticResource OverFgBrush}"/>
-                                    <Setter Property="Background" Value="{StaticResource OverBdBrush}"/>
-                                    <Setter Property="BorderBrush" Value="{StaticResource NormalBdBrush}"/>
-                                </Trigger>
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="BorderBrush" Value="{StaticResource DisabledBdBrush}"/>
-                                    <Setter Property="Background" Value="{StaticResource DisabledBgBrush}"/>
-                                    <Setter Property="Foreground" Value="{StaticResource DisabledFgBrush}"/>
+                                    <Setter Property="Background" Value="{StaticResource BackgroundPressedBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -619,14 +569,18 @@
                     <ScrollBar x:Name="PART_VerticalScrollBar"
                             Grid.Column="1"
                             Orientation="Vertical"
-                            MaxWidth="{TemplateBinding MinWidth}"
                             Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
                             Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
                             ViewportSize="{TemplateBinding ViewportHeight}"
                             Minimum="0"
-                            Maximum="{TemplateBinding ScrollableHeight}"/>
+                            Maximum="{TemplateBinding ScrollableHeight}"
+                            Style="{StaticResource ScrollBarStyle}"/>
                 </Grid>
             </ControlTemplate>
+            <Style x:Key="PlayerScrollStyle" TargetType="ScrollViewer">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
+                <Setter Property="Template" Value="{StaticResource PlayersScrollTemplate}"/>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -722,9 +676,9 @@
                 </Border>
                 <Border Grid.ColumnSpan="5" Grid.Row="3" BorderThickness="8,0" Background="#FF161D27">
                     <Grid>
-                        <Path Data="M542.84351,133.8146 L542.84076,133.81681 532.5987,138.89266 C508.13477,150.27778 479.78391,158.40543 448.7251,162.45173 416.66629,169.27477 382.90006,169.26122 350.85141,162.40092 315.60129,157.76299 283.83722,147.8689 257.31406,133.91961 261.48105,137.29725 265.61927,140.70708 269.80829,144.03222 L400.13214,217.0293 527.12409,146.41386 542.84076,133.81681 542.8418,133.81629 z M177.00501,0 L253.34615,0 252.9868,1.8376083 C252.2443,6.6188812 251.84827,11.604782 251.81227,16.772667 251.57341,50.942078 263.34098,77.383904 288.49546,100.93763 L288.60214,100.77842 C348.80347,146.27665 451.0932,146.28681 511.29453,100.77842 L511.40122,100.93763 C536.57599,77.377129 548.37573,50.957329 548.13861,16.774353 548.10218,11.606476 547.70581,6.620575 546.96302,1.8392944 L546.60327,0 622.94367,0 623.1825,0.83833313 C625.08966,8.6491318 625.82056,16.845718 625.15698,25.294701 623.64099,44.591637 617.02631,62.750282 606.15143,79.181129 625.61096,61.095345 643.95935,42.55217 660.46302,23.705803 697.11737,16.588028 757.5423,0.28590393 800,7.6137314 786.25397,44.845718 745.36823,92.15136 716.25342,120.41752 691.81043,125.67202 666.46619,132.6712 640.82392,140.79856 660.78827,139.44682 680.11573,142.77197 697.83393,151.22453 759.02448,180.42234 761.63648,278.78391&#xA;702.33295,315.48234 716.4516,278.10972 702.41761,243.07981 666.76099,222.1601 635.76251,203.97266 605.52637,201.5792 570.36768,213.53306 530.84955,231.84284 497.70322,269.21598 478.92557,311.79807 L476.31787,318.00001 441.65326,318.00001 441.78336,317.58729 C453.19873,283.40034 472.78406,251.58491 498.22095,226.18653 498.2684,226.12894 498.33106,226.08488 498.3768,226.02729 518.08539,202.11277 539.79785,182.7125 562.27082,168.48879 L562.27082,168.4854 C551.13684,172.75405 540.0553,177.14126 529.0788,181.56234 L415.53647,244.71104 415.53647,318.00001 383.88251,318.00001 383.88251,244.23676 274.73078,183.09702 C268.61579,180.62052 262.46225,178.16013 256.28247,175.72303 L237.69084,168.49432 237.68003,168.48711 237.67664,168.48879 237.69084,168.49432 246.26258,174.19654 C266.19083,188.1027 285.39136,206.07694 302.94611,227.67207 327.45667,252.60801 346.40097,283.5434 357.63428,316.74479 L358.03614,318.00001 323.40433,318.00001 320.79831,311.80042 C301.91757,268.98371 268.51541,231.42545 228.72774,213.21125 228.65662,213.1909 228.58545,213.18412 228.51433,213.16041 193.82317,201.61475 163.9224,204.15562 133.23227,222.16181 97.575602,243.08152 83.490794,278.11143 97.609477,315.4874 38.304232,278.7873 40.917925,180.42573 102.11019,151.22962 119.82672,142.77703 139.15415,139.45023 159.1185,140.79856 133.4728,132.678 108.13201,125.67539 83.68899,120.42091 54.577567,92.154747 13.742637,44.8508&#xA;0,7.6187973 7.9596525,6.2416687 16.512169,5.6928482 25.462752,5.7673721 64.241282,6.0790482 109.75308,17.92791 139.53527,23.712585 156.03559,42.553864 174.40598,61.103798 193.8469,79.18792 182.96866,62.751976 176.30652,44.598404 174.79048,25.299767 174.14231,17.048874 174.82373,9.038414 176.63152,1.3926926 z" Fill="#4C0D131D" Width="800" Height="318" Stretch="Fill"/>
-                        <ScrollViewer x:Name="PlayersScroll" Template="{StaticResource PlayersScrollTemplate}">
-                            <ItemsControl x:Name="Players" ItemsSource="{Binding Players}" ItemTemplate="{StaticResource PlayerTemplate}"/>
+                        <Path Data="M542.84351,133.8146 L542.84076,133.81681 532.5987,138.89266 C508.13477,150.27778 479.78391,158.40543 448.7251,162.45173 416.66629,169.27477 382.90006,169.26122 350.85141,162.40092 315.60129,157.76299 283.83722,147.8689 257.31406,133.91961 261.48105,137.29725 265.61927,140.70708 269.80829,144.03222 L400.13214,217.0293 527.12409,146.41386 542.84076,133.81681 542.8418,133.81629 z M177.00501,0 L253.34615,0 252.9868,1.8376083 C252.2443,6.6188812 251.84827,11.604782 251.81227,16.772667 251.57341,50.942078 263.34098,77.383904 288.49546,100.93763 L288.60214,100.77842 C348.80347,146.27665 451.0932,146.28681 511.29453,100.77842 L511.40122,100.93763 C536.57599,77.377129 548.37573,50.957329 548.13861,16.774353 548.10218,11.606476 547.70581,6.620575 546.96302,1.8392944 L546.60327,0 622.94367,0 623.1825,0.83833313 C625.08966,8.6491318 625.82056,16.845718 625.15698,25.294701 623.64099,44.591637 617.02631,62.750282 606.15143,79.181129 625.61096,61.095345 643.95935,42.55217 660.46302,23.705803 697.11737,16.588028 757.5423,0.28590393 800,7.6137314 786.25397,44.845718 745.36823,92.15136 716.25342,120.41752 691.81043,125.67202 666.46619,132.6712 640.82392,140.79856 660.78827,139.44682 680.11573,142.77197 697.83393,151.22453 759.02448,180.42234 761.63648,278.78391&#xA;702.33295,315.48234 716.4516,278.10972 702.41761,243.07981 666.76099,222.1601 635.76251,203.97266 605.52637,201.5792 570.36768,213.53306 530.84955,231.84284 497.70322,269.21598 478.92557,311.79807 L476.31787,318.00001 441.65326,318.00001 441.78336,317.58729 C453.19873,283.40034 472.78406,251.58491 498.22095,226.18653 498.2684,226.12894 498.33106,226.08488 498.3768,226.02729 518.08539,202.11277 539.79785,182.7125 562.27082,168.48879 L562.27082,168.4854 C551.13684,172.75405 540.0553,177.14126 529.0788,181.56234 L415.53647,244.71104 415.53647,318.00001 383.88251,318.00001 383.88251,244.23676 274.73078,183.09702 C268.61579,180.62052 262.46225,178.16013 256.28247,175.72303 L237.69084,168.49432 237.68003,168.48711 237.67664,168.48879 237.69084,168.49432 246.26258,174.19654 C266.19083,188.1027 285.39136,206.07694 302.94611,227.67207 327.45667,252.60801 346.40097,283.5434 357.63428,316.74479 L358.03614,318.00001 323.40433,318.00001 320.79831,311.80042 C301.91757,268.98371 268.51541,231.42545 228.72774,213.21125 228.65662,213.1909 228.58545,213.18412 228.51433,213.16041 193.82317,201.61475 163.9224,204.15562 133.23227,222.16181 97.575602,243.08152 83.490794,278.11143 97.609477,315.4874 38.304232,278.7873 40.917925,180.42573 102.11019,151.22962 119.82672,142.77703 139.15415,139.45023 159.1185,140.79856 133.4728,132.678 108.13201,125.67539 83.68899,120.42091 54.577567,92.154747 13.742637,44.8508 0,7.6187973 7.9596525,6.2416687 16.512169,5.6928482 25.462752,5.7673721 64.241282,6.0790482 109.75308,17.92791 139.53527,23.712585 156.03559,42.553864 174.40598,61.103798 193.8469,79.18792 182.96866,62.751976 176.30652,44.598404 174.79048,25.299767 174.14231,17.048874 174.82373,9.038414 176.63152,1.3926926 z" Fill="#4C0D131D" Width="800" Height="318" Stretch="Fill"/>
+                        <ScrollViewer x:Name="PlayersScroll" Style="{StaticResource PlayerScrollStyle}" VerticalScrollBarVisibility="Auto" Focusable="True" IsTabStop="True">
+                            <ItemsControl x:Name="Players" ItemsSource="{Binding Players}" ItemTemplate="{StaticResource PlayerTemplate}" Focusable="False"/>
                         </ScrollViewer>
                     </Grid>
                 </Border>

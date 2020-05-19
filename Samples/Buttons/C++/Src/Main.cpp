@@ -33,32 +33,32 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<Buttons::MainWindow>();
-        NsRegisterComponent<Buttons::App>();
+        RegisterComponent<Buttons::MainWindow>();
+        RegisterComponent<Buttons::App>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "Resources.xaml", Resources_xaml, sizeof(Resources_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
-            { "AudioSlide.mp3", AudioSlide_mp3, sizeof(AudioSlide_mp3) },
-            { "AudioClick.mp3", AudioClick_mp3, sizeof(AudioClick_mp3) }
+            { "App.xaml", App_xaml },
+            { "Resources.xaml", Resources_xaml },
+            { "MainWindow.xaml", MainWindow_xaml },
+            { "AudioSlide.mp3", AudioSlide_mp3 },
+            { "AudioClick.mp3", AudioClick_mp3 }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] = 
         {
-            { "", Aero_Matics_Regular_ttf, sizeof(Aero_Matics_Regular_ttf) }
+            { "", Aero_Matics_Regular_ttf }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

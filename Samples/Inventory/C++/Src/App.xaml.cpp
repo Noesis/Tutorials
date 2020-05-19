@@ -6,7 +6,7 @@
 
 #include "App.xaml.h"
 
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 
 
 using namespace Inventory;
@@ -16,7 +16,4 @@ using namespace Noesis;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Inventory::App)
-{
-    NsMeta<TypeId>("Inventory.App");
-}
+NS_IMPLEMENT_REFLECTION_(Inventory::App, "Inventory.App")

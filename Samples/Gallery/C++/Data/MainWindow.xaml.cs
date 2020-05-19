@@ -124,7 +124,7 @@ namespace Gallery
 
             ThemeColors = new List<ColorItem>
             {
-                new ColorItem { Name = "Dark", Color = Color.FromRgb(32, 40, 47) },
+                new ColorItem { Name = "Dark", Color = Color.FromRgb(16, 20, 24) },
                 new ColorItem { Name = "Light", Color = Color.FromRgb(246, 247, 248) }
             };
 
@@ -152,7 +152,7 @@ namespace Gallery
             {
                 if (ActualWidth > ActualHeight)
                 {
-                    this.SampleOffset.Width = 250.0;
+                    this.SampleOffset.Width = this.SelectorBar.Width;
                     this.SelectorExpanderButton.Visibility = Visibility.Hidden;
                     this.SelectorExpanderButton.IsChecked = false;
                     this.SelectorExpanderButton.IsChecked = true;
@@ -172,16 +172,6 @@ namespace Gallery
                 }
             };
         }
-
-        public double SampleAvailableWidth
-        {
-            get { return (double)GetValue(SampleAvailableWidthProperty); }
-            set { SetValue(SampleAvailableWidthProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for SampleAvailableWidth.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty SampleAvailableWidthProperty =
-            DependencyProperty.Register("SampleAvailableWidth", typeof(double), typeof(MainWindow), new PropertyMetadata(1280.0));
 
         public List<Category> Categories { get; private set; }
 

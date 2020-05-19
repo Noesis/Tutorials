@@ -96,12 +96,6 @@ public:
     ColorItem* GetSelectedThemeAccent() const;
     void SetSelectedThemeAccent(ColorItem* value);
 
-    float GetSampleAvailableWidth() const;
-    void SetSampleAvailableWidth(float value);
-
-public:
-    static const Noesis::DependencyProperty* SampleAvailableWidthProperty;
-
 private:
     void InitializeComponent();
     void UpdateSample();
@@ -124,6 +118,7 @@ private:
     Noesis::ContentControl* mSampleContainer2;
 
     Noesis::FrameworkElement* mSampleOffset;
+    Noesis::FrameworkElement* mSelectorBar;
     Noesis::ToggleButton* mSelectorExpanderButton;
 
     typedef Noesis::HashMap<Noesis::String, Noesis::Ptr<Noesis::ResourceDictionary>>

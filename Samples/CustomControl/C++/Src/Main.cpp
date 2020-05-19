@@ -5,8 +5,7 @@
 
 
 #include <NsCore/Noesis.h>
-#include <NsCore/TypeId.h>
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 #include <NsCore/RegisterComponent.h>
 #include <NsCore/Boxing.h>
 #include <NsApp/EntryPoint.h>
@@ -34,19 +33,13 @@ namespace CustomControl
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public Application
 {
-    NS_IMPLEMENT_INLINE_REFLECTION(App, Application)
-    {
-        NsMeta<TypeId>("CustomControl.App");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "CustomControl.App")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class MainWindow final: public Window
 {
-    NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
-    {
-        NsMeta<TypeId>("CustomControl.MainWindow");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "CustomControl.MainWindow")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +47,7 @@ class HoursConverter: public BaseValueConverter
 {
 public:
     bool TryConvert(BaseComponent* value, const Type* type, BaseComponent* /*parameter*/,
-        Ptr<BaseComponent>& result)
+        Noesis::Ptr<BaseComponent>& result)
     {
         if (Boxing::CanUnbox<int>(value) && type == TypeOf<float>())
         {
@@ -66,10 +59,7 @@ public:
         return false;
     }
 
-    NS_IMPLEMENT_INLINE_REFLECTION(HoursConverter, BaseValueConverter)
-    {
-        NsMeta<TypeId>("CustomControl.HoursConverter");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(HoursConverter, BaseValueConverter, "CustomControl.HoursConverter")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,7 +67,7 @@ class MinutesConverter: public BaseValueConverter
 {
 public:
     bool TryConvert(BaseComponent* value, const Type* type, BaseComponent* /*parameter*/,
-        Ptr<BaseComponent>& result)
+        Noesis::Ptr<BaseComponent>& result)
     {
         if (Boxing::CanUnbox<int>(value) && type == TypeOf<float>())
         {
@@ -89,10 +79,7 @@ public:
         return false;
     }
 
-    NS_IMPLEMENT_INLINE_REFLECTION(MinutesConverter, BaseValueConverter)
-    {
-        NsMeta<TypeId>("CustomControl.MinutesConverter");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(MinutesConverter, BaseValueConverter, "CustomControl.MinutesConverter")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +87,7 @@ class SecondsConverter: public BaseValueConverter
 {
 public:
     bool TryConvert(BaseComponent* value, const Type* type, BaseComponent* /*parameter*/,
-        Ptr<BaseComponent>& result)
+        Noesis::Ptr<BaseComponent>& result)
     {
         if (Boxing::CanUnbox<int>(value) && type == TypeOf<float>())
         {
@@ -112,10 +99,7 @@ public:
         return false;
     }
 
-    NS_IMPLEMENT_INLINE_REFLECTION(SecondsConverter, BaseValueConverter)
-    {
-        NsMeta<TypeId>("CustomControl.SecondsConverter");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(SecondsConverter, BaseValueConverter, "CustomControl.SecondsConverter")
 };
 
 }
@@ -126,33 +110,33 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<CustomControl::App>();
-        NsRegisterComponent<CustomControl::MainWindow>();
-        NsRegisterComponent<CustomControl::DateTime>();
-        NsRegisterComponent<CustomControl::HoursConverter>();
-        NsRegisterComponent<CustomControl::MinutesConverter>();
-        NsRegisterComponent<CustomControl::SecondsConverter>();
+        RegisterComponent<CustomControl::App>();
+        RegisterComponent<CustomControl::MainWindow>();
+        RegisterComponent<CustomControl::DateTime>();
+        RegisterComponent<CustomControl::HoursConverter>();
+        RegisterComponent<CustomControl::MinutesConverter>();
+        RegisterComponent<CustomControl::SecondsConverter>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml },
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] =
         {
-            { "", Aero_Matics_Regular_ttf, sizeof(Aero_Matics_Regular_ttf) }
+            { "", Aero_Matics_Regular_ttf }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

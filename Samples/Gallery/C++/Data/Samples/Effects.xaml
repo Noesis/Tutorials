@@ -28,9 +28,9 @@
           </Image.Effect>
         </Image>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-          <TextBlock Text="Blur Radius:" Foreground="Black" Margin="0,0,20,0"/>
+          <TextBlock Text="Blur Radius:" Margin="0,0,20,0"/>
           <Slider x:Name="radius" Minimum="0" Maximum="50" Value="0" Width="180"/>
-          <TextBlock Text="{Binding Value, ElementName=radius, StringFormat=F1}" Width="50" TextAlignment="Right" Foreground="Black"/>
+          <TextBlock Text="{Binding Value, ElementName=radius, StringFormat=F1}" Width="50" TextAlignment="Right"/>
         </StackPanel>
       </StackPanel>
     </HeaderedContentControl>
@@ -66,27 +66,27 @@
           </Canvas>
         </Viewbox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-          <TextBlock Text="Blur Radius:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <TextBlock Text="Blur Radius:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <Slider x:Name="blurRadius" Minimum="0" Maximum="50" Value="10" Width="180"/>
-          <TextBlock Text="{Binding Value, ElementName=blurRadius, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black"/>
+          <TextBlock Text="{Binding Value, ElementName=blurRadius, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-          <TextBlock Text="Depth:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <TextBlock Text="Depth:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <Slider x:Name="depth" Minimum="0" Maximum="30" Value="10" Width="180"/>
-          <TextBlock Text="{Binding Value, ElementName=depth, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black"/>
+          <TextBlock Text="{Binding Value, ElementName=depth, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-          <TextBlock Text="Direction:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <TextBlock Text="Direction:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <Slider x:Name="direction" Minimum="0" Maximum="360" Value="315" Width="180"/>
-          <TextBlock Text="{Binding Value, ElementName=direction, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black"/>
+          <TextBlock Text="{Binding Value, ElementName=direction, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-          <TextBlock Text="Opacity:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <TextBlock Text="Opacity:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <Slider x:Name="opacity" Minimum="0" Maximum="1" Value="1" LargeChange="0.1" Width="180"/>
-          <TextBlock Text="{Binding Value, ElementName=opacity, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black"/>
+          <TextBlock Text="{Binding Value, ElementName=opacity, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-          <TextBlock Text="Color:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Foreground="Black" Margin="0,0,20,0"/>
+          <TextBlock Text="Color:" Width="80" TextAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
           <ListBox x:Name="color" Margin="0,5,0,0" Width="230" SelectedIndex="0">
             <ListBox.ItemsPanel>
               <ItemsPanelTemplate>

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Gallery"
         mc:Ignorable="d"
         Title="NoesisGUI Controls Gallery"
@@ -15,6 +16,7 @@
         d:DesignWidth="1280" d:DesignHeight="768"
         d:DataContext="{d:DesignInstance {x:Type local:MainWindow}, IsDesignTimeCreatable=True}">
     <Window.Resources>
+        <sys:Double x:Key="SelectorBarWidth">215</sys:Double>
         <Storyboard x:Key="ShowContainer1">
             <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="SelectorTree">
                 <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="False"/>
@@ -332,12 +334,12 @@
 
         <Grid x:Name="SelectorBarPanel">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="{Binding Source={StaticResource SelectorBarWidth}}"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Border x:Name="SelectorExpanderButtonShadow" Background="#1F000000" CornerRadius="0,0,2,2" Height="41" Width="41" Margin="0,0,-1,-1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Grid x:Name="SelectorBar" Width="250" Background="{DynamicResource Brush.Window.Background}">
+                <Grid x:Name="SelectorBar" Width="{StaticResource SelectorBarWidth}" Background="{DynamicResource Brush.Window.Background}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="1"/>
@@ -346,14 +348,32 @@
                         <RowDefinition Height="40"/>
                     </Grid.RowDefinitions>
                     <Rectangle x:Name="SelectorBarShadow" Grid.RowSpan="6" Width="8" HorizontalAlignment="Right" Margin="0,0,-8,0" Fill="{StaticResource LR_Shadow}" IsHitTestVisible="False"/>
-                    <TextBlock x:Name="SelectorHeader" Grid.Row="0" Text="Controls Gallery" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{DynamicResource Font.Size.Header}">
-                        <TextBlock.RenderTransform>
-                            <TranslateTransform X="-8"/>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <FrameworkElement Grid.Column="0">
+                            <FrameworkElement.Style>
+                                <Style TargetType="FrameworkElement">
+                                    <Setter Property="Width" Value="0"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Visibility, ElementName=SelectorExpanderButton}" Value="Visible">
+                                            <Setter Property="Width" Value="40"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </FrameworkElement.Style>
+                        </FrameworkElement>
+                        <TextBlock x:Name="SelectorHeader" Grid.Column="1" Text="Controls Gallery" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{DynamicResource Font.Size.Header}" Margin="-5,0,0,0">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform X="-8"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
                     <Rectangle Grid.Row="1" Height="1" Fill="{DynamicResource Brush.Border.Disabled}"/>
                     <FrameworkElement x:Name="SelectorTreeHeightRef" Grid.Row="2"/>
-                    <TreeView x:Name="SelectorTree" Grid.Row="2" ItemsSource="{Binding Categories}" Tag="{Binding SelectedSample, Mode=TwoWay}" ItemTemplate="{StaticResource SampleCategoryTemplate}" ItemContainerStyle="{StaticResource SampleSelectorItemStyle}" Width="250" ScrollViewer.PanningMode="VerticalOnly">
+                    <TreeView x:Name="SelectorTree" Grid.Row="2" Width="{StaticResource SelectorBarWidth}" ItemsSource="{Binding Categories}" Tag="{Binding SelectedSample, Mode=TwoWay}" ItemTemplate="{StaticResource SampleCategoryTemplate}" ItemContainerStyle="{StaticResource SampleSelectorItemStyle}" ScrollViewer.PanningMode="VerticalOnly">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectedItemChanged">
                                 <ei:ChangePropertyAction PropertyName="Tag" Value="{Binding SelectedItem, ElementName=SelectorTree}"/>
@@ -372,7 +392,6 @@
                             <Border Height="32" Margin="0,0,10,0" Background="Transparent" Cursor="Hand">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <ei:PlaySoundAction Source="Sounds/Click.mp3" Volume="0.2"/>
                                         <ei:LaunchUriOrFileAction Path="https://twitter.com/noesisengine"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
@@ -390,8 +409,7 @@
                             <Border Width="108" Margin="10,0,0,0" Background="Transparent" Cursor="Hand">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <ei:PlaySoundAction Source="Sounds/Click.mp3" Volume="0.2"/>
-                                        <ei:LaunchUriOrFileAction Path="https://github.com/Noesis"/>
+                                        <ei:LaunchUriOrFileAction Path="https://github.com/Noesis/Tutorials/tree/master/Samples/Gallery"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal" UseLayoutRounding="False">
@@ -412,7 +430,7 @@
                         <ScaleTransform ScaleX="1"/>
                     </StackPanel.LayoutTransform>
                     <FrameworkElement Width="1"/>
-                    <FrameworkElement Width="250"/>
+                    <FrameworkElement Width="{StaticResource SelectorBarWidth}"/>
                 </StackPanel>
             </StackPanel>
             <ToggleButton x:Name="SelectorExpanderButton" Width="40" Height="40" Template="{StaticResource SelectorExpanderButtonTemplate}" FocusVisualStyle="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -427,8 +445,8 @@
             </Grid.RowDefinitions>
             <Decorator x:Name="DropDownHeight"/>
             <Grid Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="4">
-                <ComboBox x:Name="ThemeColorPicker" Width="140" Height="40" Margin="0,0,32,0" HorizontalAlignment="Right" ItemsSource="{Binding ThemeColors}" SelectedItem="{Binding SelectedThemeColor}" MaxDropDownHeight="{Binding ActualHeight, ElementName=DropDownHeight}" Style="{StaticResource ColorSelectorComboBoxStyle}" ItemTemplate="{StaticResource ColorItemTemplate}" ItemContainerStyle="{StaticResource ColorSelectorComboBoxItemStyle}" Tag="Theme"/>
-        <ComboBox x:Name="ThemeAccentPicker" Width="140" Height="40" HorizontalAlignment="Right" ItemsSource="{Binding ThemeAccents}" SelectedItem="{Binding SelectedThemeAccent}" MaxDropDownHeight="{Binding ActualHeight, ElementName=DropDownHeight}" Style="{StaticResource ColorSelectorComboBoxStyle}" ItemTemplate="{StaticResource ColorItemTemplate}" ItemContainerStyle="{StaticResource ColorSelectorComboBoxItemStyle}" Tag="Accent"/>
+                <ComboBox x:Name="ThemeColorPicker" Width="140" Height="40" Margin="0,0,56,0" HorizontalAlignment="Right" ItemsSource="{Binding ThemeColors}" SelectedItem="{Binding SelectedThemeColor}" MaxDropDownHeight="{Binding ActualHeight, ElementName=DropDownHeight}" Style="{StaticResource ColorSelectorComboBoxStyle}" ItemTemplate="{StaticResource ColorItemTemplate}" ItemContainerStyle="{StaticResource ColorSelectorComboBoxItemStyle}" Tag="Theme"/>
+                <ComboBox x:Name="ThemeAccentPicker" Width="140" Height="40" Margin="0,0,12,0" HorizontalAlignment="Right" ItemsSource="{Binding ThemeAccents}" SelectedItem="{Binding SelectedThemeAccent}" MaxDropDownHeight="{Binding ActualHeight, ElementName=DropDownHeight}" Style="{StaticResource ColorSelectorComboBoxStyle}" ItemTemplate="{StaticResource ColorItemTemplate}" ItemContainerStyle="{StaticResource ColorSelectorComboBoxItemStyle}" Tag="Accent"/>
             </Grid>
         </Grid>
     </Grid>

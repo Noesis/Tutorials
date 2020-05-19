@@ -15,7 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8D9C00A0-D5BE-3427-B4D2-484CC68BA27E}</ProjectGuid>
+    <ProjectGuid>{17D9B1ED-9614-3655-811C-34E4C48E1813}</ProjectGuid>
     <DefaultLanguage>en-US</DefaultLanguage>
     <ProjectName>Integration</ProjectName>
   </PropertyGroup>
@@ -39,16 +39,16 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
-    <Import Project="..\..\..\..\..\..\Config\Common.props" />
-    <Import Project="..\..\..\..\..\..\Config\Debug\Debug.props" />
+    <Import Project="..\..\..\..\..\Config\Common.props" />
+    <Import Project="..\..\..\..\..\Config\Debug\Debug.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="PropertySheets">
-    <Import Project="..\..\..\..\..\..\Config\Common.props" />
-    <Import Project="..\..\..\..\..\..\Config\Profile\Profile.props" />
+    <Import Project="..\..\..\..\..\Config\Common.props" />
+    <Import Project="..\..\..\..\..\Config\Profile\Profile.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
-    <Import Project="..\..\..\..\..\..\Config\Common.props" />
-    <Import Project="..\..\..\..\..\..\Config\Release\Release.props" />
+    <Import Project="..\..\..\..\..\Config\Common.props" />
+    <Import Project="..\..\..\..\..\Config\Release\Release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -68,8 +68,8 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\..\Core\Kernel\Include;..\..\..\..\Samples\Integration\Include;..\..\..\..\..\..\Include;..\..\..\..\Core\Nullable\Include;..\..\..\..\App\Providers\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\Display\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Render\RenderContext\Include;..\..\..\..\Gui\CachedFontProvider\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=2.2.4;NS_APP_FRAMEWORK;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;..\..\..\..\App\Theme\Include;..\..\..\..\Render\RenderContext\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=3.0.0;NS_APP_FRAMEWORK;NS_LICENSE;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -79,8 +79,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\..\Core\Kernel\Include;..\..\..\..\Samples\Integration\Include;..\..\..\..\..\..\Include;..\..\..\..\Core\Nullable\Include;..\..\..\..\App\Providers\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\Display\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Render\RenderContext\Include;..\..\..\..\Gui\CachedFontProvider\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=2.2.4;NS_APP_FRAMEWORK;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;..\..\..\..\App\Theme\Include;..\..\..\..\Render\RenderContext\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=3.0.0;NS_APP_FRAMEWORK;NS_LICENSE;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -90,8 +90,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\..\Core\Kernel\Include;..\..\..\..\Samples\Integration\Include;..\..\..\..\..\..\Include;..\..\..\..\Core\Nullable\Include;..\..\..\..\App\Providers\Include;..\..\..\..\Math\Utils\Include;..\..\..\..\App\Display\Include;..\..\..\..\Gui\Core\Include;..\..\..\..\..\..\3rdParty\EASTL\local\include;..\..\..\..\Math\VectorMath\Include;..\..\..\..\Gui\DependencySystem\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\Drawing\Types\Include;..\..\..\..\Render\RenderContext\Include;..\..\..\..\Gui\CachedFontProvider\Include;..\..\..\..\Core\NSTL\Include;..\..\..\..\Gui\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=2.2.4;NS_APP_FRAMEWORK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;..\..\..\..\App\Theme\Include;..\..\..\..\Render\RenderContext\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=3.0.0;NS_APP_FRAMEWORK;NS_LICENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>

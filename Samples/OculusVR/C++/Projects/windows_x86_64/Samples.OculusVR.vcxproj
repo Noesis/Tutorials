@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{57692EDC-ABE8-37DE-B29B-73568993C005}</ProjectGuid>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <ProjectName>OculusVR</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="..\..\..\..\..\Config\Common.props" />
+    <Import Project="..\..\..\..\..\Config\Debug\Debug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="PropertySheets">
+    <Import Project="..\..\..\..\..\Config\Common.props" />
+    <Import Project="..\..\..\..\..\Config\Profile\Profile.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="..\..\..\..\..\Config\Common.props" />
+    <Import Project="..\..\..\..\..\Config\Release\Release.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\..\..\..\..\Bin\windows_x86_64\</OutDir>
+    <TargetName>Samples.OculusVR</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <OutDir>..\..\..\..\..\..\Bin\windows_x86_64\</OutDir>
+    <TargetName>Samples.OculusVR</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\..\..\..\..\Bin\windows_x86_64\</OutDir>
+    <TargetName>Samples.OculusVR</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\Providers\Include;..\..\..\..\App\Theme\Include;..\..\..\..\Render\D3D11RenderDevice\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=3.0.0;NS_APP_FRAMEWORK;NS_LICENSE;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\Lib\windows_x86_64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>..\..\..\..\..\..\Lib\windows_x86_64\Samples.OculusVR.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\Providers\Include;..\..\..\..\App\Theme\Include;..\..\..\..\Render\D3D11RenderDevice\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=3.0.0;NS_APP_FRAMEWORK;NS_LICENSE;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\Lib\windows_x86_64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>..\..\..\..\..\..\Lib\windows_x86_64\Samples.OculusVR.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\Providers\Include;..\..\..\..\App\Theme\Include;..\..\..\..\Render\D3D11RenderDevice\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=3.0.0;NS_APP_FRAMEWORK;NS_LICENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\..\Lib\windows_x86_64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>..\..\..\..\..\..\Lib\windows_x86_64\Samples.OculusVR.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\Main.cpp">
+    </ClCompile>
+    <ClInclude Include="..\..\Src\OVR_CAPI.h" />
+    <ClCompile Include="..\..\Src\OVR_CAPIShim.c">
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles></ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="..\..\Src\OVR_CAPI_D3D.h" />
+    <ClInclude Include="..\..\Src\OVR_CAPI_Keys.h" />
+    <ClInclude Include="..\..\Src\OVR_CAPI_Prototypes.h" />
+    <ClCompile Include="..\..\Src\OVR_CAPI_Util.cpp">
+    </ClCompile>
+    <ClInclude Include="..\..\Src\OVR_CAPI_Util.h" />
+    <ClInclude Include="..\..\Src\OVR_ErrorCode.h" />
+    <ClInclude Include="..\..\Src\OVR_Math.h" />
+    <ClCompile Include="..\..\Src\OVR_StereoProjection.cpp">
+    </ClCompile>
+    <ClInclude Include="..\..\Src\OVR_StereoProjection.h" />
+    <ClInclude Include="..\..\Src\OVR_Version.h" />
+    <ClInclude Include="..\..\Src\Win32_DirectXAppUtil.h" />
+    <ResourceCompile Include="resources.rc" />
+    <None Include="Noesis.ico" />
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Fonts\Inconsolata-Bold.ttf">
+      <FileType>Document</FileType>
+      <Command>..\..\..\..\..\Tools\Bin2h\bin2h.exe "%(FullPath)" &gt; "$(IntermediateOutputPath)%(Filename)%(Extension).bin.h"</Command>
+      <Message>%(Filename)%(Extension)</Message>
+      <Outputs>$(IntermediateOutputPath)%(Filename)%(Extension).bin.h</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

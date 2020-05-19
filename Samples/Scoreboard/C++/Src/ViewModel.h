@@ -49,7 +49,7 @@ public:
     int damage;
     int heal;
     int kills;
-    NsString name;
+    Noesis::String name;
     int score;
     Team team;
 
@@ -79,7 +79,7 @@ public:
     Noesis::Collection<BaseComponent>* GetVisibleTeams() const;
 
 private:
-    NsString _name;
+    Noesis::String _name;
     int _elapsedTime;
     int _selectedTeam;
     Noesis::Ptr<Noesis::Collection<Player>> _players;

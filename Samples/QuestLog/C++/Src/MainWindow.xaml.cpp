@@ -8,7 +8,7 @@
 #include "ViewModel.h"
 
 #include <NsGui/IntegrationAPI.h>
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 
 
 using namespace QuestLog;
@@ -37,7 +37,4 @@ void MainWindow::OnInitialized(BaseComponent*, const EventArgs&)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(QuestLog::MainWindow)
-{
-    NsMeta<TypeId>("QuestLog.MainWindow");
-}
+NS_IMPLEMENT_REFLECTION_(QuestLog::MainWindow, "QuestLog.MainWindow")

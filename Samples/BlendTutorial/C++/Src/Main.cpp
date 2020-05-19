@@ -50,10 +50,7 @@ namespace BlendTutorial
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public Application
 {
-    NS_IMPLEMENT_INLINE_REFLECTION(App, Application)
-    {
-        NsMeta<TypeId>("BlendTutorial.App");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "BlendTutorial.App")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,12 +64,12 @@ public:
 
     SolidColorBrush* GetColor() const
     {
-        return GetValue<Ptr<SolidColorBrush>>(ColorProperty);
+        return GetValue<Noesis::Ptr<SolidColorBrush>>(ColorProperty);
     }
 
     void SetColor(SolidColorBrush* color)
     {
-        SetValue<Ptr<SolidColorBrush>>(ColorProperty, color);
+        SetValue<Noesis::Ptr<SolidColorBrush>>(ColorProperty, color);
     }
 
 public:
@@ -123,10 +120,10 @@ private:
     void UpdateSliders(const Color& color)
     {
         _isUpdatingSliders = true;
-        _r->SetValue((float)color.GetRedI());
-        _g->SetValue((float)color.GetGreenI());
-        _b->SetValue((float)color.GetBlueI());
-        _a->SetValue((float)color.GetAlphaI());
+        _r->SetValue(color.r * 255.0f);
+        _g->SetValue(color.g * 255.0f);
+        _b->SetValue(color.b * 255.0f);
+        _a->SetValue(color.a * 255.0f);
         _isUpdatingSliders = false;
     }
 
@@ -146,12 +143,10 @@ private:
     Slider* _b = nullptr;
     Slider* _a = nullptr;
 
-    NS_IMPLEMENT_INLINE_REFLECTION(ColorSelector, UserControl)
+    NS_IMPLEMENT_INLINE_REFLECTION(ColorSelector, UserControl, "BlendTutorial.ColorSelector")
     {
-        NsMeta<TypeId>("BlendTutorial.ColorSelector");
-
         UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
-        data->RegisterProperty<Ptr<SolidColorBrush>>(ColorProperty, "Color",
+        data->RegisterProperty<Noesis::Ptr<SolidColorBrush>>(ColorProperty, "Color",
             PropertyMetadata::Create(Brushes::Transparent()->Clone(),
                 &ColorSelector::OnColorChanged));
     }
@@ -285,8 +280,8 @@ private:
                 _containerBorder->GetActualWidth() - _selectedRectangle->GetActualWidth() - 5,
                 _containerBorder->GetActualHeight() - _selectedRectangle->GetActualHeight() - 5);
             Noesis::Point p = _containerBorder->PointFromScreen(e.position);
-            Canvas::SetLeft(_selectedRectangle, eastl::min_alt(p.x - _offset.x - 2, max_.x));
-            Canvas::SetTop(_selectedRectangle, eastl::min_alt(p.y - _offset.y - 2, max_.y));
+            Canvas::SetLeft(_selectedRectangle, Min(p.x - _offset.x - 2, max_.x));
+            Canvas::SetTop(_selectedRectangle, Min(p.y - _offset.y - 2, max_.y));
         }
     }
 
@@ -298,14 +293,14 @@ private:
             {
                 _selectedRectangle->SetStroke(_colorSelect->GetColor()->Clone());
                 _colorSelect->SetColor((SolidColorBrush*)_selectedRectangle->GetFill());
-                Ptr<Binding> binding = *new Binding("Color", _colorSelect);
+                Noesis::Ptr<Binding> binding = *new Binding("Color", _colorSelect);
                 _selectedRectangle->SetBinding(Shape::FillProperty, binding);
             }
             else
             {
                 _selectedRectangle->SetFill(_colorSelect->GetColor()->Clone());
                 _colorSelect->SetColor((SolidColorBrush*)_selectedRectangle->GetStroke());
-                Ptr<Binding> binding = *new Binding("Color", _colorSelect);
+                Noesis::Ptr<Binding> binding = *new Binding("Color", _colorSelect);
                 _selectedRectangle->SetBinding(Shape::StrokeProperty, binding);
             }
         }
@@ -314,25 +309,25 @@ private:
     void BindSelection()
     {
         {
-            Ptr<Binding> binding = *new Binding("Value", _positionLeft);
+            Noesis::Ptr<Binding> binding = *new Binding("Value", _positionLeft);
             binding->SetMode(BindingMode_TwoWay);
             _selectedRectangle->SetBinding(Canvas::LeftProperty, binding);
         }
         {
-            Ptr<Binding> binding = *new Binding("Value", _positionTop);
+            Noesis::Ptr<Binding> binding = *new Binding("Value", _positionTop);
             binding->SetMode(BindingMode_TwoWay);
             _selectedRectangle->SetBinding(Canvas::TopProperty, binding);
         }
         {
-            Ptr<Binding> binding = *new Binding("Value", _sizeWidth);
+            Noesis::Ptr<Binding> binding = *new Binding("Value", _sizeWidth);
             _selectedRectangle->SetBinding(FrameworkElement::WidthProperty, binding);
         }
         {
-            Ptr<Binding> binding = *new Binding("Value", _sizeHeight);
+            Noesis::Ptr<Binding> binding = *new Binding("Value", _sizeHeight);
             _selectedRectangle->SetBinding(FrameworkElement::HeightProperty, binding); \
         }
         {
-            Ptr<Binding> binding = *new Binding("Color", _colorSelect);
+            Noesis::Ptr<Binding> binding = *new Binding("Color", _colorSelect);
             _selectedRectangle->SetBinding(_fillSelected->GetIsChecked().GetValue() ?
                 Shape::FillProperty : Shape::StrokeProperty, binding);
         }
@@ -340,26 +335,26 @@ private:
 
     void SetSelection()
     {
-        Ptr<Border> selection = *new Border();
+        Noesis::Ptr<Border> selection = *new Border();
 
         {
-            Ptr<Binding> binding = *new Binding("Width", _selectedRectangle);
+            Noesis::Ptr<Binding> binding = *new Binding("Width", _selectedRectangle);
             selection->SetBinding(FrameworkElement::WidthProperty, binding);
         }
 
         {
-            Ptr<Binding> binding = *new Binding("Height", _selectedRectangle);
+            Noesis::Ptr<Binding> binding = *new Binding("Height", _selectedRectangle);
             selection->SetBinding(FrameworkElement::HeightProperty, binding);
         }
 
         _selectionBorder->SetChild(selection);
 
         {
-            Ptr<Binding> binding = *new Binding("(Canvas.Left)", _selectedRectangle);
+            Noesis::Ptr<Binding> binding = *new Binding("(Canvas.Left)", _selectedRectangle);
             _selectionBorder->SetBinding(Canvas::LeftProperty, binding);
         }
         {
-             Ptr<Binding> binding = *new Binding("(Canvas.Top)", _selectedRectangle);
+             Noesis::Ptr<Binding> binding = *new Binding("(Canvas.Top)", _selectedRectangle);
             _selectionBorder->SetBinding(Canvas::TopProperty, binding);
         }
 
@@ -393,8 +388,8 @@ private:
     }
 
 private:
-    Ptr<Noesis::Rectangle> _selectedRectangle;
-    Ptr<Border> _selectionBorder;
+    Noesis::Ptr<Noesis::Rectangle> _selectedRectangle;
+    Noesis::Ptr<Border> _selectionBorder;
     bool _isDragging = false;
     Noesis::Point _offset = Noesis::Point(0, 0);
 
@@ -407,10 +402,7 @@ private:
     Canvas* _containerCanvas = nullptr;
     RadioButton* _fillSelected = nullptr;
 
-    NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
-    {
-        NsMeta<TypeId>("BlendTutorial.MainWindow");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "BlendTutorial.MainWindow")
 };
 
 }
@@ -421,32 +413,32 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<BlendTutorial::App>();
-        NsRegisterComponent<BlendTutorial::MainWindow>();
-        NsRegisterComponent<BlendTutorial::ColorSelector>();
+        RegisterComponent<BlendTutorial::App>();
+        RegisterComponent<BlendTutorial::MainWindow>();
+        RegisterComponent<BlendTutorial::ColorSelector>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
-            { "ColorSelector.xaml", ColorSelector_xaml, sizeof(ColorSelector_xaml) },
-            { "Resources.xaml", Resources_xaml, sizeof(Resources_xaml) }
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml },
+            { "ColorSelector.xaml", ColorSelector_xaml },
+            { "Resources.xaml", Resources_xaml }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] =
         {
-            { "Fonts", WeblySleek_UI_Normal_ttf, sizeof(WeblySleek_UI_Normal_ttf) }
+            { "Fonts", WeblySleek_UI_Normal_ttf }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

@@ -5,9 +5,8 @@
 
 
 #include <NsCore/Noesis.h>
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 #include <NsCore/RegisterComponent.h>
-#include <NsCore/TypeId.h>
 #include <NsGui/Button.h>
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/TextBlock.h>
@@ -21,8 +20,6 @@
 
 #include "App.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
-#include "Roboto-Regular.ttf.bin.h"
-#include "Roboto-Bold.ttf.bin.h"
 
 
 using namespace Noesis;
@@ -46,8 +43,8 @@ static const char* const gTitles[] =
 static const char* const gBodies[] =
 {
     "The Secret of Monkey Island is a 1990 point-and-click graphic adventure game developed and "
-    "published by Lucasfilm Games.It takes place in a fantastical version of the Caribbean during "
-    "the age of piracy.The player assumes the role of Guybrush Threepwood, a young man who dreams "
+    "published by Lucasfilm Games. It takes place in a fantastical version of the Caribbean during "
+    "the age of piracy. The player assumes the role of Guybrush Threepwood, a young man who dreams "
     "of becoming a pirate and explores fictional islands while solving puzzles.",
 
     "Monkey Island 2: LeChuck's Revenge is an adventure game developed and published by LucasArts "
@@ -72,10 +69,7 @@ namespace RssReader
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public Application
 {
-    NS_IMPLEMENT_INLINE_REFLECTION(App, Application)
-    {
-        NsMeta<TypeId>("RssReader.App");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "RssReader.App")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -131,10 +125,7 @@ private:
     TextBlock* _desc;
     TextBox* _url;
 
-    NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
-    {
-        NsMeta<TypeId>("RssReader.MainWindow");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "RssReader.MainWindow")
 };
 
 }
@@ -145,30 +136,19 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<RssReader::App>();
-        NsRegisterComponent<RssReader::MainWindow>();
+        RegisterComponent<RssReader::App>();
+        RegisterComponent<RssReader::MainWindow>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) }
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
-    }
-
-    Ptr<FontProvider> GetFontProvider() const override
-    {
-        EmbeddedFont fonts[] =
-        {
-            { "", Roboto_Regular_ttf, sizeof(Roboto_Regular_ttf) },
-            { "", Roboto_Bold_ttf, sizeof(Roboto_Bold_ttf) }
-        };
-
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedXamlProvider(xamls);
     }
 };
 

@@ -9,80 +9,64 @@
     Header="Grid"
     Tag="https://www.noesisengine.com/docs/Gui.Core._Grid.html">
 
-    <StackPanel>
-        <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The Grid is used to arrange controls and content in rows and columns."/>
-        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.pabloescriva.com/XamlPlayer/f61cab2616dc3a165783aef687cae8a2" TabIndex="100">
-            <HeaderedContentControl.Header>
-                <StackPanel>
-                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
-                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
-                        <Run>Content is positioned in the Grid using</Run>
-                        <Run FontWeight="Bold">Grid.Row</Run><Run>,</Run>
-                        <Run FontWeight="Bold">Grid.RowSpan</Run><Run>,</Run>
-                        <Run FontWeight="Bold">Grid.Column</Run>
-                        <Run>and</Run>
-                        <Run FontWeight="Bold">Grid.ColumnSpan</Run>
-                        <Run>attached properties.</Run>
-                    </TextBlock>
-                </StackPanel>
-            </HeaderedContentControl.Header>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" TextElement.Foreground="Black">
-                <Grid.Resources>
-                    <LinearGradientBrush x:Key="VerBrush" StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Offset="0" Color="#FF9BDEFF"/>
-                        <GradientStop Offset="1" Color="#FF69B5FF"/>
-                    </LinearGradientBrush>
-                </Grid.Resources>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="50"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="8"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="350"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="First column:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <Slider Grid.Row="1" Grid.Column="1" x:Name="firstCol" Minimum="0" Maximum="2" IsSnapToTickEnabled="True" SmallChange="1" LargeChange="1" Margin="8,2" TickPlacement="BottomRight"/>
-                <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding FirstColumn, ElementName=uniformGrid}" VerticalAlignment="Center"/>
-
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Columns:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <Slider Grid.Row="2" Grid.Column="1" x:Name="cols" Minimum="3" Maximum="6" Value="4" IsSnapToTickEnabled="True" SmallChange="1" LargeChange="1" Margin="8,2" TickPlacement="BottomRight"/>
-                <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Columns, ElementName=uniformGrid}" VerticalAlignment="Center"/>
-
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="Rows:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <Slider Grid.Row="3" Grid.Column="1" x:Name="rows" Minimum="3" Maximum="6" Value="4" IsSnapToTickEnabled="True" SmallChange="1" LargeChange="1" Margin="8,2" TickPlacement="BottomRight"/>
-                <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding Rows, ElementName=uniformGrid}" VerticalAlignment="Center"/>
-
-                <UniformGrid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" x:Name="uniformGrid" Margin="8" Background="White"
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The Grid is used to arrange controls and content in rows and columns."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/c9a33579595fe175d514a37bb1057e85" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Content is positioned in the Grid using</Run>
+            <Run FontWeight="Bold">Grid.Row</Run><Run>,</Run>
+            <Run FontWeight="Bold">Grid.RowSpan</Run><Run>,</Run>
+            <Run FontWeight="Bold">Grid.Column</Run>
+            <Run>and</Run>
+            <Run FontWeight="Bold">Grid.ColumnSpan</Run>
+            <Run>attached properties.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <TextBlock Text="First column" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+          <Slider x:Name="firstCol" Minimum="0" Maximum="2" IsSnapToTickEnabled="True" SmallChange="1" LargeChange="1" Width="180" Margin="10,0" TickPlacement="BottomRight"/>
+          <TextBlock Text="{Binding FirstColumn, ElementName=uniformGrid}" Width="40" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <TextBlock Text="Columns" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+          <Slider x:Name="cols" Minimum="3" Maximum="6" Value="4" IsSnapToTickEnabled="True" SmallChange="1" LargeChange="1" Width="180" Margin="10,0" TickPlacement="BottomRight"/>
+          <TextBlock Text="{Binding Columns, ElementName=uniformGrid}" Width="40" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+          <TextBlock Text="Rows" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+          <Slider x:Name="rows" Minimum="3" Maximum="6" Value="4" IsSnapToTickEnabled="True" SmallChange="1" LargeChange="1" Width="180" Margin="10,0" TickPlacement="BottomRight"/>
+          <TextBlock Text="{Binding Rows, ElementName=uniformGrid}" Width="40" VerticalAlignment="Center"/>
+        </StackPanel>
+        <Border Grid.Row="1" Grid.Column="1" Background="{DynamicResource Brush.Background.Popup}" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1">
+          <UniformGrid x:Name="uniformGrid" Width="350" Height="350" ClipToBounds="True"
                     FirstColumn="{Binding Value, ElementName=firstCol}"
                     Columns="{Binding Value, ElementName=cols}"
-                    Rows="{Binding Value, ElementName=rows}"
-                    ClipToBounds="True">
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{StaticResource VerBrush}" Margin="4"/>
-                </UniformGrid>
-            </Grid>
-        </HeaderedContentControl>
-    </StackPanel>
+                    Rows="{Binding Value, ElementName=rows}">
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+            <Rectangle Fill="LightSeaGreen" Margin="2"/>
+          </UniformGrid>
+        </Border>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
 </HeaderedContentControl>

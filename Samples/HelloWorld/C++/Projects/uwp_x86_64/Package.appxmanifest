@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+  <Identity Name="6934197d-d90e-3c18-be9e-e352725c7dc6" Publisher="CN=Noesis Technologies" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="6934197d-d90e-3c18-be9e-e352725c7dc6" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>HelloWorld</DisplayName>
+    <PublisherDisplayName>Noesis Technologies</PublisherDisplayName>
+    <Logo>StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="EntryPoint">
+      <uap:VisualElements DisplayName="HelloWorld" Square150x150Logo="Square150x150Logo.png" Square44x44Logo="Square44x44Logo.png" Description="Application framework minimal sample" BackgroundColor="#124C7A">
+        <uap:DefaultTile Wide310x150Logo="Wide310x150Logo.png" Square71x71Logo="Square71x71Logo.png" Square310x310Logo="Square310x310Logo.png">
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="SplashScreen.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

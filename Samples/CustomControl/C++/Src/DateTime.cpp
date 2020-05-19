@@ -90,10 +90,8 @@ void DateTime::SetSecond(int second)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(DateTime)
+NS_IMPLEMENT_REFLECTION(DateTime, "CustomControl.DateTime")
 {
-    NsMeta<TypeId>("CustomControl.DateTime");
-
     const TypeClass* type = TypeOf<SelfClass>();
     UIElementData* data = NsMeta<UIElementData>(type);
     data->RegisterProperty<int>(DayProperty, "Day",

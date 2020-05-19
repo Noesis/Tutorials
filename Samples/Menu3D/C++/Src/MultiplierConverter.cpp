@@ -6,8 +6,10 @@
 
 #include "MultiplierConverter.h"
 
-#include <NsCore/ReflectionImplement.h>
-#include <NsCore/TypeId.h>
+#include <NsCore/ReflectionImplementEmpty.h>
+#include <NsCore/String.h>
+#include <NsCore/TypeOf.h>
+#include <NsCore/Boxing.h>
 
 #include <math.h>
 
@@ -22,8 +24,8 @@ bool MultiplierConverter::TryConvert(BaseComponent* value, const Type* targetTyp
 {
     if (targetType == TypeOf<float>() && value != 0 && parameter != 0)
     {
-        float input = (float)atof(value->ToString().c_str());
-        float multiplier = (float)atof(parameter->ToString().c_str());
+        float input = (float)atof(value->ToString().Str());
+        float multiplier = (float)atof(parameter->ToString().Str());
         result.Reset(Boxing::Box(input * multiplier));
         return true;
     }
@@ -34,7 +36,4 @@ bool MultiplierConverter::TryConvert(BaseComponent* value, const Type* targetTyp
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Menu3D::MultiplierConverter)
-{
-    NsMeta<TypeId>("Menu3D.MultiplierConverter");
-}
+NS_IMPLEMENT_REFLECTION_(Menu3D::MultiplierConverter, "Menu3D.MultiplierConverter")

@@ -33,7 +33,7 @@ public:
     Noesis::ResourceDictionary* GetResources() const;
 
 private:
-    NsString _name;
+    Noesis::String _name;
     Noesis::Ptr<Noesis::ResourceDictionary> _resources;
 
     NS_DECLARE_REFLECTION(Language, Noesis::BaseComponent)

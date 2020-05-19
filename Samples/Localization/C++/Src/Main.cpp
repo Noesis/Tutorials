@@ -5,9 +5,8 @@
 
 
 #include <NsCore/Noesis.h>
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 #include <NsCore/RegisterComponent.h>
-#include <NsCore/TypeId.h>
 #include <NsGui/BaseValueConverter.h>
 #include <NsDrawing/Color.h>
 #include <NsApp/ApplicationLauncher.h>
@@ -45,7 +44,7 @@ class LevelToColorConverter: public BaseValueConverter
 {
 public:
     bool TryConvert(BaseComponent* value, const Type* targetType, BaseComponent*,
-        Ptr<BaseComponent>& result)
+        Noesis::Ptr<BaseComponent>& result)
     {
         if (targetType == TypeOf<Color>() && Boxing::CanUnbox<float>(value))
         {
@@ -61,10 +60,7 @@ public:
     }
 
 private:
-    NS_IMPLEMENT_INLINE_REFLECTION(LevelToColorConverter, BaseValueConverter)
-    {
-        NsMeta<TypeId>("Localization.LevelToColorConverter");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(LevelToColorConverter, BaseValueConverter, "Localization.LevelToColorConverter")
 };
 
 }
@@ -75,47 +71,47 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<Localization::LevelToColorConverter>();
-        NsRegisterComponent<Localization::MainWindow>();
-        NsRegisterComponent<Localization::App>();
+        RegisterComponent<Localization::LevelToColorConverter>();
+        RegisterComponent<Localization::MainWindow>();
+        RegisterComponent<Localization::App>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
-            { "Resources.xaml", Resources_xaml, sizeof(Resources_xaml) },
-            { "Language-en.xaml", Language_en_xaml, sizeof(Language_en_xaml) },
-            { "Language-fr.xaml", Language_fr_xaml, sizeof(Language_fr_xaml) },
-            { "Language-jp.xaml", Language_jp_xaml, sizeof(Language_jp_xaml) }
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml },
+            { "Resources.xaml", Resources_xaml },
+            { "Language-en.xaml", Language_en_xaml },
+            { "Language-fr.xaml", Language_fr_xaml },
+            { "Language-jp.xaml", Language_jp_xaml }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<TextureProvider> GetTextureProvider() const override
+    Noesis::Ptr<TextureProvider> GetTextureProvider() const override
     {
         EmbeddedTexture textures[] =
         {
-            { "Flag-en.png", Flag_en_png, sizeof(Flag_en_png) },
-            { "Flag-fr.png", Flag_fr_png, sizeof(Flag_fr_png) },
-            { "Flag-jp.png", Flag_jp_png, sizeof(Flag_jp_png) }
+            { "Flag-en.png", Flag_en_png },
+            { "Flag-fr.png", Flag_fr_png },
+            { "Flag-jp.png", Flag_jp_png }
         };
 
-        return *new EmbeddedTextureProvider(textures, NS_COUNTOF(textures));
+        return *new EmbeddedTextureProvider(textures);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] = 
         {
-            { "", FontopoNIHONGO_otf, sizeof(FontopoNIHONGO_otf) },
-            { "", Oxygen_Regular_ttf, sizeof(Oxygen_Regular_ttf) }
+            { "", FontopoNIHONGO_otf },
+            { "", Oxygen_Regular_ttf }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

@@ -131,7 +131,7 @@
                 </Grid>
             </Grid>
         </HeaderedContentControl>
-        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/b5e9c4cce253496046ed4f8f85532a8b" TabIndex="300" Background="#FFCBCBCB">
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/b5e9c4cce253496046ed4f8f85532a8b" TabIndex="300">
             <HeaderedContentControl.Header>
                 <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Custom style"/>
             </HeaderedContentControl.Header>
@@ -300,6 +300,7 @@
                     <Style x:Key="Style.ToggleButton.Switch" TargetType="{x:Type ToggleButton}">
                         <Setter Property="Background" Value="#1ea6e4"/>
                         <Setter Property="Template" Value="{StaticResource Template.ToggleButton.Switch}"/>
+                        <Setter Property="FontFamily" Value="Fonts/#Aero Matics"/>
                         <Setter Property="ClickMode" Value="Press"/>
                     </Style>
                 </Grid.Resources>

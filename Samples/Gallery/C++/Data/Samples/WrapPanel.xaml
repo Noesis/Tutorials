@@ -9,115 +9,73 @@
     Header="WrapPanel"
     Tag="https://www.noesisengine.com/docs/Gui.Core._WrapPanel.html">
 
-    <StackPanel>
-        <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The WrapPanel positions child elements sequentially from left to right, breaking content to the next line at the edge of the containing box."/>
-        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.pabloescriva.com/XamlPlayer/f61cab2616dc3a165783aef687cae8a2" TabIndex="100">
-            <HeaderedContentControl.Header>
-                <StackPanel>
-                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
-                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
-                        <Run FontWeight="Bold">Orientation</Run>
-                        <Run>property can be set to Vertical to position child elements from top to bottom.</Run>
-                    </TextBlock>
-                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
-                        <Run>By default each item gets the minimum space required to render, but a fixed width and height can be specified for all items with</Run>
-                        <Run FontWeight="Bold">ItemWidth</Run>
-                        <Run>and</Run>
-                        <Run FontWeight="Bold">ItemHeight</Run>
-                        <Run>properties.</Run>
-                    </TextBlock>
-                </StackPanel>
-            </HeaderedContentControl.Header>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" TextElement.Foreground="Black">
-                <Grid.Resources>
-                    <LinearGradientBrush x:Key="HorBrush" StartPoint="0,0" EndPoint="1,0">
-                        <GradientStop Offset="0" Color="#FF9BDEFF"/>
-                        <GradientStop Offset="1" Color="#FF69B5FF"/>
-                    </LinearGradientBrush>
-                    <LinearGradientBrush x:Key="VerBrush" StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Offset="0" Color="#FF9BDEFF"/>
-                        <GradientStop Offset="1" Color="#FF69B5FF"/>
-                    </LinearGradientBrush>
-                </Grid.Resources>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <WrapPanel Grid.Row="0">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*" MinHeight="150"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="Horizontal WrapPanels" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8,0,0" d:LayoutOverrides="GridBox"/>
-                        <WrapPanel x:Name="WrapPanel1" Background="White" Width="200" HorizontalAlignment="Center" Margin="8,8,8,0" Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Top" ItemWidth="{Binding SelectedItem.Content, ElementName=ItemsWidth}" ItemHeight="{Binding SelectedItem.Content, ElementName=ItemsHeight}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="40" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="40" Height="25" VerticalAlignment="Top"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="40" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="40" Height="25" VerticalAlignment="Bottom"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="40" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="40" Height="25"/>
-                        </WrapPanel>
-                        <WrapPanel x:Name="WrapPanel2" Background="White" Width="236" Margin="8" Orientation="Horizontal" Grid.Row="2" ItemWidth="{Binding SelectedItem.Content, ElementName=ItemsWidth}" ItemHeight="{Binding SelectedItem.Content, ElementName=ItemsHeight}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="40" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="50" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="60" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="70" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="80" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="90" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="100" Height="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource HorBrush}" Margin="4" Padding="0" Width="140" Height="25"/>
-                        </WrapPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="240"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="170"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Vertical WrapPanels" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,8,0,0" d:LayoutOverrides="GridBox"/>
-                        <WrapPanel x:Name="WrapPanel3" Background="White" Margin="8" Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" ItemWidth="{Binding SelectedItem.Content, ElementName=ItemsWidth}" ItemHeight="{Binding SelectedItem.Content, ElementName=ItemsHeight}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Padding="0" Width="25" Height="40"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Padding="0" HorizontalAlignment="Left" Width="25" Height="40"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Padding="0" HorizontalAlignment="Center" Width="25" Height="40"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Padding="0" HorizontalAlignment="Right" Width="25" Height="40"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Padding="0" Height="40" Width="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Padding="0" Height="40" Width="25"/>
-                        </WrapPanel>
-                        <WrapPanel x:Name="WrapPanel4" Background="White" Margin="0,8,8,8" Grid.Row="1" Grid.Column="1" Orientation="Vertical" ItemWidth="{Binding SelectedItem.Content, ElementName=ItemsWidth}" ItemHeight="{Binding SelectedItem.Content, ElementName=ItemsHeight}">
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Width="25" Height="40"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Width="25" Height="50"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Width="25" Height="60"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Width="25" Height="70"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Height="80" Width="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Height="90" Width="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Height="100" Width="25"/>
-                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{DynamicResource VerBrush}" Margin="4" Height="140" Width="25"/>
-                        </WrapPanel>
-                    </Grid>
-                </WrapPanel>
-
-                <Rectangle Grid.Row="2" Height="2" Fill="#80808080" VerticalAlignment="Top" />
-
-                <StackPanel Margin="8,8,8,8" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <TextBlock Text="ItemWidth" VerticalAlignment="Center" FontSize="10"/>
-                    <ComboBox x:Name="ItemsWidth" Width="64" Padding="4,5,0,5" Margin="2,0,0,0" FontSize="10" VerticalAlignment="Center">
-                        <ComboBoxItem Content="Auto" IsSelected="True"/>
-                        <ComboBoxItem Content="20"/>
-                        <ComboBoxItem Content="80"/>
-                    </ComboBox>
-                    <TextBlock Text="ItemHeight" VerticalAlignment="Center" Margin="4,0,0,0" FontSize="10"/>
-                    <ComboBox x:Name="ItemsHeight" Width="64" Padding="4,5,0,5" Margin="2,0,0,0" FontSize="10" VerticalAlignment="Center">
-                        <ComboBoxItem Content="Auto" IsSelected="True"/>
-                        <ComboBoxItem Content="30"/>
-                        <ComboBoxItem Content="60"/>
-                    </ComboBox>
-                </StackPanel>
-            </Grid>
-        </HeaderedContentControl>
-    </StackPanel>
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The WrapPanel positions child elements sequentially from left to right, breaking content to the next line at the edge of the containing box."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/a0a1d237d0411964324a4fce14204dd6" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run FontWeight="Bold">Orientation</Run>
+            <Run>property can be set to Vertical to position child elements from top to bottom.</Run>
+          </TextBlock>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>By default each item gets the minimum space required to render, but a fixed width and height can be specified for all items with</Run>
+            <Run FontWeight="Bold">ItemWidth</Run>
+            <Run>and</Run>
+            <Run FontWeight="Bold">ItemHeight</Run>
+            <Run>properties.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <TextBlock Text="Orientantion" Width="100" VerticalAlignment="Center"/>
+          <ComboBox x:Name="orientation" Width="200" Margin="15,0,0,0" SelectedIndex="0">
+            <ComboBoxItem Content="Horizontal"/>
+            <ComboBoxItem Content="Vertical"/>
+          </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <TextBlock Text="ItemWidth" Width="100" VerticalAlignment="Center"/>
+          <ComboBox x:Name="itemWidth" Width="200" Margin="15,0,0,0" SelectedIndex="0">
+            <ComboBoxItem Content="Auto"/>
+            <ComboBoxItem Content="175"/>
+          </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+          <TextBlock Text="ItemHeight" Width="100" VerticalAlignment="Center"/>
+          <ComboBox x:Name="itemHeight" Width="200" Margin="15,0,0,0" SelectedIndex="0">
+            <ComboBoxItem Content="Auto"/>
+            <ComboBoxItem Content="100"/>
+          </ComboBox>
+        </StackPanel>
+        <Border Background="{DynamicResource Brush.Background.Popup}" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1">
+          <WrapPanel Width="350" Height="200"
+                     Orientation="{Binding SelectedItem.Content, ElementName=orientation}"
+                     ItemWidth="{Binding SelectedItem.Content, ElementName=itemWidth}"
+                     ItemHeight="{Binding SelectedItem.Content, ElementName=itemHeight}">
+            <Border Background="Turquoise" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="1" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="LightSeaGreen" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="2" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Teal" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="3" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="#7FFFEC" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="4" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Turquoise" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="5" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="LightSeaGreen" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="6" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </WrapPanel>
+        </Border>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
 </HeaderedContentControl>

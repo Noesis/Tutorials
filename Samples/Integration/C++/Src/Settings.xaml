@@ -5,7 +5,8 @@
   xmlns:local="clr-namespace:Integration"
   d:DesignWidth="1280" d:DesignHeight="720"
   Background="#FF242C32"
-  FontFamily="./#Hermeneus One">
+  FontFamily="./#Hermeneus One"
+  FontSize="15">
     <UserControl.Resources>
         <SolidColorBrush x:Key="Brush.Primary" Color="#4580A3"/>
         <SolidColorBrush x:Key="Brush.Primary.Shade0" Color="#17567B"/>
@@ -29,53 +30,53 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Viewbox Grid.Row="1" Grid.Column="1">
-            <StackPanel Width="400">
+            <StackPanel Width="520">
                 <Border Background="{StaticResource Brush.Primary}" Padding="0,2" CornerRadius="4,4,0,0">
-                    <TextBlock Text="S E T T I N G S" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+                    <TextBlock Text="S E T T I N G S" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
                 </Border>
-                <Border Background="#FF1E2225" BorderThickness="1,0,1,1" BorderBrush="{StaticResource Brush.Primary}" Height="240" Padding="10">
+                <Border Background="#FF1E2225" BorderThickness="1,0,1,1" BorderBrush="{StaticResource Brush.Primary}" Height="310" Padding="10">
                     <TabControl Padding="10">
                         <TabItem Header="Game">
-                            <Grid TextElement.Foreground="{StaticResource Brush.Foreground}" TextElement.FontSize="11">
+                            <Grid>
                                 <StackPanel>
                                     <Border Background="{StaticResource Brush.Primary.Shade0}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource Brush.Primary.Shade25}">
-                                        <TextBlock Text="B A T T L E" FontSize="9" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="B A T T L E" FontSize="14" HorizontalAlignment="Center"/>
                                     </Border>
-                                    <Grid Margin="10,5,10,10">
+                                    <Grid Margin="10,8,10,10">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
                                             <CheckBox Content="Activate aiming assistance"/>
-                                            <CheckBox Content="Use mouse movements" Margin="0,4,0,0"/>
+                                            <CheckBox Content="Use mouse movements" Margin="0,8,0,0"/>
                                         </StackPanel>
-                                        <StackPanel Grid.Column="1">
+                                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                             <CheckBox Content="Show attack decission effects"/>
-                                            <CheckBox Content="Enable weapon quick slots" Margin="0,4,0,0"/>
+                                            <CheckBox Content="Enable weapon quick slots" Margin="0,8,0,0"/>
                                         </StackPanel>
                                     </Grid>
                                     <Border Background="{StaticResource Brush.Primary.Shade0}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource Brush.Primary.Shade25}">
-                                        <TextBlock Text="S O C I A L" FontSize="9" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="S O C I A L" FontSize="14" HorizontalAlignment="Center"/>
                                     </Border>
-                                    <Grid Margin="10,5">
+                                    <Grid Margin="10,8">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition/>
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
                                             <CheckBox Content="Display online guild members"/>
-                                            <CheckBox Content="Display other's names" Margin="0,8,0,0"/>
-                                            <CheckBox Content="Display party member names" Margin="0,4,0,0"/>
-                                            <CheckBox Content="Display guild member names" Margin="0,4,0,0"/>
+                                            <CheckBox Content="Display other's names" Margin="0,12,0,0"/>
+                                            <CheckBox Content="Display party member names" Margin="0,8,0,0"/>
+                                            <CheckBox Content="Display guild member names" Margin="0,8,0,0"/>
                                         </StackPanel>
-                                        <StackPanel Grid.Column="1">
+                                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                             <CheckBox Content="Decline party and guild invites"/>
-                                            <Border BorderThickness="1" BorderBrush="{StaticResource Brush.Primary.Shade0}" Padding="4" Margin="0,4,0,0">
+                                            <Border BorderThickness="1" BorderBrush="{StaticResource Brush.Primary.Shade0}" Padding="4" Margin="0,8,0,0">
                                                 <StackPanel>
                                                     <RadioButton Content="Always display name" Margin="0,0,0,0" IsChecked="True"/>
-                                                    <RadioButton Content="Always hide name" Margin="0,4,0,0"/>
-                                                    <RadioButton Content="Display when attacked" Margin="0,4,0,0"/>
+                                                    <RadioButton Content="Always hide name" Margin="0,8,0,0"/>
+                                                    <RadioButton Content="Display when attacked" Margin="0,8,0,0"/>
                                                 </StackPanel>
                                             </Border>
                                         </StackPanel>
@@ -84,19 +85,19 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Video">
-                            <Grid TextElement.Foreground="{StaticResource Brush.Foreground}" TextElement.FontSize="11">
+                            <Grid>
                                 <StackPanel>
                                     <Border Background="{StaticResource Brush.Primary.Shade0}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource Brush.Primary.Shade25}">
-                                        <TextBlock Text="" FontSize="9" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="" FontSize="14" HorizontalAlignment="Center"/>
                                     </Border>
                                     <Grid Margin="10,5,10,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="4*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0" Text="Screen Resolution" VerticalAlignment="Center"/>
-                                        <ComboBox Grid.Column="1" MaxDropDownHeight="100" Margin="0,0,8,0" Padding="4,0" SelectedIndex="6">
+                                        <ComboBox Grid.Column="1" MaxDropDownHeight="160" Margin="0,0,8,0" Padding="6,5" SelectedIndex="6">
                                             <ComboBoxItem Content="800x600"/>
                                             <ComboBoxItem Content="1024x768"/>
                                             <ComboBoxItem Content="1280x720"/>
@@ -106,16 +107,16 @@
                                             <ComboBoxItem Content="1920x1080"/>
                                             <ComboBoxItem Content="1920x1200"/>
                                         </ComboBox>
-                                        <CheckBox Grid.Column="2" Content="Full Screen" VerticalAlignment="Center"/>
+                                        <CheckBox Grid.Column="2" Content="Full Screen" VerticalAlignment="Center" Margin="15,0,0,0"/>
                                     </Grid>
                                     <Grid Margin="10,4,10,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="4*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0" Text="Texture Quality" VerticalAlignment="Center"/>
-                                        <ComboBox Grid.Column="1" MaxDropDownHeight="100" Margin="0,0,8,0" Padding="4,0" SelectedIndex="2">
+                                        <ComboBox Grid.Column="1" MaxDropDownHeight="160" Margin="0,0,8,0" Padding="6,5" SelectedIndex="2">
                                             <ComboBoxItem Content="Low"/>
                                             <ComboBoxItem Content="Medium"/>
                                             <ComboBoxItem Content="High"/>
@@ -124,43 +125,43 @@
                                     </Grid>
                                     <Grid Margin="10,4,10,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="4*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0" Text="Graphic Quality" VerticalAlignment="Center"/>
-                                        <ComboBox Grid.Column="1" MaxDropDownHeight="100" Margin="0,0,8,0" Padding="4,0" SelectedIndex="2">
+                                        <ComboBox Grid.Column="1" MaxDropDownHeight="160" Margin="0,0,8,0" Padding="6,5" SelectedIndex="2">
                                             <ComboBoxItem Content="Low"/>
                                             <ComboBoxItem Content="Medium"/>
                                             <ComboBoxItem Content="High"/>
                                             <ComboBoxItem Content="Ultra"/>
                                         </ComboBox>
                                     </Grid>
-                                    <Grid Margin="10,4,10,10">
+                                    <Grid Margin="10,8,10,10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="4*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="Gamma" VerticalAlignment="Center"/>
                                         <Slider Grid.Column="1" Minimum="1" Maximum="3" SmallChange="0.05" LargeChange="0.2" Margin="0,0,8,0"/>
-                                        <CheckBox Grid.Column="2" Content="Show FPS" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+                                        <CheckBox Grid.Column="2" Content="Show FPS" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="15,0,0,0"/>
                                     </Grid>
                                     <Border Background="{StaticResource Brush.Primary.Shade0}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource Brush.Primary.Shade25}">
-                                        <TextBlock Text="" FontSize="9" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="" FontSize="14" HorizontalAlignment="Center"/>
                                     </Border>
-                                    <Grid Margin="10,5,10,0">
+                                    <Grid Margin="10,8,10,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel  Grid.Column="0">
                                             <CheckBox Content="Anti-aliasing"/>
-                                            <CheckBox Content="SSAO" Margin="0,4,0,0"/>
+                                            <CheckBox Content="SSAO" Margin="0,8,0,0"/>
                                         </StackPanel>
-                                        <StackPanel Grid.Column="1">
+                                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                             <CheckBox Content="Depth of Field"/>
-                                            <CheckBox Content="Screen Filter" Margin="0,4,0,0"/>
+                                            <CheckBox Content="Screen Filter" Margin="0,8,0,0"/>
                                         </StackPanel>
 
                                     </Grid>
@@ -168,53 +169,53 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Audio">
-                            <Grid TextElement.Foreground="{StaticResource Brush.Foreground}" TextElement.FontSize="11">
+                            <Grid>
                                 <StackPanel>
                                     <Border Background="{StaticResource Brush.Primary.Shade0}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource Brush.Primary.Shade25}">
-                                        <TextBlock Text="" FontSize="9" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="" FontSize="14" HorizontalAlignment="Center"/>
                                     </Border>
-                                    <Grid Margin="10,5,10,0">
+                                    <Grid Margin="10,8,10,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="5*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="Master volume" VerticalAlignment="Center"/>
                                         <Slider Minimum="0" Maximum="100" Value="100" Grid.Column="1" LargeChange="10" SmallChange="1"/>
                                     </Grid>
-                                    <Grid Margin="10,5,10,0">
+                                    <Grid Margin="10,8,10,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="5*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="Sound effects" VerticalAlignment="Center"/>
                                         <Slider Minimum="0" Maximum="100" Value="100" Grid.Column="1" LargeChange="10" SmallChange="1"/>
                                     </Grid>
-                                    <Grid Margin="10,5,10,0">
+                                    <Grid Margin="10,8,10,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="5*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="Voice" VerticalAlignment="Center"/>
                                         <Slider Minimum="0" Maximum="100" Value="80" Grid.Column="1" LargeChange="10" SmallChange="1"/>
                                     </Grid>
-                                    <Grid Margin="10,5,10,10">
+                                    <Grid Margin="10,8,10,10">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="5*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="Interface" VerticalAlignment="Center"/>
                                         <Slider Minimum="0" Maximum="100" Value="50" Grid.Column="1" LargeChange="10" SmallChange="1"/>
                                     </Grid>
                                     <Border Background="{StaticResource Brush.Primary.Shade0}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource Brush.Primary.Shade25}">
-                                        <TextBlock Text="" FontSize="9" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="" FontSize="14" HorizontalAlignment="Center"/>
                                     </Border>
-                                    <Grid Margin="10,5,10,0">
+                                    <Grid Margin="10,8,10,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <CheckBox Content="Boost microphone"/>
-                                        <CheckBox Grid.Column="1" Content="Night mode"/>
+                                        <CheckBox Grid.Column="1" Content="Night mode" Margin="10,0,0,0"/>
                                     </Grid>
                                 </StackPanel>
                             </Grid>

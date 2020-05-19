@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{31ff7e17-e5f7-43f0-aefa-56fbb1a333cf}</UniqueIdentifier>
+      <UniqueIdentifier>{54904abc-37a4-49d4-9ccd-68b0ac8e2326}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
-      <UniqueIdentifier>{fc01f97c-6763-4aee-877c-781a077e8e00}</UniqueIdentifier>
+      <UniqueIdentifier>{5fa80a6f-edd9-45ea-8f99-7271c9bb912f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{30a80709-5349-4c69-8e9f-0d50e61da48d}</UniqueIdentifier>
+      <UniqueIdentifier>{d9b63f22-9f2a-410a-8baa-0029548e6567}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,7 +33,7 @@
     <Image Include="SplashScreen.scale-200.png">
       <Filter>Resources</Filter>
     </Image>
-    <Image Include="Square44x44Logo.scale-400.png">
+    <Image Include="Square44x44Logo.scale-200.png">
       <Filter>Resources</Filter>
     </Image>
     <Image Include="Square44x44Logo.targetsize-24.png">
@@ -196,6 +196,9 @@
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Samples\Fonts\CourierPrime-Regular.ttf">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Samples\Fonts\Aero Matics Regular.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Samples\Fonts\WidgetIcons.ttf">
