@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 public class InventoryEditorTarget : TargetRules
 {
-	public InventoryEditorTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Editor;
+    public InventoryEditorTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Editor;
 
-		ExtraModuleNames.AddRange( new string[] { "Inventory" } );
-	}
+        ExtraModuleNames.AddRange( new string[] { "Inventory" } );
+    }
 }

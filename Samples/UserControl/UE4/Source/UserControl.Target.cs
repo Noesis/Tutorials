@@ -8,10 +8,10 @@ using System.Collections.Generic;
 
 public class UserControlTarget : TargetRules
 {
-	public UserControlTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Game;
+    public UserControlTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Game;
 
-		ExtraModuleNames.Add("UserControl");
-	}
+        ExtraModuleNames.Add("UserControl");
+    }
 }

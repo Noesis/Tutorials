@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 public class InventoryTarget : TargetRules
 {
-	public InventoryTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Game;
+    public InventoryTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Game;
 
-		ExtraModuleNames.AddRange( new string[] { "Inventory" } );
-	}
+        ExtraModuleNames.AddRange( new string[] { "Inventory" } );
+    }
 }

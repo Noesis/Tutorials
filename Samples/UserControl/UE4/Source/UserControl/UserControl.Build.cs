@@ -7,12 +7,12 @@ using UnrealBuildTool;
 
 public class UserControl : ModuleRules
 {
-	public UserControl(ReadOnlyTargetRules Target) : base(Target)
-	{
-		PrivatePCHHeaderFile = "UserControlGame.h";
+    public UserControl(ReadOnlyTargetRules Target) : base(Target)
+    {
+        PrivatePCHHeaderFile = "UserControlGame.h";
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "Noesis", "NoesisRuntime" });
-	}
+        PrivateDependencyModuleNames.AddRange(new string[] { "Noesis", "NoesisRuntime" });
+    }
 }

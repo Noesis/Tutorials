@@ -13,14 +13,14 @@ class LocalizationSampleModule : public FDefaultGameModuleImpl
 {
     virtual void StartupModule() override
     {
-        NsRegisterComponent<Localization::LevelToColorConverter>();
-        NsRegisterComponent<Localization::MainWindow>();
+        Noesis::RegisterComponent<Localization::LevelToColorConverter>();
+        Noesis::RegisterComponent<Localization::MainWindow>();
     }
 
     virtual void ShutdownModule() override
     {
-        NsUnregisterComponent<Localization::LevelToColorConverter>();
-        NsUnregisterComponent<Localization::MainWindow>();
+        Noesis::UnregisterComponent<Localization::LevelToColorConverter>();
+        Noesis::UnregisterComponent<Localization::MainWindow>();
     }
 };
 

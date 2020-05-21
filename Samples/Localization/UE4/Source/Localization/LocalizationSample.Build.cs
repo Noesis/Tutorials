@@ -7,12 +7,12 @@ using UnrealBuildTool;
 
 public class LocalizationSample : ModuleRules
 {
-	public LocalizationSample(ReadOnlyTargetRules Target) : base(Target)
-	{
-		PrivatePCHHeaderFile = "LocalizationGame.h";
+    public LocalizationSample(ReadOnlyTargetRules Target) : base(Target)
+    {
+        PrivatePCHHeaderFile = "LocalizationGame.h";
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "Noesis", "NoesisRuntime" });
-	}
+        PrivateDependencyModuleNames.AddRange(new string[] { "Noesis", "NoesisRuntime" });
+    }
 }

@@ -1000,7 +1000,7 @@
         </Storyboard>
 
         <Storyboard x:Key="BoardFlip1Anim">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Projection).(noesis:PlaneProjection.RotationY)" Storyboard.TargetName="Board">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.RotationY)" Storyboard.TargetName="Board">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-90">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <ExponentialEase EasingMode="EaseInOut"/>
@@ -1009,7 +1009,7 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="BoardFlip2Anim">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Projection).(noesis:PlaneProjection.RotationY)" Storyboard.TargetName="Board">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.RotationY)" Storyboard.TargetName="Board">
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-360">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <ExponentialEase EasingMode="EaseInOut"/>
@@ -1095,9 +1095,9 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </Grid.RenderTransform>
-                <noesis:Element.Projection>
-                    <noesis:PlaneProjection/>
-                </noesis:Element.Projection>
+                <noesis:Element.Transform3D>
+                    <noesis:CompositeTransform3D CenterX="100" CenterY="100"/>
+                </noesis:Element.Transform3D>
                 <UniformGrid x:Name="Cells" Rows="3" Columns="3" KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.DirectionalNavigation="Cycle">
                     <i:Interaction.Triggers>
                         <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow0">

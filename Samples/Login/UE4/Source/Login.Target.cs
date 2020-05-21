@@ -8,10 +8,10 @@ using System.Collections.Generic;
 
 public class LoginTarget : TargetRules
 {
-	public LoginTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Game;
+    public LoginTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Game;
 
-		ExtraModuleNames.Add("Login");
-	}
+        ExtraModuleNames.Add("Login");
+    }
 }

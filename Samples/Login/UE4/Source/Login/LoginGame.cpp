@@ -12,12 +12,12 @@ class LoginGameModule : public FDefaultGameModuleImpl
 {
     virtual void StartupModule() override
     {
-        NsRegisterComponent<Login::MainWindow>();
+        Noesis::RegisterComponent<Login::MainWindow>();
     }
 
     virtual void ShutdownModule() override
     {
-        NsUnregisterComponent<Login::MainWindow>();
+        Noesis::UnregisterComponent<Login::MainWindow>();
     }
 };
 

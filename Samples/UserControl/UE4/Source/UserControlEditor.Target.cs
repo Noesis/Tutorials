@@ -8,10 +8,10 @@ using System.Collections.Generic;
 
 public class UserControlEditorTarget : TargetRules
 {
-	public UserControlEditorTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Editor;
+    public UserControlEditorTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Editor;
 
-		ExtraModuleNames.Add("UserControl");
-	}
+        ExtraModuleNames.Add("UserControl");
+    }
 }

@@ -13,14 +13,14 @@ class UserControlGameModule : public FDefaultGameModuleImpl
 {
     virtual void StartupModule() override
     {
-        NsRegisterComponent<UserControl::MainWindow>();
-        NsRegisterComponent<UserControl::NumericUpDown>();
+        Noesis::RegisterComponent<UserControl::MainWindow>();
+        Noesis::RegisterComponent<UserControl::NumericUpDown>();
     }
 
     virtual void ShutdownModule() override
     {
-        NsUnregisterComponent<UserControl::MainWindow>();
-        NsUnregisterComponent<UserControl::NumericUpDown>();
+        Noesis::UnregisterComponent<UserControl::MainWindow>();
+        Noesis::UnregisterComponent<UserControl::NumericUpDown>();
     }
 };
 

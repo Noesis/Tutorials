@@ -28,10 +28,7 @@ namespace Localization
         }
 
     private:
-        NS_IMPLEMENT_INLINE_REFLECTION(LevelToColorConverter, Noesis::BaseValueConverter)
-        {
-            NsMeta<Noesis::TypeId>("Localization.LevelToColorConverter");
-        }
+        NS_IMPLEMENT_INLINE_REFLECTION_(LevelToColorConverter, Noesis::BaseValueConverter, "Localization.LevelToColorConverter")
     };
 
 }

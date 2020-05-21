@@ -23,24 +23,24 @@ class Menu3DGameModule : public FDefaultGameModuleImpl
 {
     virtual void StartupModule() override
     {
-        NsRegisterComponent<Menu3D::OptionSelector>();
-        NsRegisterComponent<Menu3D::MainMenu>();
-        NsRegisterComponent<Menu3D::StartMenu>();
-        NsRegisterComponent<Menu3D::SettingsMenu>();
-        NsRegisterComponent<Menu3D::MainWindow>();
-        NsRegisterComponent<Menu3D::MenuDescription>();
-        NsRegisterComponent<Menu3D::MultiplierConverter>();
+        Noesis::RegisterComponent<Menu3D::OptionSelector>();
+        Noesis::RegisterComponent<Menu3D::MainMenu>();
+        Noesis::RegisterComponent<Menu3D::StartMenu>();
+        Noesis::RegisterComponent<Menu3D::SettingsMenu>();
+        Noesis::RegisterComponent<Menu3D::MainWindow>();
+        Noesis::RegisterComponent<Menu3D::MenuDescription>();
+        Noesis::RegisterComponent<Menu3D::MultiplierConverter>();
     }
 
     virtual void ShutdownModule() override
     {
-        NsUnregisterComponent<Menu3D::OptionSelector>();
-        NsUnregisterComponent<Menu3D::MainMenu>();
-        NsUnregisterComponent<Menu3D::StartMenu>();
-        NsUnregisterComponent<Menu3D::SettingsMenu>();
-        NsUnregisterComponent<Menu3D::MainWindow>();
-        NsUnregisterComponent<Menu3D::MenuDescription>();
-        NsUnregisterComponent<Menu3D::MultiplierConverter>();
+        Noesis::UnregisterComponent<Menu3D::OptionSelector>();
+        Noesis::UnregisterComponent<Menu3D::MainMenu>();
+        Noesis::UnregisterComponent<Menu3D::StartMenu>();
+        Noesis::UnregisterComponent<Menu3D::SettingsMenu>();
+        Noesis::UnregisterComponent<Menu3D::MainWindow>();
+        Noesis::UnregisterComponent<Menu3D::MenuDescription>();
+        Noesis::UnregisterComponent<Menu3D::MultiplierConverter>();
     }
 };
 

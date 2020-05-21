@@ -25,23 +25,21 @@ MenuDescription::MenuDescription()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void MenuDescription::InitializeComponent()
 {
-    GUI::LoadComponent(this, "/Game/MenuDescription.xaml");
+    GUI::LoadComponent(this, "MenuDescription.xaml");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Menu3D::MenuDescription)
+NS_IMPLEMENT_REFLECTION(Menu3D::MenuDescription, "Menu3D.MenuDescription")
 {
-    NsMeta<TypeId>("Menu3D.MenuDescription");
-
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
-    data->RegisterProperty<NsString>(DescriptionProperty, "Description",
-        PropertyMetadata::Create(NsString()));
-    data->RegisterProperty<NsString>(AcceptTextProperty, "AcceptText",
-        PropertyMetadata::Create(NsString()));
-    data->RegisterProperty<NsString>(CancelTextProperty, "CancelText",
-        PropertyMetadata::Create(NsString()));
+    data->RegisterProperty<String>(DescriptionProperty, "Description",
+        PropertyMetadata::Create(String()));
+    data->RegisterProperty<String>(AcceptTextProperty, "AcceptText",
+        PropertyMetadata::Create(String()));
+    data->RegisterProperty<String>(CancelTextProperty, "CancelText",
+        PropertyMetadata::Create(String()));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

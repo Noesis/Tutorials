@@ -14,23 +14,23 @@
 
 class InventoryGameModule : public FDefaultGameModuleImpl
 {
-	virtual void StartupModule() override
-	{
-		NsRegisterComponent<Inventory::AnimatedNumber>();
-		NsRegisterComponent<Inventory::DragAdornerBehavior>();
-		NsRegisterComponent<Inventory::DragItemBehavior>();
-		NsRegisterComponent<Inventory::DropItemBehavior>();
-		NsRegisterComponent<Inventory::MainWindow>();
-	}
+    virtual void StartupModule() override
+    {
+        Noesis::RegisterComponent<Inventory::AnimatedNumber>();
+        Noesis::RegisterComponent<Inventory::DragAdornerBehavior>();
+        Noesis::RegisterComponent<Inventory::DragItemBehavior>();
+        Noesis::RegisterComponent<Inventory::DropItemBehavior>();
+        Noesis::RegisterComponent<Inventory::MainWindow>();
+    }
 
-	virtual void ShutdownModule() override
-	{
-		NsUnregisterComponent<Inventory::AnimatedNumber>();
-		NsUnregisterComponent<Inventory::DragAdornerBehavior>();
-		NsUnregisterComponent<Inventory::DragItemBehavior>();
-		NsUnregisterComponent<Inventory::DropItemBehavior>();
-		NsUnregisterComponent<Inventory::MainWindow>();
-	}
+    virtual void ShutdownModule() override
+    {
+        Noesis::UnregisterComponent<Inventory::AnimatedNumber>();
+        Noesis::UnregisterComponent<Inventory::DragAdornerBehavior>();
+        Noesis::UnregisterComponent<Inventory::DragItemBehavior>();
+        Noesis::UnregisterComponent<Inventory::DropItemBehavior>();
+        Noesis::UnregisterComponent<Inventory::MainWindow>();
+    }
 };
 
 IMPLEMENT_PRIMARY_GAME_MODULE(InventoryGameModule, Inventory, "Inventory" );

@@ -7,8 +7,8 @@ using UnrealBuildTool;
 
 public class Inventory : ModuleRules
 {
-	public Inventory(ReadOnlyTargetRules Target) : base(Target)
-	{
+    public Inventory(ReadOnlyTargetRules Target) : base(Target)
+    {
         PrivatePCHHeaderFile = "InventoryGame.h";
 
         PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });

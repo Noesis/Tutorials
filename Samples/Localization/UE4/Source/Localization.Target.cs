@@ -8,10 +8,10 @@ using System.Collections.Generic;
 
 public class LocalizationTarget : TargetRules
 {
-	public LocalizationTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Game;
+    public LocalizationTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Game;
 
-		ExtraModuleNames.Add("LocalizationSample");
-	}
+        ExtraModuleNames.Add("LocalizationSample");
+    }
 }

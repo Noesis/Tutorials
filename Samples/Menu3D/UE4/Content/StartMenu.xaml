@@ -652,7 +652,7 @@
                             <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
                             <ToggleButton x:Name="Back" Style="{StaticResource MenuButtonStyle}" Content="BACK" Command="{Binding Back}"/>
                             <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                            <Grid Margin="18,4,0,0">
+                            <Grid x:Name="ToolTips" Margin="18,4,0,0">
                                 <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="For players looking for experience the game without any of the challenge." IsEnabled="{Binding IsKeyboardFocused, ElementName=Casual}"/>
                                 <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Recommended for standard player." IsEnabled="{Binding IsKeyboardFocused, ElementName=Normal}"/>
                                 <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="For experienced players only." IsEnabled="{Binding IsKeyboardFocused, ElementName=Expert}"/>

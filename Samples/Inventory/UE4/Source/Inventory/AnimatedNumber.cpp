@@ -8,8 +8,8 @@
 
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/Storyboard.h>
-#include <NsGui/AnimationUsingKeyFrames.h>
-#include <NsGui/LinearKeyFrame.h>
+#include <NsGui/Int32AnimationUsingKeyFrames.h>
+#include <NsGui/LinearInt32KeyFrame.h>
 #include <NsGui/FreezableCollection.h>
 #include <NsGui/PropertyPath.h>
 #include <NsGui/TimeSpan.h>
@@ -98,10 +98,8 @@ void AnimatedNumber::OnNumberChanged(DependencyObject* d,
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(AnimatedNumber)
+NS_IMPLEMENT_REFLECTION(AnimatedNumber,"Inventory.AnimatedNumber")
 {
-    NsMeta<TypeId>("Inventory.AnimatedNumber");
-
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<TimeSpan>(AnimationDurationProperty, "AnimationDuration",
         PropertyMetadata::Create(TimeSpan(0, 0, 0, 0, 500)));

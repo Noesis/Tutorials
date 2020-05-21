@@ -6,7 +6,7 @@
 
 #include "MainMenu.h"
 
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 #include <NsGui/IntegrationAPI.h>
 
 
@@ -23,13 +23,10 @@ MainMenu::MainMenu()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void MainMenu::InitializeComponent()
 {
-    GUI::LoadComponent(this, "/Game/MainMenu.xaml");
+    GUI::LoadComponent(this, "MainMenu.xaml");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Menu3D::MainMenu)
-{
-    NsMeta<TypeId>("Menu3D.MainMenu");
-}
+NS_IMPLEMENT_REFLECTION_(Menu3D::MainMenu, "Menu3D.MainMenu")

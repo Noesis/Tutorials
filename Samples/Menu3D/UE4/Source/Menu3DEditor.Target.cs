@@ -8,10 +8,10 @@ using System.Collections.Generic;
 
 public class Menu3DEditorTarget : TargetRules
 {
-	public Menu3DEditorTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Editor;
+    public Menu3DEditorTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Editor;
 
-		ExtraModuleNames.Add("Menu3D");
-	}
+        ExtraModuleNames.Add("Menu3D");
+    }
 }

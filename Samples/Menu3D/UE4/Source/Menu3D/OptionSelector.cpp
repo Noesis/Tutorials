@@ -72,7 +72,7 @@ BaseComponent* OptionSelector::GetSelectedOption() const
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void OptionSelector::InitializeComponent()
 {
-    GUI::LoadComponent(this, "/Game/OptionSelector.xaml");
+    GUI::LoadComponent(this, "OptionSelector.xaml");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -221,9 +221,8 @@ void OptionSelector::SetSelectedOption(BaseComponent* value)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Menu3D::OptionSelector)
+NS_IMPLEMENT_REFLECTION(Menu3D::OptionSelector, "Menu3D.OptionSelector")
 {
-    NsMeta<TypeId>("Menu3D.OptionSelector");
     NsProp("Options", &OptionSelector::GetOptions, &OptionSelector::SetOptions);
     NsProp("NumOptions", &OptionSelector::GetNumOptions);
     NsProp("LastIndex", &OptionSelector::GetLastIndex);

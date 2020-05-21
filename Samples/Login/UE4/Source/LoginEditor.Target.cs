@@ -8,10 +8,10 @@ using System.Collections.Generic;
 
 public class LoginEditorTarget : TargetRules
 {
-	public LoginEditorTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Editor;
+    public LoginEditorTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Editor;
 
-		ExtraModuleNames.Add("Login");
-	}
+        ExtraModuleNames.Add("Login");
+    }
 }

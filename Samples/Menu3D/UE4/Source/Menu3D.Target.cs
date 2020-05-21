@@ -8,10 +8,10 @@ using System.Collections.Generic;
 
 public class Menu3DTarget : TargetRules
 {
-	public Menu3DTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Game;
+    public Menu3DTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Game;
 
-		ExtraModuleNames.Add("Menu3D");
-	}
+        ExtraModuleNames.Add("Menu3D");
+    }
 }
