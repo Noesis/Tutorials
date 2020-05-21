@@ -1,0 +1,81 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="WrapPanel"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._WrapPanel.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The WrapPanel positions child elements sequentially from left to right, breaking content to the next line at the edge of the containing box."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/a0a1d237d0411964324a4fce14204dd6" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run FontWeight="Bold">Orientation</Run>
+            <Run>property can be set to Vertical to position child elements from top to bottom.</Run>
+          </TextBlock>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>By default each item gets the minimum space required to render, but a fixed width and height can be specified for all items with</Run>
+            <Run FontWeight="Bold">ItemWidth</Run>
+            <Run>and</Run>
+            <Run FontWeight="Bold">ItemHeight</Run>
+            <Run>properties.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <TextBlock Text="Orientantion" Width="100" VerticalAlignment="Center"/>
+          <ComboBox x:Name="orientation" Width="200" Margin="15,0,0,0" SelectedIndex="0">
+            <ComboBoxItem Content="Horizontal"/>
+            <ComboBoxItem Content="Vertical"/>
+          </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <TextBlock Text="ItemWidth" Width="100" VerticalAlignment="Center"/>
+          <ComboBox x:Name="itemWidth" Width="200" Margin="15,0,0,0" SelectedIndex="0">
+            <ComboBoxItem Content="Auto"/>
+            <ComboBoxItem Content="175"/>
+          </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+          <TextBlock Text="ItemHeight" Width="100" VerticalAlignment="Center"/>
+          <ComboBox x:Name="itemHeight" Width="200" Margin="15,0,0,0" SelectedIndex="0">
+            <ComboBoxItem Content="Auto"/>
+            <ComboBoxItem Content="100"/>
+          </ComboBox>
+        </StackPanel>
+        <Border Background="{DynamicResource Brush.Background.Popup}" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1">
+          <WrapPanel Width="350" Height="200"
+                     Orientation="{Binding SelectedItem.Content, ElementName=orientation}"
+                     ItemWidth="{Binding SelectedItem.Content, ElementName=itemWidth}"
+                     ItemHeight="{Binding SelectedItem.Content, ElementName=itemHeight}">
+            <Border Background="Turquoise" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="1" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="LightSeaGreen" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="2" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Teal" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="3" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="#7FFFEC" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="4" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Turquoise" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="5" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="LightSeaGreen" MinWidth="100" MinHeight="60" Margin="2">
+              <TextBlock Text="6" FontSize="36" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </WrapPanel>
+        </Border>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>

@@ -1,0 +1,65 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="DockPanel"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._DockPanel.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The DockPanel defines an area where you can arrange child elements either horizontally or vertically, relative to each other."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/e6a94a8e1249ee3b2827c3f146960fc7" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run FontWeight="Bold">Dock</Run>
+            <Run>attached property changes the position of an element relative to other elements in the same DockPanel.</Run>
+          </TextBlock>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Using property</Run>
+            <Run FontWeight="Bold">LastChildFill</Run>
+            <Run>the last child element of the DockPanel will fill the remaining space, regardless of any other dock value set on that element.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+          <TextBlock Text="Dock" VerticalAlignment="Center"/>
+          <ComboBox x:Name="dock" Width="120" Margin="10,0,0,0" SelectedIndex="0">
+            <ComboBoxItem Content="Left"/>
+            <ComboBoxItem Content="Top"/>
+            <ComboBoxItem Content="Right"/>
+            <ComboBoxItem Content="Bottom"/>
+          </ComboBox>
+          <CheckBox x:Name="fill" Content="Fill remaining space" IsChecked="False" Margin="20,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+        <Border Background="{DynamicResource Brush.Background.Popup}" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1">
+          <DockPanel Width="350" Height="240" LastChildFill="{Binding IsChecked, ElementName=fill}">
+            <Border Background="Turquoise" Padding="10" DockPanel.Dock="Top" Margin="2">
+              <TextBlock Text="Top" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="LightSeaGreen" Padding="10" DockPanel.Dock="Bottom" Margin="2">
+              <TextBlock Text="Bottom" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Teal" Padding="20,10" DockPanel.Dock="Left" Margin="2">
+              <TextBlock Text="Left" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Teal" Padding="20,10" DockPanel.Dock="Right" Margin="2">
+              <TextBlock Text="Right" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="LightSeaGreen" Padding="10" DockPanel.Dock="Top" Margin="2">
+              <TextBlock Text="Top" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Background="Turquoise" Padding="20,10" DockPanel.Dock="{Binding SelectedItem.Content, ElementName=dock}" Margin="2">
+              <TextBlock Text="{Binding SelectedItem.Content, ElementName=dock}" FontSize="16" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </DockPanel>
+        </Border>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>

@@ -1,0 +1,44 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{DynamicResource SampleControlStyle}"
+    Header="StatusBar"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._StatusBar.html">
+
+  <StackPanel>
+    <TextBlock Style="{DynamicResource SampleSectionDesc}" Text="Represents a control that displays items and information in a horizontal bar in an application window. StatusBars are usually placed at the bottom of the application."/>
+    <HeaderedContentControl Style="{DynamicResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/428dc7b52c22423c12634fe9a330f89d" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{DynamicResource SampleSectionTitle}" Text="Simple StatusBar"/>
+          <TextBlock Style="{DynamicResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Inside a StatusBar you can place any kind of controls, it is not limited to just text.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StatusBar Width="380">
+          <StatusBarItem>
+            <StackPanel Orientation="Horizontal">
+              <Image Source="Images/floppy-disk.png" Height="12"/>
+              <TextBlock Text="Item Saved" Margin="5,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+          </StatusBarItem>
+          <Separator/>
+          <StatusBarItem DockPanel.Dock="Right">
+            <TextBlock Text="{Binding Value, ElementName=DownloadProgress, StringFormat={}{0:F0} %}" VerticalAlignment="Center"/>
+          </StatusBarItem>
+          <StatusBarItem DockPanel.Dock="Right" VerticalContentAlignment="Stretch" Padding="4,3">
+            <ProgressBar x:Name="DownloadProgress" Value="60" Width="80" Height="10"/>
+          </StatusBarItem>
+          <StatusBarItem Content="Building..." DockPanel.Dock="Right" Padding="0,5"/>
+        </StatusBar>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>

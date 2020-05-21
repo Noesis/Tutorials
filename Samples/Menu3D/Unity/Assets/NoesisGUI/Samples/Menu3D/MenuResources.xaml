@@ -234,11 +234,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Storyboard x:Key="OnEnabled">
-        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="ContentHost">
-            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
-        </DoubleAnimationUsingKeyFrames>
-    </Storyboard>
     <ControlTemplate x:Key="MenuToolTipTemplate" TargetType="{x:Type ContentControl}">
         <ControlTemplate.Resources>
             <Storyboard x:Key="OnEnabled">

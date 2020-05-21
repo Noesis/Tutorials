@@ -34,32 +34,32 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<Scoreboard::MainWindow>();
-        NsRegisterComponent<Scoreboard::App>();
-        NsRegisterComponent<EnumConverter<Scoreboard::Team>>();
-        NsRegisterComponent<EnumConverter<Scoreboard::Class>>();
+        RegisterComponent<Scoreboard::MainWindow>();
+        RegisterComponent<Scoreboard::App>();
+        RegisterComponent<EnumConverter<Scoreboard::Team>>();
+        RegisterComponent<EnumConverter<Scoreboard::Class>>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) }
+            { "App.xaml", App_xaml},
+            { "MainWindow.xaml", MainWindow_xaml }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] = 
         {
-            { "Fonts", Cheboyga_ttf, sizeof(Cheboyga_ttf) },
-            { "Fonts", PERRYGOT_TTF, sizeof(PERRYGOT_TTF) }
+            { "Fonts", Cheboyga_ttf },
+            { "Fonts", PERRYGOT_TTF }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

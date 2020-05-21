@@ -8,7 +8,7 @@
 #include "ViewModel.h"
 
 #include <NsGui/IntegrationAPI.h>
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 
 
 using namespace Menu3D;
@@ -37,7 +37,4 @@ void MainWindow::OnLoaded(Noesis::BaseComponent*, const Noesis::RoutedEventArgs&
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Menu3D::MainWindow)
-{
-    NsMeta<TypeId>("Menu3D.MainWindow");
-}
+NS_IMPLEMENT_REFLECTION_(Menu3D::MainWindow, "Menu3D.MainWindow")

@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{9d44c418-773c-42e3-bca9-f7e1d4be55d9}</UniqueIdentifier>
+      <UniqueIdentifier>{399f0019-9682-4091-8cac-2da43b340de2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
-      <UniqueIdentifier>{99c353e9-549c-4977-934e-05f8bcb4a9ca}</UniqueIdentifier>
+      <UniqueIdentifier>{145dea4a-79fa-45aa-8ca6-8f0836ed5517}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{1ddb8fc0-1489-477a-b598-ece9fa9c66b1}</UniqueIdentifier>
+      <UniqueIdentifier>{b8d82d5b-936d-4d2d-9275-68e9f3e93f02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +25,9 @@
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\MainWindow.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Aero Matics Regular.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -42,8 +42,8 @@ enum ItemCategory
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 struct Item final: public Noesis::BaseComponent
 {
-    NsString name;
-    NsString description;
+    Noesis::String name;
+    Noesis::String description;
     ItemCategory category;
     int life;
     int mana;
@@ -105,7 +105,7 @@ private:
     bool IsItemAllowed(Item* item) const;
 
 private:
-    NsString _name;
+    Noesis::String _name;
     ItemCategory _allowedCategory;
     Noesis::Ptr<Item> _item;
     bool _isDragOver;
@@ -142,7 +142,7 @@ private:
     void UpdateStats(Slot* slot, Item* oldItem, Item* newItem);
 
 private:
-    NsString _name;
+    Noesis::String _name;
 
     int _life;
     int _mana;

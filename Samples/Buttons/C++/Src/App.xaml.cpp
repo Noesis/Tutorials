@@ -6,7 +6,7 @@
 
 #include "App.xaml.h"
 
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 
 
 using namespace Buttons;
@@ -16,7 +16,4 @@ using namespace Noesis;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Buttons::App)
-{
-    NsMeta<Noesis::TypeId>("Buttons.App");
-}
+NS_IMPLEMENT_REFLECTION_(Buttons::App, "Buttons.App")

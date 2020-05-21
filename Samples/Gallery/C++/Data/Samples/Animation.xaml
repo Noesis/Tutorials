@@ -1,0 +1,485 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="1720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="Animation"
+    Tag="https://www.noesisengine.com/docs/Gui.Core.AnimationTutorial.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="Animation makes it very straightforward to add dynamic effects to your controls and applications."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/d714ac1d83bd2397d5c74eb098bd1178" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Simple Animations"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Animations inheriting from</Run>
+            <Run FontWeight="Bold">AnimationTimeline</Run>
+            <Run>like</Run>
+            <Run FontWeight="Bold">DoubleAnimation</Run><Run>,</Run>
+            <Run FontWeight="Bold">ColorAnimation</Run><Run>,</Run>
+            <Run FontWeight="Bold">PointAnimation</Run><Run>, etc.</Run>
+            <Run>animate the value of a property of the corresponding type between two values using linear interpolation over a specified</Run>
+            <Run FontWeight="Bold">Duration</Run><Run>.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+          <Button Content="Animate Position" Width="175">
+            <Button.Triggers>
+              <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                  <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="rect1" Storyboard.TargetProperty="RenderTransform.X"
+                                     From="0" To="300" Duration="0:0:0.5" AutoReverse="True"/>
+                  </Storyboard>
+                </BeginStoryboard>
+              </EventTrigger>
+            </Button.Triggers>
+          </Button>
+          <Button Content="Animate Color" Width="175" Margin="10,0,0,0">
+            <Button.Triggers>
+              <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                  <Storyboard>
+                    <ColorAnimation Storyboard.TargetName="rect1" Storyboard.TargetProperty="Fill.Color"
+                                    From="Turquoise"  To="Purple" Duration="0:0:1" AutoReverse="True"/>
+                  </Storyboard>
+                </BeginStoryboard>
+              </EventTrigger>
+            </Button.Triggers>
+          </Button>
+        </StackPanel>
+        <Rectangle x:Name="rect1" Width="60" Height="60" HorizontalAlignment="Left" Margin="0,10,0,0" Fill="Turquoise">
+          <Rectangle.RenderTransform>
+            <TranslateTransform/>
+          </Rectangle.RenderTransform>
+        </Rectangle>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/9fae9a0444a6252223f835ce6994be9a" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Discrete Animations"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>It is also possible to animate properties using KeyFrame animations like</Run>
+            <Run FontWeight="Bold">BooleanAnimationUsingKeyFrames</Run><Run>,</Run>
+            <Run FontWeight="Bold">DoubleAnimationUsingKeyFrames</Run><Run>,</Run>
+            <Run FontWeight="Bold">ObjectAnimationUsingKeyFrames</Run><Run>, etc.</Run>
+            <Run>To animate between two values using discrete interpolation we can use discrete KeyFrames.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="360">
+        <Button Content="Animate Rectangle">
+          <Button.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+              <BeginStoryboard>
+                <Storyboard>
+                  <ObjectAnimationUsingKeyFrames Storyboard.TargetName="rect2" Storyboard.TargetProperty="Visibility">
+                    <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.6" Value="{x:Static Visibility.Visible}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.8" Value="{x:Static Visibility.Hidden}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.9" Value="{x:Static Visibility.Visible}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:1.1" Value="{x:Static Visibility.Hidden}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:1.2" Value="{x:Static Visibility.Visible}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:1.4" Value="{x:Static Visibility.Hidden}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:1.5" Value="{x:Static Visibility.Visible}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.7" Value="{x:Static Visibility.Hidden}"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:1.8" Value="{x:Static Visibility.Visible}"/>
+                  </ObjectAnimationUsingKeyFrames>
+                  <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rect2" Storyboard.TargetProperty="RenderTransform.X">
+                    <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:0.3" Value="60"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:0.6" Value="120"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:0.9" Value="180"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:1.2" Value="240"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:1.5" Value="300"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+                  </DoubleAnimationUsingKeyFrames>
+                  <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rect2" Storyboard.TargetProperty="RenderTransform.Y">
+                    <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:0.3" Value="30"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:0.9" Value="30"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:1.5" Value="30"/>
+                    <DiscreteDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+                  </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Button.Triggers>
+        </Button>
+        <Rectangle x:Name="rect2" Width="60" Height="30" Margin="0,10,0,30" HorizontalAlignment="Left" Fill="Turquoise">
+          <Rectangle.RenderTransform>
+            <TranslateTransform/>
+          </Rectangle.RenderTransform>
+        </Rectangle>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/39d59f4e714571bf537e2e74a5900df8" TabIndex="300">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Spline Animations"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>The value of a property can be animated using a splined interpolation, creating a variable transition determined by the</Run>
+            <Run FontWeight="Bold">KeySpline</Run>
+            <Run>property. Splined interpolation can be used to achieve more realistic timing effects such as acceleration and deceleration.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="360">
+        <Button Content="Animate Rectangle">
+          <Button.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+              <BeginStoryboard>
+                <Storyboard>
+                  <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rect3" Storyboard.TargetProperty="RenderTransform.X">
+                    <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <SplineDoubleKeyFrame KeyTime="0:0:1" Value="300" KeySpline="0.5,0,0,1"/>
+                    <SplineDoubleKeyFrame KeyTime="0:0:2" Value="0" KeySpline="0.7,0.2,0,0.6"/>
+                  </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Button.Triggers>
+        </Button>
+        <Rectangle x:Name="rect3" Width="60" Height="60" Margin="0,10,0,0" HorizontalAlignment="Left" Fill="Turquoise">
+          <Rectangle.RenderTransform>
+            <TranslateTransform/>
+          </Rectangle.RenderTransform>
+        </Rectangle>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/7624d5a3bd4d06923463ea5c88356b43" TabIndex="400">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Easing Animations"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Easing key frames allow you to use predefined easing functions like</Run>
+            <Run FontWeight="Bold">SineEase</Run><Run>,</Run>
+            <Run FontWeight="Bold">CircleEase</Run><Run>,</Run>
+            <Run FontWeight="Bold">PowerEase</Run><Run>, etc. to easily get relistic animations.</Run>
+            <Run>If no easing function is specified, this key frame linearly interpolates between the two values.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="360">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,4">
+          <TextBlock Text="Easing Function" Width="175"/>
+          <TextBlock Text="Easing Mode" Width="175" Margin="10,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+          <ComboBox x:Name="easingFn" Width="175" SelectedIndex="0" MaxDropDownHeight="200" ScrollViewer.CanContentScroll="False">
+            <ComboBoxItem Content="None"/>
+            <ComboBoxItem Content="SineEase">
+              <ComboBoxItem.Tag>
+                <SineEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="QuadraticEase">
+              <ComboBoxItem.Tag>
+                <QuadraticEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="CubicEase">
+              <ComboBoxItem.Tag>
+                <CubicEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="QuarticEase">
+              <ComboBoxItem.Tag>
+                <QuarticEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="QuinticEase">
+              <ComboBoxItem.Tag>
+                <QuinticEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="CircleEase">
+              <ComboBoxItem.Tag>
+                <CircleEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="PowerEase">
+              <ComboBoxItem.Tag>
+                <PowerEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}" Power="{Binding Value, ElementName=powerPower}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="ExponentialEase">
+              <ComboBoxItem.Tag>
+                <ExponentialEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}" Exponent="{Binding Value, ElementName=exponentialExponent}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="BackEase">
+              <ComboBoxItem.Tag>
+                <BackEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}" Amplitude="{Binding Value, ElementName=backAmplitude}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="BounceEase">
+              <ComboBoxItem.Tag>
+                <BounceEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}" Bounces="{Binding Value, ElementName=bounceBounces}" Bounciness="{Binding Value, ElementName=bounceBounciness}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+            <ComboBoxItem Content="ElasticEase">
+              <ComboBoxItem.Tag>
+                <ElasticEase EasingMode="{Binding SelectedItem.Content, ElementName=easingMode}" Oscillations="{Binding Value, ElementName=ellasticOscillations}" Springiness="{Binding Value, ElementName=ellasticSpringness}"/>
+              </ComboBoxItem.Tag>
+            </ComboBoxItem>
+          </ComboBox>
+          <ComboBox x:Name="easingMode" Width="175" SelectedIndex="0" Margin="10,0,0,0">
+            <ComboBoxItem Content="EaseIn"/>
+            <ComboBoxItem Content="EaseOut"/>
+            <ComboBoxItem Content="EaseInOut"/>
+          </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <StackPanel.Style>
+            <Style TargetType="StackPanel">
+              <Setter Property="Visibility" Value="Collapsed"/>
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedIndex, ElementName=easingFn}" Value="7">
+                  <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </StackPanel.Style>
+          <TextBlock Text="Power" Width="120" VerticalAlignment="Center"/>
+          <Slider x:Name="powerPower" Minimum="0" Maximum="5" Value="2" LargeChange="0.1" Width="180" Margin="10,0,0,0" VerticalAlignment="Center"/>
+          <TextBlock Text="{Binding Value, ElementName=powerPower, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <StackPanel.Style>
+            <Style TargetType="StackPanel">
+              <Setter Property="Visibility" Value="Collapsed"/>
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedIndex, ElementName=easingFn}" Value="8">
+                  <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </StackPanel.Style>
+          <TextBlock Text="Exponent" Width="120" VerticalAlignment="Center"/>
+          <Slider x:Name="exponentialExponent" Minimum="0" Maximum="5" Value="2" LargeChange="0.1" Width="180" Margin="10,0,0,0" VerticalAlignment="Center"/>
+          <TextBlock Text="{Binding Value, ElementName=exponentialExponent, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+          <StackPanel.Style>
+            <Style TargetType="StackPanel">
+              <Setter Property="Visibility" Value="Collapsed"/>
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedIndex, ElementName=easingFn}" Value="9">
+                  <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </StackPanel.Style>
+          <TextBlock Text="Amplitude" Width="120" VerticalAlignment="Center"/>
+          <Slider x:Name="backAmplitude" Minimum="0.1" Maximum="2" Value="1" LargeChange="0.1" Width="180" Margin="10,0,0,0" VerticalAlignment="Center"/>
+          <TextBlock Text="{Binding Value, ElementName=backAmplitude, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Margin="0,0,0,10">
+          <StackPanel.Style>
+            <Style TargetType="StackPanel">
+              <Setter Property="Visibility" Value="Collapsed"/>
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedIndex, ElementName=easingFn}" Value="10">
+                  <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </StackPanel.Style>
+          <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+            <TextBlock Text="Bounces" Width="120" VerticalAlignment="Center"/>
+            <Slider x:Name="bounceBounces" Minimum="1" Maximum="6" Value="2" LargeChange="1" Width="180" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Value, ElementName=bounceBounces, StringFormat=F0}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Bounciness" Width="120" VerticalAlignment="Center"/>
+            <Slider x:Name="bounceBounciness" Minimum="1" Maximum="4" Value="3" LargeChange="0.5" Width="180" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Value, ElementName=bounceBounciness, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
+          </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="0,0,0,10">
+          <StackPanel.Style>
+            <Style TargetType="StackPanel">
+              <Setter Property="Visibility" Value="Collapsed"/>
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedIndex, ElementName=easingFn}" Value="11">
+                  <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </StackPanel.Style>
+          <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+            <TextBlock Text="Oscillations" Width="120" VerticalAlignment="Center"/>
+            <Slider x:Name="ellasticOscillations" Minimum="1" Maximum="6" Value="3" LargeChange="1" Width="180" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Value, ElementName=ellasticOscillations, StringFormat=F0}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Springness" Width="120" VerticalAlignment="Center"/>
+            <Slider x:Name="ellasticSpringness" Minimum="0" Maximum="5" Value="3" LargeChange="0.5" Width="180" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Value, ElementName=ellasticSpringness, StringFormat=F1}" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
+          </StackPanel>
+        </StackPanel>
+        <Button Content="Animate" VerticalAlignment="Center">
+          <Button.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+              <BeginStoryboard>
+                <Storyboard>
+                  <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rect4" Storyboard.TargetProperty="RenderTransform.X">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="300" EasingFunction="{Binding SelectedItem.Tag, ElementName=easingFn}"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0" EasingFunction="{Binding SelectedItem.Tag, ElementName=easingFn}"/>
+                  </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+              </BeginStoryboard>
+            </EventTrigger>
+          </Button.Triggers>
+        </Button>
+        <Rectangle x:Name="rect4" Width="60" Height="60" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="Turquoise">
+          <Rectangle.RenderTransform>
+            <TranslateTransform/>
+          </Rectangle.RenderTransform>
+        </Rectangle>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/6acdc882e5c540f15a7857a884e06a42" TabIndex="500">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Complex Animations"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>To create complex animations for your application we developed a script to import JSON animations generated by Bodymovin plugin for Adobe AfterEffects.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel.Resources>
+          <Storyboard x:Key="Anims" Duration="0:0:3" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Path.TrimStart)" Storyboard.TargetName="Path0">
+              <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+              <SplineDoubleKeyFrame KeySpline="0.586,0 0.418,1" KeyTime="0:0:2.37" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Path.TrimEnd)" Storyboard.TargetName="Path0">
+              <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+              <SplineDoubleKeyFrame KeySpline="0.934,0 0.833,0.833" KeyTime="0:0:1.23" Value="0.31"/>
+              <SplineDoubleKeyFrame KeySpline="0.167,0.167 0.356,1" KeyTime="0:0:2.73" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Path.TrimStart)" Storyboard.TargetName="Path1">
+              <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+              <SplineDoubleKeyFrame KeySpline="0.586,0 0.418,1" KeyTime="0:0:2.57" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Path.TrimEnd)" Storyboard.TargetName="Path1">
+              <DiscreteDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+              <SplineDoubleKeyFrame KeySpline="0.934,0 0.833,0.833" KeyTime="0:0:1.43" Value="0.31"/>
+              <SplineDoubleKeyFrame KeySpline="0.167,0.167 0.356,1" KeyTime="0:0:2.93" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Path.TrimStart)" Storyboard.TargetName="Path2">
+              <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+              <SplineDoubleKeyFrame KeySpline="0.586,0 0.418,1" KeyTime="0:0:2.47" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Path.TrimEnd)" Storyboard.TargetName="Path2">
+              <DiscreteDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+              <SplineDoubleKeyFrame KeySpline="0.934,0 0.833,0.833" KeyTime="0:0:1.33" Value="0.31"/>
+              <SplineDoubleKeyFrame KeySpline="0.167,0.167 0.356,1" KeyTime="0:0:2.83" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Path.TrimStart)" Storyboard.TargetName="Path3">
+              <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+              <SplineDoubleKeyFrame KeySpline="0.586,0 0.418,1" KeyTime="0:0:2.63" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Path.TrimEnd)" Storyboard.TargetName="Path3">
+              <DiscreteDoubleKeyFrame KeyTime="0:0:0.27" Value="0"/>
+              <SplineDoubleKeyFrame KeySpline="0.934,0 0.833,0.833" KeyTime="0:0:1.5" Value="0.31"/>
+              <SplineDoubleKeyFrame KeySpline="0.167,0.167 0.356,1" KeyTime="0:0:3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+          </Storyboard>
+        </StackPanel.Resources>
+        <StackPanel.Triggers>
+          <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Anims}"/>
+          </EventTrigger>
+        </StackPanel.Triggers>
+        <Viewbox Width="360">
+          <Border ClipToBounds="True" Background="Gray">
+          <Canvas Width="1280" Height="720" Margin="0,-100,0,-100">
+            <Canvas x:Name="Layer1">
+              <Canvas.RenderTransform>
+                <TransformGroup>
+                  <ScaleTransform ScaleX="1.29" ScaleY="1.29" CenterX="683" CenterY="384"/>
+                  <TranslateTransform X="-39" Y="-24"/>
+                </TransformGroup>
+              </Canvas.RenderTransform>
+              <Canvas x:Name="Layer1_4">
+                <Canvas.RenderTransform>
+                  <TransformGroup>
+                    <ScaleTransform ScaleX="1.4" ScaleY="1.4" CenterX="550.02" CenterY="88.85"/>
+                    <TranslateTransform X="252.98" Y="294.96"/>
+                  </TransformGroup>
+                </Canvas.RenderTransform>
+                <Canvas>
+                  <Canvas.RenderTransform>
+                    <TranslateTransform X="550.02" Y="88.85"/>
+                  </Canvas.RenderTransform>
+                  <Path x:Name="Path0" Stroke="#050037" StrokeStartLineCap="Round" StrokeThickness="25" noesis:Path.TrimEnd="0" Data="M-500.02,0.62C-434.58,38.85 -364.44,38.25,-300.03,0.62 -233.77,-38.09 -167.58,-38.85,-100.02,0.62 -37.58,37.1 38.17,36.74,99.98,0.62 165.57,-37.69 232.77,-38.67,300.02,0.62"/>
+                </Canvas>
+              </Canvas>
+              <Canvas x:Name="Layer1_3">
+                <Canvas.RenderTransform>
+                  <TransformGroup>
+                    <ScaleTransform ScaleX="1.4" ScaleY="1.4" CenterX="550.02" CenterY="141.7"/>
+                    <TranslateTransform X="253.02" Y="245.32"/>
+                  </TransformGroup>
+                </Canvas.RenderTransform>
+                <Canvas>
+                  <Canvas.RenderTransform>
+                    <TranslateTransform X="550.02" Y="141.7"/>
+                  </Canvas.RenderTransform>
+                  <Path x:Name="Path1" Stroke="#84075F" StrokeStartLineCap="Round" StrokeThickness="25" noesis:Path.TrimEnd="0" Data="M-500.02,-3.21C-435.33,-89.65 -363.88,-88.55,-300.03,-3.21 -235.26,83.34 -164.67,83.19,-100.02,-3.21 -34.29,-91.05 35.24,-89.73,99.98,-3.21 160.05,77.06 229,91.7,300.02,-3.21"/>
+                </Canvas>
+              </Canvas>
+              <Canvas x:Name="Layer1_2">
+                <Canvas.RenderTransform>
+                  <TransformGroup>
+                    <ScaleTransform ScaleX="1.4" ScaleY="1.4" CenterX="550.02" CenterY="79.44"/>
+                    <TranslateTransform X="251.75" Y="305.53"/>
+                  </TransformGroup>
+                </Canvas.RenderTransform>
+                <Canvas>
+                  <Canvas.RenderTransform>
+                    <TranslateTransform X="550.02" Y="79.44"/>
+                  </Canvas.RenderTransform>
+                  <Path x:Name="Path2" Stroke="#F41A6E" StrokeStartLineCap="Round" StrokeThickness="25" noesis:Path.TrimEnd="0" Data="M-500.02,-1.03C-435.33,-28.78 -363.88,-28.42,-300.03,-1.03 -235.26,26.75 -164.67,26.7,-100.02,-1.03 -34.29,-29.22 35.24,-28.8,99.98,-1.03 160.05,24.74 229,29.44,300.02,-1.03"/>
+                </Canvas>
+              </Canvas>
+              <Canvas x:Name="Layer1_1">
+                <Canvas.RenderTransform>
+                  <TransformGroup>
+                    <ScaleTransform ScaleX="1.4" ScaleY="1.4" CenterX="550.02" CenterY="158.44"/>
+                    <TranslateTransform X="252.98" Y="225.04"/>
+                  </TransformGroup>
+                </Canvas.RenderTransform>
+                <Canvas>
+                  <Canvas.RenderTransform>
+                    <TranslateTransform X="550.02" Y="158.44"/>
+                  </Canvas.RenderTransform>
+                  <Path x:Name="Path3" Stroke="#08070B" StrokeStartLineCap="Round" StrokeThickness="25" noesis:Path.TrimEnd="0" Data="M-500.02,1.74C-434.58,108.44 -364.44,106.77,-300.03,1.74 -233.77,-106.3 -167.58,-108.44,-100.02,1.74 -37.58,103.55 38.17,102.54,99.98,1.74 165.57,-105.2 232.77,-107.92,300.02,1.74"/>
+                </Canvas>
+              </Canvas>
+            </Canvas>
+          </Canvas>
+          </Border>
+        </Viewbox>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>

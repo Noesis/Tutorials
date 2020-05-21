@@ -5,8 +5,7 @@
 
 
 #include <NsCore/Noesis.h>
-#include <NsCore/TypeId.h>
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 #include <NsCore/RegisterComponent.h>
 #include <NsApp/EntryPoint.h>
 #include <NsApp/Application.h>
@@ -36,10 +35,7 @@ namespace UserControl
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public Application
 {
-    NS_IMPLEMENT_INLINE_REFLECTION(App, Application)
-    {
-        NsMeta<TypeId>("UserControl.App");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "UserControl.App")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,47 +72,44 @@ private:
     void BgR_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
     {
         Color color = _bg->GetColor();
-        _bg->SetColor(Color(args.newValue, color.GetGreenI(), color.GetBlueI(), color.GetAlphaI()));
+        _bg->SetColor(Color(args.newValue / 255.0f, color.g, color.b, color.a));
     }
     
     void BgG_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
     {
         Color color = _bg->GetColor();
-        _bg->SetColor(Color(color.GetRedI(), args.newValue, color.GetBlueI(), color.GetAlphaI()));
+        _bg->SetColor(Color(color.r, args.newValue / 255.0f, color.b, color.a));
     }
     
     void BgB_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
     {
         Color color = _bg->GetColor();
-        _bg->SetColor(Color(color.GetRedI(), color.GetGreenI(), args.newValue, color.GetAlphaI()));
+        _bg->SetColor(Color(color.r, color.g, args.newValue / 255.0f, color.a));
     }
     
     void FgR_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
     {
         Color color = _fg->GetColor();
-        _fg->SetColor(Color(args.newValue, color.GetGreenI(), color.GetBlueI(), color.GetAlphaI()));
+        _fg->SetColor(Color(args.newValue / 255.0f, color.g, color.b, color.a));
     }
     
     void FgG_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
     {
         Color color = _fg->GetColor();
-        _fg->SetColor(Color(color.GetRedI(), args.newValue, color.GetBlueI(), color.GetAlphaI()));
+        _fg->SetColor(Color(color.r, args.newValue / 255.0f, color.b, color.a));
     }
     
     void FgB_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
     {
         Color color = _fg->GetColor();
-        _fg->SetColor(Color(color.GetRedI(), color.GetGreenI(), args.newValue, color.GetAlphaI()));
+        _fg->SetColor(Color(color.r, color.g, args.newValue / 255.0f, color.a));
     }
 
 private:
     SolidColorBrush* _fg;
     SolidColorBrush* _bg;
 
-    NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
-    {
-        NsMeta<TypeId>("UserControl.MainWindow");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "UserControl.MainWindow")
 };
 
 }
@@ -127,31 +120,31 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<::UserControl::App>();
-        NsRegisterComponent<::UserControl::MainWindow>();
-        NsRegisterComponent<::UserControl::NumericUpDown>();
+        RegisterComponent<::UserControl::App>();
+        RegisterComponent<::UserControl::MainWindow>();
+        RegisterComponent<::UserControl::NumericUpDown>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
-            { "NumericUpDown.xaml", NumericUpDown_xaml, sizeof(NumericUpDown_xaml) }
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml },
+            { "NumericUpDown.xaml", NumericUpDown_xaml }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] =
         {
-            { "", Aero_Matics_Regular_ttf, sizeof(Aero_Matics_Regular_ttf) }
+            { "", Aero_Matics_Regular_ttf }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

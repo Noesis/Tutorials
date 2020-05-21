@@ -6,7 +6,7 @@
 
 #include "MainMenu.xaml.h"
 
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 #include <NsGui/IntegrationAPI.h>
 
 
@@ -29,7 +29,4 @@ void MainMenu::InitializeComponent()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Menu3D::MainMenu)
-{
-    NsMeta<TypeId>("Menu3D.MainMenu");
-}
+NS_IMPLEMENT_REFLECTION_(Menu3D::MainMenu, "Menu3D.MainMenu")

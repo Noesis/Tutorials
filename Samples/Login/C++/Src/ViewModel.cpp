@@ -18,17 +18,17 @@ using namespace NoesisApp;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ViewModel::ViewModel()
 {
-    String::Copy(_accountName, sizeof(_accountName), "");
-    String::Copy(_message, sizeof(_message), "");
+    StrCopy(_accountName, sizeof(_accountName), "");
+    StrCopy(_message, sizeof(_message), "");
     _loginCommand.SetExecuteFunc(MakeDelegate(this, &ViewModel::Login));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void ViewModel::SetAccountName(const char* value)
 {
-    if (!String::Equals(_accountName, value))
+    if (!StrEquals(_accountName, value))
     {
-        String::Copy(_accountName, sizeof(_accountName), value);
+        StrCopy(_accountName, sizeof(_accountName), value);
         OnPropertyChanged("AccountName");
     }
 }
@@ -42,9 +42,9 @@ const char* ViewModel::GetAccountName() const
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void ViewModel::SetMessage(const char* value)
 {
-    if (!String::Equals(_message, value))
+    if (!StrEquals(_message, value))
     {
-        String::Copy(_message, sizeof(_message), value);
+        StrCopy(_message, sizeof(_message), value);
         OnPropertyChanged("Message");
     }
 }
@@ -75,13 +75,13 @@ bool ViewModel::CheckCredentials(PasswordBox* passwordBox)
 {
     const char* password = passwordBox->GetPassword();
 
-    if (String::IsNullOrEmpty(_accountName) && !String::IsNullOrEmpty(password))
+    if (StrIsNullOrEmpty(_accountName) && !StrIsNullOrEmpty(password))
     {
         SetMessage("ACCOUNT NAME CANNOT BE EMPTY");
         return false;
     }
 
-    if (!String::Equals(_accountName,"noesis") || !String::Equals(password, "12345"))
+    if (!StrEquals(_accountName,"noesis") || !StrEquals(password, "12345"))
     {
         SetMessage("ACCOUNT NAME OR PASSWORD IS INCORRECT");
         return false;

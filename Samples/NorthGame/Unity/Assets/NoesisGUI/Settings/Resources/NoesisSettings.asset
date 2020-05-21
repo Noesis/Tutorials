@@ -3,31 +3,38 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32cb0206ed0bc0d4b91a4e54d600f906, type: 3}
   m_Name: NoesisSettings
   m_EditorClassIdentifier: 
+  licenseName: 
+  licenseKey: 
   applicationResources: {fileID: 11400000, guid: ee82a60f824a8b14fa8c3c8e2846a5a4,
     type: 2}
+  defaultFont: {fileID: 11400000, guid: cecefd66e78b835469344d35af180447, type: 2}
+  defaultFontSize: 15
+  defaultFontWeight: 400
+  defaultFontStretch: 5
+  defaultFontStyle: 0
   glyphTextureSize: 2
-  colorGlyphTextureSize: 0
-  glyphMeshThreshold: 96
   offscreenSampleCount: 1
   offscreenInitSurfaces: 0
   offscreenMaxSurfaces: 0
   linearRendering: 0
   previewEnabled: 1
   debugImporter: 0
+  hotReloading: 0
   logVerbosity: 0
   AppStarting:
     Texture: {fileID: 0}
     HotSpot: {x: 0, y: 0}
   Arrow:
-    Texture: {fileID: 2800000, guid: bcea14a1c2c643948b13d6aad8e49f7d, type: 3}
+    Texture: {fileID: 0}
     HotSpot: {x: 0, y: 0}
   ArrowCD:
     Texture: {fileID: 0}

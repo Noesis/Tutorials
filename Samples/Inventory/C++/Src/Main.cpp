@@ -41,48 +41,48 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<Inventory::App>();
-        NsRegisterComponent<Inventory::MainWindow>();
-        NsRegisterComponent<Inventory::AnimatedNumber>();
-        NsRegisterComponent<Inventory::DragItemBehavior>();
-        NsRegisterComponent<Inventory::DropItemBehavior>();
-        NsRegisterComponent<Inventory::DragAdornerBehavior>();
+        RegisterComponent<Inventory::App>();
+        RegisterComponent<Inventory::MainWindow>();
+        RegisterComponent<Inventory::AnimatedNumber>();
+        RegisterComponent<Inventory::DragItemBehavior>();
+        RegisterComponent<Inventory::DropItemBehavior>();
+        RegisterComponent<Inventory::DragAdornerBehavior>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
-            { "Resources.xaml", Resources_xaml, sizeof(Resources_xaml) },
-            { "AnimatedNumber.xaml", AnimatedNumber_xaml, sizeof(AnimatedNumber_xaml) }
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml },
+            { "Resources.xaml", Resources_xaml },
+            { "AnimatedNumber.xaml", AnimatedNumber_xaml }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] = 
         {
-            { "Fonts", Gidole_Regular_ttf, sizeof(Gidole_Regular_ttf) },
-            { "Fonts", Sequel_Demo_ttf, sizeof(Sequel_Demo_ttf) }
+            { "Fonts", Gidole_Regular_ttf },
+            { "Fonts", Sequel_Demo_ttf }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 
-    Ptr<TextureProvider> GetTextureProvider() const override
+    Noesis::Ptr<TextureProvider> GetTextureProvider() const override
     {
         EmbeddedTexture textures[] = 
         {
-            { "Images/Background.jpg", Background_jpg, sizeof(Background_jpg) },
-            { "Images/Character.png", Character_png, sizeof(Character_png) },
-            { "Images/InventoryAtlas.png", InventoryAtlas_png, sizeof(InventoryAtlas_png) }
+            { "Images/Background.jpg", Background_jpg },
+            { "Images/Character.png", Character_png },
+            { "Images/InventoryAtlas.png", InventoryAtlas_png }
         };
 
-        return *new EmbeddedTextureProvider(textures, NS_COUNTOF(textures));
+        return *new EmbeddedTextureProvider(textures);
     }
 };
 

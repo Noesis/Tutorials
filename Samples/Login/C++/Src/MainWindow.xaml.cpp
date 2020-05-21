@@ -8,7 +8,7 @@
 #include "ViewModel.h"
 
 #include <NsGui/IntegrationAPI.h>
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 
 
 using namespace Login;
@@ -37,7 +37,4 @@ void MainWindow::OnInitialized(BaseComponent*, const EventArgs&)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(Login::MainWindow)
-{
-    NsMeta<TypeId>("Login.MainWindow");
-}
+NS_IMPLEMENT_REFLECTION_(Login::MainWindow, "Login.MainWindow")

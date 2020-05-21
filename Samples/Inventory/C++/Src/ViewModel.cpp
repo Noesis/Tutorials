@@ -8,7 +8,6 @@
 
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/ReflectionImplementEnum.h>
-#include <NsCore/TypeId.h>
 #include <NsApp/DelegateCommand.h>
 
 
@@ -28,7 +27,7 @@ void NotifierBase::OnPropertyChanged(const char* propertyName)
 {
     if (!_changed.Empty())
     {
-        NsSymbol propId(propertyName);
+        Symbol propId(propertyName);
         _changed(this, PropertyChangedEventArgs(propId));
     }
 }
@@ -562,10 +561,8 @@ NS_IMPLEMENT_REFLECTION(ViewModel)
     NsProp("DraggedItem", &ViewModel::GetDraggedItem);
 }
 
-NS_IMPLEMENT_REFLECTION_ENUM(ItemCategory)
+NS_IMPLEMENT_REFLECTION_ENUM(ItemCategory, "Inventory.ItemCategory")
 {
-    NsMeta<TypeId>("Inventory.ItemCategory");
-
     NsVal("Head", ItemCategory_Head);
     NsVal("Chest", ItemCategory_Chest);
     NsVal("Arms", ItemCategory_Arms);

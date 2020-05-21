@@ -7,122 +7,122 @@
     Background="White"
     FontFamily="./#Aero Matics">
 
-  <Window.Resources>
+    <Window.Resources>
 
-    <local:HoursConverter x:Key="DateTimeHoursConverter"/>
-    <local:MinutesConverter x:Key="DateTimeMinutesConverter"/>
-    <local:SecondsConverter x:Key="DateTimeSecondsConverter"/>
+        <local:HoursConverter x:Key="DateTimeHoursConverter"/>
+        <local:MinutesConverter x:Key="DateTimeMinutesConverter"/>
+        <local:SecondsConverter x:Key="DateTimeSecondsConverter"/>
 
-    <!-- Digital clock style -->
-    <ControlTemplate x:Key="DigitalDateTimeTemplate" TargetType="{x:Type local:DateTime}">
-        <Viewbox>
-            <StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" TextElement.FontSize="40">
-                    <TextBlock Text="{Binding Hour, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
-                    <TextBlock Text=":"/>
-                    <TextBlock Text="{Binding Minute, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <!-- Digital clock style -->
+        <ControlTemplate x:Key="DigitalDateTimeTemplate" TargetType="{x:Type local:DateTime}">
+            <Viewbox>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" TextElement.FontSize="40">
+                        <TextBlock Text="{Binding Hour, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <TextBlock Text=":"/>
+                        <TextBlock Text="{Binding Minute, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" TextElement.FontSize="16">
+                        <TextBlock Text="{Binding Day, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <TextBlock Text="/"/>
+                        <TextBlock Text="{Binding Month, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <TextBlock Text="/"/>
+                        <TextBlock Text="{Binding Year, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" TextElement.FontSize="16">
-                    <TextBlock Text="{Binding Day, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
-                    <TextBlock Text="/"/>
-                    <TextBlock Text="{Binding Month, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
-                    <TextBlock Text="/"/>
-                    <TextBlock Text="{Binding Year, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
-                </StackPanel>
-            </StackPanel>
-        </Viewbox>
-    </ControlTemplate>
-    <Style x:Key="DigitalStyle">
-      <Setter Property="local:DateTime.Template" Value="{StaticResource DigitalDateTimeTemplate}"/>
-    </Style>
+            </Viewbox>
+        </ControlTemplate>
+        <Style x:Key="DigitalStyle">
+            <Setter Property="local:DateTime.Template" Value="{StaticResource DigitalDateTimeTemplate}"/>
+        </Style>
 
-    <!-- Analog clock style -->
-    <ControlTemplate x:Key="AnalogDateTimeTemplate" TargetType="{x:Type local:DateTime}">
-      <Viewbox>
-        <Grid Height="200" Width="200">
-            <Ellipse StrokeThickness="6" Stretch="Uniform">
-              <Ellipse.Stroke>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                  <GradientStop Color="#FF4D4D4D" Offset="1"/>
-                  <GradientStop Color="Gray"/>
-                </LinearGradientBrush>
-              </Ellipse.Stroke>
-            </Ellipse>
-            <Ellipse StrokeThickness="5" Stretch="Uniform" Margin="5" Fill="White">
-              <Ellipse.Stroke>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                  <GradientStop Color="#FF333333" Offset="0"/>
-                  <GradientStop Color="#FF999999" Offset="1"/>
-                </LinearGradientBrush>
-              </Ellipse.Stroke>
-            </Ellipse>
+        <!-- Analog clock style -->
+        <ControlTemplate x:Key="AnalogDateTimeTemplate" TargetType="{x:Type local:DateTime}">
+            <Viewbox>
+                <Grid Height="200" Width="200">
+                    <Ellipse StrokeThickness="6" Stretch="Uniform">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF4D4D4D" Offset="1"/>
+                                <GradientStop Color="Gray"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                    </Ellipse>
+                    <Ellipse StrokeThickness="5" Stretch="Uniform" Margin="5" Fill="White">
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF333333" Offset="0"/>
+                                <GradientStop Color="#FF999999" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                    </Ellipse>
 
-            <Grid Margin="18" TextElement.FontSize="24">
-              <TextBlock Text="12" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-              <TextBlock Text="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-              <TextBlock Text="6" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-              <TextBlock Text="9" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            </Grid>
+                    <Grid Margin="18" TextElement.FontSize="24">
+                        <TextBlock Text="12" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <TextBlock Text="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        <TextBlock Text="6" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        <TextBlock Text="9" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Grid>
 
-            <Path x:Name="BarS" Data="M100,100L100,20" Stroke="#FF333333" StrokeThickness="2"
+                    <Path x:Name="BarS" Data="M100,100L100,20" Stroke="#FF333333" StrokeThickness="2"
                            RenderTransformOrigin="0.5,0.5">
-              <Path.RenderTransform>
-                <TransformGroup>
-                  <ScaleTransform/>
-                  <SkewTransform/>
-                  <RotateTransform Angle="{Binding Second,
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="{Binding Second,
                                        Converter={StaticResource DateTimeSecondsConverter},
                                        RelativeSource={RelativeSource TemplatedParent}}"/>
-                  <TranslateTransform/>
-                </TransformGroup>
-              </Path.RenderTransform>
-            </Path>
-            <Path x:Name="BarM" Data="M100,100L100,20" Stroke="Red" StrokeThickness="4"
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                    </Path>
+                    <Path x:Name="BarM" Data="M100,100L100,20" Stroke="Red" StrokeThickness="4"
                            RenderTransformOrigin="0.5,0.5">
-              <Path.RenderTransform>
-                <TransformGroup>
-                  <ScaleTransform/>
-                  <SkewTransform/>
-                  <RotateTransform Angle="{Binding Minute,
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="{Binding Minute,
                                        Converter={StaticResource DateTimeMinutesConverter},
                                        RelativeSource={RelativeSource TemplatedParent}}"/>
-                  <TranslateTransform/>
-                </TransformGroup>
-              </Path.RenderTransform>
-            </Path>
-            <Path x:Name="BarH" Data="M100,100L100,40" Stroke="#FFCA0000" StrokeThickness="8"
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                    </Path>
+                    <Path x:Name="BarH" Data="M100,100L100,40" Stroke="#FFCA0000" StrokeThickness="8"
                            RenderTransformOrigin="0.5,0.5">
-              <Path.RenderTransform>
-                <TransformGroup>
-                  <ScaleTransform/>
-                  <SkewTransform/>
-                  <RotateTransform Angle="{Binding Hour,
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="{Binding Hour,
                                        Converter={StaticResource DateTimeHoursConverter},
                                        RelativeSource={RelativeSource TemplatedParent}}"/>
-                  <TranslateTransform/>
-                </TransformGroup>
-              </Path.RenderTransform>
-            </Path>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                    </Path>
 
-            <Ellipse HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20">
-              <Ellipse.Fill>
-                <RadialGradientBrush>
-                  <GradientStop Color="#FF343434" Offset="0.2"/>
-                  <GradientStop Color="#FF666666" Offset="1"/>
-                  <GradientStop Color="Gray" Offset="0.95"/>
-                  <GradientStop Color="#FF999999"/>
-                  <GradientStop Color="#FF404040" Offset="0.9"/>
-                </RadialGradientBrush>
-              </Ellipse.Fill>
-            </Ellipse>
-        </Grid>
-      </Viewbox>
-    </ControlTemplate>
-    <Style TargetType="{x:Type local:DateTime}">
-      <Setter Property="Template" Value="{StaticResource AnalogDateTimeTemplate}"/>
-    </Style>
+                    <Ellipse HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush>
+                                <GradientStop Color="#FF343434" Offset="0.2"/>
+                                <GradientStop Color="#FF666666" Offset="1"/>
+                                <GradientStop Color="Gray" Offset="0.95"/>
+                                <GradientStop Color="#FF999999"/>
+                                <GradientStop Color="#FF404040" Offset="0.9"/>
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+            </Viewbox>
+        </ControlTemplate>
+        <Style TargetType="{x:Type local:DateTime}">
+            <Setter Property="Template" Value="{StaticResource AnalogDateTimeTemplate}"/>
+        </Style>
 
-  </Window.Resources>
+    </Window.Resources>
 
     <Viewbox>
         <StackPanel Margin="50">

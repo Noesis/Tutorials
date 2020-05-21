@@ -17,6 +17,8 @@
 ipch
 Thumbs.db
 
+**/Assets/NoesisGUI/Plugins*
+
 Content/Integration/DirectX9/_temp
 Content/Integration/DirectX9/Debug
 Content/Integration/DirectX9/Release
@@ -48,9 +50,6 @@ Content/Application/Release
 
 Content/DataBinding/Unity/obj
 Content/DataBinding/Unity/Library
-Content/DataBinding/Unity/Assets/Plugins*
-Content/DataBinding/Unity/Assets/Editor*
-Content/DataBinding/Unity/Assets/StreamingAssets*
 Content/DataBinding/Unity/*.sln
 Content/DataBinding/Unity/*.csproj
 Content/DataBinding/C++/Debug
@@ -58,9 +57,6 @@ Content/DataBinding/C++/Release
 
 Content/Commands/Unity/obj
 Content/Commands/Unity/Library
-Content/Commands/Unity/Assets/Plugins*
-Content/Commands/Unity/Assets/Editor*
-Content/Commands/Unity/Assets/StreamingAssets*
 Content/Commands/Unity/*.sln
 Content/Commands/Unity/*.csproj
 Content/Commands/C++/Debug
@@ -68,9 +64,6 @@ Content/Commands/C++/Release
 
 Content/Touch/Unity/obj
 Content/Touch/Unity/Library
-Content/Touch/Unity/Assets/Plugins*
-Content/Touch/Unity/Assets/Editor*
-Content/Touch/Unity/Assets/StreamingAssets*
 Content/Touch/Unity/*.sln
 Content/Touch/Unity/*.csproj
 Content/Touch/C++/Debug
@@ -84,9 +77,7 @@ Samples/ActionBar/Unity/ProjectSettings/
 Samples/ActionBar/Unity/packages/
 Samples/ActionBar/Unity/Blend/ActionBar/bin
 Samples/ActionBar/Unity/Blend/ActionBar/obj
-Samples/ActionBar/Unity/Assets/NoesisGUI/Plugins*
 Samples/ActionBar/Unity/Assets/NoesisGUI/Settings*
-Samples/ActionBar/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/RenderTexture/Unity/Unity*
 Samples/RenderTexture/Unity/Library
@@ -97,9 +88,7 @@ Samples/RenderTexture/Unity/ProjectSettings/*
 Samples/RenderTexture/Unity/packages/
 Samples/RenderTexture/Unity/Blend/RenderTexture/bin
 Samples/RenderTexture/Unity/Blend/RenderTexture/obj
-Samples/RenderTexture/Unity/Assets/NoesisGUI/Plugins*
 Samples/RenderTexture/Unity/Assets/NoesisGUI/Settings*
-Samples/RenderTexture/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/Widget3D/Unity/Unity*
 Samples/Widget3D/Unity/Library
@@ -110,9 +99,7 @@ Samples/Widget3D/Unity/ProjectSettings/*
 Samples/Widget3D/Unity/packages/
 Samples/Widget3D/Unity/Blend/Widget3D/bin
 Samples/Widget3D/Unity/Blend/Widget3D/obj
-Samples/Widget3D/Unity/Assets/NoesisGUI/Plugins*
 Samples/Widget3D/Unity/Assets/NoesisGUI/Settings*
-Samples/Widget3D/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/Buttons/Unity/Unity.*
 Samples/Buttons/Unity/Library/
@@ -123,23 +110,19 @@ Samples/Buttons/Unity/ProjectSettings/*
 Samples/Buttons/Unity/packages/
 Samples/Buttons/Unity/Blend/Buttons/bin/
 Samples/Buttons/Unity/Blend/Buttons/obj/
-Samples/Buttons/Unity/Assets/NoesisGUI/Plugins*
 Samples/Buttons/Unity/Assets/NoesisGUI/Settings*
-Samples/Buttons/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
-Samples/ControlGallery/Unity/Unity.*
-Samples/ControlGallery/Unity/Unity.*
-Samples/ControlGallery/Unity/Library/
-Samples/ControlGallery/Unity/Temp/
-Samples/ControlGallery/Unity/UnityPackageManager/
-Samples/ControlGallery/Unity/ProjectSettings/*
-!Samples/ControlGallery/Unity/ProjectSettings/InputManager.asset
-Samples/ControlGallery/Unity/packages/
-Samples/ControlGallery/Unity/Blend/ControlGallery/bin/
-Samples/ControlGallery/Unity/Blend/ControlGallery/obj/
-Samples/ControlGallery/Unity/Assets/NoesisGUI/Plugins*
-Samples/ControlGallery/Unity/Assets/NoesisGUI/Settings*
-Samples/ControlGallery/Unity/Assets/NoesisGUI/Samples/Interactivity*
+Samples/Gallery/Unity/Unity.*
+Samples/Gallery/Unity/Unity.*
+Samples/Gallery/Unity/Library/
+Samples/Gallery/Unity/Temp/
+Samples/Gallery/Unity/UnityPackageManager/
+Samples/Gallery/Unity/ProjectSettings/*
+!Samples/Gallery/Unity/ProjectSettings/InputManager.asset
+Samples/Gallery/Unity/packages/
+Samples/Gallery/Unity/Blend/Gallery/bin/
+Samples/Gallery/Unity/Blend/Gallery/obj/
+Samples/Gallery/Unity/Assets/NoesisGUI/Settings*
 
 Samples/HelloWorld/Unity/Unity.*
 Samples/HelloWorld/Unity/Library/
@@ -150,9 +133,7 @@ Samples/HelloWorld/Unity/ProjectSettings/*
 Samples/HelloWorld/Unity/packages/
 Samples/HelloWorld/Unity/Blend/HelloWorld/bin/
 Samples/HelloWorld/Unity/Blend/HelloWorld/obj/
-Samples/HelloWorld/Unity/Assets/NoesisGUI/Plugins*
 Samples/HelloWorld/Unity/Assets/NoesisGUI/Settings*
-Samples/HelloWorld/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/Inventory/Unity/Unity.*
 Samples/Inventory/Unity/Deploys/
@@ -164,8 +145,6 @@ Samples/Inventory/Unity/ProjectSettings/*
 Samples/Inventory/Unity/packages/
 Samples/Inventory/Unity/Blend/Inventory/bin/
 Samples/Inventory/Unity/Blend/Inventory/obj/
-Samples/Inventory/Unity/Assets/NoesisGUI/Plugins*
-Samples/Inventory/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/Localization/Unity/Unity.*
 Samples/Localization/Unity/Library/
@@ -176,9 +155,7 @@ Samples/Localization/Unity/ProjectSettings/*
 Samples/Localization/Unity/packages/
 Samples/Localization/Unity/Blend/Localization/bin/
 Samples/Localization/Unity/Blend/Localization/obj/
-Samples/Localization/Unity/Assets/NoesisGUI/Plugins*
 Samples/Localization/Unity/Assets/NoesisGUI/Settings*
-Samples/Localization/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/Login/Unity/Unity.*
 Samples/Login/Unity/Library/
@@ -189,9 +166,7 @@ Samples/Login/Unity/ProjectSettings/*
 Samples/Login/Unity/packages/
 Samples/Login/Unity/Blend/Login/bin/
 Samples/Login/Unity/Blend/Login/obj/
-Samples/Login/Unity/Assets/NoesisGUI/Plugins*
 Samples/Login/Unity/Assets/NoesisGUI/Settings*
-Samples/Login/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/QuestLog/Unity/Unity.*
 Samples/QuestLog/Unity/Library/
@@ -202,9 +177,7 @@ Samples/QuestLog/Unity/ProjectSettings/*
 Samples/QuestLog/Unity/packages/
 Samples/QuestLog/Unity/Blend/QuestLog/bin/
 Samples/QuestLog/Unity/Blend/QuestLog/obj/
-Samples/QuestLog/Unity/Assets/NoesisGUI/Plugins*
 Samples/QuestLog/Unity/Assets/NoesisGUI/Settings*
-Samples/QuestLog/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/Scoreboard/Unity/Unity.*
 Samples/Scoreboard/Unity/Library/
@@ -215,9 +188,7 @@ Samples/Scoreboard/Unity/ProjectSettings/*
 Samples/Scoreboard/Unity/packages/
 Samples/Scoreboard/Unity/Blend/Scoreboard/bin/
 Samples/Scoreboard/Unity/Blend/Scoreboard/obj/
-Samples/Scoreboard/Unity/Assets/NoesisGUI/Plugins*
 Samples/Scoreboard/Unity/Assets/NoesisGUI/Settings*
-Samples/Scoreboard/Unity/Assets/NoesisGUI/Samples/Interactivity*
 Samples/Scoreboard/C++/Data/bin
 Samples/Scoreboard/C++/Data/obj
 
@@ -230,9 +201,7 @@ Samples/TicTacToe/Unity/ProjectSettings/*
 Samples/TicTacToe/Unity/packages/
 Samples/TicTacToe/Unity/Blend/TicTacToe/bin/
 Samples/TicTacToe/Unity/Blend/TicTacToe/obj/
-Samples/TicTacToe/Unity/Assets/NoesisGUI/Plugins*
 Samples/TicTacToe/Unity/Assets/NoesisGUI/Settings*
-Samples/TicTacToe/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/Menu3D/C++/Data/bin/
 Samples/Menu3D/C++/Data/obj/
@@ -245,8 +214,6 @@ Samples/Menu3D/Unity/ProjectSettings/*
 Samples/Menu3D/Unity/packages/
 Samples/Menu3D/Unity/Blend/Menu3D/bin/
 Samples/Menu3D/Unity/Blend/Menu3D/obj/
-Samples/Menu3D/Unity/Assets/NoesisGUI/Plugins*
-Samples/Menu3D/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/NorthGame/Unity/Unity.*
 Samples/NorthGame/Unity/Library/
@@ -257,8 +224,6 @@ Samples/NorthGame/Unity/ProjectSettings/*
 Samples/NorthGame/Unity/packages/
 Samples/NorthGame/Unity/Blend/NorthGame/bin/
 Samples/NorthGame/Unity/Blend/NorthGame/obj/
-Samples/NorthGame/Unity/Assets/NoesisGUI/Plugins*
-Samples/NorthGame/Unity/Assets/NoesisGUI/Samples/Interactivity*
 
 Samples/SciFi/Unity/Unity.*
 Samples/SciFi/Unity/Library/
@@ -271,6 +236,4 @@ Samples/SciFi/Unity/Blend/SciFi/bin/
 Samples/SciFi/Unity/Blend/SciFi/obj/
 Samples/SciFi/Unity/Blend/NorthGame/bin/
 Samples/SciFi/Unity/Blend/NorthGame/obj/
-Samples/SciFi/Unity/Assets/NoesisGUI/Plugins*
 Samples/SciFi/Unity/Assets/NoesisGUI/Settings*
-Samples/SciFi/Unity/Assets/NoesisGUI/Samples/Interactivity*

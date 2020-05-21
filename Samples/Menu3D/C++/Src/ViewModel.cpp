@@ -191,10 +191,8 @@ NS_IMPLEMENT_REFLECTION(ViewModel)
     NsProp("Platform", &ViewModel::GetPlatform);
 }
 
-NS_IMPLEMENT_REFLECTION_ENUM(State)
+NS_IMPLEMENT_REFLECTION_ENUM(State, "Menu3D.State")
 {
-    NsMeta<TypeId>("Menu3D.State");
-
     NsVal("Main", State::Main);
     NsVal("Start", State::Start);
     NsVal("Settings", State::Settings);

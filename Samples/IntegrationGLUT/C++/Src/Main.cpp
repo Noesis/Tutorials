@@ -37,7 +37,9 @@
 #endif
 
 
+#include <NsApp/ThemeProviders.h>
 #include <NsRender/GLFactory.h>
+#include <NsGui/FontProperties.h>
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/IRenderer.h>
 #include <NsGui/IView.h>
@@ -50,15 +52,19 @@ static Noesis::IView* _view;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 static void NoesisInit()
 {
-    auto logHandler = [](const char*, uint32_t, uint32_t level, const char*, const char* message)
+    Noesis::SetLogHandler([](const char*, uint32_t, uint32_t level, const char*, const char* msg)
     {
         // [TRACE] [DEBUG] [INFO] [WARNING] [ERROR]
         const char* prefixes[] = { "T", "D", "I", "W", "E" };
-        printf("[NOESIS/%s] %s\n", prefixes[level], message);
-    };
+        printf("[NOESIS/%s] %s\n", prefixes[level], msg);
+    });
 
     // Noesis initialization. This must be the first step before using any NoesisGUI functionality
-    Noesis::GUI::Init(nullptr, logHandler, nullptr);
+    Noesis::GUI::Init(NS_LICENSE_NAME, NS_LICENSE_KEY);
+
+    // Setup theme
+    NoesisApp::SetThemeProviders();
+    Noesis::GUI::LoadApplicationResources("Theme/NoesisTheme.DarkBlue.xaml");
 
     // For simplicity purposes we are not using resource providers in this sample. ParseXaml() is
     // enough if there is no extra XAML dependencies
@@ -91,7 +97,7 @@ static void NoesisInit()
     // We transfer the ownership to a global pointer instead of a Ptr<> because there is no way
     // in GLUT to do shutdown and we don't want the Ptr<> to be released at global time
     _view = Noesis::GUI::CreateView(xaml).GiveOwnership();
-    _view->SetIsPPAAEnabled(true);
+    _view->SetFlags(Noesis::RenderFlags_PPAA | Noesis::RenderFlags_LCD);
 
     // Renderer initialization with an OpenGL device
     _view->GetRenderer()->Init(NoesisApp::GLFactory::CreateDevice());

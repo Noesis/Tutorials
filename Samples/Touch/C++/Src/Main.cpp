@@ -7,14 +7,12 @@
 #include <NsCore/Noesis.h>
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/RegisterComponent.h>
-#include <NsCore/TypeId.h>
 #include <NsGui/MatrixTransform.h>
 #include <NsGui/Rectangle.h>
 #include <NsGui/Brushes.h>
 #include <NsGui/SolidColorBrush.h>
 #include <NsGui/Panel.h>
 #include <NsMath/Transform.h>
-#include <NsMath/Constants.h>
 #include <NsApp/EmbeddedXamlProvider.h>
 #include <NsApp/ApplicationLauncher.h>
 #include <NsApp/EntryPoint.h>
@@ -35,10 +33,7 @@ namespace Touch
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public Application
 {
-    NS_IMPLEMENT_INLINE_REFLECTION(App, Application)
-    {
-        NsMeta<TypeId>("Touch.App");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "Touch.App")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,7 +79,7 @@ public:
         if (rectangle != 0)
         {
             MatrixTransform* transform = (MatrixTransform*)rectangle->GetRenderTransform();
-            Transform2f mtx = transform->GetMatrix();
+            Transform2 mtx = transform->GetMatrix();
 
             const Noesis::ManipulationDelta& d = e.deltaManipulation;
             const Noesis::Point& o = e.manipulationOrigin;
@@ -115,10 +110,7 @@ public:
 private:
     int _index;
 
-    NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
-    {
-        NsMeta<TypeId>("Touch.MainWindow");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "Touch.MainWindow")
 };
 
 }
@@ -129,19 +121,19 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<Touch::App>();
-        NsRegisterComponent<Touch::MainWindow>();
+        RegisterComponent<Touch::App>();
+        RegisterComponent<Touch::MainWindow>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) }
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 };
 

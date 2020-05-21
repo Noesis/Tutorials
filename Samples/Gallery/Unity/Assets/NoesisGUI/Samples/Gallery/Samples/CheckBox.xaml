@@ -1,0 +1,282 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    xmlns:local="clr-namespace:Gallery"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{DynamicResource SampleControlStyle}"
+    Header="CheckBox"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._CheckBox.html">
+
+    <StackPanel>
+        <TextBlock Style="{DynamicResource SampleSectionDesc}" Text="A CheckBox control let the user select a combination of binary options."/>
+        <HeaderedContentControl Style="{DynamicResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/f8ed69db1d7a53c78ad8239fffb08682" TabIndex="100">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource SampleSectionTitle}" Text="IsChecked"/>
+                    <TextBlock Style="{DynamicResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold">IsChecked</Run>
+                        <Run>property indicates if the CheckBox is checked. When set to true the</Run>
+                        <Run FontWeight="Bold">Checked</Run>
+                        <Run>event is raised, and</Run>
+                        <Run FontWeight="Bold">Unchecked</Run>
+                        <Run>event when set to false.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Checked">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Duration="0:0:0.5" Storyboard.TargetName="CheckedRect1" Storyboard.TargetProperty="Fill.Color" From="#00ADFF2F" To="#FFADFF2F"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Duration="0:0:0.5" Storyboard.TargetName="UncheckedRect1" Storyboard.TargetProperty="Fill.Color" From="#00ADFF2F" To="#FFADFF2F"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="Button1" Content="Normal CheckBox "/>
+                <TextBlock Grid.Column="1" Text="{Binding IsChecked, ElementName=Button1}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Grid Grid.Column="2" Margin="8,0,0,0">
+                    <Rectangle Fill="DodgerBlue" Width="40"/>
+                    <Rectangle Fill="#FFADFF2F" x:Name="CheckedRect1"/>
+                </Grid>
+                <Grid Grid.Column="3" Margin="8,0,0,0">
+                    <Rectangle Fill="OrangeRed" Width="40"/>
+                    <Rectangle Fill="#FFADFF2F" x:Name="UncheckedRect1"/>
+                </Grid>
+            </Grid>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{DynamicResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/611d2cfc2b7f114c0ffb8f9299286772" TabIndex="200">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource SampleSectionTitle}" Text="IsThreeState"/>
+                    <TextBlock Style="{DynamicResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold">IsThreeState</Run>
+                        <Run>property determines if the CheckBox supports two or three states. When true, the IsChecked property can be set to</Run>
+                        <Run FontWeight="Bold">null</Run>
+                        <Run>as third state.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Checked">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Duration="0:0:0.5" Storyboard.TargetName="CheckedRect2" Storyboard.TargetProperty="Fill.Color" From="#00ADFF2F" To="#FFADFF2F"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Indeterminate">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Duration="0:0:0.5" Storyboard.TargetName="IndeterminateRect2" Storyboard.TargetProperty="Fill.Color" From="#00ADFF2F" To="#FFADFF2F"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Duration="0:0:0.5" Storyboard.TargetName="UncheckedRect2" Storyboard.TargetProperty="Fill.Color" From="#00ADFF2F" To="#FFADFF2F"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="Button2" Content="Tri-state CheckBox " IsThreeState="True"/>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Text" Value="{Binding IsChecked, ElementName=Button2}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=Button2}" Value="{x:Null}">
+                                    <Setter Property="Text" Value="NULL"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Grid Grid.Column="2" Margin="8,0,0,0">
+                    <Rectangle Fill="DodgerBlue" Width="40"/>
+                    <Rectangle Fill="#FFADFF2F" x:Name="CheckedRect2"/>
+                </Grid>
+                <Grid Grid.Column="3" Margin="8,0,0,0">
+                    <Rectangle Fill="Gray" Width="40"/>
+                    <Rectangle Fill="#FFADFF2F" x:Name="IndeterminateRect2"/>
+                </Grid>
+                <Grid Grid.Column="4" Margin="8,0,0,0">
+                    <Rectangle Fill="OrangeRed" Width="40"/>
+                    <Rectangle Fill="#FFADFF2F" x:Name="UncheckedRect2"/>
+                </Grid>
+            </Grid>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{DynamicResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/8ab6c676fcaeb61f4bfcfde3cc159c1e" TabIndex="300">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource SampleSectionTitle}" Text="Hierarchical options"/>
+                    <TextBlock Style="{DynamicResource SampleSectionDesc}" Text="When organizing options in a hierarchy, the indeterminate state can be used to indicate that an option is set for some, but not all, child options."/>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <CheckBox x:Name="SelectAll" Content="Select all" IsThreeState="True">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=SelectAll}" RightOperand="True"/>
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="Option1"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="Option2"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="Option3"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=SelectAll}" RightOperand="{x:Null}"/>
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option1"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option2"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option3"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=SelectAll}" RightOperand="False"/>
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option1"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option2"/>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option3"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </CheckBox>
+                <CheckBox x:Name="Option1" Content="Option 1" Margin="32,8,0,0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="{x:Null}" TargetName="SelectAll"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="True"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="True"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="True"/>
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectAll"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="False"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="False"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="False"/>
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </CheckBox>
+                <CheckBox x:Name="Option2" Content="Option 2" Margin="32,8,0,0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="{x:Null}" TargetName="SelectAll"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="True"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="True"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="True"/>
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectAll"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="False"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="False"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="False"/>
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </CheckBox>
+                <CheckBox x:Name="Option3" Content="Option 3" Margin="32,8,0,0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="{x:Null}" TargetName="SelectAll"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="True"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="True"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="True"/>
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectAll"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Click">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="False"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="False"/>
+                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="False"/>
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </CheckBox>
+            </StackPanel>
+        </HeaderedContentControl>
+    </StackPanel>
+</HeaderedContentControl>

@@ -7,7 +7,6 @@
 #include "DropItemBehavior.h"
 
 #include <NsCore/ReflectionImplement.h>
-#include <NsCore/TypeId.h>
 #include <NsCore/Delegate.h>
 #include <NsGui/BaseCommand.h>
 #include <NsGui/DragDrop.h>
@@ -109,10 +108,8 @@ void DropItemBehavior::OnDrop(BaseComponent*, const DragEventArgs& e)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(DropItemBehavior)
+NS_IMPLEMENT_REFLECTION(DropItemBehavior, "Inventory.DropItemBehavior")
 {
-    NsMeta<TypeId>("Inventory.DropItemBehavior");
-
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<bool>(IsDragOverProperty, "IsDragOver",
         PropertyMetadata::Create(false));

@@ -197,10 +197,8 @@ NS_IMPLEMENT_REFLECTION(TicTacToe::ViewModel)
     NsProp("ScoreTies", &ViewModel::GetScoreTies);
 }
 
-NS_IMPLEMENT_REFLECTION_ENUM(TicTacToe::State)
+NS_IMPLEMENT_REFLECTION_ENUM(TicTacToe::State, "TicTacToe.State")
 {
-    NsMeta<TypeId>("TicTacToe.State");
-
     NsVal("Player1", State::Player1);
     NsVal("Player2", State::Player2);
     NsVal("Tie", State::Tie);

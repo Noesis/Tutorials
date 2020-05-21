@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Noesis.App.Displays.X11" Version="2.2.5" />
-    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="2.2.5" />
-    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="2.2.5" />
+    <PackageReference Include="Noesis.App.Displays.X11" Version="2.2.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="2.2.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="2.2.*" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">

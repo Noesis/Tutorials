@@ -12,7 +12,7 @@
 
 // Noesis, the core library you integrate inside your application, is exposed in the namespace
 // 'Noesis'. The application framework, a helper library with source code, is inside the namespace
-// 'NoesisApp'. For the namespace Noesis a single header library ('Noesis_pch.h') is provided in
+// 'NoesisApp'. For the namespace Noesis a single header library ('NoesisPCH.h') is provided in
 // case you are interested in just including one file, for example when using precompiled headers
 #include <NsRender/RenderContext.h>
 #include <NsCore/HighResTimer.h>
@@ -20,11 +20,13 @@
 #include <NsGui/UserControl.h>
 #include <NsGui/IRenderer.h>
 #include <NsGui/IView.h>
+#include <NsGui/ResourceDictionary.h>
 #include <NsApp/EntryPoint.h>
 #include <NsApp/Launcher.h>
 #include <NsApp/Display.h>
 #include <NsApp/EmbeddedXamlProvider.h>
 #include <NsApp/EmbeddedFontProvider.h>
+#include <NsApp/ThemeProviders.h>
 
 // For this sample we are embedding needed resources using our tool 'binh'
 #include "Settings.xaml.bin.h"
@@ -38,19 +40,13 @@ void InstallResourceProviders()
     // to get a stream to the content. You must install a provider for each needed resource. There
     // are a few implementations available in the app framework (like LocalXamlProvider to load
     // from disk). For this sample, we are embedding needed resources in a C array.
-    NoesisApp::EmbeddedXaml xaml =
-    { 
-        "Settings.xaml", Settings_xaml, sizeof(Settings_xaml)
-    };
+    NoesisApp::EmbeddedXaml xamls[] = { { "Settings.xaml", Settings_xaml } };
+    NoesisApp::EmbeddedFont fonts[] = { { "", HermeneusOne_Regular_ttf } };
 
-    Noesis::GUI::SetXamlProvider(Noesis::MakePtr<NoesisApp::EmbeddedXamlProvider>(&xaml, 1));
+    Noesis::Ptr<Noesis::XamlProvider> xamlProvider = *new NoesisApp::EmbeddedXamlProvider(xamls);
+    Noesis::Ptr<Noesis::FontProvider> fontProvider = *new NoesisApp::EmbeddedFontProvider(fonts);
 
-    NoesisApp::EmbeddedFont font = 
-    {
-        "", HermeneusOne_Regular_ttf, sizeof(HermeneusOne_Regular_ttf)
-    };
-
-    Noesis::GUI::SetFontProvider(Noesis::MakePtr<NoesisApp::EmbeddedFontProvider>(&font, 1));
+    NoesisApp::SetThemeProviders(xamlProvider, fontProvider);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,7 +73,7 @@ Noesis::Ptr<Noesis::IView> CreateView(Noesis::RenderDevice* device)
 
     // As we are not using MSAA in this sample, we enable PPAA here. PPAA is a cheap antialising
     // technique that extrudes the contours of the geometry smoothing them
-    view->SetIsPPAAEnabled(true);
+    view->SetFlags(Noesis::RenderFlags_PPAA | Noesis::RenderFlags_LCD);
 
     // Once the view is created you need to get its internal renderer and initialize it with a valid
     // render device. This can be done in a separate render thread but for simplification purposes
@@ -198,23 +194,26 @@ int NsMain(int argc, char** argv)
 {
     NS_UNUSED(argc, argv);
 
-    auto logHandler = [](const char*, uint32_t, uint32_t level, const char*, const char* message)
+    Noesis::SetLogHandler([](const char*, uint32_t, uint32_t level, const char*, const char* msg)
     {
         // [TRACE] [DEBUG] [INFO] [WARNING] [ERROR]
         const char* prefixes[] = { "T", "D", "I", "W", "E" };
-        printf("[NOESIS/%s] %s\n", prefixes[level], message);
-    };
+        printf("[NOESIS/%s] %s\n", prefixes[level], msg);
+    });
 
     // Noesis initialization. This must be the first step before using any NoesisGUI functionality.
     // A logging handler is installed here. You can also install a custom error handler and memory
     // allocator. By default errors are redirected to the logging handler
-    Noesis::GUI::Init(nullptr, logHandler, nullptr);
+    Noesis::GUI::Init(NS_LICENSE_NAME, NS_LICENSE_KEY);
 
     // Register app components. We need a few in this example, like Display and RenderContext
     NoesisApp::Launcher::RegisterAppComponents();
 
     // Setup providers for each resource
     InstallResourceProviders();
+
+    // Set application resources
+    Noesis::GUI::LoadApplicationResources("Theme/NoesisTheme.DarkBlue.xaml");
 
     // A display is an abstraction over a system window (HWND, NSWindow, UIWindow, XWindow, ...).
     // As this is a helper class, not part of core, it goes in the 'NoesisApp' namespace

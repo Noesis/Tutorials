@@ -1,0 +1,86 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="Canvas"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._Canvas.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The Canvas is a panel that provides absolute positioning of children controls."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/8d59b2feb96d35d6af631afa7e2aabce" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Content layout"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+              <Run>Content is placed relative to the Canvas using</Run>
+              <Run FontWeight="Bold">Canvas.Top</Run><Run>,</Run>
+              <Run FontWeight="Bold">Canvas.Left</Run><Run>,</Run>
+              <Run FontWeight="Bold">Canvas.Bottom</Run><Run>,</Run>
+              <Run>or</Run>
+              <Run FontWeight="Bold">Canvas.Right</Run>
+              <Run>attached properties.</Run>
+          </TextBlock>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+              <Run>Panel base class defines</Run>
+              <Run FontWeight="Bold">Panel.ZIndex</Run>
+              <Run>attached property to modify the Z order in which panel children are rendered. By default, order is determined by its position in the Children collection.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <GroupBox Header="Rectangle 1" Margin="0,0,0,20" Padding="0,10">
+          <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+              <TextBlock Text="Canvas.Top" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="top" Minimum="0" Maximum="150" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+              <TextBlock Text="Canvas.Left" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="left" Minimum="0" Maximum="150" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="Panel.ZIndex" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="zIndex1" Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+          </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Rectangle 4" Margin="0,0,0,20" Padding="0,10">
+          <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+              <TextBlock Text="Canvas.Bottom" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="bottom" Minimum="0" Maximum="150" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+              <TextBlock Text="Canvas.Right" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="right" Minimum="0" Maximum="150" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="Panel.ZIndex" Width="120" TextAlignment="Right" VerticalAlignment="Center"/>
+              <Slider x:Name="zIndex4" Minimum="0" Maximum="5" Value="3" SmallChange="1" LargeChange="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Width="180" Margin="15,0,0,0"/>
+            </StackPanel>
+          </StackPanel>
+        </GroupBox>
+        <Border Background="{DynamicResource Brush.Background.Popup}" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1">
+          <Canvas Width="350" Height="250">
+            <Border Background="Teal" Width="200" Height="100" Canvas.Left="{Binding Value, ElementName=left}" Canvas.Top="{Binding Value, ElementName=top}" Canvas.ZIndex="{Binding Value, ElementName=zIndex1}" Padding="10">
+              <TextBlock Text="1" FontSize="24" Foreground="Black"/>
+            </Border>
+            <Border Background="LightSeaGreen" Width="200" Height="100" Canvas.Left="50" Canvas.Top="50" Panel.ZIndex="1" Padding="10">
+              <TextBlock Text="2" FontSize="24" Foreground="Black"/>
+            </Border>
+            <Border Background="Turquoise" Width="200" Height="100" Canvas.Left="100" Canvas.Top="100" Panel.ZIndex="2" Padding="10">
+              <TextBlock Text="3" FontSize="24" Foreground="Black"/>
+            </Border>
+            <Border Background="#7FFFEC" Width="200" Height="100" Canvas.Right="{Binding Value, ElementName=right}" Canvas.Bottom="{Binding Value, ElementName=bottom}" Canvas.ZIndex="{Binding Value, ElementName=zIndex4}" Padding="10">
+              <TextBlock Text="4" FontSize="24" Foreground="Black"/>
+            </Border>
+          </Canvas>
+        </Border>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>

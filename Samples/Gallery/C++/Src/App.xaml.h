@@ -1,0 +1,38 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// NoesisGUI - http://www.noesisengine.com
+// Copyright (c) 2013 Noesis Technologies S.L. All Rights Reserved.
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+#ifndef __GALLERY_APP_H__
+#define __GALLERY_APP_H__
+
+
+#include <NsCore/Noesis.h>
+#include <NsApp/Application.h>
+#include <NsCore/ReflectionDeclare.h>
+
+
+namespace Gallery
+{
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Control Gallery Application logic
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class App final: public NoesisApp::Application
+{
+public:
+    App();
+
+    /// From Application
+    //@{
+    bool GetPPAAOverride() const override;
+    bool GetsRGBOverride() const override;
+    //@}
+
+    NS_DECLARE_REFLECTION(App, Application)
+};
+
+}
+
+#endif

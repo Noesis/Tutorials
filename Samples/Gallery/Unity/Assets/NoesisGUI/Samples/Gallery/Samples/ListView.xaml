@@ -1,0 +1,126 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{DynamicResource SampleControlStyle}"
+    Header="ListView"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._ListView.html">
+
+    <StackPanel>
+        <TextBlock Style="{DynamicResource SampleSectionDesc}" Text="The ListView control provides a flexible way to display a collection of data in rows and columns."/>
+        <HeaderedContentControl Style="{DynamicResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/e43c4c3dd3f28a27e6153581ca12fc70" TabIndex="100">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource SampleSectionTitle}" Text="GridView"/>
+                    <TextBlock Style="{DynamicResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>Using a</Run>
+                        <Run FontWeight="Bold">GridView</Run>
+                        <Run>object in the</Run>
+                        <Run FontWeight="Bold">View</Run>
+                        <Run>property, the user can define the appereance of column headers and content. Without a View it will behave exactly as a ListBox.</Run>
+                    </TextBlock>
+                    <TextBlock Style="{DynamicResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold" >HeaderContainerStyle</Run>
+                        <Run>and</Run>
+                        <Run FontWeight="Bold">HeaderTemplate</Run>
+                        <Run>properties are used to customize the look of column headers.</Run>
+                    </TextBlock>
+                    <TextBlock Style="{DynamicResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold">CellTemplate</Run>
+                        <Run>property can be used to specify how to display the contents of a column cell. Shouldn't be used at the same time as</Run>
+                        <Run FontWeight="Bold">DisplayMemberBinding</Run>
+                        <Run>property, which has priority.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.Resources>
+                    <Grid x:Key="Container">
+                        <ContentControl Content="Carrot" TabIndex="1" Tag="1kg bag" MinWidth="0.69" MinHeight="35"/>
+                        <ContentControl Content="Broccoli" TabIndex="2" Tag="450gr unit" MinWidth="1.30" MinHeight="19"/>
+                        <ContentControl Content="Asparagus" TabIndex="3" Tag="300gr pkg" MinWidth="2.40" MinHeight="15"/>
+                        <ContentControl Content="Cauliflower" TabIndex="4" Tag="1,25kg unit" MinWidth="2.38" MinHeight="8"/>
+                        <ContentControl Content="Corn" TabIndex="5" Tag="400gr pkg" MinWidth="1.10" MinHeight="24"/>
+                        <ContentControl Content="Cucumber" TabIndex="6" Tag="1,25kg bag" MinWidth="1.59" MinHeight="31"/>
+                        <ContentControl Content="Eggplant" TabIndex="7" Tag="350gr unit" MinWidth="0.61" MinHeight="42"/>
+                        <ContentControl Content="Green Pepper" TabIndex="8" Tag="120gr unit" MinWidth="0.23" MinHeight="48"/>
+                        <ContentControl Content="Red Pepper" TabIndex="9" Tag="390gr unit" MinWidth="0.76" MinHeight="25"/>
+                        <ContentControl Content="Lettuce" TabIndex="10" Tag="1 unit" MinWidth="1.20" MinHeight="27"/>
+                        <ContentControl Content="Mushroom" TabIndex="11" Tag="300gr pkg" MinWidth="1.17" MinHeight="16"/>
+                        <ContentControl Content="Onion" TabIndex="12" Tag="1kg bag" MinWidth="1.30" MinHeight="18"/>
+                        <ContentControl Content="Potato" TabIndex="13" Tag="3kg bag" MinWidth="3.95" MinHeight="14"/>
+                        <ContentControl Content="Pumpkin" TabIndex="14" Tag="2,10kg unit" MinWidth="3.31" MinHeight="9"/>
+                        <ContentControl Content="Tomato" TabIndex="15" Tag="2kg bag" MinWidth="2.60" MinHeight="21"/>
+                    </Grid>
+                    <AlternationConverter x:Key="RowBackgroundConverter">
+                        <SolidColorBrush Color="#106090B0"/>
+                        <SolidColorBrush Color="#306090B0"/>
+                    </AlternationConverter>
+                    <Style x:Key="ItemStyle" TargetType="ListViewItem" BasedOn="{StaticResource {x:Type ListViewItem}}">
+                        <Setter Property="Background" Value="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Self}, Converter={StaticResource RowBackgroundConverter}}"/>
+                    </Style>
+                    <Style x:Key="HeaderStyle" TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
+                        <Setter Property="Background" Value="#606090B0"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    </Style>
+                    <Style x:Key="IdHeaderStyle" TargetType="GridViewColumnHeader" BasedOn="{StaticResource HeaderStyle}">
+                        <Setter Property="Background" Value="#806090B0"/>
+                    </Style>
+                    <DataTemplate x:Key="StockTemplate">
+                        <TextBlock x:Name="Txt" Text="{Binding MinHeight}" Foreground="{DynamicResource Brush.Foreground.Normal}"/>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="0">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="1">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="2">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="3">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="4">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="5">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="6">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="7">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="8">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="9">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding MinHeight}" Value="0">
+                                <Setter Property="Foreground" Value="Red" TargetName="Txt"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </Grid.Resources>
+                <ListView ItemsSource="{Binding Children, Source={StaticResource Container}}" ItemContainerStyle="{StaticResource ItemStyle}" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1" AlternationCount="2" Width="380" Height="250">
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource HeaderStyle}">
+                            <GridViewColumn DisplayMemberBinding="{Binding TabIndex, StringFormat=#{0}}" Header="ID" Width="40" HeaderContainerStyle="{StaticResource IdHeaderStyle}"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Content}" Header="Product Name" Width="120"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Tag}" Header="Quantity" Width="85"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding MinWidth, StringFormat=C2}" Header="Unit Price" Width="80"/>
+                            <GridViewColumn Header="Stock" Width="50" CellTemplate="{StaticResource StockTemplate}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </HeaderedContentControl>
+    </StackPanel>
+</HeaderedContentControl>

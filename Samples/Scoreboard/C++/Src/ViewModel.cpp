@@ -7,7 +7,6 @@
 #include "ViewModel.h"
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/ReflectionImplementEnum.h>
-#include <NsCore/TypeId.h>
 
 
 using namespace Noesis;
@@ -40,7 +39,7 @@ void Game::SetName(const char* name)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const char* Game::GetName() const
 {
-    return _name.c_str();
+    return _name.Str();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -133,18 +132,14 @@ NS_IMPLEMENT_REFLECTION(Scoreboard::Game)
     NsProp("VisibleTeams", &Game::GetVisibleTeams);
 }
 
-NS_IMPLEMENT_REFLECTION_ENUM(Scoreboard::Team)
+NS_IMPLEMENT_REFLECTION_ENUM(Scoreboard::Team, "Scoreboard.Team")
 {
-    NsMeta<TypeId>("Scoreboard.Team");
-
     NsVal("Alliance", Team::Alliance);
     NsVal("Horde", Team::Horde);
 }
 
-NS_IMPLEMENT_REFLECTION_ENUM(Scoreboard::Class)
+NS_IMPLEMENT_REFLECTION_ENUM(Scoreboard::Class, "Scoreboard.Class")
 {
-    NsMeta<TypeId>("Scoreboard.Class");
-
     NsVal("Fighter", Scoreboard::Class::Fighter);
     NsVal("Rogue", Scoreboard::Class::Rogue);
     NsVal("Hunter", Scoreboard::Class::Hunter);

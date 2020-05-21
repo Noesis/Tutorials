@@ -55,60 +55,60 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<Menu3D::App>();
-        NsRegisterComponent<Menu3D::MainWindow>();
-        NsRegisterComponent<Menu3D::MenuDescription>();
-        NsRegisterComponent<Menu3D::MainMenu>();
-        NsRegisterComponent<Menu3D::StartMenu>();
-        NsRegisterComponent<Menu3D::SettingsMenu>();
-        NsRegisterComponent<Menu3D::OptionSelector>();
-        NsRegisterComponent<EnumConverter<Menu3D::State>>();
-        NsRegisterComponent<MultiplierConverter>();
+        RegisterComponent<Menu3D::App>();
+        RegisterComponent<Menu3D::MainWindow>();
+        RegisterComponent<Menu3D::MenuDescription>();
+        RegisterComponent<Menu3D::MainMenu>();
+        RegisterComponent<Menu3D::StartMenu>();
+        RegisterComponent<Menu3D::SettingsMenu>();
+        RegisterComponent<Menu3D::OptionSelector>();
+        RegisterComponent<EnumConverter<Menu3D::State>>();
+        RegisterComponent<MultiplierConverter>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MenuResources.xaml", MenuResources_xaml, sizeof(MenuResources_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) },
-            { "MenuDescription.xaml", MenuDescription_xaml, sizeof(MenuDescription_xaml) },
-            { "MainMenu.xaml", MainMenu_xaml, sizeof(MainMenu_xaml) },
-            { "StartMenu.xaml", StartMenu_xaml, sizeof(StartMenu_xaml) },
-            { "SettingsMenu.xaml", SettingsMenu_xaml, sizeof(SettingsMenu_xaml) },
-            { "OptionSelector.xaml", OptionSelector_xaml, sizeof(OptionSelector_xaml) },
-            { "Sounds/SoundTrack.mp3", SoundTrack_mp3, sizeof(SoundTrack_mp3) },
-            { "Sounds/WaterDropBig.mp3", WaterDropBig_mp3, sizeof(WaterDropBig_mp3) },
-            { "Sounds/WaterDropSmall.mp3", WaterDropSmall_mp3, sizeof(WaterDropSmall_mp3) }
+            { "App.xaml", App_xaml },
+            { "MenuResources.xaml", MenuResources_xaml },
+            { "MainWindow.xaml", MainWindow_xaml },
+            { "MenuDescription.xaml", MenuDescription_xaml },
+            { "MainMenu.xaml", MainMenu_xaml },
+            { "StartMenu.xaml", StartMenu_xaml },
+            { "SettingsMenu.xaml", SettingsMenu_xaml },
+            { "OptionSelector.xaml", OptionSelector_xaml },
+            { "Sounds/SoundTrack.mp3", SoundTrack_mp3 },
+            { "Sounds/WaterDropBig.mp3", WaterDropBig_mp3 },
+            { "Sounds/WaterDropSmall.mp3", WaterDropSmall_mp3 }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
     }
 
-    Ptr<FontProvider> GetFontProvider() const override
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
     {
         EmbeddedFont fonts[] = 
         {
-            { "Fonts", weblysleekuisb_ttf, sizeof(weblysleekuisb_ttf) },
-            { "Fonts", weblysleekuisl_ttf, sizeof(weblysleekuisl_ttf) }
+            { "Fonts", weblysleekuisb_ttf },
+            { "Fonts", weblysleekuisl_ttf }
         };
 
-        return *new EmbeddedFontProvider(fonts, NS_COUNTOF(fonts));
+        return *new EmbeddedFontProvider(fonts);
     }
 
-    Ptr<TextureProvider> GetTextureProvider() const override
+    Noesis::Ptr<TextureProvider> GetTextureProvider() const override
     {
         EmbeddedTexture textures[] = 
         {
-            { "Images/BackClouds.png", BackClouds_png, sizeof(BackClouds_png) },
-            { "Images/FrontClouds.png", FrontClouds_png, sizeof(FrontClouds_png) },
-            { "Images/FrontTrees.png", FrontTrees_png, sizeof(FrontTrees_png) },
-            { "Images/LakeAndMountains.png", LakeAndMountains_png, sizeof(LakeAndMountains_png) },
-            { "Images/SkyAndSun.jpg", SkyAndSun_jpg, sizeof(SkyAndSun_jpg) }
+            { "Images/BackClouds.png", BackClouds_png },
+            { "Images/FrontClouds.png", FrontClouds_png },
+            { "Images/FrontTrees.png", FrontTrees_png },
+            { "Images/LakeAndMountains.png", LakeAndMountains_png },
+            { "Images/SkyAndSun.jpg", SkyAndSun_jpg }
         };
 
-        return *new EmbeddedTextureProvider(textures, NS_COUNTOF(textures));
+        return *new EmbeddedTextureProvider(textures);
     }
 };
 

@@ -5,10 +5,10 @@
 
 
 #include <NsCore/Noesis.h>
-#include <NsCore/ReflectionImplement.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 #include <NsCore/RegisterComponent.h>
-#include <NsCore/TypeId.h>
 #include <NsApp/EmbeddedXamlProvider.h>
+#include <NsApp/EmbeddedFontProvider.h>
 #include <NsApp/ApplicationLauncher.h>
 #include <NsApp/EntryPoint.h>
 #include <NsApp/Application.h>
@@ -16,6 +16,7 @@
 
 #include "App.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
+#include "Aero Matics Regular.ttf.bin.h"
 
 
 using namespace Noesis;
@@ -28,19 +29,13 @@ namespace HelloWorld
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public Application
 {
-    NS_IMPLEMENT_INLINE_REFLECTION(App, Application)
-    {
-        NsMeta<TypeId>("HelloWorld.App");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "HelloWorld.App")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class MainWindow final: public Window
 {
-    NS_IMPLEMENT_INLINE_REFLECTION(MainWindow, Window)
-    {
-        NsMeta<TypeId>("HelloWorld.MainWindow");
-    }
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "HelloWorld.MainWindow")
 };
 
 }
@@ -51,19 +46,29 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        NsRegisterComponent<HelloWorld::App>();
-        NsRegisterComponent<HelloWorld::MainWindow>();
+        RegisterComponent<HelloWorld::App>();
+        RegisterComponent<HelloWorld::MainWindow>();
     }
 
-    Ptr<XamlProvider> GetXamlProvider() const override
+    Noesis::Ptr<XamlProvider> GetXamlProvider() const override
     {
         EmbeddedXaml xamls[] = 
         {
-            { "App.xaml", App_xaml, sizeof(App_xaml) },
-            { "MainWindow.xaml", MainWindow_xaml, sizeof(MainWindow_xaml) }
+            { "App.xaml", App_xaml },
+            { "MainWindow.xaml", MainWindow_xaml }
         };
 
-        return *new EmbeddedXamlProvider(xamls, NS_COUNTOF(xamls));
+        return *new EmbeddedXamlProvider(xamls);
+    }
+
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
+    {
+        EmbeddedFont fonts[] =
+        {
+            { "", Aero_Matics_Regular_ttf }
+        };
+
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

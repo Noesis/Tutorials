@@ -1,8 +1,11 @@
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.noesis.Samples.Touch">
+  package="com.noesis.Samples.Touch"
+  android:versionCode="9310"
+  android:versionName="3.0.0">
 
-  <uses-sdk android:minSdkVersion="17" />
+  <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="28" />
+  <uses-permission android:name="android.permission.INTERNET" />
 
   <application
     android:icon="@mipmap/ic_launcher"
