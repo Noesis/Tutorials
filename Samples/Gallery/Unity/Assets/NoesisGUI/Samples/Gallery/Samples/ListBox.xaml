@@ -1,0 +1,137 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{DynamicResource SampleControlStyle}"
+    Header="ListBox"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._ListBox.html">
+
+    <StackPanel>
+        <TextBlock Style="{DynamicResource SampleSectionDesc}" Text="A ListBox allows users to select one or more options from a list of items. Each item could be presented as a simple text or use a template to customize how it should look."/>
+        <HeaderedContentControl Style="{DynamicResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/830918c271906a797078364465dae091" TabIndex="100">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource SampleSectionTitle}" Text="SelectionMode and selection properties"/>
+                    <TextBlock Style="{DynamicResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>Using</Run>
+                        <Run FontWeight="Bold">SelectionMode</Run>
+                        <Run>property you can specify the selection behavior for the list:</Run><LineBreak/>
+                        <Run/> <Run FontWeight="Bold">&#x2022; Single</Run>
+                        <Run>if only one item at a time can be selected.</Run><LineBreak/>
+                        <Run/> <Run FontWeight="Bold">&#x2022; Extended</Run>
+                        <Run>allows multiple selected items by holding the SHIFT (range selection) or CTRL (toggle selection) keys.</Run><LineBreak/>
+                        <Run/> <Run FontWeight="Bold">&#x2022; Multiple</Run>
+                        <Run>to select multiple items without holding down a modifier key.</Run>
+                    </TextBlock>
+                    <TextBlock Style="{DynamicResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>User can bind to</Run>
+                        <Run FontWeight="Bold">SelectedIndex</Run><Run>,</Run>
+                        <Run FontWeight="Bold">SelectedItem</Run> <Run>or</Run>
+                        <Run FontWeight="Bold">SelectedValue</Run>
+                        <Run>to be notified when selection changes.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ListBox x:Name="List1" SelectionMode="{Binding SelectedItem.Content, ElementName=SelectionMode}" SelectedValuePath="Content" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1" Width="100" Height="150">
+                    <ListBoxItem Content="Item 0"/>
+                    <ListBoxItem Content="Item 1"/>
+                    <ListBoxItem Content="Item 2"/>
+                    <ListBoxItem Content="Item 3"/>
+                    <ListBoxItem Content="Item 4"/>
+                    <ListBoxItem Content="Item 5"/>
+                    <ListBoxItem Content="Item 6"/>
+                    <ListBoxItem Content="Item 7"/>
+                    <ListBoxItem Content="Item 8"/>
+                    <ListBoxItem Content="Item 9"/>
+                </ListBox>
+                <Grid Margin="20,0,0,0" Width="250" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="SelectionMode:" FontWeight="Bold"/>
+                    <ComboBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="SelectionMode" SelectedIndex="0" Margin="0,5,0,0" Width="150" HorizontalAlignment="Left">
+                        <ComboBoxItem Content="Single"/>
+                        <ComboBoxItem Content="Extended"/>
+                        <ComboBoxItem Content="Multiple"/>
+                    </ComboBox>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="SelectedIndex:" FontWeight="Bold" Margin="0,10,0,0"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedIndex, ElementName=List1}" Margin="10,10,0,0"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="SelectedItem:" FontWeight="Bold" Margin="0,10,0,0"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedItem, ElementName=List1}" Margin="10,10,0,0"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="SelectedValue:" FontWeight="Bold" Margin="0,10,0,0"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedValue, ElementName=List1}" Margin="10,10,0,0"/>
+                </Grid>
+            </StackPanel>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{DynamicResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/02b5c58205763877720f4e80930076b1" TabIndex="200">
+            <HeaderedContentControl.Header>
+                <TextBlock Style="{DynamicResource SampleSectionTitle}" Text="ItemsSource and item visualization"/>
+            </HeaderedContentControl.Header>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel.Resources>
+                    <GradientStopCollection x:Key="Colors">
+                        <GradientStop Offset="0" Color="Red"/>
+                        <GradientStop Offset="1" Color="OrangeRed"/>
+                        <GradientStop Offset="2" Color="Orange"/>
+                        <GradientStop Offset="3" Color="Yellow"/>
+                        <GradientStop Offset="4" Color="Lime"/>
+                        <GradientStop Offset="5" Color="Teal"/>
+                        <GradientStop Offset="6" Color="Cyan"/>
+                        <GradientStop Offset="7" Color="DodgerBlue"/>
+                        <GradientStop Offset="8" Color="Blue"/>
+                        <GradientStop Offset="9" Color="Purple"/>
+                    </GradientStopCollection>
+                    <ItemsPanelTemplate x:Key="PanelTemplate">
+                        <WrapPanel ItemWidth="60" ItemHeight="60"/>
+                    </ItemsPanelTemplate>
+                    <DataTemplate x:Key="ItemTemplate">
+                        <Rectangle Width="35" Height="35" Stroke="Black" StrokeThickness="2">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="{Binding Color}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </DataTemplate>
+                    <DataTemplate x:Key="SelectedItemTemplate">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Offset:" FontWeight="Bold" Margin="0,10,0,0"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Offset}" Margin="10,10,0,0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Color (HEX):" FontWeight="Bold" Margin="0,10,0,0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Color}" Margin="10,10,0,0"/>
+                            <Rectangle Grid.Row="2" Grid.ColumnSpan="2" Height="40" Margin="0,10,0,0">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Grid>
+                    </DataTemplate>
+                </StackPanel.Resources>
+                <ListBox x:Name="List2" ItemsSource="{Binding Source={StaticResource Colors}}" ItemsPanel="{StaticResource PanelTemplate}" ItemTemplate="{StaticResource ItemTemplate}" SelectedIndex="0" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1" Width="130" Height="150" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                <StackPanel Margin="20,0,0,0" Width="220" VerticalAlignment="Top">
+                    <TextBlock Text="SELECTION" Margin="0,5,0,10"/>
+                    <ContentPresenter Content="{Binding SelectedItem, ElementName=List2}" ContentTemplate="{StaticResource SelectedItemTemplate}"/>
+                </StackPanel>
+            </StackPanel>
+        </HeaderedContentControl>
+    </StackPanel>
+</HeaderedContentControl>

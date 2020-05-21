@@ -12,6 +12,9 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <Storyboard x:Key="FadeIn">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ToolTips">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+                </ObjectAnimationUsingKeyFrames>
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainMenuControl">
                     <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
                 </ObjectAnimationUsingKeyFrames>
@@ -68,6 +71,9 @@
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="FadeOut">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ToolTips">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
                 <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainMenuControl">
                     <DiscreteObjectKeyFrame KeyTime="0:0:0.6" Value="{x:Static Visibility.Collapsed}"/>
                 </ObjectAnimationUsingKeyFrames>
@@ -135,7 +141,7 @@
         <ei:DataTrigger Binding="{Binding State}" Comparison="NotEqual" Value="{x:Static local:State.Main}">
             <ei:ControlStoryboardAction Storyboard="{StaticResource FadeOut}"/>
         </ei:DataTrigger>
-        <ei:KeyTrigger Key="Escape" ActiveOnFocus="True">
+        <ei:KeyTrigger Key="Esc" ActiveOnFocus="True">
             <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
             <i:InvokeCommandAction Command="{Binding Exit}"/>
         </ei:KeyTrigger>
@@ -200,7 +206,7 @@
                         <ToggleButton x:Name="Settings" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Content="SETTINGS" Command="{Binding Settings}"/>
                         <ToggleButton x:Name="Exit" Style="{StaticResource MenuButtonStyle}" MinWidth="624" Content="EXIT" Command="{Binding Exit}"/>
                         <Rectangle Height="2" Margin="0,100,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                        <Grid Margin="18,4,0,0">
+                        <Grid x:Name="ToolTips" Margin="18,4,0,0">
                             <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Dive straight into the adventure." IsEnabled="{Binding IsKeyboardFocused, ElementName=Start}"/>
                             <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Configure the settings for the demo." IsEnabled="{Binding IsKeyboardFocused, ElementName=Settings}"/>
                             <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Exit the demo." IsEnabled="{Binding IsKeyboardFocused, ElementName=Exit}"/>

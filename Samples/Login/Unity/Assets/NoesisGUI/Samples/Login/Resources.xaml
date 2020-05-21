@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
   xmlns:local="clr-namespace:Login">
     <LinearGradientBrush x:Key="NoesisLogoBg" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Offset="0" Color="#FF184C79"/>
@@ -29,6 +30,16 @@
         M64.3942001060486,35.79507L64.3942001060486,58.27109 92.2812001060488,58.27109 92.2812001060488,70.34153 27.4707001060488,70.34153C24.1410001060485,70.34153,22.0598001060485,68.67665,22.0598001060485,65.76311L22.0598001060485,25.80576C22.0598001060485,22.89222,23.7246001060485,21.2273399999999,27.4707001060488,21.2273399999999L112.259700106049,21.2273399999999 112.259700106049,2.5410988417629E-21 27.4707001060488,2.5410988417629E-21C9.15670010604844,2.5410988417629E-21,1.06048446468776E-07,7.49199999999996,1.06048446468776E-07,22.05977L1.06048446468776E-07,68.67665C1.06048446468776E-07,83.66065,9.15670010604844,91.15265,27.4707001060488,91.15265L114.757000106049,91.15265 114.757000106049,35.37888 64.3942001060486,35.37888z
     </Geometry>
     <ScaleTransform x:Key="NoesisLogoTransform" ScaleX="1.5" ScaleY="1.5"/>
+
+    <Style TargetType="{x:Type ScrollViewer}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                    <ScrollContentPresenter CanContentScroll="{TemplateBinding CanContentScroll}" Margin="{TemplateBinding Padding}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style TargetType="{x:Type Button}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -376,13 +387,26 @@
                                 </Grid>
                             </Viewbox>
                             <Viewbox Stretch="Uniform" Margin="8,4">
-                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" Width="190"/>
+                                <Grid>
+                                    <TextBlock x:Name="Placeholder" Text="{Binding (noesis:Text.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" Foreground="#FF265678" Visibility="Collapsed" Margin="2,0"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="False" Width="190"/>
+                                </Grid>
                             </Viewbox>
                         </Grid>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Visibility" Value="Visible" TargetName="Placeholder"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>                        
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+          <Trigger Property="IsEnabled" Value="True">
+            <Setter Property="Cursor" Value="IBeam"/>
+          </Trigger>
+        </Style.Triggers>
     </Style>
     <Style TargetType="{x:Type PasswordBox}">
         <Setter Property="FontFamily" Value="./#Aero Matics"/>
@@ -485,11 +509,24 @@
                             </Grid>
                         </Viewbox>
                         <Viewbox Stretch="Uniform" Margin="8,4">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" Width="190"/>
+                            <Grid>
+                                <TextBlock x:Name="Placeholder" Text="{Binding (noesis:Text.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" Foreground="#FF265678" Visibility="Collapsed" Margin="2,0"/>
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" Width="190"/>
+                            </Grid>
                         </Viewbox>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="noesis:Text.PasswordLength" Value="0">
+                            <Setter Property="Visibility" Value="Visible" TargetName="Placeholder"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+          <Trigger Property="IsEnabled" Value="True">
+            <Setter Property="Cursor" Value="IBeam"/>
+          </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

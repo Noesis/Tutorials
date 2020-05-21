@@ -1,7 +1,6 @@
 ﻿#if UNITY_5_3_OR_NEWER
 #define NOESIS
 using Noesis;
-using System;
 using System.ComponentModel;
 using System.Windows.Input;
 #else

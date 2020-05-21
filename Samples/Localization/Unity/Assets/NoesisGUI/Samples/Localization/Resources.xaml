@@ -290,6 +290,7 @@
     <Style TargetType="{x:Type ComboBoxItem}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
         <Setter Property="Template" Value="{StaticResource ComboBoxItemTemplate}"/>
     </Style>
 

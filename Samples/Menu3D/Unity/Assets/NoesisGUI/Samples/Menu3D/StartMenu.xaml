@@ -1,10 +1,11 @@
-﻿<UserControl x:Class="Menu3D.StartMenu"
+﻿<UserControl
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
     xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
     xmlns:local="clr-namespace:Menu3D"
+    x:Class="Menu3D.StartMenu"
     x:Name="StartMenuControl"
     d:DesignWidth="1300" d:DesignHeight="900"
     FontFamily="Fonts/#WeblySleek UI Semilight">
@@ -651,7 +652,7 @@
                             <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
                             <ToggleButton x:Name="Back" Style="{StaticResource MenuButtonStyle}" Content="BACK" Command="{Binding Back}"/>
                             <Rectangle Height="2" Margin="0,0,0,2" Fill="{StaticResource HorizontalLineBg}"/>
-                            <Grid Margin="18,4,0,0">
+                            <Grid x:Name="ToolTips" Margin="18,4,0,0">
                                 <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="For players looking for experience the game without any of the challenge." IsEnabled="{Binding IsKeyboardFocused, ElementName=Casual}"/>
                                 <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="Recommended for standard player." IsEnabled="{Binding IsKeyboardFocused, ElementName=Normal}"/>
                                 <ContentControl Style="{StaticResource MenuToolTipStyle}" Content="For experienced players only." IsEnabled="{Binding IsKeyboardFocused, ElementName=Expert}"/>
