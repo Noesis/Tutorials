@@ -3,21 +3,20 @@
    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
-   Title="NoesisGUI - RSS Reader" Width="487" Height="630" ResizeMode="NoResize"
+   Title="NoesisGUI - RSS Reader" ResizeMode="NoResize" SizeToContent="WidthAndHeight"
    Background="{StaticResource Background0}"
    Foreground="{StaticResource Foreground0}"
-   FontFamily="{StaticResource DefaultFont}"
    x:Class="RssReader.MainWindow">
 
-  <Viewbox>
+  <Viewbox Width="485" Height="640">
     <DockPanel LastChildFill="True"
                KeyboardNavigation.TabNavigation="Contained"
                KeyboardNavigation.DirectionalNavigation="Contained"
-               Width="325" Height="420">
+               Width="325" Height="430">
       <TextBlock DockPanel.Dock="Top" Text="RSS Reader" FontSize="32" FontWeight="Bold"
                  TextAlignment="Center" Margin="0,10,0,0"/>
       <Border DockPanel.Dock="Top" Background="{StaticResource Background1}"
-              BorderBrush="{StaticResource Border}" BorderThickness="1" CornerRadius="2"
+              BorderBrush="{StaticResource Border0}" BorderThickness="1" CornerRadius="2"
               Margin="10" Padding="15,5">
         <Grid>
           <Grid.ColumnDefinitions>
@@ -49,7 +48,7 @@
         <Button x:Name="Prev" Grid.Column="0" Content="Prev" Click="OnPrevClicked" Margin="0,0,5,0"/>
         <Button x:Name="Next" Grid.Column="1" Content="Next" Click="OnNextClicked" Margin="5,0,0,0"/>
       </Grid>
-      <Border Background="{StaticResource Background1}" BorderBrush="{StaticResource Border}"
+      <Border Background="{StaticResource Background1}" BorderBrush="{StaticResource Border0}"
               BorderThickness="1" CornerRadius="2" Margin="10,0" Padding="5">
         <Grid x:Name="ContentPanel" Margin="10,0">
           <Grid.RowDefinitions>
@@ -60,12 +59,12 @@
                      Grid.Row="0" FontSize="20" FontWeight="Bold"
                      Foreground="{StaticResource Foreground1}" TextAlignment="Center"
                      Margin="0,5,0,5"/>
-          <ScrollViewer Grid.Row="1" Margin="0,0,0,10" Padding="10" IsTabStop="True"
+          <ScrollViewer Grid.Row="1" Margin="0,0,0,10" Padding="10,0" IsTabStop="True"
                         HorizontalScrollBarVisibility="Disabled"
                         VerticalScrollBarVisibility="Auto"
                         PanningMode="VerticalFirst">
             <ScrollViewer.Style>
-              <Style TargetType="{x:Type ScrollViewer}">
+              <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}">
                 <Style.Triggers>
                   <Trigger Property="IsKeyboardFocused" Value="True">
                     <Setter Property="Background" Value="#10FFFFFF"/>

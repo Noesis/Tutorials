@@ -226,32 +226,38 @@ namespace BlendTutorial
         {
             if (eventName == "Click" && handlerName == "AddButton_Click")
             {
-                ((Button)source).Click += AddButton_Click;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((Button)source).Click += (s, e) => { ((MainWindow)wr.Target).AddButton_Click(s, e); };
                 return true;
             }
             if (eventName == "Click" && handlerName == "RemoveButton_Click")
             {
-                ((Button)source).Click += RemoveButton_Click;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((Button)source).Click += (s, e) => { ((MainWindow)wr.Target).RemoveButton_Click(s, e); };
                 return true;
             }
             if (eventName == "PreviewMouseLeftButtonDown" && handlerName == "ContainerBorder_MouseDown")
             {
-                ((Border)source).PreviewMouseLeftButtonDown += ContainerBorder_MouseDown;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((Border)source).PreviewMouseLeftButtonDown += (s, e) => { ((MainWindow)wr.Target).ContainerBorder_MouseDown(s, e); };
                 return true;
             }
             if (eventName == "PreviewMouseLeftButtonUp" && handlerName == "ContainerBorder_MouseUp")
             {
-                ((Border)source).PreviewMouseLeftButtonUp += ContainerBorder_MouseUp;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((Border)source).PreviewMouseLeftButtonUp += (s, e) => { ((MainWindow)wr.Target).ContainerBorder_MouseUp(s, e); };
                 return true;
             }
             if (eventName == "PreviewMouseMove" && handlerName == "ContainerBorder_MouseMove")
             {
-                ((Border)source).PreviewMouseMove += ContainerBorder_MouseMove;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((Border)source).PreviewMouseMove += (s, e) => { ((MainWindow)wr.Target).ContainerBorder_MouseMove(s, e); };
                 return true;
             }
             if (eventName == "Checked" && handlerName == "RadioButton_Checked")
             {
-                ((StackPanel)source).AddHandler(RadioButton.CheckedEvent, new RoutedEventHandler(RadioButton_Checked));
+                System.WeakReference wr = new System.WeakReference(this);
+                ((StackPanel)source).AddHandler(RadioButton.CheckedEvent, new RoutedEventHandler((s, e) => { ((MainWindow)wr.Target).RadioButton_Checked(s, e); }));
                 return true;
             }
             return false;

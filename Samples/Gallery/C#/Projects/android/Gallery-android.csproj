@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A429DBC8-7B07-466F-B814-C5F158CF0A65}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Gallery</RootNamespace>
+    <AssemblyName>Gallery</AssemblyName>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;__ANDROID__;NOESIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <PlatformTarget>ARM</PlatformTarget>
+    <AndroidSupportedAbis>armeabi-v7a</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>ARM</PlatformTarget>
+    <AndroidSupportedAbis>armeabi-v7a</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;__ANDROID__;NOESIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <AndroidSupportedAbis>arm64-v8a</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <AndroidSupportedAbis>arm64-v8a</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;__ANDROID__;NOESIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <PlatformTarget>x86</PlatformTarget>
+    <AndroidSupportedAbis>x86</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>__ANDROID__;NOESIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AndroidSupportedAbis>x86</AndroidSupportedAbis>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Src\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="App.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\App.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Resources.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Animation.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Animation.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Brushes.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Brushes.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Button.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Button.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Canvas.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Canvas.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\CheckBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ComboBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ContextMenu.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\DockPanel.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\DockPanel.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Effects.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Effects.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Expander.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Expander.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Grid.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Grid.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\GroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\GroupBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Hyperlink.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Hyperlink.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Image.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Image.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ItemsControl.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ItemsControl.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ListBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ListBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ListView.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Menu.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\PasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\PasswordBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ProgressBar.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\RadioButton.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\RadioButton.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\RepeatButton.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\RepeatButton.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ScrollViewer.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Slider.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\StackPanel.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\StackPanel.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\StatusBar.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\StatusBar.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\TabControl.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\TabControl.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\TextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\TextBlock.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\TextBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ToggleButton.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ToolBar.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ToolTip.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\TreeView.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\UniformGrid.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\UniformGrid.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\WrapPanel.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\WrapPanel.xaml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Caladea-Regular.ttf">
+      <Link>Samples\Fonts\Caladea-Regular.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\CourierPrime-Regular.ttf">
+      <Link>Samples\Fonts\CourierPrime-Regular.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Muli-Bold.ttf">
+      <Link>Samples\Fonts\Muli-Bold.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Muli-Italic.ttf">
+      <Link>Samples\Fonts\Muli-Italic.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Muli-Regular.ttf">
+      <Link>Samples\Fonts\Muli-Regular.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\WidgetIcons.ttf">
+      <Link>Samples\Fonts\WidgetIcons.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Aero Matics Regular.ttf">
+      <Link>Samples\Fonts\Aero Matics Regular.ttf</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\file.png">
+      <Link>Samples\Images\file.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\floppy-disk.png">
+      <Link>Samples\Images\floppy-disk.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\folder-closed.png">
+      <Link>Samples\Images\folder-closed.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\folder-open.png">
+      <Link>Samples\Images\folder-open.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\Nature.png">
+      <Link>Samples\Images\Nature.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\recycling-bin.png">
+      <Link>Samples\Images\recycling-bin.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\search.png">
+      <Link>Samples\Images\search.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+    <Compile Include="Resources\Resource.designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Noesis.App.Displays.Android">
+      <Version>3.0.*</Version>
+    </PackageReference>
+    <PackageReference Include="Noesis.App.RenderContexts.EGL">
+      <Version>3.0.*</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(SolutionDir)Src\NoesisLicense.txt">
+      <Link>NoesisLicense.txt</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

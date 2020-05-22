@@ -23,7 +23,8 @@ namespace Menu3D
         {
             Options = new ObservableCollection<UIElement>();
 
-            this.Initialized += OnInitialized;
+            System.WeakReference wr = new System.WeakReference(this);
+            this.Initialized += (s, e) => { ((OptionSelector)wr.Target).OnInitialized(s, e); };
             this.InitializeComponent();
         }
 

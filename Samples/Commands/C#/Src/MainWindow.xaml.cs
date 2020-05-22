@@ -15,7 +15,8 @@ namespace Commands
     {
         public MainWindow()
         {
-            Initialized += OnInitialized;
+            System.WeakReference wr = new System.WeakReference(this);
+            Initialized += (s, e) => { ((MainWindow)wr.Target).OnInitialized(s, e); };
             InitializeComponent();
         }
 

@@ -8,15 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Noesis.App.Displays.X11">
-      <Version>2.2.*</Version>
-    </PackageReference>
-    <PackageReference Include="Noesis.App.RenderContexts.EGL">
-      <Version>2.2.*</Version>
-    </PackageReference>
-    <PackageReference Include="Noesis.App.RenderContexts.GLX">
-      <Version>2.2.*</Version>
-    </PackageReference>
+    <PackageReference Include="Noesis.App.Displays.X11" Version="3.0.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="3.0.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="3.0.*" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -45,8 +39,9 @@
     <EmbeddedResource Include="..\..\Src\MainWindow.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\..\Src\ControlResources.xaml">
+    <EmbeddedResource Include="..\..\Src\Resources.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\Src\Aero Matics Regular.ttf">
       <Link>Aero Matics Regular.ttf</Link>
@@ -56,6 +51,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\Src\AudioSlide.mp3">
       <Link>AudioSlide.mp3</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="$(SolutionDir)Src\NoesisLicense.txt">
+      <Link>NoesisLicense.txt</Link>
     </EmbeddedResource>
   </ItemGroup>
 

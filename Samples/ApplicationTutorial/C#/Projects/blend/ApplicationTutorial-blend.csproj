@@ -73,10 +73,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="..\..\Src\NoesisTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="..\..\Src\Properties\DesignTimeResources.xaml">
       <Link>Properties\DesignTimeResources.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
@@ -92,12 +88,10 @@
     <None Include="..\..\Src\Properties\Settings.settings">
       <Link>Properties\Settings.settings</Link>
     </None>
-    <Resource Include="..\..\Src\Roboto-Bold.ttf" />
-    <Resource Include="..\..\Src\Roboto-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.GUI.Extensions">
-      <Version>2.2.*</Version>
+      <Version>3.0.*</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

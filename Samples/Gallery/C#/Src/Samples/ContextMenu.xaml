@@ -1,0 +1,119 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="ContextMenu"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._ContextMenu.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="A ContextMenu displays a menu that can be dismissed by clicking or tapping off of it. Use it to let the user choose from a contextual list of simple commands or options."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/7b79e7ce0eeeca2a3c07803fa64fa154" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="A simple ContextMenu"/>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Background="{DynamicResource Brush.Header.Normal}" Width="360" Padding="20">
+          <Border.ContextMenu>
+            <ContextMenu>
+              <MenuItem Header="Option 1"/>
+              <MenuItem Header="Option 2"/>
+              <MenuItem Header="Option 3"/>
+            </ContextMenu>
+          </Border.ContextMenu>
+          <TextBlock Text="Right click to open Context Menu" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"/>
+        </Border>
+      </Grid>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/9e31c0e860b73aa44fea16564030c899" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Submenus and toggle entries"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>A</Run>
+            <Run FontWeight="Bold">Separator</Run>
+            <Run>can be used to group menu entries in different blocks.</Run>
+          </TextBlock>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>An entry can be a toggle option by setting</Run>
+            <Run FontWeight="Bold">IsCheckable</Run>
+            <Run>property to true.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Background="{DynamicResource Brush.Header.Normal}" Width="360" Padding="20">
+          <Border.ContextMenu>
+            <ContextMenu>
+              <MenuItem Header="View">
+                <MenuItem Header="Large icons"/>
+                <MenuItem Header="Small icons"/>
+                <MenuItem Header="List"/>
+                <MenuItem Header="Details"/>
+              </MenuItem>
+              <MenuItem Header="Sort by">
+                <MenuItem Header="Name"/>
+                <MenuItem Header="Date"/>
+                <MenuItem Header="Type"/>
+              </MenuItem>
+              <MenuItem Header="Refresh"/>
+              <Separator/>
+              <MenuItem Header="Pin to TaskBar" IsCheckable="True"/>
+            </ContextMenu>
+          </Border.ContextMenu>
+          <TextBlock Text="Right click to open Context Menu" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"/>
+        </Border>
+      </Grid>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/bcfae6b889e85d5f7491fb8a1801f80d" TabIndex="300">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Click event"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Each MenuItem provides a</Run>
+            <Run FontWeight="Bold">Click</Run>
+            <Run>event that can be used to perform actions over the target object.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel.Resources>
+          <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+            <Setter Property="ContextMenu">
+              <Setter.Value>
+                <ContextMenu>
+                  <MenuItem Header="Remove">
+                    <i:Interaction.Triggers>
+                      <i:EventTrigger EventName="Click">
+                        <ei:RemoveElementAction TargetObject="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}"/>
+                      </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                  </MenuItem>
+                </ContextMenu>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </StackPanel.Resources>
+        <TextBlock Text="Use contextual menu to remove items from the list." Margin="0,0,0,10"/>
+        <ListBox Width="360" Height="200" BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1">
+          <ListBoxItem Content="ListBox Item 1"/>
+          <ListBoxItem Content="ListBox Item 2"/>
+          <ListBoxItem Content="ListBox Item 3"/>
+          <ListBoxItem Content="ListBox Item 4"/>
+          <ListBoxItem Content="ListBox Item 5"/>
+          <ListBoxItem Content="ListBox Item 6"/>
+          <ListBoxItem Content="ListBox Item 7"/>
+          <ListBoxItem Content="ListBox Item 8"/>
+          <ListBoxItem Content="ListBox Item 9"/>
+        </ListBox>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>

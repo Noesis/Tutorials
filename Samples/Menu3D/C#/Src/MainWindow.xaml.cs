@@ -17,8 +17,9 @@ namespace Menu3D
     {
         public MainWindow()
         {
-            this.Loaded += OnLoaded;
-            this.SizeChanged += OnSizeChanged;
+            System.WeakReference wr = new System.WeakReference(this);
+            this.Loaded += (s, e) => { ((MainWindow)wr.Target).OnLoaded(s, e); };
+            this.SizeChanged += (s, e) => { ((MainWindow)wr.Target).OnSizeChanged(s, e); };
 
             this.InitializeComponent();
         }

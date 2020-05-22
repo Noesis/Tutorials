@@ -39,7 +39,11 @@ namespace IntegrationGLUT
             });
 
             // Noesis initialization. This must be the first step before using any NoesisGUI functionality
-            Noesis.GUI.Init();
+            Noesis.GUI.Init("LICENSE_NAME", "LICENSE_KEY");
+
+            // Setup theme
+            NoesisApp.Application.SetThemeProviders();
+            Noesis.GUI.LoadApplicationResources("Theme/NoesisTheme.DarkBlue.xaml");
 
             // For simplicity purposes we are not using resource providers in this sample. ParseXaml() is
             // enough if there is no extra XAML dependencies
@@ -71,7 +75,7 @@ namespace IntegrationGLUT
             // We transfer the ownership to a global pointer instead of a Ptr<> because there is no way
             // in GLUT to do shutdown and we don't want the Ptr<> to be released at global time
             _view = Noesis.GUI.CreateView(xaml);
-            _view.SetIsPPAAEnabled(true);
+            _view.SetFlags(Noesis.RenderFlags.PPAA | Noesis.RenderFlags.LCD);
 
             // Renderer initialization with an OpenGL device
             _view.Renderer.Init(new Noesis.RenderDeviceGL());

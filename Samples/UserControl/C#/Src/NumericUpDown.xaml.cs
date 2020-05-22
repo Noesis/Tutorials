@@ -36,12 +36,14 @@ namespace UserControls
         {
             if (eventName == "Click" && handlerName == "UpButton_Click")
             {
-                ((RepeatButton)source).Click += UpButton_Click;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((RepeatButton)source).Click += (s, e) => { ((NumericUpDown)wr.Target).UpButton_Click(s, e); };
                 return true;
             }
             if (eventName == "Click" && handlerName == "DownButton_Click")
             {
-                ((RepeatButton)source).Click += DownButton_Click;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((RepeatButton)source).Click += (s, e) => { ((NumericUpDown)wr.Target).DownButton_Click(s, e); };
                 return true;
             }
             return false;
@@ -112,15 +114,15 @@ namespace UserControls
         }
         #endregion
 
-        #region ValueStep property
-        public static readonly DependencyProperty ValueStepProperty = DependencyProperty.Register(
-            "ValueStep", typeof(int), typeof(NumericUpDown),
+        #region StepValue property
+        public static readonly DependencyProperty StepValueProperty = DependencyProperty.Register(
+            "StepValue", typeof(int), typeof(NumericUpDown),
             new PropertyMetadata(1));
 
-        public int ValueStep
+        public int StepValue
         {
-            get { return (int)GetValue(ValueStepProperty); }
-            set { SetValue(ValueStepProperty, value); }
+            get { return (int)GetValue(StepValueProperty); }
+            set { SetValue(StepValueProperty, value); }
         }
         #endregion
 
@@ -136,12 +138,12 @@ namespace UserControls
         #region Button handlers
         void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            Value += ValueStep;
+            Value += StepValue;
         }
 
         void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            Value -= ValueStep;
+            Value -= StepValue;
         }
         #endregion
     }

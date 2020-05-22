@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{D429DBC8-7B07-466F-B814-C5F158CF0A65}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gallery</RootNamespace>
+    <AssemblyName>Gallery</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <PackageCertificateKeyFile>Gallery_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <OutputPath>bin/$(Configuration)/$(Platform)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;DISABLE_XAML_GENERATED_MAIN;NOESIS</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP;DISABLE_XAML_GENERATED_MAIN;NOESIS</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;DISABLE_XAML_GENERATED_MAIN;NOESIS</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;DISABLE_XAML_GENERATED_MAIN;NOESIS</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;DISABLE_XAML_GENERATED_MAIN;NOESIS</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Src\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="App.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\App.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Resources.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Animation.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Animation.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Brushes.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Brushes.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Button.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Button.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Canvas.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Canvas.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\CheckBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ComboBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ContextMenu.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\DockPanel.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\DockPanel.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Effects.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Effects.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Expander.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Expander.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Grid.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Grid.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\GroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\GroupBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Hyperlink.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Hyperlink.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Image.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Image.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ItemsControl.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ItemsControl.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ListBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ListBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ListView.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Menu.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\PasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\PasswordBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ProgressBar.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\RadioButton.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\RadioButton.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\RepeatButton.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\RepeatButton.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ScrollViewer.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Slider.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\Slider.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\StackPanel.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\StackPanel.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\StatusBar.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\StatusBar.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\TabControl.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\TabControl.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\TextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\TextBlock.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\TextBox.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ToggleButton.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ToolBar.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\ToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\ToolTip.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\TreeView.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\UniformGrid.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\UniformGrid.xaml</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\WrapPanel.xaml">
+      <SubType>Designer</SubType>
+      <Link>Samples\WrapPanel.xaml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Caladea-Regular.ttf">
+      <Link>Samples\Fonts\Caladea-Regular.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\CourierPrime-Regular.ttf">
+      <Link>Samples\Fonts\CourierPrime-Regular.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Muli-Bold.ttf">
+      <Link>Samples\Fonts\Muli-Bold.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Muli-Italic.ttf">
+      <Link>Samples\Fonts\Muli-Italic.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Muli-Regular.ttf">
+      <Link>Samples\Fonts\Muli-Regular.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\WidgetIcons.ttf">
+      <Link>Samples\Fonts\WidgetIcons.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Fonts\Aero Matics Regular.ttf">
+      <Link>Samples\Fonts\Aero Matics Regular.ttf</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\file.png">
+      <Link>Samples\Images\file.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\floppy-disk.png">
+      <Link>Samples\Images\floppy-disk.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\folder-closed.png">
+      <Link>Samples\Images\folder-closed.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\folder-open.png">
+      <Link>Samples\Images\folder-open.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\Nature.png">
+      <Link>Samples\Images\Nature.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\recycling-bin.png">
+      <Link>Samples\Images\recycling-bin.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Samples\Images\search.png">
+      <Link>Samples\Images\search.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="Gallery_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="Assets\Square71x71Logo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.9</Version>
+    </PackageReference>
+    <PackageReference Include="Noesis.App.Displays.WinRT">
+      <Version>3.0.*</Version>
+    </PackageReference>
+    <PackageReference Include="Noesis.App.RenderContexts.D3D11">
+      <Version>3.0.*</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(SolutionDir)Src\NoesisLicense.txt">
+      <Link>NoesisLicense.txt</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

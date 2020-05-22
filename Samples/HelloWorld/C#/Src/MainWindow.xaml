@@ -1,10 +1,13 @@
 ﻿<Window x:Class="HelloWorld.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-    xmlns:local="clr-namespace:HelloWorld"
-    Background="#FF124C7A"
-    Title="Hello, World!">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelloWorld"
+        mc:Ignorable="d"
+        FontSize="24"
+        Background="#FF124C7A"
+        Title="NoesisGUI - Hello, World!">
 
     <Window.Resources>
         <Storyboard x:Key="Intro">
@@ -185,7 +188,7 @@
                         </StackPanel>
                     </Grid>
                     <StackPanel x:Name="HelloWorld" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,15,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock x:Name="Hello" Text="Hello," FontSize="20" Foreground="White" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock x:Name="Hello" Text="Hello," Foreground="White" RenderTransformOrigin="0.5,0.5">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -195,7 +198,7 @@
                                 </TransformGroup>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock x:Name="World" Text="World!" FontSize="20" Foreground="White" Margin="5,0,0,0" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock x:Name="World" Text="World!" Foreground="White" Margin="5,0,0,0" RenderTransformOrigin="0.5,0.5">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>

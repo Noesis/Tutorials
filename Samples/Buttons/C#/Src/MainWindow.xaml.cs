@@ -16,7 +16,8 @@ namespace Buttons
     {
         public MainWindow()
         {
-            this.Initialized += OnInitialized;
+            System.WeakReference wr = new System.WeakReference(this);
+            this.Initialized += (s, e) => { ((MainWindow)wr.Target).OnInitialized(s, e); };
             this.InitializeComponent();
         }
 

@@ -15,503 +15,513 @@
         d:DesignWidth="1000" d:DesignHeight="600" d:DataContext="{d:DesignInstance {x:Type local:ViewModel}, IsDesignTimeCreatable=True}">
 
     <Window.Resources>
-
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-
-            <Storyboard x:Key="Anim.Intro">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="BackgroundFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="VignetteBorder">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Stats">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Equip">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Inventory">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DragPanel">
-                    <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <DiscreteDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
-                </DoubleAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="CharacterPanel">
-                    <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
-                    <DiscreteBooleanKeyFrame KeyTime="0:0:3" Value="True"/>
-                </BooleanAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="InventoryPanel">
-                    <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
-                    <DiscreteBooleanKeyFrame KeyTime="0:0:3" Value="True"/>
-                </BooleanAnimationUsingKeyFrames>
-                <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="StatsTitleFade">
-                    <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
-                    <DiscretePointKeyFrame KeyTime="0:0:1.2" Value="0,1"/>
-                </PointAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="StatsTitleFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseIn"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="StatsTitleFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="StatsTitleFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0.8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0.8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.225" Value="0.95"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.25" Value="0.8"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="StatsTitleText">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StatsTitleText">
-                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-20"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-20"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-2">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="StatsTitleLine">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
-                </DoubleAnimationUsingKeyFrames>
-                <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="StatsFade">
-                    <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
-                    <DiscretePointKeyFrame KeyTime="0:0:1.6" Value="1,0"/>
-                </PointAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="StatsFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseIn"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="StatsFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="StatsFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0.6"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0.6"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.625" Value="0.75"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.65" Value="0.6"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LifeLabel">
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Life">
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.65" Value="-10"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.85" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ManaLabel">
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.65" Value="-8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.85" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Mana">
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="-10"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="DpsLabel">
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="-8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Dps">
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.75" Value="-10"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.95" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ArmorLabel">
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.75" Value="-8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.95" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Armor">
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-10"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="EquipTitleFade">
-                    <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
-                    <DiscretePointKeyFrame KeyTime="0:0:1.6" Value="0,1"/>
-                </PointAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="EquipTitleFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseIn"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="EquipTitleFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="EquipTitleFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0.8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0.8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.625" Value="0.95"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.65" Value="0.8"/>
-                </DoubleAnimationUsingKeyFrames>
-                <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="EquipFade">
-                    <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
-                    <DiscretePointKeyFrame KeyTime="0:0:2" Value="1,0"/>
-                </PointAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="EquipFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseIn"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="EquipFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="EquipFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0.6"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.6"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.025" Value="0.75"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.05" Value="0.6"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="EquipTitleText">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="EquipTitleText">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-20"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-20"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-2">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="EquipTitleLine">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Character">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0.65"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotHead">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotChest">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.05" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.25" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotLeft">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotLegs">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.15" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.35" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotRing">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.05" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.25" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotArms">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotRight">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.15" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.35" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotFeet">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-18"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="InventoryTitleFade">
-                    <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
-                    <DiscretePointKeyFrame KeyTime="0:0:2" Value="0,1"/>
-                </PointAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="InventoryTitleFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseIn"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="InventoryTitleFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="InventoryTitleFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0.8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.8"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.625" Value="0.95"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.65" Value="0.8"/>
-                </DoubleAnimationUsingKeyFrames>
-                <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="InventoryFade">
-                    <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
-                    <DiscretePointKeyFrame KeyTime="0:0:2.4" Value="1,0"/>
-                </PointAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="InventoryFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseIn"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="InventoryFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="1"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="InventoryFade">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="0.6"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0.6"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.425" Value="0.75"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.45" Value="0.6"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="InventoryTitleText">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <SineEase EasingMode="EaseInOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="InventoryTitleText">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-20"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-20"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-2">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="0">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <CircleEase EasingMode="EaseOut"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="InventoryTitleLine">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="1"/>
-                </DoubleAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="InventoryList">
-                    <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
-                </ColorAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="InventoryList">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="1"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="InventoryList">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="1"/>
-                </DoubleAnimationUsingKeyFrames>
-                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask)" Storyboard.TargetName="InventoryList">
-                    <DiscreteObjectKeyFrame KeyTime="0:0:2.8" Value="{x:Null}"/>
-                </ObjectAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="HelpPanel">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1">
-                        <EasingDoubleKeyFrame.EasingFunction>
-                            <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
-                        </EasingDoubleKeyFrame.EasingFunction>
-                    </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
-        </ResourceDictionary>
-
+        <Storyboard x:Key="Anim.Intro">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="BackgroundFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="VignetteBorder">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Stats">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.RotationY)" Storyboard.TargetName="StatsGroup">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="-10">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Equip">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Inventory">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="DragPanel">
+                <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+                <DiscreteDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="CharacterPanel">
+                <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
+                <DiscreteBooleanKeyFrame KeyTime="0:0:3" Value="True"/>
+            </BooleanAnimationUsingKeyFrames>
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="InventoryPanel">
+                <DiscreteBooleanKeyFrame KeyTime="0" Value="False"/>
+                <DiscreteBooleanKeyFrame KeyTime="0:0:3" Value="True"/>
+            </BooleanAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="StatsTitleFade">
+                <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
+                <DiscretePointKeyFrame KeyTime="0:0:1.2" Value="0,1"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="StatsTitleFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="StatsTitleFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="StatsTitleFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.225" Value="0.95"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.25" Value="0.8"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="StatsTitleText">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StatsTitleText">
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-2">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="StatsTitleLine">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="StatsFade">
+                <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
+                <DiscretePointKeyFrame KeyTime="0:0:1.6" Value="1,0"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="StatsFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="StatsFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="StatsFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.625" Value="0.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.65" Value="0.6"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="LifeLabel">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Life">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.65" Value="-10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.85" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ManaLabel">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.65" Value="-8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.85" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Mana">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="-10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="DpsLabel">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="-8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Dps">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.75" Value="-10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.95" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ArmorLabel">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.75" Value="-8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.95" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Armor">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="EquipTitleFade">
+                <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
+                <DiscretePointKeyFrame KeyTime="0:0:1.6" Value="0,1"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="EquipTitleFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="EquipTitleFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="EquipTitleFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.625" Value="0.95"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.65" Value="0.8"/>
+            </DoubleAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="EquipFade">
+                <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
+                <DiscretePointKeyFrame KeyTime="0:0:2" Value="1,0"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="EquipFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="EquipFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="EquipFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.025" Value="0.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.05" Value="0.6"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="EquipTitleText">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="EquipTitleText">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-2">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="EquipTitleLine">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Character">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0.65"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotHead">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotChest">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.05" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.25" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotLeft">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotLegs">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.15" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.35" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotRing">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.05" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.25" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotArms">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotRight">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.15" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.35" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SlotFeet">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-18"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.RotationY)" Storyboard.TargetName="InventoryPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.0" Value="8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="InventoryTitleFade">
+                <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
+                <DiscretePointKeyFrame KeyTime="0:0:2" Value="0,1"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="InventoryTitleFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="InventoryTitleFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="InventoryTitleFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.625" Value="0.95"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.65" Value="0.8"/>
+            </DoubleAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="InventoryFade">
+                <DiscretePointKeyFrame KeyTime="0" Value="0,0"/>
+                <DiscretePointKeyFrame KeyTime="0:0:2.4" Value="1,0"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="InventoryFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="InventoryFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="InventoryFade">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="0.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.425" Value="0.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.45" Value="0.6"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="InventoryTitleText">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="InventoryTitleText">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-2">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="InventoryTitleLine">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="InventoryList">
+                <EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="InventoryList">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="InventoryList">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask)" Storyboard.TargetName="InventoryList">
+                <DiscreteObjectKeyFrame KeyTime="0:0:2.8" Value="{x:Null}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="HelpPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
 
     <Window.Triggers>
@@ -529,17 +539,17 @@
             <ImageBrush ImageSource="Images/Background.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="90*"/>
+            <RowDefinition Height="80*"/>
             <RowDefinition Height="400*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="40*"/>
             <RowDefinition Height="30*"/>
-            <RowDefinition Height="70*"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="50*"/>
             <ColumnDefinition Width="240*"/>
             <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
         <Border x:Name="BackgroundFade" Grid.RowSpan="5" Grid.ColumnSpan="4">
             <Border.Background>
@@ -562,20 +572,58 @@
             </Border.Background>
         </Border>
         <Grid x:Name="CharacterPanel" Grid.Row="1" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100*"/>
-                <RowDefinition Height="900*"/>
-            </Grid.RowDefinitions>
+            <noesis:Element.Transform3D>
+                <noesis:CompositeTransform3D RotationY="-5" CenterX="{Binding ActualWidth, ElementName=CharacterWidthRef}"/>
+            </noesis:Element.Transform3D>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150*"/>
                 <ColumnDefinition Width="300*"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="StatsTitle" Grid.Row="0" Grid.Column="0">
+            <Decorator x:Name="CharacterWidthRef" Grid.ColumnSpan="2"/>
+            <Grid x:Name="StatsGroup" Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="97*"/>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="900*"/>
                 </Grid.RowDefinitions>
-                <Border x:Name="StatsTitleLine" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                <noesis:Element.Transform3D>
+                    <noesis:CompositeTransform3D RotationY="0" CenterX="{Binding ActualWidth, ElementName=StatsTitle}"/>
+                </noesis:Element.Transform3D>
+                <Grid x:Name="StatsTitle" Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="97*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <Border x:Name="StatsTitleLine" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                <GradientStop Color="#00EAC067" Offset="0"/>
+                                <GradientStop Color="#CCEAC067" Offset="0.75"/>
+                                <GradientStop Color="#00EAC067" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                    <Viewbox>
+                        <TextBlock x:Name="StatsTitleText" Text="STATS" Style="{StaticResource Style.TitleBarText}" Foreground="#FFEAC067" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Viewbox>
+                </Grid>
+                <Border x:Name="StatsTitleFade" Grid.Row="0" Grid.Column="0" IsHitTestVisible="False" RenderTransformOrigin="0,0">
                     <Border.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -585,181 +633,145 @@
                         </TransformGroup>
                     </Border.RenderTransform>
                     <Border.Background>
-                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                            <GradientStop Color="#00EAC067" Offset="0"/>
-                            <GradientStop Color="#CCEAC067" Offset="0.75"/>
-                            <GradientStop Color="#00EAC067" Offset="1"/>
-                        </LinearGradientBrush>
+                        <SolidColorBrush Color="#FFEAC067" Opacity="0"/>
                     </Border.Background>
                 </Border>
-                <Viewbox>
-                    <TextBlock x:Name="StatsTitleText" Text="STATS" Style="{StaticResource Style.TitleBarText}" Foreground="#FFEAC067" RenderTransformOrigin="0.5,0.5">
-                        <TextBlock.RenderTransform>
+                <Grid x:Name="Stats" Grid.Row="1" Grid.Column="0">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                            <GradientStop Color="#66171712" Offset="1"/>
+                            <GradientStop Color="#0C171712"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Decorator Grid.Row="0" Grid.Column="0" Width="{Binding ActualWidth, ElementName=MarginRef}" Height="{Binding ActualHeight, ElementName=MarginRef}"/>
+                    <Decorator Grid.Row="9" Grid.Column="2" Width="{Binding ActualWidth, ElementName=MarginRef}" Height="{Binding ActualHeight, ElementName=MarginRef}"/>
+                    <Viewbox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+                        <StackPanel x:Name="LifeLabel" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+                            <noesis:Element.Transform3D>
+                                <noesis:CompositeTransform3D TranslateZ="5"/>
+                            </noesis:Element.Transform3D>
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+                            <Path Data="M396.8,217.199 L303.625,217.199 280.952,149.146 C279.177,143.821 274.023,139.623 268.528,140.399 262.905,140.527 258.032,144.273 256.505,149.675 L219.155,280.372 178.903,99.226001 C177.674,93.748001 173.032,89.703001 167.426,89.251001 161.854,88.876001 156.597,92.024001 154.524,97.247001 L106.524,217.2 12.8,217.2 C5.726,217.2 0,222.926 0,230 0,237.074 5.726,242.8 12.8,242.8 L115.2,242.8 C120.422,242.808 125.15,239.626 127.078,234.753 L162.901,145.23 205.098,335.182 C206.369,340.908 211.37,345.029 217.224,345.209 217.352,345.209 217.471,345.209 217.599,345.209 223.299,345.209 228.325,341.437 229.896,335.933 L269.747,196.507 282.248,234.054 C283.997,239.276 288.895,242.801 294.399,242.801 L396.799,242.801 C403.873,242.801 409.599,237.075 409.599,230.001 409.6,222.924 403.874,217.199 396.8,217.199 z M467.012,44.987001 C437.018,14.993001 397.705,8.6975098E-07 358.4,8.6975098E-07 321.621,8.6975098E-07 285.141,13.662001 256,39.919001 226.85,13.662001 190.379,8.6975098E-07 153.6,8.6975098E-07 114.287,8.6975098E-07 74.982,14.993001 44.988,44.988001 5.214,84.770001 -7.595,140.8 5.385,191.624 L32.009,191.624 C18.356,147.652 28.331,97.851001 63.087,63.095001 87.262,38.920001 119.407,25.608001 153.6,25.608001 184.806,25.608001 213.999,37.171001 237.295,57.497001 L256,74.982001 274.714,57.489001 C298.01,37.171001 327.203,25.600001 358.4,25.600001 392.593,25.600001 424.73,38.912001 448.913,63.087001 498.824,112.99 498.816,194.202 448.913,244.105 L256,437.017 87.407,268.424 51.2,268.424 256,473.224 467.012,262.212 C526.993,202.223 526.993,104.977 467.012,44.987001 z" Style="{StaticResource Style.StatsIcon}"/>
+                            <TextBlock Text="LIFE" Style="{StaticResource Style.StatsLabelText}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Viewbox>
+                    <Label x:Name="Life" Content="{Binding Player.Life, FallbackValue=100}" Style="{StaticResource Style.StatsValue}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
                                 <RotateTransform/>
                                 <TranslateTransform/>
                             </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                </Viewbox>
-            </Grid>
-            <Border x:Name="StatsTitleFade" Grid.Row="0" Grid.Column="0" IsHitTestVisible="False" RenderTransformOrigin="0,0" d:IsLocked="True">
-                <Border.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Border.RenderTransform>
-                <Border.Background>
-                    <SolidColorBrush Color="#FFEAC067" Opacity="0"/>
-                </Border.Background>
-            </Border>
-            <Grid x:Name="Stats" Grid.Row="1" Grid.Column="0">
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                        <GradientStop Color="#66171712" Offset="1"/>
-                        <GradientStop Color="#0C171712"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Decorator Grid.Row="0" Grid.Column="0" Width="{Binding ActualWidth, ElementName=MarginRef}" Height="{Binding ActualHeight, ElementName=MarginRef}"/>
-                <Decorator Grid.Row="9" Grid.Column="2" Width="{Binding ActualWidth, ElementName=MarginRef}" Height="{Binding ActualHeight, ElementName=MarginRef}"/>
-                <Viewbox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
-                    <StackPanel x:Name="LifeLabel" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
-                        <StackPanel.RenderTransform>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Viewbox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left">
+                        <StackPanel x:Name="ManaLabel" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+                            <noesis:Element.Transform3D>
+                                <noesis:CompositeTransform3D TranslateZ="5"/>
+                            </noesis:Element.Transform3D>
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+                            <Path Data="m 44.5 277.899 c 0.6 -1.9 1.3 -4.199 2.2 -6.699 3.2 -9.4 7.7 -23.101 14.9 -39.801 3.6 -8.3 7.7 -17.4 12.9 -26.9 5.1 -9.5 11.1 -19.4 18.3 -29.1 14.3 -19.5 34 -38.3 59.4 -49.5 35.5 -15.7 79.2 -17.9 115.7 -4.3 37.3 13.9 66.699 42.5 80.3 80 2.899 8 5 16.2 6.399 24.6 12.5 73.5 -46.1 155.1 -125 149 -6.5 -0.5 -13 -1.601 -19.3 -3.4 -38.2 -10.801 -65 -41.301 -69.5 -80.6 -0.2 -1.9 -0.3 -3.801 -0.4 -5.701 0 -1.899 -0.1 -3.799 0 -5.799 0.3 -15.301 4 -30.4 10.5 -43.301 0.4 -0.8 0.8 -1.6 1.3 -2.4 0.4 -0.8 0.8 -1.6 1.3 -2.4 0.9 -1.5 1.8 -3.1 2.8 -4.6 l 0.7 -1.1 c 0.2 -0.4 0.5 -0.8 0.7 -1.1 l 1.3 -1.9 c 0.3 -0.5 1.2 -1.5 1.8 -2.4 l 1 -1.3 0.5 -0.6 c 0.4 -0.4 -0.2 0.2 -0.1 0.1 l 0.2 -0.2 c 4.4 -5.3 9.4 -9.7 14.7 -13.4 5.3 -3.7 11.1 -6.4 17 -8.2 5.9 -1.8 12 -2.7 18 -2.7 6 0.1 11.9 1 17.6 2.8 0.7 0.2 1.4 0.5 2.1 0.7 0.7 0.2 1.4 0.5 2 0.7 l 0.9 0.3 0.5 0.2 0.2 0.1 0.3 0.1 c 0.8 0.4 1.7 0.8 2.5 1.2 l 0.3 0.1 c 0.4 0.2 -0.2 -0.1 -0.1 0 l 0.4 0.2 0.8 0.4 c 0.5 0.3 1.1 0.6 1.6 0.9 1 0.6 2.1 1.3 3.1 2 8 5.9 13.4 15.4 14.9 24.4 0.399 2.3 0.6 4.5 0.6 6.7 0 2.2 -0.3 4.4 -0.7 6.5 -0.399 2.1 -1.1 4.1 -1.899 6 -0.2 0.5 -0.4 1 -0.601 1.4 -0.199 0.5 -0.5 0.9 -0.699 1.4 -0.2 0.5 -0.5 0.9 -0.7 1.199 l -0.3 0.601 -0.2 0.3 -0.101 0.1 -0.1 0.201 c -0.4 0.6 -0.8 1.1 -1.2 1.699 l -0.3 0.4 -0.1 0.199 c -0.101 0.101 0.399 -0.399 0.1 -0.1 l -0.5 0.7 c -0.6 0.899 -1.3 1.8 -1.9 2.7 -1.3 1.8 -2.8 3.5 -4.3 5.199 -3 3.301 -6.2 6.101 -9.5 8.601 -6.5 5 -13.2 8.101 -19.2 9.3 -6 1.2 -11.4 0.4 -15.4 -1.699 -4.1 -1.9 -6.8 -4.601 -8.5 -6.4 -0.9 -0.9 -1.5 -1.7 -1.9 -2.2 -0.4 -0.5 -0.6 -0.8 -0.6 -0.8 0 0 0.1 0.3 0.3 0.9 0.2 0.6 0.5 1.6 1 2.799 0.5 1.201 1.2 2.701 2.2 4.5 1 1.701 2.4 3.601 4.4 5.601 2 1.899 4.5 3.8 7.7 5.3 3.2 1.5 7 2.6 11.1 3 37.7 3.9 71.4 -30.8 69.9 -67.7 -1.5 -38.8 -37.399 -63.7 -73.2 -67.7 -39.2 -4.4 -77 18.6 -99.4 49.8 -21.6 29.9 -28.5 68.4 -23 104.5 0.9 5.8 2.1 11.6 3.8 17.3 0.1 0.2 -22.1 89.4 -22.1 89.4 l 72 -17.101 c 0.8 0.601 1.6 1.2 2.4 1.8 19.4 14 42 23.101 65.7 27.2 L 246.1 482 l 33.601 -54.601 2.7 -0.7 0.899 -0.199 1.2 -0.4 2.5 -0.7 2.5 -0.8 2.3 -0.8 C 308 418.3 323 410.3 336.6 400.5 L 410 417.899 391.1 338.2 c 2.5 -4.601 4.801 -9.301 6.9 -14.101 2.5 -5.7 4.7 -11.5 6.6 -17.399 l 1.301 -4.5 0.3 -1.101 0.3 -1 0.1 -0.5 0.5 -1.899 0.5 -1.9 0.2 -0.9 76 -46.9 -78.201 -48.2 c -1.8 -6.2 -3.899 -12.3 -6.3 -18.2 -3.1 -7.7 -6.6 -15 -10.6 -22.1 L 410 69.8 320.5 91 c -4.6 -2.5 -9.3 -4.9 -14.1 -7 -7.7 -3.4 -15.5 -6.2 -23.301 -8.4 L 237.6 1.8 194.2 72.3 c -2.6 0.5 -5.2 1 -7.8 1.6 -13.6 3 -26.6 7.6 -38.6 13.4 l -74 -17.6 15.5 65.5 c -2.3 3 -4.4 6 -6.4 9 -4.1 6.1 -7.7 12.2 -10.8 18.2 -6.3 12.1 -10.9 23.8 -14.6 34.6 -0.9 2.7 -1.7 5.4 -2.5 8 l -55 34.4 42 46.1 2.5 -7.601 z" Style="{StaticResource Style.StatsIcon}"/>
+                            <TextBlock Text="MANA" Style="{StaticResource Style.StatsLabelText}"/>
+                        </StackPanel>
+                    </Viewbox>
+                    <Label x:Name="Mana" Content="{Binding Player.Mana, FallbackValue=90}" Style="{StaticResource Style.StatsValue}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
                                 <RotateTransform/>
                                 <TranslateTransform/>
                             </TransformGroup>
-                        </StackPanel.RenderTransform>
-                        <Path Data="M396.8,217.199 L303.625,217.199 280.952,149.146 C279.177,143.821 274.023,139.623 268.528,140.399 262.905,140.527 258.032,144.273 256.505,149.675 L219.155,280.372 178.903,99.226001 C177.674,93.748001 173.032,89.703001 167.426,89.251001 161.854,88.876001 156.597,92.024001 154.524,97.247001 L106.524,217.2 12.8,217.2 C5.726,217.2 0,222.926 0,230 0,237.074 5.726,242.8 12.8,242.8 L115.2,242.8 C120.422,242.808 125.15,239.626 127.078,234.753 L162.901,145.23 205.098,335.182 C206.369,340.908 211.37,345.029 217.224,345.209 217.352,345.209 217.471,345.209 217.599,345.209 223.299,345.209 228.325,341.437 229.896,335.933 L269.747,196.507 282.248,234.054 C283.997,239.276 288.895,242.801 294.399,242.801 L396.799,242.801 C403.873,242.801 409.599,237.075 409.599,230.001 409.6,222.924 403.874,217.199 396.8,217.199 z M467.012,44.987001 C437.018,14.993001 397.705,8.6975098E-07 358.4,8.6975098E-07 321.621,8.6975098E-07 285.141,13.662001 256,39.919001 226.85,13.662001 190.379,8.6975098E-07 153.6,8.6975098E-07 114.287,8.6975098E-07 74.982,14.993001 44.988,44.988001 5.214,84.770001 -7.595,140.8 5.385,191.624 L32.009,191.624 C18.356,147.652 28.331,97.851001 63.087,63.095001 87.262,38.920001 119.407,25.608001 153.6,25.608001 184.806,25.608001 213.999,37.171001 237.295,57.497001 L256,74.982001 274.714,57.489001 C298.01,37.171001 327.203,25.600001 358.4,25.600001 392.593,25.600001 424.73,38.912001 448.913,63.087001 498.824,112.99 498.816,194.202 448.913,244.105 L256,437.017 87.407,268.424 51.2,268.424 256,473.224 467.012,262.212 C526.993,202.223 526.993,104.977 467.012,44.987001 z" Style="{StaticResource Style.StatsIcon}"/>
-                        <TextBlock Text="LIFE" Style="{StaticResource Style.StatsLabelText}" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Viewbox>
-                <Label x:Name="Life" Content="{Binding Player.Life, FallbackValue=100}" Style="{StaticResource Style.StatsValue}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
-                    <Label.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Label.RenderTransform>
-                </Label>
-                <Viewbox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left">
-                    <StackPanel x:Name="ManaLabel" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
-                        <StackPanel.RenderTransform>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Viewbox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left">
+                        <StackPanel x:Name="DpsLabel" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+                            <noesis:Element.Transform3D>
+                                <noesis:CompositeTransform3D TranslateZ="5"/>
+                            </noesis:Element.Transform3D>
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+                            <Path Data="M508.86397,29.137824 C506.26997,26.535823 502.50497,25.457823 498.92597,26.285823 L420.52198,44.347829 C418.56898,44.800829 416.78798,45.785829 415.36598,47.19983 L148.25499,314.31892 103.35934,269.42226 C101.35934,267.42326 98.649338,266.29826 95.820338,266.29826 92.991338,266.29826 90.281338,267.42326 88.281338,269.42226 L65.649343,292.04727 C61.485344,296.21927 61.485344,302.96927 65.649343,307.12527 L125.63099,367.11394 39.983998,452.75196 C29.593998,453.40796 19.921999,457.73597 12.491999,465.15797 4.4379997,473.21997 0,483.93897 0,495.32998 0,506.72098 4.4379997,517.43699 12.491999,525.50099 20.553999,533.56299 31.264998,538.00099 42.662997,538.00099 54.060997,538.00099 64.771996,533.56299 72.833996,525.50099 80.465995,517.87599 84.583995,508.04898 85.215995,498.03298 85.215995,498.03298 170.87799,412.37895 170.87799,412.37895 L230.85964,472.35162 C232.85964,474.35162 235.56964,475.47662 238.40564,475.47662 241.23364,475.47662 243.94464,474.35162 245.94464,472.35162 L268.56964,449.72661 C272.74163,445.55661 272.74163,438.7906 268.56964,434.6346 L223.68099,389.73794 490.80097,122.62685 C492.20597,121.21285 493.20597,119.42385 493.64397,117.47885 L511.70597,39.073827 C512.55097,35.488826 511.45797,31.731825 508.86397,29.137824 z M57.748997,510.40798 C53.717997,514.43898 48.366997,516.65799 42.663997,516.65799 36.968998,516.65799 31.608998,514.43898 27.578998,510.40798 23.555999,506.39198 21.328999,501.03298 21.328999,495.32998 21.328999,489.62698 23.555999,484.28297 27.578998,480.25197 31.609998,476.22097 36.968998,474.00197 42.663997,474.00197 48.366997,474.00197 53.717997,476.22097 57.748997,480.25197 66.068996,488.56498 66.068996,502.09598 57.748997,510.40798 z M245.94564,442.18161 L238.40664,449.72661 88.280338,299.59327 95.819338,292.04627 140.71499,336.94293 201.04899,397.28495 C201.04899,397.28495 201.04899,397.28495 201.05699,397.28495 L245.94564,442.18161 z M310.69523,88.218274 C242.41044,21.936008 148.63613,11.018552 55.309,1.6371879 151.45221,-5.2513022 258.01956,7.9589646 326.48099,72.861532 z M35.814102,83.887113 C123.28678,92.097581 159.21277,96.812993 235.69381,161.33891 L251.47531,145.43229 C168.54292,81.567181 126.9265,78.056579 35.814102,83.887113 z" Style="{StaticResource Style.StatsIcon}" Width="8.565"/>
+                            <TextBlock Text="DPS" Style="{StaticResource Style.StatsLabelText}"/>
+                        </StackPanel>
+                    </Viewbox>
+                    <Label x:Name="Dps" Content="{Binding Player.Dps, FallbackValue=2530}" Style="{StaticResource Style.StatsValue}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="6" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
                                 <RotateTransform/>
                                 <TranslateTransform/>
                             </TransformGroup>
-                        </StackPanel.RenderTransform>
-                        <Path Data="m 44.5 277.899 c 0.6 -1.9 1.3 -4.199 2.2 -6.699 3.2 -9.4 7.7 -23.101 14.9 -39.801 3.6 -8.3 7.7 -17.4 12.9 -26.9 5.1 -9.5 11.1 -19.4 18.3 -29.1 14.3 -19.5 34 -38.3 59.4 -49.5 35.5 -15.7 79.2 -17.9 115.7 -4.3 37.3 13.9 66.699 42.5 80.3 80 2.899 8 5 16.2 6.399 24.6 12.5 73.5 -46.1 155.1 -125 149 -6.5 -0.5 -13 -1.601 -19.3 -3.4 -38.2 -10.801 -65 -41.301 -69.5 -80.6 -0.2 -1.9 -0.3 -3.801 -0.4 -5.701 0 -1.899 -0.1 -3.799 0 -5.799 0.3 -15.301 4 -30.4 10.5 -43.301 0.4 -0.8 0.8 -1.6 1.3 -2.4 0.4 -0.8 0.8 -1.6 1.3 -2.4 0.9 -1.5 1.8 -3.1 2.8 -4.6 l 0.7 -1.1 c 0.2 -0.4 0.5 -0.8 0.7 -1.1 l 1.3 -1.9 c 0.3 -0.5 1.2 -1.5 1.8 -2.4 l 1 -1.3 0.5 -0.6 c 0.4 -0.4 -0.2 0.2 -0.1 0.1 l 0.2 -0.2 c 4.4 -5.3 9.4 -9.7 14.7 -13.4 5.3 -3.7 11.1 -6.4 17 -8.2 5.9 -1.8 12 -2.7 18 -2.7 6 0.1 11.9 1 17.6 2.8 0.7 0.2 1.4 0.5 2.1 0.7 0.7 0.2 1.4 0.5 2 0.7 l 0.9 0.3 0.5 0.2 0.2 0.1 0.3 0.1 c 0.8 0.4 1.7 0.8 2.5 1.2 l 0.3 0.1 c 0.4 0.2 -0.2 -0.1 -0.1 0 l 0.4 0.2 0.8 0.4 c 0.5 0.3 1.1 0.6 1.6 0.9 1 0.6 2.1 1.3 3.1 2 8 5.9 13.4 15.4 14.9 24.4 0.399 2.3 0.6 4.5 0.6 6.7 0 2.2 -0.3 4.4 -0.7 6.5 -0.399 2.1 -1.1 4.1 -1.899 6 -0.2 0.5 -0.4 1 -0.601 1.4 -0.199 0.5 -0.5 0.9 -0.699 1.4 -0.2 0.5 -0.5 0.9 -0.7 1.199 l -0.3 0.601 -0.2 0.3 -0.101 0.1 -0.1 0.201 c -0.4 0.6 -0.8 1.1 -1.2 1.699 l -0.3 0.4 -0.1 0.199 c -0.101 0.101 0.399 -0.399 0.1 -0.1 l -0.5 0.7 c -0.6 0.899 -1.3 1.8 -1.9 2.7 -1.3 1.8 -2.8 3.5 -4.3 5.199 -3 3.301 -6.2 6.101 -9.5 8.601 -6.5 5 -13.2 8.101 -19.2 9.3 -6 1.2 -11.4 0.4 -15.4 -1.699 -4.1 -1.9 -6.8 -4.601 -8.5 -6.4 -0.9 -0.9 -1.5 -1.7 -1.9 -2.2 -0.4 -0.5 -0.6 -0.8 -0.6 -0.8 0 0 0.1 0.3 0.3 0.9 0.2 0.6 0.5 1.6 1 2.799 0.5 1.201 1.2 2.701 2.2 4.5 1 1.701 2.4 3.601 4.4 5.601 2 1.899 4.5 3.8 7.7 5.3 3.2 1.5 7 2.6 11.1 3 37.7 3.9 71.4 -30.8 69.9 -67.7 -1.5 -38.8 -37.399 -63.7 -73.2 -67.7 -39.2 -4.4 -77 18.6 -99.4 49.8 -21.6 29.9 -28.5 68.4 -23 104.5 0.9 5.8 2.1 11.6 3.8 17.3 0.1 0.2 -22.1 89.4 -22.1 89.4 l 72 -17.101 c 0.8 0.601 1.6 1.2 2.4 1.8 19.4 14 42 23.101 65.7 27.2 L 246.1 482 l 33.601 -54.601 2.7 -0.7 0.899 -0.199 1.2 -0.4 2.5 -0.7 2.5 -0.8 2.3 -0.8 C 308 418.3 323 410.3 336.6 400.5 L 410 417.899 391.1 338.2 c 2.5 -4.601 4.801 -9.301 6.9 -14.101 2.5 -5.7 4.7 -11.5 6.6 -17.399 l 1.301 -4.5 0.3 -1.101 0.3 -1 0.1 -0.5 0.5 -1.899 0.5 -1.9 0.2 -0.9 76 -46.9 -78.201 -48.2 c -1.8 -6.2 -3.899 -12.3 -6.3 -18.2 -3.1 -7.7 -6.6 -15 -10.6 -22.1 L 410 69.8 320.5 91 c -4.6 -2.5 -9.3 -4.9 -14.1 -7 -7.7 -3.4 -15.5 -6.2 -23.301 -8.4 L 237.6 1.8 194.2 72.3 c -2.6 0.5 -5.2 1 -7.8 1.6 -13.6 3 -26.6 7.6 -38.6 13.4 l -74 -17.6 15.5 65.5 c -2.3 3 -4.4 6 -6.4 9 -4.1 6.1 -7.7 12.2 -10.8 18.2 -6.3 12.1 -10.9 23.8 -14.6 34.6 -0.9 2.7 -1.7 5.4 -2.5 8 l -55 34.4 42 46.1 2.5 -7.601 z" Style="{StaticResource Style.StatsIcon}"/>
-                        <TextBlock Text="MANA" Style="{StaticResource Style.StatsLabelText}"/>
-                    </StackPanel>
-                </Viewbox>
-                <Label x:Name="Mana" Content="{Binding Player.Mana, FallbackValue=90}" Style="{StaticResource Style.StatsValue}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" RenderTransformOrigin="0.5,0.5">
-                    <Label.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Label.RenderTransform>
-                </Label>
-                <Viewbox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left">
-                    <StackPanel x:Name="DpsLabel" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
-                        <StackPanel.RenderTransform>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Viewbox Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left">
+                        <StackPanel x:Name="ArmorLabel" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+                            <noesis:Element.Transform3D>
+                                <noesis:CompositeTransform3D TranslateZ="5"/>
+                            </noesis:Element.Transform3D>
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+                            <Path Data="M42.478,6.23475 L22.884,0.11475 C22.392,-0.038249999 21.864,-0.038249999 21.372,0.11475 L1.778,6.23475 C0.72100002,6.56475 1.8119812E-08,7.54475 1.8119812E-08,8.65275 1.8119812E-08,35.74575 13.69,42.22375 21.045,45.70075 21.388,45.86275 21.759,45.94475 22.129,45.94475 22.498,45.94475 22.869,45.86275 23.211,45.70075 30.566,42.22175 44.257,35.74575 44.257,8.65275 44.257,7.54375 43.537,6.56475 42.478,6.23475 z M22.129,40.60575 C15.145,37.25075 5.613,31.69175 5.09,10.50775 L22.129,5.18775 39.167,10.50875 C38.644,31.69375 29.111,37.25075 22.129,40.60575 z M36.279,13.54875 C36.279,13.54375 36.279,13.35175 36.099,13.29575 35.99,13.26075 35.874,13.30575 35.805,13.39775 34.109,15.61875 31.322,18.32275 29.734,19.14675 28.947,19.55375 28.208,19.54775 27.525,19.15675 26.842,18.76375 26.408,18.03775 26.408,17.25075 26.408,15.64375 26.49,13.50275 26.015,12.57675 25.273,11.13675 23.831,10.86675 22.074,10.86675 19.838,10.86675 18.397,11.49975&#xA;17.983,12.99675 17.055,13.02175 15.03,13.30475 14.646,15.26275 L16.909,15.97775 C17.463,16.15375 17.855,16.66875 17.855,17.25075 17.855,18.03775 17.42,18.76375 16.738,19.15675 16.055,19.54775 15.209,19.54375 14.529,19.14675 14.232,18.97375 13.667,18.60675 13.665,18.60675 11.161,16.88975 8.587,13.56575 8.458,13.39775 8.378,13.29475 8.275,13.26675 8.164,13.29575 7.984,13.34375 7.984,13.54475 7.984,13.54875 8.414,28.39275 17.312,35.56875&#xA;22.115,37.73675 22.119,37.73875 22.125,37.74075 22.13,37.74275 L22.131,37.74275 C22.132,37.74275 22.132,37.74275 22.132,37.74275 22.137,37.74075 22.143,37.73875 22.148,37.73675 26.952,35.56875 35.921,28.39475 36.279,13.54875 z M21.508,13.96675 C21.508,14.57375 21.082,14.91875 20.556,14.91875 20.032,14.91875 19.605,14.57375 19.605,13.96675 L21.508,13.96675 z" Style="{StaticResource Style.StatsIcon}"/>
+                            <TextBlock Text="ARMOR" Style="{StaticResource Style.StatsLabelText}" d:LayoutOverrides="Width"/>
+                        </StackPanel>
+                    </Viewbox>
+                    <Label x:Name="Armor" Content="{Binding Player.Armor, FallbackValue=560}" Style="{StaticResource Style.StatsValue}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="8" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
                                 <RotateTransform/>
                                 <TranslateTransform/>
                             </TransformGroup>
-                        </StackPanel.RenderTransform>
-                        <Path Data="M508.86397,29.137824 C506.26997,26.535823 502.50497,25.457823 498.92597,26.285823 L420.52198,44.347829 C418.56898,44.800829 416.78798,45.785829 415.36598,47.19983 L148.25499,314.31892 103.35934,269.42226 C101.35934,267.42326 98.649338,266.29826 95.820338,266.29826 92.991338,266.29826 90.281338,267.42326 88.281338,269.42226 L65.649343,292.04727 C61.485344,296.21927 61.485344,302.96927 65.649343,307.12527 L125.63099,367.11394 39.983998,452.75196 C29.593998,453.40796 19.921999,457.73597 12.491999,465.15797 4.4379997,473.21997 0,483.93897 0,495.32998 0,506.72098 4.4379997,517.43699 12.491999,525.50099 20.553999,533.56299 31.264998,538.00099 42.662997,538.00099 54.060997,538.00099 64.771996,533.56299 72.833996,525.50099 80.465995,517.87599 84.583995,508.04898 85.215995,498.03298 85.215995,498.03298 170.87799,412.37895 170.87799,412.37895 L230.85964,472.35162 C232.85964,474.35162 235.56964,475.47662 238.40564,475.47662 241.23364,475.47662 243.94464,474.35162 245.94464,472.35162 L268.56964,449.72661 C272.74163,445.55661 272.74163,438.7906 268.56964,434.6346 L223.68099,389.73794 490.80097,122.62685 C492.20597,121.21285 493.20597,119.42385 493.64397,117.47885 L511.70597,39.073827 C512.55097,35.488826 511.45797,31.731825 508.86397,29.137824 z M57.748997,510.40798 C53.717997,514.43898 48.366997,516.65799 42.663997,516.65799 36.968998,516.65799 31.608998,514.43898 27.578998,510.40798 23.555999,506.39198 21.328999,501.03298 21.328999,495.32998 21.328999,489.62698 23.555999,484.28297 27.578998,480.25197 31.609998,476.22097 36.968998,474.00197 42.663997,474.00197 48.366997,474.00197 53.717997,476.22097 57.748997,480.25197 66.068996,488.56498 66.068996,502.09598 57.748997,510.40798 z M245.94564,442.18161 L238.40664,449.72661 88.280338,299.59327 95.819338,292.04627 140.71499,336.94293 201.04899,397.28495 C201.04899,397.28495 201.04899,397.28495 201.05699,397.28495 L245.94564,442.18161 z M310.69523,88.218274 C242.41044,21.936008 148.63613,11.018552 55.309,1.6371879 151.45221,-5.2513022 258.01956,7.9589646 326.48099,72.861532 z M35.814102,83.887113 C123.28678,92.097581 159.21277,96.812993 235.69381,161.33891 L251.47531,145.43229 C168.54292,81.567181 126.9265,78.056579 35.814102,83.887113 z" Style="{StaticResource Style.StatsIcon}" Width="8.565"/>
-                        <TextBlock Text="DPS" Style="{StaticResource Style.StatsLabelText}"/>
-                    </StackPanel>
-                </Viewbox>
-                <Label x:Name="Dps" Content="{Binding Player.Dps, FallbackValue=2530}" Style="{StaticResource Style.StatsValue}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="6" RenderTransformOrigin="0.5,0.5">
-                    <Label.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Label.RenderTransform>
-                </Label>
-                <Viewbox Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left">
-                    <StackPanel x:Name="ArmorLabel" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
-                        <StackPanel.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </StackPanel.RenderTransform>
-                        <Path Data="M42.478,6.23475 L22.884,0.11475 C22.392,-0.038249999 21.864,-0.038249999 21.372,0.11475 L1.778,6.23475 C0.72100002,6.56475 1.8119812E-08,7.54475 1.8119812E-08,8.65275 1.8119812E-08,35.74575 13.69,42.22375 21.045,45.70075 21.388,45.86275 21.759,45.94475 22.129,45.94475 22.498,45.94475 22.869,45.86275 23.211,45.70075 30.566,42.22175 44.257,35.74575 44.257,8.65275 44.257,7.54375 43.537,6.56475 42.478,6.23475 z M22.129,40.60575 C15.145,37.25075 5.613,31.69175 5.09,10.50775 L22.129,5.18775 39.167,10.50875 C38.644,31.69375 29.111,37.25075 22.129,40.60575 z M36.279,13.54875 C36.279,13.54375 36.279,13.35175 36.099,13.29575 35.99,13.26075 35.874,13.30575 35.805,13.39775 34.109,15.61875 31.322,18.32275 29.734,19.14675 28.947,19.55375 28.208,19.54775 27.525,19.15675 26.842,18.76375 26.408,18.03775 26.408,17.25075 26.408,15.64375 26.49,13.50275 26.015,12.57675 25.273,11.13675 23.831,10.86675 22.074,10.86675 19.838,10.86675 18.397,11.49975&#xA;17.983,12.99675 17.055,13.02175 15.03,13.30475 14.646,15.26275 L16.909,15.97775 C17.463,16.15375 17.855,16.66875 17.855,17.25075 17.855,18.03775 17.42,18.76375 16.738,19.15675 16.055,19.54775 15.209,19.54375 14.529,19.14675 14.232,18.97375 13.667,18.60675 13.665,18.60675 11.161,16.88975 8.587,13.56575 8.458,13.39775 8.378,13.29475 8.275,13.26675 8.164,13.29575 7.984,13.34375 7.984,13.54475 7.984,13.54875 8.414,28.39275 17.312,35.56875&#xA;22.115,37.73675 22.119,37.73875 22.125,37.74075 22.13,37.74275 L22.131,37.74275 C22.132,37.74275 22.132,37.74275 22.132,37.74275 22.137,37.74075 22.143,37.73875 22.148,37.73675 26.952,35.56875 35.921,28.39475 36.279,13.54875 z M21.508,13.96675 C21.508,14.57375 21.082,14.91875 20.556,14.91875 20.032,14.91875 19.605,14.57375 19.605,13.96675 L21.508,13.96675 z" Style="{StaticResource Style.StatsIcon}"/>
-                        <TextBlock Text="ARMOR" Style="{StaticResource Style.StatsLabelText}" d:LayoutOverrides="Width"/>
-                    </StackPanel>
-                </Viewbox>
-                <Label x:Name="Armor" Content="{Binding Player.Armor, FallbackValue=560}" Style="{StaticResource Style.StatsValue}" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="8" RenderTransformOrigin="0.5,0.5">
-                    <Label.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Label.RenderTransform>
-                </Label>
-            </Grid>
-            <Border x:Name="StatsFade" Grid.Row="1" Grid.Column="0" IsHitTestVisible="False" RenderTransformOrigin="0,0" d:IsLocked="True">
-                <Border.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Border.RenderTransform>
-                <Border.Background>
-                    <SolidColorBrush Color="#FF171712" Opacity="0"/>
-                </Border.Background>
-            </Border>
-            <Grid x:Name="EquipTitle" Grid.Row="0" Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="97*"/>
-                    <RowDefinition Height="3*"/>
-                </Grid.RowDefinitions>
-                <Border x:Name="EquipTitleLine" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                        </Label.RenderTransform>
+                    </Label>
+                </Grid>
+                <Border x:Name="StatsFade" Grid.Row="1" Grid.Column="0" IsHitTestVisible="False" RenderTransformOrigin="0,0" d:IsLocked="True">
                     <Border.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -769,112 +781,144 @@
                         </TransformGroup>
                     </Border.RenderTransform>
                     <Border.Background>
-                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                            <GradientStop Color="#00EAC067" Offset="0"/>
-                            <GradientStop Color="#CCEAC067" Offset="0.75"/>
-                            <GradientStop Color="#00EAC067" Offset="1"/>
-                        </LinearGradientBrush>
+                        <SolidColorBrush Color="#FF171712" Opacity="0"/>
                     </Border.Background>
                 </Border>
-                <Viewbox>
-                    <TextBlock x:Name="EquipTitleText" Text="{Binding Player.Name, FallbackValue=PLAYER NAME}" Style="{StaticResource Style.TitleBarText}" Foreground="#FFEAC067" RenderTransformOrigin="0.5,0.5">
-                        <TextBlock.RenderTransform>
+            </Grid>
+            <Grid Grid.Column="1" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="900*"/>
+                </Grid.RowDefinitions>
+                <Grid x:Name="EquipTitle" Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="97*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <Border x:Name="EquipTitleLine" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
                                 <RotateTransform/>
                                 <TranslateTransform/>
                             </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                </Viewbox>
-            </Grid>
-            <Border x:Name="EquipTitleFade" Grid.Row="0" Grid.Column="1" IsHitTestVisible="False" RenderTransformOrigin="0,0" d:IsLocked="True">
-                <Border.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Border.RenderTransform>
-                <Border.Background>
-                    <SolidColorBrush Color="#FFEAC067" Opacity="0"/>
-                </Border.Background>
-            </Border>
-            <Grid x:Name="Equip" Grid.Row="1" Grid.Column="1" KeyboardNavigation.DirectionalNavigation="Contained">
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                        <GradientStop Color="#66171612" Offset="1"/>
-                        <GradientStop Color="#0C171612"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <Decorator x:Name="MarginRef" Grid.Row="0" Grid.Column="0" Height="{Binding ActualWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
-                <Decorator Grid.Row="2" Grid.Column="0" Height="{Binding ActualWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
-                <Rectangle x:Name="Character" Grid.Column="3" Grid.Row="1" Margin="10,0">
-                    <Rectangle.Fill>
-                        <ImageBrush ImageSource="Images/Character.png" Stretch="Uniform"/>
-                    </Rectangle.Fill>
-                </Rectangle>
-                <Grid Grid.Column="2" Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <ContentControl x:Name="SlotHead" Grid.Row="0" Content="{Binding}" DataContext="{Binding Player.Slots[0]}" Style="{StaticResource Style.EquipSlot}">
-                        <i:Interaction.Triggers>
-                            <ei:StoryboardCompletedTrigger Storyboard="{StaticResource Anim.Intro}">
-                                <noesis:SetFocusAction/>
-                            </ei:StoryboardCompletedTrigger>
-                        </i:Interaction.Triggers>
-                    </ContentControl>
-                    <ContentControl x:Name="SlotChest" Grid.Row="1" Content="{Binding}" DataContext="{Binding Player.Slots[2], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}"/>
-                    <ContentControl x:Name="SlotLeft" Grid.Row="2" Content="{Binding}" DataContext="{Binding Player.Slots[4], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}"/>
-                    <ContentControl x:Name="SlotLegs" Grid.Row="3" Content="{Binding}" DataContext="{Binding Player.Slots[6], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}"/>
+                        </Border.RenderTransform>
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                <GradientStop Color="#00EAC067" Offset="0"/>
+                                <GradientStop Color="#CCEAC067" Offset="0.75"/>
+                                <GradientStop Color="#00EAC067" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                    <Viewbox>
+                        <TextBlock x:Name="EquipTitleText" Text="{Binding Player.Name, FallbackValue=PLAYER NAME}" Style="{StaticResource Style.TitleBarText}" Foreground="#FFEAC067" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Viewbox>
                 </Grid>
-                <Grid Grid.Column="4" Grid.Row="1" >
+                <Border x:Name="EquipTitleFade" Grid.Row="0" Grid.Column="1" IsHitTestVisible="False" RenderTransformOrigin="0,0">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                    <Border.Background>
+                        <SolidColorBrush Color="#FFEAC067" Opacity="0"/>
+                    </Border.Background>
+                </Border>
+                <Grid x:Name="Equip" Grid.Row="1" Grid.Column="1" KeyboardNavigation.DirectionalNavigation="Contained">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                            <GradientStop Color="#66171612" Offset="1"/>
+                            <GradientStop Color="#0C171612"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ContentControl x:Name="SlotRing" Grid.Row="0" Content="{Binding}" DataContext="{Binding Player.Slots[1], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}"/>
-                    <ContentControl x:Name="SlotArms" Grid.Row="1" Content="{Binding}" DataContext="{Binding Player.Slots[3], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}"/>
-                    <ContentControl x:Name="SlotRight" Grid.Row="2" Content="{Binding}" DataContext="{Binding Player.Slots[5], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}"/>
-                    <ContentControl x:Name="SlotFeet" Grid.Row="3" Content="{Binding}" DataContext="{Binding Player.Slots[7], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Decorator x:Name="MarginRef" Grid.Row="0" Grid.Column="0" Height="{Binding ActualWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+                    <Decorator x:Name="ToolTipMarginRef" Grid.Row="0" Grid.Column="1"/>
+                    <Grid Grid.Row="1" Grid.Column="3" Margin="{Binding ActualWidth, ElementName=ToolTipMarginRef}">
+                        <Decorator x:Name="ToolTipRef"/>
+                    </Grid>
+                    <Decorator Grid.Row="2" Grid.Column="0" Height="{Binding ActualWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+                    <Rectangle x:Name="Character" Grid.Column="3" Grid.Row="1" Margin="10,0">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="Images/Character.png" Stretch="Uniform"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Grid Grid.Column="2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ContentControl x:Name="SlotHead" Grid.Row="0" Content="{Binding}" DataContext="{Binding Player.Slots[0]}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Right}">
+                            <i:Interaction.Triggers>
+                                <ei:StoryboardCompletedTrigger Storyboard="{StaticResource Anim.Intro}">
+                                    <noesis:SetFocusAction/>
+                                </ei:StoryboardCompletedTrigger>
+                            </i:Interaction.Triggers>
+                        </ContentControl>
+                        <ContentControl x:Name="SlotChest" Grid.Row="1" Content="{Binding}" DataContext="{Binding Player.Slots[2], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Right}"/>
+                        <ContentControl x:Name="SlotLeft" Grid.Row="2" Content="{Binding}" DataContext="{Binding Player.Slots[4], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Right}"/>
+                        <ContentControl x:Name="SlotLegs" Grid.Row="3" Content="{Binding}" DataContext="{Binding Player.Slots[6], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Right}"/>
+                    </Grid>
+                    <Grid Grid.Column="4" Grid.Row="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ContentControl x:Name="SlotRing" Grid.Row="0" Content="{Binding}" DataContext="{Binding Player.Slots[1], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Left}"/>
+                        <ContentControl x:Name="SlotArms" Grid.Row="1" Content="{Binding}" DataContext="{Binding Player.Slots[3], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Left}"/>
+                        <ContentControl x:Name="SlotRight" Grid.Row="2" Content="{Binding}" DataContext="{Binding Player.Slots[5], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Left}"/>
+                        <ContentControl x:Name="SlotFeet" Grid.Row="3" Content="{Binding}" DataContext="{Binding Player.Slots[7], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Left}"/>
+                    </Grid>
                 </Grid>
+                <Border x:Name="EquipFade" Grid.Row="1" Grid.Column="1" IsHitTestVisible="False" RenderTransformOrigin="0,0">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                    <Border.Background>
+                        <SolidColorBrush Color="#FF171612" Opacity="0"/>
+                    </Border.Background>
+                </Border>
             </Grid>
-            <Border x:Name="EquipFade" Grid.Row="1" Grid.Column="1" IsHitTestVisible="False" RenderTransformOrigin="0,0" d:IsLocked="True">
-                <Border.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Border.RenderTransform>
-                <Border.Background>
-                    <SolidColorBrush Color="#FF171612" Opacity="0"/>
-                </Border.Background>
-            </Border>
         </Grid>
         <Grid x:Name="InventoryPanel" Grid.Row="1" Grid.Column="2" Margin="0.5,0,0,0">
+            <noesis:Element.Transform3D>
+                <noesis:CompositeTransform3D RotationY="0" CenterX="0"/>
+            </noesis:Element.Transform3D>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"/>
                 <RowDefinition Height="900*"/>

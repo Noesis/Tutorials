@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Noesis.App.Displays.X11" Version="2.2.*" />
-    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="2.2.*" />
-    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="2.2.*" />
+    <PackageReference Include="Noesis.App.Displays.X11" Version="3.0.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="3.0.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="3.0.*" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -57,6 +57,12 @@
     <EmbeddedResource Include="..\..\Src\Flag-en.png" />
     <EmbeddedResource Include="..\..\Src\Flag-fr.png" />
     <EmbeddedResource Include="..\..\Src\Flag-jp.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="$(SolutionDir)Src\NoesisLicense.txt">
+      <Link>NoesisLicense.txt</Link>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

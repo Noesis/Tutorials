@@ -16,47 +16,56 @@ namespace UserControls
         public MainWindow()
         {
             InitializeComponent();
-
-            _bg = (SolidColorBrush)FindName("BgColor");
-            _fg = (SolidColorBrush)FindName("FgColor");
         }
 
 #if NOESIS
+        private SolidColorBrush BgColor;
+        private SolidColorBrush FgColor;
+
         private void InitializeComponent()
         {
             GUI.LoadComponent(this, "MainWindow.xaml");
+
+            this.BgColor = (SolidColorBrush)FindName("BgColor");
+            this.FgColor = (SolidColorBrush)FindName("FgColor");
         }
 
         protected override bool ConnectEvent(object source, string eventName, string handlerName)
         {
             if (eventName == "ValueChanged" && handlerName == "BgR_ValueChanged")
             {
-                ((NumericUpDown)source).ValueChanged += BgR_ValueChanged;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((NumericUpDown)source).ValueChanged += (s, e) => { ((MainWindow)wr.Target).BgR_ValueChanged(s, e); };
                 return true;
             }
             if (eventName == "ValueChanged" && handlerName == "BgG_ValueChanged")
             {
-                ((NumericUpDown)source).ValueChanged += BgG_ValueChanged;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((NumericUpDown)source).ValueChanged += (s, e) => { ((MainWindow)wr.Target).BgG_ValueChanged(s, e); };
                 return true;
             }
             if (eventName == "ValueChanged" && handlerName == "BgB_ValueChanged")
             {
-                ((NumericUpDown)source).ValueChanged += BgB_ValueChanged;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((NumericUpDown)source).ValueChanged += (s, e) => { ((MainWindow)wr.Target).BgB_ValueChanged(s, e); };
                 return true;
             }
             if (eventName == "ValueChanged" && handlerName == "FgR_ValueChanged")
             {
-                ((NumericUpDown)source).ValueChanged += FgR_ValueChanged;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((NumericUpDown)source).ValueChanged += (s, e) => { ((MainWindow)wr.Target).FgR_ValueChanged(s, e); };
                 return true;
             }
             if (eventName == "ValueChanged" && handlerName == "FgG_ValueChanged")
             {
-                ((NumericUpDown)source).ValueChanged += FgG_ValueChanged;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((NumericUpDown)source).ValueChanged += (s, e) => { ((MainWindow)wr.Target).FgG_ValueChanged(s, e); };
                 return true;
             }
             if (eventName == "ValueChanged" && handlerName == "FgB_ValueChanged")
             {
-                ((NumericUpDown)source).ValueChanged += FgB_ValueChanged;
+                System.WeakReference wr = new System.WeakReference(this);
+                ((NumericUpDown)source).ValueChanged += (s, e) => { ((MainWindow)wr.Target).FgB_ValueChanged(s, e); };
                 return true;
             }
             return false;
@@ -65,53 +74,50 @@ namespace UserControls
 
         private void BgR_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            if (_bg != null)
+            if (this.BgColor != null)
             {
-                _bg.Color = Color.FromRgb((byte)e.NewValue, _bg.Color.G, _bg.Color.B);
+                this.BgColor.Color = Color.FromRgb((byte)e.NewValue, this.BgColor.Color.G, this.BgColor.Color.B);
             }
         }
 
         private void BgG_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            if (_bg != null)
+            if (this.BgColor != null)
             {
-                _bg.Color = Color.FromRgb(_bg.Color.R, (byte)e.NewValue, _bg.Color.B);
+                this.BgColor.Color = Color.FromRgb(this.BgColor.Color.R, (byte)e.NewValue, this.BgColor.Color.B);
             }
         }
 
         private void BgB_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            if (_bg != null)
+            if (this.BgColor != null)
             {
-                _bg.Color = Color.FromRgb(_bg.Color.R, _bg.Color.G, (byte)e.NewValue);
+                this.BgColor.Color = Color.FromRgb(this.BgColor.Color.R, this.BgColor.Color.G, (byte)e.NewValue);
             }
         }
 
         private void FgR_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            if (_fg != null)
+            if (this.FgColor != null)
             {
-                _fg.Color = Color.FromRgb((byte)e.NewValue, _fg.Color.G, _fg.Color.B);
+                this.FgColor.Color = Color.FromRgb((byte)e.NewValue, this.FgColor.Color.G, this.FgColor.Color.B);
             }
         }
 
         private void FgG_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            if (_fg != null)
+            if (this.FgColor != null)
             {
-                _fg.Color = Color.FromRgb(_fg.Color.R, (byte)e.NewValue, _fg.Color.B);
+                this.FgColor.Color = Color.FromRgb(this.FgColor.Color.R, (byte)e.NewValue, this.FgColor.Color.B);
             }
         }
 
         private void FgB_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            if (_fg != null)
+            if (this.FgColor != null)
             {
-                _fg.Color = Color.FromRgb(_fg.Color.R, _fg.Color.G, (byte)e.NewValue);
+                this.FgColor.Color = Color.FromRgb(this.FgColor.Color.R, this.FgColor.Color.G, (byte)e.NewValue);
             }
         }
-
-        private SolidColorBrush _bg;
-        private SolidColorBrush _fg;
     }
 }

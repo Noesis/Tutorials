@@ -29,7 +29,11 @@ namespace IntegrationSharpDX
             });
 
             // Noesis initialization. This must be the first step before using any NoesisGUI functionality
-            Noesis.GUI.Init();
+            Noesis.GUI.Init("LICENSE_NAME", "LICENSE_KEY");
+
+            // Setup theme
+            NoesisApp.Application.SetThemeProviders();
+            Noesis.GUI.LoadApplicationResources("Theme/NoesisTheme.DarkBlue.xaml");
 
             // For simplicity purposes we are not using resource providers in this sample. ParseXaml() is
             // enough if there is no extra XAML dependencies
@@ -61,7 +65,7 @@ namespace IntegrationSharpDX
             // We transfer the ownership to a global pointer instead of a Ptr<> because there is no way
             // in GLUT to do shutdown and we don't want the Ptr<> to be released at global time
             Noesis.View view = Noesis.GUI.CreateView(xaml);
-            view.SetIsPPAAEnabled(true);
+            view.SetFlags(Noesis.RenderFlags.PPAA | Noesis.RenderFlags.LCD);
 
             // Creation of the system window
             RenderForm form = new RenderForm("NoesisGUI - IntegrationSharpDX D3D11")

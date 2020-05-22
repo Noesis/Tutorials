@@ -29,6 +29,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
                         <Grid>
+                            <Ellipse Fill="SkyBlue" Margin="4"/>
                             <Ellipse x:Name="selectedPlanet" Margin="-10" StrokeThickness="2" IsHitTestVisible="False" />
                             <ContentPresenter
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

@@ -1,0 +1,205 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="ProgressBar"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._ProgressBar.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The ProgressBar control is useful to show the progress of an operation."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/b2f4227f8402aaf47e43178ec03b931f" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Simple ProgressBar"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>A normal ProgressBar shows how much progress has been made on a known amount of work.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel.Resources>
+          <Storyboard x:Key="Anim" Duration="0:0:5" RepeatBehavior="Forever">
+            <DoubleAnimation To="100" Duration="0:0:3" AccelerationRatio="0.5" DecelerationRatio="0.25"
+              Storyboard.TargetName="progress1" Storyboard.TargetProperty="Value"/>
+          </Storyboard>
+        </StackPanel.Resources>
+        <StackPanel.Triggers>
+          <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Anim}"/>
+          </EventTrigger>
+        </StackPanel.Triggers>
+        <Grid>
+          <TextBlock Text="Downloading..."/>
+          <TextBlock Text="{Binding Value, ElementName=progress1, FallbackValue=0%, StringFormat={}{0:F0}%}" HorizontalAlignment="Right"/>
+        </Grid>
+        <ProgressBar x:Name="progress1" Minimum="0" Maximum="100" Value="0" Width="360" Height="20" Margin="0,5,0,0"/>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/b1390d758407ee55ddd999a04dd29de8" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Indeterminate ProgressBar"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Setting</Run>
+            <Run FontWeight="Bold">IsIndeterminate</Run>
+            <Run>property to True is useful to show that a task is ongoing, but doesn't block user interaction.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Calculating required space..."/>
+        <ProgressBar IsIndeterminate="True" Width="360" Height="20" Margin="0,5,0,0"/>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/6f583e7704e9e298dbd4f9f7d40a7da9" TabIndex="300">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Orientation"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>The</Run>
+            <Run FontWeight="Bold">Orientation</Run>
+            <Run>property can be used to display vertical progress bars.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.Resources>
+          <LinearGradientBrush x:Key="Grad" StartPoint="0,0" EndPoint="60,0" MappingMode="Absolute">
+            <GradientStop Offset="0" Color="#FF26D926"/>
+            <GradientStop Offset="0.5" Color="YellowGreen"/>
+            <GradientStop Offset="0.75" Color="Yellow"/>
+            <GradientStop Offset="1" Color="OrangeRed"/>
+          </LinearGradientBrush>
+          <Storyboard x:Key="Anim">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="progress20" Storyboard.TargetProperty="Value" RepeatBehavior="Forever">
+              <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="100"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="80"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="90"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="30"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="progress21" Storyboard.TargetProperty="Value" RepeatBehavior="Forever" BeginTime="0:0:0.02">
+              <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="100"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="80"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="90"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="30"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="progress22" Storyboard.TargetProperty="Value" RepeatBehavior="Forever" BeginTime="0:0:0.05">
+              <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="100"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="80"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="90"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="30"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="progress23" Storyboard.TargetProperty="Value" RepeatBehavior="Forever" BeginTime="0:0:0.03">
+              <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="100"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="80"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="90"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="30"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="progress24" Storyboard.TargetProperty="Value" RepeatBehavior="Forever" BeginTime="0:0:0.01">
+              <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="100"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="80"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="90"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="30"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="progress25" Storyboard.TargetProperty="Value" RepeatBehavior="Forever" BeginTime="0:0:0.04">
+              <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="100"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="80"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="90"/>
+              <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="30"/>
+            </DoubleAnimationUsingKeyFrames>
+          </Storyboard>
+        </Grid.Resources>
+        <Grid.Triggers>
+          <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Anim}"/>
+          </EventTrigger>
+        </Grid.Triggers>
+        <StackPanel Orientation="Horizontal" Margin="10,0">
+          <ProgressBar x:Name="progress20" Orientation="Vertical" Foreground="{StaticResource Grad}" Minimum="0" Maximum="100" Width="10" Height="60"/>
+          <ProgressBar x:Name="progress21" Orientation="Vertical" Foreground="{StaticResource Grad}" Minimum="0" Maximum="100" Width="10" Height="60" Margin="5,0,0,0"/>
+          <ProgressBar x:Name="progress22" Orientation="Vertical" Foreground="{StaticResource Grad}" Minimum="0" Maximum="100" Width="10" Height="60" Margin="5,0,0,0"/>
+          <ProgressBar x:Name="progress23" Orientation="Vertical" Foreground="{StaticResource Grad}" Minimum="0" Maximum="100" Width="10" Height="60" Margin="5,0,0,0"/>
+          <ProgressBar x:Name="progress24" Orientation="Vertical" Foreground="{StaticResource Grad}" Minimum="0" Maximum="100" Width="10" Height="60" Margin="5,0,0,0"/>
+          <ProgressBar x:Name="progress25" Orientation="Vertical" Foreground="{StaticResource Grad}" Minimum="0" Maximum="100" Width="10" Height="60" Margin="5,0,0,0"/>
+        </StackPanel>
+        <Rectangle Fill="{DynamicResource Brush.Glyph.Normal}" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,15" Opacity="0.5"/>
+        <TextBlock Text="0 db" FontSize="12" VerticalAlignment="Bottom" Margin="-30,0,0,9"/>
+      </Grid>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/43080024b04238437bb19cd3bcaf7e85" TabIndex="400">
+      <HeaderedContentControl.Header>
+        <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Custom style"/>
+      </HeaderedContentControl.Header>
+      <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.Resources>
+          <ControlTemplate x:Key="RadialProgressBar" TargetType="ProgressBar">
+            <Grid>
+              <Ellipse Stroke="{DynamicResource Brush.Background.Normal}" StrokeThickness="12"/>
+              <Ellipse x:Name="Progress" Stroke="{TemplateBinding Foreground}" StrokeThickness="8" Margin="2" noesis:Path.TrimStart="0" noesis:Path.TrimEnd="{Binding Value, RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                  <RotateTransform Angle="-90"/>
+                </Ellipse.RenderTransform>
+              </Ellipse>
+              <Ellipse x:Name="Indeterminate" Stroke="{TemplateBinding Foreground}" StrokeThickness="10" Margin="1" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Ellipse.OpacityMask>
+                  <RadialGradientBrush GradientOrigin="0.926,0.5" Center="0.926,0.5" RadiusX="0.448" RadiusY="1.484">
+                    <GradientStop Offset="0" Color="#FF000000"/>
+                    <GradientStop Offset="1" Color="#00000000"/>
+                  </RadialGradientBrush>
+                </Ellipse.OpacityMask>
+                <Ellipse.RenderTransform>
+                  <RotateTransform/>
+                </Ellipse.RenderTransform>
+              </Ellipse>
+            </Grid>
+            <ControlTemplate.Resources>
+              <Storyboard x:Key="Anim" RepeatBehavior="Forever">
+                <DoubleAnimation Storyboard.TargetName="Indeterminate" Storyboard.TargetProperty="RenderTransform.Angle" Duration="0:0:2" To="360"/>
+              </Storyboard>
+            </ControlTemplate.Resources>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsIndeterminate" Value="True">
+                <Setter Property="Visibility" Value="Collapsed" TargetName="Progress"/>
+                <Setter Property="Visibility" Value="Visible" TargetName="Indeterminate"/>
+                <Trigger.EnterActions>
+                  <BeginStoryboard Storyboard="{StaticResource Anim}"/>
+                </Trigger.EnterActions>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+          <Storyboard x:Key="Anim" Duration="0:0:4" RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="progress3" Storyboard.TargetProperty="Value" To="1" Duration="0:0:3"/>
+          </Storyboard>
+        </Grid.Resources>
+        <Grid.Triggers>
+          <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Anim}"/>
+          </EventTrigger>
+        </Grid.Triggers>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ProgressBar x:Name="progress3" Grid.Column="0" Template="{StaticResource RadialProgressBar}" Width="80" Height="80" Minimum="0" Maximum="1" Margin="5,0"/>
+        <ProgressBar Grid.Column="1" Template="{StaticResource RadialProgressBar}" IsIndeterminate="True" Width="80" Height="80" Minimum="0" Maximum="1" Margin="5,0"/>
+      </Grid>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>
