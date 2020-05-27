@@ -66,7 +66,7 @@ void OptionSelector::SetSelectedIndex(int value)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 BaseComponent* OptionSelector::GetSelectedOption() const
 {
-    return GetValue<Ptr<BaseComponent>>(SelectedOptionProperty);
+    return GetValue<Noesis::Ptr<BaseComponent>>(SelectedOptionProperty);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -215,7 +215,7 @@ int OptionSelector::GetIndex() const
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void OptionSelector::SetSelectedOption(BaseComponent* value)
 {
-    SetValue<Ptr<BaseComponent>>(SelectedOptionProperty, value);
+    SetValue<Noesis::Ptr<BaseComponent>>(SelectedOptionProperty, value);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -231,8 +231,8 @@ NS_IMPLEMENT_REFLECTION(Menu3D::OptionSelector, "Menu3D.OptionSelector")
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<int>(SelectedIndexProperty, "SelectedIndex",
         PropertyMetadata::Create(-1, &OptionSelector::OnIndexChanged));
-    data->RegisterProperty<Ptr<BaseComponent>>(SelectedOptionProperty, "SelectedOption",
-        PropertyMetadata::Create(Ptr<BaseComponent>()));
+    data->RegisterProperty<Noesis::Ptr<BaseComponent>>(SelectedOptionProperty, "SelectedOption",
+        PropertyMetadata::Create(Noesis::Ptr<BaseComponent>()));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

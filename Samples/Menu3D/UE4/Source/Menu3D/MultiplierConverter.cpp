@@ -17,7 +17,7 @@ using namespace Noesis;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 bool MultiplierConverter::TryConvert(BaseComponent* value, const Type* targetType,
-    BaseComponent* parameter, Ptr<BaseComponent>& result)
+    BaseComponent* parameter, Noesis::Ptr<BaseComponent>& result)
 {
     if (targetType == TypeOf<float>() && value != 0 && parameter != 0)
     {

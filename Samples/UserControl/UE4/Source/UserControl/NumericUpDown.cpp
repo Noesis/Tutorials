@@ -57,8 +57,8 @@ void NumericUpDown::InitializeComponent()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 bool NumericUpDown::ConnectEvent(BaseComponent* source, const char* event, const char* handler)
 {
-    NS_CONNECT_EVENT(Button, Click, UpButton_Click);
-    NS_CONNECT_EVENT(Button, Click, DownButton_Click);
+    NS_CONNECT_EVENT(Noesis::Button, Click, UpButton_Click);
+    NS_CONNECT_EVENT(Noesis::Button, Click, DownButton_Click);
     return false;
 }
 

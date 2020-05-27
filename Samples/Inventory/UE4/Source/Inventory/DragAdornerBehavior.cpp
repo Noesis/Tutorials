@@ -19,15 +19,15 @@ using namespace Noesis;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-const Point& DragAdornerBehavior::GetDragStartOffset() const
+const Noesis::Point& DragAdornerBehavior::GetDragStartOffset() const
 {
-    return GetValue<Point>(DragStartOffsetProperty);
+    return GetValue<Noesis::Point>(DragStartOffsetProperty);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void DragAdornerBehavior::SetDragStartOffset(const Point& offset)
+void DragAdornerBehavior::SetDragStartOffset(const Noesis::Point& offset)
 {
-    SetValue<Point>(DragStartOffsetProperty, offset);
+    SetValue<Noesis::Point>(DragStartOffsetProperty, offset);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +55,7 @@ void DragAdornerBehavior::SetDraggedItemY(float y)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-Ptr<Freezable> DragAdornerBehavior::CreateInstanceCore() const
+Noesis::Ptr<Freezable> DragAdornerBehavior::CreateInstanceCore() const
 {
     return *new DragAdornerBehavior();
 }
@@ -85,8 +85,8 @@ void DragAdornerBehavior::OnDetaching()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void DragAdornerBehavior::OnDragOver(BaseComponent*, const DragEventArgs& e)
 {
-    Point position = e.GetPosition(GetAssociatedObject());
-    Point offset = GetDragStartOffset();
+    Noesis::Point position = e.GetPosition(GetAssociatedObject());
+    Noesis::Point offset = GetDragStartOffset();
     SetDraggedItemX(position.x - offset.x);
     SetDraggedItemY(position.y - offset.y);
 }
@@ -103,8 +103,8 @@ NS_BEGIN_COLD_REGION
 NS_IMPLEMENT_REFLECTION(DragAdornerBehavior, "Inventory.DragAdornerBehavior")
 {
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
-    data->RegisterProperty<Point>(DragStartOffsetProperty, "DragStartOffset",
-        PropertyMetadata::Create(Point(0.0f, 0.0f)));
+    data->RegisterProperty<Noesis::Point>(DragStartOffsetProperty, "DragStartOffset",
+        PropertyMetadata::Create(Noesis::Point(0.0f, 0.0f)));
     data->RegisterPropertyRO<float>(DraggedItemXProperty, "DraggedItemX",
         PropertyMetadata::Create(0.0f));
     data->RegisterPropertyRO<float>(DraggedItemYProperty, "DraggedItemY",

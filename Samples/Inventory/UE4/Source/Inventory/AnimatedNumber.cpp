@@ -62,26 +62,26 @@ void AnimatedNumber::InitializeComponent()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void AnimatedNumber::OnNumberChanged(int oldValue, int newValue)
 {
-    Ptr<Int32AnimationUsingKeyFrames> animation = *new Int32AnimationUsingKeyFrames();
+    Noesis::Ptr<Int32AnimationUsingKeyFrames> animation = *new Int32AnimationUsingKeyFrames();
     Storyboard::SetTargetName(animation, "Root");
     Storyboard::SetTargetProperty(animation, MakePtr<PropertyPath>(AnimatedNumberProperty));
 
     Int32KeyFrameCollection* keyframes = animation->GetKeyFrames();
 
     {
-        Ptr<LinearInt32KeyFrame> keyframe = *new LinearInt32KeyFrame();
+        Noesis::Ptr<LinearInt32KeyFrame> keyframe = *new LinearInt32KeyFrame();
         keyframe->SetValue(oldValue);
         keyframe->SetKeyTime(KeyTime::FromTimeSpan(TimeSpan()));
         keyframes->Add(keyframe);
     }
     {
-        Ptr<LinearInt32KeyFrame> keyframe = *new LinearInt32KeyFrame();
+        Noesis::Ptr<LinearInt32KeyFrame> keyframe = *new LinearInt32KeyFrame();
         keyframe->SetValue(newValue);
         keyframe->SetKeyTime(KeyTime::FromTimeSpan(GetAnimationDuration()));
         keyframes->Add(keyframe);
     }
 
-    Ptr<Storyboard> storyboard = *new Storyboard();
+    Noesis::Ptr<Storyboard> storyboard = *new Storyboard();
     storyboard->GetChildren()->Add(animation);
     storyboard->Begin(this);
 }

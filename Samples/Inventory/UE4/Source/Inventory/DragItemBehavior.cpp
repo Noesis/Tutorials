@@ -25,43 +25,43 @@ DragItemBehavior::DragItemBehavior(): _mouseClicked(false)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-const Point& DragItemBehavior::GetDragStartOffset() const
+const Noesis::Point& DragItemBehavior::GetDragStartOffset() const
 {
-    return GetValue<Point>(DragStartOffsetProperty);
+    return GetValue<Noesis::Point>(DragStartOffsetProperty);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void DragItemBehavior::SetDragStartOffset(const Point& offset)
+void DragItemBehavior::SetDragStartOffset(const Noesis::Point& offset)
 {
-    SetValue<Point>(DragStartOffsetProperty, offset);
+    SetValue<Noesis::Point>(DragStartOffsetProperty, offset);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 BaseCommand* DragItemBehavior::GetStartDragCommand() const
 {
-    return GetValue<Ptr<BaseCommand>>(StartDragCommandProperty);
+    return GetValue<Noesis::Ptr<BaseCommand>>(StartDragCommandProperty);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void DragItemBehavior::SetStartDragCommand(BaseCommand* command)
 {
-    SetValue<Ptr<BaseCommand>>(StartDragCommandProperty, command);
+    SetValue<Noesis::Ptr<BaseCommand>>(StartDragCommandProperty, command);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 BaseCommand* DragItemBehavior::GetEndDragCommand() const
 {
-    return GetValue<Ptr<BaseCommand>>(EndDragCommandProperty);
+    return GetValue<Noesis::Ptr<BaseCommand>>(EndDragCommandProperty);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void DragItemBehavior::SetEndDragCommand(BaseCommand* command)
 {
-    SetValue<Ptr<BaseCommand>>(EndDragCommandProperty, command);
+    SetValue<Noesis::Ptr<BaseCommand>>(EndDragCommandProperty, command);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-Ptr<Freezable> DragItemBehavior::CreateInstanceCore() const
+Noesis::Ptr<Freezable> DragItemBehavior::CreateInstanceCore() const
 {
     return *new DragItemBehavior();
 }
@@ -131,9 +131,9 @@ void DragItemBehavior::OnMouseMove(BaseComponent*, const MouseEventArgs& e)
             startDrag->Execute(item);
 
             DragDrop::DoDragDrop(element, item, DragDropEffects_Move, [this](DependencyObject*,
-                BaseComponent*, UIElement*, const Point&, uint32_t effects)
+                BaseComponent*, UIElement*, const Noesis::Point&, uint32_t effects)
             {
-                Ptr<BaseComponent> dragSuccess = Boxing::Box<bool>(effects != DragDropEffects_None);
+                Noesis::Ptr<BaseComponent> dragSuccess = Boxing::Box<bool>(effects != DragDropEffects_None);
                 BaseCommand* endDrag = GetEndDragCommand();
                 if (endDrag != 0 && endDrag->CanExecute(dragSuccess))
                 {
@@ -150,12 +150,12 @@ NS_BEGIN_COLD_REGION
 NS_IMPLEMENT_REFLECTION(DragItemBehavior, "Inventory.DragItemBehavior")
 {
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
-    data->RegisterProperty<Point>(DragStartOffsetProperty, "DragStartOffset",
-        PropertyMetadata::Create(Point(0.0f, 0.0f)));
-    data->RegisterProperty<Ptr<BaseCommand>>(StartDragCommandProperty, "StartDragCommand",
-        PropertyMetadata::Create(Ptr<BaseCommand>()));
-    data->RegisterProperty<Ptr<BaseCommand>>(EndDragCommandProperty, "EndDragCommand",
-        PropertyMetadata::Create(Ptr<BaseCommand>()));
+    data->RegisterProperty<Noesis::Point>(DragStartOffsetProperty, "DragStartOffset",
+        PropertyMetadata::Create(Noesis::Point(0.0f, 0.0f)));
+    data->RegisterProperty<Noesis::Ptr<BaseCommand>>(StartDragCommandProperty, "StartDragCommand",
+        PropertyMetadata::Create(Noesis::Ptr<BaseCommand>()));
+    data->RegisterProperty<Noesis::Ptr<BaseCommand>>(EndDragCommandProperty, "EndDragCommand",
+        PropertyMetadata::Create(Noesis::Ptr<BaseCommand>()));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

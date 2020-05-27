@@ -33,17 +33,17 @@ void DropItemBehavior::SetIsDragOver(bool value)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 BaseCommand* DropItemBehavior::GetDropCommand() const
 {
-    return GetValue<Ptr<BaseCommand>>(DropCommandProperty);
+    return GetValue<Noesis::Ptr<BaseCommand>>(DropCommandProperty);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void DropItemBehavior::SetDropCommand(BaseCommand* value)
 {
-    SetValue<Ptr<BaseCommand>>(DropCommandProperty, value);
+    SetValue<Noesis::Ptr<BaseCommand>>(DropCommandProperty, value);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-Ptr<Freezable> DropItemBehavior::CreateInstanceCore() const
+Noesis::Ptr<Freezable> DropItemBehavior::CreateInstanceCore() const
 {
     return *new DropItemBehavior();
 }
@@ -113,8 +113,8 @@ NS_IMPLEMENT_REFLECTION(DropItemBehavior, "Inventory.DropItemBehavior")
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<bool>(IsDragOverProperty, "IsDragOver",
         PropertyMetadata::Create(false));
-    data->RegisterProperty<Ptr<BaseCommand>>(DropCommandProperty, "DropCommand",
-        PropertyMetadata::Create(Ptr<BaseCommand>()));
+    data->RegisterProperty<Noesis::Ptr<BaseCommand>>(DropCommandProperty, "DropCommand",
+        PropertyMetadata::Create(Noesis::Ptr<BaseCommand>()));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
