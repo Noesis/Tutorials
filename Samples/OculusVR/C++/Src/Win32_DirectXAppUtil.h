@@ -452,7 +452,7 @@ struct Texture
         for (int k = 0; k < 3; k++)
         {
             float rgb = ((float)((*linear >> (k * 8)) & 0xff)) / 255.0f;
-            rgb = pow(rgb, 2.2f);
+            rgb = powf(rgb, 2.2f);
             drgb[k] = (uint32_t)(rgb * 255.0f);
         }
         *linear = (*linear & 0xff000000) + (drgb[2] << 16) + (drgb[1] << 8) + (drgb[0] << 0);
@@ -658,7 +658,7 @@ struct TriangleSet
 
     uint32_t ModifyColor(uint32_t c, XMFLOAT3 pos)
     {
-        #define GetLengthLocal(v)  (sqrt(v.x*v.x + v.y*v.y + v.z*v.z))
+        #define GetLengthLocal(v)  (sqrtf(v.x*v.x + v.y*v.y + v.z*v.z))
         float dist1 = GetLengthLocal(XMFLOAT3(pos.x - (-2), pos.y - (4), pos.z - (-2)));
         float dist2 = GetLengthLocal(XMFLOAT3(pos.x - (3),  pos.y - (4), pos.z - (-3)));
         float dist3 = GetLengthLocal(XMFLOAT3(pos.x - (-4), pos.y - (3), pos.z - (25)));
@@ -969,7 +969,7 @@ struct Camera
 
     static void* operator new(std::size_t size)
     {
-		UNREFERENCED_PARAMETER(size);
+        UNREFERENCED_PARAMETER(size);
         return _aligned_malloc(sizeof(Camera), __alignof(Camera));
     }
 

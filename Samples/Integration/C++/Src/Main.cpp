@@ -128,6 +128,18 @@ void SetupDisplay(NoesisApp::Display* display, NoesisApp::RenderContext* ctx, No
         view->MouseWheel(x, y, delta);
     };
 
+    display->Scroll() += [view](NoesisApp::Display*, float delta)
+    {
+        NS_LOG_INFO("Scroll: %.4f", delta);
+        view->Scroll(delta);
+    };
+
+    display->HScroll() += [view](NoesisApp::Display*, float delta)
+    {
+        NS_LOG_INFO("HScroll: %.4f", delta);
+        view->HScroll(delta);
+    };
+
     display->TouchUp() += [view](NoesisApp::Display*, int x, int y, uint64_t id)
     {
         view->TouchUp(x, y, id);

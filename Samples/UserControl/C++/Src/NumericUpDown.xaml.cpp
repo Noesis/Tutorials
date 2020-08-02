@@ -15,7 +15,7 @@
 
 
 using namespace Noesis;
-using namespace UserControl;
+using namespace UserControls;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,7 +105,7 @@ bool NumericUpDown::CoerceValue(const DependencyObject* object, const void* valu
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(NumericUpDown, "UserControl.NumericUpDown")
+NS_IMPLEMENT_REFLECTION(NumericUpDown, "UserControls.NumericUpDown")
 {
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<int>(ValueProperty, "Value",

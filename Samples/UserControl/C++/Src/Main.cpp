@@ -14,7 +14,7 @@
 #include <NsApp/ApplicationLauncher.h>
 #include <NsApp/Window.h>
 #include <NsGui/IntegrationAPI.h>
-#include <NsGui/SolidColorBrush.h>
+#include <NsGui/BaseMultiValueConverter.h>
 #include <NsDrawing/Color.h>
 
 #include "NumericUpDown.h"
@@ -29,13 +29,13 @@ using namespace Noesis;
 using namespace NoesisApp;
 
 
-namespace UserControl
+namespace UserControls
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public Application
 {
-    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "UserControl.App")
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "UserControls.App")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,9 +45,6 @@ public:
     MainWindow()
     {
         InitializeComponent();
-
-        _bg = FindName<SolidColorBrush>("BgColor");
-        _fg = FindName<SolidColorBrush>("FgColor");
     }
 
 private:
@@ -56,60 +53,27 @@ private:
         Noesis::GUI::LoadComponent(this, "MainWindow.xaml");
     }
 
-    // This code-behind is needed because MultiBindings are not yet supported
-    // http://stackoverflow.com/questions/1978316/binding-r-g-b-properties-of-color-in-wpf
-    bool ConnectEvent(BaseComponent* source, const char* event, const char* handler) override
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "UserControls.MainWindow")
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class ColorConverter final: public BaseMultiValueConverter
+{
+public:
+    bool TryConvert(ArrayRef<BaseComponent*> values, const Type*, BaseComponent*,
+        Noesis::Ptr<BaseComponent>& result) override
     {
-        NS_CONNECT_EVENT(NumericUpDown, ValueChanged, BgR_ValueChanged);
-        NS_CONNECT_EVENT(NumericUpDown, ValueChanged, BgG_ValueChanged);
-        NS_CONNECT_EVENT(NumericUpDown, ValueChanged, BgB_ValueChanged);
-        NS_CONNECT_EVENT(NumericUpDown, ValueChanged, FgR_ValueChanged);
-        NS_CONNECT_EVENT(NumericUpDown, ValueChanged, FgG_ValueChanged);
-        NS_CONNECT_EVENT(NumericUpDown, ValueChanged, FgB_ValueChanged);
-        return false;
+        NS_ASSERT(values.Size() == 3);
+        int r = Boxing::Unbox<int>(values[0]);
+        int g = Boxing::Unbox<int>(values[1]);
+        int b = Boxing::Unbox<int>(values[2]);
+
+        result = Boxing::Box(Color(r, g, b));
+        return true;
     }
 
-    void BgR_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
-    {
-        Color color = _bg->GetColor();
-        _bg->SetColor(Color(args.newValue / 255.0f, color.g, color.b, color.a));
-    }
-    
-    void BgG_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
-    {
-        Color color = _bg->GetColor();
-        _bg->SetColor(Color(color.r, args.newValue / 255.0f, color.b, color.a));
-    }
-    
-    void BgB_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
-    {
-        Color color = _bg->GetColor();
-        _bg->SetColor(Color(color.r, color.g, args.newValue / 255.0f, color.a));
-    }
-    
-    void FgR_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
-    {
-        Color color = _fg->GetColor();
-        _fg->SetColor(Color(args.newValue / 255.0f, color.g, color.b, color.a));
-    }
-    
-    void FgG_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
-    {
-        Color color = _fg->GetColor();
-        _fg->SetColor(Color(color.r, args.newValue / 255.0f, color.b, color.a));
-    }
-    
-    void FgB_ValueChanged(BaseComponent*, const RoutedPropertyChangedEventArgs<int>& args)
-    {
-        Color color = _fg->GetColor();
-        _fg->SetColor(Color(color.r, color.g, args.newValue / 255.0f, color.a));
-    }
-
-private:
-    SolidColorBrush* _fg;
-    SolidColorBrush* _bg;
-
-    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "UserControl.MainWindow")
+    NS_IMPLEMENT_INLINE_REFLECTION_(ColorConverter, BaseMultiValueConverter,
+        "UserControls.ColorConverter");
 };
 
 }
@@ -120,9 +84,10 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        RegisterComponent<::UserControl::App>();
-        RegisterComponent<::UserControl::MainWindow>();
-        RegisterComponent<::UserControl::NumericUpDown>();
+        RegisterComponent<UserControls::App>();
+        RegisterComponent<UserControls::MainWindow>();
+        RegisterComponent<UserControls::NumericUpDown>();
+        RegisterComponent<UserControls::ColorConverter>();
     }
 
     Noesis::Ptr<XamlProvider> GetXamlProvider() const override

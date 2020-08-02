@@ -100,7 +100,7 @@ static void NoesisInit()
     _view->SetFlags(Noesis::RenderFlags_PPAA | Noesis::RenderFlags_LCD);
 
     // Renderer initialization with an OpenGL device
-    _view->GetRenderer()->Init(NoesisApp::GLFactory::CreateDevice());
+    _view->GetRenderer()->Init(NoesisApp::GLFactory::CreateDevice(false));
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

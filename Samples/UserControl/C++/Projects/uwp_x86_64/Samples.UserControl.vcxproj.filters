@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{d2fd3bb6-80df-48c3-8f6c-6df196496dd9}</UniqueIdentifier>
+      <UniqueIdentifier>{43da8827-d5b5-463e-8521-537dcacde575}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
-      <UniqueIdentifier>{8e47009f-cf6f-455e-bd34-09dca27d4010}</UniqueIdentifier>
+      <UniqueIdentifier>{2b7714e6-68d9-4f2d-9ece-711e01a59313}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{d3276c89-c2df-4c26-a7f6-96b9b166956d}</UniqueIdentifier>
+      <UniqueIdentifier>{3c62a250-8777-46d0-9710-13499c4c92d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,16 +63,16 @@
     <Image Include="Wide310x150Logo.scale-200.png">
       <Filter>Resources</Filter>
     </Image>
-    <CustomBuild Include="..\..\Src\MainWindow.xaml">
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\App.xaml">
+    <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\NumericUpDown.xaml">
+    <CustomBuild Include="..\..\Data\NumericUpDown.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Aero Matics Regular.ttf">
+    <CustomBuild Include="..\..\Data\Aero Matics Regular.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

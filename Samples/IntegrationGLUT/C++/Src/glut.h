@@ -11,9 +11,7 @@
 // Quick & dirty minimal GLUT implementation for Windows to avoid extra dependencies because GLUT
 // is not included in Windows by default. Can be replaced by standard GLUT implementation
 
-#ifndef WIN32_LEAN_AND_MEAN
-    #define WIN32_LEAN_AND_MEAN 1
-#endif
+#define WIN32_LEAN_AND_MEAN 1
 
 #include <windows.h>
 #include <ShellScalingApi.h>

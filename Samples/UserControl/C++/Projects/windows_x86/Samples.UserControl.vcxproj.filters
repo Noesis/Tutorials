@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{139c307a-0a06-4489-97c3-bf811ab56f3f}</UniqueIdentifier>
+      <UniqueIdentifier>{b37fec0a-43a5-4cee-903a-351bb0fe3a82}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
-      <UniqueIdentifier>{fb5f6181-35f8-41db-a488-3efa455f18ec}</UniqueIdentifier>
+      <UniqueIdentifier>{2b7fa4c6-b722-4f49-89ae-a41b0d96eaaa}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{d8a3e4ff-ddc9-48a3-8de1-f147b64fab1e}</UniqueIdentifier>
+      <UniqueIdentifier>{a143fdac-4e92-484b-927b-54e721f0ab9d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,16 +27,16 @@
     <None Include="Noesis.ico">
       <Filter>Resources</Filter>
     </None>
-    <CustomBuild Include="..\..\Src\MainWindow.xaml">
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\App.xaml">
+    <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\NumericUpDown.xaml">
+    <CustomBuild Include="..\..\Data\NumericUpDown.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
-    <CustomBuild Include="..\..\Src\Aero Matics Regular.ttf">
+    <CustomBuild Include="..\..\Data\Aero Matics Regular.ttf">
       <Filter>Data</Filter>
     </CustomBuild>
   </ItemGroup>

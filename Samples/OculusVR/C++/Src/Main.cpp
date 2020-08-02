@@ -292,7 +292,7 @@ static bool MainLoop(bool retryCreate)
             // Animate the cube
             static float cubePositionClock = 0;
             if (sessionStatus.HasInputFocus) // Pause the application if we are not supposed to have input.
-                roomScene->Models[0]->Pos = XMFLOAT3(9 * sin(cubePositionClock), 3, 9 * cos(cubePositionClock += 0.015f));
+                roomScene->Models[0]->Pos = XMFLOAT3(9 * sinf(cubePositionClock), 3, 9 * cosf(cubePositionClock += 0.015f));
             
             // Call ovr_GetRenderDesc each frame to get the ovrEyeRenderDesc, as the returned values (e.g. HmdToEyePose) may change at runtime.
             ovrEyeRenderDesc eyeRenderDesc[2];
