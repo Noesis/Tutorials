@@ -19,17 +19,17 @@ This is a demo that shows how to implement a drag and drop based UI forn an inve
 
 * [AnimatedNumber.h](Source/Inventory/AnimatedNumber.h), [AnimatedNumber.cpp](Source/Inventory/AnimatedNumber.cpp): Implement an `UserControl` used for the animated stats for the character.
 
-* [MainWindow.h](Source/Inventory/MainWindow.h): Implements a minimal code-behind for [MainWindow.xaml](Content/MainWindow.xaml).
+* [MainWindow.h](Source/Inventory/MainWindow.h): Implements a minimal code-behind for [MainWindow.xaml](Assets/MainWindow.xaml).
 
 * [InventoryGame.cpp](Source/Inventory/InventoryGame.cpp): Implements a minimal game module that registers the NoesisGUI native components.
 
 ### Blueprint
 
-* `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`: It's a `NoesisView` for `NoesisXaml'/Game/MainWindow.MainWindow'` ([MainWindow.xaml](Content/MainWindow.xaml)). It also creates an object with the `Class` `Blueprint'/Game/Menu3DViewModel.Menu3DViewModel'` and sets it as its `DataContext`.
+* `NoesisBlueprint'/Game/Inventory/View.View'`: It's a `NoesisView` for `NoesisXaml'/Game/Inventory/MainWindow.MainWindow'` ([MainWindow.xaml](Assets/MainWindow.xaml)). It also creates an object with the `Class` `Blueprint'/Game/Inventory/Menu3DViewModel.Menu3DViewModel'` and sets it as its `DataContext`.
 
-![NoesisBlueprint'/Game/MainWindowView.MainWindowView'](https://noesis.github.io/NoesisGUI/Samples/Inventory/UE4/MainWindowView.PNG)
+![NoesisBlueprint'/Game/Inventory/View.View'](https://noesis.github.io/NoesisGUI/Samples/Inventory/UE4/View.PNG)
 
-* `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`, adds it to the viewport and captures mouse and keyboard input.
+* `Inventory - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/Inventory/View.View'`, adds it to the viewport and captures mouse and keyboard input.
 
-![TestLevel - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Inventory/UE4/LevelBlueprint.PNG)
+![Inventory - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Inventory/UE4/LevelBlueprint.PNG)
 

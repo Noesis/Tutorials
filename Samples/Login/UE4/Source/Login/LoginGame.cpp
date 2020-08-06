@@ -4,21 +4,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "LoginGame.h"
-#include "MainWindow.h"
 
 DEFINE_LOG_CATEGORY(LogNoesisLogin)
 
-class LoginGameModule : public FDefaultGameModuleImpl
+class LoginModule : public FDefaultGameModuleImpl
 {
     virtual void StartupModule() override
     {
-        Noesis::RegisterComponent<Login::MainWindow>();
     }
 
     virtual void ShutdownModule() override
     {
-        Noesis::UnregisterComponent<Login::MainWindow>();
     }
 };
 
-IMPLEMENT_PRIMARY_GAME_MODULE(LoginGameModule, Login, "Login" );
+IMPLEMENT_MODULE(LoginModule, LoginModule);

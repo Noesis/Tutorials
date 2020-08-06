@@ -8,7 +8,6 @@
 #include "MainMenu.h"
 #include "StartMenu.h"
 #include "SettingsMenu.h"
-#include "MainWindow.h"
 #include "MenuDescription.h"
 #include "MultiplierConverter.h"
 
@@ -19,7 +18,7 @@ Noesis::BaseComponent* ButtonCreator(Noesis::Symbol)
     return nullptr;
 }
 
-class Menu3DGameModule : public FDefaultGameModuleImpl
+class Menu3DModule : public FDefaultGameModuleImpl
 {
     virtual void StartupModule() override
     {
@@ -27,7 +26,6 @@ class Menu3DGameModule : public FDefaultGameModuleImpl
         Noesis::RegisterComponent<Menu3D::MainMenu>();
         Noesis::RegisterComponent<Menu3D::StartMenu>();
         Noesis::RegisterComponent<Menu3D::SettingsMenu>();
-        Noesis::RegisterComponent<Menu3D::MainWindow>();
         Noesis::RegisterComponent<Menu3D::MenuDescription>();
         Noesis::RegisterComponent<Menu3D::MultiplierConverter>();
     }
@@ -38,10 +36,9 @@ class Menu3DGameModule : public FDefaultGameModuleImpl
         Noesis::UnregisterComponent<Menu3D::MainMenu>();
         Noesis::UnregisterComponent<Menu3D::StartMenu>();
         Noesis::UnregisterComponent<Menu3D::SettingsMenu>();
-        Noesis::UnregisterComponent<Menu3D::MainWindow>();
         Noesis::UnregisterComponent<Menu3D::MenuDescription>();
         Noesis::UnregisterComponent<Menu3D::MultiplierConverter>();
     }
 };
 
-IMPLEMENT_PRIMARY_GAME_MODULE(Menu3DGameModule, Menu3D, "Menu3D" );
+IMPLEMENT_MODULE(Menu3DModule, Menu3DModule);

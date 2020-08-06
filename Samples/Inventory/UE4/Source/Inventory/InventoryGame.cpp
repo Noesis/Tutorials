@@ -10,9 +10,8 @@
 #include "DragAdornerBehavior.h"
 #include "DragItemBehavior.h"
 #include "DropItemBehavior.h"
-#include "MainWindow.h"
 
-class InventoryGameModule : public FDefaultGameModuleImpl
+class InventoryModule : public FDefaultGameModuleImpl
 {
     virtual void StartupModule() override
     {
@@ -20,7 +19,6 @@ class InventoryGameModule : public FDefaultGameModuleImpl
         Noesis::RegisterComponent<Inventory::DragAdornerBehavior>();
         Noesis::RegisterComponent<Inventory::DragItemBehavior>();
         Noesis::RegisterComponent<Inventory::DropItemBehavior>();
-        Noesis::RegisterComponent<Inventory::MainWindow>();
     }
 
     virtual void ShutdownModule() override
@@ -29,8 +27,7 @@ class InventoryGameModule : public FDefaultGameModuleImpl
         Noesis::UnregisterComponent<Inventory::DragAdornerBehavior>();
         Noesis::UnregisterComponent<Inventory::DragItemBehavior>();
         Noesis::UnregisterComponent<Inventory::DropItemBehavior>();
-        Noesis::UnregisterComponent<Inventory::MainWindow>();
     }
 };
 
-IMPLEMENT_PRIMARY_GAME_MODULE(InventoryGameModule, Inventory, "Inventory" );
+IMPLEMENT_MODULE(InventoryModule, InventoryModule);

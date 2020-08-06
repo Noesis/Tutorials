@@ -12,10 +12,10 @@ This is a minimal demo that presents a Noesis Xaml to the user. The main focus p
 
 ### Blueprint
 
-* `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`: It's a `NoesisView` for `NoesisXaml'/Game/MainWindow.MainWindow'` ([MainWindow.xaml](Content/MainWindow.xaml)).
+* `NoesisBlueprint'/Game/HelloWorld/View.View'`: It's a `NoesisView` for `NoesisXaml'/Game/HelloWorld/MainWindow.MainWindow'` ([MainWindow.xaml](Assets/MainWindow.xaml)).
 
-![NoesisBlueprint'/Game/MainWindowView.MainWindowView'](https://noesis.github.io/NoesisGUI/Samples/HelloWorld/UE4/MainWindowView.PNG)
+![NoesisBlueprint'/Game/HelloWorld/View.View'](https://noesis.github.io/NoesisGUI/Samples/HelloWorld/UE4/View.PNG)
 
-* `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/MainWindowView.MainWindowView'` and adds it to the viewport.
+* `HelloWorld - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/HelloWorld/View.View'` and adds it to the viewport.
 
-![TestLevel - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/HelloWorld/UE4/LevelBlueprint.PNG)
+![HelloWorld - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/HelloWorld/UE4/LevelBlueprint.PNG)

@@ -11,7 +11,8 @@ public class UserControlEditorTarget : TargetRules
     public UserControlEditorTarget(TargetInfo Target) : base(Target)
     {
         Type = TargetType.Editor;
-
-        ExtraModuleNames.Add("UserControl");
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.Add("UserControlModule");
+        ExtraModuleNames.Add("Sample");
     }
 }

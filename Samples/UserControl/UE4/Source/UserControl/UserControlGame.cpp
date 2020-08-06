@@ -4,24 +4,24 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "UserControlGame.h"
-#include "MainWindow.h"
 #include "NumericUpDown.h"
+#include "ColorCOnverter.h"
 
 DEFINE_LOG_CATEGORY(LogNoesisUserControl)
 
-class UserControlGameModule : public FDefaultGameModuleImpl
+class UserControlModule : public FDefaultGameModuleImpl
 {
     virtual void StartupModule() override
     {
-        Noesis::RegisterComponent<UserControl::MainWindow>();
-        Noesis::RegisterComponent<UserControl::NumericUpDown>();
+        Noesis::RegisterComponent<UserControls::NumericUpDown>();
+        Noesis::RegisterComponent<UserControls::ColorConverter>();
     }
 
     virtual void ShutdownModule() override
     {
-        Noesis::UnregisterComponent<UserControl::MainWindow>();
-        Noesis::UnregisterComponent<UserControl::NumericUpDown>();
+        Noesis::UnregisterComponent<UserControls::NumericUpDown>();
+        Noesis::UnregisterComponent<UserControls::ColorConverter>();
     }
 };
 
-IMPLEMENT_PRIMARY_GAME_MODULE(UserControlGameModule, UserControl, "UserControl" );
+IMPLEMENT_MODULE(UserControlModule, UserControlModule);

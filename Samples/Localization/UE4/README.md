@@ -16,30 +16,30 @@ This demo shows one way to localize your user interface to multiple languages. T
 
 * [LevelToColorConverter.h](Source/Localization/LevelToColorConverter.h): Implements an `IValueConverter` used to convert the `SoundLevel` and `MusicLevel` properties exposed by the view model to colors.
 
-* [MainWindow.h](Source/Localization/MainWindow.h): Implements a minimal code-behind for [MainWindow.xaml](Content/MainWindow.xaml).
+* [MainWindow.h](Source/Localization/MainWindow.h): Implements a minimal code-behind for [MainWindow.xaml](Assets/MainWindow.xaml).
 
 * [LocalizationGame.cpp](Source/Localization/LocalizationGame.cpp): Implements a minimal game module that registers the NoesisGUI native components.
 
 ### Blueprint
 
-* `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`: It's a `NoesisView` for `NoesisXaml'/Game/MainWindow.MainWindow'` ([MainWindow.xaml](Content/MainWindow.xaml)).
+* `NoesisBlueprint'/Game/Localization/View.View'`: It's a `NoesisView` for `NoesisXaml'/Game/Localization/MainWindow.MainWindow'` ([MainWindow.xaml](Assets/MainWindow.xaml)). It also creates several instances of `Blueprint'/Game/Localization/Language.Language'` and an instance of `Blueprint'/Game/Localization/ViewModel.ViewModel'` that it sets as its `DataContext`.
 
-![NoesisBlueprint'/Game/MainWindowView.MainWindowView'](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/MainWindowView.PNG)
+![NoesisBlueprint'/Game/Localization/View.View'](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/View.PNG)
 
-* `Blueprint'/Game/Language.Language'`: This `Object` derived `Blueprint` represents a language for the UI. It exposes two properties, the `Name` of the language and the `Resources`, which are loaded from a `NoesisXaml` using the `LoadXaml` function from the `NoesisFunctionLibrary`.
+* `Blueprint'/Game/Localization/Language.Language'`: This `Object` derived `Blueprint` represents a language for the UI. It exposes two properties, the `Name` of the language and the `Resources`, which are loaded from a `NoesisXaml` using the `LoadXaml` function from the `NoesisFunctionLibrary`.
 
-![Blueprint'/Game/Language.Language'](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/Language.PNG)
+![Blueprint'/Game/Localization/Language.Language'](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/Language.PNG)
 
-* `Blueprint'/Game/ViewModel.ViewModel'`: An `Object` that is used as the `DataContext` for `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`. It exposes the list of supported `Languages` and the currently `SelectedLanguage`, as well as the previously mentioned `SoundLevel` and `MusicLevel`.
+* `Blueprint'/Game/Localization/ViewModel.ViewModel'`: An `Object` that is used as the `DataContext` for `NoesisBlueprint'/Game/Localization/View.View'`. It exposes the list of supported `Languages` and the currently `SelectedLanguage`, as well as the previously mentioned `SoundLevel` and `MusicLevel`.
 
-![Blueprint'/Game/Language.Language'](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/ViewModel.PNG)
+![Blueprint'/Game/Localization/Language.Language'](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/ViewModel.PNG)
 
-* `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`, adds it to the viewport and captures mouse input. It also creates several instances of `Blueprint'/Game/Language.Language'` and an instance of `Blueprint'/Game/ViewModel.ViewModel'` that it sets as the `DataContext` of the `Widget`.
+* `Localization - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/Localization/View.View'`, adds it to the viewport and captures mouse input.
 
-![TestLevel - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/LevelBlueprint.PNG)
+![Localization - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/LevelBlueprint.PNG)
 
 ### Project Settings
 
-* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Resources.Resources'` as the global application `ResourceDictionary`.
+* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Localization/Resources.Resources'` as the global application `ResourceDictionary`.
 
 ![Project Settings](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/ProjectSettings.PNG)

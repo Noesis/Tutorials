@@ -11,7 +11,8 @@ public class UserControlTarget : TargetRules
     public UserControlTarget(TargetInfo Target) : base(Target)
     {
         Type = TargetType.Game;
-
-        ExtraModuleNames.Add("UserControl");
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.Add("UserControlModule");
+        ExtraModuleNames.Add("Sample");
     }
 }

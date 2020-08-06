@@ -14,24 +14,24 @@ This is a demo that shows how you can use `Binding` with user defined types and 
 
 ### Blueprint
 
-* `UserDefinedEnum'/Game/QuestDifficulty.QuestDifficulty'`: It's an `UserDefinedEnum` used by `Blueprint'/Game/Quest.Quest'`. Its symbolic values are used within the XAML and are automatically converted to text.
+* `UserDefinedEnum'/Game/QuestLog/QuestDifficulty.QuestDifficulty'`: It's an `UserDefinedEnum` used by `Blueprint'/Game/QuestLog/Quest.Quest'`. Its symbolic values are used within the XAML and are automatically converted to text.
 
-![UserDefinedEnum'/Game/QuestDifficulty.QuestDifficulty'](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/QuestDificulty.PNG)
+![UserDefinedEnum'/Game/QuestLog/QuestDifficulty.QuestDifficulty'](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/QuestDificulty.PNG)
 
-* `Blueprint'/Game/Quest.Quest'`: `NoesisBlueprint'/Game/MainWindowView.MainWindowView'` contains an `Array` of these that it exposes as a property for `Binding`. It contais variables of types `Texture2D` as well as `UserDefinedEnum'/Game/QuestDifficulty.QuestDifficulty'` that are used for `Binding` in the XAML.
+* `Blueprint'/Game/QuestLog/Quest.Quest'`: `NoesisBlueprint'/Game/QuestLog/View.View'` contains an `Array` of these that it exposes as a property for `Binding`. It contais variables of types `Texture2D` as well as `UserDefinedEnum'/Game/QuestLog/QuestDifficulty.QuestDifficulty'` that are used for `Binding` in the XAML.
 
-![Blueprint'/Game/Quest.Quest'](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/Quest.PNG)
+![Blueprint'/Game/QuestLog/Quest.Quest'](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/Quest.PNG)
 
-* `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`: It's a `NoesisView` for `NoesisXaml'/Game/MainWindow.MainWindow'` ([MainWindow.xaml](Content/MainWindow.xaml)) and also acts as its `DataContext`. Its variables `Quests` and `SelectedQuest` are used for `Binding`.
+* `NoesisBlueprint'/Game/QuestLog/View.View'`: It's a `NoesisView` for `NoesisXaml'/Game/QuestLog/MainWindow.MainWindow'` ([MainWindow.xaml](Assets/MainWindow.xaml)) and also acts as its `DataContext`. Its variables `Quests` and `SelectedQuest` are used for `Binding`. It also creates and initializes several instances of `Blueprint'/Game/QuestLog/Quest.Quest'` that it adds to the `Quests` and `SelectedQuest` variables of the `NoesisBlueprint'/Game/QuestLog/View.View'` instance. Note the use of the plugin functions `ADDUNIQUE w/ NotifyArrayChanged` and `Set w/ NotifyChanged` instead of the standard `ADDUNIQUE` and `SET`. This is fundamental to let the NoesisGUI runtime that data has changed so it can update its internal data to match.
 
-![NoesisBlueprint'/Game/MainWindowView.MainWindowView'](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/MainWindowView.PNG)
+![NoesisBlueprint'/Game/QuestLog/View.View'](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/View.PNG)
 
-* `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`, adds it to the viewport and captures mouse and keyboard input. It also creates and initializes several instances of `Blueprint'/Game/Quest.Quest'` that it adds to the `Quests` and `SelectedQuest` variables of the `NoesisBlueprint'/Game/MainWindowView.MainWindowView'` instance. Note the use of the plugin functions `ADDUNIQUE w/ NotifyArrayChanged` and `Set w/ NotifyChanged` instead of the standard `ADDUNIQUE` and `SET`. This is fundamental to let the NoesisGUI runtime that data has changed so it can update its internal data to match.
+* `QuestLog - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/QuestLog/View.View'`, adds it to the viewport and captures mouse and keyboard input.
 
-![TestLevel - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/LevelBlueprint.PNG)
+![QuestLog - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/LevelBlueprint.PNG)
 
 ### Project Settings
 
-* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Resources.Resources'` as the global application `ResourceDictionary`.
+* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/QuestLog/Resources.Resources'` as the global application `ResourceDictionary`.
 
 ![Project Settings](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/ProjectSettings.PNG)

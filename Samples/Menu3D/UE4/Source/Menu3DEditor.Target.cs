@@ -11,7 +11,8 @@ public class Menu3DEditorTarget : TargetRules
     public Menu3DEditorTarget(TargetInfo Target) : base(Target)
     {
         Type = TargetType.Editor;
-
-        ExtraModuleNames.Add("Menu3D");
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.Add("Menu3DModule");
+        ExtraModuleNames.Add("Sample");
     }
 }

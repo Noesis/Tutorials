@@ -11,7 +11,8 @@ public class LocalizationEditorTarget : TargetRules
     public LocalizationEditorTarget(TargetInfo Target) : base(Target)
     {
         Type = TargetType.Editor;
-
-        ExtraModuleNames.Add("LocalizationSample");
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.Add("LocalizationModule");
+        ExtraModuleNames.Add("Sample");
     }
 }

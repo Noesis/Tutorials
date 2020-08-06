@@ -11,7 +11,8 @@ public class Menu3DTarget : TargetRules
     public Menu3DTarget(TargetInfo Target) : base(Target)
     {
         Type = TargetType.Game;
-
-        ExtraModuleNames.Add("Menu3D");
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.Add("Menu3DModule");
+        ExtraModuleNames.Add("Sample");
     }
 }

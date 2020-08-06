@@ -11,7 +11,8 @@ public class LocalizationTarget : TargetRules
     public LocalizationTarget(TargetInfo Target) : base(Target)
     {
         Type = TargetType.Game;
-
-        ExtraModuleNames.Add("LocalizationSample");
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.Add("LocalizationModule");
+        ExtraModuleNames.Add("Sample");
     }
 }

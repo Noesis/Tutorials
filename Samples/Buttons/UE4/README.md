@@ -14,16 +14,16 @@ This is a simple demo that presents three buttons to the user. The main focus po
 
 ### Blueprint
 
-* `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`: It's a `NoesisView` for `NoesisXaml'/Game/MainWindow.MainWindow'` ([MainWindow.xaml](Content/MainWindow.xaml)) and also acts as its `DataContext`. Implements the `Command`s `StartCommand`, `SettingsCommand` and `ExitCommand` that are used via `Binding`.
+* `NoesisBlueprint'/Game/Buttons/View.View'`: It's a `NoesisView` for `NoesisXaml'/Game/Buttons/MainWindow.MainWindow'` ([MainWindow.xaml](Assets/MainWindow.xaml)) and also acts as its `DataContext`. Implements the `Command`s `StartCommand`, `SettingsCommand` and `ExitCommand` that are used via `Binding`.
 
-![NoesisBlueprint'/Game/MainWindowView.MainWindowView'](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/MainWindowView.PNG)
+![NoesisBlueprint'/Game/Buttons/View.View'](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/View.PNG)
 
-* `TestLevel - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/MainWindowView.MainWindowView'`, adds it to the viewport and captures mouse and keyboard input.
+* `Buttons - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/Buttons/View.View'`, adds it to the viewport and captures mouse and keyboard input.
 
-![TestLevel - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/LevelBlueprint.PNG)
+![Buttons - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/LevelBlueprint.PNG)
 
 ### Project Settings
 
-* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Resources.Resources'` as the global application `ResourceDictionary`.
+* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Buttons/Resources.Resources'` as the global application `ResourceDictionary`.
 
 ![Project Settings](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/ProjectSettings.PNG)

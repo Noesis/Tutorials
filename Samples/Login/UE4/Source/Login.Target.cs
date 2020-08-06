@@ -11,7 +11,8 @@ public class LoginTarget : TargetRules
     public LoginTarget(TargetInfo Target) : base(Target)
     {
         Type = TargetType.Game;
-
-        ExtraModuleNames.Add("Login");
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.Add("LoginModule");
+        ExtraModuleNames.Add("Sample");
     }
 }

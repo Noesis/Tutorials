@@ -3,6 +3,7 @@
 // Copyright (c) 2013 Noesis Technologies S.L. All Rights Reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+#include "NumericUpDown.h"
 
 #include <NsCore/Noesis.h>
 #include <NsCore/ReflectionImplement.h>
@@ -11,11 +12,9 @@
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/FrameworkPropertyMetadata.h>
 
-#include "NumericUpDown.h"
-
 
 using namespace Noesis;
-using namespace UserControl;
+using namespace UserControls;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,7 +50,7 @@ void NumericUpDown::OnValueChanged(const Noesis::RoutedPropertyChangedEventArgs<
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void NumericUpDown::InitializeComponent()
 {
-    GUI::LoadComponent(this, "NumericUpDown.xaml");
+    GUI::LoadComponent(this, "UserControls/NumericUpDown.xaml");
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,7 +104,7 @@ bool NumericUpDown::CoerceValue(const DependencyObject* object, const void* valu
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
-NS_IMPLEMENT_REFLECTION(NumericUpDown, "UserControl.NumericUpDown")
+NS_IMPLEMENT_REFLECTION(NumericUpDown, "UserControls.NumericUpDown")
 {
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
     data->RegisterProperty<int>(ValueProperty, "Value",

@@ -8,7 +8,8 @@ public class InventoryTarget : TargetRules
     public InventoryTarget(TargetInfo Target) : base(Target)
     {
         Type = TargetType.Game;
-
-        ExtraModuleNames.AddRange( new string[] { "Inventory" } );
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.Add("InventoryModule");
+        ExtraModuleNames.Add("Sample");
     }
 }
