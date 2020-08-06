@@ -33,9 +33,3 @@ This is a demo that shows how to present a `NoesisView` in 3D. This sample makes
 * `World'/Game/Widget3D/Widget3D.Widget3D'`: Sets `Blueprint'/Game/Widget3D/Widget3DGameMode.Widget3DGameMode'` as its `GameModeOverride`.
 
 ![World'/Game/Widget3D/Widget3D.Widget3D'](https://noesis.github.io/NoesisGUI/Samples/Widget3D/UE4/Widget3D.PNG)
-
-### Project Settings
-
-* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Widget3D/Resources.Resources'` as the global application `ResourceDictionary`.
-
-![Project Settings](https://noesis.github.io/NoesisGUI/Samples/Widget3D/UE4/ProjectSettings.PNG)

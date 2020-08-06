@@ -33,9 +33,3 @@ This is a demo that shows how to implement a more complex interaction between na
 * `Login - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/Login/View.View'`, adds it to the viewport and captures mouse and keyboard input.
 
 ![Login - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Login/UE4/LevelBlueprint.PNG)
-
-### Project Settings
-
-* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Login/Resources.Resources'` as the global application `ResourceDictionary`.
-
-![Project Settings](https://noesis.github.io/NoesisGUI/Samples/Login/UE4/ProjectSettings.PNG)

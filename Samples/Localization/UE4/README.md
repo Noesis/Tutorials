@@ -37,9 +37,3 @@ This demo shows one way to localize your user interface to multiple languages. T
 * `Localization - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/Localization/View.View'`, adds it to the viewport and captures mouse input.
 
 ![Localization - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/LevelBlueprint.PNG)
-
-### Project Settings
-
-* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Localization/Resources.Resources'` as the global application `ResourceDictionary`.
-
-![Project Settings](https://noesis.github.io/NoesisGUI/Samples/Localization/UE4/ProjectSettings.PNG)

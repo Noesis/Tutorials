@@ -21,9 +21,3 @@ This is a simple demo that presents three buttons to the user. The main focus po
 * `Buttons - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/Buttons/View.View'`, adds it to the viewport and captures mouse and keyboard input.
 
 ![Buttons - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/LevelBlueprint.PNG)
-
-### Project Settings
-
-* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/Buttons/Resources.Resources'` as the global application `ResourceDictionary`.
-
-![Project Settings](https://noesis.github.io/NoesisGUI/Samples/Buttons/UE4/ProjectSettings.PNG)

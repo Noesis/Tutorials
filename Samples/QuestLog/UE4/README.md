@@ -29,9 +29,3 @@ This is a demo that shows how you can use `Binding` with user defined types and 
 * `QuestLog - Level Blueprint`: Creates a `Widget` from `NoesisBlueprint'/Game/QuestLog/View.View'`, adds it to the viewport and captures mouse and keyboard input.
 
 ![QuestLog - Level Blueprint](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/LevelBlueprint.PNG)
-
-### Project Settings
-
-* `NoesisGUI Project Settings`: Sets the `NoesisXaml` `NoesisXaml'/Game/QuestLog/Resources.Resources'` as the global application `ResourceDictionary`.
-
-![Project Settings](https://noesis.github.io/NoesisGUI/Samples/QuestLog/UE4/ProjectSettings.PNG)
