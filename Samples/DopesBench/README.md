@@ -24,7 +24,7 @@ These are the results for the @Build test, where new TextBlocks are continuously
 EXE:
 
 * [DopesBench-native-Noesis.exe](https://github.com/Noesis/Tutorials/releases/download/3.0.0/DopesBench-native-Noesis.exe)
-
+* [DopesBench.html](https://noesisengine.com/webgl/DopesBench.html)
 
 ## Results on Android
 
