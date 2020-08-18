@@ -1,0 +1,94 @@
+﻿<Window x:Class="DopesBench.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DopesBench"
+        mc:Ignorable="d"
+        Background="Black"
+        FontSize="24"
+        Title="Dopes Benchmark">
+
+  <Window.Resources>
+    <Style TargetType="Button">
+      <Setter Property="Foreground" Value="#CCFFFFFF"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Grid>
+              <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" CornerRadius="2">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,2"/>
+              </Border>
+              <Border x:Name="over" Background="#40FFFFFF" CornerRadius="2" Visibility="Collapsed"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Visibility" Value="Visible" TargetName="over"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <Canvas x:Name="absolute" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"/>
+
+    <ItemsControl x:Name="items" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <Canvas/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <TextBlock Text="Dope" RenderTransformOrigin="0.5, 0.5">
+            <TextBlock.Foreground>
+              <SolidColorBrush Color="{Binding Color, Mode=OneWay, FallbackValue=White}" />
+            </TextBlock.Foreground>
+            <TextBlock.RenderTransform>
+              <TransformGroup>
+                <RotateTransform Angle="{Binding Rotation, Mode=OneWay}"/>
+                <TranslateTransform X="{Binding Left, Mode=OneWay}" Y="{Binding Top, Mode=OneWay}"/>
+              </TransformGroup>
+            </TextBlock.RenderTransform>
+          </TextBlock>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+
+    <TextBlock x:Name="dopes" Grid.Row="0" Grid.Column="0" Margin="0,20,0,0" Padding="17,7" Background="Red" Foreground="White"
+           VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Text="Warming up.." Visibility="Collapsed"/>
+
+    <StackPanel x:Name="buttons" Orientation="Horizontal" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom"
+                     HorizontalAlignment="Center" Margin="5,0,0,25" >
+
+      <Button x:Name="stop"
+            Content="@ Stop" Background="Red"
+            Visibility="Collapsed" Click="Stop_Clicked"/>
+      <Button x:Name="startST"
+            Content="@ Build" Background="Blue"
+            Click="startST_Clicked" Margin="2,0"/>
+      <Button x:Name="startReuseST"
+            Content="@ Reuse" Background="Blue"
+            Click="startReuseST_Clicked" Margin="2,0"/>
+      <Button x:Name="startBindingST"
+            Content="@ Binding" Background="Blue"
+            Click="startBindingST_Clicked" Margin="2,0"/>
+      <Button x:Name="startChangeST"
+            Content="@ Change" Background="Blue"
+            Click="startChangeST_Clicked" Margin="2,0"/>
+
+    </StackPanel>
+
+  </Grid>
+</Window>
