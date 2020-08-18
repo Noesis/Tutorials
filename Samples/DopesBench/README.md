@@ -4,6 +4,10 @@
 
 NoesisGUI version of Dopes test benchmark shown on this [reddit post](https://www.reddit.com/r/FlutterDev/comments/gztwcu/flutter_performance_considerations_vs_react_and/?utm_source=share&utm_medium=web2x).
 
+Used the following repositories as reference:
+ * https://github.com/unoplatform/uno.dopesbench
+ * https://github.com/maxim-saplin/dopetest_flutter
+
 These are the results for the @Build test, where new TextBlocks are continuously created every frame.
 
 ## Results on Desktop
