@@ -32,7 +32,7 @@ These are the results for the @Build test, where new TextBlocks are continuously
 | ---------- | -------------: |
 | NoesisGUI | 17726 |
 | Flutter | 5365 |
-| NoesisGUI | 1670 |
+| NoesisGUI/web | 1670 |
 | Uno/UWP | 352 |
 
 * [DopesBench-android-Noesis.apk](https://github.com/Noesis/Tutorials/releases/download/3.0.0/DopesBench-android-Noesis.apk)
