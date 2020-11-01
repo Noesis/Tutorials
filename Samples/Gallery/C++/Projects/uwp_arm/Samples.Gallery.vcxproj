@@ -15,7 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A888548A-1F63-3B0A-9FC6-C3F8A39AA957}</ProjectGuid>
+    <ProjectGuid>{F716D6CE-6E79-3393-B7DE-13C7C6167A23}</ProjectGuid>
     <DefaultLanguage>en-US</DefaultLanguage>
     <ProjectName>Gallery</ProjectName>
     <AppContainerApplication>true</AppContainerApplication>
@@ -76,7 +76,7 @@
     <ClCompile>
       <ExceptionHandling>Sync</ExceptionHandling>
       <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Interactivity\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=3.0.4;NS_APP_FRAMEWORK;NS_LICENSE;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=3.0.7;NS_APP_FRAMEWORK;NS_LICENSE;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>vccorlibd.lib;msvcrtd.lib;Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -88,7 +88,7 @@
     <ClCompile>
       <ExceptionHandling>Sync</ExceptionHandling>
       <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Interactivity\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=3.0.4;NS_APP_FRAMEWORK;NS_LICENSE;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=3.0.7;NS_APP_FRAMEWORK;NS_LICENSE;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>vccorlib.lib;msvcrt.lib;Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -100,7 +100,7 @@
     <ClCompile>
       <ExceptionHandling>Sync</ExceptionHandling>
       <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Interactivity\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=3.0.4;NS_APP_FRAMEWORK;NS_LICENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=3.0.7;NS_APP_FRAMEWORK;NS_LICENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>vccorlib.lib;msvcrt.lib;Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>

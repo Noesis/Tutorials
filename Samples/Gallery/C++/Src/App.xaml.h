@@ -22,14 +22,6 @@ namespace Gallery
 class App final: public NoesisApp::Application
 {
 public:
-    App();
-
-    /// From Application
-    //@{
-    bool GetPPAAOverride() const override;
-    bool GetsRGBOverride() const override;
-    //@}
-
     NS_DECLARE_REFLECTION(App, Application)
 };
 

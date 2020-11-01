@@ -15,7 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7ACBF026-5F1D-3FEB-B1AC-1727CCAF41FF}</ProjectGuid>
+    <ProjectGuid>{F567FDDB-C2D3-3C69-903A-5A89CA81FCA3}</ProjectGuid>
     <DefaultLanguage>en-US</DefaultLanguage>
     <ProjectName>CustomControl</ProjectName>
   </PropertyGroup>
@@ -69,7 +69,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=3.0.4;NS_APP_FRAMEWORK;NS_LICENSE;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Debug;NS_VERSION=3.0.7;NS_APP_FRAMEWORK;NS_LICENSE;NS_DEBUG;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -80,7 +80,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=3.0.4;NS_APP_FRAMEWORK;NS_LICENSE;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Profile;NS_VERSION=3.0.7;NS_APP_FRAMEWORK;NS_LICENSE;NS_PROFILE;NS_MINIMUM_LOG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -91,7 +91,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\..\..\..\..\Include;..\..\..\..\App\ApplicationLauncher\Include;..\..\..\..\App\DisplayLauncher\Include;..\..\..\..\App\Display\Include;..\..\..\..\App\Launcher\Include;..\..\..\..\App\Providers\Include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=3.0.4;NS_APP_FRAMEWORK;NS_LICENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_BUILD;NS_CONFIG=Release;NS_VERSION=3.0.7;NS_APP_FRAMEWORK;NS_LICENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Noesis.lib;NoesisApp.lib;%(AdditionalDependencies)</AdditionalDependencies>

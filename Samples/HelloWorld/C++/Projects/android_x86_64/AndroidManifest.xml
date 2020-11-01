@@ -1,15 +1,15 @@
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.noesis.Samples.HelloWorld"
-  android:versionCode="9503"
-  android:versionName="3.0.4">
+  android:versionCode="9724"
+  android:versionName="3.0.7">
 
-  <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="28" />
+  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
   <uses-permission android:name="android.permission.INTERNET" />
 
   <application
     android:icon="@mipmap/ic_launcher"
-    android:debuggable="false"
+    android:roundIcon="@mipmap/ic_launcher_round"
     android:label="HelloWorld">
 
     <activity

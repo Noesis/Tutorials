@@ -4,9 +4,9 @@
 # For parallel execution in Windows, Make 4.0 or better is required
 
 include ../../../../../Config/Common.makeprops
+include ../../../../../Config/Debug/Debug.makeprops
 include ../../../../../Config/Profile/Profile.makeprops
 include ../../../../../Config/Release/Release.makeprops
-include ../../../../../Config/Debug/Debug.makeprops
 
 CC = arm-linux-gnueabihf-gcc
 CXX = arm-linux-gnueabihf-g++
@@ -64,7 +64,19 @@ ifndef CONFIG
   CONFIG = Release
 endif
 
-ifeq ($(CONFIG), Profile)
+ifeq ($(CONFIG), Debug)
+  TARGET_DIR = ../../../../../../Bin/linux_arm
+  TARGET = ../../../../../../Bin/linux_arm/Samples.CustomControl
+  INTERMEDIATE = build/Debug
+  LIB_DIRS = 
+  LIBS = -lNoesisApp -lNoesis
+  LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  CFLAGS = $(CFLAGS_DEBUG)
+  CXXFLAGS = $(CXXFLAGS_DEBUG)
+  LDFLAGS = $(LDFLAGS_DEBUG)
+else ifeq ($(CONFIG), Profile)
   TARGET_DIR = ../../../../../../Bin/linux_arm
   TARGET = ../../../../../../Bin/linux_arm/Samples.CustomControl
   INTERMEDIATE = build/Profile
@@ -72,7 +84,7 @@ ifeq ($(CONFIG), Profile)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_PROFILE)
   CXXFLAGS = $(CXXFLAGS_PROFILE)
   LDFLAGS = $(LDFLAGS_PROFILE)
@@ -84,22 +96,10 @@ else ifeq ($(CONFIG), Release)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE
   CFLAGS = $(CFLAGS_RELEASE)
   CXXFLAGS = $(CXXFLAGS_RELEASE)
   LDFLAGS = $(LDFLAGS_RELEASE)
-else ifeq ($(CONFIG), Debug)
-  TARGET_DIR = ../../../../../../Bin/linux_arm
-  TARGET = ../../../../../../Bin/linux_arm/Samples.CustomControl
-  INTERMEDIATE = build/Debug
-  LIB_DIRS = 
-  LIBS = -lNoesisApp -lNoesis
-  LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
-  CFLAGS = $(CFLAGS_DEBUG)
-  CXXFLAGS = $(CXXFLAGS_DEBUG)
-  LDFLAGS = $(LDFLAGS_DEBUG)
 else
   $(error Invalid configuration '$(CONFIG)')
 endif
@@ -149,7 +149,7 @@ $(INTERMEDIATE)/Aero\ Matics\ Regular.ttf.bin.h: ../../../../Samples/CustomContr
 	@echo [BIN] [Samples/CustomControl] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/CustomControl/Data/Aero Matics Regular.ttf" > "$(INTERMEDIATE)/Aero Matics Regular.ttf.bin.h" 
 
-$(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/DateTime.o | $(TARGET_DIR)
+$(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/DateTime.o $(INTERMEDIATE)/Main.o | $(TARGET_DIR)
 	@echo [LD] $(notdir $@)
 	+$(Q)$(CXX) $(LDFLAGS) -pie -Wl,-rpath,\$$ORIGIN -Wl,-rpath,../../../../../../Bin/linux_arm -L../../../../../../Bin/linux_arm $(LIB_DIRS) -o $(TARGET) @$(CONFIG).rsp $(LIBS)
 	@echo [STRIP] $(notdir $@)
@@ -157,7 +157,7 @@ $(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/DateTime.o | $(TA
 	$(Q)arm-linux-gnueabihf-strip --strip-unneeded $(TARGET)
 	$(Q)arm-linux-gnueabihf-objcopy --add-gnu-debuglink=$(TARGET).debug $(TARGET)
 
--include $(INTERMEDIATE)/Main.d $(INTERMEDIATE)/DateTime.d
+-include $(INTERMEDIATE)/DateTime.d $(INTERMEDIATE)/Main.d
 
 clean:
 	@echo ==== [Samples.CustomControl] Cleaning '$(CONFIG)' configuration ====

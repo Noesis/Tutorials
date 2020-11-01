@@ -18,6 +18,7 @@
 #include <NsGui/BitmapImage.h>
 #include <NsGui/ObservableCollection.h>
 #include <NsGui/BaseValueConverter.h>
+#include <NsGui/IntegrationAPI.h>
 #include <NsCore/TypeOf.h>
 
 #include "App.xaml.bin.h"
@@ -43,18 +44,6 @@ using namespace NoesisApp;
 namespace DataBinding
 {
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-class App final: public Application
-{
-    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "DataBinding.App")
-};
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-class MainWindow final: public Window
-{
-    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "DataBinding.MainWindow")
-};
-
 NS_WARNING_PUSH
 NS_CLANG_WARNING_DISABLE("-Wunused-private-field")
 
@@ -62,9 +51,9 @@ NS_CLANG_WARNING_DISABLE("-Wunused-private-field")
 class SolarSystemObject: public BaseComponent
 {
 public:
-    SolarSystemObject(const char* name, float orbit, float diameter, const char* image,
+    SolarSystemObject(const char* name, float orbit, float diameter, ImageSource* image,
         const char* details): _name(name), _orbit(orbit), _diameter(diameter), _details(details),
-        _image(*new BitmapImage(image))
+        _image(image)
     {
     }
 
@@ -96,55 +85,125 @@ public:
     {
         _solarSystemObjects = *new ObservableCollection<SolarSystemObject>;
 
-        Noesis::Ptr<SolarSystemObject> sun = *new SolarSystemObject("Sun", 0, 1380000,
-            "Images/sun.jpg",
-            "The yellow dwarf star in the center of our solar system.");
-        _solarSystemObjects->Add(sun);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Sun",
+                0.0f,
+                1380000.0f,
+                MakePtr<BitmapImage>("Images/sun.jpg"),
+                "The yellow dwarf star in the center of our solar system."
+            )
+        );
 
-        Noesis::Ptr<SolarSystemObject> mercury = *new SolarSystemObject("Mercury", 0.38f, 4880,
-            "Images/merglobe.jpg",
-            "The small and rocky planet Mercury is the closest planet to the Sun.");
-        _solarSystemObjects->Add(mercury);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Mercury",
+                0.38f,
+                4880.0f,
+                MakePtr<BitmapImage>("Images/merglobe.jpg"),
+                "The small and rocky planet Mercury is the closest planet to the Sun."
+            )
+        );
 
-        Noesis::Ptr<SolarSystemObject> venus = *new SolarSystemObject("Venus", 0.72f, 12103.6f,
-            "Images/venglobe.jpg",
-            "At first glance, if Earth had a twin, it would be Venus.");
-        _solarSystemObjects->Add(venus);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Venus",
+                0.72f,
+                12103.6f,
+                MakePtr<BitmapImage>("Images/venglobe.jpg"),
+                "At first glance, if Earth had a twin, it would be Venus."
+            )
+        );
 
-        Noesis::Ptr<SolarSystemObject> earth = *new SolarSystemObject("Earth", 1, 12756.3f,
-            "Images/earglobe.jpg",
-            "Earth, our home planet, is the only planet in our solar system known to harbor life.");
-        _solarSystemObjects->Add(earth);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Earth",
+                1.0f,
+                12756.3f,
+                MakePtr<BitmapImage>("Images/earglobe.jpg"),
+                "Earth, our home planet, is the only planet in our solar system known to harbor life."
+            )
+        );
 
-        Noesis::Ptr<SolarSystemObject> mars = *new SolarSystemObject("Mars", 1.52f, 6794,
-            "Images/marglobe.jpg",
-            "The red planet Mars has inspired wild flights of imagination over the centuries.");
-        _solarSystemObjects->Add(mars);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Mars",
+                1.52f,
+                6794.0f,
+                MakePtr<BitmapImage>("Images/marglobe.jpg"),
+                "The red planet Mars has inspired wild flights of imagination over the centuries."
+            )
+        );
 
-        Noesis::Ptr<SolarSystemObject> jupiter = *new SolarSystemObject("Jupiter", 5.20f, 142984,
-            "Images/jupglobe.jpg",
-            "With its numerous moons and several rings, the Jupiter system is a \"mini-solar system.\"");
-        _solarSystemObjects->Add(jupiter);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Jupiter",
+                5.20f,
+                142984.0f,
+                MakePtr<BitmapImage>("Images/jupglobe.jpg"),
+                "With its numerous moons and several rings, the Jupiter system is a \"mini-solar system\"."
+            )
+        );
 
-        Noesis::Ptr<SolarSystemObject> saturn = *new SolarSystemObject("Saturn", 9.54f, 120536,
-            "Images/moons_2.jpg",
-            "Saturn is the most distant of the five planets known to ancient stargazers.");
-        _solarSystemObjects->Add(saturn);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Saturn",
+                9.54f,
+                120536.0f,
+                MakePtr<BitmapImage>("Images/moons_2.jpg"),
+                "Saturn is the most distant of the five planets known to ancient stargazers."
+            )
+        );
 
-        Noesis::Ptr<SolarSystemObject> uranus = *new SolarSystemObject("Uranus", 19.218f, 51118,
-            "Images/uraglobe.jpg",
-            "Uranus gets its blue-green color from methane gas above the deeper cloud layers.");
-        _solarSystemObjects->Add(uranus);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Uranus",
+                19.218f,
+                51118.0f,
+                MakePtr<BitmapImage>("Images/uraglobe.jpg"),
+                "Uranus gets its blue-green color from methane gas above the deeper cloud layers."
+            )
+        );
 
-        Noesis::Ptr<SolarSystemObject> neptune = *new SolarSystemObject("Neptune", 30.06f, 49532,
-            "Images/nepglobe.jpg",
-            "Neptune was the first planet located through mathematical predictions.");
-        _solarSystemObjects->Add(neptune);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Neptune",
+                30.06f,
+                49532.0f,
+                MakePtr<BitmapImage>("Images/nepglobe.jpg"),
+                "Neptune was the first planet located through mathematical predictions."
+            )
+        );
 
-        Noesis::Ptr<SolarSystemObject> pluto = *new SolarSystemObject("Pluto", 39.5f, 2274,
-            "Images/plutoch_2.jpg",
-            "Long considered to be the smallest, coldest, and most distant planet from the Sun.");
-        _solarSystemObjects->Add(pluto);
+        _solarSystemObjects->Add
+        (
+            MakePtr<SolarSystemObject>
+            (
+                "Pluto",
+                39.5f,
+                2274.0f,
+                MakePtr<BitmapImage>("Images/plutoch_2.jpg"),
+                "Long considered to be the smallest, coldest, and most distant planet from the Sun."
+            )
+        );
     }
 
 private:
@@ -176,6 +235,36 @@ public:
 
 private:
     NS_IMPLEMENT_INLINE_REFLECTION_(OrbitConverter, BaseValueConverter, "DataBinding.OrbitConverter")
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class App final: public Application
+{
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "DataBinding.App")
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class MainWindow final: public Window
+{
+public:
+    MainWindow()
+    {
+        Initialized() += MakeDelegate(this, &MainWindow::OnInitialized);
+        InitializeComponent();
+    }
+
+private:
+    void InitializeComponent()
+    {
+        Noesis::GUI::LoadComponent(this, "MainWindow.xaml");
+    }
+
+    void OnInitialized(BaseComponent*, const EventArgs&)
+    {
+        SetDataContext(Noesis::MakePtr<SolarSystem>());
+    }
+
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "DataBinding.MainWindow")
 };
 
 }

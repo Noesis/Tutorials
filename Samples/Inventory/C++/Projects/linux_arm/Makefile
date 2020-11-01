@@ -4,9 +4,9 @@
 # For parallel execution in Windows, Make 4.0 or better is required
 
 include ../../../../../Config/Common.makeprops
+include ../../../../../Config/Debug/Debug.makeprops
 include ../../../../../Config/Profile/Profile.makeprops
 include ../../../../../Config/Release/Release.makeprops
-include ../../../../../Config/Debug/Debug.makeprops
 
 CC = arm-linux-gnueabihf-gcc
 CXX = arm-linux-gnueabihf-g++
@@ -64,7 +64,19 @@ ifndef CONFIG
   CONFIG = Release
 endif
 
-ifeq ($(CONFIG), Profile)
+ifeq ($(CONFIG), Debug)
+  TARGET_DIR = ../../../../../../Bin/linux_arm
+  TARGET = ../../../../../../Bin/linux_arm/Samples.Inventory
+  INTERMEDIATE = build/Debug
+  LIB_DIRS = 
+  LIBS = -lNoesisApp -lNoesis
+  LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  CFLAGS = $(CFLAGS_DEBUG)
+  CXXFLAGS = $(CXXFLAGS_DEBUG)
+  LDFLAGS = $(LDFLAGS_DEBUG)
+else ifeq ($(CONFIG), Profile)
   TARGET_DIR = ../../../../../../Bin/linux_arm
   TARGET = ../../../../../../Bin/linux_arm/Samples.Inventory
   INTERMEDIATE = build/Profile
@@ -72,7 +84,7 @@ ifeq ($(CONFIG), Profile)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_PROFILE)
   CXXFLAGS = $(CXXFLAGS_PROFILE)
   LDFLAGS = $(LDFLAGS_PROFILE)
@@ -84,22 +96,10 @@ else ifeq ($(CONFIG), Release)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE
   CFLAGS = $(CFLAGS_RELEASE)
   CXXFLAGS = $(CXXFLAGS_RELEASE)
   LDFLAGS = $(LDFLAGS_RELEASE)
-else ifeq ($(CONFIG), Debug)
-  TARGET_DIR = ../../../../../../Bin/linux_arm
-  TARGET = ../../../../../../Bin/linux_arm/Samples.Inventory
-  INTERMEDIATE = build/Debug
-  LIB_DIRS = 
-  LIBS = -lNoesisApp -lNoesis
-  LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
-  CFLAGS = $(CFLAGS_DEBUG)
-  CXXFLAGS = $(CXXFLAGS_DEBUG)
-  LDFLAGS = $(LDFLAGS_DEBUG)
 else
   $(error Invalid configuration '$(CONFIG)')
 endif
@@ -173,7 +173,7 @@ $(INTERMEDIATE)/Sequel_Demo.ttf.bin.h: ../../../../Samples/Inventory/Data/Fonts/
 	@echo [BIN] [Samples/Inventory] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/Inventory/Data/Fonts/Sequel_Demo.ttf" > "$(INTERMEDIATE)/Sequel_Demo.ttf.bin.h" 
 
-$(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/ViewModel.o $(INTERMEDIATE)/DragItemBehavior.o $(INTERMEDIATE)/MainWindow.xaml.o $(INTERMEDIATE)/DragAdornerBehavior.o $(INTERMEDIATE)/AnimatedNumber.xaml.o $(INTERMEDIATE)/DropItemBehavior.o $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/App.xaml.o | $(TARGET_DIR)
+$(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/AnimatedNumber.xaml.o $(INTERMEDIATE)/App.xaml.o $(INTERMEDIATE)/DragAdornerBehavior.o $(INTERMEDIATE)/DragItemBehavior.o $(INTERMEDIATE)/DropItemBehavior.o $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/MainWindow.xaml.o $(INTERMEDIATE)/ViewModel.o | $(TARGET_DIR)
 	@echo [LD] $(notdir $@)
 	+$(Q)$(CXX) $(LDFLAGS) -pie -Wl,-rpath,\$$ORIGIN -Wl,-rpath,../../../../../../Bin/linux_arm -L../../../../../../Bin/linux_arm $(LIB_DIRS) -o $(TARGET) @$(CONFIG).rsp $(LIBS)
 	@echo [STRIP] $(notdir $@)
@@ -181,7 +181,7 @@ $(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/ViewModel.o $(INTERMEDIATE)/DragItemBeha
 	$(Q)arm-linux-gnueabihf-strip --strip-unneeded $(TARGET)
 	$(Q)arm-linux-gnueabihf-objcopy --add-gnu-debuglink=$(TARGET).debug $(TARGET)
 
--include $(INTERMEDIATE)/ViewModel.d $(INTERMEDIATE)/DragItemBehavior.d $(INTERMEDIATE)/MainWindow.xaml.d $(INTERMEDIATE)/DragAdornerBehavior.d $(INTERMEDIATE)/AnimatedNumber.xaml.d $(INTERMEDIATE)/DropItemBehavior.d $(INTERMEDIATE)/Main.d $(INTERMEDIATE)/App.xaml.d
+-include $(INTERMEDIATE)/AnimatedNumber.xaml.d $(INTERMEDIATE)/App.xaml.d $(INTERMEDIATE)/DragAdornerBehavior.d $(INTERMEDIATE)/DragItemBehavior.d $(INTERMEDIATE)/DropItemBehavior.d $(INTERMEDIATE)/Main.d $(INTERMEDIATE)/MainWindow.xaml.d $(INTERMEDIATE)/ViewModel.d
 
 clean:
 	@echo ==== [Samples.Inventory] Cleaning '$(CONFIG)' configuration ====

@@ -4,7 +4,7 @@
 # For parallel execution in Windows, Make 4.0 or better is required
 
 # Environment variable 'ANDROID_NDK' must point to NDK (eg: C:\Android\SDK\ndk-bundle)
-# Environment variable 'ANDROID_PLATFORM' must point to active platform (eg: C:\Android\SDK\platforms\android-17)
+# Environment variable 'ANDROID_PLATFORM' must point to active platform (eg: C:\Android\SDK\platforms\android-30)
 # Toolchain (clang++), Java (javac) and Android Build Tools (dx, aapt, zipalign, apksigner) binaries must be added to 'PATH' environment variable
 
 include ../../../../../Config/Common.android.makeprops
@@ -77,10 +77,11 @@ ifeq ($(CONFIG), Debug)
   LIBS = -lNoesisApp -landroid -llog -lNoesis
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.4 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
   CFLAGS = $(CFLAGS_DEBUG)
   CXXFLAGS = $(CXXFLAGS_DEBUG)
   LDFLAGS = $(LDFLAGS_DEBUG)
+  AAPT_FLAGS = --debug-mode
 else ifeq ($(CONFIG), Profile)
   TARGET_DIR = ../../../../../../Bin/android_arm64
   TARGET = ../../../../../../Bin/android_arm64/libSamples_HelloWorld.so
@@ -90,10 +91,11 @@ else ifeq ($(CONFIG), Profile)
   LIBS = -lNoesisApp -landroid -llog -lNoesis
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Profile -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.4 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_PROFILE)
   CXXFLAGS = $(CXXFLAGS_PROFILE)
   LDFLAGS = $(LDFLAGS_PROFILE)
+  AAPT_FLAGS = --debug-mode
 else ifeq ($(CONFIG), Release)
   TARGET_DIR = ../../../../../../Bin/android_arm64
   TARGET = ../../../../../../Bin/android_arm64/libSamples_HelloWorld.so
@@ -103,10 +105,11 @@ else ifeq ($(CONFIG), Release)
   LIBS = -lNoesisApp -landroid -llog -lNoesis
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Release -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.4 -DNS_APP_FRAMEWORK -DNS_LICENSE
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE
   CFLAGS = $(CFLAGS_RELEASE)
   CXXFLAGS = $(CXXFLAGS_RELEASE)
   LDFLAGS = $(LDFLAGS_RELEASE)
+  AAPT_FLAGS = 
 else
   $(error Invalid configuration '$(CONFIG)')
 endif
@@ -192,7 +195,7 @@ $(INTERMEDIATE)/Samples.HelloWorld-unsigned.apk: $(TARGET) $(LIBS_DEPS) $(INTERM
 	$(Q)$(call CP,$(TARGET),$(INTERMEDIATE)/apk/lib/arm64-v8a)
 	$(Q)$(call CP,../../../../../../Bin/android_arm64/libNoesis.so,$(INTERMEDIATE)/apk/lib/arm64-v8a)
 	$(Q)$(call CP,../../../../../../Bin/android_arm64/libNoesisApp.so,$(INTERMEDIATE)/apk/lib/arm64-v8a)
-	$(Q)aapt package -f -S res -M AndroidManifest.xml -I $(ANDROID_PLATFORM)/android.jar -F $(INTERMEDIATE)/Samples.HelloWorld-unsigned.apk $(INTERMEDIATE)/apk
+	$(Q)aapt package -f -S res -M AndroidManifest.xml $(AAPT_FLAGS) -I $(ANDROID_PLATFORM)/android.jar -F $(INTERMEDIATE)/Samples.HelloWorld-unsigned.apk $(INTERMEDIATE)/apk
 
 $(INTERMEDIATE)/Samples.HelloWorld-unsigned-aligned.apk: $(INTERMEDIATE)/Samples.HelloWorld-unsigned.apk
 	@echo [ALIGN] $(notdir $@)

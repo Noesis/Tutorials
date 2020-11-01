@@ -6,151 +6,148 @@
     objects = {
 
 /* Begin PBXBuildFile section */
-        9F2F712496304082B4121D8F /* Aero Matics Regular.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 54F548004A5B45B9A9095517 /* Aero Matics Regular.ttf */; };
-        64828E79FADE457895758C19 /* App.xaml in Sources */ = {isa = PBXBuildFile; fileRef = 00DCDDAB6A764B55AFD38249 /* App.xaml */; };
-        E32242959A9D4508AD7E2364 /* MainWindow.xaml in Sources */ = {isa = PBXBuildFile; fileRef = 8EF34207CD1C496093B2849A /* MainWindow.xaml */; };
-        D4816B6AAB2B4610A4FA56C7 /* DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2365FA337B044952B4EB0449 /* DateTime.cpp */; };
-        77761724065D48838DC1FBD3 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B16EEE1B5D9B4D4A99F90D14 /* Main.cpp */; };
-        975EC1AB222A49D4BC88706C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD89531BA4F942ADAC262E46 /* LaunchScreen.storyboard */; };
-        8BC4A7BCD1E940099366DD82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B531ACFF939D461695FDAD52 /* Assets.xcassets */; };
-        3AA610761EDE43BA910BA097 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0603A6C9EC4AE3A68DA4AD /* CoreGraphics.framework */; };
-        A9E5ADBB3EE74ABFBD3E475B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1035CAEEA259456C99149E53 /* UIKit.framework */; };
-        DCE543AB7DCD42C980C2890C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663E2A64C7B845578A22BED9 /* OpenGLES.framework */; };
-        D87D96BE906D42BAB0533050 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E84BD8B276495184542116 /* AudioToolbox.framework */; };
-        591B32003BE74AAC98D14731 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA93A33C8699474CA5EEAED0 /* CoreFoundation.framework */; };
-        EB359B4426E6484D9682E9C6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A319311060542F5B18B1A5C /* CoreText.framework */; };
-        ED7B611AC8C342C882CBABA6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17B270B757D4188B002A1E3 /* QuartzCore.framework */; };
-        A856CA8736524D3DA270BC88 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B83AD0274E48F3BE18CB39 /* AVFoundation.framework */; };
-        C942A29CDDBB4D4A90A81198 /* libNoesis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A27D7A818D8443B6A4ABBB7B /* libNoesis.a */; };
-        4F94F385AF6D4B4EA0662F15 /* libNoesisApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 785C20F2E6C94942B68C5775 /* libNoesisApp.a */; };
+        BCC6FC56F4664006AAA0F69B /* Aero Matics Regular.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 6531C37EBF274CD480654C5D /* Aero Matics Regular.ttf */; };
+        6FC466D636674F789E5B6BA9 /* App.xaml in Sources */ = {isa = PBXBuildFile; fileRef = 3D77CACC94AB47E0AF114448 /* App.xaml */; };
+        2A2C55AA28354EE3AEDC9EE6 /* MainWindow.xaml in Sources */ = {isa = PBXBuildFile; fileRef = 89B3E68B5D0B4327A12E67AA /* MainWindow.xaml */; };
+        32F6BBE42F274860BB8323B4 /* DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F66F93F6478045A5B1B021DE /* DateTime.cpp */; };
+        B87C038A5ED94112ABECE9D9 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D38DD378769454DBED0B5B6 /* Main.cpp */; };
+        66D1755AED94446CA1CEF09E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17AE70E57F264E17B2DD323B /* LaunchScreen.storyboard */; };
+        29AFC9E1EBA7449F8E3644D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D8158E71294F57AB3BA488 /* Assets.xcassets */; };
+        65046542E849462086919120 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EB3B3C366834B33B4BCFAA0 /* CoreGraphics.framework */; };
+        095F9244298548A784621A90 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51486B811EE6475881F4608C /* UIKit.framework */; };
+        B44FD53B3D164E8B89D45CAD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41CD8A80209A442DB6A423BF /* AudioToolbox.framework */; };
+        0CAB6A8AE059405FA1C2506B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2A943E1F7047F0B71890B3 /* CoreFoundation.framework */; };
+        9DCC4E173417460DB1E22261 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE5FDEDF5C5423484EC9F9C /* CoreText.framework */; };
+        C469B92E15A042739FA766E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7123D6F6D2D748669492608A /* QuartzCore.framework */; };
+        7F52B80E1EC74D009ECA513B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3575B6C38C0E416DB350978B /* AVFoundation.framework */; };
+        BA7E1A85ECEE48E8AD271577 /* libNoesis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36567D6F9E0144C5827748AA /* libNoesis.a */; };
+        A0CC5E987B1547C1B7F0C251 /* libNoesisApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30575D90B7A44578A3E2863C /* libNoesisApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-        A39567D0CFA24C1F851D41AF /* Samples.CustomControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.CustomControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
-        EA0603A6C9EC4AE3A68DA4AD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreGraphics.framework"; path = "System/Library/Frameworks/CoreGraphics.framework"; sourceTree = SDKROOT; };
-        1035CAEEA259456C99149E53 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; };
-        663E2A64C7B845578A22BED9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGLES.framework"; path = "System/Library/Frameworks/OpenGLES.framework"; sourceTree = SDKROOT; };
-        B3E84BD8B276495184542116 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; };
-        EA93A33C8699474CA5EEAED0 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreFoundation.framework"; path = "System/Library/Frameworks/CoreFoundation.framework"; sourceTree = SDKROOT; };
-        1A319311060542F5B18B1A5C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreText.framework"; path = "System/Library/Frameworks/CoreText.framework"; sourceTree = SDKROOT; };
-        C17B270B757D4188B002A1E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; };
-        35B83AD0274E48F3BE18CB39 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; };
-        A27D7A818D8443B6A4ABBB7B /* libNoesis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libNoesis.a"; path = "../../../../../../Lib/ios/libNoesis.a"; sourceTree = SOURCE_ROOT; };
-        785C20F2E6C94942B68C5775 /* libNoesisApp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libNoesisApp.a"; path = "../../../../../../Lib/ios/libNoesisApp.a"; sourceTree = SOURCE_ROOT; };
-        48F995C745164E788B8FA502 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Common.xcconfig"; path = "../../../../../Config/Common.xcconfig"; sourceTree = SOURCE_ROOT; };
-        8707F52FD1B544CD8F2E528A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release.xcconfig"; path = "../../../../../Config/Release/Release.xcconfig"; sourceTree = SOURCE_ROOT; };
-        1B9EE9BBBB2846DB938F9D04 /* Profile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile.xcconfig"; path = "../../../../../Config/Profile/Profile.xcconfig"; sourceTree = SOURCE_ROOT; };
-        D8B3316C808948E7886790EA /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug.xcconfig"; path = "../../../../../Config/Debug/Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
-        2365FA337B044952B4EB0449 /* DateTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "DateTime.cpp"; path = "../../Src/DateTime.cpp"; sourceTree = SOURCE_ROOT; };
-        9E054FDA4BB84F7586D8D962 /* DateTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DateTime.h"; path = "../../Src/DateTime.h"; sourceTree = SOURCE_ROOT; };
-        B16EEE1B5D9B4D4A99F90D14 /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "../../Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
-        54F548004A5B45B9A9095517 /* Aero Matics Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Aero Matics Regular.ttf"; path = "../../Data/Aero Matics Regular.ttf"; sourceTree = SOURCE_ROOT; };
-        00DCDDAB6A764B55AFD38249 /* App.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "App.xaml"; path = "../../Data/App.xaml"; sourceTree = SOURCE_ROOT; };
-        8EF34207CD1C496093B2849A /* MainWindow.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MainWindow.xaml"; path = "../../Data/MainWindow.xaml"; sourceTree = SOURCE_ROOT; };
-        93DBD0FCCCE44525B8B2FF02 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "info.plist"; path = "info.plist"; sourceTree = SOURCE_ROOT; };
-        AD89531BA4F942ADAC262E46 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "LaunchScreen.storyboard"; path = "LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
-        B531ACFF939D461695FDAD52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+        C2ACBB937D60474CAF7BA044 /* Samples.CustomControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.CustomControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        0EB3B3C366834B33B4BCFAA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreGraphics.framework"; path = "System/Library/Frameworks/CoreGraphics.framework"; sourceTree = SDKROOT; };
+        51486B811EE6475881F4608C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; };
+        41CD8A80209A442DB6A423BF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; };
+        DD2A943E1F7047F0B71890B3 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreFoundation.framework"; path = "System/Library/Frameworks/CoreFoundation.framework"; sourceTree = SDKROOT; };
+        BCE5FDEDF5C5423484EC9F9C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreText.framework"; path = "System/Library/Frameworks/CoreText.framework"; sourceTree = SDKROOT; };
+        7123D6F6D2D748669492608A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; };
+        3575B6C38C0E416DB350978B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; };
+        36567D6F9E0144C5827748AA /* libNoesis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libNoesis.a"; path = "../../../../../../Lib/ios/libNoesis.a"; sourceTree = SOURCE_ROOT; };
+        30575D90B7A44578A3E2863C /* libNoesisApp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libNoesisApp.a"; path = "../../../../../../Lib/ios/libNoesisApp.a"; sourceTree = SOURCE_ROOT; };
+        C902175F2D734C13A6ACF4C1 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Common.xcconfig"; path = "../../../../../Config/Common.xcconfig"; sourceTree = SOURCE_ROOT; };
+        D547226CA2BC435A86A4F92C /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release.xcconfig"; path = "../../../../../Config/Release/Release.xcconfig"; sourceTree = SOURCE_ROOT; };
+        6ECA6C51B37F441FB0C38CCB /* Profile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile.xcconfig"; path = "../../../../../Config/Profile/Profile.xcconfig"; sourceTree = SOURCE_ROOT; };
+        A7A9FB68C8F5404198AA89BA /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug.xcconfig"; path = "../../../../../Config/Debug/Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
+        F66F93F6478045A5B1B021DE /* DateTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "DateTime.cpp"; path = "../../Src/DateTime.cpp"; sourceTree = SOURCE_ROOT; };
+        70DC8B6CA6EE437C99A23602 /* DateTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DateTime.h"; path = "../../Src/DateTime.h"; sourceTree = SOURCE_ROOT; };
+        1D38DD378769454DBED0B5B6 /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "../../Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
+        6531C37EBF274CD480654C5D /* Aero Matics Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Aero Matics Regular.ttf"; path = "../../Data/Aero Matics Regular.ttf"; sourceTree = SOURCE_ROOT; };
+        3D77CACC94AB47E0AF114448 /* App.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "App.xaml"; path = "../../Data/App.xaml"; sourceTree = SOURCE_ROOT; };
+        89B3E68B5D0B4327A12E67AA /* MainWindow.xaml */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MainWindow.xaml"; path = "../../Data/MainWindow.xaml"; sourceTree = SOURCE_ROOT; };
+        FA76B03D236449A29ACE2C69 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "info.plist"; path = "info.plist"; sourceTree = SOURCE_ROOT; };
+        17AE70E57F264E17B2DD323B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "LaunchScreen.storyboard"; path = "LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
+        93D8158E71294F57AB3BA488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-        1ADC093760D941119034ECBD = {
+        6432335A627D4E1CA70231B9 = {
             isa = PBXGroup;
             children = (
-                2365FA337B044952B4EB0449,
-                9E054FDA4BB84F7586D8D962,
-                B16EEE1B5D9B4D4A99F90D14,
+                F66F93F6478045A5B1B021DE,
+                70DC8B6CA6EE437C99A23602,
+                1D38DD378769454DBED0B5B6,
             );
             name = Src;
             sourceTree = "<group>";
         };
-        F393331223DC479CABDEE48C = {
+        5079D35A9A344B01A890967E = {
             isa = PBXGroup;
             children = (
-                54F548004A5B45B9A9095517,
-                00DCDDAB6A764B55AFD38249,
-                8EF34207CD1C496093B2849A,
+                6531C37EBF274CD480654C5D,
+                3D77CACC94AB47E0AF114448,
+                89B3E68B5D0B4327A12E67AA,
             );
             name = Data;
             sourceTree = "<group>";
         };
-        463A94FE28DB421F8899C78C = {
+        A98B9E0233984AD6B90BC1A5 = {
             isa = PBXGroup;
             children = (
-                93DBD0FCCCE44525B8B2FF02,
-                AD89531BA4F942ADAC262E46,
-                B531ACFF939D461695FDAD52,
+                FA76B03D236449A29ACE2C69,
+                17AE70E57F264E17B2DD323B,
+                93D8158E71294F57AB3BA488,
             );
             name = Resources;
             sourceTree = "<group>";
         };
-        1CE5EE999E2942049222A723 = {
+        AB258729E76C4262B739DBA7 = {
             isa = PBXGroup;
             children = (
-                8707F52FD1B544CD8F2E528A,
-                1B9EE9BBBB2846DB938F9D04,
-                48F995C745164E788B8FA502,
-                D8B3316C808948E7886790EA,
+                D547226CA2BC435A86A4F92C,
+                6ECA6C51B37F441FB0C38CCB,
+                C902175F2D734C13A6ACF4C1,
+                A7A9FB68C8F5404198AA89BA,
             );
             name = Config;
             sourceTree = "<group>";
         };
-        668BB8D985324B25B2F22E6C = {
+        72B9BE4832924842B44C04C2 = {
             isa = PBXGroup;
             children = (
-                A39567D0CFA24C1F851D41AF,
+                C2ACBB937D60474CAF7BA044,
             );
             name = Products;
             sourceTree = "<group>";
         };
-        1D6729C8ED6247FDB3166C23 = {
+        0AAD0483F1E040649F2E9AE6 = {
             isa = PBXGroup;
             children = (
-                EA0603A6C9EC4AE3A68DA4AD,
-                1035CAEEA259456C99149E53,
-                663E2A64C7B845578A22BED9,
-                B3E84BD8B276495184542116,
-                EA93A33C8699474CA5EEAED0,
-                1A319311060542F5B18B1A5C,
-                C17B270B757D4188B002A1E3,
-                35B83AD0274E48F3BE18CB39,
-                A27D7A818D8443B6A4ABBB7B,
-                785C20F2E6C94942B68C5775,
+                0EB3B3C366834B33B4BCFAA0,
+                51486B811EE6475881F4608C,
+                41CD8A80209A442DB6A423BF,
+                DD2A943E1F7047F0B71890B3,
+                BCE5FDEDF5C5423484EC9F9C,
+                7123D6F6D2D748669492608A,
+                3575B6C38C0E416DB350978B,
+                36567D6F9E0144C5827748AA,
+                30575D90B7A44578A3E2863C,
             );
             name = Dependencies;
             sourceTree = "<group>";
         };
-        A769DCCFD8A44C68A3F5C7C3 = {
+        6903F7F57EC549628D725E62 = {
             isa = PBXGroup;
             children = (
-                1ADC093760D941119034ECBD,
-                F393331223DC479CABDEE48C,
-                463A94FE28DB421F8899C78C,
-                1CE5EE999E2942049222A723,
-                668BB8D985324B25B2F22E6C,
-                1D6729C8ED6247FDB3166C23,
-                5B89315592064BC78D40807E,
+                6432335A627D4E1CA70231B9,
+                5079D35A9A344B01A890967E,
+                A98B9E0233984AD6B90BC1A5,
+                AB258729E76C4262B739DBA7,
+                72B9BE4832924842B44C04C2,
+                0AAD0483F1E040649F2E9AE6,
+                F16665FED1804ED8AD65D73D,
             );
             sourceTree = "<group>";
         };
 /* End PBXGroup section */
 
 /* Begin PBXSourcesBuildPhase section */
-        9FC410A021C04200A117A3EA = {
+        721999FFF977439C94A5F911 = {
             isa = PBXSourcesBuildPhase;
             buildActionMask = 2147483647;
             files = (
-                9F2F712496304082B4121D8F,
-                64828E79FADE457895758C19,
-                E32242959A9D4508AD7E2364,
-                D4816B6AAB2B4610A4FA56C7,
-                77761724065D48838DC1FBD3,
+                BCC6FC56F4664006AAA0F69B,
+                6FC466D636674F789E5B6BA9,
+                2A2C55AA28354EE3AEDC9EE6,
+                32F6BBE42F274860BB8323B4,
+                B87C038A5ED94112ABECE9D9,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXBuildRule section */
-        6651A7BB87884CCB8247A485 = {
+        8722A0A7C52B4819A6BF18B0 = {
             isa = PBXBuildRule;
             compilerSpec = com.apple.compilers.proxy.script;
             filePatterns = "*.xaml *.ttf";
@@ -165,39 +162,38 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXFrameworksBuildPhase section */
-        70FEB070A66E49DF86A9D2EC = {
+        0FB0943821C94E7A82D4D6F0 = {
             isa = PBXFrameworksBuildPhase;
             buildActionMask = 2147483647;
             files = (
-                3AA610761EDE43BA910BA097,
-                A9E5ADBB3EE74ABFBD3E475B,
-                DCE543AB7DCD42C980C2890C,
-                D87D96BE906D42BAB0533050,
-                591B32003BE74AAC98D14731,
-                EB359B4426E6484D9682E9C6,
-                ED7B611AC8C342C882CBABA6,
-                A856CA8736524D3DA270BC88,
-                C942A29CDDBB4D4A90A81198,
-                4F94F385AF6D4B4EA0662F15,
+                65046542E849462086919120,
+                095F9244298548A784621A90,
+                B44FD53B3D164E8B89D45CAD,
+                0CAB6A8AE059405FA1C2506B,
+                9DCC4E173417460DB1E22261,
+                C469B92E15A042739FA766E6,
+                7F52B80E1EC74D009ECA513B,
+                BA7E1A85ECEE48E8AD271577,
+                A0CC5E987B1547C1B7F0C251,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXResourcesBuildPhase section */
-        0B5564044B974EACBDB6CB46 = {
+        287BE6C8A9204760BE4BF923 = {
             isa = PBXResourcesBuildPhase;
             buildActionMask = 2147483647;
             files = (
-                975EC1AB222A49D4BC88706C,
-                8BC4A7BCD1E940099366DD82,
+                66D1755AED94446CA1CEF09E,
+                29AFC9E1EBA7449F8E3644D1,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-        2B399D46035E4C78938DE81F = {
+        9A819066CFFD47E99ACD7A92 = {
             isa = PBXCopyFilesBuildPhase;
             buildActionMask = 2147483647;
             dstPath = "";
@@ -211,35 +207,35 @@
 /* Begin PBXNativeTarget section */
         E6FF331EB0C23230A3C89D97 = {
             isa = PBXNativeTarget;
-            buildConfigurationList = 75E9A11B9CB5402EAF0D0C39;
+            buildConfigurationList = 347FDE866D924EFF9553B79C;
             buildPhases = (
-                9FC410A021C04200A117A3EA,
-                70FEB070A66E49DF86A9D2EC,
-                0B5564044B974EACBDB6CB46,
-                2B399D46035E4C78938DE81F,
+                721999FFF977439C94A5F911,
+                0FB0943821C94E7A82D4D6F0,
+                287BE6C8A9204760BE4BF923,
+                9A819066CFFD47E99ACD7A92,
             );
             buildRules = (
-                6651A7BB87884CCB8247A485,
+                8722A0A7C52B4819A6BF18B0,
             );
             dependencies = ();
             name = Samples.CustomControl;
             productName = Samples.CustomControl;
-            productReference = A39567D0CFA24C1F851D41AF;
+            productReference = C2ACBB937D60474CAF7BA044;
             productType = "com.apple.product-type.application";
         };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-        FA6FF1CCFFA84C17BDC455C3 = {
+        880574365A2E4D5D95C6C048 = {
             isa = PBXProject;
             attributes = { LastUpgradeCheck = 9999; };
-            buildConfigurationList = 2C8E5CA02288448E80F250F5;
+            buildConfigurationList = AEDC74FC15824ACF808C7E99;
             compatibilityVersion = "Xcode 3.2";
             developmentRegion = en;
             hasScannedForEncodings = 0;
             knownRegions = (en, Base,);
-            mainGroup = A769DCCFD8A44C68A3F5C7C3;
-            productRefGroup = 668BB8D985324B25B2F22E6C;
+            mainGroup = 6903F7F57EC549628D725E62;
+            productRefGroup = 72B9BE4832924842B44C04C2;
             projectDirPath = "";
             projectRoot = "";
             targets = (E6FF331EB0C23230A3C89D97,);
@@ -247,14 +243,14 @@
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
-        68EBBCCC8C214E1BB149E3A1 = {
+        26DFC4ECD77640098B398CEB = {
             isa = XCBuildConfiguration;
-            baseConfigurationReference = 8707F52FD1B544CD8F2E528A;
+            baseConfigurationReference = D547226CA2BC435A86A4F92C;
             buildSettings = {
                 SDKROOT = iphoneos;
                 IPHONEOS_DEPLOYMENT_TARGET = 8.0;
                 HEADER_SEARCH_PATHS = (../../../../../../Include,../../../../App/ApplicationLauncher/Include,../../../../App/Display/Include,../../../../App/DisplayLauncher/Include,../../../../App/Launcher/Include,../../../../App/Providers/Include);
-                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Release","NS_VERSION=3.0.0","NS_APP_FRAMEWORK","NS_LICENSE","NS_STATIC_LIBRARY","$(inherited)");
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Release","NS_VERSION=3.0.7","NS_APP_FRAMEWORK","NS_LICENSE","NS_STATIC_LIBRARY","$(inherited)");
                 LIBRARY_SEARCH_PATHS = (../../../../../../Lib/ios);
                 OTHER_LDFLAGS = ();
                 GCC_ENABLE_CPP_RTTI = YES;
@@ -265,12 +261,12 @@
             };
             name = Release;
         };
-        BE37D713ADF84A70AB7CD15B = {
+        16D2768AB1494526990F5144 = {
             isa = XCBuildConfiguration;
             buildSettings = {
                 PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
                 PRODUCT_NAME = "$(TARGET_NAME)";
-                CURRENT_PROJECT_VERSION = 3.0.0;
+                CURRENT_PROJECT_VERSION = 3.0.7;
                 DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
@@ -282,14 +278,14 @@
             };
             name = Release;
         };
-        7ACE58759E2C45E0B5786973 = {
+        9C4BB2392BA241B696DEE5F3 = {
             isa = XCBuildConfiguration;
-            baseConfigurationReference = 1B9EE9BBBB2846DB938F9D04;
+            baseConfigurationReference = 6ECA6C51B37F441FB0C38CCB;
             buildSettings = {
                 SDKROOT = iphoneos;
                 IPHONEOS_DEPLOYMENT_TARGET = 8.0;
                 HEADER_SEARCH_PATHS = (../../../../../../Include,../../../../App/ApplicationLauncher/Include,../../../../App/Display/Include,../../../../App/DisplayLauncher/Include,../../../../App/Launcher/Include,../../../../App/Providers/Include);
-                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Profile","NS_VERSION=3.0.0","NS_APP_FRAMEWORK","NS_LICENSE","NS_STATIC_LIBRARY","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=2","$(inherited)");
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Profile","NS_VERSION=3.0.7","NS_APP_FRAMEWORK","NS_LICENSE","NS_STATIC_LIBRARY","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=2","$(inherited)");
                 LIBRARY_SEARCH_PATHS = (../../../../../../Lib/ios);
                 OTHER_LDFLAGS = ();
                 GCC_ENABLE_CPP_RTTI = YES;
@@ -300,12 +296,12 @@
             };
             name = Profile;
         };
-        E1734F58BA0240F8BC238210 = {
+        6EAEA0BDD6B0406B88AA4BA4 = {
             isa = XCBuildConfiguration;
             buildSettings = {
                 PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
                 PRODUCT_NAME = "$(TARGET_NAME)";
-                CURRENT_PROJECT_VERSION = 3.0.0;
+                CURRENT_PROJECT_VERSION = 3.0.7;
                 DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
@@ -317,14 +313,14 @@
             };
             name = Profile;
         };
-        3843B6D4D9F14EBFAE407194 = {
+        30C8B35DEB25465BBB081357 = {
             isa = XCBuildConfiguration;
-            baseConfigurationReference = D8B3316C808948E7886790EA;
+            baseConfigurationReference = A7A9FB68C8F5404198AA89BA;
             buildSettings = {
                 SDKROOT = iphoneos;
                 IPHONEOS_DEPLOYMENT_TARGET = 8.0;
                 HEADER_SEARCH_PATHS = (../../../../../../Include,../../../../App/ApplicationLauncher/Include,../../../../App/Display/Include,../../../../App/DisplayLauncher/Include,../../../../App/Launcher/Include,../../../../App/Providers/Include);
-                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Debug","NS_VERSION=3.0.0","NS_APP_FRAMEWORK","NS_LICENSE","NS_STATIC_LIBRARY","NS_DEBUG","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=1","$(inherited)");
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Debug","NS_VERSION=3.0.7","NS_APP_FRAMEWORK","NS_LICENSE","NS_STATIC_LIBRARY","NS_DEBUG","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=1","$(inherited)");
                 LIBRARY_SEARCH_PATHS = (../../../../../../Lib/ios);
                 OTHER_LDFLAGS = ();
                 GCC_ENABLE_CPP_RTTI = YES;
@@ -335,12 +331,12 @@
             };
             name = Debug;
         };
-        34A1572532F04E6D8F103B48 = {
+        2AA488BEDCD64C1C8B45F219 = {
             isa = XCBuildConfiguration;
             buildSettings = {
                 PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
                 PRODUCT_NAME = "$(TARGET_NAME)";
-                CURRENT_PROJECT_VERSION = 3.0.0;
+                CURRENT_PROJECT_VERSION = 3.0.7;
                 DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
@@ -355,20 +351,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-        2C8E5CA02288448E80F250F5 = {
+        AEDC74FC15824ACF808C7E99 = {
             isa = XCConfigurationList;
-            buildConfigurations = (68EBBCCC8C214E1BB149E3A1,7ACE58759E2C45E0B5786973,3843B6D4D9F14EBFAE407194);
+            buildConfigurations = (26DFC4ECD77640098B398CEB,9C4BB2392BA241B696DEE5F3,30C8B35DEB25465BBB081357);
             defaultConfigurationIsVisible = 0;
             defaultConfigurationName = Release;
         };
 
-        75E9A11B9CB5402EAF0D0C39 = {
+        347FDE866D924EFF9553B79C = {
             isa = XCConfigurationList;
-            buildConfigurations = (BE37D713ADF84A70AB7CD15B,E1734F58BA0240F8BC238210,34A1572532F04E6D8F103B48);
+            buildConfigurations = (16D2768AB1494526990F5144,6EAEA0BDD6B0406B88AA4BA4,2AA488BEDCD64C1C8B45F219);
             defaultConfigurationIsVisible = 0;
             defaultConfigurationName = Release;
         };
 /* End XCConfigurationList section */
     };
-    rootObject = FA6FF1CCFFA84C17BDC455C3;
+    rootObject = 880574365A2E4D5D95C6C048;
 }

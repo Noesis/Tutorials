@@ -8,14 +8,14 @@ namespace DataBinding
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (targetType == typeof(double) && value is double && parameter is string)
+            if (value is float && parameter is string)
             {
-                double orbit = (double)value;
-                double factor = double.Parse((string)parameter, CultureInfo.InvariantCulture);
-                return (double)(Math.Pow(orbit / 40, 0.4) * 770.0 * factor);
+                float orbit = (float)value;
+                float factor = float.Parse((string)parameter, CultureInfo.InvariantCulture);
+                return (float)(Math.Pow(orbit / 40, 0.4) * 770.0 * factor);
             }
 
-            return default(double);
+            return default(float);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -4,9 +4,9 @@
 # For parallel execution in Windows, Make 4.0 or better is required
 
 include ../../../../../Config/Common.makeprops
+include ../../../../../Config/Debug/Debug.makeprops
 include ../../../../../Config/Profile/Profile.makeprops
 include ../../../../../Config/Release/Release.makeprops
-include ../../../../../Config/Debug/Debug.makeprops
 
 SHELLTYPE = msdos
 ifeq (, $(ComSpec)$(COMSPEC))
@@ -60,7 +60,19 @@ ifndef CONFIG
   CONFIG = Release
 endif
 
-ifeq ($(CONFIG), Profile)
+ifeq ($(CONFIG), Debug)
+  TARGET_DIR = ../../../../../../Bin/linux_x86_64
+  TARGET = ../../../../../../Bin/linux_x86_64/Samples.Localization
+  INTERMEDIATE = build/Debug
+  LIB_DIRS = 
+  LIBS = -lNoesisApp -lNoesis
+  LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  CFLAGS = $(CFLAGS_DEBUG)
+  CXXFLAGS = $(CXXFLAGS_DEBUG)
+  LDFLAGS = $(LDFLAGS_DEBUG)
+else ifeq ($(CONFIG), Profile)
   TARGET_DIR = ../../../../../../Bin/linux_x86_64
   TARGET = ../../../../../../Bin/linux_x86_64/Samples.Localization
   INTERMEDIATE = build/Profile
@@ -68,7 +80,7 @@ ifeq ($(CONFIG), Profile)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_PROFILE)
   CXXFLAGS = $(CXXFLAGS_PROFILE)
   LDFLAGS = $(LDFLAGS_PROFILE)
@@ -80,22 +92,10 @@ else ifeq ($(CONFIG), Release)
   LIBS = -lNoesisApp -lNoesis
   LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE
   CFLAGS = $(CFLAGS_RELEASE)
   CXXFLAGS = $(CXXFLAGS_RELEASE)
   LDFLAGS = $(LDFLAGS_RELEASE)
-else ifeq ($(CONFIG), Debug)
-  TARGET_DIR = ../../../../../../Bin/linux_x86_64
-  TARGET = ../../../../../../Bin/linux_x86_64/Samples.Localization
-  INTERMEDIATE = build/Debug
-  LIB_DIRS = 
-  LIBS = -lNoesisApp -lNoesis
-  LIBS_DEPS = ../../../../../../Bin/linux_x86_64/libNoesisApp.so ../../../../../../Bin/linux_x86_64/libNoesis.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
-  CFLAGS = $(CFLAGS_DEBUG)
-  CXXFLAGS = $(CXXFLAGS_DEBUG)
-  LDFLAGS = $(LDFLAGS_DEBUG)
 else
   $(error Invalid configuration '$(CONFIG)')
 endif
@@ -177,7 +177,7 @@ $(INTERMEDIATE)/FontopoNIHONGO.otf.bin.h: ../../../../Samples/Localization/Data/
 	@echo [BIN] [Samples/Localization] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/Localization/Data/FontopoNIHONGO.otf" > "$(INTERMEDIATE)/FontopoNIHONGO.otf.bin.h" 
 
-$(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/ViewModel.o $(INTERMEDIATE)/MainWindow.xaml.o $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/App.xaml.o | $(TARGET_DIR)
+$(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/App.xaml.o $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/MainWindow.xaml.o $(INTERMEDIATE)/ViewModel.o | $(TARGET_DIR)
 	@echo [LD] $(notdir $@)
 	+$(Q)$(CXX) $(LDFLAGS) -march=x86-64 -msse2 -mfpmath=sse -m64 -pie -Wl,-rpath,\$$ORIGIN -Wl,-rpath,../../../../../../Bin/linux_x86_64 -L../../../../../../Bin/linux_x86_64 $(LIB_DIRS) -o $(TARGET) @$(CONFIG).rsp $(LIBS)
 	@echo [STRIP] $(notdir $@)
@@ -185,7 +185,7 @@ $(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/ViewModel.o $(INTERMEDIATE)/MainWindow.x
 	$(Q)strip --strip-unneeded $(TARGET)
 	$(Q)objcopy --add-gnu-debuglink=$(TARGET).debug $(TARGET)
 
--include $(INTERMEDIATE)/ViewModel.d $(INTERMEDIATE)/MainWindow.xaml.d $(INTERMEDIATE)/Main.d $(INTERMEDIATE)/App.xaml.d
+-include $(INTERMEDIATE)/App.xaml.d $(INTERMEDIATE)/Main.d $(INTERMEDIATE)/MainWindow.xaml.d $(INTERMEDIATE)/ViewModel.d
 
 clean:
 	@echo ==== [Samples.Localization] Cleaning '$(CONFIG)' configuration ====
