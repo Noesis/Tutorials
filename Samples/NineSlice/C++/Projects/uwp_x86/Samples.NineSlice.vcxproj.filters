@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Src">
+      <UniqueIdentifier>{c9f16365-81d7-420a-9714-718e18f79bf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{cace8f43-16c6-4835-8352-a12909b6a79a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{9a965188-7570-4a43-b41c-6071aac0c25c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\Main.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\NineSliceImage.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Src\NineSliceImage.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <AppxManifest Include="Package.appxmanifest">
+      <Filter>Resources</Filter>
+    </AppxManifest>
+    <Image Include="SplashScreen.scale-200.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square44x44Logo.scale-200.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square44x44Logo.targetsize-24.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square44x44Logo.targetsize-48.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square44x44Logo.targetsize-256.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square44x44Logo.targetsize-48_altform-unplated.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square44x44Logo.targetsize-256_altform-unplated.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square71x71Logo.scale-200.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square150x150Logo.scale-200.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Square310x310Logo.scale-200.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="StoreLogo.scale-200.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Wide310x150Logo.scale-200.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <CustomBuild Include="..\..\Data\App.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Another.ttf">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Sign.png">
+      <Filter>Data</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
