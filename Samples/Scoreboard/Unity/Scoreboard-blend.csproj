@@ -36,8 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Noesis.GUI.Extensions, Version=3.0.0.9305, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Noesis.GUI.Extensions.3.0.0\lib\net45\Noesis.GUI.Extensions.dll</HintPath>
+    <Reference Include="Noesis.GUI.Extensions, Version=3.0.2.9603, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Noesis.GUI.Extensions.3.0.2\lib\net45\Noesis.GUI.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -82,10 +82,6 @@
     <Compile Include="Assets\NoesisGUI\Samples\Scoreboard\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Blend\Scoreboard\NoesisTheme.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Blend\Scoreboard\Properties\DesignTimeResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

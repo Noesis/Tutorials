@@ -1,15 +1,11 @@
 ﻿#if NOESIS
 using Noesis;
 using NoesisApp;
-using System;
-using System.Globalization;
-using Float = System.Single;
 #else
+using System.Windows.Data;
+#endif
 using System;
 using System.Globalization;
-using System.Windows.Data;
-using Float = System.Double;
-#endif
 
 namespace DataBinding
 {
@@ -17,14 +13,14 @@ namespace DataBinding
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (targetType == typeof(Float) && value is Float && parameter is string)
+            if (value is float && parameter is string)
             {
-                Float orbit = (Float)value;
-                Float factor = Float.Parse((string)parameter, CultureInfo.InvariantCulture);
-                return (Float)(Math.Pow(orbit / 40, 0.4) * 770.0 * factor);
+                float orbit = (float)value;
+                float factor = float.Parse((string)parameter, CultureInfo.InvariantCulture);
+                return (float)(Math.Pow(orbit / 40, 0.4) * 770.0 * factor);
             }
 
-            return default(Float);
+            return default(float);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
