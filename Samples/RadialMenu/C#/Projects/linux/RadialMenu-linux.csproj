@@ -1,0 +1,103 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>RadialMenu</AssemblyName>
+    <RootNamespace>RadialMenu</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Noesis.App.Displays.X11" Version="3.0.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="3.0.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="3.0.*" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DefineConstants>DEBUG;TRACE;NOESIS</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <DefineConstants>TRACE;NOESIS</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Src\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\Src\Arc.cs" />
+    <Compile Include="..\..\Src\RadialItem.cs" />
+    <Compile Include="..\..\Src\RadialPanel.cs" />
+    <Compile Include="..\..\Src\ViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\App.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Src\Fonts\Industry Demi.ttf">
+      <Link>Fonts/Industry Demi.ttf</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\background.jpg">
+      <Link>Images/background.jpg</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\AK-47.png">
+      <Link>Images/Weapons/AK-47.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\AK-47-Icon.png">
+      <Link>Images/Weapons/AK-47-Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\AUG.png">
+      <Link>Images/Weapons/AUG.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\AUG-Icon.png">
+      <Link>Images/Weapons/AUG-Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\FAMAS.png">
+      <Link>Images/Weapons/FAMAS.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\FAMAS-Icon.png">
+      <Link>Images/Weapons/FAMAS-Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\IDF-Defender.png">
+      <Link>Images/Weapons/IDF-Defender.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\IDF-Defender-Icon.png">
+      <Link>Images/Weapons/IDF-Defender-Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\Krieg-552.png">
+      <Link>Images/Weapons/Krieg-552.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\Krieg-552-Icon.png">
+      <Link>Images/Weapons/Krieg-552-Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\M4A1.png">
+      <Link>Images/Weapons/M4A1.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Images\Weapons\M4A1-Icon.png">
+      <Link>Images/Weapons/M4A1-Icon.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Sounds\Click.mp3">
+      <Link>Sounds/Click.mp3</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Sounds\Reload.mp3">
+      <Link>Sounds/Reload.mp3</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="$(SolutionDir)Src\NoesisLicense.txt">
+      <Link>NoesisLicense.txt</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

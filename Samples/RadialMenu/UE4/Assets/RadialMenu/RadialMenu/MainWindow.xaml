@@ -1,0 +1,324 @@
+<UserControl x:Class="RadialMenu.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    xmlns:local="clr-namespace:RadialMenu"
+    FontFamily="/RadialMenu;component/RadialMenu/Fonts/#Industry"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    d:DataContext="{d:DesignInstance {x:Type local:ViewModel}, IsDesignTimeCreatable=True}">
+
+  <UserControl.Resources>
+    <ControlTemplate x:Key="Template.WeaponListItem" TargetType="{x:Type ListBoxItem}">
+      <Grid x:Name="Root">
+        <i:Interaction.Triggers>
+          <ei:DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="True">
+            <ei:PlaySoundAction Source="Sounds/Click.wav" Volume="0.3" IsEnabled="False"/>
+          </ei:DataTrigger>
+          <i:EventTrigger EventName="Loaded">
+            <ei:ChangePropertyAction TargetObject="{Binding (i:Interaction.Triggers)[0].Actions[0], ElementName=Root}" PropertyName="IsEnabled" Value="True"/>
+          </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <local:Arc x:Name="Base"
+                   CenterX="{Binding (local:RadialPanel.CenterX), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   CenterY="{Binding (local:RadialPanel.CenterY), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   AngleStart="{Binding (local:RadialPanel.AngleStart), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   AngleDelta="{Binding (local:RadialPanel.AngleDelta), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   OuterRadius="255"
+                   Fill="#00FFFFFF"/>
+        <local:Arc x:Name="InnerArc"
+                   CenterX="{Binding (local:RadialPanel.CenterX), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   CenterY="{Binding (local:RadialPanel.CenterY), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   AngleStart="{Binding (local:RadialPanel.AngleStart), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   AngleDelta="{Binding (local:RadialPanel.AngleDelta), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   InnerRadius="67"
+                   OuterRadius="75"
+                   Padding="5"
+                   Fill="#66FFFFFF"/>
+        <local:Arc x:Name="ContentArc"
+                   CenterX="{Binding (local:RadialPanel.CenterX), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   CenterY="{Binding (local:RadialPanel.CenterY), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   AngleStart="{Binding (local:RadialPanel.AngleStart), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   AngleDelta="{Binding (local:RadialPanel.AngleDelta), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   InnerRadius="90"
+                   OuterRadius="240"
+                   Padding="5"
+                   Fill="#64000000" Stroke="#66FFFFFF"/>
+        <local:Arc x:Name="OuterArc"
+                   CenterX="{Binding (local:RadialPanel.CenterX), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   CenterY="{Binding (local:RadialPanel.CenterY), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   AngleStart="{Binding (local:RadialPanel.AngleStart), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   AngleDelta="{Binding (local:RadialPanel.AngleDelta), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                   InnerRadius="245"
+                   OuterRadius="255"
+                   Padding="5"
+                   Fill="#B2C7CCD1"/>
+        <local:RadialItem x:Name="ContentHost"
+                          CenterX="{Binding (local:RadialPanel.CenterX), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                          CenterY="{Binding (local:RadialPanel.CenterY), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                          AngleStart="{Binding (local:RadialPanel.AngleStart), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                          AngleDelta="{Binding (local:RadialPanel.AngleDelta), RelativeSource={RelativeSource TemplatedParent}, FallbackValue=0}"
+                          Radius="160">
+          <ContentPresenter/>
+        </local:RadialItem>
+      </Grid>
+      <ControlTemplate.Triggers>
+        <Trigger Property="IsSelected" Value="True">
+          <Setter TargetName="InnerArc" Property="Fill" Value="#CCFFA867"/>
+          <Setter TargetName="ContentArc" Property="Fill" Value="#66FFA867"/>
+          <Setter TargetName="ContentArc" Property="Stroke" Value="#CCFFA867"/>
+          <Setter TargetName="OuterArc" Property="Fill" Value="#CCFFA867"/>
+        </Trigger>
+        <Trigger Property="IsKeyboardFocused" Value="True">
+          <Setter TargetName="InnerArc" Property="Fill" Value="#CCFFDCB0"/>
+          <Setter TargetName="ContentArc" Property="Fill" Value="#99E08F52"/>
+          <Setter TargetName="ContentArc" Property="Stroke" Value="#CCFFDCB0"/>
+          <Setter TargetName="OuterArc" Property="Fill" Value="#CCFFDCB0"/>
+        </Trigger>
+      </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="Style.WeaponListItem" TargetType="{x:Type ListBoxItem}">
+      <Setter Property="Template" Value="{StaticResource Template.WeaponListItem}"/>
+      <Setter Property="noesis:StyleInteraction.Triggers">
+        <Setter.Value>
+          <noesis:StyleTriggerCollection>
+            <i:EventTrigger EventName="MouseEnter">
+              <noesis:SelectAction/>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="PreviewMouseDown">
+              <noesis:SetFocusAction/>
+              <ei:PlaySoundAction Source="Sounds/Reload.wav" Volume="0.3"/>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="PreviewMouseUp">
+              <noesis:SetFocusAction TargetObject="{Binding ElementName=CloseBtn}"/>
+            </i:EventTrigger>
+          </noesis:StyleTriggerCollection>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <DataTemplate x:Key="Template.WeaponItem">
+      <StackPanel>
+        <Rectangle Width="120" Height="30">
+          <Rectangle.Fill>
+            <ImageBrush ImageSource="{Binding Icon}"/>
+          </Rectangle.Fill>
+          <i:Interaction.Triggers>
+            <ei:DataTrigger Binding="{Binding DataContext.Money, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" Comparison="LessThan" Value="{Binding Price}">
+              <ei:ChangePropertyAction PropertyName="Opacity" Value="0.3"/>
+            </ei:DataTrigger>
+            <ei:DataTrigger Binding="{Binding DataContext.Money, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" Comparison="GreaterThanOrEqual" Value="{Binding Price}">
+              <ei:ChangePropertyAction PropertyName="Opacity" Value="0.6"/>
+            </ei:DataTrigger>
+          </i:Interaction.Triggers>
+        </Rectangle>
+        <TextBlock Text="{Binding Price, StringFormat=${0}}" FontSize="20" HorizontalAlignment="Center" Margin="0,15,0,-15">
+          <i:Interaction.Triggers>
+            <ei:DataTrigger Binding="{Binding DataContext.Money, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" Comparison="LessThan" Value="{Binding Price}">
+              <ei:ChangePropertyAction PropertyName="Foreground" Value="#E0FF2020"/>
+            </ei:DataTrigger>
+            <ei:DataTrigger Binding="{Binding DataContext.Money, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" Comparison="GreaterThanOrEqual" Value="{Binding Price}">
+              <ei:ChangePropertyAction PropertyName="Foreground" Value="#D0FFFFFF"/>
+            </ei:DataTrigger>
+          </i:Interaction.Triggers>
+        </TextBlock>
+      </StackPanel>
+    </DataTemplate>
+    <ControlTemplate x:Key="Template.WeaponProgressBar" TargetType="{x:Type ProgressBar}">
+      <ControlTemplate.Resources>
+        <Storyboard x:Key="Anim.Indeterminate"/>
+      </ControlTemplate.Resources>
+      <Grid x:Name="TemplateRoot" MinHeight="4">
+        <Border BorderBrush="#99FFFFFF" BorderThickness="1" Padding="3,2">
+          <Border x:Name="PART_Track">
+            <Border x:Name="PART_Indicator" HorizontalAlignment="Left">
+              <Border.Background>
+                <LinearGradientBrush EndPoint="40,0" MappingMode="Absolute" SpreadMethod="Repeat">
+                  <GradientStop Color="#FFEEFF89" Offset="0"/>
+                  <GradientStop Color="#FFEEFF89" Offset="0.93"/>
+                  <GradientStop Color="#00EEFF89" Offset="0.93"/>
+                </LinearGradientBrush>
+              </Border.Background>
+            </Border>
+          </Border>
+        </Border>
+      </Grid>
+    </ControlTemplate>
+    <Style TargetType="{x:Type ProgressBar}">
+      <Setter Property="OverridesDefaultStyle" Value="True"/>
+      <Setter Property="Template" Value="{StaticResource Template.WeaponProgressBar}"/>
+      <Style.BasedOn>
+        <Style TargetType="{x:Type Control}">
+          <Style.BasedOn>
+            <Style>
+              <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Foreground.Normal}"/>
+              <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+              <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+              <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}"/>
+            </Style>
+          </Style.BasedOn>
+        </Style>
+      </Style.BasedOn>
+    </Style>
+    <ControlTemplate x:Key="Template.SimpleButton" TargetType="{x:Type Button}">
+      <Grid x:Name="Root">
+        <Grid noesis:Element.PPAAMode="Disabled">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <Path x:Name="CornerBase" Data="M0,0L10,0 10,10z" Fill="#60000000" Grid.Row="1" Grid.Column="0"/>
+          <Rectangle x:Name="LeftBase" Grid.Row="0" Grid.Column="0" Fill="#60000000"/>
+          <Rectangle x:Name="RightBase" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Fill="#60000000"/>
+        </Grid>
+        <ContentPresenter Margin="12,-3,10,-2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+      </Grid>
+      <ControlTemplate.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+          <Setter Property="Fill" TargetName="CornerBase" Value="#70303030"/>
+          <Setter Property="Fill" TargetName="LeftBase" Value="#70303030"/>
+          <Setter Property="Fill" TargetName="RightBase" Value="#70303030"/>
+          <Setter Property="Foreground" Value="#E5FFFFFF"/>
+        </Trigger>
+        <Trigger Property="IsPressed" Value="True">
+          <Setter Property="Margin" TargetName="Root" Value="1,1,-1,-1"/>
+        </Trigger>
+      </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type Button}">
+      <Setter Property="OverridesDefaultStyle" Value="True"/>
+      <Setter Property="Foreground" Value="#99FFFFFF"/>
+      <Setter Property="Template" Value="{StaticResource Template.SimpleButton}"/>
+      <Setter Property="noesis:StyleInteraction.Triggers">
+        <Setter.Value>
+          <noesis:StyleTriggerCollection>
+            <i:EventTrigger EventName="Click">
+              <ei:PlaySoundAction Source="Sounds/Reload.wav" Volume="0.3"/>
+            </i:EventTrigger>
+          </noesis:StyleTriggerCollection>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </UserControl.Resources>
+
+  <Grid>
+    <Grid.Background>
+      <ImageBrush ImageSource="Images/background.jpg" Stretch="UniformToFill"/>
+    </Grid.Background>
+    <Viewbox Stretch="Uniform">
+      <Grid Margin="100">
+        <Grid Width="1000" Height="607">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+          </Grid.ColumnDefinitions>
+          <Path Grid.ColumnSpan="2" Grid.Column="0" Data="M300,4.5474735E-13 L990,4.5474735E-13 1000,9.9999909 1000,597 990,607 300,607 C134.31458,607 0,471.1184 0,303.5 0,135.88157 134.31458,-1.001358E-05 300,4.5474735E-13 z" Fill="#66000000" Stretch="Fill"/>
+          <Path Grid.ColumnSpan="2" Data="M290,0 L980,0 980,25.000002 290,25.000002 C143.64453,24.999998 25,145.21155 25.000002,293.5 25,441.78845 143.64453,562 290,562 L980,562 980,587 290,587 C129.83742,587 -5.6843419E-14,455.59558 0,293.5 -5.6843419E-14,131.40442 129.83742,4.7683704E-07 290,0 z" Margin="10" Stretch="Fill" Fill="#33000000"/>
+          <ListBox x:Name="Weapons" Grid.Column="0" Margin="45,45,39,46" SelectedIndex="0"
+                   ItemsSource="{Binding Weapons}"
+                   ItemTemplate="{StaticResource Template.WeaponItem}"
+                   ItemContainerStyle="{StaticResource Style.WeaponListItem}">
+            <ListBox.ItemsPanel>
+              <ItemsPanelTemplate>
+                <local:RadialPanel/>
+              </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.Template>
+              <ControlTemplate TargetType="{x:Type ListBox}">
+                <ItemsPresenter/>
+              </ControlTemplate>
+            </ListBox.Template>
+          </ListBox>
+          <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,0,0,1" Width="125" Height="125">
+            <Ellipse Margin="1" Fill="#66000000"/>
+            <Ellipse Stroke="#7FFFFFFF"/>
+            <TextBlock Text="Rifles" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#66FFFFFF" FontSize="22" Margin="0,0,0,1"/>
+          </Grid>
+          <Grid Grid.Column="1" VerticalAlignment="Top" Margin="0,10,10,0" Height="25">
+            <TextBlock Text="{Binding BuyTimeLeft, StringFormat=Buy Time Left : \{0\}}" FontSize="21" Foreground="#66FFFFFF" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,-3,0,0"/>
+            <TextBlock Text="{Binding Money, StringFormat=$\{0\}}" FontSize="21" Foreground="#66FFFFFF" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,-3,30,0"/>
+          </Grid>
+          <Border Grid.Column="1" Margin="-25,45,10,46" DataContext="{Binding SelectedItem, ElementName=Weapons}">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="185"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="35"/>
+              </Grid.RowDefinitions>
+              <Grid Grid.Row="0">
+                <Path Data="M5,0 L408,0 413,5 413,33 0,33 0,5 z" Margin="1" Stretch="Fill" Fill="#7F859CAD"/>
+                <Path Data="M5,0 L410,0 415,5 415,35 0,35 0,5 z M6,1 L1,6 1,34 414,34 414,6 409,1 z" Stretch="Fill" Fill="#7FFFFFFF"/>
+                <TextBlock Text="{Binding Name}" Foreground="#99FFFFFF" VerticalAlignment="Center" Margin="10,-1,0,0" FontSize="22" HorizontalAlignment="Left"/>
+                <TextBlock Text="{Binding Price, StringFormat=$\{0\}}" Foreground="#99FFFFFF" VerticalAlignment="Center" Margin="0,-1,10,0" FontSize="22" HorizontalAlignment="Right"/>
+              </Grid>
+              <Grid Grid.Row="1" Grid.RowSpan="2">
+                <Rectangle Margin="1,0" Fill="#66000000"/>
+                <Rectangle Width="1" HorizontalAlignment="Left" Fill="#7FFFFFFF"/>
+                <Rectangle Width="1" HorizontalAlignment="Right" Fill="#7FFFFFFF"/>
+              </Grid>
+              <Border Grid.Row="1" Margin="6" Padding="6" Background="#30FFFFFF" BorderBrush="#99FFFFFF" BorderThickness="1">
+                <Rectangle>
+                  <Rectangle.Fill>
+                    <ImageBrush ImageSource="{Binding Image}"/>
+                  </Rectangle.Fill>
+                  <Rectangle.Effect>
+                    <DropShadowEffect Opacity="1" Color="Black"/>
+                  </Rectangle.Effect>
+                </Rectangle>
+              </Border>
+              <StackPanel Grid.Row="2" Margin="6,0">
+                <TextBlock Text="Firepower:" Foreground="#66FFFFFF" Margin="4,0,0,0" FontSize="18"/>
+                <ProgressBar Height="18" Background="#394B5258" Margin="0,1,0,0" Minimum="0" Maximum="10" SmallChange="1" LargeChange="1" Value="{Binding Firepower, Mode=OneWay}"/>
+                <TextBlock Text="Fire Rate:" Foreground="#66FFFFFF" Margin="4,4,0,0" FontSize="18"/>
+                <ProgressBar Height="18" Background="#394B5258" Margin="0,1,0,0" Minimum="0" Maximum="10" SmallChange="1" LargeChange="1" Value="{Binding FireRate, Mode=OneWay}"/>
+                <TextBlock Text="Accuracy:" Foreground="#66FFFFFF" Margin="4,4,0,0" FontSize="18"/>
+                <ProgressBar Height="18" Background="#394B5258" Margin="0,1,0,0" Minimum="0" Maximum="10" SmallChange="1" LargeChange="1" Value="{Binding Accuracy, Mode=OneWay}"/>
+                <TextBlock Text="Movement Rate:" Foreground="#66FFFFFF" Margin="4,4,0,0" FontSize="18"/>
+                <ProgressBar Height="18" Background="#394B5258" Margin="0,1,0,0" Minimum="0" Maximum="10" SmallChange="1" LargeChange="1" Value="{Binding MovementRate, Mode=OneWay}"/>
+                <StackPanel Margin="4,0,0,0" Orientation="Horizontal">
+                  <TextBlock Text="Ammo:" Foreground="#66FFFFFF" FontSize="18" Width="105" HorizontalAlignment="Left"/>
+                  <TextBlock Foreground="#66FFFFFF" FontSize="18">
+                    <TextBlock.Text>
+                      <MultiBinding StringFormat="{}{0}/{1}">
+                        <Binding Path="Ammo"/>
+                        <Binding Path="Capacity"/>
+                      </MultiBinding>
+                    </TextBlock.Text>
+                  </TextBlock>
+                </StackPanel>
+                <StackPanel Margin="4,0,0,0" Orientation="Horizontal">
+                  <TextBlock Text="Special:" Foreground="#66FFFFFF" FontSize="18" Width="105" HorizontalAlignment="Left"/>
+                  <TextBlock Text="{Binding Special}" Foreground="#66FFFFFF" FontSize="18"/>
+                </StackPanel>
+                <TextBlock Text="{Binding Origin}" Foreground="#66FFFFFF" Margin="4,4,0,0" FontSize="18" HorizontalAlignment="Center"/>
+              </StackPanel>
+              <Grid Grid.Row="3">
+                <Path Data="M0,0 L413,0 413,28 408,33 5,33 0,28 z" Margin="1" Stretch="Fill" Fill="#7F859CAD"/>
+                <Path Data="M0,0 L415,0 415,30 410,35 5,35 0,30 z M1,1 L1,29 6,34 409,34 414,29 414,1 z" Stretch="Fill" Fill="#7FFFFFFF"/>
+              </Grid>
+            </Grid>
+          </Border>
+          <Grid Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="300,0,0,10" Height="25">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="50*"/>
+              <ColumnDefinition Width="260*"/>
+              <ColumnDefinition Width="260*"/>
+              <ColumnDefinition Width="130*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Auto Buy" Grid.Column="1" Margin="5,2" HorizontalContentAlignment="Left" FontSize="20"/>
+            <Button Content="Re-Buy Previous" Grid.Column="2" Margin="5,2" HorizontalContentAlignment="Left" FontSize="20"/>
+            <Button x:Name="CloseBtn" Content="Close" Grid.Column="3" Margin="5,2,10,2" FontSize="20" HorizontalContentAlignment="Center"/>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Viewbox>
+  </Grid>
+
+</UserControl>
