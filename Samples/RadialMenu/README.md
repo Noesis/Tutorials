@@ -25,7 +25,7 @@ This design contains the following key elements:
   </ListBox>
   ```
 
-* *RadialItem*: displays items using radial coordinates (*CenterX*, *CenterY*, *AngleStart*, *AngleDelta*, *InnerRadius*, *OuterRadius*, *Offset* and *Padding*).
+* *RadialItem*: displays items using radial coordinates (*CenterX*, *CenterY*, *AngleStart*, *AngleDelta*, *Radius*, *Offset*).
 
   ```xml
   <local:RadialItem
