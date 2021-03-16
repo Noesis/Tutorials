@@ -4,7 +4,7 @@
 
 A recreation of a radial interface as seen on 'Counterstrike' using NoesisGUI.
 
-This example showcases how to create a radial menu by creating a custom *RadialPanel* and the elements to render *Arc* shapes. Entries of the menu list are populated using *MVVM*.
+This example showcases how to create a radial menu by implementing a custom *RadialPanel* and the elements to render *Arc* shapes. Entries of the menu list are populated using *MVVM*.
 
 This design contains the following key elements:
 
