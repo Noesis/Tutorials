@@ -7,70 +7,6 @@
         xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
         Title="NoesisGUI - Buttons"
         d:DesignWidth="1280" d:DesignHeight="720">
-
-    <Window.Resources>
-        <Storyboard x:Key="Intro">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="StartButton">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StartButton">
-                <EasingDoubleKeyFrame KeyTime="0" Value="-200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="SettingsButton">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SettingsButton">
-                <EasingDoubleKeyFrame KeyTime="0" Value="-200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ExitButton">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ExitButton">
-                <EasingDoubleKeyFrame KeyTime="0" Value="-200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-    </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource Intro}"/>
-        </EventTrigger>
-    </Window.Triggers>
     <Grid x:Name="LayoutRoot" Background="{StaticResource NoesisLogoBg}">
         <Grid.RowDefinitions>
             <RowDefinition Height="80*"/>
@@ -101,19 +37,11 @@
                         <RowDefinition Height="100*"/>
                         <RowDefinition Height="30*"/>
                         <RowDefinition Height="100*"/>
-                        <RowDefinition Height="30*"/>
-                        <RowDefinition Height="100*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="StartButton" Grid.Row="1" Content="START" Margin="60,0,0,0" Command="{Binding StartCommand}" RenderTransformOrigin="0.5,0.5">
+                    <Button x:Name="StartButton" Grid.Row="1" Content="START" Margin="60,0,0,0" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
-                                <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="GotFocus">
-                                <ei:PlaySoundAction Source="AudioSlide.mp3" Volume="0.2"/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:PlaySoundAction Source="AudioClick.mp3" Volume="0.3"/>
+                            <i:EventTrigger EventName="IsVisibleChanged">
+                                <noesis:SetFocusAction />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <Button.RenderTransform>
@@ -125,37 +53,10 @@
                             </TransformGroup>
                         </Button.RenderTransform>
                     </Button>
-                    <Button x:Name="SettingsButton" Grid.Row="3" Content="SETTINGS" Margin="60,0,0,0" Command="{Binding SettingsCommand}" RenderTransformOrigin="0.5,0.5">
+                    <Button x:Name="ExitButton" Grid.Row="3" Content="SHOW START" Margin="60,0,0,0" RenderTransformOrigin="0.5,0.5">
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
-                                <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="GotFocus">
-                                <ei:PlaySoundAction Source="AudioSlide.mp3" Volume="0.2"/>
-                            </i:EventTrigger>
                             <i:EventTrigger EventName="Click">
-                                <ei:PlaySoundAction Source="AudioClick.mp3" Volume="0.3"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
-                    <Button x:Name="ExitButton" Grid.Row="5" Content="EXIT" Margin="60,0,0,0" Command="{Binding ExitCommand}" RenderTransformOrigin="0.5,0.5">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
-                                <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="GotFocus">
-                                <ei:PlaySoundAction Source="AudioSlide.mp3" Volume="0.2"/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:PlaySoundAction Source="AudioClick.mp3" Volume="0.3"/>
+                                <ei:ChangePropertyAction PropertyName="Visibility" TargetName="StartButton" Value="Visible" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <Button.RenderTransform>
