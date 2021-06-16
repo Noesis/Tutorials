@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Arkanoid
+namespace CustomRender
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -4,171 +4,160 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Arkanoid
+namespace CustomRender
 {
     public class Game : FrameworkElement
     {
         public Game()
         {
-            _clock = new Stopwatch();
-            _clock.Start();
-
-            _random = new Random((int)DateTime.Now.Ticks);
-
-            _pad = new Block();
-            for (int i = 0; i < NumBlocks; ++i) _blocks[i] = new Block();
-
+            Reset();
             CompositionTarget.Rendering += (s, e) => { InvalidateVisual(); };
         }
 
-        protected override void OnMouseRightButtonDown(MouseButtonEventArgs e)
+        private void Reset()
         {
-            _size = new Size(0.0, 0.0);
-            base.OnMouseRightButtonDown(e);
+            mClock.Restart();
+            mLastTime = mClock.ElapsedTicks;
+
+            for (int i = 0; i < 5; i++)
+                for (int j = 0; j < 13; j++)
+                    mBlocks[i][j] = false;
+
+            mPosX = ScreenWidth / 2.0;
+            mPosY = ScreenHeight - PadHeight - 50.0;
+            mVelX = -2.0;
+            mVelY = -4.0;
         }
 
         protected override void OnRender(DrawingContext context)
         {
-            // Reset when element changes its size
-            if (_size != RenderSize)
+            long t = mClock.ElapsedTicks;
+            double dt = (double)(t - mLastTime) / Stopwatch.Frequency;
+            mLastTime = t;
+
+            // Draw background
+            context.DrawRectangle(Brushes.Black, null, new Rect(0, 0, ScreenWidth, ScreenHeight));
+
+            // Draw pad
             {
-                _size = RenderSize;
+                Point mouse = Mouse.GetPosition(this);
+                double x = Math.Min(Math.Max(mouse.X, PadWidth * 0.5), ScreenWidth - PadWidth * 0.5);
 
-                _blockSize.Width = _size.Width / 10.0f;
-                _blockSize.Height = _size.Height / 12.0f;
+                double x0 = x - PadWidth * 0.5;
+                double x1 = x0 + PadWidth;
+                double y0 = 550.0 - PadHeight * 0.5;
+                double y1 = y0 + PadHeight;
 
-                _padSize.Width = _size.Width * 0.125f;
-                _padSize.Height = _size.Height * 0.03f;
-
-                _radius = _size.Width * 0.02f;
-                _pos.X = _size.Width / 2.0f;
-                _pos.Y = _size.Height - _padSize.Height - _radius;
-                _velX = -2;
-                _velY = -4;
-
-                _pad.l.X = _pos.X - _padSize.Width * 0.5f;
-                _pad.l.Y = _size.Height - _padSize.Height;
-                _pad.h.X = _pad.l.X + _padSize.Width;
-                _pad.h.Y = _pad.l.Y + _padSize.Height;
-
-                if (_pad.color == null)
+                if (mPosX >= x0 && mPosX <= x1 && mPosY >= y0 && mPosY <= y1)
                 {
-                    _pad.color = new SolidColorBrush(Colors.White);
+                    if (mVelY > 0.0) mVelY = -mVelY;
+
+                    double vScale = (mPosX - x) / (PadWidth * 0.5);
+                    mVelX += vScale * 2.0;
                 }
 
-                for (int i = 0; i < NumRows; ++i)
+                context.DrawRectangle(Brushes.Silver, null,     new Rect(new Point(x0 + 18.0, y0),          new Point(x1 - 18.0, y0 + 4.0)));
+                context.DrawRectangle(Brushes.Lavender, null,   new Rect(new Point(x0 + 18.0, y0 + 4.0),    new Point(x1 - 18.0, y0 + 8.0)));
+                context.DrawRectangle(Brushes.Silver, null,     new Rect(new Point(x0 + 18.0, y0 + 8.0),    new Point(x1 - 18.0, y0 + 15.0)));
+                context.DrawRectangle(Brushes.SlateGray, null,  new Rect(new Point(x0 + 18.0, y0 + 15.0),   new Point(x1 - 18.0, y1)));
+
+                context.DrawRectangle(Brushes.Gold, null,       new Rect(new Point(x1 - 16.0, y0),          new Point(x1, y0 + 4.0)));
+                context.DrawRectangle(Brushes.Khaki, null,      new Rect(new Point(x1 - 16.0, y0 + 4.0),    new Point(x1, y0 + 8.0)));
+                context.DrawRectangle(Brushes.Gold, null,       new Rect(new Point(x1 - 16.0, y0 + 8.0),    new Point(x1, y0 + 15.0)));
+                context.DrawRectangle(Brushes.Goldenrod, null,  new Rect(new Point(x1 - 16.0, y0 + 15.0),   new Point(x1, y1)));
+
+                context.DrawRectangle(Brushes.Gold, null,       new Rect(new Point(x0, y0),                 new Point(x0 + 16.0, y0 + 4.0)));
+                context.DrawRectangle(Brushes.Khaki, null,      new Rect(new Point(x0, y0 + 4.0),           new Point(x0 + 16.0, y0 + 8.0)));
+                context.DrawRectangle(Brushes.Gold, null,       new Rect(new Point(x0, y0 + 8.0),           new Point(x0 + 16.0, y0 + 15.0)));
+                context.DrawRectangle(Brushes.Goldenrod, null,  new Rect(new Point(x0, y0 + 15.0),          new Point(x0 + 16.0, y1)));
+            }
+
+            // Draw blocks
+            {
+                for (int i = 0; i < 5; i++)
                 {
-                    for (int j = 0; j < NumBlocksPerRow; ++j)
+                    for (int j = 0; j < 13; j++)
                     {
-                        Block block = _blocks[j + i * 10];
-                        block.a = true;
-                        block.l = new Point(j * _blockSize.Width, i * _blockSize.Height);
-                        block.h = new Point((j + 1) * _blockSize.Width, (i + 1) * _blockSize.Height);
-                        if (block.color == null)
+                        if (mBlocks[i][j])
                         {
-                            block.color = new SolidColorBrush();
+                            continue;
                         }
 
-                        block.color.Color = Color.FromArgb(255, (byte)_random.Next(0, 255), (byte)_random.Next(0, 255), (byte)_random.Next(0, 255));
+                        double x0 = j * BlockWidth;
+                        double x1 = x0 + BlockWidth;
+                        double y0 = i * BlockHeight + 100.0;
+                        double y1 = y0 + BlockHeight;
+
+                        if (mPosX >= x0 && mPosX <= x1 && mPosY >= y0 && mPosY <= y1)
+                        {
+                            mBlocks[i][j] = true;
+
+                            double dx0 = mPosX - x0;
+                            double dx1 = x1 - mPosX;
+                            double dy0 = mPosY - y0;
+                            double dy1 = y1 - mPosY;
+
+                            if (Math.Min(dx0, dx1) < Math.Min(dy0, dy1))
+                            {
+                                mVelX = -mVelX;
+                            }
+                            else
+                            {
+                                mVelY = -mVelY;
+                            }
+                        }
+
+                        context.DrawRectangle(Brushes0[i], null, new Rect(new Point(x0 + 2.0, y0 + 2.0),    new Point(x1 - 2.0, y1 - 2.0)));
+                        context.DrawRectangle(Brushes1[i], null, new Rect(new Point(x0 + 5.0, y0 + 25.0),   new Point(x1 - 2.0, y1 - 2.0)));
+                        context.DrawRectangle(Brushes1[i], null, new Rect(new Point(x0 + 57.0, y0 + 5.0),   new Point(x1 - 2.0, y1 - 2.0)));
                     }
                 }
             }
 
-            // Update blocks
-            for (int i = 0; i < NumBlocks; ++i)
+            // Draw ball
             {
-                Block block = _blocks[i];
-                if (!block.a) continue;
-                if (!block.inside(_pos)) continue;
-                block.a = false;
-                double ol = _pos.X - block.l.X;
-                double or = block.h.X - _pos.X;
-                double ot = _pos.Y - block.l.Y;
-                double ob = block.h.Y - _pos.Y;
-                double ox = Math.Min(ol, or);
-                double oy = Math.Min(ot, ob);
-                if (ox < oy)
-                {
-                    _velX = -_velX;
-                }
-                else
-                {
-                    _velY = -_velY;
-                }
+                mPosX += mVelX * dt * 60.0;
+                mPosY += mVelY * dt * 60.0;
+                if (mPosX < 0.0 || mPosX > ScreenWidth) mVelX = -mVelX;
+                if (mPosY < 0.0) mVelY = -mVelY;
+                if (mPosY > ScreenHeight) Reset();
+
+                mVelX *= 1.00005;
+                mVelY *= 1.0001;
+
+                double x0 = mPosX - 7.0;
+                double x1 = mPosX + 7.0;
+                double y0 = mPosY - 7.0;
+                double y1 = mPosY + 7.0;
+
+                context.DrawRectangle(Brushes.LightSkyBlue, null,   new Rect(new Point(x0 + 2.0, y0 + 2.0), new Point(x1 - 2.0, y1 - 2.0)));
+                context.DrawRectangle(Brushes.Aqua, null,           new Rect(new Point(x0 - 2.0, y0 + 2.0), new Point(x0 + 2.0, y1 - 2.0)));
+                context.DrawRectangle(Brushes.Aqua, null,           new Rect(new Point(x1 - 2.0, y0 + 2.0), new Point(x1 + 2.0, y1 - 2.0)));
+                context.DrawRectangle(Brushes.Aqua, null,           new Rect(new Point(x0 + 2.0, y0 - 2.0), new Point(x1 - 2.0, y0 + 2.0)));
+                context.DrawRectangle(Brushes.Aqua, null,           new Rect(new Point(x0 + 2.0, y1 - 2.0), new Point(x1 - 2.0, y1 + 2.0)));
             }
-
-            float dt = (float)(_clock.ElapsedMilliseconds / 1000.0);
-            _clock.Restart();
-
-            // Calculate pad position
-            Point mouse = Mouse.GetPosition(this);
-            _pad.l.X = Math.Min(Math.Max(0.0f, mouse.X - _padSize.Width * 0.5f), _size.Width - _padSize.Width);
-            _pad.h.X = _pad.l.X + _padSize.Width;
-            if (_pad.inside(_pos)) _velY = -_velY;
-
-            // Start drawing...
-
-            // background
-            context.DrawRectangle(Brushes.Black, null, new Rect(_size));
-
-            // blocks
-            for (int i = 0; i < NumBlocks; ++i)
-            {
-                Block block = _blocks[i];
-                if (block.a)
-                {
-                    Rect rect = new Rect(block.l.X, block.l.Y, block.h.X - block.l.X, block.h.Y - block.l.Y);
-                    context.DrawRectangle(block.color, null, rect);
-                }
-            }
-
-            // pad
-            Rect padRect = new Rect(_pad.l.X, _pad.l.Y, _pad.h.X - _pad.l.X, _pad.h.Y - _pad.l.Y);
-            context.DrawRectangle(_pad.color, null, padRect);
-
-            // ball
-            context.DrawEllipse(_pad.color, null, _pos, _radius, _radius);
-
-            // Update ball position
-            _pos.X += _velX * dt * 30.0f;
-            _pos.Y += _velY * dt * 30.0f;
-            if (_pos.X < 0.0f || _pos.X > _size.Width) _velX = -_velX;
-            if (_pos.Y < 0.0f) _velY = -_velY;
-            if (_pos.Y > _size.Height) _size = new Size(0.0, 0.0); // reset when ball goes down
-
-            _velX *= 1.00005f;
-            _velY *= 1.0001f;
         }
 
-        class Block
-        {
-            public Point l;
-            public Point h;
-            public SolidColorBrush color;
-            public bool a;
+        const double ScreenWidth = 800.0;
+        const double ScreenHeight = 600.0;
+        const double PadWidth = 85.0;
+        const double PadHeight = 22.0;
+        const double BlockWidth = ScreenWidth / 13.0;
+        const double BlockHeight = 30.0;
 
-            public bool inside(Point p)
-            {
-                return (p.X > l.X && p.X < h.X) && (p.Y > l.Y && p.Y < h.Y);
-            }
-        };
+        static Brush[] Brushes0 = new Brush[] { Brushes.Red, Brushes.Gold, Brushes.MediumBlue, Brushes.Magenta, Brushes.Lime };
+        static Brush[] Brushes1 = new Brush[] { Brushes.DarkRed, Brushes.Goldenrod, Brushes.Navy, Brushes.DarkMagenta, Brushes.LimeGreen };
 
-        Stopwatch _clock;
-        Random _random;
+        bool[][] mBlocks = new bool[][] { new bool[13], new bool[13], new bool[13], new bool[13], new bool[13] };
 
-        const int NumBlocks = 60;
-        const int NumRows = 6;
-        const int NumBlocksPerRow = NumBlocks / NumRows;
+        double mPosX;
+        double mPosY;
+        double mVelX;
+        double mVelY;
 
-        Block[] _blocks = new Block[NumBlocks];
-        Block _pad = new Block();
-        Size _blockSize;
-        Size _padSize;
-        Size _size;
-        Point _pos;
-        double _radius;
-        double _velX;
-        double _velY;
+        long mLastTime;
+
+        Stopwatch mClock = new Stopwatch();
     }
 
     /// <summary>
@@ -180,12 +169,5 @@ namespace Arkanoid
         {
             this.InitializeComponent();
         }
-
-#if NOESIS
-        private void InitializeComponent()
-        {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Arkanoid/MainWindow.Xaml");
-        }
-#endif
     }
 }

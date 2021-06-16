@@ -12,7 +12,6 @@
 #include <NsGui/IView.h>
 #include <NsGui/Mouse.h>
 #include <NsGui/DrawingContext.h>
-#include <NsDrawing/Color.h>
 #include <NsApp/ApplicationLauncher.h>
 #include <NsApp/EmbeddedXamlProvider.h>
 #include <NsApp/EntryPoint.h>
@@ -27,23 +26,32 @@ using namespace Noesis;
 using namespace NoesisApp;
 
 
-namespace Arkanoid
+static const float Width = 800.0f;
+static const float Height = 600.0f;
+static const float PadWidth = 85.0f;
+static const float PadHeight = 22.0f;
+static const float BlockWidth = Width / 13.0f;
+static const float BlockHeight = 30.0f;
+
+
+namespace CustomRender
 {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class Game final: public Noesis::FrameworkElement
 {
 public:
-    Game(): mTicks(HighResTimer::Ticks())
+    Game()
     {
+        Reset();
     }
 
-    void OnConnectToView(IView* view)
+    void OnConnectToView(IView* view) override
     {
         ParentClass::OnConnectToView(view);
         view->Rendering() += MakeDelegate(this, &Game::Invalidate);
     }
-    void OnDisconnectFromView()
+    void OnDisconnectFromView() override
     {
         GetView()->Rendering() -= MakeDelegate(this, &Game::Invalidate);
         ParentClass::OnDisconnectFromView();
@@ -54,163 +62,152 @@ public:
         InvalidateVisual();
     }
 
-    void OnMouseRightButtonDown(const Noesis::MouseButtonEventArgs& e) override
+    void Reset()
     {
-        mSize = Size::Zero();
-        ParentClass::OnMouseRightButtonDown(e);
+        mLastTime = HighResTimer::Ticks();
+
+        memset(mBlocks, 0, sizeof(mBlocks));
+
+        mPosX = Width / 2.0f;
+        mPosY = Height - PadHeight - 50.0f;
+        mVelX = -2.0f;
+        mVelY = -4.0f;
     }
 
     void OnRender(DrawingContext* context) override
     {
-        // Reset when element changes its size
-        if (mSize != mRenderSize)
+        uint64_t t = HighResTimer::Ticks();
+        float dt = (float)HighResTimer::Seconds(t - mLastTime);
+        mLastTime = t;
+
+        // Draw background
+        context->DrawRectangle(Brushes::Black(), nullptr, Rect(0, 0, Width, Height));
+
+        // Draw pad
         {
-            mSize = mRenderSize;
+            Point mouse = PointFromScreen(GetMouse()->GetPosition());
+            float x = Min(Max(mouse.x, PadWidth * 0.5f), Width - PadWidth * 0.5f);
 
-            mBlockSize.width = mSize.width / 10.0f;
-            mBlockSize.height = mSize.height / 12.0f;
+            float x0 = x - PadWidth * 0.5f;
+            float x1 = x0 + PadWidth;
+            float y0 = 550.0f - PadHeight * 0.5f;
+            float y1 = y0 + PadHeight;
 
-            mPadSize.width = mSize.width * 0.125f;
-            mPadSize.height = mSize.height * 0.03f;
-
-            mRadius = mSize.width * 0.02f;
-            mPos.x = mSize.width / 2.0f;
-            mPos.y = mSize.height - mPadSize.height - mRadius;
-            mVelX = -2;
-            mVelY = -4;
-
-            mPad.l.x = mPos.x - mPadSize.width * 0.5f;
-            mPad.l.y = mSize.height - mPadSize.height;
-            mPad.h.x = mPad.l.x + mPadSize.width;
-            mPad.h.y = mPad.l.y + mPadSize.height;
-
-            if (mPad.color == nullptr)
+            if (mPosX >= x0 && mPosX <= x1 && mPosY >= y0 && mPosY <= y1)
             {
-                mPad.color = MakePtr<SolidColorBrush>(Color::White());
+                if (mVelY > 0.0f) mVelY = -mVelY;
+
+                float vScale = (mPosX - x) / (PadWidth * 0.5f);
+                mVelX += vScale * 2.0f;
             }
 
-            for (int i = 0; i < 6; ++i)
+            context->DrawRectangle(Brushes::Silver(), nullptr, Rect(x0 + 18.0f, y0, x1 - 18.0f, y0 + 4.0f));
+            context->DrawRectangle(Brushes::Lavender(), nullptr, Rect(x0 + 18.0f, y0 + 4.0f, x1 - 18.0f, y0 + 8.0f));
+            context->DrawRectangle(Brushes::Silver(), nullptr, Rect(x0 + 18.0f, y0 + 8.0f, x1 - 18.0f, y0 + 15.0f));
+            context->DrawRectangle(Brushes::SlateGray(), nullptr, Rect(x0 + 18.0f, y0 + 15.0f, x1 - 18.0f, y1));
+
+            context->DrawRectangle(Brushes::Gold(), nullptr, Rect(x1 - 16.0f, y0, x1, y0 + 4.0f));
+            context->DrawRectangle(Brushes::Khaki(), nullptr, Rect(x1 - 16.0f, y0 + 4.0f, x1, y0 + 8.0f));
+            context->DrawRectangle(Brushes::Gold(), nullptr, Rect(x1 - 16.0f, y0 + 8.0f, x1, y0 + 15.0f));
+            context->DrawRectangle(Brushes::Goldenrod(), nullptr, Rect(x1 - 16.0f, y0 + 15.0f, x1, y1));
+
+            context->DrawRectangle(Brushes::Gold(), nullptr, Rect(x0, y0, x0 + 16.0f, y0 + 4.0f));
+            context->DrawRectangle(Brushes::Khaki(), nullptr, Rect(x0, y0 + 4.0f, x0 + 16.0f, y0 + 8.0f));
+            context->DrawRectangle(Brushes::Gold(), nullptr, Rect(x0, y0 + 8.0f, x0 + 16.0f, y0 + 15.0f));
+            context->DrawRectangle(Brushes::Goldenrod(), nullptr, Rect(x0, y0 + 15.0f, x0 + 16.0f, y1));
+        }
+
+        // Draw blocks
+        {
+            static Brush* brushes0[] = { Brushes::Red(), Brushes::Gold(), Brushes::MediumBlue(), Brushes::Magenta(), Brushes::Lime() };
+            static Brush* brushes1[] = { Brushes::DarkRed(), Brushes::Goldenrod(), Brushes::Navy(), Brushes::DarkMagenta(), Brushes::LimeGreen() };
+
+            for (uint32_t i = 0; i < 5; i++)
             {
-                for (int j = 0; j < 10; ++j)
+                for (uint32_t j = 0; j < 13; j++)
                 {
-                    Block& block = mBlocks[j + i * 10];
-                    block.a = 1;
-                    block.l = { j * mBlockSize.width, i * mBlockSize.height };
-                    block.h = { (j + 1) * mBlockSize.width, (i + 1) * mBlockSize.height };
-                    if (block.color == nullptr)
+                    if (mBlocks[i][j])
                     {
-                        block.color = MakePtr<SolidColorBrush>();
+                        continue;
                     }
-                    block.color->SetColor(Color::FromPackedRGBA(255 << 24 | rand()));
+
+                    float x0 = j * BlockWidth;
+                    float x1 = x0 + BlockWidth;
+                    float y0 = i * BlockHeight + 100.0f;
+                    float y1 = y0 + BlockHeight;
+
+                    if (mPosX >= x0 && mPosX <= x1 && mPosY >= y0 && mPosY <= y1)
+                    {
+                        mBlocks[i][j] = true;
+
+                        float dx0 = mPosX - x0;
+                        float dx1 = x1 - mPosX;
+                        float dy0 = mPosY - y0;
+                        float dy1 = y1 - mPosY;
+
+                        if (Min(dx0, dx1) < Min(dy0, dy1))
+                        {
+                            mVelX = -mVelX;
+                        }
+                        else
+                        {
+                            mVelY = -mVelY;
+                        }
+                    }
+
+                    context->DrawRectangle(brushes0[i], nullptr, Rect(x0 + 2.0f, y0 + 2.0f, x1 - 2.0f, y1 - 2.0f));
+                    context->DrawRectangle(brushes1[i], nullptr, Rect(x0 + 5.0f, y0 + 25.0f, x1 - 2.0f, y1 - 2.0f));
+                    context->DrawRectangle(brushes1[i], nullptr, Rect(x0 + 57.0f, y0 + 5.0f, x1 - 2.0f, y1 - 2.0f));
                 }
             }
         }
 
-        // Update blocks
-        for (int i = 0; i < 60; ++i)
+        // Draw ball
         {
-            Block& block = mBlocks[i];
-            if (!block.a) continue;
-            if (!block.in(mPos)) continue;
-            block.a = false;
-            float ol = mPos.x - block.l.x;
-            float or = block.h.x - mPos.x;
-            float ot = mPos.y - block.l.y;
-            float ob = block.h.y - mPos.y;
-            float ox = Min(ol, or );
-            float oy = Min(ot, ob);
-            if (ox < oy)
-            {
-                mVelX = -mVelX;
-            }
-            else
-            {
-                mVelY = -mVelY;
-            }
+            mPosX += mVelX * dt * 60.0f;
+            mPosY += mVelY * dt * 60.0f;
+            if (mPosX < 0.0f || mPosX > Width) mVelX = -mVelX;
+            if (mPosY < 0.0f) mVelY = -mVelY;
+            if (mPosY > Height) Reset();
+
+            mVelX *= 1.00005f;
+            mVelY *= 1.0001f;
+
+            float x0 = mPosX - 7.0f;
+            float x1 = mPosX + 7.0f;
+            float y0 = mPosY - 7.0f;
+            float y1 = mPosY + 7.0f;
+
+            context->DrawRectangle(Brushes::LightSkyBlue(), nullptr, Rect(x0 + 2.0f, y0 + 2.0f, x1 - 2.0f, y1 - 2.0f));
+            context->DrawRectangle(Brushes::Aqua(), nullptr, Rect(x0 - 2.0f, y0 + 2.0f, x0 + 2.0f, y1 - 2.0f));
+            context->DrawRectangle(Brushes::Aqua(), nullptr, Rect(x1 - 2.0f, y0 + 2.0f, x1 + 2.0f, y1 - 2.0f));
+            context->DrawRectangle(Brushes::Aqua(), nullptr, Rect(x0 + 2.0f, y0 - 2.0f, x1 - 2.0f, y0 + 2.0f));
+            context->DrawRectangle(Brushes::Aqua(), nullptr, Rect(x0 + 2.0f, y1 - 2.0f, x1 - 2.0f, y1 + 2.0f));
         }
-
-        uint64_t t = HighResTimer::Ticks();
-        float dt = (float)HighResTimer::Seconds(t - mTicks);
-        mTicks = t;
-
-        // Calculate pad position
-        Point mouse = PointFromScreen(GetMouse()->GetPosition());
-        mPad.l.x = Min(Max(0.0f, mouse.x - mPadSize.width * 0.5f), mSize.width - mPadSize.width);
-        mPad.h.x = mPad.l.x + mPadSize.width;
-        if (mPad.in(mPos)) mVelY = -mVelY;
-
-        // Start drawing...
-
-        // background
-        context->DrawRectangle(Brushes::Black(), nullptr, Rect(mSize));
-
-        // blocks
-        for (int i = 0; i < 60; ++i)
-        {
-            Block& block = mBlocks[i];
-            if (block.a)
-            {
-                Rect rect(block.l.x, block.l.y, block.h.x, block.h.y);
-                context->DrawRectangle(block.color, nullptr, rect);
-            }
-        }
-
-        // pad
-        Rect padRect(mPad.l.x, mPad.l.y, mPad.h.x, mPad.h.y);
-        context->DrawRectangle(mPad.color, nullptr, padRect);
-
-        // ball
-        context->DrawEllipse(mPad.color, nullptr, mPos, mRadius, mRadius);
-
-        // Update ball position
-        mPos.x += mVelX * dt * 30.0f;
-        mPos.y += mVelY * dt * 30.0f;
-        if (mPos.x < 0.0f || mPos.x > mSize.width) mVelX = -mVelX;
-        if (mPos.y < 0.0f) mVelY = -mVelY;
-        if (mPos.y > mSize.height) mSize = Size::Zero(); // reset when ball goes down
-
-        mVelX *= 1.00005f;
-        mVelY *= 1.0001f;
     }
 
-    uint64_t mTicks;
+    bool mBlocks[5][13];
 
-    struct Block
-    {
-        Point l;
-        Point h;
-        Ptr<SolidColorBrush> color;
-        bool a;
-
-        bool in(Point p)
-        {
-            return (p.x > l.x && p.x < h.x) && (p.y > l.y && p.y < h.y);
-        }
-    };
-
-    Block mBlocks[60];
-    Block mPad;
-    Size mBlockSize;
-    Size mPadSize;
-    Size mSize;
-    Point mPos;
-    float mRadius;
+    float mPosX;
+    float mPosY;
     float mVelX;
     float mVelY;
 
-    NS_IMPLEMENT_INLINE_REFLECTION_(Game, FrameworkElement, "Arkanoid.Game")
+    uint64_t mLastTime;
+
+    NS_IMPLEMENT_INLINE_REFLECTION_(Game, FrameworkElement, "CustomRender.Game")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class App final: public NoesisApp::Application
 {
-    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "Arkanoid.App")
+    NS_IMPLEMENT_INLINE_REFLECTION_(App, Application, "CustomRender.App")
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class MainWindow final: public NoesisApp::Window
 {
-    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "Arkanoid.MainWindow")
+    NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "CustomRender.MainWindow")
 };
 
 }
@@ -221,9 +218,9 @@ class AppLauncher final: public ApplicationLauncher
 private:
     void RegisterComponents() const override
     {
-        RegisterComponent<Arkanoid::Game>();
-        RegisterComponent<Arkanoid::MainWindow>();
-        RegisterComponent<Arkanoid::App>();
+        RegisterComponent<CustomRender::Game>();
+        RegisterComponent<CustomRender::MainWindow>();
+        RegisterComponent<CustomRender::App>();
     }
 
     Noesis::Ptr<XamlProvider> GetXamlProvider() const override
