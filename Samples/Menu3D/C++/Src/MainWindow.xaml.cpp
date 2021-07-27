@@ -38,3 +38,5 @@ void MainWindow::OnLoaded(Noesis::BaseComponent*, const Noesis::RoutedEventArgs&
 NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION_(Menu3D::MainWindow, "Menu3D.MainWindow")
+
+NS_END_COLD_REGION

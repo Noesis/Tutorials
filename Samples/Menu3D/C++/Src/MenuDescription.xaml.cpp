@@ -42,6 +42,8 @@ NS_IMPLEMENT_REFLECTION(Menu3D::MenuDescription, "Menu3D.MenuDescription")
         PropertyMetadata::Create(String()));
 }
 
+NS_END_COLD_REGION
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const Noesis::DependencyProperty* MenuDescription::DescriptionProperty;
 const Noesis::DependencyProperty* MenuDescription::AcceptTextProperty;

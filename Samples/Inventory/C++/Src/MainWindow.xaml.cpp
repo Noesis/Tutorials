@@ -38,3 +38,5 @@ void MainWindow::OnInitialized(Noesis::BaseComponent*, const Noesis::EventArgs&)
 NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION_(Inventory::MainWindow, "Inventory.MainWindow")
+
+NS_END_COLD_REGION

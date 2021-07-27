@@ -8,6 +8,10 @@
 
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/ReflectionImplementEnum.h>
+#include <NsGui/BitmapImage.h>
+#include <NsGui/CroppedBitmap.h>
+#include <NsGui/Uri.h>
+#include <NsDrawing/Int32Rect.h>
 #include <NsApp/DelegateCommand.h>
 
 
@@ -67,7 +71,6 @@ SlotItemChangedHandler& Slot::ItemChanged()
 {
     return _itemChanged;
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void Slot::OnItemChanged(Item* oldItem, Item* newItem)
@@ -293,6 +296,8 @@ ItemCategory GetCategory(int index)
 ViewModel::ViewModel(): _player(*new Player("Morgan Hearson", 1423, 361, 2174, 218)),
     _inventory(*new ObservableCollection<Slot>()), _items(*new ObservableCollection<Item>())
 {
+    Ptr<BitmapImage> atlas = MakePtr<BitmapImage>("Images/InventoryAtlas.png");
+
     for (int i = 0; i < 45; ++i)
     {
         _inventory->Add(MakePtr<Slot>("Slot", ItemCategory_All));
@@ -308,7 +313,7 @@ ViewModel::ViewModel(): _player(*new Player("Morgan Hearson", 1423, 361, 2174, 2
         item->mana = i;
         item->dps = i * 9;
         item->armor = i * 3;
-        item->icon = Rect(Point((float)x, (float)y), Size(60.0f, 60.0f));
+        item->icon = MakePtr<CroppedBitmap>(atlas, Int32Rect(x, y, 60, 60));
 
         _items->Add(item);
 
@@ -330,7 +335,7 @@ const char* ViewModel::GetPlatform() const
 {
 #if defined(NS_PLATFORM_XBOX_ONE) || defined(NS_PLATFORM_NX)
     return "XBOX";
-#elif defined(NS_PLATFORM_PS4)
+#elif defined(NS_PLATFORM_PS4) || defined(NS_PLATFORM_PS5)
     return "PS4";
 #else
     return "PC";
@@ -614,3 +619,5 @@ NS_IMPLEMENT_REFLECTION(Player)
 
     NsProp("Slots", &Player::GetSlots);
 }
+
+NS_END_COLD_REGION

@@ -67,3 +67,5 @@ NS_IMPLEMENT_REFLECTION(ViewModel)
     NsProp("SettingsCommand", &ViewModel::GetSettingsCommand);
     NsProp("ExitCommand", &ViewModel::GetExitCommand);
 }
+
+NS_END_COLD_REGION

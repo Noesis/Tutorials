@@ -59,8 +59,11 @@ static void NoesisInit()
         printf("[NOESIS/%s] %s\n", prefixes[level], msg);
     });
 
+    // https://www.noesisengine.com/docs/Gui.Core.Licensing.html
+    Noesis::GUI::SetLicense(NS_LICENSE_NAME, NS_LICENSE_KEY);
+
     // Noesis initialization. This must be the first step before using any NoesisGUI functionality
-    Noesis::GUI::Init(NS_LICENSE_NAME, NS_LICENSE_KEY);
+    Noesis::GUI::Init();
 
     // Setup theme
     NoesisApp::SetThemeProviders();

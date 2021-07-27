@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Inventory
 {
@@ -26,7 +28,7 @@ namespace Inventory
         public int Mana { get; set; }
         public int Dps { get; set; }
         public int Armor { get; set; }
-        public Rect Icon { get; set; }
+        public ImageSource Icon { get; set; }
     }
 
     public class NotifierBase : INotifyPropertyChanged
@@ -223,6 +225,8 @@ namespace Inventory
             Inventory = new List<Slot>();
             Items = new List<Item>();
 
+            BitmapImage atlas = new BitmapImage(new Uri("pack://application:,,,/Inventory;component/Images/InventoryAtlas.png"));
+
             for (int i = 0; i < 45; ++i)
             {
                 Inventory.Add(new Slot { Name = "Slot", AllowedCategory = ItemCategory.All });
@@ -239,7 +243,7 @@ namespace Inventory
                     Mana = i,
                     Dps = i * 9,
                     Armor = i * 3,
-                    Icon = new Rect(x, y, 60, 60)
+                    Icon = new CroppedBitmap(atlas, new Int32Rect(x, y, 60, 60))
                 });
 
                 Inventory[i].Item = Items[i];

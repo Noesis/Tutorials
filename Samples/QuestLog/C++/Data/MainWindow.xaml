@@ -2,7 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors" 
     xmlns:local="clr-namespace:QuestLog"
     xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
     mc:Ignorable="d"
@@ -140,14 +140,14 @@
         </Storyboard>
     </Window.Resources>
 
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <ei:ControlStoryboardAction Storyboard="{StaticResource Intro}"/>
-        </i:EventTrigger>
-        <ei:StoryboardCompletedTrigger Storyboard="{StaticResource Close}">
-            <ei:ControlStoryboardAction Storyboard="{StaticResource Intro}"/>
-        </ei:StoryboardCompletedTrigger>
-    </i:Interaction.Triggers>
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:ControlStoryboardAction Storyboard="{StaticResource Intro}"/>
+        </b:EventTrigger>
+        <b:StoryboardCompletedTrigger Storyboard="{StaticResource Close}">
+            <b:ControlStoryboardAction Storyboard="{StaticResource Intro}"/>
+        </b:StoryboardCompletedTrigger>
+    </b:Interaction.Triggers>
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource NoesisLogoBg}">
         <Grid.RowDefinitions>
@@ -281,11 +281,11 @@
                     </Grid>
                     <TextBlock Text="QUEST LOG" FontSize="10.667" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
                     <Button Grid.Column="2" Margin="4" Background="#7F2AA6DC" Style="{StaticResource CloseButtonStyle}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ControlStoryboardAction Storyboard="{StaticResource Close}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="Click">
+                                <b:ControlStoryboardAction Storyboard="{StaticResource Close}"/>
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
                     </Button>
                     <Grid Grid.Column="1" Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -297,22 +297,16 @@
                             ItemsSource="{Binding Quests}"
                             SelectedItem="{Binding SelectedQuest}"
                             DisplayMemberPath="Title">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="SelectionChanged">
-                                    <i:Interaction.Behaviors>
-                                        <ei:ConditionBehavior>
-                                            <ei:ConditionalExpression>
-                                                <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=Quests}" RightOperand="1" />
-                                            </ei:ConditionalExpression>
-                                        </ei:ConditionBehavior>
-                                    </i:Interaction.Behaviors>
-                                    <ei:PlaySoundAction Source="Sounds/WaterDropSmall.mp3" Volume="0.2"/>
-                                </i:EventTrigger>
-                                <i:EventTrigger EventName="SelectionChanged">
-                                    <ei:ControlStoryboardAction Storyboard="{StaticResource QuestSelected}"/>
-                                    <ei:ChangePropertyAction TargetName="Quests" PropertyName="Tag" Value="1"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger>
+                                    <noesis:SetFocusAction/>
+                                </b:EventTrigger>
+                                <b:EventTrigger EventName="SelectionChanged">
+                                    <b:ControlStoryboardAction Storyboard="{StaticResource QuestSelected}"/>
+                                    <b:PlaySoundAction x:Name="SelectionSoundAction" Source="Sounds/WaterDropSmall.mp3" Volume="0.2" IsEnabled="False"/>
+                                    <b:ChangePropertyAction TargetName="SelectionSoundAction" PropertyName="IsEnabled" Value="True"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
                         </ListBox>
                         <Border Grid.Column="1">
                             <Grid>

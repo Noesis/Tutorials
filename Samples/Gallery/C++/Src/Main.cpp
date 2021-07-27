@@ -53,6 +53,7 @@
 #include "Brushes.xaml.bin.h"
 #include "Image.xaml.bin.h"
 #include "Effects.xaml.bin.h"
+#include "Blending.xaml.bin.h"
 #include "Animation.xaml.bin.h"
 
 #include "Muli-Regular.ttf.bin.h"
@@ -128,6 +129,7 @@ public:
             { "Samples/Brushes.xaml", Brushes_xaml },
             { "Samples/Image.xaml", Image_xaml },
             { "Samples/Effects.xaml", Effects_xaml },
+            { "Samples/Blending.xaml", Blending_xaml },
             { "Samples/Animation.xaml", Animation_xaml }
         };
 

@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{13ca17aa-720e-4780-b020-bf15844ebee4}</UniqueIdentifier>
+      <UniqueIdentifier>{e63608e6-e8a4-4870-88f5-6317bd7d3731}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
-      <UniqueIdentifier>{dfe915de-7127-478e-847a-4a8d0b777f01}</UniqueIdentifier>
+      <UniqueIdentifier>{331e0b57-0b94-469b-802d-ed95ecf382b8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{b3bb9174-dc2b-4549-82ef-5d7ee7e630e7}</UniqueIdentifier>
+      <UniqueIdentifier>{25b97aff-242f-484f-957c-11eb5cf57289}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +178,9 @@
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Samples\Effects.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Samples\Blending.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Samples\Animation.xaml">

@@ -3,8 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     mc:Ignorable="d"
     d:DesignWidth="1280" d:DesignHeight="720"
     Style="{StaticResource SampleControlStyle}"
@@ -57,21 +56,21 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Grid.Row="0" Grid.Column="0">
                         <Hyperlink>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <ei:ChangePropertyAction PropertyName="Content" Value="{StaticResource Content1}" TargetName="ContentHost"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:ChangePropertyAction PropertyName="Content" Value="{StaticResource Content1}" TargetName="ContentHost"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
                             Page 1
                         </Hyperlink>
                     </TextBlock>
                     <TextBlock Grid.Row="0" Grid.Column="1" Margin="16,0,0,0">
                         <Hyperlink>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <ei:ChangePropertyAction PropertyName="Content" Value="{StaticResource Content2}" TargetName="ContentHost"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
+                            <b:Interaction.Triggers>
+                                <b:EventTrigger EventName="Click">
+                                    <b:ChangePropertyAction PropertyName="Content" Value="{StaticResource Content2}" TargetName="ContentHost"/>
+                                </b:EventTrigger>
+                            </b:Interaction.Triggers>
                             Page 2
                         </Hyperlink>
                     </TextBlock>

@@ -498,7 +498,7 @@ struct Material
 
     enum { MAT_WRAP = 1, MAT_WIRE = 2, MAT_ZALWAYS = 4, MAT_NOCULL = 8 , MAT_TRANS = 16};
     Material(Texture * t, uint32_t flags = MAT_WRAP | MAT_TRANS, D3D11_INPUT_ELEMENT_DESC * vertexDesc = nullptr, int numVertexDesc = 3,
-        char* vertexShader = nullptr, char* pixelShader = nullptr, int vSize = 24) : Tex(t), VertexSize(vSize)
+        const char* vertexShader = nullptr, const char* pixelShader = nullptr, int vSize = 24) : Tex(t), VertexSize(vSize)
     {
         D3D11_INPUT_ELEMENT_DESC defaultVertexDesc[] = {
             { "Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,  D3D11_INPUT_PER_VERTEX_DATA, 0 },
@@ -506,13 +506,13 @@ struct Material
             { "TexCoord", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 16, D3D11_INPUT_PER_VERTEX_DATA, 0 }, };
 
         // Use defaults if no shaders specified
-        char* defaultVertexShaderSrc =
+        const char* defaultVertexShaderSrc =
             "float4x4 ProjView;  float4 MasterCol;"
             "void main(in  float4 Position  : POSITION,    in  float4 Color : COLOR0, in  float2 TexCoord  : TEXCOORD0,"
             "          out float4 oPosition : SV_Position, out float4 oColor: COLOR0, out float2 oTexCoord : TEXCOORD0)"
             "{   oPosition = mul(ProjView, Position); oTexCoord = TexCoord; "
             "    oColor = MasterCol * Color; }";
-        char* defaultPixelShaderSrc =
+        const char* defaultPixelShaderSrc =
             "Texture2D Texture   : register(t0); SamplerState Linear : register(s0); "
             "float4 main(in float4 Position : SV_Position, in float4 Color: COLOR0, in float2 TexCoord : TEXCOORD0) : SV_Target"
             "{   float4 TexCol = Texture.Sample(Linear, TexCoord); "
@@ -520,7 +520,7 @@ struct Material
             "    return(Color * TexCol); }";
 
         // vertex shader for instanced stereo
-        char* instancedStereoVertexShaderSrc =
+        const char* instancedStereoVertexShaderSrc =
             "float4x4 modelViewProj[2];  float4 MasterCol;"
             "void main(in  float4 Position  : POSITION,    in  float4 Color : COLOR0, in  float2 TexCoord  : TEXCOORD0,"
             "          in  uint instanceID : SV_InstanceID, "

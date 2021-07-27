@@ -246,7 +246,9 @@ static bool MainLoop(bool retryCreate)
     Noesis::Ptr<Noesis::XamlProvider> xamlProvider = Noesis::MakePtr<NoesisApp::EmbeddedXamlProvider>(xamls);
     Noesis::Ptr<Noesis::FontProvider> fontProvider = Noesis::MakePtr<NoesisApp::EmbeddedFontProvider>(fonts);
 
-    Noesis::GUI::Init(NS_LICENSE_NAME, NS_LICENSE_KEY);
+    Noesis::GUI::SetLicense(NS_LICENSE_NAME, NS_LICENSE_KEY);
+
+    Noesis::GUI::Init();
     NoesisApp::SetThemeProviders(xamlProvider, fontProvider);
     Noesis::GUI::LoadApplicationResources("Theme/NoesisTheme.DarkBlue.xaml");
 

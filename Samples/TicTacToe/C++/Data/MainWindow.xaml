@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:TicTacToe"
         xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
@@ -131,7 +131,7 @@
                                         <TranslateTransform/>
                                     </TransformGroup>
                                 </Grid.RenderTransform>
-                                <Ellipse x:Name="OverNought" Stroke="#00FFFFFF" StrokeThickness="4" Margin="15"/>
+                                <Ellipse x:Name="OverNought" Stroke="#00FFFFFF" StrokeThickness="4" Margin="15" noesis:Element.PPAAIn="0"/>
                                 <Path x:Name="OverCross" Fill="#00FFFFFF" Data="{StaticResource CrossGeometry}" Stretch="Fill" Margin="16"/>
                             </Grid>
                             <Grid x:Name="CheckGroup" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
@@ -143,7 +143,7 @@
                                         <TranslateTransform/>
                                     </TransformGroup>
                                 </Grid.RenderTransform>
-                                <Ellipse x:Name="CheckNought" Stroke="#00FFFFFF" StrokeThickness="4" Margin="15"/>
+                                <Ellipse x:Name="CheckNought" Stroke="#00FFFFFF" StrokeThickness="4" Margin="15" noesis:Element.PPAAIn="0"/>
                                 <Path x:Name="CheckCross" Fill="#00FFFFFF" Data="{StaticResource CrossGeometry}" Stretch="Fill" Margin="16"/>
                             </Grid>
                         </Grid>
@@ -1045,45 +1045,45 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </TextBlock.RenderTransform>
-                <i:Interaction.Triggers>
-                    <ei:PropertyChangedTrigger Binding="{Binding Text, ElementName=Status}">
-                        <ei:ControlStoryboardAction Storyboard="{StaticResource StatusAnim}"/>
-                    </ei:PropertyChangedTrigger>
-                    <ei:DataTrigger Binding="{Binding State}" Value="Player1">
-                        <ei:ChangePropertyAction PropertyName="Text" Value="PLAYER 1 TURN"/>
-                        <ei:ChangePropertyAction PropertyName="Tag" Value="1"/>
-                    </ei:DataTrigger>
-                    <ei:DataTrigger Binding="{Binding State}" Value="Player2">
-                        <ei:ChangePropertyAction PropertyName="Text" Value="PLAYER 2 TURN"/>
-                        <ei:ChangePropertyAction PropertyName="Tag" Value="2"/>
-                    </ei:DataTrigger>
-                    <ei:DataTrigger Binding="{Binding State}" Value="Tie">
-                        <ei:ChangePropertyAction PropertyName="Text" Value="GAME TIED!"/>
-                        <ei:PlaySoundAction Source="Sounds/TieEffect.mp3" Volume="0.3"/>
-                    </ei:DataTrigger>
-                    <ei:DataTrigger Binding="{Binding State}" Comparison="GreaterThanOrEqual" Value="WinRow0">
-                        <i:Interaction.Behaviors>
-                            <ei:ConditionBehavior>
-                                <ei:ConditionalExpression>
-                                    <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=Status}" RightOperand="1"/>
-                                </ei:ConditionalExpression>
-                            </ei:ConditionBehavior>
-                        </i:Interaction.Behaviors>
-                        <ei:ChangePropertyAction PropertyName="Text" Value="PLAYER 1 WON!"/>
-                        <ei:PlaySoundAction Source="Sounds/WinEffect.mp3" Volume="0.3"/>
-                    </ei:DataTrigger>
-                    <ei:DataTrigger Binding="{Binding State}" Comparison="GreaterThanOrEqual" Value="WinRow0">
-                        <i:Interaction.Behaviors>
-                            <ei:ConditionBehavior>
-                                <ei:ConditionalExpression>
-                                    <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=Status}" RightOperand="2"/>
-                                </ei:ConditionalExpression>
-                            </ei:ConditionBehavior>
-                        </i:Interaction.Behaviors>
-                        <ei:ChangePropertyAction PropertyName="Text" Value="PLAYER 2 WON!"/>
-                        <ei:PlaySoundAction Source="Sounds/WinEffect.mp3" Volume="0.3"/>
-                    </ei:DataTrigger>
-                </i:Interaction.Triggers>
+                <b:Interaction.Triggers>
+                    <b:PropertyChangedTrigger Binding="{Binding Text, ElementName=Status}">
+                        <b:ControlStoryboardAction Storyboard="{StaticResource StatusAnim}"/>
+                    </b:PropertyChangedTrigger>
+                    <b:DataTrigger Binding="{Binding State}" Value="Player1">
+                        <b:ChangePropertyAction PropertyName="Text" Value="PLAYER 1 TURN"/>
+                        <b:ChangePropertyAction PropertyName="Tag" Value="1"/>
+                    </b:DataTrigger>
+                    <b:DataTrigger Binding="{Binding State}" Value="Player2">
+                        <b:ChangePropertyAction PropertyName="Text" Value="PLAYER 2 TURN"/>
+                        <b:ChangePropertyAction PropertyName="Tag" Value="2"/>
+                    </b:DataTrigger>
+                    <b:DataTrigger Binding="{Binding State}" Value="Tie">
+                        <b:ChangePropertyAction PropertyName="Text" Value="GAME TIED!"/>
+                        <b:PlaySoundAction Source="Sounds/TieEffect.mp3" Volume="0.3"/>
+                    </b:DataTrigger>
+                    <b:DataTrigger Binding="{Binding State}" Comparison="GreaterThanOrEqual" Value="WinRow0">
+                        <b:Interaction.Behaviors>
+                            <b:ConditionBehavior>
+                                <b:ConditionalExpression>
+                                    <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=Status}" RightOperand="1"/>
+                                </b:ConditionalExpression>
+                            </b:ConditionBehavior>
+                        </b:Interaction.Behaviors>
+                        <b:ChangePropertyAction PropertyName="Text" Value="PLAYER 1 WON!"/>
+                        <b:PlaySoundAction Source="Sounds/WinEffect.mp3" Volume="0.3"/>
+                    </b:DataTrigger>
+                    <b:DataTrigger Binding="{Binding State}" Comparison="GreaterThanOrEqual" Value="WinRow0">
+                        <b:Interaction.Behaviors>
+                            <b:ConditionBehavior>
+                                <b:ConditionalExpression>
+                                    <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=Status}" RightOperand="2"/>
+                                </b:ConditionalExpression>
+                            </b:ConditionBehavior>
+                        </b:Interaction.Behaviors>
+                        <b:ChangePropertyAction PropertyName="Text" Value="PLAYER 2 WON!"/>
+                        <b:PlaySoundAction Source="Sounds/WinEffect.mp3" Volume="0.3"/>
+                    </b:DataTrigger>
+                </b:Interaction.Triggers>
             </TextBlock>
         </Viewbox>
         <Viewbox Grid.Row="1">
@@ -1100,35 +1100,35 @@
                     <noesis:CompositeTransform3D CenterX="100" CenterY="100"/>
                 </noesis:Element.Transform3D>
                 <UniformGrid x:Name="Cells" Rows="3" Columns="3" KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.DirectionalNavigation="Cycle">
-                    <i:Interaction.Triggers>
-                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow0">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinRow0Anim}"/>
-                        </ei:DataTrigger>
-                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow1">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinRow1Anim}"/>
-                        </ei:DataTrigger>
-                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow2">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinRow2Anim}"/>
-                        </ei:DataTrigger>
-                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinCol0">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinCol0Anim}"/>
-                        </ei:DataTrigger>
-                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinCol1">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinCol1Anim}"/>
-                        </ei:DataTrigger>
-                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinCol2">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinCol2Anim}"/>
-                        </ei:DataTrigger>
-                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinDiag1">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinDiag1Anim}"/>
-                        </ei:DataTrigger>
-                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinDiag2">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource WinDiag2Anim}"/>
-                        </ei:DataTrigger>
-                        <ei:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="Tie">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource TieAnim}"/>
-                        </ei:DataTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow0">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource WinRow0Anim}"/>
+                        </b:DataTrigger>
+                        <b:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow1">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource WinRow1Anim}"/>
+                        </b:DataTrigger>
+                        <b:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinRow2">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource WinRow2Anim}"/>
+                        </b:DataTrigger>
+                        <b:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinCol0">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource WinCol0Anim}"/>
+                        </b:DataTrigger>
+                        <b:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinCol1">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource WinCol1Anim}"/>
+                        </b:DataTrigger>
+                        <b:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinCol2">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource WinCol2Anim}"/>
+                        </b:DataTrigger>
+                        <b:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinDiag1">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource WinDiag1Anim}"/>
+                        </b:DataTrigger>
+                        <b:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="WinDiag2">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource WinDiag2Anim}"/>
+                        </b:DataTrigger>
+                        <b:DataTrigger Binding="{Binding State, Mode=OneWay}" Value="Tie">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource TieAnim}"/>
+                        </b:DataTrigger>
+                    </b:Interaction.Triggers>
                     <ToggleButton x:Name="Cell00" RenderTransformOrigin="0.5,0.5">
                         <ToggleButton.RenderTransform>
                             <TransformGroup>
@@ -1138,21 +1138,21 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </ToggleButton.RenderTransform>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="MouseEnter">
                                 <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index0}"/>
-                            </i:EventTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell00}" Value="{x:Static local:State.Player1}">
-                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell00}" Value="{x:Static local:State.Player2}">
-                                <ei:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                        </i:Interaction.Triggers>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="Click">
+                                <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index0}"/>
+                            </b:EventTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell00}" Value="{x:Static local:State.Player1}">
+                                <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell00}" Value="{x:Static local:State.Player2}">
+                                <b:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                        </b:Interaction.Triggers>
                     </ToggleButton>
                     <ToggleButton x:Name="Cell01" RenderTransformOrigin="0.5,0.5">
                         <ToggleButton.RenderTransform>
@@ -1163,21 +1163,21 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </ToggleButton.RenderTransform>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="MouseEnter">
                                 <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index1}"/>
-                            </i:EventTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell01}" Value="{x:Static local:State.Player1}">
-                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell01}" Value="{x:Static local:State.Player2}">
-                                <ei:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                        </i:Interaction.Triggers>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="Click">
+                                <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index1}"/>
+                            </b:EventTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell01}" Value="{x:Static local:State.Player1}">
+                                <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell01}" Value="{x:Static local:State.Player2}">
+                                <b:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                        </b:Interaction.Triggers>
                     </ToggleButton>
                     <ToggleButton x:Name="Cell02" RenderTransformOrigin="0.5,0.5">
                         <ToggleButton.RenderTransform>
@@ -1188,21 +1188,21 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </ToggleButton.RenderTransform>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="MouseEnter">
                                 <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index2}"/>
-                            </i:EventTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell02}" Value="{x:Static local:State.Player1}">
-                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell02}" Value="{x:Static local:State.Player2}">
-                                <ei:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                        </i:Interaction.Triggers>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="Click">
+                                <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index2}"/>
+                            </b:EventTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell02}" Value="{x:Static local:State.Player1}">
+                                <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell02}" Value="{x:Static local:State.Player2}">
+                                <b:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                        </b:Interaction.Triggers>
                     </ToggleButton>
                     <ToggleButton x:Name="Cell10" RenderTransformOrigin="0.5,0.5">
                         <ToggleButton.RenderTransform>
@@ -1213,21 +1213,21 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </ToggleButton.RenderTransform>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="MouseEnter">
                                 <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index3}"/>
-                            </i:EventTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell10}" Value="{x:Static local:State.Player1}">
-                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell10}" Value="{x:Static local:State.Player2}">
-                                <ei:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                        </i:Interaction.Triggers>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="Click">
+                                <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index3}"/>
+                            </b:EventTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell10}" Value="{x:Static local:State.Player1}">
+                                <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell10}" Value="{x:Static local:State.Player2}">
+                                <b:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                        </b:Interaction.Triggers>
                     </ToggleButton>
                     <ToggleButton x:Name="Cell11" RenderTransformOrigin="0.5,0.5">
                         <ToggleButton.RenderTransform>
@@ -1238,21 +1238,21 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </ToggleButton.RenderTransform>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="MouseEnter">
                                 <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index4}"/>
-                            </i:EventTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell11}" Value="{x:Static local:State.Player1}">
-                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell11}" Value="{x:Static local:State.Player2}">
-                                <ei:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                        </i:Interaction.Triggers>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="Click">
+                                <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index4}"/>
+                            </b:EventTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell11}" Value="{x:Static local:State.Player1}">
+                                <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell11}" Value="{x:Static local:State.Player2}">
+                                <b:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                        </b:Interaction.Triggers>
                     </ToggleButton>
                     <ToggleButton x:Name="Cell12" RenderTransformOrigin="0.5,0.5">
                         <ToggleButton.RenderTransform>
@@ -1263,21 +1263,21 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </ToggleButton.RenderTransform>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="MouseEnter">
                                 <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index5}"/>
-                            </i:EventTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell12}" Value="{x:Static local:State.Player1}">
-                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell12}" Value="{x:Static local:State.Player2}">
-                                <ei:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                        </i:Interaction.Triggers>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="Click">
+                                <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index5}"/>
+                            </b:EventTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell12}" Value="{x:Static local:State.Player1}">
+                                <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell12}" Value="{x:Static local:State.Player2}">
+                                <b:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                        </b:Interaction.Triggers>
                     </ToggleButton>
                     <ToggleButton x:Name="Cell20" RenderTransformOrigin="0.5,0.5">
                         <ToggleButton.RenderTransform>
@@ -1288,21 +1288,21 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </ToggleButton.RenderTransform>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="MouseEnter">
                                 <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index6}"/>
-                            </i:EventTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell20}" Value="{x:Static local:State.Player1}">
-                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell20}" Value="{x:Static local:State.Player2}">
-                                <ei:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                        </i:Interaction.Triggers>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="Click">
+                                <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index6}"/>
+                            </b:EventTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell20}" Value="{x:Static local:State.Player1}">
+                                <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell20}" Value="{x:Static local:State.Player2}">
+                                <b:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                        </b:Interaction.Triggers>
                     </ToggleButton>
                     <ToggleButton x:Name="Cell21" RenderTransformOrigin="0.5,0.5">
                         <ToggleButton.RenderTransform>
@@ -1313,21 +1313,21 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </ToggleButton.RenderTransform>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="MouseEnter">
                                 <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index7}"/>
-                            </i:EventTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell21}" Value="{x:Static local:State.Player1}">
-                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell21}" Value="{x:Static local:State.Player2}">
-                                <ei:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                        </i:Interaction.Triggers>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="Click">
+                                <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index7}"/>
+                            </b:EventTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell21}" Value="{x:Static local:State.Player1}">
+                                <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell21}" Value="{x:Static local:State.Player2}">
+                                <b:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                        </b:Interaction.Triggers>
                     </ToggleButton>
                     <ToggleButton x:Name="Cell22" RenderTransformOrigin="0.5,0.5">
                         <ToggleButton.RenderTransform>
@@ -1338,21 +1338,21 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </ToggleButton.RenderTransform>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="MouseEnter">
                                 <noesis:SetFocusAction/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                                <i:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index8}"/>
-                            </i:EventTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell22}" Value="{x:Static local:State.Player1}">
-                                <ei:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                            <ei:DataTrigger Binding="{Binding Content, ElementName=Cell22}" Value="{x:Static local:State.Player2}">
-                                <ei:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
-                            </ei:DataTrigger>
-                        </i:Interaction.Triggers>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="Click">
+                                <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
+                                <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index8}"/>
+                            </b:EventTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell22}" Value="{x:Static local:State.Player1}">
+                                <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                            <b:DataTrigger Binding="{Binding Content, ElementName=Cell22}" Value="{x:Static local:State.Player2}">
+                                <b:PlaySoundAction Source="Sounds/CrossEffect.mp3" Volume="0.1"/>
+                            </b:DataTrigger>
+                        </b:Interaction.Triggers>
                     </ToggleButton>
                 </UniformGrid>
                 <Grid>
@@ -1377,40 +1377,40 @@
                             <Border Background="#00FF0000"/>
                         </ControlTemplate>
                     </Button.Template>
-                    <i:Interaction.Triggers>
-                        <ei:DataTrigger Binding="{Binding State}" Comparison="GreaterThanOrEqual" Value="Tie">
-                            <ei:ChangePropertyAction PropertyName="Visibility" Value="Visible"/>
-                            <ei:ChangePropertyAction PropertyName="IsEnabled" Value="False" TargetName="Cells"/>
+                    <b:Interaction.Triggers>
+                        <b:DataTrigger Binding="{Binding State}" Comparison="GreaterThanOrEqual" Value="Tie">
+                            <b:ChangePropertyAction PropertyName="Visibility" Value="Visible"/>
+                            <b:ChangePropertyAction PropertyName="IsEnabled" Value="False" TargetName="Cells"/>
                             <noesis:SetFocusAction/>
-                        </ei:DataTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="Visibility" Value="Collapsed"/>
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource BoardFlip1Anim}"/>
-                        </i:EventTrigger>
-                        <ei:StoryboardCompletedTrigger Storyboard="{StaticResource BoardFlip1Anim}">
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell00"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell01"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell02"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell10"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell11"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell12"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell20"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell21"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell22"/>
-                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell00"/>
-                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell01"/>
-                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell02"/>
-                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell10"/>
-                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell11"/>
-                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell12"/>
-                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell20"/>
-                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell21"/>
-                            <ei:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell22"/>
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource BoardFlip2Anim}"/>
-                            <i:InvokeCommandAction Command="{Binding Start}"/>
-                            <ei:ChangePropertyAction PropertyName="IsEnabled" Value="True" TargetName="Cells"/>
-                        </ei:StoryboardCompletedTrigger>
-                    </i:Interaction.Triggers>
+                        </b:DataTrigger>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="Visibility" Value="Collapsed"/>
+                            <b:ControlStoryboardAction Storyboard="{StaticResource BoardFlip1Anim}"/>
+                        </b:EventTrigger>
+                        <b:StoryboardCompletedTrigger Storyboard="{StaticResource BoardFlip1Anim}">
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell00"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell01"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell02"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell10"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell11"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell12"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell20"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell21"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Cell22"/>
+                            <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell00"/>
+                            <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell01"/>
+                            <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell02"/>
+                            <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell10"/>
+                            <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell11"/>
+                            <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell12"/>
+                            <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell20"/>
+                            <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell21"/>
+                            <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell22"/>
+                            <b:ControlStoryboardAction Storyboard="{StaticResource BoardFlip2Anim}"/>
+                            <b:InvokeCommandAction Command="{Binding Start}"/>
+                            <b:ChangePropertyAction PropertyName="IsEnabled" Value="True" TargetName="Cells"/>
+                        </b:StoryboardCompletedTrigger>
+                    </b:Interaction.Triggers>
                 </Button>
             </Grid>
         </Viewbox>
@@ -1459,11 +1459,11 @@
                     </TextBlock.RenderTransform>
                 </TextBlock>
                 <TextBlock x:Name="ScorePlayer1" Text="{Binding ScorePlayer1, FallbackValue=0}" Foreground="White" Grid.Row="1" Grid.Column="0" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-                    <i:Interaction.Triggers>
-                        <ei:DataTrigger Binding="{Binding Text, ElementName=ScorePlayer1}" Comparison="NotEqual" Value="0">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource ScorePlayer1ChangedAnim}"/>
-                        </ei:DataTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:DataTrigger Binding="{Binding Text, ElementName=ScorePlayer1}" Comparison="NotEqual" Value="0">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource ScorePlayer1ChangedAnim}"/>
+                        </b:DataTrigger>
+                    </b:Interaction.Triggers>
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -1474,11 +1474,11 @@
                     </TextBlock.RenderTransform>
                 </TextBlock>
                 <TextBlock x:Name="ScoreTies" Text="{Binding ScoreTies, FallbackValue=0}" Foreground="White" Grid.Row="1" Grid.Column="1" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-                    <i:Interaction.Triggers>
-                        <ei:DataTrigger Binding="{Binding Text, ElementName=ScoreTies}" Comparison="NotEqual" Value="0">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource ScoreTiesChangedAnim}"/>
-                        </ei:DataTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:DataTrigger Binding="{Binding Text, ElementName=ScoreTies}" Comparison="NotEqual" Value="0">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource ScoreTiesChangedAnim}"/>
+                        </b:DataTrigger>
+                    </b:Interaction.Triggers>
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -1489,11 +1489,11 @@
                     </TextBlock.RenderTransform>
                 </TextBlock>
                 <TextBlock x:Name="ScorePlayer2" Text="{Binding ScorePlayer2, FallbackValue=0}" Foreground="White" Grid.Row="1" Grid.Column="2" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-                    <i:Interaction.Triggers>
-                        <ei:DataTrigger Binding="{Binding Text, ElementName=ScorePlayer2}" Comparison="NotEqual" Value="0">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource ScorePlayer2ChangedAnim}"/>
-                        </ei:DataTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:DataTrigger Binding="{Binding Text, ElementName=ScorePlayer2}" Comparison="NotEqual" Value="0">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource ScorePlayer2ChangedAnim}"/>
+                        </b:DataTrigger>
+                    </b:Interaction.Triggers>
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>

@@ -277,7 +277,6 @@ private:
     {
         RegisterComponent<DataBinding::App>();
         RegisterComponent<DataBinding::MainWindow>();
-        RegisterComponent<DataBinding::SolarSystem>();
         RegisterComponent<DataBinding::OrbitConverter>();
     }
 

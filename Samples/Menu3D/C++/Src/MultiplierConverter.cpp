@@ -37,3 +37,5 @@ bool MultiplierConverter::TryConvert(BaseComponent* value, const Type* targetTyp
 NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION_(Menu3D::MultiplierConverter, "Menu3D.MultiplierConverter")
+
+NS_END_COLD_REGION

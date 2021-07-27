@@ -7,14 +7,13 @@
 # Environment variable 'ANDROID_PLATFORM' must point to active platform (eg: C:\Android\SDK\platforms\android-30)
 # Toolchain (clang++), Java (javac) and Android Build Tools (dx, aapt, zipalign, apksigner) binaries must be added to 'PATH' environment variable
 
-include ../../../../../Config/Common.android.makeprops
-include ../../../../../Config/Debug/Debug.android.makeprops
-include ../../../../../Config/Profile/Profile.android.makeprops
-include ../../../../../Config/Release/Release.android.makeprops
-
 CC = i686-linux-android17-clang
 CXX = i686-linux-android17-clang++
 AR = i686-linux-android-ar
+
+CFLAGS_COMMON = -g -pipe -Wall -Werror -Wfatal-errors -Wtype-limits -fvisibility=hidden -fmerge-all-constants
+CXXFLAGS_COMMON = $(CFLAGS_COMMON) -std=c++11 -fno-exceptions -frtti -fvisibility-inlines-hidden -fno-threadsafe-statics
+LDFLAGS_COMMON = -Wextra -static-libstdc++
 
 SHELLTYPE = msdos
 ifeq (, $(ComSpec)$(COMSPEC))
@@ -74,13 +73,13 @@ ifeq ($(CONFIG), Debug)
   TARGET_APK = ../../../../../../Bin/android_x86/Samples.Gallery.apk
   INTERMEDIATE = build/Debug
   LIB_DIRS = 
-  LIBS = -lNoesisApp -landroid -llog -lNoesis
-  LIBS_DEPS = ../../../../../../Bin/android_x86/libNoesisApp.so ../../../../../../Bin/android_x86/libNoesis.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
-  CFLAGS = $(CFLAGS_DEBUG)
-  CXXFLAGS = $(CXXFLAGS_DEBUG)
-  LDFLAGS = $(LDFLAGS_DEBUG)
+  LIBS = -lNoesisApp -landroid -lNoesis -llog
+  LIBS_DEPS = ../../../../../../Bin/android_x86/libNoesis.so ../../../../../../Bin/android_x86/libNoesisApp.so
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Debug -I$(ANDROID_NDK)/sources/android/native_app_glue
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  CFLAGS = $(CFLAGS_COMMON) -D_DEBUG
+  CXXFLAGS = $(CXXFLAGS_COMMON) -D_DEBUG
+  LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
   AAPT_FLAGS = --debug-mode
 else ifeq ($(CONFIG), Profile)
   TARGET_DIR = ../../../../../../Bin/android_x86
@@ -88,13 +87,13 @@ else ifeq ($(CONFIG), Profile)
   TARGET_APK = ../../../../../../Bin/android_x86/Samples.Gallery.apk
   INTERMEDIATE = build/Profile
   LIB_DIRS = 
-  LIBS = -lNoesisApp -landroid -llog -lNoesis
-  LIBS_DEPS = ../../../../../../Bin/android_x86/libNoesisApp.so ../../../../../../Bin/android_x86/libNoesis.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Profile -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
-  CFLAGS = $(CFLAGS_PROFILE)
-  CXXFLAGS = $(CXXFLAGS_PROFILE)
-  LDFLAGS = $(LDFLAGS_PROFILE)
+  LIBS = -lNoesisApp -landroid -lNoesis -llog
+  LIBS_DEPS = ../../../../../../Bin/android_x86/libNoesis.so ../../../../../../Bin/android_x86/libNoesisApp.so
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Profile -I$(ANDROID_NDK)/sources/android/native_app_glue
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  CFLAGS = $(CFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
+  CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
+  LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
   AAPT_FLAGS = --debug-mode
 else ifeq ($(CONFIG), Release)
   TARGET_DIR = ../../../../../../Bin/android_x86
@@ -102,13 +101,13 @@ else ifeq ($(CONFIG), Release)
   TARGET_APK = ../../../../../../Bin/android_x86/Samples.Gallery.apk
   INTERMEDIATE = build/Release
   LIB_DIRS = 
-  LIBS = -lNoesisApp -landroid -llog -lNoesis
-  LIBS_DEPS = ../../../../../../Bin/android_x86/libNoesisApp.so ../../../../../../Bin/android_x86/libNoesis.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Release -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE
-  CFLAGS = $(CFLAGS_RELEASE)
-  CXXFLAGS = $(CXXFLAGS_RELEASE)
-  LDFLAGS = $(LDFLAGS_RELEASE)
+  LIBS = -lNoesisApp -landroid -lNoesis -llog
+  LIBS_DEPS = ../../../../../../Bin/android_x86/libNoesis.so ../../../../../../Bin/android_x86/libNoesisApp.so
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Release -I$(ANDROID_NDK)/sources/android/native_app_glue
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE
+  CFLAGS = $(CFLAGS_COMMON) -Ofast -flto -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
+  CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -flto -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
+  LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
   AAPT_FLAGS = 
 else
   $(error Invalid configuration '$(CONFIG)')
@@ -116,7 +115,7 @@ endif
 
 PCH =
 PCHFLAGS =
-DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Resources.xaml.bin.h $(INTERMEDIATE)/Button.xaml.bin.h $(INTERMEDIATE)/RepeatButton.xaml.bin.h $(INTERMEDIATE)/ToggleButton.xaml.bin.h $(INTERMEDIATE)/CheckBox.xaml.bin.h $(INTERMEDIATE)/RadioButton.xaml.bin.h $(INTERMEDIATE)/Slider.xaml.bin.h $(INTERMEDIATE)/TextBlock.xaml.bin.h $(INTERMEDIATE)/TextBox.xaml.bin.h $(INTERMEDIATE)/PasswordBox.xaml.bin.h $(INTERMEDIATE)/Hyperlink.xaml.bin.h $(INTERMEDIATE)/ItemsControl.xaml.bin.h $(INTERMEDIATE)/ComboBox.xaml.bin.h $(INTERMEDIATE)/ListBox.xaml.bin.h $(INTERMEDIATE)/ListView.xaml.bin.h $(INTERMEDIATE)/TreeView.xaml.bin.h $(INTERMEDIATE)/TabControl.xaml.bin.h $(INTERMEDIATE)/Canvas.xaml.bin.h $(INTERMEDIATE)/StackPanel.xaml.bin.h $(INTERMEDIATE)/WrapPanel.xaml.bin.h $(INTERMEDIATE)/DockPanel.xaml.bin.h $(INTERMEDIATE)/Grid.xaml.bin.h $(INTERMEDIATE)/UniformGrid.xaml.bin.h $(INTERMEDIATE)/GroupBox.xaml.bin.h $(INTERMEDIATE)/Expander.xaml.bin.h $(INTERMEDIATE)/ScrollViewer.xaml.bin.h $(INTERMEDIATE)/Menu.xaml.bin.h $(INTERMEDIATE)/ContextMenu.xaml.bin.h $(INTERMEDIATE)/ToolBar.xaml.bin.h $(INTERMEDIATE)/StatusBar.xaml.bin.h $(INTERMEDIATE)/ProgressBar.xaml.bin.h $(INTERMEDIATE)/ToolTip.xaml.bin.h $(INTERMEDIATE)/Brushes.xaml.bin.h $(INTERMEDIATE)/Image.xaml.bin.h $(INTERMEDIATE)/Effects.xaml.bin.h $(INTERMEDIATE)/Animation.xaml.bin.h $(INTERMEDIATE)/Muli-Regular.ttf.bin.h $(INTERMEDIATE)/Muli-Bold.ttf.bin.h $(INTERMEDIATE)/Muli-Italic.ttf.bin.h $(INTERMEDIATE)/Caladea-Regular.ttf.bin.h $(INTERMEDIATE)/CourierPrime-Regular.ttf.bin.h $(INTERMEDIATE)/Aero\ Matics\ Regular.ttf.bin.h $(INTERMEDIATE)/WidgetIcons.ttf.bin.h $(INTERMEDIATE)/file.png.bin.h $(INTERMEDIATE)/folder-closed.png.bin.h $(INTERMEDIATE)/folder-open.png.bin.h $(INTERMEDIATE)/recycling-bin.png.bin.h $(INTERMEDIATE)/floppy-disk.png.bin.h $(INTERMEDIATE)/search.png.bin.h $(INTERMEDIATE)/Nature.png.bin.h
+DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Resources.xaml.bin.h $(INTERMEDIATE)/Button.xaml.bin.h $(INTERMEDIATE)/RepeatButton.xaml.bin.h $(INTERMEDIATE)/ToggleButton.xaml.bin.h $(INTERMEDIATE)/CheckBox.xaml.bin.h $(INTERMEDIATE)/RadioButton.xaml.bin.h $(INTERMEDIATE)/Slider.xaml.bin.h $(INTERMEDIATE)/TextBlock.xaml.bin.h $(INTERMEDIATE)/TextBox.xaml.bin.h $(INTERMEDIATE)/PasswordBox.xaml.bin.h $(INTERMEDIATE)/Hyperlink.xaml.bin.h $(INTERMEDIATE)/ItemsControl.xaml.bin.h $(INTERMEDIATE)/ComboBox.xaml.bin.h $(INTERMEDIATE)/ListBox.xaml.bin.h $(INTERMEDIATE)/ListView.xaml.bin.h $(INTERMEDIATE)/TreeView.xaml.bin.h $(INTERMEDIATE)/TabControl.xaml.bin.h $(INTERMEDIATE)/Canvas.xaml.bin.h $(INTERMEDIATE)/StackPanel.xaml.bin.h $(INTERMEDIATE)/WrapPanel.xaml.bin.h $(INTERMEDIATE)/DockPanel.xaml.bin.h $(INTERMEDIATE)/Grid.xaml.bin.h $(INTERMEDIATE)/UniformGrid.xaml.bin.h $(INTERMEDIATE)/GroupBox.xaml.bin.h $(INTERMEDIATE)/Expander.xaml.bin.h $(INTERMEDIATE)/ScrollViewer.xaml.bin.h $(INTERMEDIATE)/Menu.xaml.bin.h $(INTERMEDIATE)/ContextMenu.xaml.bin.h $(INTERMEDIATE)/ToolBar.xaml.bin.h $(INTERMEDIATE)/StatusBar.xaml.bin.h $(INTERMEDIATE)/ProgressBar.xaml.bin.h $(INTERMEDIATE)/ToolTip.xaml.bin.h $(INTERMEDIATE)/Brushes.xaml.bin.h $(INTERMEDIATE)/Image.xaml.bin.h $(INTERMEDIATE)/Effects.xaml.bin.h $(INTERMEDIATE)/Blending.xaml.bin.h $(INTERMEDIATE)/Animation.xaml.bin.h $(INTERMEDIATE)/Muli-Regular.ttf.bin.h $(INTERMEDIATE)/Muli-Bold.ttf.bin.h $(INTERMEDIATE)/Muli-Italic.ttf.bin.h $(INTERMEDIATE)/Caladea-Regular.ttf.bin.h $(INTERMEDIATE)/CourierPrime-Regular.ttf.bin.h $(INTERMEDIATE)/Aero\ Matics\ Regular.ttf.bin.h $(INTERMEDIATE)/WidgetIcons.ttf.bin.h $(INTERMEDIATE)/file.png.bin.h $(INTERMEDIATE)/folder-closed.png.bin.h $(INTERMEDIATE)/folder-open.png.bin.h $(INTERMEDIATE)/recycling-bin.png.bin.h $(INTERMEDIATE)/floppy-disk.png.bin.h $(INTERMEDIATE)/search.png.bin.h $(INTERMEDIATE)/Nature.png.bin.h
 
 .SUFFIXES:
 .DELETE_ON_ERROR:
@@ -149,7 +148,7 @@ $(INTERMEDIATE)/android_native_app_glue.o: $(ANDROID_NDK)/sources/android/native
 
 $(INTERMEDIATE)/%.o: ../../../../Samples/Gallery/Src/%.cpp $(PCH) | $(INTERMEDIATE) data
 	@echo [CXX] [Samples/Gallery] $(notdir $<)
-	$(Q)$(CXX) $(CXXFLAGS) $(PCHFLAGS) $(INCLUDES) $(DEFINES) -fno-rtti -march=i686 -mtune=intel -mssse3 -mfpmath=sse -m32 -fPIC -c -MMD -MF $(basename $@).d.tmp -MP -o $@ $< && $(call MV,$(basename $@).d.tmp,$(basename $@).d)
+	$(Q)$(CXX) $(CXXFLAGS) $(PCHFLAGS) $(INCLUDES) $(DEFINES) -march=i686 -mtune=intel -mssse3 -mfpmath=sse -m32 -fPIC -c -MMD -MF $(basename $@).d.tmp -MP -o $@ $< && $(call MV,$(basename $@).d.tmp,$(basename $@).d)
 
 	$(Q)$(call FIXSLASHES,$(@:.o=.d))
 
@@ -307,6 +306,10 @@ $(INTERMEDIATE)/Effects.xaml.bin.h: ../../../../Samples/Gallery/Data/Samples/Eff
 	@echo [BIN] [Samples/Gallery] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/Gallery/Data/Samples/Effects.xaml" > "$(INTERMEDIATE)/Effects.xaml.bin.h" 
 
+$(INTERMEDIATE)/Blending.xaml.bin.h: ../../../../Samples/Gallery/Data/Samples/Blending.xaml | $(INTERMEDIATE)
+	@echo [BIN] [Samples/Gallery] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/Gallery/Data/Samples/Blending.xaml" > "$(INTERMEDIATE)/Blending.xaml.bin.h" 
+
 $(INTERMEDIATE)/Animation.xaml.bin.h: ../../../../Samples/Gallery/Data/Samples/Animation.xaml | $(INTERMEDIATE)
 	@echo [BIN] [Samples/Gallery] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/Gallery/Data/Samples/Animation.xaml" > "$(INTERMEDIATE)/Animation.xaml.bin.h" 
@@ -389,8 +392,8 @@ $(INTERMEDIATE)/Samples.Gallery-unsigned.apk: $(TARGET) $(LIBS_DEPS) $(INTERMEDI
 	@echo [AAPT] $(notdir $@)
 	$(Q)$(call MKDIR,$(INTERMEDIATE)/apk/lib/x86)
 	$(Q)$(call CP,$(TARGET),$(INTERMEDIATE)/apk/lib/x86)
-	$(Q)$(call CP,../../../../../../Bin/android_x86/libNoesisApp.so,$(INTERMEDIATE)/apk/lib/x86)
 	$(Q)$(call CP,../../../../../../Bin/android_x86/libNoesis.so,$(INTERMEDIATE)/apk/lib/x86)
+	$(Q)$(call CP,../../../../../../Bin/android_x86/libNoesisApp.so,$(INTERMEDIATE)/apk/lib/x86)
 	$(Q)aapt package -f -S res -M AndroidManifest.xml $(AAPT_FLAGS) -I $(ANDROID_PLATFORM)/android.jar -F $(INTERMEDIATE)/Samples.Gallery-unsigned.apk $(INTERMEDIATE)/apk
 
 $(INTERMEDIATE)/Samples.Gallery-unsigned-aligned.apk: $(INTERMEDIATE)/Samples.Gallery-unsigned.apk

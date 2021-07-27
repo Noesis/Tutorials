@@ -117,6 +117,8 @@ NS_IMPLEMENT_REFLECTION(DropItemBehavior, "Inventory.DropItemBehavior")
         PropertyMetadata::Create(Ptr<BaseCommand>()));
 }
 
+NS_END_COLD_REGION
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const Noesis::DependencyProperty* DropItemBehavior::IsDragOverProperty;
 const Noesis::DependencyProperty* DropItemBehavior::DropCommandProperty;

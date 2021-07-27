@@ -50,7 +50,6 @@ public:
         if (rectangle != 0)
         {
             Panel::SetZIndex(rectangle, ++_index);
-            rectangle->SetStroke(Brushes::White());
             e.mode = ManipulationModes_All;
             e.manipulationContainer = (Visual*)FindName("root");
             e.handled = true;
@@ -59,13 +58,25 @@ public:
         ParentClass::OnManipulationStarting(e);
     }
 
+    void OnManipulationStarted(const ManipulationStartedEventArgs& e) override
+    {
+        Noesis::Rectangle* rectangle = DynamicCast<Noesis::Rectangle*>(e.source);
+        if (rectangle != 0)
+        {
+            rectangle->SetStroke(Brushes::White());
+            e.handled = true;
+        }
+
+        ParentClass::OnManipulationStarted(e);
+    }
+
     void OnManipulationInertiaStarting(const ManipulationInertiaStartingEventArgs& e) override
     {
         Noesis::Rectangle* rectangle = DynamicCast<Noesis::Rectangle*>(e.source);
         if (rectangle != 0)
         {
             e.translationBehavior.desiredDeceleration = 360.0f / (100.0f * 1000.0f);
-            e.rotationBehavior.desiredDeceleration = 360.0f / (100.0f * 1000.0f);
+            e.rotationBehavior.desiredDeceleration = 50.0f / (100.0f * 1000.0f);
             e.expansionBehavior.desiredDeceleration = 300.0f / (100.0f * 1000.0f);
             e.handled = true;
         }

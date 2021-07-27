@@ -211,3 +211,5 @@ NS_IMPLEMENT_REFLECTION_ENUM(TicTacToe::State, "TicTacToe.State")
     NsVal("WinDiag1", State::WinDiag1);
     NsVal("WinDiag2", State::WinDiag2);
 }
+
+NS_END_COLD_REGION

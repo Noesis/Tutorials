@@ -3,14 +3,13 @@
 # Parallel builds can be enabled using the environment variable MAKEFLAGS (eg: MAKEFLAGS="-j 4")
 # For parallel execution in Windows, Make 4.0 or better is required
 
-include ../../../../../Config/Common.makeprops
-include ../../../../../Config/Debug/Debug.makeprops
-include ../../../../../Config/Profile/Profile.makeprops
-include ../../../../../Config/Release/Release.makeprops
-
 CC = arm-linux-gnueabihf-gcc
 CXX = arm-linux-gnueabihf-g++
 AR = arm-linux-gnueabihf-ar
+
+CFLAGS_COMMON = -g -pipe -Wall -Werror -Wfatal-errors -Wtype-limits -Wno-maybe-uninitialized -fvisibility=hidden -fmerge-all-constants
+CXXFLAGS_COMMON = $(CFLAGS_COMMON) -std=c++11 -fno-exceptions -frtti -fvisibility-inlines-hidden -fno-threadsafe-statics
+LDFLAGS_COMMON = -Wextra
 
 SHELLTYPE = msdos
 ifeq (, $(ComSpec)$(COMSPEC))
@@ -69,37 +68,37 @@ ifeq ($(CONFIG), Debug)
   TARGET = ../../../../../../Bin/linux_arm/Samples.Commands
   INTERMEDIATE = build/Debug
   LIB_DIRS = 
-  LIBS = -lNoesisApp -lNoesis
+  LIBS = -lNoesis -lNoesisApp
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
-  CFLAGS = $(CFLAGS_DEBUG)
-  CXXFLAGS = $(CXXFLAGS_DEBUG)
-  LDFLAGS = $(LDFLAGS_DEBUG)
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  CFLAGS = $(CFLAGS_COMMON) -D_DEBUG
+  CXXFLAGS = $(CXXFLAGS_COMMON) -D_DEBUG
+  LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
 else ifeq ($(CONFIG), Profile)
   TARGET_DIR = ../../../../../../Bin/linux_arm
   TARGET = ../../../../../../Bin/linux_arm/Samples.Commands
   INTERMEDIATE = build/Profile
   LIB_DIRS = 
-  LIBS = -lNoesisApp -lNoesis
+  LIBS = -lNoesis -lNoesisApp
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
-  CFLAGS = $(CFLAGS_PROFILE)
-  CXXFLAGS = $(CXXFLAGS_PROFILE)
-  LDFLAGS = $(LDFLAGS_PROFILE)
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  CFLAGS = $(CFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
+  CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
+  LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
 else ifeq ($(CONFIG), Release)
   TARGET_DIR = ../../../../../../Bin/linux_arm
   TARGET = ../../../../../../Bin/linux_arm/Samples.Commands
   INTERMEDIATE = build/Release
   LIB_DIRS = 
-  LIBS = -lNoesisApp -lNoesis
+  LIBS = -lNoesis -lNoesisApp
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE
-  CFLAGS = $(CFLAGS_RELEASE)
-  CXXFLAGS = $(CXXFLAGS_RELEASE)
-  LDFLAGS = $(LDFLAGS_RELEASE)
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE
+  CFLAGS = $(CFLAGS_COMMON) -Ofast -flto=jobserver -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
+  CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -flto=jobserver -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
+  LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
 else
   $(error Invalid configuration '$(CONFIG)')
 endif

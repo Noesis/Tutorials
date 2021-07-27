@@ -30,3 +30,5 @@ void MainMenu::InitializeComponent()
 NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION_(Menu3D::MainMenu, "Menu3D.MainMenu")
+
+NS_END_COLD_REGION

@@ -158,6 +158,8 @@ NS_IMPLEMENT_REFLECTION(DragItemBehavior, "Inventory.DragItemBehavior")
         PropertyMetadata::Create(Ptr<BaseCommand>()));
 }
 
+NS_END_COLD_REGION
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const Noesis::DependencyProperty* DragItemBehavior::DragStartOffsetProperty;
 const Noesis::DependencyProperty* DragItemBehavior::StartDragCommandProperty;

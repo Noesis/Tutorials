@@ -9,6 +9,7 @@
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/ReflectionImplementEnum.h>
 #include <NsGui/BitmapImage.h>
+#include <NsGui/Uri.h>
 
 
 using namespace QuestLog;
@@ -200,3 +201,5 @@ NS_IMPLEMENT_REFLECTION_ENUM(QuestDifficulty)
     NsVal("Normal", QuestDifficulty::Normal);
     NsVal("Hard", QuestDifficulty::Hard);
 }
+
+NS_END_COLD_REGION

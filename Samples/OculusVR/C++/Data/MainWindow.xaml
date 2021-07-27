@@ -5,7 +5,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
   xmlns:local="clr-namespace:Oculus3D"
-  xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+  xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
   mc:Ignorable="d"
   Title="MainWindow"
   FontFamily="Fonts/#Inconsolata"
@@ -1022,211 +1022,211 @@
               </Line.Stroke>
             </Line>
             <Button Grid.Row="3" Grid.Column="0" Content="SYS">
-              <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="0" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="0.1"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="-0.25" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="0"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys4}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="-0.5" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="-0.25"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys3}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="-0.75" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="-0.5"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys2}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="-1" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="-0.75"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys1}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="0.1" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="-1"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys0}"/>
-                </i:EventTrigger>
-              </i:Interaction.Triggers>
+              <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="0" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="0.1"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="-0.25" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="0"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys4}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="-0.5" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="-0.25"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys3}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="-0.75" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="-0.5"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys2}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="-1" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="-0.75"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys1}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerSys}" RightOperand="0.1" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerSys" Value="-1"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergySys0}"/>
+                </b:EventTrigger>
+              </b:Interaction.Triggers>
             </Button>
             <Button Grid.Row="3" Grid.Column="1" Content="ENG">
-              <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="0" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="0.1"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="-0.25" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="0"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng4}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="-0.5" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="-0.25"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng3}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="-0.75" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="-0.5"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng2}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="-1" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="-0.75"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng1}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="0.1" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="-1"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng0}"/>
-                </i:EventTrigger>
-              </i:Interaction.Triggers>
+              <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="0" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="0.1"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="-0.25" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="0"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng4}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="-0.5" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="-0.25"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng3}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="-0.75" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="-0.5"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng2}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="-1" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="-0.75"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng1}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerEng}" RightOperand="0.1" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerEng" Value="-1"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyEng0}"/>
+                </b:EventTrigger>
+              </b:Interaction.Triggers>
             </Button>
             <Button Grid.Row="3" Grid.Column="2" Content="WEP">
-              <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="0" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="0.1"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="-0.25" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="0"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep4}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="-0.5" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="-0.25"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep3}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="-0.75" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="-0.5"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep2}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="-1" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="-0.75"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep1}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="Click">
-                  <i:Interaction.Behaviors>
-                    <ei:ConditionBehavior>
-                      <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="0.1" />
-                      </ei:ConditionalExpression>
-                    </ei:ConditionBehavior>
-                  </i:Interaction.Behaviors>
-                  <ei:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="-1"/>
-                  <ei:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep0}"/>
-                </i:EventTrigger>
-              </i:Interaction.Triggers>
+              <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="0" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="0.1"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="-0.25" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="0"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep4}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="-0.5" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="-0.25"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep3}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="-0.75" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="-0.5"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep2}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="-1" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="-0.75"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep1}"/>
+                </b:EventTrigger>
+                <b:EventTrigger EventName="Click">
+                  <b:Interaction.Behaviors>
+                    <b:ConditionBehavior>
+                      <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Tag, ElementName=PowerWep}" RightOperand="0.1" />
+                      </b:ConditionalExpression>
+                    </b:ConditionBehavior>
+                  </b:Interaction.Behaviors>
+                  <b:ChangePropertyAction PropertyName="Tag" TargetName="PowerWep" Value="-1"/>
+                  <b:ControlStoryboardAction Storyboard="{StaticResource Anim.EnergyWep0}"/>
+                </b:EventTrigger>
+              </b:Interaction.Triggers>
             </Button>
           </Grid>
           <Grid Grid.Column="2" Height="360" Margin="300,-30,-300,0">

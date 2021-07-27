@@ -13,6 +13,7 @@
 
 #define WIN32_LEAN_AND_MEAN 1
 
+struct IUnknown;
 #include <windows.h>
 #include <ShellScalingApi.h>
 #include <GL/gl.h>
@@ -47,7 +48,7 @@
 
 
 #define GL_FRAMEBUFFER      0x8D40
-typedef  void (WINAPI* PFNGLBINDFRAMEBUFFERPROC)(GLenum target, GLuint framebuffer);
+typedef void (WINAPI* PFNGLBINDFRAMEBUFFERPROC)(GLenum target, GLuint framebuffer);
 PFNGLBINDFRAMEBUFFERPROC glBindFramebuffer;
 
 
@@ -185,7 +186,7 @@ void glutInitWindowSize(int width, int height)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-int glutCreateWindow(char *name)
+int glutCreateWindow(const char *name)
 {
     // Window class
     WNDCLASSEXA wc = {};
@@ -221,6 +222,14 @@ int glutCreateWindow(char *name)
     SetPixelFormat(GLUT::hDC, pixelFormat, &pfd);
     HGLRC hRC = wglCreateContext(GLUT::hDC);
     wglMakeCurrent(GLUT::hDC, hRC);
+
+    typedef BOOL (WINAPI *PFNWGLSWAPINTERVALEXTPROC)(int);
+    PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT = 0;
+    wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
+    if (wglSwapIntervalEXT != 0)
+    {
+        wglSwapIntervalEXT(1);
+    }
 
     glBindFramebuffer = (PFNGLBINDFRAMEBUFFERPROC)wglGetProcAddress("glBindFramebuffer");
     assert(glBindFramebuffer != 0);

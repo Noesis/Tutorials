@@ -86,7 +86,7 @@ const char* ViewModel::GetPlatform() const
 {
 #if defined(NS_PLATFORM_XBOX_ONE) || defined(NS_PLATFORM_NX)
     return "XBOX";
-#elif defined(NS_PLATFORM_PS4)
+#elif defined(NS_PLATFORM_PS4) || defined(NS_PLATFORM_PS5)
     return "PS4";
 #else
     return "PC";
@@ -197,3 +197,5 @@ NS_IMPLEMENT_REFLECTION_ENUM(State, "Menu3D.State")
     NsVal("Start", State::Start);
     NsVal("Settings", State::Settings);
 }
+
+NS_END_COLD_REGION

@@ -3,13 +3,13 @@
 # Parallel builds can be enabled using the environment variable MAKEFLAGS (eg: MAKEFLAGS="-j 4")
 # For parallel execution in Windows, Make 4.0 or better is required
 
-include ../../../../../Config/Common.wasm.makeprops
-include ../../../../../Config/Debug/Debug.wasm.makeprops
-include ../../../../../Config/Profile/Profile.wasm.makeprops
-include ../../../../../Config/Release/Release.wasm.makeprops
-
 CC = emcc
 CXX = em++
+AR = emar
+
+CFLAGS_COMMON = -pipe -Wall -Werror -Wfatal-errors -Wtype-limits
+CXXFLAGS_COMMON = $(CFLAGS_COMMON) -std=c++11 -fno-exceptions -frtti -fno-threadsafe-statics
+LDFLAGS_COMMON = -s USE_WEBGL2=1 -s NO_FILESYSTEM=1 -s WASM=1 -s INITIAL_MEMORY=67108864 -s EXPORTED_FUNCTIONS='["_malloc","_free"]'
 
 SHELLTYPE = msdos
 ifeq (, $(ComSpec)$(COMSPEC))
@@ -72,10 +72,10 @@ ifeq ($(CONFIG), Debug)
   LIBS = 
   LIBS_DEPS = 
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
-  CFLAGS = $(CFLAGS_DEBUG)
-  CXXFLAGS = $(CXXFLAGS_DEBUG)
-  LDFLAGS = $(LDFLAGS_DEBUG)
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  CFLAGS = $(CFLAGS_COMMON) -g -D_DEBUG
+  CXXFLAGS = $(CXXFLAGS_COMMON) -g -D_DEBUG
+  LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
 else ifeq ($(CONFIG), Profile)
   TARGET_DIR = ../../../../../../Bin/wasm
   TARGET = ../../../../../../Bin/wasm/Samples.HelloWorld.bc
@@ -85,10 +85,10 @@ else ifeq ($(CONFIG), Profile)
   LIBS = 
   LIBS_DEPS = 
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
-  CFLAGS = $(CFLAGS_PROFILE)
-  CXXFLAGS = $(CXXFLAGS_PROFILE)
-  LDFLAGS = $(LDFLAGS_PROFILE)
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  CFLAGS = $(CFLAGS_COMMON) -Oz -DNDEBUG
+  CXXFLAGS = $(CXXFLAGS_COMMON) -Oz -DNDEBUG
+  LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
 else ifeq ($(CONFIG), Release)
   TARGET_DIR = ../../../../../../Bin/wasm
   TARGET = ../../../../../../Bin/wasm/Samples.HelloWorld.bc
@@ -98,10 +98,10 @@ else ifeq ($(CONFIG), Release)
   LIBS = 
   LIBS_DEPS = 
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.0.7 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY
-  CFLAGS = $(CFLAGS_RELEASE)
-  CXXFLAGS = $(CXXFLAGS_RELEASE)
-  LDFLAGS = $(LDFLAGS_RELEASE)
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY
+  CFLAGS = $(CFLAGS_COMMON) -Oz -DNDEBUG -flto
+  CXXFLAGS = $(CXXFLAGS_COMMON) -Oz -DNDEBUG -flto
+  LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
 else
   $(error Invalid configuration '$(CONFIG)')
 endif
@@ -152,14 +152,17 @@ $(INTERMEDIATE)/Aero\ Matics\ Regular.ttf.bin.h: ../../../../Samples/HelloWorld/
 	$(Q)$(BIN2H) "../../../../Samples/HelloWorld/Data/Aero Matics Regular.ttf" > "$(INTERMEDIATE)/Aero Matics Regular.ttf.bin.h" 
 
 $(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/Main.o | $(TARGET_DIR)
-	@echo [LD] $(notdir $@)
-	+$(Q)$(CXX) $(LDFLAGS) -r $(LIB_DIRS) -o $(TARGET) @$(CONFIG).rsp $(LIBS)
+	@echo [AR] $(notdir $@)
+	$(Q)$(AR) rcs $(TARGET) @$(CONFIG).rsp
 
 $(TARGET_HTML): $(TARGET) ../../../../../../Bin/wasm/Noesis.bc ../../../../../../Bin/wasm/NoesisApp.bc
 	@echo [HTML] $(notdir $@)
 	$(Q)$(CC) $(LDFLAGS) $(TARGET) ../../../../../../Bin/wasm/Noesis.bc ../../../../../../Bin/wasm/NoesisApp.bc -o $(basename $(TARGET)).html --shell-file shell.html
 
 -include $(INTERMEDIATE)/Main.d
+
+server:
+	$(Q)python3 -m http.server --bind 127.0.0.1 --directory $(TARGET_DIR)
 
 clean:
 	@echo ==== [Samples.HelloWorld] Cleaning '$(CONFIG)' configuration ====

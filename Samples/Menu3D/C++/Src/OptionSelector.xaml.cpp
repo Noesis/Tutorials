@@ -235,6 +235,8 @@ NS_IMPLEMENT_REFLECTION(Menu3D::OptionSelector, "Menu3D.OptionSelector")
         PropertyMetadata::Create(Ptr<BaseComponent>()));
 }
 
+NS_END_COLD_REGION
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const DependencyProperty* OptionSelector::SelectedIndexProperty;
 const DependencyProperty* OptionSelector::SelectedOptionProperty;

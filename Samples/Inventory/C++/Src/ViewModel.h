@@ -22,6 +22,10 @@ namespace NoesisApp
 {
 class DelegateCommand;
 }
+namespace Noesis
+{
+class ImageSource;
+}
 
 namespace Inventory
 {
@@ -49,7 +53,7 @@ struct Item final: public Noesis::BaseComponent
     int mana;
     int dps;
     int armor;
-    Noesis::Rect icon;
+    Noesis::Ptr<Noesis::ImageSource> icon;
 
     NS_DECLARE_REFLECTION(Item, BaseComponent)
 };

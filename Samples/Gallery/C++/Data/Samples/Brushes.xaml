@@ -3,11 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
     mc:Ignorable="d"
-    d:DesignWidth="1280" d:DesignHeight="1720"
+    d:DesignWidth="1280" d:DesignHeight="2000"
     Style="{StaticResource SampleControlStyle}"
     Header="Brushes"
-    Tag="https://www.noesisengine.com/docs/Gui.Core._Blush.html">
+    Tag="https://www.noesisengine.com/docs/Gui.Core._Brush.html">
 
   <StackPanel>
     <TextBlock Style="{StaticResource SampleSectionDesc}" Text="A Brush defines how to fill the interiors of panels and graphical shapes such as rectangles, ellipses and paths."/>
@@ -276,6 +277,74 @@
           </Rectangle.Fill>
         </Rectangle>
       </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/71a66f5a3d815a9087aff0a731aa1861" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="BrushShader"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run Text="This is an extension for the"/>
+            <Run FontWeight="Bold">ImageBrush</Run>
+            <Run Text="that allows users to paint a region using a custom shader. Next there are examples of a monochrome filter, a conic gradient and some animated waves created using pixel shaders."/>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Margin="20,0">
+          <StackPanel>
+            <TextBlock Text="Monochrome" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,4"/>
+            <Rectangle Width="120" Height="80">
+              <Rectangle.Fill>
+                <ImageBrush ImageSource="Images/Nature.png">
+                  <noesis:Brush.Shader>
+                    <noesis:MonochromeBrushShader Color="White"/>
+                  </noesis:Brush.Shader>
+                </ImageBrush>
+              </Rectangle.Fill>
+            </Rectangle>
+          </StackPanel>
+          <StackPanel Margin="30,0,0,00">
+            <TextBlock Text="ConicGradient" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,4"/>
+            <Ellipse Width="120" Height="80">
+              <Ellipse.Fill>
+                <ImageBrush ImageSource="Images/Nature.png">
+                  <noesis:Brush.Shader>
+                    <noesis:ConicGradientBrushShader>
+                      <GradientStop Offset="0" Color="Red"/>
+                      <GradientStop Offset="0.25" Color="Yellow"/>
+                      <GradientStop Offset="0.5" Color="GreenYellow"/>
+                      <GradientStop Offset="0.75" Color="DodgerBlue"/>
+                      <GradientStop Offset="1" Color="Purple"/>
+                    </noesis:ConicGradientBrushShader>
+                  </noesis:Brush.Shader>
+                </ImageBrush>
+              </Ellipse.Fill>
+            </Ellipse>
+          </StackPanel>
+          <StackPanel Margin="30,0,0,0">
+            <StackPanel.Resources>
+              <Storyboard x:Key="AnimWaves">
+                <DoubleAnimation To="8640000" Duration="100.0:0:0" Storyboard.TargetName="waves" Storyboard.TargetProperty="Time"/>
+              </Storyboard>
+            </StackPanel.Resources>
+            <StackPanel.Triggers>
+              <EventTrigger RoutedEvent="Panel.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource AnimWaves}"/>
+              </EventTrigger>
+            </StackPanel.Triggers>
+            <TextBlock Text="Waves" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,4"/>
+            <Path Data="M0,10L10,0 110,0 120,10 120,70 110,80 10,80 0,70z">
+              <Path.Fill>
+                <ImageBrush ImageSource="Images/Nature.png">
+                  <noesis:Brush.Shader>
+                    <noesis:WavesBrushShader x:Name="waves" Time="0"/>
+                  </noesis:Brush.Shader>
+                </ImageBrush>
+              </Path.Fill>
+            </Path>
+          </StackPanel>
+        </StackPanel>
+      </Grid>
     </HeaderedContentControl>
   </StackPanel>
 </HeaderedContentControl>

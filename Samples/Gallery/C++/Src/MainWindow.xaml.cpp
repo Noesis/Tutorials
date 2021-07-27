@@ -131,6 +131,7 @@ MainWindow::MainWindow(): mSelectedSample(0), mSelectedThemeColor(0), mSelectedT
         category->samples.Add(MakePtr<Sample>("Brushes", "e"));
         category->samples.Add(MakePtr<Sample>("Image", "f"));
         category->samples.Add(MakePtr<Sample>("Effects", "g"));
+        category->samples.Add(MakePtr<Sample>("Blending", "w"));
         category->samples.Add(MakePtr<Sample>("Animation", "h"));
         mCategories.Add(category);
     }
@@ -155,9 +156,9 @@ MainWindow::MainWindow(): mSelectedSample(0), mSelectedThemeColor(0), mSelectedT
 
     SetDataContext(this);
 
-    SizeChanged() += [this](BaseComponent*, const SizeChangedEventArgs& e)
+    Noesis::Panel* windowContent = FindName<Noesis::Panel>("WindowContent");
+    windowContent->SizeChanged() += [this](BaseComponent*, const SizeChangedEventArgs& e)
     {
-        float dpi = GetDisplay()->GetScale();
         float scale;
 
         if (GetActualWidth() > GetActualHeight())
@@ -167,7 +168,7 @@ MainWindow::MainWindow(): mSelectedSample(0), mSelectedThemeColor(0), mSelectedT
             mSelectorExpanderButton->SetIsChecked(false);
             mSelectorExpanderButton->SetIsChecked(true);
 
-            scale = Max(1.0f, e.newSize.width / (1280.0f * dpi)) * dpi;
+            scale = Max(1.0f, e.newSize.width / 1280.0f);
         }
         else
         {
@@ -176,7 +177,7 @@ MainWindow::MainWindow(): mSelectedSample(0), mSelectedThemeColor(0), mSelectedT
             mSelectorExpanderButton->SetIsChecked(false);
             mSelectorExpanderButton->SetVisibility(Visibility_Visible);
 
-            scale = Max(1.0f, e.newSize.height / (720.0f * dpi)) * dpi;
+            scale = Max(1.0f, e.newSize.height / 720.0f);
         }
 
         ScaleTransform* rootScale = (ScaleTransform*)mLayoutRoot->GetLayoutTransform();
@@ -332,3 +333,5 @@ NS_IMPLEMENT_REFLECTION(Gallery::MainWindow, "Gallery.MainWindow")
     NsProp("SelectedThemeAccent", &MainWindow::GetSelectedThemeAccent,
         &MainWindow::SetSelectedThemeAccent);
 }
+
+NS_END_COLD_REGION

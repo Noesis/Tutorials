@@ -6,111 +6,95 @@
     objects = {
 
 /* Begin PBXBuildFile section */
-        1FE670E2ABAC4108BD702718 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CE109BEA30C49F8BFB66C62 /* Main.cpp */; };
-        C2A06DCABA364AE0875115F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E96D50D2A86470581CF0F61 /* Assets.xcassets */; };
-        571ABBECB06140C7B36C8035 /* Noesis.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 590EC543B62C49088AA21BB6 /* Noesis.dylib */; };
-        9636541C3BA740A381AE6691 /* NoesisApp.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3BFA5C1BDC714E3FAD3BD328 /* NoesisApp.dylib */; };
-        6B935D99FBAC4B709A5AD480 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCE6FAB33DC437FB6B4552D /* GLUT.framework */; };
-        0301064BD23C416BAB1D4D9D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125B5E5F08384A6CA53E1270 /* OpenGL.framework */; };
-        0326302AA9E4480FB7ADBACA /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C340816234671A156AD6D /* AppKit.framework */; };
-        CA5D441A6739460DB8C271F8 /* Noesis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 590EC543B62C49088AA21BB6 /* Noesis.dylib */; };
-        3B941402C7444A2493B7008D /* NoesisApp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFA5C1BDC714E3FAD3BD328 /* NoesisApp.dylib */; };
+        29CD4A08213F4A40A3724375 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23DE699B75CE482FA86FE70F /* Main.cpp */; };
+        2BB24D13E71D4E29AFBBF9A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EBF289F67E54C73A9039D1B /* Assets.xcassets */; };
+        ECC97541B22F48969324D30B /* Noesis.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A8C3658F01D432D9AE699EF /* Noesis.dylib */; };
+        5191E8D368004243BD5F65E1 /* NoesisApp.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9506BE975E02440AA6C5CB4C /* NoesisApp.dylib */; };
+        9ECC01E2CFC044FF8A2DF4C4 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F68BF65D3B47CBB2A1C856 /* GLUT.framework */; };
+        C246EE33E1134DE4960D8DD2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6268FF72D9D429A8AEB6D25 /* AppKit.framework */; };
+        DA00F24CC5F94FB8B23F5340 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A68CC0952A45E1A28E0289 /* OpenGL.framework */; };
+        4ED93EA6022B4555BDB6C4C5 /* Noesis.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8C3658F01D432D9AE699EF /* Noesis.dylib */; };
+        425CF1E19C474BC289CD3D29 /* NoesisApp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9506BE975E02440AA6C5CB4C /* NoesisApp.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-        2247CAF6ADC24BEC89C10420 /* Samples.IntegrationGLUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.IntegrationGLUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
-        1FCE6FAB33DC437FB6B4552D /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "GLUT.framework"; path = "System/Library/Frameworks/GLUT.framework"; sourceTree = SDKROOT; };
-        125B5E5F08384A6CA53E1270 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGL.framework"; path = "System/Library/Frameworks/OpenGL.framework"; sourceTree = SDKROOT; };
-        D44C340816234671A156AD6D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AppKit.framework"; path = "System/Library/Frameworks/AppKit.framework"; sourceTree = SDKROOT; };
-        590EC543B62C49088AA21BB6 /* Noesis.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "Noesis.dylib"; path = "../../../../../../Bin/macos/Noesis.dylib"; sourceTree = SOURCE_ROOT; };
-        3BFA5C1BDC714E3FAD3BD328 /* NoesisApp.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "NoesisApp.dylib"; path = "../../../../../../Bin/macos/NoesisApp.dylib"; sourceTree = SOURCE_ROOT; };
-        3C71F425446641638B2A2B2D /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Common.xcconfig"; path = "../../../../../Config/Common.xcconfig"; sourceTree = SOURCE_ROOT; };
-        780B1C13DFFF44E7B13D07E0 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release.xcconfig"; path = "../../../../../Config/Release/Release.xcconfig"; sourceTree = SOURCE_ROOT; };
-        53E361B573D74C789520934C /* Profile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile.xcconfig"; path = "../../../../../Config/Profile/Profile.xcconfig"; sourceTree = SOURCE_ROOT; };
-        512D42EE9B1D471C89564AB2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug.xcconfig"; path = "../../../../../Config/Debug/Debug.xcconfig"; sourceTree = SOURCE_ROOT; };
-        6CE109BEA30C49F8BFB66C62 /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "../../Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
-        E0B23B518A6A4C3681EED487 /* glut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "glut.h"; path = "../../Src/glut.h"; sourceTree = SOURCE_ROOT; };
-        DFD4A2EF7A9A4356955B60CF /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "info.plist"; path = "info.plist"; sourceTree = SOURCE_ROOT; };
-        0E96D50D2A86470581CF0F61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+        869C3FDCC2924497A14C1CB2 /* Samples.IntegrationGLUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samples.IntegrationGLUT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+        A7F68BF65D3B47CBB2A1C856 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "GLUT.framework"; path = "System/Library/Frameworks/GLUT.framework"; sourceTree = SDKROOT; };
+        B6268FF72D9D429A8AEB6D25 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AppKit.framework"; path = "System/Library/Frameworks/AppKit.framework"; sourceTree = SDKROOT; };
+        B5A68CC0952A45E1A28E0289 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "OpenGL.framework"; path = "System/Library/Frameworks/OpenGL.framework"; sourceTree = SDKROOT; };
+        2A8C3658F01D432D9AE699EF /* Noesis.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "Noesis.dylib"; path = "../../../../../../Bin/macos/Noesis.dylib"; sourceTree = SOURCE_ROOT; };
+        9506BE975E02440AA6C5CB4C /* NoesisApp.dylib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "NoesisApp.dylib"; path = "../../../../../../Bin/macos/NoesisApp.dylib"; sourceTree = SOURCE_ROOT; };
+        23DE699B75CE482FA86FE70F /* Main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Main.cpp"; path = "../../Src/Main.cpp"; sourceTree = SOURCE_ROOT; };
+        5272CFA332724617A26EDF8E /* glut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "glut.h"; path = "../../Src/glut.h"; sourceTree = SOURCE_ROOT; };
+        591666777F424B9383D19514 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "info.plist"; path = "info.plist"; sourceTree = SOURCE_ROOT; };
+        6EBF289F67E54C73A9039D1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Assets.xcassets"; path = "Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-        7E16D5830C844497BADD6EDD = {
+        341E13A6F2CA4C3FB1087E9B = {
             isa = PBXGroup;
             children = (
-                6CE109BEA30C49F8BFB66C62,
-                E0B23B518A6A4C3681EED487,
+                23DE699B75CE482FA86FE70F,
+                5272CFA332724617A26EDF8E,
             );
             name = Src;
             sourceTree = "<group>";
         };
-        D846A688E5654DEE9564B652 = {
+        B1CA07EB6600436D9909C4E1 = {
             isa = PBXGroup;
             children = (
-                DFD4A2EF7A9A4356955B60CF,
-                0E96D50D2A86470581CF0F61,
+                591666777F424B9383D19514,
+                6EBF289F67E54C73A9039D1B,
             );
             name = Resources;
             sourceTree = "<group>";
         };
-        896172D9F3A44755B4B097C2 = {
+        99E1F27F8A5E452CBF35E814 = {
             isa = PBXGroup;
             children = (
-                780B1C13DFFF44E7B13D07E0,
-                53E361B573D74C789520934C,
-                3C71F425446641638B2A2B2D,
-                512D42EE9B1D471C89564AB2,
-            );
-            name = Config;
-            sourceTree = "<group>";
-        };
-        2CFF1EF095794F648FB2A6AD = {
-            isa = PBXGroup;
-            children = (
-                2247CAF6ADC24BEC89C10420,
+                869C3FDCC2924497A14C1CB2,
             );
             name = Products;
             sourceTree = "<group>";
         };
-        3508A726A85D4EB0AB8CF86E = {
+        4959CA354C7444429EA6CC25 = {
             isa = PBXGroup;
             children = (
-                1FCE6FAB33DC437FB6B4552D,
-                125B5E5F08384A6CA53E1270,
-                D44C340816234671A156AD6D,
-                590EC543B62C49088AA21BB6,
-                3BFA5C1BDC714E3FAD3BD328,
+                A7F68BF65D3B47CBB2A1C856,
+                B6268FF72D9D429A8AEB6D25,
+                B5A68CC0952A45E1A28E0289,
+                2A8C3658F01D432D9AE699EF,
+                9506BE975E02440AA6C5CB4C,
             );
             name = Dependencies;
             sourceTree = "<group>";
         };
-        D67A7134FA134D4489663FB2 = {
+        B3E95C761D06418B9D1288D2 = {
             isa = PBXGroup;
             children = (
-                7E16D5830C844497BADD6EDD,
-                D846A688E5654DEE9564B652,
-                896172D9F3A44755B4B097C2,
-                2CFF1EF095794F648FB2A6AD,
-                3508A726A85D4EB0AB8CF86E,
-                BA08460AF36F4CAC94320AF1,
+                341E13A6F2CA4C3FB1087E9B,
+                B1CA07EB6600436D9909C4E1,
+                99E1F27F8A5E452CBF35E814,
+                4959CA354C7444429EA6CC25,
+                6CB48885F6134F48ACCA59F8,
             );
             sourceTree = "<group>";
         };
 /* End PBXGroup section */
 
 /* Begin PBXSourcesBuildPhase section */
-        269A8FC77C3345069C57F1A3 = {
+        9BC4B88E862E44C59A2254B7 = {
             isa = PBXSourcesBuildPhase;
             buildActionMask = 2147483647;
             files = (
-                1FE670E2ABAC4108BD702718,
+                29CD4A08213F4A40A3724375,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXBuildRule section */
-        22809583CD9D4140862CABF8 = {
+        8520168C2FC44CBC97F9C1B7 = {
             isa = PBXBuildRule;
             compilerSpec = com.apple.compilers.proxy.script;
             filePatterns = "";
@@ -125,40 +109,40 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXFrameworksBuildPhase section */
-        B90FE5D4C418453D92043E88 = {
+        72421DA9F53E4075B61E7780 = {
             isa = PBXFrameworksBuildPhase;
             buildActionMask = 2147483647;
             files = (
-                6B935D99FBAC4B709A5AD480,
-                0301064BD23C416BAB1D4D9D,
-                0326302AA9E4480FB7ADBACA,
-                CA5D441A6739460DB8C271F8,
-                3B941402C7444A2493B7008D,
+                9ECC01E2CFC044FF8A2DF4C4,
+                C246EE33E1134DE4960D8DD2,
+                DA00F24CC5F94FB8B23F5340,
+                4ED93EA6022B4555BDB6C4C5,
+                425CF1E19C474BC289CD3D29,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXResourcesBuildPhase section */
-        26C6D12DC0E24625AC9DCC4D = {
+        36190BFC6F4B4FE597B2F7B5 = {
             isa = PBXResourcesBuildPhase;
             buildActionMask = 2147483647;
             files = (
-                C2A06DCABA364AE0875115F1,
+                2BB24D13E71D4E29AFBBF9A0,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-        BA33EAD992D44E90BD27800D = {
+        EC82181ECB774C768348C327 = {
             isa = PBXCopyFilesBuildPhase;
             buildActionMask = 2147483647;
             dstPath = "";
             dstSubfolderSpec = 10;
             files = (
-                571ABBECB06140C7B36C8035,
-                9636541C3BA740A381AE6691,
+                ECC97541B22F48969324D30B,
+                5191E8D368004243BD5F65E1,
             );
             runOnlyForDeploymentPostprocessing = 0;
         };
@@ -167,35 +151,35 @@
 /* Begin PBXNativeTarget section */
         9EBA8F0768B2312BA2125A9E = {
             isa = PBXNativeTarget;
-            buildConfigurationList = 1CE3FA4DF5AD4783A84EF47E;
+            buildConfigurationList = C25D56CBA16A49E3800A8EFC;
             buildPhases = (
-                269A8FC77C3345069C57F1A3,
-                B90FE5D4C418453D92043E88,
-                26C6D12DC0E24625AC9DCC4D,
-                BA33EAD992D44E90BD27800D,
+                9BC4B88E862E44C59A2254B7,
+                72421DA9F53E4075B61E7780,
+                36190BFC6F4B4FE597B2F7B5,
+                EC82181ECB774C768348C327,
             );
             buildRules = (
-                22809583CD9D4140862CABF8,
+                8520168C2FC44CBC97F9C1B7,
             );
             dependencies = ();
             name = Samples.IntegrationGLUT;
             productName = Samples.IntegrationGLUT;
-            productReference = 2247CAF6ADC24BEC89C10420;
+            productReference = 869C3FDCC2924497A14C1CB2;
             productType = "com.apple.product-type.application";
         };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-        F04CACD2FDEC468797278D1B = {
+        5CD55F49A0154DE6BDE48BDD = {
             isa = PBXProject;
             attributes = { LastUpgradeCheck = 9999; };
-            buildConfigurationList = 49280EF1776F431C985AB69D;
+            buildConfigurationList = B42DF279E41A4DE3868098BF;
             compatibilityVersion = "Xcode 3.2";
             developmentRegion = en;
             hasScannedForEncodings = 0;
             knownRegions = (en, Base,);
-            mainGroup = D67A7134FA134D4489663FB2;
-            productRefGroup = 2CFF1EF095794F648FB2A6AD;
+            mainGroup = B3E95C761D06418B9D1288D2;
+            productRefGroup = 99E1F27F8A5E452CBF35E814;
             projectDirPath = "";
             projectRoot = "";
             targets = (9EBA8F0768B2312BA2125A9E,);
@@ -203,98 +187,73 @@
 /* End PBXProject section */
 
 /* Begin XCBuildConfiguration section */
-        BBCA2DB891D94302B6DC554C = {
+        ED678920591C440C90BB94DD = {
             isa = XCBuildConfiguration;
-            baseConfigurationReference = 780B1C13DFFF44E7B13D07E0;
             buildSettings = {
+                CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+                CLANG_CXX_LIBRARY = "libc++";
+                CLANG_ENABLE_OBJC_WEAK = YES;
+                CLANG_ENABLE_MODULES = YES;
+                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+                CLANG_WARN_COMMA = YES;
+                CLANG_WARN_INFINITE_RECURSION = YES;
+                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+                CLANG_WARN_STRICT_PROTOTYPES = YES;
+                CLANG_WARN_SUSPICIOUS_MOVE = YES;
+                CLANG_WARN_UNREACHABLE_CODE = YES;
+                CLANG_WARN_EMPTY_BODY = YES;
+                CLANG_WARN_CONSTANT_CONVERSION = YES;
+                CLANG_WARN_ENUM_CONVERSION = YES;
+                CLANG_WARN_INT_CONVERSION = YES;
+                CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+                CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+                GCC_ENABLE_CPP_EXCEPTIONS = NO;
+                GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+                GCC_ENABLE_PASCAL_STRINGS = NO;
+                GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+                GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+                GCC_THREADSAFE_STATICS = NO;
+                GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+                GCC_WARN_SHADOW = YES;
+                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+                GCC_NO_COMMON_BLOCKS = YES;
+                GCC_WARN_UNDECLARED_SELECTOR = YES;
+                GCC_WARN_UNUSED_FUNCTION = YES;
+                GCC_WARN_ABOUT_RETURN_TYPE = YES;
+                GCC_WARN_UNINITIALIZED_AUTOS = YES;
+                GCC_WARN_UNUSED_VARIABLE = YES;
+                DEAD_CODE_STRIPPING = YES;
+                ENABLE_STRICT_OBJC_MSGSEND = YES;
+                WARNING_CFLAGS = "-Wall";
+                COPY_PHASE_STRIP = NO;
+                ONLY_ACTIVE_ARCH = YES;
+                GCC_OPTIMIZATION_LEVEL = 0;
+                ENABLE_NS_ASSERTIONS = YES;
+                DEBUG_INFORMATION_FORMAT = dwarf;
+                DEPLOYMENT_POSTPROCESSING = NO;
                 SDKROOT = macosx;
                 MACOSX_DEPLOYMENT_TARGET = 10.7;
                 HEADER_SEARCH_PATHS = (../../../../../../Include,../../../../App/Launcher/Include,../../../../App/Providers/Include,../../../../App/Theme/Include,../../../../Render/GLRenderDevice/Include);
-                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Release","NS_VERSION=3.0.7","NS_APP_FRAMEWORK","NS_LICENSE","$(inherited)");
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Debug","NS_VERSION=3.1.0","NS_APP_FRAMEWORK","NS_LICENSE","NS_DEBUG","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=1","_DEBUG","DEBUG","$(inherited)");
                 LIBRARY_SEARCH_PATHS = ();
                 OTHER_LDFLAGS = ();
                 GCC_ENABLE_CPP_RTTI = YES;
                 STRIP_STYLE = all;
                 CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/macos";
-                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
-                USE_HEADERMAP = NO;
-            };
-            name = Release;
-        };
-        0DF0027056EA40AE9B930BFD = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
-                PRODUCT_NAME = "$(TARGET_NAME)";
-                CURRENT_PROJECT_VERSION = 3.0.7;
-                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
-                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
-                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-                CODE_SIGN_IDENTITY = "-";
-                INFOPLIST_FILE = info.plist;
-                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../ @executable_path/../Frameworks/";
-            };
-            name = Release;
-        };
-        A3F2189468A44E2F8F79A579 = {
-            isa = XCBuildConfiguration;
-            baseConfigurationReference = 53E361B573D74C789520934C;
-            buildSettings = {
-                SDKROOT = macosx;
-                MACOSX_DEPLOYMENT_TARGET = 10.7;
-                HEADER_SEARCH_PATHS = (../../../../../../Include,../../../../App/Launcher/Include,../../../../App/Providers/Include,../../../../App/Theme/Include,../../../../Render/GLRenderDevice/Include);
-                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Profile","NS_VERSION=3.0.7","NS_APP_FRAMEWORK","NS_LICENSE","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=2","$(inherited)");
-                LIBRARY_SEARCH_PATHS = ();
-                OTHER_LDFLAGS = ();
-                GCC_ENABLE_CPP_RTTI = YES;
-                STRIP_STYLE = all;
-                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/macos";
-                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
-                USE_HEADERMAP = NO;
-            };
-            name = Profile;
-        };
-        C9DB8D607A8E47488DEDDA55 = {
-            isa = XCBuildConfiguration;
-            buildSettings = {
-                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
-                PRODUCT_NAME = "$(TARGET_NAME)";
-                CURRENT_PROJECT_VERSION = 3.0.7;
-                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
-                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
-                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-                CODE_SIGN_IDENTITY = "-";
-                INFOPLIST_FILE = info.plist;
-                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../ @executable_path/../Frameworks/";
-            };
-            name = Profile;
-        };
-        ED6DA448368D4E309972E15D = {
-            isa = XCBuildConfiguration;
-            baseConfigurationReference = 512D42EE9B1D471C89564AB2;
-            buildSettings = {
-                SDKROOT = macosx;
-                MACOSX_DEPLOYMENT_TARGET = 10.7;
-                HEADER_SEARCH_PATHS = (../../../../../../Include,../../../../App/Launcher/Include,../../../../App/Providers/Include,../../../../App/Theme/Include,../../../../Render/GLRenderDevice/Include);
-                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Debug","NS_VERSION=3.0.7","NS_APP_FRAMEWORK","NS_LICENSE","NS_DEBUG","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=1","$(inherited)");
-                LIBRARY_SEARCH_PATHS = ();
-                OTHER_LDFLAGS = ();
-                GCC_ENABLE_CPP_RTTI = YES;
-                STRIP_STYLE = all;
-                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/macos";
-                CONFIGURATION_TEMP_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
                 USE_HEADERMAP = NO;
             };
             name = Debug;
         };
-        FD7BF8C00E7E4932B53962A1 = {
+        51C07A33E5434D7FACF5105E = {
             isa = XCBuildConfiguration;
             buildSettings = {
                 PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
                 PRODUCT_NAME = "$(TARGET_NAME)";
-                CURRENT_PROJECT_VERSION = 3.0.7;
+                CURRENT_PROJECT_VERSION = 3.1.0;
                 DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
                 GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
@@ -304,24 +263,181 @@
                 LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../ @executable_path/../Frameworks/";
             };
             name = Debug;
+        };
+        DDD69F7F443D4E9997861247 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+                CLANG_CXX_LIBRARY = "libc++";
+                CLANG_ENABLE_OBJC_WEAK = YES;
+                CLANG_ENABLE_MODULES = YES;
+                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+                CLANG_WARN_COMMA = YES;
+                CLANG_WARN_INFINITE_RECURSION = YES;
+                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+                CLANG_WARN_STRICT_PROTOTYPES = YES;
+                CLANG_WARN_SUSPICIOUS_MOVE = YES;
+                CLANG_WARN_UNREACHABLE_CODE = YES;
+                CLANG_WARN_EMPTY_BODY = YES;
+                CLANG_WARN_CONSTANT_CONVERSION = YES;
+                CLANG_WARN_ENUM_CONVERSION = YES;
+                CLANG_WARN_INT_CONVERSION = YES;
+                CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+                CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+                GCC_ENABLE_CPP_EXCEPTIONS = NO;
+                GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+                GCC_ENABLE_PASCAL_STRINGS = NO;
+                GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+                GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+                GCC_THREADSAFE_STATICS = NO;
+                GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+                GCC_WARN_SHADOW = YES;
+                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+                GCC_NO_COMMON_BLOCKS = YES;
+                GCC_WARN_UNDECLARED_SELECTOR = YES;
+                GCC_WARN_UNUSED_FUNCTION = YES;
+                GCC_WARN_ABOUT_RETURN_TYPE = YES;
+                GCC_WARN_UNINITIALIZED_AUTOS = YES;
+                GCC_WARN_UNUSED_VARIABLE = YES;
+                DEAD_CODE_STRIPPING = YES;
+                ENABLE_STRICT_OBJC_MSGSEND = YES;
+                WARNING_CFLAGS = "-Wall";
+                COPY_PHASE_STRIP = NO;
+                GCC_OPTIMIZATION_LEVEL = fast;
+                GCC_FAST_MATH = YES;
+                ENABLE_NS_ASSERTIONS = NO;
+                DEBUG_INFORMATION_FORMAT = dwarf-with-dsym;
+                DEPLOYMENT_POSTPROCESSING = YES;
+                STRIP_INSTALLED_PRODUCT = YES;
+                SDKROOT = macosx;
+                MACOSX_DEPLOYMENT_TARGET = 10.7;
+                HEADER_SEARCH_PATHS = (../../../../../../Include,../../../../App/Launcher/Include,../../../../App/Providers/Include,../../../../App/Theme/Include,../../../../Render/GLRenderDevice/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Profile","NS_VERSION=3.1.0","NS_APP_FRAMEWORK","NS_LICENSE","NS_PROFILE","NS_MINIMUM_LOG_LEVEL=2","NDEBUG","$(inherited)");
+                LIBRARY_SEARCH_PATHS = ();
+                OTHER_LDFLAGS = ();
+                GCC_ENABLE_CPP_RTTI = YES;
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/macos";
+                USE_HEADERMAP = NO;
+            };
+            name = Profile;
+        };
+        81F33B2AEF8B4A279B4F1241 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 3.1.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                CODE_SIGN_IDENTITY = "-";
+                INFOPLIST_FILE = info.plist;
+                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../ @executable_path/../Frameworks/";
+            };
+            name = Profile;
+        };
+        ADA58E25BF0E46FA89EADD09 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+                CLANG_CXX_LIBRARY = "libc++";
+                CLANG_ENABLE_OBJC_WEAK = YES;
+                CLANG_ENABLE_MODULES = YES;
+                CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+                CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+                CLANG_WARN_COMMA = YES;
+                CLANG_WARN_INFINITE_RECURSION = YES;
+                CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+                CLANG_WARN_STRICT_PROTOTYPES = YES;
+                CLANG_WARN_SUSPICIOUS_MOVE = YES;
+                CLANG_WARN_UNREACHABLE_CODE = YES;
+                CLANG_WARN_EMPTY_BODY = YES;
+                CLANG_WARN_CONSTANT_CONVERSION = YES;
+                CLANG_WARN_ENUM_CONVERSION = YES;
+                CLANG_WARN_INT_CONVERSION = YES;
+                CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+                CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+                CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+                CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+                CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+                GCC_ENABLE_CPP_EXCEPTIONS = NO;
+                GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+                GCC_ENABLE_PASCAL_STRINGS = NO;
+                GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+                GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+                GCC_THREADSAFE_STATICS = NO;
+                GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+                GCC_WARN_SHADOW = YES;
+                GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+                GCC_NO_COMMON_BLOCKS = YES;
+                GCC_WARN_UNDECLARED_SELECTOR = YES;
+                GCC_WARN_UNUSED_FUNCTION = YES;
+                GCC_WARN_ABOUT_RETURN_TYPE = YES;
+                GCC_WARN_UNINITIALIZED_AUTOS = YES;
+                GCC_WARN_UNUSED_VARIABLE = YES;
+                DEAD_CODE_STRIPPING = YES;
+                ENABLE_STRICT_OBJC_MSGSEND = YES;
+                WARNING_CFLAGS = "-Wall";
+                COPY_PHASE_STRIP = NO;
+                GCC_OPTIMIZATION_LEVEL = fast;
+                GCC_FAST_MATH = YES;
+                OTHER_CFLAGS= "-fomit-frame-pointer";
+                ENABLE_NS_ASSERTIONS = NO;
+                DEBUG_INFORMATION_FORMAT = dwarf-with-dsym;
+                DEPLOYMENT_POSTPROCESSING = YES;
+                STRIP_INSTALLED_PRODUCT = YES;
+                SDKROOT = macosx;
+                MACOSX_DEPLOYMENT_TARGET = 10.7;
+                HEADER_SEARCH_PATHS = (../../../../../../Include,../../../../App/Launcher/Include,../../../../App/Providers/Include,../../../../App/Theme/Include,../../../../Render/GLRenderDevice/Include);
+                GCC_PREPROCESSOR_DEFINITIONS = ("NS_BUILD","NS_CONFIG=Release","NS_VERSION=3.1.0","NS_APP_FRAMEWORK","NS_LICENSE","NDEBUG","$(inherited)");
+                LIBRARY_SEARCH_PATHS = ();
+                OTHER_LDFLAGS = ();
+                GCC_ENABLE_CPP_RTTI = YES;
+                STRIP_STYLE = all;
+                CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../../../../../../Bin/macos";
+                USE_HEADERMAP = NO;
+            };
+            name = Release;
+        };
+        2F0519C341614C0E8CAA2FC2 = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                PRODUCT_BUNDLE_IDENTIFIER = "com.noesisengine.${PRODUCT_NAME:rfc1034identifier}";
+                PRODUCT_NAME = "$(TARGET_NAME)";
+                CURRENT_PROJECT_VERSION = 3.1.0;
+                DYLIB_COMPATIBILITY_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+                GCC_INPUT_FILETYPE = "sourcecode.cpp.objcpp";
+                ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+                CODE_SIGN_IDENTITY = "-";
+                INFOPLIST_FILE = info.plist;
+                LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../../ @executable_path/../Frameworks/";
+            };
+            name = Release;
         };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-        49280EF1776F431C985AB69D = {
+        B42DF279E41A4DE3868098BF = {
             isa = XCConfigurationList;
-            buildConfigurations = (BBCA2DB891D94302B6DC554C,A3F2189468A44E2F8F79A579,ED6DA448368D4E309972E15D);
+            buildConfigurations = (ED678920591C440C90BB94DD,DDD69F7F443D4E9997861247,ADA58E25BF0E46FA89EADD09);
             defaultConfigurationIsVisible = 0;
             defaultConfigurationName = Release;
         };
 
-        1CE3FA4DF5AD4783A84EF47E = {
+        C25D56CBA16A49E3800A8EFC = {
             isa = XCConfigurationList;
-            buildConfigurations = (0DF0027056EA40AE9B930BFD,C9DB8D607A8E47488DEDDA55,FD7BF8C00E7E4932B53962A1);
+            buildConfigurations = (51C07A33E5434D7FACF5105E,81F33B2AEF8B4A279B4F1241,2F0519C341614C0E8CAA2FC2);
             defaultConfigurationIsVisible = 0;
             defaultConfigurationName = Release;
         };
 /* End XCConfigurationList section */
     };
-    rootObject = F04CACD2FDEC468797278D1B;
+    rootObject = 5CD55F49A0154DE6BDE48BDD;
 }

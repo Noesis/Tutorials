@@ -17,3 +17,5 @@ using namespace Noesis;
 NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION_(Menu3D::App, "Menu3D.App")
+
+NS_END_COLD_REGION

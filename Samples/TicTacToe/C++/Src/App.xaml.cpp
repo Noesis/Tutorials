@@ -17,3 +17,5 @@ using namespace Noesis;
 NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION_(TicTacToe::App, "TicTacToe.App")
+
+NS_END_COLD_REGION

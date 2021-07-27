@@ -77,49 +77,43 @@ void NumericUpDown::DownButton_Click(BaseComponent*, const Noesis::RoutedEventAr
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void NumericUpDown::OnValueChangedStatic(DependencyObject* d,
-    const DependencyPropertyChangedEventArgs& args)
-{
-    NumericUpDown* control = static_cast<NumericUpDown*>(d);
-    int oldValue = *static_cast<const int*>(args.oldValue);
-    int newValue = *static_cast<const int*>(args.newValue);
-
-    RoutedPropertyChangedEventArgs<int> e(control, ValueChangedEvent, oldValue, newValue);
-    control->OnValueChanged(e);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-bool NumericUpDown::CoerceValue(const DependencyObject* object, const void* value,
-    void* coercedValue)
-{
-    int maxValue = object->GetValue<int>(MaxValueProperty);
-    int minValue = object->GetValue<int>(MinValueProperty);
-    
-    int newValue = *static_cast<const int*>(value);
-    int& coerced = *static_cast<int*>(coercedValue);
-
-    coerced = Clip(newValue, minValue, maxValue);
-    return true;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION(NumericUpDown, "UserControls.NumericUpDown")
 {
+    auto onValueChanged = [](DependencyObject* d, const DependencyPropertyChangedEventArgs& e)
+    {
+        NumericUpDown* control = (NumericUpDown*)d;
+        int oldValue = *(const int*)e.oldValue;
+        int newValue = *(const int*)e.newValue;
+
+        RoutedPropertyChangedEventArgs<int> args(control, ValueChangedEvent, oldValue, newValue);
+        control->OnValueChanged(args);
+    };
+
+    auto coerceValue = [](const DependencyObject* object, const void* value, void* coercedValue)
+    {
+        int maxValue = object->GetValue<int>(MaxValueProperty);
+        int minValue = object->GetValue<int>(MinValueProperty);
+
+        int newValue = *(const int*)value;
+        int& coerced = *(int*)coercedValue;
+
+        coerced = Clip(newValue, minValue, maxValue);
+        return true;
+    };
+
     UIElementData* data = NsMeta<UIElementData>(TypeOf<SelfClass>());
-    data->RegisterProperty<int>(ValueProperty, "Value",
-        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None,
-            &OnValueChangedStatic, &CoerceValue));
-    data->RegisterProperty<int>(MaxValueProperty, "MaxValue",
-        FrameworkPropertyMetadata::Create(int(255), FrameworkPropertyMetadataOptions_None));
-    data->RegisterProperty<int>(MinValueProperty, "MinValue",
-        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None));
-    data->RegisterProperty<int>(StepValueProperty, "StepValue",
-        FrameworkPropertyMetadata::Create(int(1), FrameworkPropertyMetadataOptions_None));
+    data->RegisterProperty<int>(ValueProperty, "Value", PropertyMetadata::Create(int(0),
+        PropertyChangedCallback(onValueChanged), CoerceValueCallback(coerceValue)));
+    data->RegisterProperty<int>(MaxValueProperty, "MaxValue", PropertyMetadata::Create(int(255)));
+    data->RegisterProperty<int>(MinValueProperty, "MinValue", PropertyMetadata::Create(int(0)));
+    data->RegisterProperty<int>(StepValueProperty, "StepValue", PropertyMetadata::Create(int(1)));
 
     data->RegisterEvent(ValueChangedEvent, "ValueChanged", RoutingStrategy_Bubble);
 }
+
+NS_END_COLD_REGION
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const DependencyProperty* NumericUpDown::ValueProperty;

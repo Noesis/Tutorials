@@ -121,3 +121,5 @@ NS_IMPLEMENT_REFLECTION(Language)
     NsProp("Name", &Language::GetName);
     NsProp("Resources", &Language::GetResources);
 }
+
+NS_END_COLD_REGION

@@ -8,7 +8,7 @@
 
 #include <NsCore/ReflectionImplement.h>
 #include <NsGui/UIElementData.h>
-#include <NsGui/FrameworkPropertyMetadata.h>
+#include <NsGui/PropertyMetadata.h>
 
 
 using namespace Noesis;
@@ -92,21 +92,16 @@ NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION(DateTime, "CustomControl.DateTime")
 {
-    const TypeClass* type = TypeOf<SelfClass>();
-    UIElementData* data = NsMeta<UIElementData>(type);
-    data->RegisterProperty<int>(DayProperty, "Day",
-        FrameworkPropertyMetadata::Create(int(1), FrameworkPropertyMetadataOptions_None));
-    data->RegisterProperty<int>(MonthProperty, "Month",
-        FrameworkPropertyMetadata::Create(int(1), FrameworkPropertyMetadataOptions_None));
-    data->RegisterProperty<int>(YearProperty, "Year",
-        FrameworkPropertyMetadata::Create(int(2000), FrameworkPropertyMetadataOptions_None));
-    data->RegisterProperty<int>(HourProperty, "Hour",
-        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None));
-    data->RegisterProperty<int>(MinuteProperty, "Minute",
-        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None));
-    data->RegisterProperty<int>(SecondProperty, "Second",
-        FrameworkPropertyMetadata::Create(int(0), FrameworkPropertyMetadataOptions_None));
+    UIElementData* data = NsMeta<UIElementData>(TypeOf<DateTime>());
+    data->RegisterProperty<int>(DayProperty, "Day", PropertyMetadata::Create(int(1)));
+    data->RegisterProperty<int>(MonthProperty, "Month", PropertyMetadata::Create(int(1)));
+    data->RegisterProperty<int>(YearProperty, "Year", PropertyMetadata::Create(int(2000)));
+    data->RegisterProperty<int>(HourProperty, "Hour", PropertyMetadata::Create(int(0)));
+    data->RegisterProperty<int>(MinuteProperty, "Minute", PropertyMetadata::Create(int(0)));
+    data->RegisterProperty<int>(SecondProperty, "Second", PropertyMetadata::Create(int(0)));
 }
+
+NS_END_COLD_REGION
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const DependencyProperty* DateTime::DayProperty;

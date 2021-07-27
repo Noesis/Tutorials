@@ -38,3 +38,5 @@ void MainWindow::OnInitialized(BaseComponent*, const EventArgs&)
 NS_BEGIN_COLD_REGION
 
 NS_IMPLEMENT_REFLECTION_(TicTacToe::MainWindow, "TicTacToe.MainWindow")
+
+NS_END_COLD_REGION

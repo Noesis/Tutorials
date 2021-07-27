@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:Inventory"
         xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
         mc:Ignorable="d">
@@ -627,11 +626,7 @@
                         <Viewbox.RenderTransform>
                             <ScaleTransform/>
                         </Viewbox.RenderTransform>
-                        <Rectangle Width="60" Height="60">
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="{StaticResource Image.IconAtlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="{Binding Item.Icon}"/>
-                            </Rectangle.Fill>
-                        </Rectangle>
+                        <Image Source="{Binding Item.Icon}" Width="60" Height="60"/>
                     </Viewbox>
                 </Grid>
             </Viewbox>
@@ -722,21 +717,21 @@
         <Setter Property="noesis:StyleInteraction.Triggers">
             <Setter.Value>
                 <noesis:StyleTriggerCollection>
-                    <i:EventTrigger EventName="MouseEnter">
+                    <b:EventTrigger EventName="MouseEnter">
                         <noesis:SetFocusAction/>
-                    </i:EventTrigger>
-                    <ei:PropertyChangedTrigger Binding="{Binding MoveFocus}">
+                    </b:EventTrigger>
+                    <b:PropertyChangedTrigger Binding="{Binding MoveFocus}">
                         <noesis:SetFocusAction/>
-                    </ei:PropertyChangedTrigger>
-                    <ei:KeyTrigger Key="Enter" ActiveOnFocus="True">
-                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
-                    </ei:KeyTrigger>
-                    <ei:KeyTrigger Key="Space" ActiveOnFocus="True">
-                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
-                    </ei:KeyTrigger>
-                    <ei:KeyTrigger Key="Escape" ActiveOnFocus="True">
-                        <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{x:Null}"/>
-                    </ei:KeyTrigger>
+                    </b:PropertyChangedTrigger>
+                    <b:KeyTrigger Key="Enter" ActiveOnFocus="True">
+                        <b:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                    </b:KeyTrigger>
+                    <b:KeyTrigger Key="Space" ActiveOnFocus="True">
+                        <b:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                    </b:KeyTrigger>
+                    <b:KeyTrigger Key="Escape" ActiveOnFocus="True">
+                        <b:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{x:Null}"/>
+                    </b:KeyTrigger>
                 </noesis:StyleTriggerCollection>
             </Setter.Value>
         </Setter>
@@ -916,11 +911,7 @@
                         <Viewbox.RenderTransform>
                             <ScaleTransform/>
                         </Viewbox.RenderTransform>
-                        <Rectangle Width="60" Height="60">
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="{StaticResource Image.IconAtlas}" Stretch="Fill" ViewboxUnits="Absolute" Viewbox="{Binding Item.Icon}"/>
-                            </Rectangle.Fill>
-                        </Rectangle>
+                        <Image Source="{Binding Item.Icon}"/>
                     </Viewbox>
                 </Grid>
             </Border>
@@ -980,12 +971,7 @@
                             <GradientStop Color="#1FDA9858" Offset="1"/>
                         </RadialGradientBrush>
                     </Border.Background>
-                    <Rectangle Width="60" Height="60" Margin="15">
-                        <Rectangle.Fill>
-                            <ImageBrush ImageSource="{StaticResource Image.IconAtlas}" Stretch="Fill" ViewboxUnits="Absolute"
-                                    Viewbox="{Binding Content.Icon, RelativeSource={RelativeSource TemplatedParent}}"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
+                    <Image Source="{Binding Content.Icon, RelativeSource={RelativeSource TemplatedParent}}" Margin="15"/>
                 </Border>
             </Viewbox>
         </Grid>

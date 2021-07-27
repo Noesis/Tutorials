@@ -111,6 +111,8 @@ NS_IMPLEMENT_REFLECTION(DragAdornerBehavior, "Inventory.DragAdornerBehavior")
         PropertyMetadata::Create(0.0f));
 }
 
+NS_END_COLD_REGION
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const Noesis::DependencyProperty* DragAdornerBehavior::DragStartOffsetProperty;
 const Noesis::DependencyProperty* DragAdornerBehavior::DraggedItemXProperty;

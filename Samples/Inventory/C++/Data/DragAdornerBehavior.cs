@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Interactivity;
-using System.Windows.Media;
+using Microsoft.Xaml.Behaviors;
 
 namespace Inventory
 {

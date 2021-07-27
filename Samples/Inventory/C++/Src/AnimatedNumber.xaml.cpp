@@ -90,9 +90,7 @@ void AnimatedNumber::OnNumberChanged(int oldValue, int newValue)
 void AnimatedNumber::OnNumberChanged(DependencyObject* d,
     const DependencyPropertyChangedEventArgs& e)
 {
-    int oldValue = *static_cast<const int*>(e.oldValue);
-    int newValue = *static_cast<const int*>(e.newValue);
-    ((AnimatedNumber*)d)->OnNumberChanged(oldValue, newValue);
+    ((AnimatedNumber*)d)->OnNumberChanged(e.OldValue<int>(), e.NewValue<int>());
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -109,6 +107,9 @@ NS_IMPLEMENT_REFLECTION(AnimatedNumber,"Inventory.AnimatedNumber")
         PropertyMetadata::Create(0));
 }
 
+NS_END_COLD_REGION
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 const DependencyProperty* AnimatedNumber::AnimationDurationProperty;
 const DependencyProperty* AnimatedNumber::NumberProperty;
 const DependencyProperty* AnimatedNumber::AnimatedNumberProperty;

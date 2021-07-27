@@ -213,10 +213,13 @@ int NsMain(int argc, char** argv)
         printf("[NOESIS/%s] %s\n", prefixes[level], msg);
     });
 
+    // https://www.noesisengine.com/docs/Gui.Core.Licensing.html
+    Noesis::GUI::SetLicense(NS_LICENSE_NAME, NS_LICENSE_KEY);
+
     // Noesis initialization. This must be the first step before using any NoesisGUI functionality.
     // A logging handler is installed here. You can also install a custom error handler and memory
     // allocator. By default errors are redirected to the logging handler
-    Noesis::GUI::Init(NS_LICENSE_NAME, NS_LICENSE_KEY);
+    Noesis::GUI::Init();
 
     // Register app components. We need a few in this example, like Display and RenderContext
     NoesisApp::Launcher::RegisterAppComponents();

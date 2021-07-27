@@ -3,11 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
     mc:Ignorable="d"
     d:DesignWidth="1280" d:DesignHeight="1720"
     Style="{StaticResource SampleControlStyle}"
     Header="Effects"
-    Tag="https://www.noesisengine.com/docs/Gui.Core._BlurEffect.html">
+    Tag="https://www.noesisengine.com/docs/Gui.Core._Effect.html">
 
   <StackPanel>
     <TextBlock Style="{StaticResource SampleSectionDesc}" Text="Effects enable designers and developers to apply visual effects to UI elements. Effects are simple pixel processing operations."/>
@@ -29,7 +30,7 @@
         </Image>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
           <TextBlock Text="Blur Radius:" Margin="0,0,20,0"/>
-          <Slider x:Name="radius" Minimum="0" Maximum="50" Value="0" Width="180"/>
+          <Slider x:Name="radius" Minimum="0" Maximum="50" Value="10" Width="180"/>
           <TextBlock Text="{Binding Value, ElementName=radius, StringFormat=F1}" Width="50" TextAlignment="Right"/>
         </StackPanel>
       </StackPanel>
@@ -103,6 +104,35 @@
             <SolidColorBrush Color="Green"/>
             <SolidColorBrush Color="Blue"/>
           </ListBox>
+        </StackPanel>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/5d80b5d603056bed28410bbc212806c8" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Custom Effects"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run Text="By inheriting from"/>
+            <Run FontWeight="Bold">ShaderEffect</Run>
+            <Run Text="a user can write their own effects using a pixel shader. In this example we created a"/>
+            <Run FontWeight="Bold">PixelateEffect</Run>
+            <Run Text="which provides a"/>
+            <Run FontWeight="Bold">Size</Run>
+            <Run Text="property to define the size of the pixelation."/>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Background="#01000000" Margin="0,10,0,0">
+          <Border.Effect>
+            <noesis:PixelateEffect Size="{Binding Value, ElementName=size}"/>
+          </Border.Effect>
+          <Image Width="360" Height="180" Stretch="UniformToFill" Source="Images/Nature.png" Margin="50,0"/>
+        </Border>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+          <TextBlock Text="Size:" Margin="0,0,20,0"/>
+          <Slider x:Name="size" Minimum="0.0001" Maximum="45" Value="5" Width="180"/>
+          <TextBlock Text="{Binding Value, ElementName=size, StringFormat=F1}" Width="50" TextAlignment="Right"/>
         </StackPanel>
       </StackPanel>
     </HeaderedContentControl>

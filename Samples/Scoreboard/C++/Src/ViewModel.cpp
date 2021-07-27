@@ -158,3 +158,5 @@ NS_IMPLEMENT_REFLECTION(Scoreboard::Player)
     NsProp("Score", &Player::score);
     NsProp("Team", &Player::team);
 }
+
+NS_END_COLD_REGION

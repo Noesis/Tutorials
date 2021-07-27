@@ -99,3 +99,5 @@ NS_IMPLEMENT_REFLECTION(ViewModel)
     NsProp("Message", &ViewModel::GetMessage, &ViewModel::SetMessage);
     NsProp("LoginCommand", &ViewModel::GetLoginCommand);
 }
+
+NS_END_COLD_REGION

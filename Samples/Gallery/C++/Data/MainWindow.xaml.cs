@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Gallery
@@ -117,6 +116,7 @@ namespace Gallery
                         new Sample { Name = "Brushes", Icon = "e" },
                         new Sample { Name = "Image", Icon = "f" },
                         new Sample { Name = "Effects", Icon = "g" },
+                        new Sample { Name = "Blending", Icon = "w" },
                         new Sample { Name = "Animation", Icon = "h" }
                     }
                 }
@@ -148,7 +148,7 @@ namespace Gallery
 
             DataContext = this;
 
-            this.SizeChanged += (s, e) =>
+            this.WindowContent.SizeChanged += (s, e) =>
             {
                 if (ActualWidth > ActualHeight)
                 {
@@ -157,8 +157,8 @@ namespace Gallery
                     this.SelectorExpanderButton.IsChecked = false;
                     this.SelectorExpanderButton.IsChecked = true;
 
-                    ScaleTransform dpi = (ScaleTransform)this.LayoutRoot.LayoutTransform;
-                    dpi.ScaleX = dpi.ScaleY = Math.Max(1.0, e.NewSize.Width / 1280);
+                    ScaleTransform scale = (ScaleTransform)this.LayoutRoot.LayoutTransform;
+                    scale.ScaleX = scale.ScaleY = Math.Max(1.0, e.NewSize.Width / 1280);
                 }
                 else
                 {
@@ -167,8 +167,8 @@ namespace Gallery
                     this.SelectorExpanderButton.IsChecked = false;
                     this.SelectorExpanderButton.Visibility = Visibility.Visible;
 
-                    ScaleTransform dpi = (ScaleTransform)this.LayoutRoot.LayoutTransform;
-                    dpi.ScaleX = dpi.ScaleY = Math.Max(1.0, e.NewSize.Height / 720);
+                    ScaleTransform scale = (ScaleTransform)this.LayoutRoot.LayoutTransform;
+                    scale.ScaleX = scale.ScaleY = Math.Max(1.0, e.NewSize.Height / 720);
                 }
             };
         }
