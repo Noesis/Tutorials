@@ -11,6 +11,7 @@
 #include <NsGui/PropertyMetadata.h>
 #include <NsGui/ImageSource.h>
 #include <NsDrawing/Thickness.h>
+#include <NsDrawing/Int32Rect.h>
 
 
 using namespace Noesis;
@@ -58,24 +59,24 @@ static void OnSlicesChanged(DependencyObject* d, const DependencyPropertyChanged
 
     const Thickness& slices = image->GetSlices();
 
-    float wl = Min(slices.left, width);
-    float wc = Max(width - slices.left - slices.right, 0.0f);
-    float wr = Min(slices.right, width);
-    float ht = Min(slices.top, height);
-    float hc = Max(height - slices.top - slices.bottom, 0.0f);
-    float hb = Min(slices.bottom, height);
+    int wl = (int)Min(slices.left, width);
+    int wc = (int)Max(width - slices.left - slices.right, 0.0f);
+    int wr = (int)Min(slices.right, width);
+    int ht = (int)Min(slices.top, height);
+    int hc = (int)Max(height - slices.top - slices.bottom, 0.0f);
+    int hb = (int)Min(slices.bottom, height);
 
-    image->SetValue<Rect>(NineSliceImage::TopLeftViewboxProperty, Rect(0.0f, 0.0f, wl, ht));
-    image->SetValue<Rect>(NineSliceImage::TopCenterViewboxProperty, Rect(wl, 0.0f, wl + wc, ht));
-    image->SetValue<Rect>(NineSliceImage::TopRightViewboxProperty, Rect(wl + wc, 0.0f, wl + wc + wr, ht));
+    image->SetValue<Int32Rect>(NineSliceImage::TopLeftViewboxProperty, Int32Rect(0, 0, wl, ht));
+    image->SetValue<Int32Rect>(NineSliceImage::TopCenterViewboxProperty, Int32Rect(wl, 0, wc, ht));
+    image->SetValue<Int32Rect>(NineSliceImage::TopRightViewboxProperty, Int32Rect(wl + wc, 0, wr, ht));
 
-    image->SetValue<Rect>(NineSliceImage::CenterLeftViewboxProperty, Rect(0.0f, ht, wl, ht + hc));
-    image->SetValue<Rect>(NineSliceImage::CenterViewboxProperty, Rect(wl, ht, wl + wc, ht + hc));
-    image->SetValue<Rect>(NineSliceImage::CenterRightViewboxProperty, Rect(wl + wc, ht, wl + wc + wr, ht + hc));
+    image->SetValue<Int32Rect>(NineSliceImage::CenterLeftViewboxProperty, Int32Rect(0, ht, wl, hc));
+    image->SetValue<Int32Rect>(NineSliceImage::CenterViewboxProperty, Int32Rect(wl, ht, wc, hc));
+    image->SetValue<Int32Rect>(NineSliceImage::CenterRightViewboxProperty, Int32Rect(wl + wc, ht, wr, hc));
 
-    image->SetValue<Rect>(NineSliceImage::BottomLeftViewboxProperty, Rect(0.0f, ht + hc, wl, ht + hc + hb));
-    image->SetValue<Rect>(NineSliceImage::BottomCenterViewboxProperty, Rect(wl, ht + hc, wl + wc, ht + hc + hb));
-    image->SetValue<Rect>(NineSliceImage::BottomRightViewboxProperty, Rect(wl + wc, ht + hc, wl + wc + wr, ht + hc + hb));
+    image->SetValue<Int32Rect>(NineSliceImage::BottomLeftViewboxProperty, Int32Rect(0, ht + hc, wl, hb));
+    image->SetValue<Int32Rect>(NineSliceImage::BottomCenterViewboxProperty, Int32Rect(wl, ht + hc, wc, hb));
+    image->SetValue<Int32Rect>(NineSliceImage::BottomRightViewboxProperty, Int32Rect(wl + wc, ht + hc, wr, hb));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,25 +91,27 @@ NS_IMPLEMENT_REFLECTION(NineSliceImage, "NineSlice.NineSliceImage")
     data->RegisterProperty<Thickness>(SlicesProperty, "Slices",
         PropertyMetadata::Create(Thickness(), OnSlicesChanged));
 
-    data->RegisterProperty<Rect>(TopLeftViewboxProperty, "TopLeftViewbox",
-        PropertyMetadata::Create(Rect()));
-    data->RegisterProperty<Rect>(TopCenterViewboxProperty, "TopCenterViewbox",
-        PropertyMetadata::Create(Rect()));
-    data->RegisterProperty<Rect>(TopRightViewboxProperty, "TopRightViewbox",
-        PropertyMetadata::Create(Rect()));
-    data->RegisterProperty<Rect>(CenterLeftViewboxProperty, "CenterLeftViewbox",
-        PropertyMetadata::Create(Rect()));
-    data->RegisterProperty<Rect>(CenterViewboxProperty, "CenterViewbox",
-        PropertyMetadata::Create(Rect()));
-    data->RegisterProperty<Rect>(CenterRightViewboxProperty, "CenterRightViewbox",
-        PropertyMetadata::Create(Rect()));
-    data->RegisterProperty<Rect>(BottomLeftViewboxProperty, "BottomLeftViewbox",
-        PropertyMetadata::Create(Rect()));
-    data->RegisterProperty<Rect>(BottomCenterViewboxProperty, "BottomCenterViewbox",
-        PropertyMetadata::Create(Rect()));
-    data->RegisterProperty<Rect>(BottomRightViewboxProperty, "BottomRightViewbox",
-        PropertyMetadata::Create(Rect()));
+    data->RegisterProperty<Int32Rect>(TopLeftViewboxProperty, "TopLeftViewbox",
+        PropertyMetadata::Create(Int32Rect()));
+    data->RegisterProperty<Int32Rect>(TopCenterViewboxProperty, "TopCenterViewbox",
+        PropertyMetadata::Create(Int32Rect()));
+    data->RegisterProperty<Int32Rect>(TopRightViewboxProperty, "TopRightViewbox",
+        PropertyMetadata::Create(Int32Rect()));
+    data->RegisterProperty<Int32Rect>(CenterLeftViewboxProperty, "CenterLeftViewbox",
+        PropertyMetadata::Create(Int32Rect()));
+    data->RegisterProperty<Int32Rect>(CenterViewboxProperty, "CenterViewbox",
+        PropertyMetadata::Create(Int32Rect()));
+    data->RegisterProperty<Int32Rect>(CenterRightViewboxProperty, "CenterRightViewbox",
+        PropertyMetadata::Create(Int32Rect()));
+    data->RegisterProperty<Int32Rect>(BottomLeftViewboxProperty, "BottomLeftViewbox",
+        PropertyMetadata::Create(Int32Rect()));
+    data->RegisterProperty<Int32Rect>(BottomCenterViewboxProperty, "BottomCenterViewbox",
+        PropertyMetadata::Create(Int32Rect()));
+    data->RegisterProperty<Int32Rect>(BottomRightViewboxProperty, "BottomRightViewbox",
+        PropertyMetadata::Create(Int32Rect()));
 }
+
+NS_END_COLD_REGION
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const DependencyProperty* NineSliceImage::ImageSourceProperty;

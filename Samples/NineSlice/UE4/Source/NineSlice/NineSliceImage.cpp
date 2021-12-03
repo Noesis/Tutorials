@@ -57,24 +57,24 @@ static void OnSlicesChanged(Noesis::DependencyObject* d, const Noesis::Dependenc
 
     const Noesis::Thickness& slices = image->GetSlices();
 
-    float wl = Noesis::Min(slices.left, width);
-    float wc = Noesis::Max(width - slices.left - slices.right, 0.0f);
-    float wr = Noesis::Min(slices.right, width);
-    float ht = Noesis::Min(slices.top, height);
-    float hc = Noesis::Max(height - slices.top - slices.bottom, 0.0f);
-    float hb = Noesis::Min(slices.bottom, height);
+    int wl = (int)Noesis::Min(slices.left, width);
+    int wc = (int)Noesis::Max(width - slices.left - slices.right, 0.0f);
+    int wr = (int)Noesis::Min(slices.right, width);
+    int ht = (int)Noesis::Min(slices.top, height);
+    int hc = (int)Noesis::Max(height - slices.top - slices.bottom, 0.0f);
+    int hb = (int)Noesis::Min(slices.bottom, height);
 
-    image->SetValue<Noesis::Rect>(NineSliceImage::TopLeftViewboxProperty, Noesis::Rect(0.0f, 0.0f, wl, ht));
-    image->SetValue<Noesis::Rect>(NineSliceImage::TopCenterViewboxProperty, Noesis::Rect(wl, 0.0f, wl + wc, ht));
-    image->SetValue<Noesis::Rect>(NineSliceImage::TopRightViewboxProperty, Noesis::Rect(wl + wc, 0.0f, wl + wc + wr, ht));
+    image->SetValue<Noesis::Int32Rect>(NineSliceImage::TopLeftViewboxProperty, Noesis::Int32Rect(0, 0, wl, ht));
+    image->SetValue<Noesis::Int32Rect>(NineSliceImage::TopCenterViewboxProperty, Noesis::Int32Rect(wl, 0, wc, ht));
+    image->SetValue<Noesis::Int32Rect>(NineSliceImage::TopRightViewboxProperty, Noesis::Int32Rect(wl + wc, 0, wr, ht));
 
-    image->SetValue<Noesis::Rect>(NineSliceImage::CenterLeftViewboxProperty, Noesis::Rect(0.0f, ht, wl, ht + hc));
-    image->SetValue<Noesis::Rect>(NineSliceImage::CenterViewboxProperty, Noesis::Rect(wl, ht, wl + wc, ht + hc));
-    image->SetValue<Noesis::Rect>(NineSliceImage::CenterRightViewboxProperty, Noesis::Rect(wl + wc, ht, wl + wc + wr, ht + hc));
+    image->SetValue<Noesis::Int32Rect>(NineSliceImage::CenterLeftViewboxProperty, Noesis::Int32Rect(0, ht, wl, hc));
+    image->SetValue<Noesis::Int32Rect>(NineSliceImage::CenterViewboxProperty, Noesis::Int32Rect(wl, ht, wc, hc));
+    image->SetValue<Noesis::Int32Rect>(NineSliceImage::CenterRightViewboxProperty, Noesis::Int32Rect(wl + wc, ht, wr, hc));
 
-    image->SetValue<Noesis::Rect>(NineSliceImage::BottomLeftViewboxProperty, Noesis::Rect(0.0f, ht + hc, wl, ht + hc + hb));
-    image->SetValue<Noesis::Rect>(NineSliceImage::BottomCenterViewboxProperty, Noesis::Rect(wl, ht + hc, wl + wc, ht + hc + hb));
-    image->SetValue<Noesis::Rect>(NineSliceImage::BottomRightViewboxProperty, Noesis::Rect(wl + wc, ht + hc, wl + wc + wr, ht + hc + hb));
+    image->SetValue<Noesis::Int32Rect>(NineSliceImage::BottomLeftViewboxProperty, Noesis::Int32Rect(0, ht + hc, wl, hb));
+    image->SetValue<Noesis::Int32Rect>(NineSliceImage::BottomCenterViewboxProperty, Noesis::Int32Rect(wl, ht + hc, wc, hb));
+    image->SetValue<Noesis::Int32Rect>(NineSliceImage::BottomRightViewboxProperty, Noesis::Int32Rect(wl + wc, ht + hc, wr, hb));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,24 +89,24 @@ NS_IMPLEMENT_REFLECTION(NineSliceImage, "NineSlice.NineSliceImage")
     data->RegisterProperty<Noesis::Thickness>(SlicesProperty, "Slices",
         Noesis::PropertyMetadata::Create(Noesis::Thickness(), OnSlicesChanged));
 
-    data->RegisterProperty<Noesis::Rect>(TopLeftViewboxProperty, "TopLeftViewbox",
-        Noesis::PropertyMetadata::Create(Noesis::Rect()));
-    data->RegisterProperty<Noesis::Rect>(TopCenterViewboxProperty, "TopCenterViewbox",
-        Noesis::PropertyMetadata::Create(Noesis::Rect()));
-    data->RegisterProperty<Noesis::Rect>(TopRightViewboxProperty, "TopRightViewbox",
-        Noesis::PropertyMetadata::Create(Noesis::Rect()));
-    data->RegisterProperty<Noesis::Rect>(CenterLeftViewboxProperty, "CenterLeftViewbox",
-        Noesis::PropertyMetadata::Create(Noesis::Rect()));
-    data->RegisterProperty<Noesis::Rect>(CenterViewboxProperty, "CenterViewbox",
-        Noesis::PropertyMetadata::Create(Noesis::Rect()));
-    data->RegisterProperty<Noesis::Rect>(CenterRightViewboxProperty, "CenterRightViewbox",
-        Noesis::PropertyMetadata::Create(Noesis::Rect()));
-    data->RegisterProperty<Noesis::Rect>(BottomLeftViewboxProperty, "BottomLeftViewbox",
-        Noesis::PropertyMetadata::Create(Noesis::Rect()));
-    data->RegisterProperty<Noesis::Rect>(BottomCenterViewboxProperty, "BottomCenterViewbox",
-        Noesis::PropertyMetadata::Create(Noesis::Rect()));
-    data->RegisterProperty<Noesis::Rect>(BottomRightViewboxProperty, "BottomRightViewbox",
-        Noesis::PropertyMetadata::Create(Noesis::Rect()));
+    data->RegisterProperty<Noesis::Int32Rect>(TopLeftViewboxProperty, "TopLeftViewbox",
+        Noesis::PropertyMetadata::Create(Noesis::Int32Rect()));
+    data->RegisterProperty<Noesis::Int32Rect>(TopCenterViewboxProperty, "TopCenterViewbox",
+        Noesis::PropertyMetadata::Create(Noesis::Int32Rect()));
+    data->RegisterProperty<Noesis::Int32Rect>(TopRightViewboxProperty, "TopRightViewbox",
+        Noesis::PropertyMetadata::Create(Noesis::Int32Rect()));
+    data->RegisterProperty<Noesis::Int32Rect>(CenterLeftViewboxProperty, "CenterLeftViewbox",
+        Noesis::PropertyMetadata::Create(Noesis::Int32Rect()));
+    data->RegisterProperty<Noesis::Int32Rect>(CenterViewboxProperty, "CenterViewbox",
+        Noesis::PropertyMetadata::Create(Noesis::Int32Rect()));
+    data->RegisterProperty<Noesis::Int32Rect>(CenterRightViewboxProperty, "CenterRightViewbox",
+        Noesis::PropertyMetadata::Create(Noesis::Int32Rect()));
+    data->RegisterProperty<Noesis::Int32Rect>(BottomLeftViewboxProperty, "BottomLeftViewbox",
+        Noesis::PropertyMetadata::Create(Noesis::Int32Rect()));
+    data->RegisterProperty<Noesis::Int32Rect>(BottomCenterViewboxProperty, "BottomCenterViewbox",
+        Noesis::PropertyMetadata::Create(Noesis::Int32Rect()));
+    data->RegisterProperty<Noesis::Int32Rect>(BottomRightViewboxProperty, "BottomRightViewbox",
+        Noesis::PropertyMetadata::Create(Noesis::Int32Rect()));
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -20,69 +20,60 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="{Binding Slices.Right, RelativeSource={RelativeSource TemplatedParent}}"/>
               </Grid.ColumnDefinitions>
-              <Rectangle Grid.Row="0" Grid.Column="0" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Rectangle.Fill>
-                  <ImageBrush ImageSource="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                              Viewbox="{Binding TopLeftViewbox, RelativeSource={RelativeSource TemplatedParent}}"
-                              ViewboxUnits="Absolute"/>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Rectangle Grid.Row="0" Grid.Column="1" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Rectangle.Fill>
-                  <ImageBrush ImageSource="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                              Viewbox="{Binding TopCenterViewbox, RelativeSource={RelativeSource TemplatedParent}}"
-                              ViewboxUnits="Absolute"/>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Rectangle Grid.Row="0" Grid.Column="2" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Rectangle.Fill>
-                  <ImageBrush ImageSource="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                              Viewbox="{Binding TopRightViewbox, RelativeSource={RelativeSource TemplatedParent}}"
-                              ViewboxUnits="Absolute"/>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Rectangle Grid.Row="1" Grid.Column="0" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Rectangle.Fill>
-                  <ImageBrush ImageSource="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                              Viewbox="{Binding CenterLeftViewbox, RelativeSource={RelativeSource TemplatedParent}}"
-                              ViewboxUnits="Absolute"/>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Rectangle Grid.Row="1" Grid.Column="1" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Rectangle.Fill>
-                  <ImageBrush ImageSource="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                              Viewbox="{Binding CenterViewbox, RelativeSource={RelativeSource TemplatedParent}}"
-                              ViewboxUnits="Absolute"/>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Rectangle Grid.Row="1" Grid.Column="2" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Rectangle.Fill>
-                  <ImageBrush ImageSource="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                              Viewbox="{Binding CenterRightViewbox, RelativeSource={RelativeSource TemplatedParent}}"
-                              ViewboxUnits="Absolute"/>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Rectangle Grid.Row="2" Grid.Column="0" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Rectangle.Fill>
-                  <ImageBrush ImageSource="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                              Viewbox="{Binding BottomLeftViewbox, RelativeSource={RelativeSource TemplatedParent}}"
-                              ViewboxUnits="Absolute"/>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Rectangle Grid.Row="2" Grid.Column="1" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Rectangle.Fill>
-                  <ImageBrush ImageSource="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                              Viewbox="{Binding BottomCenterViewbox, RelativeSource={RelativeSource TemplatedParent}}"
-                              ViewboxUnits="Absolute"/>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Rectangle Grid.Row="2" Grid.Column="2" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Rectangle.Fill>
-                  <ImageBrush ImageSource="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
-                              Viewbox="{Binding BottomRightViewbox, RelativeSource={RelativeSource TemplatedParent}}"
-                              ViewboxUnits="Absolute"/>
-                </Rectangle.Fill>
-              </Rectangle>
+              <Image Grid.Row="0" Grid.Column="0" Stretch="Fill">
+                <Image.Source>
+                  <CroppedBitmap Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                   SourceRect="{Binding TopLeftViewbox, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Image.Source>
+              </Image>
+              <Image Grid.Row="0" Grid.Column="1" Stretch="Fill">
+                <Image.Source>
+                  <CroppedBitmap Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                   SourceRect="{Binding TopCenterViewbox, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Image.Source>
+              </Image>
+              <Image Grid.Row="0" Grid.Column="2" Stretch="Fill">
+                <Image.Source>
+                  <CroppedBitmap Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                   SourceRect="{Binding TopRightViewbox, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Image.Source>
+              </Image>
+              <Image Grid.Row="1" Grid.Column="0" Stretch="Fill">
+                <Image.Source>
+                  <CroppedBitmap Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                   SourceRect="{Binding CenterLeftViewbox, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Image.Source>
+              </Image>
+              <Image Grid.Row="1" Grid.Column="1" Stretch="Fill">
+                <Image.Source>
+                  <CroppedBitmap Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                   SourceRect="{Binding CenterViewbox, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Image.Source>
+              </Image>
+              <Image Grid.Row="1" Grid.Column="2" Stretch="Fill">
+                <Image.Source>
+                  <CroppedBitmap Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                   SourceRect="{Binding CenterRightViewbox, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Image.Source>
+              </Image>
+              <Image Grid.Row="2" Grid.Column="0" Stretch="Fill">
+                <Image.Source>
+                  <CroppedBitmap Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                   SourceRect="{Binding BottomLeftViewbox, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Image.Source>
+              </Image>
+              <Image Grid.Row="2" Grid.Column="1" Stretch="Fill">
+                <Image.Source>
+                  <CroppedBitmap Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                   SourceRect="{Binding BottomCenterViewbox, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Image.Source>
+              </Image>
+              <Image Grid.Row="2" Grid.Column="2" Stretch="Fill">
+                <Image.Source>
+                  <CroppedBitmap Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}}"
+                                   SourceRect="{Binding BottomRightViewbox, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Image.Source>
+              </Image>
             </Grid>
             <ContentPresenter Margin="{TemplateBinding Padding}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

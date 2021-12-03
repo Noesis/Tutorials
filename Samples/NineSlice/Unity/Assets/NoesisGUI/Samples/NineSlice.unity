@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -203,6 +203,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -219,18 +220,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29355477be96127469aed699dd82b4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xaml: {fileID: 11400000, guid: 30eacc2f15cc7de40b8ba8248eabe61e, type: 2}
+  _xaml: {fileID: -8414808784256213763, guid: b7454e6b4f94366459f1cdfec6507936, type: 3}
   _texture: {fileID: 0}
   _isPPAAEnabled: 0
   _tessellationMaxPixelError: 0.4
   _renderFlags: 16
   _continuousRendering: 1
+  _enableExternalUpdate: 0
   _enableKeyboard: 1
   _enableMouse: 1
   _enableTouch: 1
   _enableGamepad: 0
   _emulateTouch: 0
   _useRealTimeClock: 0
+  _actions: {fileID: 0}
+  _gamepadRepeatDelay: 0.5
+  _gamepadRepeatRate: 0.1
 --- !u!1 &2111835213
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +312,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &2111835215
@@ -319,6 +325,7 @@ Transform:
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
