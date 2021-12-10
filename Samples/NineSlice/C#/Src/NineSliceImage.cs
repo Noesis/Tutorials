@@ -35,95 +35,95 @@ namespace NineSlice
             new PropertyMetadata(new Thickness(), OnSlicesChanged));
 
         #region 9-grid slices
-        public Int32Rect TopLeftViewbox
+        public Rect TopLeftViewbox
         {
-            get { return (Int32Rect)GetValue(TopLeftViewboxProperty); }
+            get { return (Rect)GetValue(TopLeftViewboxProperty); }
             set { SetValue(TopLeftViewboxProperty, value); }
         }
 
         public static readonly DependencyProperty TopLeftViewboxProperty = DependencyProperty.Register(
-            "TopLeftViewbox", typeof(Int32Rect), typeof(NineSliceImage),
-            new PropertyMetadata(new Int32Rect()));
+            "TopLeftViewbox", typeof(Rect), typeof(NineSliceImage),
+            new PropertyMetadata(new Rect()));
 
-        public Int32Rect TopCenterViewbox
+        public Rect TopCenterViewbox
         {
-            get { return (Int32Rect)GetValue(TopCenterViewboxProperty); }
+            get { return (Rect)GetValue(TopCenterViewboxProperty); }
             set { SetValue(TopCenterViewboxProperty, value); }
         }
 
         public static readonly DependencyProperty TopCenterViewboxProperty = DependencyProperty.Register(
-            "TopCenterViewbox", typeof(Int32Rect), typeof(NineSliceImage),
-            new PropertyMetadata(new Int32Rect()));
+            "TopCenterViewbox", typeof(Rect), typeof(NineSliceImage),
+            new PropertyMetadata(new Rect()));
 
-        public Int32Rect TopRightViewbox
+        public Rect TopRightViewbox
         {
-            get { return (Int32Rect)GetValue(TopRightViewboxProperty); }
+            get { return (Rect)GetValue(TopRightViewboxProperty); }
             set { SetValue(TopRightViewboxProperty, value); }
         }
 
         public static readonly DependencyProperty TopRightViewboxProperty = DependencyProperty.Register(
-            "TopRightViewbox", typeof(Int32Rect), typeof(NineSliceImage),
-            new PropertyMetadata(new Int32Rect()));
+            "TopRightViewbox", typeof(Rect), typeof(NineSliceImage),
+            new PropertyMetadata(new Rect()));
 
-        public Int32Rect CenterLeftViewbox
+        public Rect CenterLeftViewbox
         {
-            get { return (Int32Rect)GetValue(CenterLeftViewboxProperty); }
+            get { return (Rect)GetValue(CenterLeftViewboxProperty); }
             set { SetValue(CenterLeftViewboxProperty, value); }
         }
 
         public static readonly DependencyProperty CenterLeftViewboxProperty = DependencyProperty.Register(
-            "CenterLeftViewbox", typeof(Int32Rect), typeof(NineSliceImage),
-            new PropertyMetadata(new Int32Rect()));
+            "CenterLeftViewbox", typeof(Rect), typeof(NineSliceImage),
+            new PropertyMetadata(new Rect()));
 
-        public Int32Rect CenterViewbox
+        public Rect CenterViewbox
         {
-            get { return (Int32Rect)GetValue(CenterViewboxProperty); }
+            get { return (Rect)GetValue(CenterViewboxProperty); }
             set { SetValue(CenterViewboxProperty, value); }
         }
 
         public static readonly DependencyProperty CenterViewboxProperty = DependencyProperty.Register(
-            "CenterViewbox", typeof(Int32Rect), typeof(NineSliceImage),
-            new PropertyMetadata(new Int32Rect()));
+            "CenterViewbox", typeof(Rect), typeof(NineSliceImage),
+            new PropertyMetadata(new Rect()));
 
-        public Int32Rect CenterRightViewbox
+        public Rect CenterRightViewbox
         {
-            get { return (Int32Rect)GetValue(CenterRightViewboxProperty); }
+            get { return (Rect)GetValue(CenterRightViewboxProperty); }
             set { SetValue(CenterRightViewboxProperty, value); }
         }
 
         public static readonly DependencyProperty CenterRightViewboxProperty = DependencyProperty.Register(
-            "CenterRightViewbox", typeof(Int32Rect), typeof(NineSliceImage),
-            new PropertyMetadata(new Int32Rect()));
+            "CenterRightViewbox", typeof(Rect), typeof(NineSliceImage),
+            new PropertyMetadata(new Rect()));
 
-        public Int32Rect BottomLeftViewbox
+        public Rect BottomLeftViewbox
         {
-            get { return (Int32Rect)GetValue(BottomLeftViewboxProperty); }
+            get { return (Rect)GetValue(BottomLeftViewboxProperty); }
             set { SetValue(BottomLeftViewboxProperty, value); }
         }
 
         public static readonly DependencyProperty BottomLeftViewboxProperty = DependencyProperty.Register(
-            "BottomLeftViewbox", typeof(Int32Rect), typeof(NineSliceImage),
-            new PropertyMetadata(new Int32Rect()));
+            "BottomLeftViewbox", typeof(Rect), typeof(NineSliceImage),
+            new PropertyMetadata(new Rect()));
 
-        public Int32Rect BottomCenterViewbox
+        public Rect BottomCenterViewbox
         {
-            get { return (Int32Rect)GetValue(BottomCenterViewboxProperty); }
+            get { return (Rect)GetValue(BottomCenterViewboxProperty); }
             set { SetValue(BottomCenterViewboxProperty, value); }
         }
 
         public static readonly DependencyProperty BottomCenterViewboxProperty = DependencyProperty.Register(
-            "BottomCenterViewbox", typeof(Int32Rect), typeof(NineSliceImage),
-            new PropertyMetadata(new Int32Rect()));
+            "BottomCenterViewbox", typeof(Rect), typeof(NineSliceImage),
+            new PropertyMetadata(new Rect()));
 
-        public Int32Rect BottomRightViewbox
+        public Rect BottomRightViewbox
         {
-            get { return (Int32Rect)GetValue(BottomRightViewboxProperty); }
+            get { return (Rect)GetValue(BottomRightViewboxProperty); }
             set { SetValue(BottomRightViewboxProperty, value); }
         }
 
         public static readonly DependencyProperty BottomRightViewboxProperty = DependencyProperty.Register(
-            "BottomRightViewbox", typeof(Int32Rect), typeof(NineSliceImage),
-            new PropertyMetadata(new Int32Rect()));
+            "BottomRightViewbox", typeof(Rect), typeof(NineSliceImage),
+            new PropertyMetadata(new Rect()));
         #endregion
 
         private static void OnSlicesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -139,24 +139,24 @@ namespace NineSlice
                 height = (float)image.ImageSource.Height;
             }
 
-            int wl = (int)Math.Min(image.Slices.Left, width);
-            int wc = (int)Math.Max(width - image.Slices.Left - image.Slices.Right, 0);
-            int wr = (int)Math.Min(image.Slices.Right, width);
-            int ht = (int)Math.Min(image.Slices.Top, height);
-            int hc = (int)Math.Max(height - image.Slices.Top - image.Slices.Bottom, 0);
-            int hb = (int)Math.Min(image.Slices.Bottom, height);
+            float wl = (float)Math.Min(image.Slices.Left, width);
+            float wc = (float)Math.Max(width - image.Slices.Left - image.Slices.Right, 0.0f);
+            float wr = (float)Math.Min(image.Slices.Right, width);
+            float ht = (float)Math.Min(image.Slices.Top, height);
+            float hc = (float)Math.Max(height - image.Slices.Top - image.Slices.Bottom, 0.0f);
+            float hb = (float)Math.Min(image.Slices.Bottom, height);
 
-            image.TopLeftViewbox = new Int32Rect(0, 0, wl, ht);
-            image.TopCenterViewbox = new Int32Rect(wl, 0, wc, ht);
-            image.TopRightViewbox = new Int32Rect(wl + wc, 0, wr, ht);
+            image.TopLeftViewbox = new Rect(0.0f, 0.0f, wl, ht);
+            image.TopCenterViewbox = new Rect(wl, 0.0f, wc, ht);
+            image.TopRightViewbox = new Rect(wl + wc, 0.0f, wr, ht);
 
-            image.CenterLeftViewbox = new Int32Rect(0, ht, wl, hc);
-            image.CenterViewbox = new Int32Rect(wl, ht, wc, hc);
-            image.CenterRightViewbox = new Int32Rect(wl + wc, ht, wr, hc);
+            image.CenterLeftViewbox = new Rect(0.0f, ht, wl, hc);
+            image.CenterViewbox = new Rect(wl, ht, wc, hc);
+            image.CenterRightViewbox = new Rect(wl + wc, ht, wr, hc);
 
-            image.BottomLeftViewbox = new Int32Rect(0, ht + hc, wl, hb);
-            image.BottomCenterViewbox = new Int32Rect(wl, ht + hc, wc, hb);
-            image.BottomRightViewbox = new Int32Rect(wl + wc, ht + hc, wr, hb);
+            image.BottomLeftViewbox = new Rect(0.0f, ht + hc, wl, hb);
+            image.BottomCenterViewbox = new Rect(wl, ht + hc, wc, hb);
+            image.BottomRightViewbox = new Rect(wl + wc, ht + hc, wr, hb);
         }
     }
 }
