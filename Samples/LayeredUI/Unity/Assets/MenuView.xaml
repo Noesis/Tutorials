@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="LayeredUI.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LayeredUI"
+             mc:Ignorable="d" 
+             d:DesignWidth="1920" d:DesignHeight="1080">
+  <UserControl.Resources>
+    <Storyboard x:Key="FadeIn">
+      <DoubleAnimation From="0" To="1" Duration="0:0:0.3" DecelerationRatio="0.2"
+                       Storyboard.TargetName="bg" Storyboard.TargetProperty="Opacity"/>
+    </Storyboard>
+  </UserControl.Resources>
+  <UserControl.Triggers>
+    <EventTrigger RoutedEvent="UserControl.Loaded">
+      <BeginStoryboard Storyboard="{StaticResource FadeIn}"/>
+    </EventTrigger>
+  </UserControl.Triggers>
+  <Grid x:Name="bg" Background="#66000000">
+    <Border Background="#FF2B6166" Height="120" VerticalAlignment="Top">
+      <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="MY GAME" Foreground="White" FontSize="48" VerticalAlignment="Center" FontWeight="Bold"/>
+    </Border>
+    <Border Background="#9973A7B0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40">
+      <StackPanel>
+        <Button Content="PLAY" FontSize="40" Padding="40,10"/>
+        <Button Content="SETTINGS" FontSize="40" Padding="40,10" Margin="0,20"/>
+        <Button Content="EXIT" FontSize="40" Padding="40,10"/>
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>

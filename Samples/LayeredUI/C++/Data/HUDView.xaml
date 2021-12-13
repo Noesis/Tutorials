@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="LayeredUI.HUDView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LayeredUI"
+             mc:Ignorable="d" 
+             d:DesignWidth="1920" d:DesignHeight="1080">
+  <Grid>
+    <Ellipse x:Name="MiniMap" Stroke="Black" Stretch="Uniform" Width="250" Height="250" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,30,0">
+      <Ellipse.Fill>
+        <RadialGradientBrush>
+          <GradientStop Color="#FF008579" Offset="1"/>
+          <GradientStop Color="#CCA2D8D3"/>
+        </RadialGradientBrush>
+      </Ellipse.Fill>
+    </Ellipse>
+    <Rectangle x:Name="HotBar" Fill="#CC54A4A1" Stroke="Black" Grid.Column="2" Grid.Row="3" Width="500" Height="80" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+    <StackPanel HorizontalAlignment="Left" Height="500" Margin="20,20,0,0" VerticalAlignment="Top" Width="400">
+      <StackPanel Height="100" Orientation="Horizontal">
+        <Rectangle Fill="#CC55B6B6" HorizontalAlignment="Left" Height="78" Margin="10" Width="78" Stroke="Black"/>
+        <TextBlock Margin="10,0,0,0" TextWrapping="Wrap" Text="PLAYER 1" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36" FontWeight="Bold" Foreground="#FFA4DCDC"/>
+      </StackPanel>
+      <StackPanel Height="100" Orientation="Horizontal">
+        <Rectangle Fill="#CC55B6B6" HorizontalAlignment="Left" Height="78" Margin="10" Width="78" Stroke="Black"/>
+        <TextBlock Margin="10,0,0,0" TextWrapping="Wrap" Text="PLAYER 2" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36" FontWeight="Bold" Foreground="#FFA4DCDC"/>
+      </StackPanel>
+      <StackPanel Height="100" Orientation="Horizontal">
+        <Rectangle Fill="#CC55B6B6" HorizontalAlignment="Left" Height="78" Margin="10" Width="78" Stroke="Black"/>
+        <TextBlock Margin="10,0,0,0" TextWrapping="Wrap" Text="PLAYER 3" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36" FontWeight="Bold" Foreground="#FFA4DCDC"/>
+      </StackPanel>
+      <StackPanel Height="100" Orientation="Horizontal">
+        <Rectangle Fill="#CC55B6B6" HorizontalAlignment="Left" Height="78" Margin="10" Width="78" Stroke="Black"/>
+        <TextBlock Margin="10,0,0,0" TextWrapping="Wrap" Text="PLAYER 4" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36" FontWeight="Bold" Foreground="#FFA4DCDC"/>
+      </StackPanel>
+    </StackPanel>
+  </Grid>
+</UserControl>
