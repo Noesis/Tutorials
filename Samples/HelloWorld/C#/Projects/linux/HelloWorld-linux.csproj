@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Noesis.App.Displays.X11" Version="3.0.*" />
-    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="3.0.*" />
-    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="3.0.*" />
+    <PackageReference Include="Noesis.App.Displays.X11" Version="3.1.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="3.1.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="3.1.*" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -36,6 +36,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\Src\MainWindow.xaml">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Aero Matics Regular.ttf">
+      <Link>Aero Matics Regular.ttf</Link>
     </EmbeddedResource>
   </ItemGroup>
 

@@ -39,7 +39,8 @@ namespace IntegrationGLUT
             });
 
             // Noesis initialization. This must be the first step before using any NoesisGUI functionality
-            Noesis.GUI.Init("LICENSE_NAME", "LICENSE_KEY");
+            Noesis.GUI.SetLicense("LICENSE_NAME", "LICENSE_KEY");
+            Noesis.GUI.Init();
 
             // Setup theme
             NoesisApp.Application.SetThemeProviders();

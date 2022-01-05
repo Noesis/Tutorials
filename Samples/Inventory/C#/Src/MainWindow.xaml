@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:Inventory"
         xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
         mc:Ignorable="d"
@@ -530,9 +530,9 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <i:Interaction.Behaviors>
+    <b:Interaction.Behaviors>
         <local:DragAdornerBehavior x:Name="DragAdorner"/>
-    </i:Interaction.Behaviors>
+    </b:Interaction.Behaviors>
 
     <Grid>
         <Grid.Background>
@@ -877,11 +877,11 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <ContentControl x:Name="SlotHead" Grid.Row="0" Content="{Binding}" DataContext="{Binding Player.Slots[0]}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Right}">
-                            <i:Interaction.Triggers>
-                                <ei:StoryboardCompletedTrigger Storyboard="{StaticResource Anim.Intro}">
+                            <b:Interaction.Triggers>
+                                <b:StoryboardCompletedTrigger Storyboard="{StaticResource Anim.Intro}">
                                     <noesis:SetFocusAction/>
-                                </ei:StoryboardCompletedTrigger>
-                            </i:Interaction.Triggers>
+                                </b:StoryboardCompletedTrigger>
+                            </b:Interaction.Triggers>
                         </ContentControl>
                         <ContentControl x:Name="SlotChest" Grid.Row="1" Content="{Binding}" DataContext="{Binding Player.Slots[2], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Right}"/>
                         <ContentControl x:Name="SlotLeft" Grid.Row="2" Content="{Binding}" DataContext="{Binding Player.Slots[4], Mode=TwoWay}" Style="{StaticResource Style.EquipSlot}" Tag="{x:Static PlacementMode.Right}"/>
@@ -1006,30 +1006,30 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <ContentControl Content="{Binding}" Style="{StaticResource Style.InventorySlot}">
-                                    <i:Interaction.Behaviors>
+                                    <b:Interaction.Behaviors>
                                         <local:DragItemBehavior
                                             StartDragCommand="{Binding DataContext.StartDragItem, ElementName=Root}"
                                             EndDragCommand="{Binding DataContext.EndDragItem, ElementName=Root}"/>
                                         <local:DropItemBehavior
                                             DropCommand="{Binding DataContext.DropItem, ElementName=Root}"/>
-                                    </i:Interaction.Behaviors>
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseEnter">
+                                    </b:Interaction.Behaviors>
+                                    <b:Interaction.Triggers>
+                                        <b:EventTrigger EventName="MouseEnter">
                                             <noesis:SetFocusAction/>
-                                        </i:EventTrigger>
-                                        <ei:PropertyChangedTrigger Binding="{Binding MoveFocus}">
+                                        </b:EventTrigger>
+                                        <b:PropertyChangedTrigger Binding="{Binding MoveFocus}">
                                             <noesis:SetFocusAction/>
-                                        </ei:PropertyChangedTrigger>
-                                        <ei:KeyTrigger Key="Enter" ActiveOnFocus="True">
-                                            <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
-                                        </ei:KeyTrigger>
-                                        <ei:KeyTrigger Key="Space" ActiveOnFocus="True">
-                                            <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
-                                        </ei:KeyTrigger>
-                                        <ei:KeyTrigger Key="Escape" ActiveOnFocus="True">
-                                            <i:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{x:Null}"/>
-                                        </ei:KeyTrigger>
-                                    </i:Interaction.Triggers>
+                                        </b:PropertyChangedTrigger>
+                                        <b:KeyTrigger Key="Enter" ActiveOnFocus="True">
+                                            <b:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                                        </b:KeyTrigger>
+                                        <b:KeyTrigger Key="Space" ActiveOnFocus="True">
+                                            <b:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{Binding}"/>
+                                        </b:KeyTrigger>
+                                        <b:KeyTrigger Key="Escape" ActiveOnFocus="True">
+                                            <b:InvokeCommandAction Command="{Binding DataContext.SelectSlot, ElementName=Root}" CommandParameter="{x:Null}"/>
+                                        </b:KeyTrigger>
+                                    </b:Interaction.Triggers>
                                 </ContentControl>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -1075,26 +1075,26 @@
                 </LinearGradientBrush>
             </Grid.Background>
             <Viewbox HorizontalAlignment="Right">
-                <i:Interaction.Triggers>
-                    <ei:DataTrigger Binding="{Binding Platform}" Value="PC">
-                        <ei:ChangePropertyAction TargetName="SelectXBOX" PropertyName="Visibility" Value="Collapsed"/>
-                        <ei:ChangePropertyAction TargetName="SelectPS4" PropertyName="Visibility" Value="Collapsed"/>
-                        <ei:ChangePropertyAction TargetName="CancelXBOX" PropertyName="Visibility" Value="Collapsed"/>
-                        <ei:ChangePropertyAction TargetName="CancelPS4" PropertyName="Visibility" Value="Collapsed"/>
-                    </ei:DataTrigger>
-                    <ei:DataTrigger Binding="{Binding Platform}" Value="XBOX">
-                        <ei:ChangePropertyAction TargetName="SelectPC" PropertyName="Visibility" Value="Collapsed"/>
-                        <ei:ChangePropertyAction TargetName="SelectPS4" PropertyName="Visibility" Value="Collapsed"/>
-                        <ei:ChangePropertyAction TargetName="CancelPC" PropertyName="Visibility" Value="Collapsed"/>
-                        <ei:ChangePropertyAction TargetName="CancelPS4" PropertyName="Visibility" Value="Collapsed"/>
-                    </ei:DataTrigger>
-                    <ei:DataTrigger Binding="{Binding Platform}" Value="PS4">
-                        <ei:ChangePropertyAction TargetName="SelectPC" PropertyName="Visibility" Value="Collapsed"/>
-                        <ei:ChangePropertyAction TargetName="SelectXBOX" PropertyName="Visibility" Value="Collapsed"/>
-                        <ei:ChangePropertyAction TargetName="CancelPC" PropertyName="Visibility" Value="Collapsed"/>
-                        <ei:ChangePropertyAction TargetName="CancelXBOX" PropertyName="Visibility" Value="Collapsed"/>
-                    </ei:DataTrigger>
-                </i:Interaction.Triggers>
+                <b:Interaction.Triggers>
+                    <b:DataTrigger Binding="{Binding Platform}" Value="PC">
+                        <b:ChangePropertyAction TargetName="SelectXBOX" PropertyName="Visibility" Value="Collapsed"/>
+                        <b:ChangePropertyAction TargetName="SelectPS4" PropertyName="Visibility" Value="Collapsed"/>
+                        <b:ChangePropertyAction TargetName="CancelXBOX" PropertyName="Visibility" Value="Collapsed"/>
+                        <b:ChangePropertyAction TargetName="CancelPS4" PropertyName="Visibility" Value="Collapsed"/>
+                    </b:DataTrigger>
+                    <b:DataTrigger Binding="{Binding Platform}" Value="XBOX">
+                        <b:ChangePropertyAction TargetName="SelectPC" PropertyName="Visibility" Value="Collapsed"/>
+                        <b:ChangePropertyAction TargetName="SelectPS4" PropertyName="Visibility" Value="Collapsed"/>
+                        <b:ChangePropertyAction TargetName="CancelPC" PropertyName="Visibility" Value="Collapsed"/>
+                        <b:ChangePropertyAction TargetName="CancelPS4" PropertyName="Visibility" Value="Collapsed"/>
+                    </b:DataTrigger>
+                    <b:DataTrigger Binding="{Binding Platform}" Value="PS4">
+                        <b:ChangePropertyAction TargetName="SelectPC" PropertyName="Visibility" Value="Collapsed"/>
+                        <b:ChangePropertyAction TargetName="SelectXBOX" PropertyName="Visibility" Value="Collapsed"/>
+                        <b:ChangePropertyAction TargetName="CancelPC" PropertyName="Visibility" Value="Collapsed"/>
+                        <b:ChangePropertyAction TargetName="CancelXBOX" PropertyName="Visibility" Value="Collapsed"/>
+                    </b:DataTrigger>
+                </b:Interaction.Triggers>
                 <StackPanel x:Name="HelpOptions" Orientation="Horizontal" UseLayoutRounding="False">
                     <Border x:Name="SelectPC" CornerRadius="2" Background="#66C9B69C" Margin="0,5,5,5" Padding="4,0">
                         <Path Data="M10,0 L10,4 0,4 M2,2 L0,4 2,6" Stroke="#7FFFFFFF" VerticalAlignment="Center" StrokeLineJoin="Round"/>
@@ -1134,7 +1134,6 @@
                             Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top"
                             Width="{Binding ActualWidth, ElementName=DragItemRef}"
                             Height="{Binding ActualWidth, ElementName=DragItemRef}"
-                            BorderThickness="{Binding ActualWidth, ElementName=DragItemBorderRef}"
                             Style="{StaticResource Style.DraggedItem}">
                 <ContentControl.RenderTransform>
                     <TranslateTransform

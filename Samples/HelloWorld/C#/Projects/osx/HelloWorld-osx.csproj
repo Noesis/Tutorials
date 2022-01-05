@@ -70,19 +70,22 @@
     <EmbeddedResource Include="..\..\Src\MainWindow.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Aero Matics Regular.ttf">
+      <Link>Aero Matics Regular.ttf</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.AppKit">
-      <Version>3.0.*</Version>
+      <Version>3.1.*</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.MTL">
-      <Version>3.0.*</Version>
+      <Version>3.1.*</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.NSGL">
-      <Version>3.0.*</Version>
+      <Version>3.1.*</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

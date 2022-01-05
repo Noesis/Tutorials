@@ -63,7 +63,7 @@
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="Font" Grid.Row="0" Grid.ColumnSpan="4" Text="{Binding SelectedItem, ElementName=FontFamilies, StringFormat='Samples/Fonts/#{0}'}" Visibility="Collapsed"/>
+                <TextBlock x:Name="Font" Grid.Row="0" Grid.ColumnSpan="4" Text="{Binding SelectedItem, ElementName=FontFamilies, StringFormat='/Gallery;component/Samples/Fonts/#{0}'}" Visibility="Collapsed"/>
                 <TextBlock Grid.Row="0" Grid.Column="1" Text="Font: " VerticalAlignment="Center"/>
                 <ComboBox Grid.Row="0" Grid.Column="2" x:Name="FontFamilies" SelectedIndex="0">
                     <sys:String>Muli</sys:String>

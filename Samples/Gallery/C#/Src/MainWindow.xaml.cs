@@ -154,11 +154,8 @@ namespace Gallery
 
             DataContext = this;
 
-            this.SizeChanged += (s, e) =>
+            this.WindowContent.SizeChanged += (s, e) =>
             {
-                float dpi = GetScale();
-                float scale;
-
                 if (ActualWidth > ActualHeight)
                 {
                     this.SampleOffset.Width = this.SelectorBar.Width;
@@ -166,7 +163,8 @@ namespace Gallery
                     this.SelectorExpanderButton.IsChecked = false;
                     this.SelectorExpanderButton.IsChecked = true;
 
-                    scale = (float)Math.Max(1.0F, e.NewSize.Width / (1280.0F * dpi)) * dpi;
+                    ScaleTransform scale = (ScaleTransform)this.LayoutRoot.LayoutTransform;
+                    scale.ScaleX = scale.ScaleY = (float)Math.Max(1.0F, e.NewSize.Width / 1280.0F);
                 }
                 else
                 {
@@ -175,15 +173,14 @@ namespace Gallery
                     this.SelectorExpanderButton.IsChecked = false;
                     this.SelectorExpanderButton.Visibility = Visibility.Visible;
 
-                    scale = (float)Math.Max(1.0F, e.NewSize.Height / (720.0F * dpi)) * dpi;
+                    ScaleTransform scale = (ScaleTransform)this.LayoutRoot.LayoutTransform;
+                    scale.ScaleX = scale.ScaleY = (float)Math.Max(1.0F, e.NewSize.Height / 720.0F);
                 }
-
-                ScaleTransform rootScale = (ScaleTransform)this.LayoutRoot.LayoutTransform;
-                rootScale.ScaleX = rootScale.ScaleY = scale;
             };
         }
 
 #if NOESIS
+        Panel WindowContent;
         Panel LayoutRoot;
 
         Panel SamplePanel;
@@ -198,6 +195,7 @@ namespace Gallery
         {
             Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Gallery/MainWindow.xaml");
 
+            this.WindowContent = (Panel)FindName("WindowContent");
             this.LayoutRoot = (Panel)FindName("LayoutRoot");
 
             this.SamplePanel = (Panel)FindName("SamplePanel");

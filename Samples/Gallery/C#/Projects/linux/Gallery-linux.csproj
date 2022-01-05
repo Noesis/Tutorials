@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Noesis.App.Displays.X11" Version="3.0.*" />
-    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="3.0.*" />
-    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="3.0.*" />
+    <PackageReference Include="Noesis.App.Displays.X11" Version="3.1.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.EGL" Version="3.1.*" />
+    <PackageReference Include="Noesis.App.RenderContexts.GLX" Version="3.1.*" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -27,9 +27,6 @@
     </Compile>
     <Compile Include="..\..\Src\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\..\Src\Properties\AssemblyInfo.cs">
-      <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

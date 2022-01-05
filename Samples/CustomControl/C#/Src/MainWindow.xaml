@@ -20,7 +20,7 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" TextElement.FontSize="40">
                         <TextBlock Text="{Binding Hour, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
                         <TextBlock Text=":"/>
-                        <TextBlock Text="{Binding Minute, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <TextBlock Text="{Binding Minute, StringFormat={}{0:00}, RelativeSource={RelativeSource TemplatedParent}}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" TextElement.FontSize="16">
                         <TextBlock Text="{Binding Day, StringFormat=G, RelativeSource={RelativeSource TemplatedParent}}"/>

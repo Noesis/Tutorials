@@ -78,8 +78,11 @@
     <None Include="..\..\Src\App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="..\..\Src\Aero Matics Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Noesis.GUI.Extensions">
-      <Version>3.0.*</Version>
+      <Version>3.0.8</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

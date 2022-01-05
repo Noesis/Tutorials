@@ -3,8 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     mc:Ignorable="d"
     d:DesignWidth="1280" d:DesignHeight="720"
     Style="{StaticResource SampleControlStyle}"
@@ -62,61 +61,61 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="4" Text="Border:"/>
                 <RadioButton Grid.Row="1" Grid.Column="0" GroupName="BorderBrush" Content="Yellow" Margin="0,8,0,0" IsChecked="True">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="BorderBrush" Value="Yellow" TargetName="Border"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="BorderBrush" Value="Yellow" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </RadioButton>
                 <RadioButton Grid.Row="1" Grid.Column="1" GroupName="BorderBrush" Content="Cyan" Margin="10,8,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="BorderBrush" Value="Cyan" TargetName="Border"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="BorderBrush" Value="Cyan" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </RadioButton>
                 <RadioButton Grid.Row="1" Grid.Column="2" GroupName="BorderBrush" Content="Magenta" Margin="10,8,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="BorderBrush" Value="Magenta" TargetName="Border"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="BorderBrush" Value="Magenta" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </RadioButton>
                 <RadioButton Grid.Row="1" Grid.Column="3" GroupName="BorderBrush" Content="Black" Margin="10,8,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="BorderBrush" Value="Black" TargetName="Border"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="BorderBrush" Value="Black" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </RadioButton>
                 <TextBlock Grid.Row="2" Grid.ColumnSpan="4" Text="Background:" Margin="0,12,0,0"/>
                 <RadioButton Grid.Row="3" Grid.Column="0" GroupName="Background" Content="Red" Margin="0,8,0,0" IsChecked="True">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="Background" Value="Red" TargetName="Border"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="Background" Value="Red" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </RadioButton>
                 <RadioButton Grid.Row="3" Grid.Column="1" GroupName="Background" Content="Green" Margin="10,8,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="Background" Value="Green" TargetName="Border"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="Background" Value="Green" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </RadioButton>
                 <RadioButton Grid.Row="3" Grid.Column="2" GroupName="Background" Content="Blue" Margin="10,8,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="Background" Value="Blue" TargetName="Border"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="Background" Value="Blue" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </RadioButton>
                 <RadioButton Grid.Row="3" Grid.Column="3" GroupName="Background" Content="White" Margin="10,8,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="Background" Value="White" TargetName="Border"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="Background" Value="White" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </RadioButton>
                 <Border Grid.Row="4" Grid.ColumnSpan="4" x:Name="Border" Height="50" BorderThickness="10" Margin="0,12,0,0" Background="Red" BorderBrush="Yellow"/>
             </Grid>

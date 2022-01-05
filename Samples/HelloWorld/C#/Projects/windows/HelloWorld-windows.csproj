@@ -79,13 +79,16 @@
     <EmbeddedResource Include="..\..\Src\MainWindow.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Src\Aero Matics Regular.ttf">
+      <Link>Aero Matics Regular.ttf</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.Win32">
-      <Version>3.0.*</Version>
+      <Version>3.1.*</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.D3D11">
-      <Version>3.0.*</Version>
+      <Version>3.1.*</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
