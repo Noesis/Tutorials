@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Localization
 {
@@ -7,5 +8,9 @@ namespace Localization
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnActivated(EventArgs e)
+        {
+            MainWindow.DataContext = new ViewModel();
+        }
     }
 }

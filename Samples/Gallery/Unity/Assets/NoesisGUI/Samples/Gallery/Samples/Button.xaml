@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
     xmlns:local="clr-namespace:Gallery"
     mc:Ignorable="d"
@@ -388,18 +388,18 @@
                 </Style>
               </StackPanel.Resources>
               <Button Content="NEW GAME">
-                <i:Interaction.Triggers>
-                  <i:EventTrigger EventName="MouseEnter">
+                <b:Interaction.Triggers>
+                  <b:EventTrigger EventName="MouseEnter">
                     <noesis:SetFocusAction/>
-                  </i:EventTrigger>
-                </i:Interaction.Triggers>
+                  </b:EventTrigger>
+                </b:Interaction.Triggers>
               </Button>
               <Button Content="SETTINGS" Margin="0,20,0,0">
-                <i:Interaction.Triggers>
-                  <i:EventTrigger EventName="MouseEnter">
+                <b:Interaction.Triggers>
+                  <b:EventTrigger EventName="MouseEnter">
                     <noesis:SetFocusAction/>
-                  </i:EventTrigger>
-                </i:Interaction.Triggers>
+                  </b:EventTrigger>
+                </b:Interaction.Triggers>
               </Button>
             </StackPanel>
           </Viewbox>

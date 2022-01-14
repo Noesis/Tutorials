@@ -15,21 +15,14 @@ namespace Inventory
     {
         public MainWindow()
         {
-            System.WeakReference wr = new System.WeakReference(this);
-            Initialized += (s, e) => { ((MainWindow)wr.Target).OnInitialized(s, e); };
             InitializeComponent();
         }
 
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Inventory/MainWindow.xaml");
+            NoesisUnity.LoadComponent(this);
         }
 #endif
-
-        private void OnInitialized(object sender, EventArgs e)
-        {
-            DataContext = new ViewModel();
-        }
     }
 }

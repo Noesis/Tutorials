@@ -16,21 +16,14 @@ namespace Localization
     {
         public MainWindow()
         {
-            System.WeakReference wr = new System.WeakReference(this);
-            this.Initialized += (s, e) => { ((MainWindow)wr.Target).OnInitialized(s, e); };
             this.InitializeComponent();
         }
 
 #if NOESIS
         void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Localization/MainWindow.xaml");
+            NoesisUnity.LoadComponent(this);
         }
 #endif
-
-        private void OnInitialized(object sender, EventArgs args)
-        {
-            this.DataContext = new ViewModel();
-        }
     }
 }

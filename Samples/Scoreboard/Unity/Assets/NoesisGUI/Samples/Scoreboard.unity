@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,31 +38,31 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
-    m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 0
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -77,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 0
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 0
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -88,9 +94,11 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 2b22ae87745aa9347a93e049360f33d4, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -110,21 +118,25 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &2141655593
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 2141655599}
   - component: {fileID: 2141655598}
   - component: {fileID: 2141655596}
   - component: {fileID: 2141655595}
   - component: {fileID: 2141655594}
+  - component: {fileID: 2141655597}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -135,50 +147,157 @@ GameObject:
 --- !u!114 &2141655594
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141655593}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29355477be96127469aed699dd82b4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xaml: {fileID: 11400000, guid: 490c381c8d7cf6643a92d025546cd152, type: 2}
+  _xaml: {fileID: -8414808784256213763, guid: 953933d877ab1974d9cb9999a5867b8d, type: 3}
   _texture: {fileID: 0}
-  _isPPAAEnabled: 1
-  _tessellationMaxPixelError: 0.4
-  _renderFlags: 0
+  _isPPAAEnabled: 0
+  _tessellationMaxPixelError: 0.2
+  _renderFlags: 16
   _continuousRendering: 1
+  _enableExternalUpdate: 0
   _enableKeyboard: 1
   _enableMouse: 1
   _enableTouch: 1
-  _enableGamepad: 1
+  _enableGamepad: 0
   _emulateTouch: 0
   _useRealTimeClock: 0
+  _actions: {fileID: -944628639613478452, guid: 9f67088567c2b5040b62090c14e352e3, type: 3}
 --- !u!81 &2141655595
 AudioListener:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141655593}
   m_Enabled: 1
 --- !u!124 &2141655596
 Behaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141655593}
   m_Enabled: 1
+--- !u!114 &2141655597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141655593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8985b12779488b46a5ed2f90052ca83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Silvershard Mines
+  _elapsedTime: 16
+  _players:
+  - _name: Namcras Aenean
+    _class: 3
+    _team: 0
+    _score: 476
+    _kills: 43
+    _deaths: 96
+    _damage: 8134124
+    _heal: 1831
+  - _name: Sedlass Vestibulum
+    _class: 1
+    _team: 1
+    _score: 414
+    _kills: 79
+    _deaths: 98
+    _damage: 8324715
+    _heal: 2954
+  - _name: Curae Praesent
+    _class: 2
+    _team: 1
+    _score: 383
+    _kills: 99
+    _deaths: 45
+    _damage: 797117
+    _heal: 2615
+  - _name: Adipiscing Quisque
+    _class: 2
+    _team: 0
+    _score: 327
+    _kills: 34
+    _deaths: 93
+    _damage: 481757
+    _heal: 6353
+  - _name: Estdonec Vivamus
+    _class: 0
+    _team: 1
+    _score: 289
+    _kills: 80
+    _deaths: 82
+    _damage: 743715
+    _heal: 37415
+  - _name: Duisleo Curabitur
+    _class: 1
+    _team: 0
+    _score: 265
+    _kills: 90
+    _deaths: 21
+    _damage: 383571
+    _heal: 82114
+  - _name: Musetiam Aliquam
+    _class: 4
+    _team: 0
+    _score: 259
+    _kills: 37
+    _deaths: 86
+    _damage: 441751
+    _heal: 255131
+  - _name: Nuncmauris Accumsan
+    _class: 3
+    _team: 1
+    _score: 225
+    _kills: 63
+    _deaths: 60
+    _damage: 201175
+    _heal: 4915
+  - _name: Phasellus Nullam
+    _class: 0
+    _team: 0
+    _score: 225
+    _kills: 20
+    _deaths: 30
+    _damage: 271735
+    _heal: 6715
+  - _name: Consequat Bibendum
+    _class: 4
+    _team: 1
+    _score: 180
+    _kills: 54
+    _deaths: 18
+    _damage: 87537
+    _heal: 95717
 --- !u!20 &2141655598
 Camera:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141655593}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -208,8 +327,9 @@ Camera:
 --- !u!4 &2141655599
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141655593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}

@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
@@ -94,10 +94,11 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 50626338}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -117,9 +118,72 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!850595691 &50626338
+LightingSettings:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Settings.lighting
+  serializedVersion: 3
+  m_GIWorkflowMode: 0
+  m_EnableBakedLightmaps: 1
+  m_EnableRealtimeLightmaps: 1
+  m_RealtimeEnvironmentLighting: 1
+  m_BounceScale: 1
+  m_AlbedoBoost: 1
+  m_IndirectOutputScale: 1
+  m_UsingShadowmask: 1
+  m_BakeBackend: 1
+  m_LightmapMaxSize: 1024
+  m_BakeResolution: 40
+  m_Padding: 2
+  m_TextureCompression: 1
+  m_AO: 0
+  m_AOMaxDistance: 1
+  m_CompAOExponent: 1
+  m_CompAOExponentDirect: 0
+  m_ExtractAO: 0
+  m_MixedBakeMode: 2
+  m_LightmapsBakeMode: 1
+  m_FilterMode: 1
+  m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+  m_ExportTrainingData: 0
+  m_TrainingDataDestination: TrainingData
+  m_RealtimeResolution: 2
+  m_ForceWhiteAlbedo: 0
+  m_ForceUpdates: 0
+  m_FinalGather: 0
+  m_FinalGatherRayCount: 256
+  m_FinalGatherFiltering: 1
+  m_PVRCulling: 1
+  m_PVRSampling: 1
+  m_PVRDirectSampleCount: 32
+  m_PVRSampleCount: 500
+  m_PVREnvironmentSampleCount: 500
+  m_PVREnvironmentReferencePointCount: 2048
+  m_LightProbeSampleCountMultiplier: 4
+  m_PVRBounces: 2
+  m_PVRMinBounces: 2
+  m_PVREnvironmentMIS: 0
+  m_PVRFilteringMode: 2
+  m_PVRDenoiserTypeDirect: 0
+  m_PVRDenoiserTypeIndirect: 0
+  m_PVRDenoiserTypeAO: 0
+  m_PVRFilterTypeDirect: 0
+  m_PVRFilterTypeIndirect: 0
+  m_PVRFilterTypeAO: 0
+  m_PVRFilteringGaussRadiusDirect: 1
+  m_PVRFilteringGaussRadiusIndirect: 5
+  m_PVRFilteringGaussRadiusAO: 2
+  m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+  m_PVRFilteringAtrousPositionSigmaIndirect: 2
+  m_PVRFilteringAtrousPositionSigmaAO: 1
 --- !u!1 &596832472
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +196,7 @@ GameObject:
   - component: {fileID: 596832474}
   - component: {fileID: 596832473}
   - component: {fileID: 596832476}
+  - component: {fileID: 596832477}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -216,15 +281,457 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29355477be96127469aed699dd82b4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xaml: {fileID: 11400000, guid: e21b01db22df4aa4e8c8ad8600fa5e26, type: 2}
+  _xaml: {fileID: -8414808784256213763, guid: ec469ed647141fd4ba14a903b6d8be54, type: 3}
   _texture: {fileID: 0}
-  _isPPAAEnabled: 1
-  _tessellationMaxPixelError: 0.4
-  _renderFlags: 0
+  _isPPAAEnabled: 0
+  _tessellationMaxPixelError: 0.2
+  _renderFlags: 16
   _continuousRendering: 1
+  _enableExternalUpdate: 0
   _enableKeyboard: 1
   _enableMouse: 1
   _enableTouch: 1
   _enableGamepad: 0
   _emulateTouch: 0
   _useRealTimeClock: 0
+  _actions: {fileID: -944628639613478452, guid: 9f67088567c2b5040b62090c14e352e3, type: 3}
+--- !u!114 &596832477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596832472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3153c6b2c729f0546b6fa41f5551ccda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _platform: 0
+  _player:
+    _name: Morgan Hearson
+    _life: 1420
+    _mana: 345
+    _dps: 2170
+    _armor: 195
+  _startDragItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 596832477}
+        m_TargetAssemblyTypeName: InventoryViewModel, Assembly-CSharp
+        m_MethodName: OnStartDragItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _endDragItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 596832477}
+        m_TargetAssemblyTypeName: InventoryViewModel, Assembly-CSharp
+        m_MethodName: OnEndDragItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _dropItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 596832477}
+        m_TargetAssemblyTypeName: InventoryViewModel, Assembly-CSharp
+        m_MethodName: OnDropItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _selectSlot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 596832477}
+        m_TargetAssemblyTypeName: InventoryViewModel, Assembly-CSharp
+        m_MethodName: OnSelectSlot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _items:
+  - _name: Item 0
+    _description: Item 0 description
+    _category: 5
+    _life: 0
+    _mana: 0
+    _dps: 0
+    _armor: 0
+    _icon: {fileID: -80204251016295247, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 1
+    _description: Item 1 description
+    _category: 5
+    _life: 2
+    _mana: 1
+    _dps: 9
+    _armor: 3
+    _icon: {fileID: 4599300511514190343, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 2
+    _description: Item 2 description
+    _category: 5
+    _life: 4
+    _mana: 2
+    _dps: 18
+    _armor: 6
+    _icon: {fileID: -5028559597613163730, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 3
+    _description: Item 3 description
+    _category: 5
+    _life: 6
+    _mana: 3
+    _dps: 27
+    _armor: 9
+    _icon: {fileID: 6673393571162495905, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 4
+    _description: Item 4 description
+    _category: 5
+    _life: 8
+    _mana: 4
+    _dps: 36
+    _armor: 12
+    _icon: {fileID: -4188667605340147986, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 5
+    _description: Item 5 description
+    _category: 5
+    _life: 10
+    _mana: 5
+    _dps: 45
+    _armor: 15
+    _icon: {fileID: -1449968962113786656, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 6
+    _description: Item 6 description
+    _category: 5
+    _life: 12
+    _mana: 6
+    _dps: 54
+    _armor: 18
+    _icon: {fileID: -2472442204033802016, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 7
+    _description: Item 7 description
+    _category: 5
+    _life: 14
+    _mana: 7
+    _dps: 63
+    _armor: 21
+    _icon: {fileID: -9015751677913275692, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 8
+    _description: Item 8 description
+    _category: 5
+    _life: 16
+    _mana: 8
+    _dps: 72
+    _armor: 24
+    _icon: {fileID: 1690235700231144083, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 9
+    _description: Item 9 description
+    _category: 5
+    _life: 18
+    _mana: 9
+    _dps: 81
+    _armor: 27
+    _icon: {fileID: 8628780120224272253, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 10
+    _description: Item 10 description
+    _category: 5
+    _life: 20
+    _mana: 10
+    _dps: 90
+    _armor: 30
+    _icon: {fileID: 3844271299874371973, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 11
+    _description: Item 11 description
+    _category: 5
+    _life: 22
+    _mana: 11
+    _dps: 99
+    _armor: 33
+    _icon: {fileID: -5853424993840455099, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 12
+    _description: Item 12 description
+    _category: 5
+    _life: 24
+    _mana: 12
+    _dps: 108
+    _armor: 36
+    _icon: {fileID: -9101504120043159908, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 13
+    _description: Item 13 description
+    _category: 6
+    _life: 26
+    _mana: 13
+    _dps: 117
+    _armor: 39
+    _icon: {fileID: -4528127779764765319, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 14
+    _description: Item 14 description
+    _category: 6
+    _life: 28
+    _mana: 14
+    _dps: 126
+    _armor: 42
+    _icon: {fileID: 1679685756175453888, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 15
+    _description: Item 15 description
+    _category: 6
+    _life: 30
+    _mana: 15
+    _dps: 135
+    _armor: 45
+    _icon: {fileID: -7046141830478446196, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 16
+    _description: Item 16 description
+    _category: 6
+    _life: 32
+    _mana: 16
+    _dps: 144
+    _armor: 48
+    _icon: {fileID: 3284833503885334144, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 17
+    _description: Item 17 description
+    _category: 6
+    _life: 34
+    _mana: 17
+    _dps: 153
+    _armor: 51
+    _icon: {fileID: -6886234411479481480, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 18
+    _description: Item 18 description
+    _category: 6
+    _life: 36
+    _mana: 18
+    _dps: 162
+    _armor: 54
+    _icon: {fileID: -7980659647158684171, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 19
+    _description: Item 19 description
+    _category: 6
+    _life: 38
+    _mana: 19
+    _dps: 171
+    _armor: 57
+    _icon: {fileID: 3341921238206319595, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 20
+    _description: Item 20 description
+    _category: 6
+    _life: 40
+    _mana: 20
+    _dps: 180
+    _armor: 60
+    _icon: {fileID: 3261146849877038018, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 21
+    _description: Item 21 description
+    _category: 1
+    _life: 42
+    _mana: 21
+    _dps: 189
+    _armor: 63
+    _icon: {fileID: 2110591704477507454, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 22
+    _description: Item 22 description
+    _category: 2
+    _life: 44
+    _mana: 22
+    _dps: 198
+    _armor: 66
+    _icon: {fileID: 5138239193449639509, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 23
+    _description: Item 23 description
+    _category: 3
+    _life: 46
+    _mana: 23
+    _dps: 207
+    _armor: 69
+    _icon: {fileID: 3775060538594030543, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 24
+    _description: Item 24 description
+    _category: 4
+    _life: 48
+    _mana: 24
+    _dps: 216
+    _armor: 72
+    _icon: {fileID: 5141514972919647121, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 25
+    _description: Item 25 description
+    _category: 0
+    _life: 50
+    _mana: 25
+    _dps: 225
+    _armor: 75
+    _icon: {fileID: -7407699511008445907, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 26
+    _description: Item 26 description
+    _category: 1
+    _life: 52
+    _mana: 26
+    _dps: 234
+    _armor: 78
+    _icon: {fileID: -5029621365756038672, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 27
+    _description: Item 27 description
+    _category: 2
+    _life: 54
+    _mana: 27
+    _dps: 243
+    _armor: 81
+    _icon: {fileID: -1900545762783267844, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 28
+    _description: Item 28 description
+    _category: 3
+    _life: 56
+    _mana: 28
+    _dps: 252
+    _armor: 84
+    _icon: {fileID: -6419872631868187243, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 29
+    _description: Item 29 description
+    _category: 4
+    _life: 58
+    _mana: 29
+    _dps: 261
+    _armor: 87
+    _icon: {fileID: 8492088257068940775, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 30
+    _description: Item 30 description
+    _category: 0
+    _life: 60
+    _mana: 30
+    _dps: 270
+    _armor: 90
+    _icon: {fileID: 601635343411495638, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 31
+    _description: Item 31 description
+    _category: 1
+    _life: 62
+    _mana: 31
+    _dps: 279
+    _armor: 93
+    _icon: {fileID: 7318676350741545600, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 32
+    _description: Item 32 description
+    _category: 2
+    _life: 64
+    _mana: 32
+    _dps: 288
+    _armor: 96
+    _icon: {fileID: -7002295459231160332, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 33
+    _description: Item 33 description
+    _category: 3
+    _life: 66
+    _mana: 33
+    _dps: 297
+    _armor: 99
+    _icon: {fileID: -7011229575089595464, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 34
+    _description: Item 34 description
+    _category: 4
+    _life: 68
+    _mana: 34
+    _dps: 306
+    _armor: 102
+    _icon: {fileID: 8975686777403009786, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 35
+    _description: Item 35 description
+    _category: 0
+    _life: 70
+    _mana: 35
+    _dps: 315
+    _armor: 105
+    _icon: {fileID: 8676031142551525438, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 36
+    _description: Item 36 description
+    _category: 1
+    _life: 72
+    _mana: 36
+    _dps: 324
+    _armor: 108
+    _icon: {fileID: 7868215029421512013, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 37
+    _description: Item 37 description
+    _category: 2
+    _life: 74
+    _mana: 37
+    _dps: 333
+    _armor: 111
+    _icon: {fileID: -3516279898921011931, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 38
+    _description: Item 38 description
+    _category: 3
+    _life: 76
+    _mana: 38
+    _dps: 342
+    _armor: 114
+    _icon: {fileID: 4383622479199193951, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 39
+    _description: Item 39 description
+    _category: 4
+    _life: 78
+    _mana: 39
+    _dps: 351
+    _armor: 117
+    _icon: {fileID: -2856950380486848410, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 40
+    _description: Item 40 description
+    _category: 0
+    _life: 80
+    _mana: 40
+    _dps: 360
+    _armor: 120
+    _icon: {fileID: -4660740093444575870, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 41
+    _description: Item 41 description
+    _category: 1
+    _life: 82
+    _mana: 41
+    _dps: 369
+    _armor: 123
+    _icon: {fileID: 6706361545173703465, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 42
+    _description: Item 42 description
+    _category: 2
+    _life: 84
+    _mana: 42
+    _dps: 378
+    _armor: 126
+    _icon: {fileID: -2919493796740872808, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 43
+    _description: Item 43 description
+    _category: 3
+    _life: 86
+    _mana: 43
+    _dps: 387
+    _armor: 129
+    _icon: {fileID: 7275196601603523529, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}
+  - _name: Item 44
+    _description: Item 44 description
+    _category: 4
+    _life: 88
+    _mana: 44
+    _dps: 396
+    _armor: 132
+    _icon: {fileID: -974971888626219082, guid: 0617794c3013c0b4588bb0161b49b8d4, type: 3}

@@ -1,0 +1,20 @@
+#include "EffectHelpers.h"
+
+cbuffer Constants: register(b1)
+{
+    float size;
+}
+
+float4 GetCustomEffect()
+{
+    float2 pos = GetImagePosition();
+
+    if (floor(pos.y / size) % 2.0 >= 1.0)
+    {
+        pos.x += size / 2.0f;
+    }
+
+    float2 brickNum = floor(pos / size);
+    float2 centerOfBrick = brickNum * size + size / 2;
+    return SampleInputAtPosition(centerOfBrick);
+}

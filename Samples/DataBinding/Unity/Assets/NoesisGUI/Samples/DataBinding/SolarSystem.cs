@@ -36,8 +36,15 @@ public class SolarSystem : MonoBehaviour, INotifyPropertyChanged
     private void OnValidate()
     {
         _solarSystemObjects = new List<SolarSystemObject>(_solarSystemObjects);
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SolarSystemObjects"));
+        OnPropertyChanged("SolarSystemObjects");
     }
 
+    #region INotifyPropertyChanged
     public event PropertyChangedEventHandler PropertyChanged;
+
+    void OnPropertyChanged(string name)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+    #endregion
 }

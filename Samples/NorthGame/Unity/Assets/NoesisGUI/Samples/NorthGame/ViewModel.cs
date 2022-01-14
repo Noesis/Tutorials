@@ -22,6 +22,7 @@ namespace NorthGame
 
     public enum State
     {
+        Invalid,
         Menu,
         Play,
         Options
@@ -380,6 +381,7 @@ namespace NorthGame
 
             Play play = new Play();
             _container2.Child = play;
+            _container2.UpdateLayout();
             State = State.Play;
             OnPropertyChanged("State");
 

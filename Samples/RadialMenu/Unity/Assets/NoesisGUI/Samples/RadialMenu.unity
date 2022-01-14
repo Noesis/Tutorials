@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,11 +154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29355477be96127469aed699dd82b4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xaml: {fileID: 11400000, guid: c88787b085c0b8c41ac49977ed0047d6, type: 2}
+  _xaml: {fileID: -8414808784256213763, guid: 6ac7367dec4c1f641bfda08344442ae4, type: 3}
   _texture: {fileID: 0}
-  _isPPAAEnabled: 1
+  _isPPAAEnabled: 0
   _tessellationMaxPixelError: 0.4
-  _renderFlags: 0
+  _renderFlags: 16
   _continuousRendering: 1
   _enableExternalUpdate: 0
   _enableKeyboard: 1
@@ -167,6 +167,9 @@ MonoBehaviour:
   _enableGamepad: 0
   _emulateTouch: 0
   _useRealTimeClock: 0
+  _actions: {fileID: 0}
+  _gamepadRepeatDelay: 0.5
+  _gamepadRepeatRate: 0.1
 --- !u!81 &848492253
 AudioListener:
   m_ObjectHideFlags: 0
@@ -228,6 +231,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

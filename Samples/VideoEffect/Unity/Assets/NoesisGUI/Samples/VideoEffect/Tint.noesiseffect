@@ -1,0 +1,19 @@
+#include "EffectHelpers.h"
+
+cbuffer Constants: register(b1)
+{
+    float4 color;
+}
+
+float4 GetCustomEffect()
+{
+    float4 c = GetInput();
+
+    return float4
+    (
+        c.r * color.r,
+        c.g * color.g,
+        c.b * color.b,
+        c.a + color.a * (1.0f - c.a)
+    );
+}

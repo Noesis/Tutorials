@@ -159,7 +159,15 @@
                                             <Border CornerRadius="4" BorderThickness="2,0,2,0"  Margin="-4,-4,-4,-3" HorizontalAlignment="Right"
                                                     BorderBrush="{StaticResource Brush.RightShadow}"/>
                                             <Border CornerRadius="2" Margin="-3,-5,-3,-4" Background="{StaticResource Brush.SwitchThumbBg}"/>
-                                            <Border x:Name="border" Margin="-3,-5,-3,-4" CornerRadius="2,2,4,4" Background="{StaticResource Brush.SwitchThumb}"/>
+                                            <Border x:Name="border" Margin="-3,-5,-3,-4" CornerRadius="2,2,4,4">
+                                              <Border.Background>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                  <GradientStop Color="#FFE5E5E5" Offset="0"/>
+                                                  <GradientStop Color="#FFAFAFAF" Offset="0.97"/>
+                                                  <GradientStop Color="#00AFAFAF" Offset="1"/>
+                                                </LinearGradientBrush>
+                                              </Border.Background>
+                                            </Border>
                                         </Grid>
                                     </Border>
                                 </StackPanel>
@@ -233,7 +241,15 @@
                             <Border CornerRadius="4" BorderThickness="2,0,2,0" Margin="-4,-2,-4,-1" HorizontalAlignment="Right"
                                     BorderBrush="{StaticResource Brush.RightShadow}"/>
                             <Border CornerRadius="2" Margin="-3,-3,-3,-2" Background="{StaticResource Brush.SwitchThumbBg}"/>
-                            <Border x:Name="border" Margin="-3,-3,-3,-2" CornerRadius="2,2,4,4" Background="{StaticResource Brush.SliderThumb}"/>
+                            <Border x:Name="border" Margin="-3,-3,-3,-2" CornerRadius="2,2,4,4">
+                              <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                  <GradientStop Color="#FFE5E5E5" Offset="0"/>
+                                  <GradientStop Color="#FFAFAFAF" Offset="0.97"/>
+                                  <GradientStop Color="#00AFAFAF" Offset="1"/>
+                                </LinearGradientBrush>
+                              </Border.Background>
+                            </Border>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Login
 {
@@ -7,5 +8,9 @@ namespace Login
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnActivated(EventArgs e)
+        {
+            MainWindow.DataContext = new ViewModel();
+        }
     }
 }

@@ -36,18 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Noesis.GUI.Extensions, Version=3.0.0.9305, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Noesis.GUI.Extensions.3.0.0\lib\net45\Noesis.GUI.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Expression.Blend.Sdk.WPF.1.0.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,11 +51,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NoesisGUI\Samples\Inventory\DelegateCommand.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Inventory\DragAdornerBehavior.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Inventory\DragItemBehavior.cs" />
     <Compile Include="Assets\NoesisGUI\Samples\Inventory\DropItemBehavior.cs" />
-    <Compile Include="Assets\NoesisGUI\Samples\Inventory\ViewModel.cs" />
     <Compile Include="Blend\Inventory\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -79,9 +65,11 @@
     <Compile Include="Assets\NoesisGUI\Samples\Inventory\AnimatedNumber.xaml.cs">
       <DependentUpon>AnimatedNumber.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Blend\Inventory\DelegateCommand.cs" />
     <Compile Include="Blend\Inventory\Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Blend\Inventory\ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="Blend\Inventory\App.xaml">
@@ -111,7 +99,11 @@
   <ItemGroup>
     <None Include="Blend\Inventory\App.config" />
     <AppDesigner Include="Blend\Inventory\Properties\" />
-    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Noesis.GUI.Extensions">
+      <Version>3.0.*</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

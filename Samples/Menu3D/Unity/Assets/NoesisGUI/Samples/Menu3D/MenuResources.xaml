@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:Menu3D"
     xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions">
     <Color x:Key="TransparentWhiteColor5">#0CFFFFFF</Color>
@@ -216,15 +216,15 @@
         <Setter Property="noesis:StyleInteraction.Triggers">
             <Setter.Value>
                 <noesis:StyleTriggerCollection>
-                    <i:EventTrigger EventName="MouseEnter">
+                    <b:EventTrigger EventName="MouseEnter">
                         <noesis:SetFocusAction/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="GotFocus">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropSmall.mp3" Volume="0.3"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="Click">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
-                    </i:EventTrigger>
+                    </b:EventTrigger>
+                    <b:EventTrigger EventName="GotFocus">
+                        <b:PlaySoundAction Source="Sounds/WaterDropSmall.mp3" Volume="0.3"/>
+                    </b:EventTrigger>
+                    <b:EventTrigger EventName="Click">
+                        <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
+                    </b:EventTrigger>
                 </noesis:StyleTriggerCollection>
             </Setter.Value>
         </Setter>
@@ -327,9 +327,9 @@
         <Setter Property="noesis:StyleInteraction.Triggers">
             <Setter.Value>
                 <noesis:StyleTriggerCollection>
-                    <i:EventTrigger EventName="MouseEnter">
+                    <b:EventTrigger EventName="MouseEnter">
                         <noesis:SetFocusAction TargetObject="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type HeaderedContentControl}}}"/>
-                    </i:EventTrigger>
+                    </b:EventTrigger>
                 </noesis:StyleTriggerCollection>
             </Setter.Value>
         </Setter>
@@ -375,15 +375,15 @@
         <Setter Property="noesis:StyleInteraction.Triggers">
             <Setter.Value>
                 <noesis:StyleTriggerCollection>
-                    <i:EventTrigger EventName="GotKeyboardFocus">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropSmall.mp3" Volume="0.3"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="Checked">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="Unchecked">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
-                    </i:EventTrigger>
+                    <b:EventTrigger EventName="GotKeyboardFocus">
+                        <b:PlaySoundAction Source="Sounds/WaterDropSmall.mp3" Volume="0.3"/>
+                    </b:EventTrigger>
+                    <b:EventTrigger EventName="Checked">
+                        <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
+                    </b:EventTrigger>
+                    <b:EventTrigger EventName="Unchecked">
+                        <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
+                    </b:EventTrigger>
                 </noesis:StyleTriggerCollection>
             </Setter.Value>
         </Setter>
@@ -397,24 +397,24 @@
         <Setter Property="noesis:StyleInteraction.Triggers">
             <Setter.Value>
                 <noesis:StyleTriggerCollection>
-                    <i:EventTrigger EventName="GotKeyboardFocus">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropSmall.mp3" Volume="0.3"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
-                    </i:EventTrigger>
-                    <ei:KeyTrigger Key="Return" ActiveOnFocus="True">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
-                    </ei:KeyTrigger>
-                    <ei:KeyTrigger Key="Space" ActiveOnFocus="True">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
-                    </ei:KeyTrigger>
-                    <ei:KeyTrigger Key="Left" ActiveOnFocus="True">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
-                    </ei:KeyTrigger>
-                    <ei:KeyTrigger Key="Right" ActiveOnFocus="True">
-                        <ei:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
-                    </ei:KeyTrigger>
+                    <b:EventTrigger EventName="GotKeyboardFocus">
+                        <b:PlaySoundAction Source="Sounds/WaterDropSmall.mp3" Volume="0.3"/>
+                    </b:EventTrigger>
+                    <b:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
+                    </b:EventTrigger>
+                    <b:KeyTrigger Key="Return" ActiveOnFocus="True">
+                        <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
+                    </b:KeyTrigger>
+                    <b:KeyTrigger Key="Space" ActiveOnFocus="True">
+                        <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
+                    </b:KeyTrigger>
+                    <b:KeyTrigger Key="Left" ActiveOnFocus="True">
+                        <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
+                    </b:KeyTrigger>
+                    <b:KeyTrigger Key="Right" ActiveOnFocus="True">
+                        <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
+                    </b:KeyTrigger>
                 </noesis:StyleTriggerCollection>
             </Setter.Value>
         </Setter>

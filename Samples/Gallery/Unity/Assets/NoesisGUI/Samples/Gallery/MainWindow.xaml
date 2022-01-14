@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors" 
         xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Gallery"
@@ -17,24 +17,24 @@
         d:DataContext="{d:DesignInstance {x:Type local:MainWindow}, IsDesignTimeCreatable=True}">
 
     <noesis:Xaml.Dependencies>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.DarkAqua.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.DarkBlue.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.DarkCrimson.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.DarkEmerald.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.DarkGreen.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.DarkLime.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.DarkOrange.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.DarkPurple.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.DarkRed.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.LightAqua.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.LightBlue.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.LightCrimson.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.LightEmerald.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.LightGreen.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.LightLime.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.LightOrange.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.LightPurple.xaml"/>
-        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.LightRed.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.DarkAqua.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.DarkBlue.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.DarkCrimson.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.DarkEmerald.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.DarkGreen.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.DarkLime.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.DarkOrange.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.DarkPurple.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.DarkRed.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.LightAqua.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.LightBlue.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.LightCrimson.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.LightEmerald.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.LightGreen.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.LightLime.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.LightOrange.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.LightPurple.xaml"/>
+        <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Theme/NoesisTheme.Brushes.LightRed.xaml"/>
 
         <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Samples/Gallery/Samples/Animation.xaml"/>
         <noesis:Dependency Source="/Gallery;component/Assets/NoesisGUI/Samples/Gallery/Samples/Brushes.xaml"/>
@@ -254,89 +254,89 @@
             </Storyboard>
         </ResourceDictionary>
     </UserControl.Resources>
-    <i:Interaction.Triggers>
-        <ei:DataTrigger Binding="{Binding IsChecked, ElementName=SelectorExpanderButton}" Value="True">
-            <i:Interaction.Behaviors>
-                <ei:ConditionBehavior>
-                    <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
-                    </ei:ConditionalExpression>
-                </ei:ConditionBehavior>
-            </i:Interaction.Behaviors>
-            <ei:ControlStoryboardAction Storyboard="{StaticResource ExpandSelector}"/>
-        </ei:DataTrigger>
-        <ei:DataTrigger Binding="{Binding IsChecked, ElementName=SelectorExpanderButton}" Value="False">
-            <i:Interaction.Behaviors>
-                <ei:ConditionBehavior>
-                    <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
-                    </ei:ConditionalExpression>
-                </ei:ConditionBehavior>
-            </i:Interaction.Behaviors>
-            <ei:ControlStoryboardAction Storyboard="{StaticResource CollapseSelector}"/>
-        </ei:DataTrigger>
-        <ei:DataTrigger Binding="{Binding IsChecked, ElementName=SelectorExpanderButton}" Value="True">
-            <i:Interaction.Behaviors>
-                <ei:ConditionBehavior>
-                    <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" Operator="NotEqual" RightOperand="Visible"/>
-                    </ei:ConditionalExpression>
-                </ei:ConditionBehavior>
-            </i:Interaction.Behaviors>
-            <ei:ControlStoryboardAction Storyboard="{StaticResource ExpandSelectorInstant}"/>
-        </ei:DataTrigger>
-        <ei:DataTrigger Binding="{Binding IsChecked, ElementName=SelectorExpanderButton}" Value="False">
-            <i:Interaction.Behaviors>
-                <ei:ConditionBehavior>
-                    <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" Operator="NotEqual" RightOperand="Visible"/>
-                    </ei:ConditionalExpression>
-                </ei:ConditionBehavior>
-            </i:Interaction.Behaviors>
-            <ei:ControlStoryboardAction Storyboard="{StaticResource CollapseSelectorInstant}"/>
-        </ei:DataTrigger>
-        <i:EventTrigger EventName="MouseLeave" SourceName="SelectorBar">
-            <i:Interaction.Behaviors>
-                <ei:ConditionBehavior>
-                    <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
-                    </ei:ConditionalExpression>
-                </ei:ConditionBehavior>
-            </i:Interaction.Behaviors>
-            <ei:ControlStoryboardAction Storyboard="{StaticResource DelayedCollapseSelector}"/>
-        </i:EventTrigger>
-        <i:EventTrigger EventName="MouseEnter" SourceName="SelectorBar">
-            <i:Interaction.Behaviors>
-                <ei:ConditionBehavior>
-                    <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
-                    </ei:ConditionalExpression>
-                </ei:ConditionBehavior>
-            </i:Interaction.Behaviors>
-            <ei:ControlStoryboardAction Storyboard="{StaticResource DelayedCollapseSelector}" ControlStoryboardOption="Stop"/>
-            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectorExpanderButton"/>
-        </i:EventTrigger>
-        <ei:StoryboardCompletedTrigger Storyboard="{StaticResource DelayedCollapseSelector}">
-            <i:Interaction.Behaviors>
-                <ei:ConditionBehavior>
-                    <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
-                    </ei:ConditionalExpression>
-                </ei:ConditionBehavior>
-            </i:Interaction.Behaviors>
-            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectorExpanderButton"/>
-        </ei:StoryboardCompletedTrigger>
-        <i:EventTrigger EventName="MouseDown" SourceName="SampleOverlay">
-            <i:Interaction.Behaviors>
-                <ei:ConditionBehavior>
-                    <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
-                    </ei:ConditionalExpression>
-                </ei:ConditionBehavior>
-            </i:Interaction.Behaviors>
-            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectorExpanderButton"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
+    <b:Interaction.Triggers>
+        <b:DataTrigger Binding="{Binding IsChecked, ElementName=SelectorExpanderButton}" Value="True">
+            <b:Interaction.Behaviors>
+                <b:ConditionBehavior>
+                    <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
+                    </b:ConditionalExpression>
+                </b:ConditionBehavior>
+            </b:Interaction.Behaviors>
+            <b:ControlStoryboardAction Storyboard="{StaticResource ExpandSelector}"/>
+        </b:DataTrigger>
+        <b:DataTrigger Binding="{Binding IsChecked, ElementName=SelectorExpanderButton}" Value="False">
+            <b:Interaction.Behaviors>
+                <b:ConditionBehavior>
+                    <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
+                    </b:ConditionalExpression>
+                </b:ConditionBehavior>
+            </b:Interaction.Behaviors>
+            <b:ControlStoryboardAction Storyboard="{StaticResource CollapseSelector}"/>
+        </b:DataTrigger>
+        <b:DataTrigger Binding="{Binding IsChecked, ElementName=SelectorExpanderButton}" Value="True">
+            <b:Interaction.Behaviors>
+                <b:ConditionBehavior>
+                    <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" Operator="NotEqual" RightOperand="Visible"/>
+                    </b:ConditionalExpression>
+                </b:ConditionBehavior>
+            </b:Interaction.Behaviors>
+            <b:ControlStoryboardAction Storyboard="{StaticResource ExpandSelectorInstant}"/>
+        </b:DataTrigger>
+        <b:DataTrigger Binding="{Binding IsChecked, ElementName=SelectorExpanderButton}" Value="False">
+            <b:Interaction.Behaviors>
+                <b:ConditionBehavior>
+                    <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" Operator="NotEqual" RightOperand="Visible"/>
+                    </b:ConditionalExpression>
+                </b:ConditionBehavior>
+            </b:Interaction.Behaviors>
+            <b:ControlStoryboardAction Storyboard="{StaticResource CollapseSelectorInstant}"/>
+        </b:DataTrigger>
+        <b:EventTrigger EventName="MouseLeave" SourceName="SelectorBar">
+            <b:Interaction.Behaviors>
+                <b:ConditionBehavior>
+                    <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
+                    </b:ConditionalExpression>
+                </b:ConditionBehavior>
+            </b:Interaction.Behaviors>
+            <b:ControlStoryboardAction Storyboard="{StaticResource DelayedCollapseSelector}"/>
+        </b:EventTrigger>
+        <b:EventTrigger EventName="MouseEnter" SourceName="SelectorBar">
+            <b:Interaction.Behaviors>
+                <b:ConditionBehavior>
+                    <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
+                    </b:ConditionalExpression>
+                </b:ConditionBehavior>
+            </b:Interaction.Behaviors>
+            <b:ControlStoryboardAction Storyboard="{StaticResource DelayedCollapseSelector}" ControlStoryboardOption="Stop"/>
+            <b:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectorExpanderButton"/>
+        </b:EventTrigger>
+        <b:StoryboardCompletedTrigger Storyboard="{StaticResource DelayedCollapseSelector}">
+            <b:Interaction.Behaviors>
+                <b:ConditionBehavior>
+                    <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
+                    </b:ConditionalExpression>
+                </b:ConditionBehavior>
+            </b:Interaction.Behaviors>
+            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectorExpanderButton"/>
+        </b:StoryboardCompletedTrigger>
+        <b:EventTrigger EventName="MouseDown" SourceName="SampleOverlay">
+            <b:Interaction.Behaviors>
+                <b:ConditionBehavior>
+                    <b:ConditionalExpression>
+                        <b:ComparisonCondition LeftOperand="{Binding Visibility, ElementName=SelectorExpanderButton}" RightOperand="Visible"/>
+                    </b:ConditionalExpression>
+                </b:ConditionBehavior>
+            </b:Interaction.Behaviors>
+            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectorExpanderButton"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <Grid x:Name="LayoutRoot">
         <Grid.LayoutTransform>
             <ScaleTransform/>
@@ -362,27 +362,27 @@
                     </StackPanel>
                 </Viewbox>
                 <ContentControl x:Name="SampleContainer1" Visibility="Collapsed">
-                    <i:Interaction.Triggers>
-                        <ei:DataTrigger Binding="{Binding Content, ElementName=SampleContainer1}" Comparison="NotEqual" Value="{x:Null}">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource ShowContainer1}"/>
-                        </ei:DataTrigger>
-                        <ei:StoryboardCompletedTrigger Storyboard="{StaticResource ShowContainer1}">
-                            <ei:ChangePropertyAction PropertyName="Content" Value="{x:Null}" TargetName="SampleContainer2"/>
-                        </ei:StoryboardCompletedTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:DataTrigger Binding="{Binding Content, ElementName=SampleContainer1}" Comparison="NotEqual" Value="{x:Null}">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource ShowContainer1}"/>
+                        </b:DataTrigger>
+                        <b:StoryboardCompletedTrigger Storyboard="{StaticResource ShowContainer1}">
+                            <b:ChangePropertyAction PropertyName="Content" Value="{x:Null}" TargetName="SampleContainer2"/>
+                        </b:StoryboardCompletedTrigger>
+                    </b:Interaction.Triggers>
                     <ContentControl.RenderTransform>
                         <TranslateTransform/>
                     </ContentControl.RenderTransform>
                 </ContentControl>
                 <ContentControl x:Name="SampleContainer2" Visibility="Collapsed">
-                    <i:Interaction.Triggers>
-                        <ei:DataTrigger Binding="{Binding Content, ElementName=SampleContainer2}" Comparison="NotEqual" Value="{x:Null}">
-                            <ei:ControlStoryboardAction Storyboard="{StaticResource ShowContainer2}"/>
-                        </ei:DataTrigger>
-                        <ei:StoryboardCompletedTrigger Storyboard="{StaticResource ShowContainer2}">
-                            <ei:ChangePropertyAction PropertyName="Content" Value="{x:Null}" TargetName="SampleContainer1"/>
-                        </ei:StoryboardCompletedTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:DataTrigger Binding="{Binding Content, ElementName=SampleContainer2}" Comparison="NotEqual" Value="{x:Null}">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource ShowContainer2}"/>
+                        </b:DataTrigger>
+                        <b:StoryboardCompletedTrigger Storyboard="{StaticResource ShowContainer2}">
+                            <b:ChangePropertyAction PropertyName="Content" Value="{x:Null}" TargetName="SampleContainer1"/>
+                        </b:StoryboardCompletedTrigger>
+                    </b:Interaction.Triggers>
                     <ContentControl.RenderTransform>
                         <TranslateTransform/>
                     </ContentControl.RenderTransform>
@@ -438,11 +438,11 @@
                     <Rectangle Grid.Row="1" Height="1" Fill="{StaticResource Brush.Border.Disabled}"/>
                     <FrameworkElement x:Name="SelectorTreeHeightRef" Grid.Row="2"/>
                     <TreeView x:Name="SelectorTree" Grid.Row="2" Width="{StaticResource SelectorBarWidth}" ItemsSource="{Binding Categories}" Tag="{Binding SelectedSample, Mode=TwoWay}" ItemTemplate="{StaticResource SampleCategoryTemplate}" ItemContainerStyle="{StaticResource SampleSelectorItemStyle}" ScrollViewer.PanningMode="VerticalOnly">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectedItemChanged">
-                                <ei:ChangePropertyAction PropertyName="Tag" Value="{Binding SelectedItem, ElementName=SelectorTree}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger EventName="SelectedItemChanged">
+                                <b:ChangePropertyAction PropertyName="Tag" Value="{Binding SelectedItem, ElementName=SelectorTree}"/>
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
                         <TreeView.RenderTransform>
                             <TranslateTransform X="-16"/>
                         </TreeView.RenderTransform>
@@ -454,11 +454,11 @@
                         </Viewbox.RenderTransform>
                         <StackPanel Orientation="Horizontal" Margin="50,0,60,0">
                             <Border Height="32" Margin="0,0,10,0" Background="Transparent" Cursor="Hand">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <ei:LaunchUriOrFileAction Path="https://twitter.com/noesisengine"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="MouseLeftButtonDown">
+                                        <b:LaunchUriOrFileAction Path="https://twitter.com/noesisengine"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal" UseLayoutRounding="False">
                                     <TextBlock Text="i" FontFamily="{StaticResource IconFont}" FontSize="28" Foreground="#1DA1F2" Margin="0,-8,0,-8" VerticalAlignment="Center"/>
                                     <TextBlock Text="j" FontFamily="{StaticResource IconFont}" FontSize="16" Foreground="#1DA1F2" Margin="1,0,0,1" VerticalAlignment="Center"/>
@@ -471,11 +471,11 @@
                                 </StackPanel>
                             </Border>
                             <Border Width="108" Margin="10,0,0,0" Background="Transparent" Cursor="Hand">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseLeftButtonDown">
-                                        <ei:LaunchUriOrFileAction Path="https://github.com/Noesis/Tutorials/tree/master/Samples/Gallery"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="MouseLeftButtonDown">
+                                        <b:LaunchUriOrFileAction Path="https://github.com/Noesis/Tutorials/tree/master/Samples/Gallery"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
                                 <StackPanel Orientation="Horizontal" UseLayoutRounding="False">
                                     <TextBlock Text="p" FontFamily="{StaticResource IconFont}" FontSize="24" Foreground="#F5F4F5" Margin="1,-8,0,-8" VerticalAlignment="Center"/>
                                     <TextBlock Text="q" FontFamily="{StaticResource IconFont}" FontSize="19" Foreground="#F5F4F5" Margin="5,0,0,0" VerticalAlignment="Center"/>

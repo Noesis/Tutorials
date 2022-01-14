@@ -20,7 +20,7 @@ namespace NorthGame
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/NorthGame/FightScreen.xaml");
+            NoesisUnity.LoadComponent(this);
         }
 #endif
     }

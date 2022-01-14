@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
              xmlns:local="clr-namespace:NorthGame"
              d:DesignWidth="1280" d:DesignHeight="720">
@@ -363,28 +363,28 @@
 
     <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,-0.1" IsEnabled="False">
 
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="Loaded">
-                <ei:ControlStoryboardAction Storyboard="{StaticResource TopInfoAnim}"/>
-            </i:EventTrigger>
-            <ei:DataTrigger Binding="{Binding State}" Value="{x:Static local:State.Play}">
-                <ei:ControlStoryboardAction Storyboard="{StaticResource FadeIn}"/>
-            </ei:DataTrigger>
-            <ei:DataTrigger Binding="{Binding State}" Comparison="NotEqual" Value="{x:Static local:State.Play}">
-                <ei:ControlStoryboardAction Storyboard="{StaticResource FadeOut}"/>
-            </ei:DataTrigger>
-            <ei:DataTrigger Binding="{Binding IsEnabled, ElementName=LayoutRoot}" Value="True">
-                <i:InvokeCommandAction Command="{Binding FadeCompletedCommand}"/>
-                <ei:ChangePropertyAction PropertyName="SelectedIndex" TargetName="Navigation" Value="0"/>
+        <b:Interaction.Triggers>
+            <b:EventTrigger EventName="Loaded">
+                <b:ControlStoryboardAction Storyboard="{StaticResource TopInfoAnim}"/>
+            </b:EventTrigger>
+            <b:DataTrigger Binding="{Binding State}" Value="{x:Static local:State.Play}">
+                <b:ControlStoryboardAction Storyboard="{StaticResource FadeIn}"/>
+            </b:DataTrigger>
+            <b:DataTrigger Binding="{Binding State}" Comparison="NotEqual" Value="{x:Static local:State.Play}">
+                <b:ControlStoryboardAction Storyboard="{StaticResource FadeOut}"/>
+            </b:DataTrigger>
+            <b:DataTrigger Binding="{Binding IsEnabled, ElementName=LayoutRoot}" Value="True">
+                <b:InvokeCommandAction Command="{Binding FadeCompletedCommand}"/>
+                <b:ChangePropertyAction PropertyName="SelectedIndex" TargetName="Navigation" Value="0"/>
                 <noesis:SetFocusAction TargetName="Navigation"/>
-            </ei:DataTrigger>
-            <ei:DataTrigger Binding="{Binding PlayScreenDirection}" Value="{x:Static local:PlayScreenDirection.Next}">
-                <ei:ControlStoryboardAction Storyboard="{StaticResource SlideNext}"/>
-            </ei:DataTrigger>
-            <ei:DataTrigger Binding="{Binding PlayScreenDirection}" Value="{x:Static local:PlayScreenDirection.Prev}">
-                <ei:ControlStoryboardAction Storyboard="{StaticResource SlidePrev}"/>
-            </ei:DataTrigger>
-        </i:Interaction.Triggers>
+            </b:DataTrigger>
+            <b:DataTrigger Binding="{Binding PlayScreenDirection}" Value="{x:Static local:PlayScreenDirection.Next}">
+                <b:ControlStoryboardAction Storyboard="{StaticResource SlideNext}"/>
+            </b:DataTrigger>
+            <b:DataTrigger Binding="{Binding PlayScreenDirection}" Value="{x:Static local:PlayScreenDirection.Prev}">
+                <b:ControlStoryboardAction Storyboard="{StaticResource SlidePrev}"/>
+            </b:DataTrigger>
+        </b:Interaction.Triggers>
 
         <Grid.RenderTransform>
             <TransformGroup>
@@ -666,11 +666,11 @@
             </Grid>
             <Grid x:Name="PlayContainer" Grid.Row="2" IsEnabled="False" RenderTransformOrigin="0.5,0.5">
 
-                <i:Interaction.Triggers>
-                    <ei:DataTrigger Binding="{Binding IsEnabled, ElementName=PlayContainer}" Value="True">
-                        <i:InvokeCommandAction Command="{Binding SlideCompletedCommand}"/>
-                    </ei:DataTrigger>
-                </i:Interaction.Triggers>
+                <b:Interaction.Triggers>
+                    <b:DataTrigger Binding="{Binding IsEnabled, ElementName=PlayContainer}" Value="True">
+                        <b:InvokeCommandAction Command="{Binding SlideCompletedCommand}"/>
+                    </b:DataTrigger>
+                </b:Interaction.Triggers>
 
                 <Grid.RenderTransform>
                     <TransformGroup>
@@ -759,25 +759,25 @@
                             </Grid.ColumnDefinitions>
                             <Button x:Name="BackBtn" Grid.Column="0" Content="BACK" Style="{StaticResource Style.Button.PrevNext}" Padding="10,0,20,0"
                                         Command="{Binding PrevCommand}">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseEnter">
-                                        <ei:ControlStoryboardAction Storyboard="{StaticResource BackOverOn}"/>
-                                    </i:EventTrigger>
-                                    <i:EventTrigger EventName="MouseLeave">
-                                        <ei:ControlStoryboardAction Storyboard="{StaticResource BackOverOff}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="MouseEnter">
+                                        <b:ControlStoryboardAction Storyboard="{StaticResource BackOverOn}"/>
+                                    </b:EventTrigger>
+                                    <b:EventTrigger EventName="MouseLeave">
+                                        <b:ControlStoryboardAction Storyboard="{StaticResource BackOverOff}"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
                             </Button>
                             <Button x:Name="NextBtn" Grid.Column="1" Content="NEXT" Style="{StaticResource Style.Button.PrevNext}" Padding="20,0,10,0"
                                         Command="{Binding NextCommand}">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseEnter">
-                                        <ei:ControlStoryboardAction Storyboard="{StaticResource NextOverOn}"/>
-                                    </i:EventTrigger>
-                                    <i:EventTrigger EventName="MouseLeave">
-                                        <ei:ControlStoryboardAction Storyboard="{StaticResource NextOverOff}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="MouseEnter">
+                                        <b:ControlStoryboardAction Storyboard="{StaticResource NextOverOn}"/>
+                                    </b:EventTrigger>
+                                    <b:EventTrigger EventName="MouseLeave">
+                                        <b:ControlStoryboardAction Storyboard="{StaticResource NextOverOff}"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
                             </Button>
                         </Grid>
                     </Grid>

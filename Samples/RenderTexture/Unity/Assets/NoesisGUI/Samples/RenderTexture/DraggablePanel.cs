@@ -26,13 +26,11 @@ public class DraggablePanel : MonoBehaviour
 
         // Create Noesis texture
         renderTexture.Create();
-        var tex = Noesis.Texture.WrapTexture(renderTexture, renderTexture.GetNativeTexturePtr(),
-            renderTexture.width, renderTexture.height, 1);
 
         // Create brush to store render texture and assign it to the rectangle
         rect.Fill = new ImageBrush()
         {
-            ImageSource = new TextureSource(tex),
+            ImageSource = new TextureSource(renderTexture),
             Stretch = Stretch.UniformToFill,
             Opacity = 0.9f
         };

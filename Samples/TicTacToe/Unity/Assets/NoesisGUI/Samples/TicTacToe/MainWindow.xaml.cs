@@ -17,21 +17,14 @@ namespace TicTacToe
     {
         public MainWindow()
         {
-            System.WeakReference wr = new System.WeakReference(this);
-            Initialized += (s, e) => { ((MainWindow)wr.Target).OnInitialized(s, e); };
             InitializeComponent();
         }
 
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/TicTacToe/MainWindow.xaml");
+            NoesisUnity.LoadComponent(this);
         }
 #endif
-
-        private void OnInitialized(object sender, EventArgs e)
-        {
-            DataContext = new ViewModel();
-        }
     }
 }

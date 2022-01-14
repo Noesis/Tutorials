@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Menu3D"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="Menu3D.MenuDescription"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors" x:Class="Menu3D.MenuDescription"
              mc:Ignorable="d"
              x:Name="Root"
              d:DesignWidth="800" d:DesignHeight="240">
@@ -11,26 +11,26 @@
         <TextBlock Text="{Binding Description, ElementName=Root, FallbackValue=DESCRIPTION}" FontSize="64" Foreground="{StaticResource TransparentWhiteBrush50}" FontFamily="Fonts/#WeblySleek UI Semibold"/>
         <TextBlock Text="/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////" FontWeight="Bold" FontFamily="Fonts/#WeblySleek UI Semibold" Foreground="#7FFFFFFF" Margin="0,-4,0,0"/>
         <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
-            <i:Interaction.Triggers>
-                <ei:DataTrigger Binding="{Binding Platform}" Value="PC">
-                    <ei:ChangePropertyAction TargetName="XBOXAccept" PropertyName="Visibility" Value="Collapsed"/>
-                    <ei:ChangePropertyAction TargetName="XBOXCancel" PropertyName="Visibility" Value="Collapsed"/>
-                    <ei:ChangePropertyAction TargetName="PS4Accept" PropertyName="Visibility" Value="Collapsed"/>
-                    <ei:ChangePropertyAction TargetName="PS4Cancel" PropertyName="Visibility" Value="Collapsed"/>
-                </ei:DataTrigger>
-                <ei:DataTrigger Binding="{Binding Platform}" Value="XBOX">
-                    <ei:ChangePropertyAction TargetName="PCAccept" PropertyName="Visibility" Value="Collapsed"/>
-                    <ei:ChangePropertyAction TargetName="PCCancel" PropertyName="Visibility" Value="Collapsed"/>
-                    <ei:ChangePropertyAction TargetName="PS4Accept" PropertyName="Visibility" Value="Collapsed"/>
-                    <ei:ChangePropertyAction TargetName="PS4Cancel" PropertyName="Visibility" Value="Collapsed"/>
-                </ei:DataTrigger>
-                <ei:DataTrigger Binding="{Binding Platform}" Value="PS4">
-                    <ei:ChangePropertyAction TargetName="PCAccept" PropertyName="Visibility" Value="Collapsed"/>
-                    <ei:ChangePropertyAction TargetName="PCCancel" PropertyName="Visibility" Value="Collapsed"/>
-                    <ei:ChangePropertyAction TargetName="XBOXAccept" PropertyName="Visibility" Value="Collapsed"/>
-                    <ei:ChangePropertyAction TargetName="XBOXCancel" PropertyName="Visibility" Value="Collapsed"/>
-                </ei:DataTrigger>
-            </i:Interaction.Triggers>
+            <b:Interaction.Triggers>
+                <b:DataTrigger Binding="{Binding Platform}" Value="PC">
+                    <b:ChangePropertyAction TargetName="XBOXAccept" PropertyName="Visibility" Value="Collapsed"/>
+                    <b:ChangePropertyAction TargetName="XBOXCancel" PropertyName="Visibility" Value="Collapsed"/>
+                    <b:ChangePropertyAction TargetName="PS4Accept" PropertyName="Visibility" Value="Collapsed"/>
+                    <b:ChangePropertyAction TargetName="PS4Cancel" PropertyName="Visibility" Value="Collapsed"/>
+                </b:DataTrigger>
+                <b:DataTrigger Binding="{Binding Platform}" Value="XBOX">
+                    <b:ChangePropertyAction TargetName="PCAccept" PropertyName="Visibility" Value="Collapsed"/>
+                    <b:ChangePropertyAction TargetName="PCCancel" PropertyName="Visibility" Value="Collapsed"/>
+                    <b:ChangePropertyAction TargetName="PS4Accept" PropertyName="Visibility" Value="Collapsed"/>
+                    <b:ChangePropertyAction TargetName="PS4Cancel" PropertyName="Visibility" Value="Collapsed"/>
+                </b:DataTrigger>
+                <b:DataTrigger Binding="{Binding Platform}" Value="PS4">
+                    <b:ChangePropertyAction TargetName="PCAccept" PropertyName="Visibility" Value="Collapsed"/>
+                    <b:ChangePropertyAction TargetName="PCCancel" PropertyName="Visibility" Value="Collapsed"/>
+                    <b:ChangePropertyAction TargetName="XBOXAccept" PropertyName="Visibility" Value="Collapsed"/>
+                    <b:ChangePropertyAction TargetName="XBOXCancel" PropertyName="Visibility" Value="Collapsed"/>
+                </b:DataTrigger>
+            </b:Interaction.Triggers>
             <Border x:Name="PCAccept" CornerRadius="4" BorderThickness="2" BorderBrush="{StaticResource TransparentWhiteBrush75}" Padding="8,2" VerticalAlignment="Center">
                 <TextBlock Text="ENTER" Foreground="{StaticResource TransparentWhiteBrush75}" FontSize="20" FontFamily="Fonts/#WeblySleek UI Semibold"/>
             </Border>

@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-                    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
                     xmlns:local="clr-namespace:Gallery">
 
@@ -335,11 +334,11 @@
       <Geometry x:Key="IconGeometry">M2,8L10,0M7,0L10,0 10,3M5,0L0,0 0,10 10,10 10,5</Geometry>
     </ControlTemplate.Resources>
     <Border Background="Transparent" Padding="2">
-      <i:Interaction.Triggers>
-        <i:EventTrigger EventName="MouseLeftButtonDown">
-          <ei:LaunchUriOrFileAction Path="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
-        </i:EventTrigger>
-      </i:Interaction.Triggers>
+      <b:Interaction.Triggers>
+        <b:EventTrigger EventName="MouseLeftButtonDown">
+          <b:LaunchUriOrFileAction Path="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </b:EventTrigger>
+      </b:Interaction.Triggers>
       <Path x:Name="Icon" Data="{StaticResource IconGeometry}" Stroke="{StaticResource LinkNormalBrush}"/>
     </Border>
     <ControlTemplate.Triggers>
@@ -413,11 +412,11 @@
           </DoubleAnimationUsingKeyFrames>
         </Storyboard>
       </StackPanel.Resources>
-      <i:Interaction.Triggers>
-        <ei:TimerTrigger EventName="Loaded" TotalTicks="1" MillisecondsPerTick="{Binding TabIndex, RelativeSource={RelativeSource TemplatedParent}}">
-          <ei:ControlStoryboardAction Storyboard="{StaticResource LoadAnim}"/>
-        </ei:TimerTrigger>
-      </i:Interaction.Triggers>
+      <b:Interaction.Triggers>
+        <b:TimerTrigger EventName="Loaded" TotalTicks="1" MillisecondsPerTick="{Binding TabIndex, RelativeSource={RelativeSource TemplatedParent}}">
+          <b:ControlStoryboardAction Storyboard="{StaticResource LoadAnim}"/>
+        </b:TimerTrigger>
+      </b:Interaction.Triggers>
       <StackPanel.RenderTransform>
         <TranslateTransform X="50"/>
       </StackPanel.RenderTransform>

@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
@@ -7,14 +7,9 @@
     x:Class="Localization.MainWindow"
     FontFamily="./#Oxygen, ./#FontopoNIHONGO"
     Foreground="#FF488EB5"
+    Focusable="True"
     d:DesignWidth="1280" d:DesignHeight="720"
     d:DataContext="{d:DesignInstance {x:Type local:ViewModel}, IsDesignTimeCreatable=True}">
-
-    <noesis:Xaml.Dependencies>
-        <noesis:Dependency Source="Language-en.xaml"/>
-        <noesis:Dependency Source="Language-fr.xaml"/>
-        <noesis:Dependency Source="Language-jp.xaml"/>
-    </noesis:Xaml.Dependencies>
 
     <UserControl.Resources>
         <ResourceDictionary>

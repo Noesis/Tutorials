@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 697234284}
   - component: {fileID: 697234283}
-  - component: {fileID: 697234282}
   - component: {fileID: 697234285}
   m_Layer: 0
   m_Name: Main Camera
@@ -142,14 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &697234282
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697234281}
-  m_Enabled: 1
 --- !u!20 &697234283
 Camera:
   m_ObjectHideFlags: 0
@@ -203,6 +194,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -216,14 +208,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 697234281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29355477be96127469aed699dd82b4be, type: 3}
+  m_Script: {fileID: 11500000, guid: abf2fbebba989ac4bbdde1ce8edf9627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xaml: {fileID: 11400000, guid: 086493d993d011b4a89e6b3d86afd506, type: 2}
+  _xaml: {fileID: -8414808784256213763, guid: 1cd1c111860fd0040ba9b3087b594b08, type: 3}
   _texture: {fileID: 0}
-  _isPPAAEnabled: 1
+  _isPPAAEnabled: 0
   _tessellationMaxPixelError: 0.4
-  _renderFlags: 0
+  _renderFlags: 16
   _continuousRendering: 1
   _enableExternalUpdate: 0
   _enableKeyboard: 1
@@ -232,3 +224,6 @@ MonoBehaviour:
   _enableGamepad: 0
   _emulateTouch: 0
   _useRealTimeClock: 0
+  _actions: {fileID: -944628639613478452, guid: 9f67088567c2b5040b62090c14e352e3, type: 3}
+  _gamepadRepeatDelay: 0.5
+  _gamepadRepeatRate: 0.1

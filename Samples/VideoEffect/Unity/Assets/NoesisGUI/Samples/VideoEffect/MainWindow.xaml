@@ -1,0 +1,298 @@
+<Page x:Class="VideoEffect.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+  xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+  xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+  xmlns:local="clr-namespace:VideoEffect"
+  Title="NoesisGUI - VideoEffect"
+  FontFamily="./#Roboto"
+  d:DesignWidth="1280" d:DesignHeight="720">
+
+  <Page.Resources>
+    <Storyboard x:Key="Anim" SpeedRatio="2">
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="text" Storyboard.TargetProperty="Effect.Radius">
+        <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseInOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <ObjectAnimationUsingKeyFrames Storyboard.TargetName="text" Storyboard.TargetProperty="Effect">
+        <DiscreteObjectKeyFrame KeyTime="0:0:2" Value="{x:Null}"/>
+      </ObjectAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="text" Storyboard.TargetProperty="RenderTransform.ScaleX">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0.9"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase Amplitude="0.2"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="text" Storyboard.TargetProperty="RenderTransform.ScaleY">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0.9"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase Amplitude="0.2"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="abe" Storyboard.TargetProperty="Effect.Amount" RepeatBehavior="Forever">
+        <DiscreteDoubleKeyFrame KeyTime="0:0:3" Value="2"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:4" Value="18">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseIn"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:4.5" Value="2">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:4.7" Value="15">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseIn"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:4.8" Value="2">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:8" Value="2"/>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:11" Value="2"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:12" Value="18">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseIn"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:12.5" Value="2">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:16" Value="2"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="pix" Storyboard.TargetProperty="Effect.Size" RepeatBehavior="Forever">
+        <DiscreteDoubleKeyFrame KeyTime="0:0:3" Value="0.001"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:4" Value="3">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseIn"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:4.5" Value="0.001">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:4.7" Value="2">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseIn"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:4.8" Value="0.001">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:8" Value="0.001"/>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:11" Value="0.001"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:12" Value="3">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseIn"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:12.5" Value="0.001">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:16" Value="0.001"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="subt" Storyboard.TargetProperty="Opacity" RepeatBehavior="Forever">
+        <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:4.5" Value="1">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseIn"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:28.0" Value="1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:28.5" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseInOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:32" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="subt" Storyboard.TargetProperty="RenderTransform.Children[1].Y" RepeatBehavior="Forever">
+        <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:32" Value="6">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:32" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="subt" Storyboard.TargetProperty="RenderTransform.Children[0].ScaleX" RepeatBehavior="Forever">
+        <DiscreteDoubleKeyFrame KeyTime="0" Value="1.2"/>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="1.2"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:32" Value="1"/>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:32" Value="1.2"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="subt" Storyboard.TargetProperty="RenderTransform.Children[0].ScaleY" RepeatBehavior="Forever">
+        <DiscreteDoubleKeyFrame KeyTime="0" Value="1.2"/>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="1.2"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:32" Value="1"/>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:32" Value="1.2"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="subbd" Storyboard.TargetProperty="Effect.Radius" RepeatBehavior="Forever">
+        <DiscreteDoubleKeyFrame KeyTime="0" Value="10"/>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:4" Value="10"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:11.7" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:12.0" Value="8">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseInOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:12.2" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:12.3" Value="6">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseInOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:13.2" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:19.7" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:20" Value="8">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseInOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:20.2" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:20.3" Value="6">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseInOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:21.2" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:27.5" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:28.5" Value="10">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <DiscreteDoubleKeyFrame KeyTime="0:0:32" Value="10"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="vid" Storyboard.TargetProperty="Effect.Radius" RepeatBehavior="Forever">
+        <DiscreteDoubleKeyFrame KeyTime="0" Value="2"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="10"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:11" Value="10"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:12" Value="50"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:16" Value="2"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:35" Value="10"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:36" Value="50"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:38" Value="15"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:48" Value="5"/>
+        <EasingDoubleKeyFrame KeyTime="0:1:04" Value="2"/>
+      </DoubleAnimationUsingKeyFrames>
+      <ColorAnimationUsingKeyFrames Storyboard.TargetName="vidbd" Storyboard.TargetProperty="Effect.Color" RepeatBehavior="Forever">
+        <DiscreteColorKeyFrame KeyTime="0" Value="White"/>
+        <EasingColorKeyFrame KeyTime="0:0:16" Value="Orchid"/>
+        <EasingColorKeyFrame KeyTime="0:0:32" Value="White"/>
+        <EasingColorKeyFrame KeyTime="0:0:48" Value="Turquoise"/>
+        <EasingColorKeyFrame KeyTime="0:1:04" Value="White"/>
+      </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+    <LinearGradientBrush x:Key="TextBg" StartPoint="0,0" EndPoint="0,1">
+      <GradientStop Offset="0" Color="#004040"/>
+      <GradientStop Offset="0.5" Color="Gray"/>
+      <GradientStop Offset="1" Color="#402040"/>
+    </LinearGradientBrush>
+  </Page.Resources>
+  <Grid x:Name="LayoutRoot">
+    <Border x:Name="vidbd">
+      <Border.Effect>
+        <local:TintEffect/>
+      </Border.Effect>
+      <MediaElement x:Name="vid" Source="Particles.mp4" Stretch="UniformToFill" LoadedBehavior="Manual">
+        <MediaElement.Effect>
+          <BlurEffect Radius="10"/>
+        </MediaElement.Effect>
+        <b:Interaction.Triggers>
+          <b:EventTrigger EventName="Loaded">
+            <b:ControlStoryboardAction Storyboard="{StaticResource Anim}"/>
+            <noesis:PlayMediaAction/>
+          </b:EventTrigger>
+          <b:EventTrigger EventName="MediaEnded">
+            <noesis:StopMediaAction/>
+            <noesis:PlayMediaAction/>
+          </b:EventTrigger>
+        </b:Interaction.Triggers>
+      </MediaElement>
+    </Border>
+    <Viewbox>
+      <StackPanel x:Name="text" Margin="60,70,60,50" RenderTransformOrigin="0.5,0.5" noesis:Element.BlendingMode="Additive">
+        <StackPanel.RenderTransform>
+          <ScaleTransform/>
+        </StackPanel.RenderTransform>
+        <StackPanel.Effect>
+          <BlurEffect/>
+        </StackPanel.Effect>
+        <Border x:Name="abe">
+          <Border.Effect>
+            <local:ChromaticAberrationEffect Amount="2"/>
+          </Border.Effect>
+          <StackPanel x:Name="pix" Orientation="Horizontal" Background="#01FFFFFF">
+            <StackPanel.Effect>
+              <local:PixelateEffect Size="0.001"/>
+            </StackPanel.Effect>
+            <Path Data="M26.0999999999999,16.9L25.8,16.9C25.2,16.9 24.5999999999999,16.6999999999999 24.0999999999999,16.4 23.5999999999999,16.1 23.0999999999999,15.6999999999999 22.6999999999998,15.1999999999999L12.0999999999999,2.99999999999989C11.1999999999998,1.99999999999989 10.1999999999998,1.19999999999993 9.19999999999982,0.799999999999841 8.19999999999982,0.299999999999841 6.99999999999977,0.0999999999997954 5.49999999999977,0.0999999999997954L-2.27373675443232E-13,0.0999999999997954 -2.27373675443232E-13,21.9999999999998 5.19999999999982,21.9999999999998 5.19999999999982,5.19999999999982 5.49999999999977,5.19999999999982C6.09999999999968,5.19999999999982 6.69999999999982,5.39999999999986 7.19999999999982,5.69999999999982 7.79999999999973,5.99999999999977 8.19999999999982,6.39999999999986 8.59999999999991,6.89999999999986L19,18.9999999999999C19.9000000000001,20.0999999999999 20.9000000000001,20.8999999999999 21.9000000000001,21.3999999999999 23,21.8999999999999 24.2,22.0999999999999 25.8000000000002,22.0999999999999L31.3000000000002,22.0999999999999 31.3000000000002,-1.13686837721616E-13 26.1000000000001,-1.13686837721616E-13 26.0999999999999,16.9z M59.3,0L42.3999999999999,0C36.8999999999999,0,34.0999999999999,2.29999999999995,34.0999999999999,7L34.0999999999999,15C34.0999999999999,19.6,36.8999999999999,22,42.3999999999999,22L59.3,22C64.8,22,67.5999999999999,19.7,67.5999999999999,15L67.5999999999999,7C67.5999999999999,2.39999999999998,64.8,0,59.3,0z M62.2,15C62.2,16.2,61.2,16.9,59.3,16.9L42.3999999999999,16.9C40.4999999999998,16.9,39.4999999999998,16.3,39.4999999999998,15L39.4999999999998,7C39.4999999999998,5.70000000000005,40.4999999999998,5.10000000000002,42.3999999999999,5.10000000000002L59.3,5.10000000000002C61.2,5.10000000000002,62.2,5.70000000000005,62.2,7L62.2,15z M75.7,15.7999999999997L75.7,13.5999999999999 100.9,13.5999999999999 100.9,8.49999999999989 75.7,8.49999999999989 75.7,6.29999999999984C75.7,5.5999999999998,76.1000000000001,5.19999999999982,76.9000000000001,5.19999999999982L101,5.19999999999982 101,-2.27373675443232E-13 76.9000000000001,-2.27373675443232E-13C72.5,-2.27373675443232E-13,70.3000000000002,1.79999999999973,70.3000000000002,5.29999999999973L70.3000000000002,16.4999999999998C70.3000000000002,20.0999999999998,72.5000000000002,21.8999999999998,76.9000000000001,21.8999999999998L101.1,21.8999999999998 101.1,16.7999999999997 76.9000000000001,16.7999999999997C76.1000000000001,16.8999999999998,75.7,16.4999999999998,75.7,15.7999999999997z M128.5,8.39999999999998L110.2,8.39999999999998C109.4,8.39999999999998,108.9,8.10000000000002,108.9,7.60000000000002L108.9,5.89999999999998C108.9,5.39999999999998,109.3,5.10000000000002,110.2,5.10000000000002L134.4,5.10000000000002 134.4,0 110.2,0C105.8,0,103.6,1.79999999999995,103.6,5.29999999999995L103.6,8.79999999999995C103.6,11.9,105.8,13.5,110.2,13.5L128.5,13.5C129.3,13.5,129.7,13.8,129.7,14.3L129.7,16.0999999999999C129.7,16.5999999999999,129.3,16.8999999999999,128.5,16.8999999999999L104.3,16.8999999999999 104.3,21.9999999999999 128.5,21.9999999999999C132.9,21.9999999999999,135.1,20.1999999999999,135.1,16.6999999999999L135.1,13.6999999999999C135.1,10.1999999999999,132.9,8.39999999999998,128.5,8.39999999999998z M137.8,0L143.2,0 143.2,21.9 137.8,21.9z M170.8,8.39999999999998L152.5,8.39999999999998C151.7,8.39999999999998,151.2,8.10000000000002,151.2,7.60000000000002L151.2,5.89999999999998C151.2,5.39999999999998,151.6,5.10000000000002,152.5,5.10000000000002L176.7,5.10000000000002 176.7,0 152.5,0C148.1,0,145.9,1.79999999999995,145.9,5.29999999999995L145.9,8.79999999999995C145.9,11.9,148.1,13.5,152.5,13.5L170.8,13.5C171.6,13.5,172,13.8,172,14.3L172,16.0999999999999C172,16.5999999999999,171.6,16.8999999999999,170.8,16.8999999999999L146.6,16.8999999999999 146.6,21.9999999999999 170.8,21.9999999999999C175.2,21.9999999999999,177.4,20.1999999999999,177.4,16.6999999999999L177.4,13.6999999999999C177.3,10.1999999999999,175.1,8.39999999999998,170.8,8.39999999999998z" Fill="{StaticResource TextBg}" VerticalAlignment="Center" Margin="5,2"/>
+            <Path Data="M61.9000244140625,16.1C61.9000244140625,16.6,61.5000244140624,16.9,60.7000244140625,16.9L41.5000244140624,16.9C40.7000244140625,16.9,40.2000244140625,16.6,40.2000244140625,16.1L40.2000244140625,0.100000000000023 34.8000244140624,0.100000000000023 34.8000244140624,16.7C34.8000244140624,20.3000000000001,37.0000244140624,22.1,41.4000244140623,22.1L60.6000244140623,22.1C65.0000244140624,22.1,67.2000244140622,20.3000000000001,67.2000244140622,16.8000000000001L67.2000244140622,1.13686837721616E-13 61.8000244140621,1.13686837721616E-13 61.8000244140621,16.1000000000001z M70.0000244140624,0L75.4000244140625,0 75.4000244140625,21.9 70.0000244140624,21.9z M20.1000244140623,8.60000000000002L20.1000244140623,14 26.8000244140624,14 26.8000244140624,16.9 6.60002441406232,16.9C5.80002441406236,16.9,5.30002441406236,16.5,5.30002441406236,15.8L5.30002441406236,6.19999999999993C5.30002441406236,5.49999999999989,5.70002441406245,5.09999999999991,6.60002441406232,5.09999999999991L31.6000244140623,5.09999999999991 31.6000244140623,-1.13686837721616E-13 6.60002441406232,-1.13686837721616E-13C2.20002441406223,-1.13686837721616E-13,2.44140624090505E-05,1.79999999999984,2.44140624090505E-05,5.29999999999984L2.44140624090505E-05,16.4999999999999C2.44140624090505E-05,20.0999999999999,2.20002441406245,21.8999999999999,6.60002441406232,21.8999999999999L32.2000244140622,21.8999999999999 32.2000244140622,8.49999999999989 20.1000244140623,8.49999999999989z" Fill="LightSlateGray" VerticalAlignment="Center" Margin="10,2,2,2"/>
+          </StackPanel>
+        </Border>
+        <Border>
+          <Border.Effect>
+            <local:ChromaticAberrationEffect Amount="2.5"/>
+          </Border.Effect>
+          <Border x:Name="subbd">
+            <Border.Effect>
+              <local:DirectionalBlurEffect Angle="5"/>
+            </Border.Effect>
+            <TextBlock x:Name="subt" Text=" VIDEO, EFFECTS &amp; BLENDING " TextAlignment="Center" Foreground="#606080" FontSize="11" Margin="0,10,0,0" RenderTransformOrigin="0.5,0.5">
+              <TextBlock.RenderTransform>
+                <TransformGroup>
+                  <ScaleTransform/>
+                  <TranslateTransform/>
+                </TransformGroup>
+              </TextBlock.RenderTransform>
+            </TextBlock>
+          </Border>
+        </Border>
+      </StackPanel>
+    </Viewbox>
+  </Grid>
+
+</Page>

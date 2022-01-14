@@ -1,0 +1,18 @@
+#include "EffectHelpers.h"
+
+cbuffer Constants: register(b1)
+{
+    float amount;
+}
+
+float4 GetCustomEffect()
+{
+    float3 color;
+    float offset = amount * abs(GetNormalizedInputCoordinate().x - 0.5);
+
+    color.r = SampleInputAtOffset(float2(offset, 0.0)).r;
+    color.g = GetInput().g;
+    color.b = SampleInputAtOffset(float2(-offset, 0.0)).b;
+
+    return float4(color, 1);
+}

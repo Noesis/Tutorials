@@ -1,0 +1,27 @@
+#include "EffectHelpers.h"
+
+cbuffer Constants: register(b1)
+{
+    float2 dir;
+    float scale;
+}
+
+float4 GetCustomEffect()
+{
+    float2 d = scale * dir;
+    #define SAMPLE(x) (SampleInputAtOffset(d * x) + SampleInputAtOffset(-d * x))
+
+    float4 c = 0;
+
+    c += 0.10855 * SAMPLE(0.66293);
+    c += 0.13135 * SAMPLE(2.47904);
+    c += 0.10406 * SAMPLE(4.46232);
+    c += 0.07216 * SAMPLE(6.44568);
+    c += 0.04380 * SAMPLE(8.42917);
+    c += 0.02328 * SAMPLE(10.41281);
+    c += 0.01083 * SAMPLE(12.39664);
+    c += 0.00441 * SAMPLE(14.38070);
+    c += 0.00157 * SAMPLE(16.36501);
+
+    return c;
+}

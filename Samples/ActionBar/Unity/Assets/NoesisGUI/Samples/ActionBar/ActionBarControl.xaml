@@ -16,7 +16,7 @@
     </UserControl.Resources>
 
     <Viewbox Stretch="Uniform">
-        <Canvas x:Name="Screen" Width="640" Height="400" Tag="{Binding ElementName=EmptySlot}">
+        <Canvas x:Name="Screen" Width="640" Height="400">
             <Border BorderThickness="4" BorderBrush="#FF202020" Canvas.Top="30" Canvas.Left="50">
                 <Border Padding="15" BorderThickness="4" BorderBrush="#FF303030" Background="#FF202020">
                     <WrapPanel x:Name="Spells" Width="162">

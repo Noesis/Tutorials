@@ -1,9 +1,5 @@
-﻿#if NOESIS
-using Noesis;
-using NoesisApp;
-#else
+﻿using System;
 using System.Windows;
-#endif
 
 namespace Buttons
 {
@@ -12,5 +8,9 @@ namespace Buttons
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnActivated(EventArgs e)
+        {
+            MainWindow.DataContext = new ViewModel();
+        }
     }
 }

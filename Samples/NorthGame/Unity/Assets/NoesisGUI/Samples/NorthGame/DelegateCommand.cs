@@ -51,6 +51,11 @@ namespace NorthGame
             }
         }
 
+        public override string ToString()
+        {
+            return $"DelegateCommand: {_execute}";
+        }
+
         #region Private members
         private Func<object, bool> _canExecute;
         private Action<object> _execute;

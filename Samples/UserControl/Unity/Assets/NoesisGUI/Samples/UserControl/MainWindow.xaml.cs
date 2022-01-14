@@ -19,11 +19,12 @@ namespace UserControls
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            byte r = (byte)(int)values[0];
-            byte g = (byte)(int)values[1];
-            byte b = (byte)(int)values[2];
+            if (values.Length == 3 && values[0] is int r && values[1] is int g && values[2] is int b)
+            {
+                return Color.FromRgb((byte)r, (byte)g, (byte)b);
+            }
 
-            return Color.FromRgb(r, g, b);
+            return Colors.Black;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

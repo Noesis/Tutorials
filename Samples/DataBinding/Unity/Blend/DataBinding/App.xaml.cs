@@ -8,12 +8,9 @@ namespace DataBinding
     /// </summary>
     public partial class App : Application
     {
-        public App()
+        protected override void OnActivated(EventArgs e)
         {
-            Activated += (s, e) =>
-            {
-                MainWindow.DataContext = new SolarSystem();
-            };
+            MainWindow.DataContext = new SolarSystem();
         }
     }
 }

@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
     xmlns:local="clr-namespace:Gallery"
     mc:Ignorable="d"
@@ -143,138 +143,138 @@
             </HeaderedContentControl.Header>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <CheckBox x:Name="SelectAll" Content="Select all" IsThreeState="True">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:Interaction.Behaviors>
-                                <ei:ConditionBehavior>
-                                    <ei:ConditionalExpression>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=SelectAll}" RightOperand="True"/>
-                                    </ei:ConditionalExpression>
-                                </ei:ConditionBehavior>
-                            </i:Interaction.Behaviors>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="Option1"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="Option2"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="Option3"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:Interaction.Behaviors>
-                                <ei:ConditionBehavior>
-                                    <ei:ConditionalExpression>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=SelectAll}" RightOperand="{x:Null}"/>
-                                    </ei:ConditionalExpression>
-                                </ei:ConditionBehavior>
-                            </i:Interaction.Behaviors>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option1"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option2"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option3"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:Interaction.Behaviors>
-                                <ei:ConditionBehavior>
-                                    <ei:ConditionalExpression>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=SelectAll}" RightOperand="False"/>
-                                    </ei:ConditionalExpression>
-                                </ei:ConditionBehavior>
-                            </i:Interaction.Behaviors>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option1"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option2"/>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option3"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:Interaction.Behaviors>
+                                <b:ConditionBehavior>
+                                    <b:ConditionalExpression>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=SelectAll}" RightOperand="True"/>
+                                    </b:ConditionalExpression>
+                                </b:ConditionBehavior>
+                            </b:Interaction.Behaviors>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="Option1"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="Option2"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="Option3"/>
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Click">
+                            <b:Interaction.Behaviors>
+                                <b:ConditionBehavior>
+                                    <b:ConditionalExpression>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=SelectAll}" RightOperand="{x:Null}"/>
+                                    </b:ConditionalExpression>
+                                </b:ConditionBehavior>
+                            </b:Interaction.Behaviors>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option1"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option2"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option3"/>
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Click">
+                            <b:Interaction.Behaviors>
+                                <b:ConditionBehavior>
+                                    <b:ConditionalExpression>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=SelectAll}" RightOperand="False"/>
+                                    </b:ConditionalExpression>
+                                </b:ConditionBehavior>
+                            </b:Interaction.Behaviors>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option1"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option2"/>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="Option3"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </CheckBox>
                 <CheckBox x:Name="Option1" Content="Option 1" Margin="32,8,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="{x:Null}" TargetName="SelectAll"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:Interaction.Behaviors>
-                                <ei:ConditionBehavior>
-                                    <ei:ConditionalExpression>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="True"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="True"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="True"/>
-                                    </ei:ConditionalExpression>
-                                </ei:ConditionBehavior>
-                            </i:Interaction.Behaviors>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectAll"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:Interaction.Behaviors>
-                                <ei:ConditionBehavior>
-                                    <ei:ConditionalExpression>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="False"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="False"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="False"/>
-                                    </ei:ConditionalExpression>
-                                </ei:ConditionBehavior>
-                            </i:Interaction.Behaviors>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="{x:Null}" TargetName="SelectAll"/>
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Click">
+                            <b:Interaction.Behaviors>
+                                <b:ConditionBehavior>
+                                    <b:ConditionalExpression>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="True"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="True"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="True"/>
+                                    </b:ConditionalExpression>
+                                </b:ConditionBehavior>
+                            </b:Interaction.Behaviors>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectAll"/>
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Click">
+                            <b:Interaction.Behaviors>
+                                <b:ConditionBehavior>
+                                    <b:ConditionalExpression>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="False"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="False"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="False"/>
+                                    </b:ConditionalExpression>
+                                </b:ConditionBehavior>
+                            </b:Interaction.Behaviors>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </CheckBox>
                 <CheckBox x:Name="Option2" Content="Option 2" Margin="32,8,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="{x:Null}" TargetName="SelectAll"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:Interaction.Behaviors>
-                                <ei:ConditionBehavior>
-                                    <ei:ConditionalExpression>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="True"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="True"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="True"/>
-                                    </ei:ConditionalExpression>
-                                </ei:ConditionBehavior>
-                            </i:Interaction.Behaviors>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectAll"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:Interaction.Behaviors>
-                                <ei:ConditionBehavior>
-                                    <ei:ConditionalExpression>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="False"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="False"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="False"/>
-                                    </ei:ConditionalExpression>
-                                </ei:ConditionBehavior>
-                            </i:Interaction.Behaviors>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="{x:Null}" TargetName="SelectAll"/>
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Click">
+                            <b:Interaction.Behaviors>
+                                <b:ConditionBehavior>
+                                    <b:ConditionalExpression>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="True"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="True"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="True"/>
+                                    </b:ConditionalExpression>
+                                </b:ConditionBehavior>
+                            </b:Interaction.Behaviors>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectAll"/>
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Click">
+                            <b:Interaction.Behaviors>
+                                <b:ConditionBehavior>
+                                    <b:ConditionalExpression>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="False"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="False"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="False"/>
+                                    </b:ConditionalExpression>
+                                </b:ConditionBehavior>
+                            </b:Interaction.Behaviors>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </CheckBox>
                 <CheckBox x:Name="Option3" Content="Option 3" Margin="32,8,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="{x:Null}" TargetName="SelectAll"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:Interaction.Behaviors>
-                                <ei:ConditionBehavior>
-                                    <ei:ConditionalExpression>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="True"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="True"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="True"/>
-                                    </ei:ConditionalExpression>
-                                </ei:ConditionBehavior>
-                            </i:Interaction.Behaviors>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectAll"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="Click">
-                            <i:Interaction.Behaviors>
-                                <ei:ConditionBehavior>
-                                    <ei:ConditionalExpression>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="False"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="False"/>
-                                        <ei:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="False"/>
-                                    </ei:ConditionalExpression>
-                                </ei:ConditionBehavior>
-                            </i:Interaction.Behaviors>
-                            <ei:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="{x:Null}" TargetName="SelectAll"/>
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Click">
+                            <b:Interaction.Behaviors>
+                                <b:ConditionBehavior>
+                                    <b:ConditionalExpression>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="True"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="True"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="True"/>
+                                    </b:ConditionalExpression>
+                                </b:ConditionBehavior>
+                            </b:Interaction.Behaviors>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="True" TargetName="SelectAll"/>
+                        </b:EventTrigger>
+                        <b:EventTrigger EventName="Click">
+                            <b:Interaction.Behaviors>
+                                <b:ConditionBehavior>
+                                    <b:ConditionalExpression>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option1}" RightOperand="False"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option2}" RightOperand="False"/>
+                                        <b:ComparisonCondition LeftOperand="{Binding IsChecked, ElementName=Option3}" RightOperand="False"/>
+                                    </b:ConditionalExpression>
+                                </b:ConditionBehavior>
+                            </b:Interaction.Behaviors>
+                            <b:ChangePropertyAction PropertyName="IsChecked" Value="False" TargetName="SelectAll"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
                 </CheckBox>
             </StackPanel>
         </HeaderedContentControl>

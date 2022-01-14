@@ -21,7 +21,7 @@ namespace DataBinding
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/DataBinding/MainWindow.xaml");
+            NoesisUnity.LoadComponent(this);
         }
 #endif
     }
