@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Src">
+      <UniqueIdentifier>{923409d1-6dac-4b64-a2fa-06ed717f5034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{f4eb6d04-5b80-4c42-a3c9-bedeac1b7824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{9dd1d5a3-6cdb-428a-8c1d-b2439af8d44e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\BackAnimation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Src\BackAnimation.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Src\BounceAnimation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Src\BounceAnimation.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Src\CircleAnimation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Src\CircleAnimation.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Src\ElasticAnimation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Src\ElasticAnimation.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Src\ExponentialAnimation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Src\ExponentialAnimation.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Src\Main.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
+    <CustomBuild Include="..\..\Data\App.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Aero Matics Regular.ttf">
+      <Filter>Data</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
