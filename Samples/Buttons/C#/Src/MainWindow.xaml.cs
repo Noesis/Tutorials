@@ -24,7 +24,7 @@ namespace Buttons
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "/Buttons;component/MainWindow.xaml");
         }
 #endif
 

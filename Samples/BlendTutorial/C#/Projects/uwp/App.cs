@@ -40,7 +40,7 @@ namespace BlendTutorial
             public void Run()
             {
                 App app = new App();
-                app.Uri = "App.xaml";
+                app.Uri = "/BlendTutorial;component/App.xaml";
                 app.Run();
             }
         }

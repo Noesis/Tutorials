@@ -40,7 +40,7 @@ namespace CustomControl
             public void Run()
             {
                 App app = new App();
-                app.Uri = "App.xaml";
+                app.Uri = "/CustomControl;component/App.xaml";
                 app.Run();
             }
         }

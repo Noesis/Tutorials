@@ -27,7 +27,7 @@ namespace Inventory
         protected override void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Inventory;component/App.xaml";
             app.Run();
         }
     }

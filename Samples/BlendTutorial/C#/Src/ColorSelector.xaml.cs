@@ -78,7 +78,7 @@ namespace BlendTutorial
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "ColorSelector.xaml");
+            Noesis.GUI.LoadComponent(this, "/BlendTutorial;component/ColorSelector.xaml");
 
             this.R = (Slider)FindName("R");
             this.G = (Slider)FindName("G");

@@ -13,6 +13,8 @@
 #include <NsCore/String.h>
 #include <NsApp/NotifyPropertyChangedBase.h>
 
+#include "NsGui/Uri.h"
+
 
 namespace Noesis
 {
@@ -27,14 +29,14 @@ namespace Localization
 class Language final: public Noesis::BaseComponent
 {
 public:
-    Language(const char* name, Noesis::ResourceDictionary* resources);
+    Language(const char* name, const char* sourcePath);
 
     const char* GetName() const;
-    Noesis::ResourceDictionary* GetResources() const;
+    const Noesis::Uri& GetSource() const;
 
 private:
     Noesis::String _name;
-    Noesis::Ptr<Noesis::ResourceDictionary> _resources;
+    Noesis::Uri _source;
 
     NS_DECLARE_REFLECTION(Language, Noesis::BaseComponent)
 };

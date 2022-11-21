@@ -19,7 +19,7 @@ namespace Login
         static void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Login;component/App.xaml";
             app.Run();
         }
     }

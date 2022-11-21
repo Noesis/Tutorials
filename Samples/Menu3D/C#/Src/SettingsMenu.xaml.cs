@@ -20,7 +20,7 @@ namespace Menu3D
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "SettingsMenu.xaml");
+            Noesis.GUI.LoadComponent(this, "/Menu3D;component/SettingsMenu.xaml");
         }
 #endif
     }

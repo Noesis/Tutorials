@@ -40,7 +40,7 @@ namespace HelloWorld
             public void Run()
             {
                 App app = new App();
-                app.Uri = "App.xaml";
+                app.Uri = "/HelloWorld;component/App.xaml";
                 app.Run();
             }
         }

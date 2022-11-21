@@ -19,7 +19,7 @@ namespace RssReader
         static void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/ApplicationTutorial;component/App.xaml";
             app.Run();
         }
     }

@@ -40,7 +40,7 @@ namespace UserControls
             public void Run()
             {
                 App app = new App();
-                app.Uri = "App.xaml";
+                app.Uri = "/UserControl;component/App.xaml";
                 app.Run();
             }
         }

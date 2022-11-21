@@ -17,7 +17,7 @@ namespace DataBinding
         static void Main(string[] args)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/DataBinding;component/App.xaml";
             app.Run();
         }
     }

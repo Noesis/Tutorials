@@ -23,7 +23,7 @@ namespace Commands
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "/Commands;component/MainWindow.xaml");
         }
 #endif
 

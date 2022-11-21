@@ -19,7 +19,7 @@ namespace NineSlice
         static void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/NineSlice;component/App.xaml";
             app.Run();
         }
     }

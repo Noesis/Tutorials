@@ -26,7 +26,7 @@ namespace BlendTutorial
         protected override void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/BlendTutorial;component/App.xaml";
             app.Run();
         }
     }

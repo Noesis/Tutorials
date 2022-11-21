@@ -29,7 +29,7 @@ namespace UserControls
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "NumericUpDown.xaml");
+            GUI.LoadComponent(this, "/UserControl;component/NumericUpDown.xaml");
         }
 
         protected override bool ConnectEvent(object source, string eventName, string handlerName)

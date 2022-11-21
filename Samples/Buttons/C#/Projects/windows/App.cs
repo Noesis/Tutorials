@@ -19,7 +19,7 @@ namespace Buttons
         static void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Buttons;component/App.xaml";
             app.Run();
         }
     }

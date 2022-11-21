@@ -1,4 +1,5 @@
-﻿#if NOESIS
+﻿using System;
+#if NOESIS
 using Noesis;
 using System.Collections.ObjectModel;
 #else
@@ -12,7 +13,7 @@ namespace Localization
     public class Language
     {
         public string Name { get; set; }
-        public ResourceDictionary Resources { get; set; }
+        public Uri Source { get; set; }
     }
 
     public class ViewModel : NotifyPropertyChangedBase
@@ -24,19 +25,19 @@ namespace Localization
                 new Language
                 {
                     Name = "English",
-                    Resources = (ResourceDictionary)GUI.LoadXaml("Language-en.xaml")
+                    Source = new Uri("/Localization;component/Language-en.xaml", UriKind.Relative)
                 },
 
                 new Language
                 {
                     Name = "Français",
-                    Resources = (ResourceDictionary)GUI.LoadXaml("Language-fr.xaml")
+                    Source = new Uri("/Localization;component/Language-fr.xaml", UriKind.Relative)
                 },
 
                 new Language
                 {
                     Name = "日本語",
-                    Resources = (ResourceDictionary)GUI.LoadXaml("Language-jp.xaml")
+                    Source = new Uri("/Localization;component/Language-jp.xaml", UriKind.Relative)
                 }
             };
 
@@ -95,7 +96,7 @@ namespace Localization
         {
             public static object LoadXaml(string filename)
             {
-                return Application.LoadComponent(new Uri(filename, UriKind.Relative));
+                return Application.LoadComponent(new Uri("/Localization;component/./" + filename, UriKind.RelativeOrAbsolute));
             }
         }
 #endif

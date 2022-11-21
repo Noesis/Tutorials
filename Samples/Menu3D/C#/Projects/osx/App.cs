@@ -17,7 +17,7 @@ namespace Menu3D
         static void Main(string[] args)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Menu3D;component/App.xaml";
             app.Run();
         }
     }

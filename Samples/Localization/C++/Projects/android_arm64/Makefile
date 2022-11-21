@@ -73,10 +73,10 @@ ifeq ($(CONFIG), Debug)
   TARGET_APK = ../../../../../../Bin/android_arm64/Samples.Localization.apk
   INTERMEDIATE = build/Debug
   LIB_DIRS = 
-  LIBS = -landroid -llog -lNoesis -lNoesisApp
+  LIBS = -lNoesis -lNoesisApp -llog -landroid
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Debug -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.1.6 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
   CFLAGS = $(CFLAGS_COMMON) -D_DEBUG
   CXXFLAGS = $(CXXFLAGS_COMMON) -D_DEBUG
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
@@ -87,10 +87,10 @@ else ifeq ($(CONFIG), Profile)
   TARGET_APK = ../../../../../../Bin/android_arm64/Samples.Localization.apk
   INTERMEDIATE = build/Profile
   LIB_DIRS = 
-  LIBS = -landroid -llog -lNoesis -lNoesisApp
+  LIBS = -lNoesis -lNoesisApp -llog -landroid
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Profile -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.1.6 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
   CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
@@ -101,10 +101,10 @@ else ifeq ($(CONFIG), Release)
   TARGET_APK = ../../../../../../Bin/android_arm64/Samples.Localization.apk
   INTERMEDIATE = build/Release
   LIB_DIRS = 
-  LIBS = -landroid -llog -lNoesis -lNoesisApp
+  LIBS = -lNoesis -lNoesisApp -llog -landroid
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
   INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Launcher/Include -I../../../../App/Providers/Include -Ibuild/Release -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.1.6 -DNS_APP_FRAMEWORK -DNS_LICENSE
   CFLAGS = $(CFLAGS_COMMON) -Ofast -flto -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
   CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -flto -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
@@ -115,7 +115,7 @@ endif
 
 PCH =
 PCHFLAGS =
-DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Resources.xaml.bin.h $(INTERMEDIATE)/Language-en.xaml.bin.h $(INTERMEDIATE)/Language-fr.xaml.bin.h $(INTERMEDIATE)/Language-jp.xaml.bin.h $(INTERMEDIATE)/Flag-en.png.bin.h $(INTERMEDIATE)/Flag-fr.png.bin.h $(INTERMEDIATE)/Flag-jp.png.bin.h $(INTERMEDIATE)/Oxygen-Regular.ttf.bin.h $(INTERMEDIATE)/FontopoNIHONGO.otf.bin.h
+DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Resources.xaml.bin.h $(INTERMEDIATE)/Language-en.xaml.bin.h $(INTERMEDIATE)/Language-fr.xaml.bin.h $(INTERMEDIATE)/Language-jp.xaml.bin.h $(INTERMEDIATE)/Flag-en.png.bin.h $(INTERMEDIATE)/Flag-fr.png.bin.h $(INTERMEDIATE)/Flag-jp.png.bin.h $(INTERMEDIATE)/PTSans-Bold.ttf.bin.h $(INTERMEDIATE)/PTSans-BoldItalic.ttf.bin.h $(INTERMEDIATE)/PTSans-Italic.ttf.bin.h $(INTERMEDIATE)/PTSans-Regular.ttf.bin.h $(INTERMEDIATE)/FontopoNIHONGO.otf.bin.h
 
 .SUFFIXES:
 .DELETE_ON_ERROR:
@@ -194,9 +194,21 @@ $(INTERMEDIATE)/Flag-jp.png.bin.h: ../../../../Samples/Localization/Data/Flag-jp
 	@echo [BIN] [Samples/Localization] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/Localization/Data/Flag-jp.png" > "$(INTERMEDIATE)/Flag-jp.png.bin.h" 
 
-$(INTERMEDIATE)/Oxygen-Regular.ttf.bin.h: ../../../../Samples/Localization/Data/Oxygen-Regular.ttf | $(INTERMEDIATE)
+$(INTERMEDIATE)/PTSans-Bold.ttf.bin.h: ../../../../Samples/Localization/Data/PTSans-Bold.ttf | $(INTERMEDIATE)
 	@echo [BIN] [Samples/Localization] $(notdir $<)
-	$(Q)$(BIN2H) "../../../../Samples/Localization/Data/Oxygen-Regular.ttf" > "$(INTERMEDIATE)/Oxygen-Regular.ttf.bin.h" 
+	$(Q)$(BIN2H) "../../../../Samples/Localization/Data/PTSans-Bold.ttf" > "$(INTERMEDIATE)/PTSans-Bold.ttf.bin.h" 
+
+$(INTERMEDIATE)/PTSans-BoldItalic.ttf.bin.h: ../../../../Samples/Localization/Data/PTSans-BoldItalic.ttf | $(INTERMEDIATE)
+	@echo [BIN] [Samples/Localization] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/Localization/Data/PTSans-BoldItalic.ttf" > "$(INTERMEDIATE)/PTSans-BoldItalic.ttf.bin.h" 
+
+$(INTERMEDIATE)/PTSans-Italic.ttf.bin.h: ../../../../Samples/Localization/Data/PTSans-Italic.ttf | $(INTERMEDIATE)
+	@echo [BIN] [Samples/Localization] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/Localization/Data/PTSans-Italic.ttf" > "$(INTERMEDIATE)/PTSans-Italic.ttf.bin.h" 
+
+$(INTERMEDIATE)/PTSans-Regular.ttf.bin.h: ../../../../Samples/Localization/Data/PTSans-Regular.ttf | $(INTERMEDIATE)
+	@echo [BIN] [Samples/Localization] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/Localization/Data/PTSans-Regular.ttf" > "$(INTERMEDIATE)/PTSans-Regular.ttf.bin.h" 
 
 $(INTERMEDIATE)/FontopoNIHONGO.otf.bin.h: ../../../../Samples/Localization/Data/FontopoNIHONGO.otf | $(INTERMEDIATE)
 	@echo [BIN] [Samples/Localization] $(notdir $<)

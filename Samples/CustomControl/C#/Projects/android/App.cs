@@ -26,7 +26,7 @@ namespace CustomControl
         protected override void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/CustomControl;component/App.xaml";
             app.Run();
         }
     }

@@ -193,7 +193,7 @@ namespace Gallery
 
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Gallery/MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "/Gallery;component/MainWindow.xaml");
 
             this.WindowContent = (Panel)FindName("WindowContent");
             this.LayoutRoot = (Panel)FindName("LayoutRoot");
@@ -283,7 +283,7 @@ namespace Gallery
 
         void UpdateSample()
         {
-            string sampleName = string.Format("Samples/{0}.xaml", _selectedSample.Name);
+            string sampleName = string.Format("/Gallery;component/Samples/{0}.xaml", _selectedSample.Name);
             FrameworkElement sample = (FrameworkElement)Application.LoadComponent(new Uri(sampleName, UriKind.Relative));
 
             if (sample != null)

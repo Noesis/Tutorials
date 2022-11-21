@@ -26,7 +26,7 @@ namespace Menu3D
         protected override void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Menu3D;component/App.xaml";
             app.Run();
         }
     }

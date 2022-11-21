@@ -3,12 +3,12 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <ImageBrush x:Key="Flag" ImageSource="Flag-en.png" Stretch="Fill"/>
+  <ImageBrush x:Key="Flag" ImageSource="Flag-en.png" Stretch="Fill"/>
 
-    <sys:String x:Key="SoundLabel">Sound</sys:String>
-    <sys:String x:Key="MusicLabel">Music</sys:String>
-    <sys:String x:Key="TitleLabel">LOCALIZATION SAMPLE</sys:String>
-    <sys:String x:Key="SubTitleLabel">English localization</sys:String>
-    <sys:String x:Key="DescLabel">There are many ways to implement localization in NoesisGUI. In this example we are using DataBinding. Each language is stored in a ResourceDictionary containing localized texts for each entry. The desired language is selected in the root DataContext. Each time the language is changed, the displayed text is updated accordingly.</sys:String>
+  <sys:String x:Key="SelectLabel">Select language</sys:String>
+  <sys:String x:Key="SoundLabel">Sound</sys:String>
+  <sys:String x:Key="MusicLabel">Music</sys:String>
+  <sys:String x:Key="TitleLabel">[b]LOCALIZATION SAMPLE[/b]</sys:String>
+  <sys:String x:Key="DescLabel">There are [i]many[/i] ways to implement localization in [style=ColoredText]NoesisGUI[/style]. In this example we are using our [style=ColoredText][i]Loc[/i][/style] markup extension, which references resources in a local [i]ResourceDictionary[/i]. The desired language dictionary is selected in the root [i]DataContext[/i]. The [style=ColoredText][i]RichText[/i][/style] attached property for [i]TextBlocks[/i] allows you to use BBCode markup in your text. It supports text formatting, images, and bindings to the [i]DataContext[/i] (e.g. the music level is [style=ColoredNumber][bind format='{0:0}%']MusicLevel[/bind][/style]).</sys:String>
 
 </ResourceDictionary>

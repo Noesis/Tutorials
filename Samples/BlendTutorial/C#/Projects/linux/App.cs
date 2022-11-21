@@ -26,7 +26,7 @@ namespace BlendTutorial
         static void Main(string[] args)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/BlendTutorial;component/App.xaml";
             app.Run();
         }
     }

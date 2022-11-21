@@ -22,7 +22,7 @@ namespace RadialMenu
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "MainWindow.xaml");
+            GUI.LoadComponent(this, "/RadialMenu;component/MainWindow.xaml");
         }
 #endif
     }

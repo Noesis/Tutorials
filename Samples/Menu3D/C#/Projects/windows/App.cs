@@ -19,7 +19,7 @@ namespace Menu3D
         static void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Menu3D;component/App.xaml";
 
             Noesis.Log.SetLogCallback((level, channel, message) =>
             {

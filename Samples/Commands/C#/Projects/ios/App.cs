@@ -20,7 +20,7 @@ namespace Commands
         private void PerformInit(NSObject @object)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Commands;component/App.xaml";
             app.Run();
         }
     }

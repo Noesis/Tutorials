@@ -44,7 +44,7 @@ namespace IntegrationGLUT
 
             // Setup theme
             NoesisApp.Application.SetThemeProviders();
-            Noesis.GUI.LoadApplicationResources("Theme/NoesisTheme.DarkBlue.xaml");
+            Noesis.GUI.LoadApplicationResources("/Noesis.GUI.Extensions;component/Theme/NoesisTheme.DarkBlue.xaml");
 
             // For simplicity purposes we are not using resource providers in this sample. ParseXaml() is
             // enough if there is no extra XAML dependencies

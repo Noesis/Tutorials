@@ -64,7 +64,7 @@ namespace RssReader
 
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "MainWindow.xaml");
+            GUI.LoadComponent(this, "/ApplicationTutorial;component/MainWindow.xaml");
 
             this.Address = (TextBox)FindName("Address");
             this.EntryTitle = (TextBlock)FindName("EntryTitle");

@@ -20,7 +20,7 @@ namespace RssReader
         private void PerformInit(NSObject @object)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/ApplicationTutorial;component/App.xaml";
             app.Run();
         }
     }

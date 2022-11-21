@@ -32,7 +32,7 @@ namespace Menu3D
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "MenuDescription.xaml");
+            GUI.LoadComponent(this, "/Menu3D;component/MenuDescription.xaml");
         }
 #endif
 

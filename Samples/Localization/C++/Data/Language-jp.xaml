@@ -3,12 +3,12 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <ImageBrush x:Key="Flag" ImageSource="Flag-jp.png" Stretch="Fill"/>
+  <ImageBrush x:Key="Flag" ImageSource="Flag-jp.png" Stretch="Fill"/>
 
-    <sys:String x:Key="SoundLabel">音</sys:String>
-    <sys:String x:Key="MusicLabel">音楽</sys:String>
-    <sys:String x:Key="TitleLabel">局地化 見本</sys:String>
-    <sys:String x:Key="SubTitleLabel">日本語 局地化</sys:String>
-    <sys:String x:Key="DescLabel">NoesisGUIにローカライゼーションを実装する方法はたくさんあります。この例では、DataBindingを使用しています。各言語は、各エントリのローカライズされたテキストを含むResourceDictionaryに格納されます。目的の言語がルートDataContextで選択されます。言語が変更されるたびに、表示されたテキストがそれに応じて更新されます。</sys:String>
+  <sys:String x:Key="SelectLabel">言語を選択する</sys:String>
+  <sys:String x:Key="SoundLabel">音</sys:String>
+  <sys:String x:Key="MusicLabel">音楽</sys:String>
+  <sys:String x:Key="TitleLabel">[b]局地化 見本[/b]</sys:String>
+  <sys:String x:Key="DescLabel">[style=ColoredText]NoesisGUI[/style] でローカリゼーション を実装する方法 はたくさんあります。この例では、ロケール [i]ResourceDictionary[/i] のリソースを参照する [style=ColoredText][i]Loc[/i][/style] マー クアップ拡張機能を使用しています。言語辞書 は、ルート [i]DataContext[/i] で選択されます。 添付さ れたプロパティ [style=ColoredText][i]RichText[/i][/style] は [i]TextBlocks[/i] で使用で き、テキストで BBCode マークアップを使用でき ます。テキストの書式設定、画像、および [i]DataContext[/i] へのバインドをサポートします：[br/]サウンドレベル= [style=ColoredNumber][bind format='{0:0}%']MusicLevel[/bind][/style]</sys:String>
 
 </ResourceDictionary>

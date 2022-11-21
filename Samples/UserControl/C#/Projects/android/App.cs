@@ -26,7 +26,7 @@ namespace UserControls
         protected override void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/UserControl;component/App.xaml";
             app.Run();
         }
     }

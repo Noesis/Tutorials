@@ -20,7 +20,7 @@ namespace HelloWorld
         private void PerformInit(NSObject @object)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/HelloWorld;component/App.xaml";
             app.Run();
         }
     }

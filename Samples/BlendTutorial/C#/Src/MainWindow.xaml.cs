@@ -210,7 +210,7 @@ namespace BlendTutorial
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "/BlendTutorial;component/MainWindow.xaml");
 
             PositionLeft = (Slider)FindName("PositionLeft");
             PositionTop = (Slider)FindName("PositionTop");

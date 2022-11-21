@@ -3,12 +3,12 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <ImageBrush x:Key="Flag" ImageSource="Flag-fr.png" Stretch="Fill"/>
+  <ImageBrush x:Key="Flag" ImageSource="Flag-fr.png" Stretch="Fill"/>
 
-    <sys:String x:Key="SoundLabel">Son</sys:String>
-    <sys:String x:Key="MusicLabel">Musique</sys:String>
-    <sys:String x:Key="TitleLabel">EXAMPLE DE LOCALISATION</sys:String>
-    <sys:String x:Key="SubTitleLabel">La localisation Français</sys:String>
-    <sys:String x:Key="DescLabel">Il existe plusieurs façons d'implémenter la localisation dans NoesisGUI. Dans cet exemple, nous utilisons DataBinding. Chaque langue est stockée dans un ResourceDictionary contenant des textes localisés pour chaque entrée. La langue souhaitée est sélectionnée dans la racine DataContext. Chaque fois que la langue est modifiée, le texte affiché est mis à jour en conséquence.</sys:String>
+  <sys:String x:Key="SelectLabel">Choisir la langue</sys:String>
+  <sys:String x:Key="SoundLabel">Son</sys:String>
+  <sys:String x:Key="MusicLabel">Musique</sys:String>
+  <sys:String x:Key="TitleLabel">[b]EXAMPLE DE LOCALISATION[/b]</sys:String>
+  <sys:String x:Key="DescLabel">Il existe de [i]nombreuses[/i] façons d'implémenter la localisation dans [style=ColoredText]NoesisGUI[/style]. Dans cet exemple, nous utilisons notre [style=ColoredText][i]Loc[/i][/style] extension de balisage, qui référence les ressources dans un [i]ResourceDictionary[/i]. Le dictionnaire de langue est sélectionné dans la racine [i]DataContext[/i]. La propriété jointe [style=ColoredText][i]RichText[/i][/style] pour [i]TextBlocks[/i] vous permet d'utiliser BBCode dans votre texte. Il permet le formatage du texte, les images et la liaison au [i]DataContext[/i] (par example, le niveau de musique est [style=ColoredNumber][bind format='{0:0}%']MusicLevel[/bind][/style]).</sys:String>
 
 </ResourceDictionary>

@@ -40,7 +40,7 @@ namespace Localization
             public void Run()
             {
                 App app = new App();
-                app.Uri = "App.xaml";
+                app.Uri = "/Localization;component/App.xaml";
                 app.Run();
             }
         }

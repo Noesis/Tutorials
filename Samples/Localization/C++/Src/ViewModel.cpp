@@ -17,8 +17,8 @@ using namespace Noesis;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-Language::Language(const char* name, ResourceDictionary* resources): _name(name),
-    _resources(resources)
+Language::Language(const char* name, const char* sourcePath): _name(name),
+    _source(sourcePath)
 {
 }
 
@@ -29,21 +29,21 @@ const char* Language::GetName() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-ResourceDictionary* Language::GetResources() const
+const Uri& Language::GetSource() const
 {
-    return _resources;
+    return _source;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ViewModel::ViewModel()
 {
     _languages = *new ObservableCollection<Language>();
-    _languages->Add(MakePtr<Language>("English",
-        GUI::LoadXaml<ResourceDictionary>("Language-en.xaml")));
-    _languages->Add(MakePtr<Language>("Fran""\xC3\xA7""ais",
-        GUI::LoadXaml<ResourceDictionary>("Language-fr.xaml")));
-    _languages->Add(MakePtr<Language>("\xE6\x97\xA5\xE6\x9C\xAC\xE8\xAA\x9E",
-        GUI::LoadXaml<ResourceDictionary>("Language-jp.xaml")));
+    _languages->Add(MakePtr<Language>("English", 
+        "Language-en.xaml"));
+    _languages->Add(MakePtr<Language>("Fran""\xC3\xA7""ais", 
+        "Language-fr.xaml"));
+    _languages->Add(MakePtr<Language>("\xE6\x97\xA5\xE6\x9C\xAC\xE8\xAA\x9E", 
+        "Language-jp.xaml"));
 
     SetSelectedLanguage(_languages->Get(0));
 
@@ -119,7 +119,7 @@ NS_IMPLEMENT_REFLECTION(ViewModel)
 NS_IMPLEMENT_REFLECTION(Language)
 {
     NsProp("Name", &Language::GetName);
-    NsProp("Resources", &Language::GetResources);
+    NsProp("Source", &Language::GetSource);
 }
 
 NS_END_COLD_REGION

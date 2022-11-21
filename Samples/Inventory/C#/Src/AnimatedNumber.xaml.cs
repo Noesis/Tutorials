@@ -24,7 +24,7 @@ namespace Inventory
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "AnimatedNumber.xaml");
+            GUI.LoadComponent(this, "/Inventory;component/AnimatedNumber.xaml");
         }
 #endif
 

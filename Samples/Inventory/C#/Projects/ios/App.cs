@@ -20,7 +20,7 @@ namespace Inventory
         private void PerformInit(NSObject @object)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Inventory;component/App.xaml";
             app.Run();
         }
     }

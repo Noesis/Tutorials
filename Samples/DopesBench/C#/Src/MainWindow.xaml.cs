@@ -446,7 +446,7 @@ namespace DopesBench
 
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "/DopesBench;component/MainWindow.xaml");
 
             stop = (Button)FindName("stop");
             startST = (Button)FindName("startST");

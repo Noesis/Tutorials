@@ -17,7 +17,7 @@ namespace HelloWorld
         static void Main(string[] args)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/HelloWorld;component/App.xaml";
             app.Run();
         }
     }

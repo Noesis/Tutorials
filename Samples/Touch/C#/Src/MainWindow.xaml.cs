@@ -31,7 +31,7 @@ namespace Touch
 #if NOESIS
         private void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "/Touch;component/MainWindow.xaml");
 
             root = (Canvas)FindName("root");
         }

@@ -20,7 +20,7 @@ namespace BlendTutorial
         private void PerformInit(NSObject @object)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/BlendTutorial;component/App.xaml";
             app.Run();
         }
     }

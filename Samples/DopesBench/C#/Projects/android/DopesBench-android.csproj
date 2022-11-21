@@ -6,7 +6,7 @@
     <ProjectGuid>{86BCC0F5-19B1-4308-B518-A1DCFF47E9E6}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>DopesBench</RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>DopesBench</AssemblyName>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
@@ -137,10 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.Android">
-      <Version>3.0.4</Version>
+      <Version>3.1.*</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.EGL">
-      <Version>3.0.4</Version>
+      <Version>3.1.*</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -20,7 +20,7 @@ namespace NineSlice
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/NineSlice/MainWindow.xaml");
+            GUI.LoadComponent(this, "/NineSlice;component/MainWindow.xaml");
         }
 #endif
     }

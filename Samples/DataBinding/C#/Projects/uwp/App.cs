@@ -40,7 +40,7 @@ namespace DataBinding
             public void Run()
             {
                 App app = new App();
-                app.Uri = "App.xaml";
+                app.Uri = "/DataBinding;component/App.xaml";
                 app.Run();
             }
         }

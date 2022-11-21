@@ -26,7 +26,7 @@ namespace Gallery
         protected override void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Gallery;component/App.xaml";
             app.Run();
         }
     }

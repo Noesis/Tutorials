@@ -23,7 +23,7 @@ namespace Login
 #if NOESIS
         void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "Assets/NoesisGUI/Samples/Login/MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "/Login;component/MainWindow.xaml");
         }
 #endif
 

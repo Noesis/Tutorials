@@ -22,7 +22,7 @@ namespace Localization
 #if NOESIS
         void InitializeComponent()
         {
-            Noesis.GUI.LoadComponent(this, "MainWindow.xaml");
+            Noesis.GUI.LoadComponent(this, "/Localization;component/MainWindow.xaml");
         }
 #endif
 

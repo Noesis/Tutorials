@@ -19,7 +19,7 @@ namespace Commands
         static void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Commands;component/App.xaml";
             app.Run();
         }
     }

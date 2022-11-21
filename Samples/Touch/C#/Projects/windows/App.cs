@@ -19,7 +19,7 @@ namespace Touch
         static void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Touch;component/App.xaml";
             app.Run();
         }
     }

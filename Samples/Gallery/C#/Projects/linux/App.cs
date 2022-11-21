@@ -26,7 +26,7 @@ namespace Gallery
         static void Main(string[] args)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Gallery;component/App.xaml";
             app.Run();
         }
     }

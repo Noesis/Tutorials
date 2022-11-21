@@ -6,7 +6,7 @@
     <ProjectGuid>{BB68866C-1B2C-40D8-8DED-E1E6D9185787}</ProjectGuid>
     <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Localization</RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Localization</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
@@ -88,7 +88,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Src\FontopoNIHONGO.otf" />
-    <EmbeddedResource Include="..\..\Src\Oxygen-Regular.ttf" />
+    <EmbeddedResource Include="..\..\Src\PTSans-Bold.ttf" />
+    <EmbeddedResource Include="..\..\Src\PTSans-BoldItalic.ttf" />
+    <EmbeddedResource Include="..\..\Src\PTSans-Italic.ttf" />
+    <EmbeddedResource Include="..\..\Src\PTSans-Regular.ttf" />
     <EmbeddedResource Include="..\..\Src\Flag-en.png" />
     <EmbeddedResource Include="..\..\Src\Flag-fr.png" />
     <EmbeddedResource Include="..\..\Src\Flag-jp.png" />

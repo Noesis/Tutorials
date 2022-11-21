@@ -17,7 +17,7 @@ namespace Inventory
         static void Main(string[] args)
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Inventory;component/App.xaml";
             app.Run();
         }
     }

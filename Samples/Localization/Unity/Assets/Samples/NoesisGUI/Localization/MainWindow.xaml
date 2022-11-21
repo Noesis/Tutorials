@@ -1,0 +1,240 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    xmlns:local="clr-namespace:Localization"
+    x:Class="Localization.MainWindow"
+    FontFamily="./#PT Sans, ./#FontopoNIHONGO"
+    Foreground="#FFBEE8FF"
+    Focusable="True"
+    noesis:Loc.Source="{Binding SelectedLanguage.Source}"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    d:DataContext="{d:DesignInstance {x:Type local:ViewModel}, IsDesignTimeCreatable=True}">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="Intro">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Dialog">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Dialog">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Dialog">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Intro}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource NoesisLogoBg}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="800*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="900*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Grid.Column="1" Grid.Row="1" noesis:Element.PPAAMode="Disabled">
+            <Grid x:Name="Dialog" Width="290" Height="380" RenderTransformOrigin="0.5,0.25">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="7"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="1">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#00000000" Offset="0"/>
+                            <GradientStop Color="#3F000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border Grid.Column="1" Grid.Row="2">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#00000000" Offset="1"/>
+                            <GradientStop Color="#3F000000"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border Grid.Row="1">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                            <GradientStop Color="#00000000"/>
+                            <GradientStop Color="#3F000000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border Grid.Column="2" Grid.Row="1">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                            <GradientStop Color="#00000000" Offset="1"/>
+                            <GradientStop Color="#3F000000"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border>
+                    <Border.Background>
+                        <RadialGradientBrush GradientOrigin="1,1" Center="1,1" RadiusX="1" RadiusY="1">
+                            <GradientStop Color="#00000000" Offset="1"/>
+                            <GradientStop Color="#3F000000"/>
+                        </RadialGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border Grid.Column="2">
+                    <Border.Background>
+                        <RadialGradientBrush GradientOrigin="0,1" Center="0,1" RadiusX="1" RadiusY="1">
+                            <GradientStop Color="#00000000" Offset="1"/>
+                            <GradientStop Color="#3F000000"/>
+                        </RadialGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border Grid.Row="2">
+                    <Border.Background>
+                        <RadialGradientBrush GradientOrigin="1,0" Center="1,0" RadiusX="1" RadiusY="1">
+                            <GradientStop Color="#00000000" Offset="1"/>
+                            <GradientStop Color="#3F000000"/>
+                        </RadialGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border Grid.Column="2" Grid.Row="2">
+                    <Border.Background>
+                        <RadialGradientBrush GradientOrigin="0,0" Center="0,0" RadiusX="1" RadiusY="1">
+                            <GradientStop Color="#00000000" Offset="1"/>
+                            <GradientStop Color="#3F000000"/>
+                        </RadialGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Border Grid.Column="1" Grid.Row="1" BorderThickness="1" Opacity="0.5">
+                    <Border.BorderBrush>
+                      <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF1B638F" Offset="0"/>
+                        <GradientStop Color="#FF12435F" Offset="1"/>
+                      </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <Border.Background>
+                        <RadialGradientBrush GradientOrigin="0.5,0.1" Center="0.5,0.1" RadiusY="0.9" RadiusX="0.9">
+                            <GradientStop Color="#FF2C76B4" Offset="0"/>
+                            <GradientStop Color="#FF154064" Offset="0.65"/>
+                            <GradientStop Color="#FF123757" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Border.Background>
+                </Border>
+                <Grid Grid.Column="1" Grid.Row="1" noesis:Element.PPAAMode="Default">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="36*"/>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="175*"/>
+                        </Grid.RowDefinitions>
+                        <Viewbox x:Name="Logo" Stretch="Uniform" Margin="0,0,10,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoBlueBg}" Stretch="Uniform"/>
+                                <Path Data="{StaticResource NoesisTextGeometry}" Fill="White" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                                <Path Data="{StaticResource NoesisGuiTextGeometry}" Fill="{StaticResource NoesisLogoBlueBg}" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Viewbox>
+                        <Border Grid.Row="2" BorderThickness="1" Background="{noesis:Loc Flag}" BorderBrush="{StaticResource IndentBorder}" Margin="0,0,0,16" noesis:Element.PPAAMode="Disabled">
+                          <Border Padding="2">
+                            <Border.Background>
+                              <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                <GradientStop Color="#00304C62" Offset="0"/>
+                                <GradientStop Color="#7E022A49" Offset="0.6"/>
+                                <GradientStop Color="#FF154565" Offset="1"/>
+                              </LinearGradientBrush>
+                            </Border.Background>
+                            <Label HorizontalAlignment="Center" Content="{noesis:Loc TitleLabel}" Foreground="White" FontSize="11" MinHeight="14" Margin="0,2"/>
+                          </Border>
+                        </Border>
+                        <Grid Grid.Row="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Grid.ColumnSpan="2" Content="{noesis:Loc SelectLabel}" Foreground="#FF72BCE6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,2"/>
+                            <ComboBox x:Name="LanguageSelector" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="0,3,8,3"
+                                      ItemsSource="{Binding Languages}"
+                                      SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                                      ItemTemplate="{StaticResource LanguageItemTemplate}"/>
+                            <Label Grid.Row="1" FontSize="10" Content="{noesis:Loc SoundLabel}" Foreground="#FF72BCE6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,4"/>
+                            <Slider Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Value="{Binding SoundLevel}" Style="{StaticResource SliderStyle}" Margin="0,3,8,3">
+                              <Slider.Foreground>
+                                <SolidColorBrush Color="{Binding SoundLevel, Converter={StaticResource LevelToColorConverter}}"/>
+                              </Slider.Foreground>
+                            </Slider>
+                            <Label Grid.Row="2" FontSize="10" Content="{noesis:Loc MusicLabel}" Foreground="#FF72BCE6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,3"/>
+                            <Slider x:Name="MusicLevel" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Value="{Binding MusicLevel}" Style="{StaticResource SliderStyle}" Margin="0,2,8,2">
+                              <Slider.Foreground>
+                                <SolidColorBrush Color="{Binding MusicLevel, Converter={StaticResource LevelToColorConverter}}"/>
+                              </Slider.Foreground>
+                            </Slider>
+                        </Grid>
+                        <Label Content="{noesis:Loc DescLabel}" Grid.Row="4" FontSize="10" Margin="4,16,4,0" MinHeight="16"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>

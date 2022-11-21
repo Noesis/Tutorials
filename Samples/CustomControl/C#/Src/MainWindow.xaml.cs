@@ -20,7 +20,7 @@ namespace CustomControl
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "MainWindow.xaml");
+            GUI.LoadComponent(this, "/CustomControl;component/MainWindow.xaml");
         }
 #endif
     }

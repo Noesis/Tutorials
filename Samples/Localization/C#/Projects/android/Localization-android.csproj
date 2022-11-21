@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -6,7 +6,7 @@
     <ProjectGuid>{86BCC0F4-19B1-7308-B518-A1DCFF47F9EB}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>Localization</RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>Localization</AssemblyName>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
@@ -141,7 +141,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Src\FontopoNIHONGO.otf" />
-    <EmbeddedResource Include="..\..\Src\Oxygen-Regular.ttf" />
+    <EmbeddedResource Include="..\..\Src\PTSans-Bold.ttf" />
+    <EmbeddedResource Include="..\..\Src\PTSans-BoldItalic.ttf" />
+    <EmbeddedResource Include="..\..\Src\PTSans-Italic.ttf" />
+    <EmbeddedResource Include="..\..\Src\PTSans-Regular.ttf" />
     <EmbeddedResource Include="..\..\Src\Flag-en.png" />
     <EmbeddedResource Include="..\..\Src\Flag-fr.png" />
     <EmbeddedResource Include="..\..\Src\Flag-jp.png" />

@@ -14,10 +14,11 @@
 #include <NsApp/EmbeddedFontProvider.h>
 #include <NsApp/EmbeddedTextureProvider.h>
 #include <NsApp/EntryPoint.h>
+#include <NsApp/LocExtension.h>
+#include <NsApp/RichText.h>
 
 #include "MainWindow.xaml.h"
 #include "App.xaml.h"
-
 #include "App.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
 #include "Resources.xaml.bin.h"
@@ -27,9 +28,11 @@
 #include "Flag-en.png.bin.h"
 #include "Flag-fr.png.bin.h"
 #include "Flag-jp.png.bin.h"
-#include "Oxygen-Regular.ttf.bin.h"
+#include "PTSans-Bold.ttf.bin.h"
+#include "PTSans-BoldItalic.ttf.bin.h"
+#include "PTSans-Italic.ttf.bin.h"
+#include "PTSans-Regular.ttf.bin.h"
 #include "FontopoNIHONGO.otf.bin.h"
-
 
 using namespace Localization;
 using namespace Noesis;
@@ -74,6 +77,8 @@ private:
         RegisterComponent<Localization::LevelToColorConverter>();
         RegisterComponent<Localization::MainWindow>();
         RegisterComponent<Localization::App>();
+        RegisterComponent<LocExtension>();
+        TypeOf<RichText>();
     }
 
     Noesis::Ptr<XamlProvider> GetXamlProvider() const override
@@ -107,8 +112,11 @@ private:
     {
         EmbeddedFont fonts[] = 
         {
-            { "", FontopoNIHONGO_otf },
-            { "", Oxygen_Regular_ttf }
+            { "", PTSans_Bold_ttf },
+            { "", PTSans_BoldItalic_ttf },
+            { "", PTSans_Italic_ttf },
+            { "", PTSans_Regular_ttf },
+            { "", FontopoNIHONGO_otf }
         };
 
         return *new EmbeddedFontProvider(fonts);

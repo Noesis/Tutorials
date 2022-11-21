@@ -7,7 +7,7 @@
     <ProjectGuid>{11A5F6A1-A38E-40A0-A661-8DDA40504A0C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DopesBench</RootNamespace>
+    <RootNamespace></RootNamespace>
     <AssemblyName>DopesBench</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -82,10 +82,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Noesis.App.Displays.Win32">
-      <Version>3.0.5</Version>
+      <Version>3.1.*</Version>
     </PackageReference>
     <PackageReference Include="Noesis.App.RenderContexts.D3D11">
-      <Version>3.0.5</Version>
+      <Version>3.1.*</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,7 @@ namespace Localization
         protected override void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Localization;component/App.xaml";
             app.Run();
         }
     }

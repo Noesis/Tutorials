@@ -23,7 +23,7 @@ namespace Inventory
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "MainWindow.xaml");
+            GUI.LoadComponent(this, "/Inventory;component/MainWindow.xaml");
         }
 #endif
 

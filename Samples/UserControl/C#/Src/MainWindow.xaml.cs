@@ -17,9 +17,9 @@ namespace UserControls
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            byte r = (byte)(int)values[0];
-            byte g = (byte)(int)values[1];
-            byte b = (byte)(int)values[2];
+            byte r = values[0] == DependencyProperty.UnsetValue ? (byte)0 : (byte)(int)values[0];
+            byte g = values[1] == DependencyProperty.UnsetValue ? (byte)0 : (byte)(int)values[1];
+            byte b = values[2] == DependencyProperty.UnsetValue ? (byte)0 : (byte)(int)values[2];
 
             return Color.FromRgb(r, g, b);
         }
@@ -43,7 +43,7 @@ namespace UserControls
 #if NOESIS
         private void InitializeComponent()
         {
-            GUI.LoadComponent(this, "MainWindow.xaml");
+            GUI.LoadComponent(this, "/UserControl;component/MainWindow.xaml");
         }
 #endif
     }

@@ -26,7 +26,7 @@ namespace Commands
         protected override void Main()
         {
             App app = new App();
-            app.Uri = "App.xaml";
+            app.Uri = "/Commands;component/App.xaml";
             app.Run();
         }
     }
