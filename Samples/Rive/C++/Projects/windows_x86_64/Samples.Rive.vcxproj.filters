@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Src">
+      <UniqueIdentifier>{5858451c-d305-4b2a-8120-ea3e392e616a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{bf444638-489b-4ed2-8a42-7dd06d02a4d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{17ce1c22-f806-42c6-bd71-c6c92ed1f9b2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\Main.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+    <None Include="Noesis.ico">
+      <Filter>Resources</Filter>
+    </None>
+    <CustomBuild Include="..\..\Data\App.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\MainWindow.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Milky Boba.otf">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\background.riv">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\logo.riv">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\start.riv">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\rewards.riv">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\settings.riv">
+      <Filter>Data</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
