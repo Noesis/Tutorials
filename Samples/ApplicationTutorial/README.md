@@ -1,6 +1,6 @@
 # Application Tutorial Sample
 
-![Screenshot](https://github.com/Noesis/Noesis.github.io/blob/master/NoesisGUI/Samples/ApplicationTutorial/Screenshot.png)
+![Screenshot](https://github.com/Noesis/Noesis.github.io/blob/master/NoesisGUI/Samples/ApplicationTutorial/Screenshot2.png)
 
 This is the sample corresponding to the [Application Framework](http://www.noesisengine.com/docs/Gui.Core.ApplicationTutorial.html) tutorial.
 
