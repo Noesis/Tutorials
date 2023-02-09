@@ -114,15 +114,7 @@
                 </StackPanel>
             </Canvas>
         </Grid>
-        <UniformGrid Rows="2" Columns="2">
-            <FrameworkElement x:Name="CenterRef"/>
-        </UniformGrid>
         <Grid>
-            <noesis:Element.Transform3D>
-                <noesis:CompositeTransform3D RotationY="-10"
-                        CenterX="{Binding ActualWidth, ElementName=CenterRef}"
-                        CenterY="{Binding ActualHeight, ElementName=CenterRef}"/>
-            </noesis:Element.Transform3D>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="9*"/>
