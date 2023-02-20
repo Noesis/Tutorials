@@ -1,0 +1,326 @@
+<UserControl
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+  xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+  xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"  
+  FontFamily="./#Rajdhani">
+
+  <UserControl.Resources>
+
+    <Color x:Key="WorldSpaceUI.Color.Aqua">#4BC3CF</Color>
+    <SolidColorBrush x:Key="WorldSpaceUI.Brush.Aqua" Color="{StaticResource WorldSpaceUI.Color.Aqua}"/>
+
+    <Geometry x:Key="WorldSpaceUI.Geometry.Panel">M444.9 482H13L0.5 469.5V35.1L35.6 0h431.9L480 12.5v434.4L444.9 482z</Geometry>
+
+    <ControlTemplate x:Key="Wrist.ToggleTemplate" TargetType="{x:Type ToggleButton}">
+      <Grid x:Name="TemplateRoot" Width="120" Height="42" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform/>
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <VisualStateManager.VisualStateGroups>
+          <VisualStateGroup x:Name="CommonStates">
+            <VisualStateGroup.Transitions>
+              <VisualTransition GeneratedDuration="0:0:0.3" To="MouseOver">
+                <VisualTransition.GeneratedEasingFunction>
+                  <BackEase EasingMode="EaseOut" Amplitude="0.8"/>
+                </VisualTransition.GeneratedEasingFunction>
+              </VisualTransition>
+              <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                <VisualTransition.GeneratedEasingFunction>
+                  <BackEase EasingMode="EaseOut"/>
+                </VisualTransition.GeneratedEasingFunction>
+              </VisualTransition>
+              <VisualTransition GeneratedDuration="0:0:0.1" To="Pressed">
+                <VisualTransition.GeneratedEasingFunction>
+                  <SineEase EasingMode="EaseInOut"/>
+                </VisualTransition.GeneratedEasingFunction>
+              </VisualTransition>
+            </VisualStateGroup.Transitions>
+            <VisualState x:Name="Normal"/>
+            <VisualState x:Name="MouseOver">
+              <Storyboard>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Thumb">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="15"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ThumbDarkener">
+                  <EasingColorKeyFrame KeyTime="0" Value="#00000000"/>
+                </ColorAnimationUsingKeyFrames>
+              </Storyboard>
+            </VisualState>
+            <VisualState x:Name="Pressed">
+              <Storyboard>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Thumb">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ThumbDarkener">
+                  <EasingColorKeyFrame KeyTime="0" Value="#59000000"/>
+                </ColorAnimationUsingKeyFrames>
+              </Storyboard>
+            </VisualState>
+            <VisualState x:Name="Disabled"/>
+          </VisualStateGroup>
+          <VisualStateGroup x:Name="CheckStates">
+            <VisualStateGroup.Transitions>
+              <VisualTransition GeneratedDuration="0:0:0.4" To="Checked">
+                <VisualTransition.GeneratedEasingFunction>
+                  <CubicEase EasingMode="EaseOut"/>
+                </VisualTransition.GeneratedEasingFunction>
+              </VisualTransition>
+              <VisualTransition From="Checked" GeneratedDuration="0:0:0.5">
+                <VisualTransition.GeneratedEasingFunction>
+                  <CubicEase EasingMode="EaseOut"/>
+                </VisualTransition.GeneratedEasingFunction>
+              </VisualTransition>
+            </VisualStateGroup.Transitions>
+            <VisualState x:Name="Checked">
+              <Storyboard>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ThumbBase">
+                  <EasingColorKeyFrame KeyTime="0" Value="#FFF48B00"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Thumb">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="78"/>
+                </DoubleAnimationUsingKeyFrames>
+              </Storyboard>
+            </VisualState>
+            <VisualState x:Name="Unchecked"/>
+            <VisualState x:Name="Indeterminate"/>
+          </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Rectangle x:Name="Track" Grid.Column="0" Fill="#7F0B193A" Stroke="#FF4BC3CF" StrokeThickness="3" RadiusX="2" RadiusY="2" RenderTransformOrigin="0.5,0.5" Margin="0,2">
+          <Rectangle.RenderTransform>
+            <TransformGroup>
+              <ScaleTransform/>
+              <SkewTransform/>
+              <RotateTransform/>
+              <TranslateTransform/>
+            </TransformGroup>
+          </Rectangle.RenderTransform>
+
+        </Rectangle>
+        <Grid x:Name="Thumb" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
+          <noesis:Element.Transform3D>
+            <noesis:CompositeTransform3D TranslateZ="10"/>
+          </noesis:Element.Transform3D>
+          <Grid.RenderTransform>
+            <TransformGroup>
+              <ScaleTransform/>
+              <SkewTransform/>
+              <RotateTransform/>
+              <TranslateTransform/>
+            </TransformGroup>
+          </Grid.RenderTransform>
+          <Rectangle x:Name="ThumbBase" Fill="#FF4BC3CF" Stroke="Transparent" StrokeThickness="3" Width="42" RadiusX="4" RadiusY="4"/>
+          <Rectangle x:Name="ThumbDarkener" Fill="#00000000" Stroke="White" StrokeThickness="3" Width="42" RadiusX="4" RadiusY="4"/>
+        </Grid>
+      </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="WorldSpaceUI.Button" TargetType="{x:Type Button}">
+      <Setter Property="OverridesDefaultStyle" Value="True"/>
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="BorderBrush" Value="#FCBA20"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Padding" Value="8,7"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="30"/>
+      <Setter Property="UseLayoutRounding" Value="True"/>
+      <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Grid UseLayoutRounding="True">
+              <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                  <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:0.3" To="MouseOver">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.8"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                    <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                    <VisualTransition GeneratedDuration="0:0:0.2" To="Pressed">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                  </VisualStateGroup.Transitions>
+                  <VisualState x:Name="Normal"/>
+                  <VisualState x:Name="MouseOver">
+                    <Storyboard>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
+                        <EasingColorKeyFrame KeyTime="0" Value="#FF4BC3CF"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="25"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="PART_ContentPresenter">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="28"/>
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Pressed">
+                    <Storyboard>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
+                        <EasingColorKeyFrame KeyTime="0" Value="#FF33848C"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="15"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="PART_ContentPresenter">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="18"/>
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+              </VisualStateManager.VisualStateGroups>
+              <Border x:Name="Border" BorderBrush="White" BorderThickness="3" CornerRadius="4" VerticalAlignment="Stretch" Background="#FF4BC3CF" RenderTransformOrigin="0.5,0.5">
+                <noesis:Element.Transform3D>
+                  <noesis:CompositeTransform3D TranslateZ="20"/>
+                </noesis:Element.Transform3D>
+                <Border.RenderTransform>
+                  <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                  </TransformGroup>
+                </Border.RenderTransform>
+              </Border>
+              <ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <noesis:Element.Transform3D>
+                  <noesis:CompositeTransform3D TranslateZ="23"/>
+                </noesis:Element.Transform3D>
+              </ContentPresenter>
+            </Grid>
+
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Storyboard x:Key="OpenWristPanel">
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PanelBorder">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.6"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PanelBorder">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.6"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="CloseWristPanel">
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PanelBorder">
+        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseIn" Amplitude="0.8"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PanelBorder">
+        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseIn" Amplitude="0.8"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+  </UserControl.Resources>
+
+  <UserControl.Triggers>
+    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+      <BeginStoryboard Storyboard="{StaticResource OpenWristPanel}"/>
+    </EventTrigger>
+  </UserControl.Triggers>
+
+  <Viewbox>
+    <Border x:Name="PanelBorder" CornerRadius="8"  BorderThickness="2" Height="350" Width="490" RenderTransformOrigin="0.5,0.5">
+      <Border.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform/>
+          <SkewTransform/>
+          <RotateTransform/>
+          <TranslateTransform/>
+        </TransformGroup>
+      </Border.RenderTransform>
+      <Grid x:Name="PanelGrid" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform/>
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <Viewbox Stretch="Fill" Width="480">
+          <Path x:Name="PanelPath" Data="{StaticResource WorldSpaceUI.Geometry.Panel}" Fill="#7F0B193A" Stroke="White" StrokeThickness="2"/>
+        </Viewbox>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="182*"/>
+          </Grid.RowDefinitions>
+          <TextBlock Text="AIRLOCK CONTROL" Foreground="White" TextWrapping="Wrap" FontSize="40" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="51.04" Width="302.48">
+                    <noesis:Element.Transform3D>
+                        <noesis:CompositeTransform3D TranslateZ="20"/>
+                    </noesis:Element.Transform3D>
+          </TextBlock>
+          <Path Data="M637.09699,1 L637.09699,11.400002 1,11.400002 1,1" HorizontalAlignment="Center" Height="6.6" Stretch="Fill" Stroke="#99FFFFFF" StrokeThickness="2" VerticalAlignment="Bottom" Width="400" Margin="43,0">
+            <noesis:Element.Transform3D>
+              <noesis:CompositeTransform3D TranslateZ="5"/>
+            </noesis:Element.Transform3D>
+          </Path>
+          <Grid Grid.Row="1" Margin="43,0">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="200*"/>
+              <RowDefinition Height="150*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="0,20,0,0">
+              <noesis:Element.Transform3D>
+                <noesis:CompositeTransform3D TranslateZ="10"/>
+              </noesis:Element.Transform3D>
+              <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+              </Grid.ColumnDefinitions>
+              <TextBlock HorizontalAlignment="Left" Foreground="White" TextWrapping="Wrap" Text="UNLOCK" VerticalAlignment="Center" FontSize="30" TextAlignment="Center" Grid.Column="0" Grid.Row="0" Margin="50,0,0,0"/>
+              <TextBlock HorizontalAlignment="Left" Foreground="White" TextWrapping="Wrap" Text="EQUALIZE" VerticalAlignment="Center" FontSize="30" TextAlignment="Center" Grid.Column="0" Grid.Row="1" Margin="50,0,0,0"/>
+              <ToggleButton Content="ToggleButton" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Template="{StaticResource Wrist.ToggleTemplate}" IsChecked="True" Margin="20,0,0,0"/>
+              <ToggleButton Content="ToggleButton" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Template="{StaticResource Wrist.ToggleTemplate}" Grid.Row="1" Margin="20,0,0,0"/>
+            </Grid>
+            <Button Content="OPEN" HorizontalAlignment="Center" Height="54" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="380" Style="{StaticResource WorldSpaceUI.Button}" Margin="0,0,0,20"/>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Border>
+  </Viewbox>
+</UserControl>
