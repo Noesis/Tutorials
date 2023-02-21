@@ -6,42 +6,44 @@ using Noesis;
 
 public class NoesisWorldUI : MonoBehaviour
 {
-    [Header("View")]
-    [Tooltip("The View used to render the specified XAML")]
-    public NoesisView View;
-    [Tooltip("The name of the Panel container where the specified XAML will be inserted")]
-    public string Container = "Root";
+    [SerializeField]
+    private NoesisView _view;
+    public NoesisView View { get => _view; set { if (_view != value) { _view = value; LoadContent(); } } }
 
-    [Header("Xaml")]
-    public NoesisXaml Xaml;
+    [SerializeField]
+    private string _container = "Root";
+    public string Container { get => _container; set { if (_container != value) { _container = value; LoadContent(); } } }
 
-    public float Scale = 0.005f;
-    public Vector3 Offset = new Vector3();
-    [Tooltip("If enabled centers UI in the GameObject position; otherwise anchors top-left corner of the UI to GameObject position")]
-    public bool Center = true;
+    [SerializeField]
+    private NoesisXaml _xaml;
+    public NoesisXaml Xaml { get => _xaml; set { if (_xaml != value) { _xaml = value; LoadContent(); } } }
 
-    public FrameworkElement Content { get => _content; }
+    [SerializeField]
+    private float _scale = 0.005f;
+    public float Scale { get => _scale; set { _scale = value; } }
+
+    [SerializeField]
+    private Vector3 _offset = new Vector3();
+    public Vector3 Offset { get => _offset; set { _offset = value; } }
+
+    [SerializeField]
+    private bool _center = true;
+    public bool Center { get => _center; set { _center = value; } }
+
+    public FrameworkElement Content => _content;
 
     void OnEnable()
     {
-        UpdateContent();
+        LoadContent();
     }
 
     void OnDisable()
     {
         RemoveContent();
-
-        _view = null;
-        _panel = null;
-        _xaml = null;
-        _content = null;
-        _transform = null;
     }
 
     void Update()
     {
-        UpdateContent();
-
         if (_transform != null)
         {
             float width = 1.0f;
@@ -68,42 +70,23 @@ public class NoesisWorldUI : MonoBehaviour
         }
     }
 
-    void UpdateContent()
+    void LoadContent()
     {
-        if (_view != View)
-        {
-            RemoveContent();
+        RemoveContent();
 
-            _view = View;
-            _panel = null;
-            _content = null;
-            _transform = null;
+        if (View != null && _panel == null && !string.IsNullOrEmpty(Container))
+        {
+            _panel = View.Content?.FindName(Container) as Panel;
         }
 
-        if (_xaml != Xaml)
+        if (Xaml != null && _content == null)
         {
-            RemoveContent();
-
-            _xaml = Xaml;
-            _content = null;
-            _transform = null;
-        }
-
-        if (_view != null && _panel == null && !string.IsNullOrEmpty(Container))
-        {
-            _panel = _view.Content?.FindName(Container) as Panel;
-
-            AddContent();
-        }
-
-        if (_xaml != null && _content == null)
-        {
-            _content = _xaml.Load() as FrameworkElement;
+            _content = Xaml.Load() as FrameworkElement;
             _transform = new MatrixTransform3D();
             _content.Transform3D = _transform;
-
-            AddContent();
         }
+
+        AddContent();
     }
 
     void AddContent()
@@ -120,12 +103,13 @@ public class NoesisWorldUI : MonoBehaviour
         {
             _panel.Children.Remove(_content);
         }
+
+        _panel = null;
+        _content = null;
+        _transform = null;
     }
 
-    private NoesisView _view;
     private Panel _panel;
-
-    private NoesisXaml _xaml;
     private FrameworkElement _content;
     private MatrixTransform3D _transform;
 }
