@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.XR.OpenXR.Input;
+using UnityEngine.XR;
+using System.Collections.Generic;
 
 namespace WorldSpaceUI
 {
@@ -9,12 +9,25 @@ namespace WorldSpaceUI
     {
         public NoesisView View;
         public GameObject Object;
-        public InputActionProperty HapticAction;
         public float Amplitude = 1.0f;
         public float Duration = 0.1f;
-        public float Frequency = 0.0f;
 
         private bool _lastHit = false;
+        private InputDevice _rightController;
+
+        void Start()
+        {
+            InputDeviceCharacteristics leftTrackedControllerFilter =  InputDeviceCharacteristics.Controller |
+                InputDeviceCharacteristics.TrackedDevice | InputDeviceCharacteristics.Right;
+
+            List<InputDevice> devices = new List<InputDevice>();
+            InputDevices.GetDevicesWithCharacteristics(leftTrackedControllerFilter, devices);
+
+            if (devices.Count > 0)
+            {
+                _rightController = devices[0];
+            }
+        }
 
         void Update()
         {
@@ -41,7 +54,10 @@ namespace WorldSpaceUI
 
                 if (_lastHit != hit)
                 {
-                    OpenXRInput.SendHapticImpulse(HapticAction.action, Amplitude, Frequency, Duration);
+                    if (_rightController.isValid)
+                    {
+                        _rightController.SendHapticImpulse(0, Amplitude, Duration); 
+                    }
                 }
 
                 _lastHit = hit;

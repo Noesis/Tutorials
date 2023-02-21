@@ -1107,7 +1107,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1892241227}
+  m_Father: {fileID: 964612702}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194230
@@ -1223,8 +1223,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 964612702}
-  - component: {fileID: 964612703}
   - component: {fileID: 964612704}
+  - component: {fileID: 964612705}
   m_Layer: 0
   m_Name: XRRig
   m_TagString: Untagged
@@ -1244,29 +1244,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1892241227}
+  - {fileID: 963194228}
   - {fileID: 674675662}
   - {fileID: 310595372}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -0.36, y: -106.27, z: 0}
---- !u!114 &964612703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964612700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2483b9bd782f9449a5972b61b7d51a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CameraFloorOffsetObject: {fileID: 964612700}
-  m_RequestedTrackingMode: 1
-  m_TrackingOriginMode: 1
-  m_TrackingSpace: 0
-  m_CameraYOffset: 1.615036
 --- !u!114 &964612704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,6 +1291,20 @@ MonoBehaviour:
     m_RotationOrder: 4
   rotationLerpTime: 0.01
   invertY: 1
+--- !u!114 &964612705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964612700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10fb86ec50e68fd4b8d74148fb8cb382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RequestedTrackingMode: 0
+  CameraYOffset: 1.36144
 --- !u!1 &967542146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,38 +2208,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1892241226
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1892241227}
-  m_Layer: 0
-  m_Name: Camera Offset
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1892241227
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892241226}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 963194228}
-  m_Father: {fileID: 964612702}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1956171559
 GameObject:
   m_ObjectHideFlags: 0
@@ -2728,26 +2693,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   View: {fileID: 963194230}
   Object: {fileID: 674675660}
-  HapticAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Haptic
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 071451c4-6ade-436f-b272-59c2a8748154
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: a279532a-2802-4e7d-a1cb-0433a249dbb7
-        m_Path: <XRController>{RightHand}/haptic
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Haptic
-        m_Flags: 0
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   Amplitude: 0.2
   Duration: 0.05
-  Frequency: 0

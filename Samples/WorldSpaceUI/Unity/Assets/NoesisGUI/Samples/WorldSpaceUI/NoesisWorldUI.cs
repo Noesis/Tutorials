@@ -74,12 +74,12 @@ public class NoesisWorldUI : MonoBehaviour
     {
         RemoveContent();
 
-        if (View != null && _panel == null && !string.IsNullOrEmpty(Container))
+        if (View != null && !string.IsNullOrEmpty(Container))
         {
             _panel = View.Content?.FindName(Container) as Panel;
         }
 
-        if (Xaml != null && _content == null)
+        if (Xaml != null)
         {
             _content = Xaml.Load() as FrameworkElement;
             _transform = new MatrixTransform3D();
