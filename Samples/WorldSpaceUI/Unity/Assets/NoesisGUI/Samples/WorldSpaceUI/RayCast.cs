@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.OpenXR.Input;
 
-namespace InWorld
+namespace WorldSpaceUI
 {
     public class RayCast : MonoBehaviour
     {

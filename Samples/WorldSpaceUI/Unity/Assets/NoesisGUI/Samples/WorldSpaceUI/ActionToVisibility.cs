@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace InWorld
+namespace WorldSpaceUI
 {
     public class ActionToVisibility : MonoBehaviour
     {
