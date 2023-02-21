@@ -276,7 +276,11 @@ namespace UnityTemplateProjects
 
         bool IsCameraRotationAllowed()
         {
+#if ENABLE_INPUT_SYSTEM
             return true;
+#else
+            return Input.GetMouseButton(1);
+#endif
         }
 
         bool IsRightMouseButtonDown()
