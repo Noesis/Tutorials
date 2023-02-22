@@ -1,0 +1,770 @@
+<UserControl
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+  xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+  xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+  xmlns:local="clr-namespace:WorldSpaceUI"
+  FontFamily="./#Rajdhani">
+
+  <UserControl.Resources>
+
+    <local:PercentageConverter x:Key="percConv"/>
+
+    <Color x:Key="WorldSpaceUI.Color.Aqua">#FF4BC3CF</Color>
+    <Color x:Key="WorldSpaceUI.Color.Orange">#FFF48B00</Color>
+    <Color x:Key="WorldSpaceUI.Color.Orange.Dark">#FFD77B00</Color>
+
+    <SolidColorBrush x:Key="WorldSpaceUI.Brush.Aqua" Color="{StaticResource WorldSpaceUI.Color.Aqua}"/>
+    <SolidColorBrush x:Key="WorldSpaceUI.Brush.Orange" Color="{StaticResource WorldSpaceUI.Color.Orange}"/>
+
+    <Geometry x:Key="WorldSpaceUI.Geometry.Panel">M754.48 482.31H12.07L-.4 469.83V35.42L34.72.31h742.4L789.6 12.78V447.19Z</Geometry>
+    <Geometry x:Key="WorldSpaceUI.Geometry.Ring1">M204.4 338.6l-2.9-14.6c46.2-9.2 86.7-39.7 108.2-81.5l13.3 6.8c-11.7 22.7-28.7 42.8-49.2 58.3   C253.3 322.9 229.3 333.7 204.4 338.6z M60.6 301.5c-1.2-1-2.3-2-3.5-3l10-11.1c1 0.9 2.1 1.9 3.2 2.8L60.6 301.5z M53.7 295.3   c-8.9-8.4-17-17.9-23.9-28.1l12.3-8.4c6.3 9.3 13.7 17.9 21.9 25.6L53.7 295.3z M27.3 263.4C9.5 235.8 0 203.9 0 171.1   c0-10.2 0.9-20.5 2.8-30.6c1.5-8.3 3.6-16.5 6.3-24.4l14.1 4.8c-2.4 7.2-4.4 14.7-5.7 22.3c-1.7 9.2-2.5 18.6-2.5 27.9   c0 29.9 8.6 59 24.8 84.2L27.3 263.4z M325.1 245.2l-13.5-6.5c4.9-10.1 8.6-20.8 11.2-31.7l14.5 3.4   C334.5 222.4 330.4 234.1 325.1 245.2z M338.3 205.9l-14.6-3c0.3-1.4 0.6-2.8 0.8-4.1v-0.2l14.7 2.6l-0.1 0.3   C339 202.9 338.7 204.4 338.3 205.9z M288.2 67.9c-23.4-26.7-54.4-44.2-89.4-50.5c-11.7-2.1-23.6-2.9-35.4-2.3l-0.7-14.9   c12.8-0.6 25.9 0.2 38.7 2.5c38.4 6.9 72.3 26.1 98 55.3L288.2 67.9z M118.1 24.1l-5.1-14c1.4-0.5 2.9-1 4.4-1.5l4.7 14.2   C120.8 23.2 119.4 23.7 118.1 24.1z M126.1 21.5l-4.3-14.3c11.8-3.6 24-5.8 36.3-6.8l1.1 14.9C148 16.2 136.9 18.3 126.1 21.5z</Geometry>
+    <Geometry x:Key="WorldSpaceUI.Geometry.Ring2">M116.9 234.1c-5.5 0-11-0.4-16.4-1.1l1-7c7.5 1.1 15.3 1.3 22.9 0.8c7.7-0.5 15.3-1.8 22.7-3.9l1.9 6.8   c-7.8 2.2-15.9 3.6-24.1 4.2C122.3 234 119.6 234.1 116.9 234.1z M94.5 231.9c-2-0.4-4-0.8-6-1.3l1.7-6.9c1.9 0.5 3.7 0.9 5.6 1.3   L94.5 231.9z M154.9 227.8l-2.3-6.7c1.8-0.6 3.6-1.3 5.4-2l2.6 6.6C158.8 226.4 156.8 227.2 154.9 227.8z M27.3 192.2   c-1.3-1.6-2.6-3.2-3.8-4.8l5.6-4.3c1.2 1.5 2.4 3 3.6 4.5L27.3 192.2z M19.9 182.4c-9.2-13.7-15.3-28.9-18.2-45.1l7-1.2   c2.7 15.3 8.4 29.5 17.1 42.4L19.9 182.4z M216.1 179.3l-6-3.8c1-1.6 2-3.3 2.9-5l6.2 3.4C218.2 175.8 217.2 177.6 216.1 179.3z    M222.1 168.6l-6.3-3.1c6.8-13.9 10.6-28.8 11.1-44.3l7.1 0.3C233.3 137.9 229.3 153.8 222.1 168.6z M0.9 131.2   c-0.2-2-0.4-4.1-0.6-6.1l7.1-0.5c0.1 1.9 0.3 3.8 0.5 5.7L0.9 131.2z M226.9 115.4c0-1.9-0.1-3.9-0.2-5.8v-0.2l7.1-0.5v0.3   c0.1 2 0.2 4.1 0.3 6.1L226.9 115.4z M23.9 58.8l-6-3.8c1.1-1.7 2.2-3.4 3.4-5.1l5.8 4.1C25.9 55.6 24.9 57.2 23.9 58.8z    M30.5 49.4L24.9 45c10.2-13 22.7-23.5 37.3-31.2l3.3 6.2C51.8 27.3 40 37.1 30.5 49.4z M201.2 46.5c-1.2-1.5-2.5-2.9-3.8-4.3   l5.2-4.8c1.4 1.5 2.8 3 4.1 4.6L201.2 46.5z M193.4 38.1c-11.2-10.8-24.2-19-38.7-24.3l2.4-6.6c15.5 5.6 29.3 14.3 41.2 25.8   L193.4 38.1z M70.6 17.4l-3-6.4c1.8-0.9 3.7-1.7 5.6-2.4l2.6 6.6C74.1 15.9 72.3 16.6 70.6 17.4z M149.2 12   c-1.8-0.6-3.7-1.1-5.6-1.5l1.7-6.9c2 0.5 4 1 5.9 1.6L149.2 12z</Geometry>
+    <Geometry x:Key="WorldSpaceUI.Geometry.Ring3">M93.5 184.6L93.5 184.6l-0.2-12l0 0c0.7 0 1.4 0 2.1 0h0.1l0.5 11.9h-0.1C95.2 184.6 94.3 184.6 93.5 184.6L93.5 184.6z     M85.5 184.3h-0.1c-0.8 0-1.5-0.1-2.4-0.2h-0.1l1.2-11.9l0 0c0.7 0.1 1.3 0.1 2.1 0.2v-0.1l0.1 0.2L85.5 184.3z M104 183.9    L104 183.9l-1.5-11.9l0 0c0.7-0.1 1.4-0.2 2.1-0.3h0.1l1.8 11.8h-0.1C105.7 183.6 104.9 183.7 104 183.9L104 183.9z M74.9 183    L74.9 183c-0.8-0.2-1.6-0.4-2.3-0.6l0 0l2.5-11.7l0 0c0.8 0.2 1.5 0.3 2.1 0.4l0 0l0 0L74.9 183L74.9 183L74.9 183z M114.3 181.9    L114.3 181.9l-2.9-11.7l0 0c0.7-0.2 1.3-0.3 2-0.5h0.1l0 0l3.2 11.5l0 0l0 0l0 0C115.9 181.5 115.1 181.7 114.3 181.9L114.3 181.9    z M64.8 180.4L64.8 180.4L64.8 180.4L64.8 180.4L64.8 180.4L64.8 180.4c-0.8-0.3-1.6-0.5-2.4-0.8l0 0l3.9-11.3l0 0    c0.7 0.2 1.4 0.5 2 0.7l0.3 0.1h-0.3L64.8 180.4z M124.4 178.8l-4.2-11.3h0.1c0.7-0.3 1.3-0.5 2-0.8h0.1v0.1l4.5 11.1l0 0    C126 178.2 125.3 178.5 124.4 178.8L124.4 178.8z M54.9 176.7L54.9 176.7c-0.8-0.3-1.5-0.7-2.3-1l0 0l5.2-10.8l0 0    c0.5 0.3 1.1 0.5 1.9 0.9h0.1l0 0l0 0l0 0L54.9 176.7L54.9 176.7L54.9 176.7z M134.1 174.6L134.1 174.6l-5.4-10.7l0 0    c0.7-0.3 1.3-0.7 1.8-1v-0.2l0.1 0.1l0 0l0 0l0 0v0.1l5.7 10.5l0 0C135.6 173.8 134.9 174.2 134.1 174.6L134.1 174.6z M45.5 171.9    L45.5 171.9c-0.7-0.4-1.4-0.8-2.1-1.3l0 0l0 0l6.3-10.1l0 0c0.6 0.4 1.1 0.7 1.8 1.1l0 0h0.1l0 0L45.5 171.9z M143.2 169.3    L143.2 169.3l-6.6-10l0 0c0.5-0.3 1.1-0.7 1.6-1.1h-0.1l0.1-0.1l0 0h0.1l0 0h0.1v0.1l6.8 9.8l0 0    C144.5 168.4 143.9 168.9 143.2 169.3L143.2 169.3z M36.8 166L36.8 166c-0.7-0.5-1.3-1-2-1.5l0 0l7.5-9.4l0 0    c0.6 0.4 1.1 0.9 1.7 1.3l0.1 0.1H44L36.8 166z M151.6 163l-7.7-9.2l0 0c0.5-0.5 1.1-0.9 1.6-1.4l0 0l0 0l0 0l7.9 9l-0.1 0.1l0 0    C152.8 162 152.2 162.5 151.6 163L151.6 163z M28.7 159.2L28.7 159.2L28.7 159.2L28.7 159.2c-0.6-0.6-1.1-1.1-1.8-1.7l0 0l8.5-8.5    l0 0c0.5 0.5 1 1 1.5 1.4l0 0l0.1 0.1l0 0L28.7 159.2z M159.3 155.8l-8.7-8.3l0 0c0.5-0.5 1-1 1.4-1.5h0.1l0 0l8.9 8l0 0l0 0l0 0    C160.4 154.6 159.9 155.1 159.3 155.8L159.3 155.8z M21.5 151.6L21.5 151.6c-0.5-0.6-1-1.2-1.6-1.9l0 0l9.4-7.5l0 0    c0.4 0.5 0.9 1.1 1.3 1.6l0 0v0.1v0.1l0 0L21.5 151.6z M166.1 147.8l-9.6-7.2l0 0c0.4-0.6 0.8-1.1 1.2-1.7v-0.2l0 0l0.1-0.1v0.1    l9.7 6.9l-0.1 0.1l0 0C167 146.5 166.5 147.1 166.1 147.8L166.1 147.8z M15.2 143.1L15.2 143.1L15.2 143.1L15.2 143.1L15.2 143.1    c-0.5-0.8-0.9-1.4-1.3-2.1l0 0l10.2-6.3l0 0c0.4 0.7 0.8 1.2 1.1 1.8l0 0l0 0L15.2 143.1z M25.1 136.4L25.1 136.4L25.1 136.4z     M171.9 139l-10.3-6.1l0 0c0.4-0.7 0.7-1.3 1-1.8l0 0l0 0l10.5 5.8l0 0C172.8 137.5 172.4 138.2 171.9 139L171.9 139z M9.9 134    L9.9 134L9.9 134L9.9 134c-0.4-0.8-0.8-1.5-1.1-2.2l0 0l10.8-5.1l0 0c0.3 0.7 0.6 1.3 0.9 1.9h0.1h-0.1L9.9 134z M20.5 128.6    L20.5 128.6L20.5 128.6z M176.7 129.6l-11-4.9l0 0c0.3-0.6 0.6-1.3 0.8-1.9v-0.1l0 0l11.1 4.5v0.1    C177.4 128.1 177.1 128.9 176.7 129.6L176.7 129.6z M5.7 124.4L5.7 124.4H5.4l0.2-0.1c-0.3-0.9-0.6-1.6-0.8-2.3l0 0l0 0l11.3-3.9    v0.1c0.2 0.6 0.5 1.3 0.7 2v0.1l0 0L5.7 124.4z M180.5 119.7L180.5 119.7l-11.5-3.6l0 0c0.2-0.7 0.4-1.4 0.6-2l0 0l0 0l11.5 3.2    v0.1C180.9 118.1 180.7 118.9 180.5 119.7L180.5 119.7z M2.6 114.3L2.6 114.3L2.6 114.3L2.6 114.3L2.6 114.3    c-0.2-1-0.4-1.7-0.6-2.4l0 0l0 0l11.7-2.5l0 0c0.1 0.7 0.3 1.4 0.5 2h0.1l-0.2 0.2L2.6 114.3z M183 109.5L183 109.5l-11.8-2.2    v-0.1c0.1-0.7 0.3-1.4 0.4-2.1V105h0.1l11.8 2l0 0C183.3 107.9 183.2 108.7 183 109.5L183 109.5z M0.7 103.9L0.7 103.9    c-0.1-0.8-0.2-1.7-0.3-2.5v-0.1l11.9-1.2l0 0c0.1 0.7 0.1 1.4 0.2 2.1v0.1L0.7 103.9z M184.4 99L184.4 99l-12-0.8v-0.1    c0-0.7 0.1-1.4 0.1-2.1v-0.1l11.9 0.6l0 0l0 0C184.5 97.4 184.4 98.2 184.4 99L184.4 99z M0 93.4v-0.3c0-0.3 0-0.6 0-0.9    c0-0.4 0-0.9 0-1.3l0 0l0 0l12 0.2l0 0c0 0.3 0 0.7 0 1.1c0 0.4 0 0.7 0 1l0 0l0 0L0 93.4z M172.5 89L172.5 89    c0-0.7-0.1-1.4-0.1-2.2v-0.1v-0.1l0 0l0 0l11.9-0.8l0 0v0.1l0 0c0.1 0.9 0.1 1.7 0.1 2.4l0 0L172.5 89z M12.3 84.1L0.4 82.9v-0.1    c0.1-0.8 0.2-1.6 0.3-2.4v-0.1l0 0l11.9 1.5v0.1C12.5 82.7 12.4 83.4 12.3 84.1L12.3 84.1L12.3 84.1L12.3 84.1z M171.6 79.7    L171.6 79.7c-0.1-0.7-0.2-1.4-0.4-2.1l0 0v-0.1l11.8-2.2l0 0l0.1 0.1H183c0.1 0.8 0.3 1.5 0.4 2.3l0 0L171.6 79.7z M13.8 75    L13.8 75L2 72.4l0.1-0.1l0 0h0.1c0.2-0.8 0.3-1.5 0.5-2.3l0 0l0 0l11.6 2.9l0 0C14.1 73.6 14 74.3 13.8 75L13.8 75z M169.7 70.8    L169.7 70.8c-0.2-0.8-0.4-1.4-0.6-2l0 0v-0.2l0 0v-0.2l0.1 0.2l11.4-3.5l0 0c0.3 0.9 0.5 1.6 0.7 2.4l0 0l0 0L169.7 70.8z     M16.2 66.3v-0.2L4.9 62.2v-0.1l0 0c0.3-0.8 0.6-1.6 0.8-2.3l0 0L16.9 64l0 0c-0.2 0.7-0.5 1.3-0.7 2V66.3z M166.7 62.1    L166.7 62.1c-0.3-0.6-0.5-1.3-0.8-2l-0.1-0.2l0.1 0.1l10.9-4.8v0.1c0.3 0.8 0.7 1.5 1 2.3l0 0h-0.1L166.7 62.1z M19.8 57.7    L19.8 57.7L9 52.5v-0.1c0.4-0.8 0.8-1.5 1.1-2.2v-0.1l10.7 5.5l0 0C20.4 56.5 20.1 57.1 19.8 57.7L19.8 57.7z M162.8 53.8    L162.8 53.8c-0.4-0.7-0.7-1.3-1.1-1.9l0 0l0 0l10.3-6v-0.2l0.1 0.1l0 0v0.1c0.4 0.7 0.8 1.4 1.2 2.1v0.1l0 0L162.8 53.8z     M24.2 49.7L24.2 49.7L14 43.3l0 0c0.4-0.7 0.8-1.3 1.3-2l0 0l10 6.6l0 0C25 48.5 24.6 49.1 24.2 49.7L24.2 49.7z M158 46L158 46    c-0.4-0.6-0.8-1.1-1.2-1.7l0 0l0 0l0 0l0 0l0 0l0 0l0 0l9.6-7.1l0 0c0.4 0.6 0.9 1.2 1.4 2l0 0l0 0L158 46z M29.5 42.2L29.5 42.2    l-9.4-7.5l0 0l0 0v-0.1l0 0c0.5-0.6 1-1.2 1.5-1.8l0 0l9.2 7.7l0 0C30.4 41 30 41.5 29.5 42.2L29.5 42.2z M152.3 38.9L152.3 38.9    c-0.5-0.5-1-1.1-1.5-1.6l0 0l0 0l8.7-8.2l0.1 0.1c0.5 0.5 1 1.1 1.6 1.8l0 0L152.3 38.9z M35.6 35.4L35.6 35.4l-8.5-8.5l0 0    c0.6-0.6 1.2-1.2 1.8-1.7l0 0l8.2 8.7l0 0C36.6 34.3 36.1 34.8 35.6 35.4L35.6 35.4z M145.8 32.4L145.8 32.4    c-0.6-0.5-1.1-1-1.6-1.4h-0.1v-0.1l0 0v-0.1l0 0l7.7-9.1h0.1c0.6 0.5 1.2 1 1.8 1.6l0 0L145.8 32.4z M42.5 29.3L42.5 29.3L35 19.9    l0 0c0.7-0.6 1.4-1.1 1.9-1.5l0 0l0 0l7.2 9.6l0 0C43.6 28.3 43.1 28.8 42.5 29.3L42.5 29.3z M138.6 26.7L138.6 26.7    c-0.6-0.4-1.2-0.8-1.7-1.2l-0.1 0.1v-0.2v-0.2v0.1l6.6-9.9l0 0h0.1l0 0c0.6 0.4 1.3 0.9 2 1.3l0 0l0 0L138.6 26.7z M50 24L50 24    l-6.3-10.1h-0.1l0.1-0.1l0 0l0 0c0.7-0.4 1.3-0.8 2.1-1.3l0 0l0 0l6 10.3l0 0C51.2 23.2 50.7 23.6 50 24L50 24L50 24z M130.8 21.8    L130.8 21.8c-0.7-0.4-1.3-0.7-1.8-1l0 0l-0.1-0.1l0 0l5.5-10.6l0 0c0.8 0.4 1.5 0.8 2.2 1.1l0 0l0 0L130.8 21.8z M58.2 19.8    L58 19.6l0 0l0 0l0 0L52.9 8.7H53c0.8-0.4 1.5-0.7 2.2-1h0.1l0 0l4.8 10.9H60c-0.6 0.3-1.2 0.5-1.9 0.9L58.2 19.8z M122.5 17.9    L122.5 17.9c-0.7-0.3-1.3-0.5-2-0.8l0 0h-0.1l0 0l0 0l0 0l4.2-11.2h0.1c0.8 0.3 1.5 0.6 2.3 0.9l0 0l0 0L122.5 17.9z M66.5 16.2    h-0.2H66.5L62.6 4.8l0 0V4.6l0.1 0.2c0.8-0.3 1.5-0.5 2.3-0.7l0 0l3.5 11.5h-0.1C67.9 15.7 67.3 15.9 66.5 16.2h0.1H66.5z     M113.9 14.9L113.9 14.9c-0.7-0.2-1.4-0.4-2.1-0.5h-0.1l0 0l0 0l2.9-11.7h0.1c0.8 0.2 1.6 0.4 2.4 0.6l0 0L113.9 14.9z M75.4 13.7    L75.4 13.7L72.8 2h0.1c0.8-0.2 1.6-0.3 2.4-0.5l0 0l0 0l2.2 11.8l0 0C76.8 13.4 76.2 13.6 75.4 13.7L75.4 13.7z M104.9 12.9    L104.9 12.9c-0.7-0.1-1.4-0.2-2.2-0.3h-0.1v-0.1l1.5-11.9h0.1c0.7 0.1 1.5 0.2 2.4 0.3h0.1L104.9 12.9z M84.4 12.3L84.4 12.3    L83.2 0.4h0.1c0.7-0.1 1.5-0.1 2.4-0.2l0 0l0 0l0.9 11.9h-0.1C85.8 12.2 85.1 12.3 84.4 12.3L84.4 12.3z M95.8 12L95.8 12    c-0.8 0-1.5-0.1-2.2-0.1l0 0L93.8 0h0.1c0.7 0 1.5 0 2.4 0.1l0 0L95.8 12z</Geometry>
+    <Geometry x:Key="WorldSpaceUI.Geometry.Ring4">M69.5 138.8c-1.6 0-3.3-0.1-4.8-0.2l0 0l0 0l1.4-20.4l0 0c2.2 0.2 4.6 0.2 6.8 0c11.2-0.8 21.5-5.2 29.7-12.7l0 0l0 0l0 0    h0.1l0 0h0.1l0 0l13.8 15l0 0c-5.7 5.2-12.1 9.4-19.2 12.5c-7.3 3.2-15 5.1-23 5.6C72.7 138.8 71.1 138.8 69.5 138.8z M58.9 138    L58.9 138c-9.5-1.5-18.4-4.8-26.5-10c-8-5-14.7-11.5-20.1-19.3l0 0l16.9-11.6l0 0c7.6 11 19.5 18.6 32.7 20.6H62v0.1L58.9 138z     M120.6 116.5L120.6 116.5l-15.1-13.9l0 0c8.3-9.1 13-20.8 13-33.1c0-1.1 0-2.3-0.1-3.4V66c0 0 0 0 0-0.1l-0.1-0.3l0.1 0.2    l20.4-1.5v0.1c0 0.1 0 0.1 0 0.2v0.1c0.1 1.5 0.2 3.2 0.2 4.8C139 86.9 132.5 103.6 120.6 116.5L120.6 116.5z M9.2 103.8    L9.2 103.8H9l0.1-0.1c-5.1-9-8.2-19.2-8.9-29.6C0.1 72.5 0 70.9 0 69.3c0-6.8 1-13.6 3-20.1l0 0l0 0l19.6 5.9l0 0    c-1.4 4.6-2.1 9.3-2.1 14.1c0 1.1 0 2.2 0.1 3.4c0.5 7.5 2.6 14.5 6.3 20.9l0 0h-0.1L9.2 103.8z M117.9 61.8L117.9 61.8    c-2.1-13.2-9.6-25.1-20.6-32.7h-0.1l0 0l11.6-16.9h0.1l0 0l0 0c7.7 5.3 14.1 12 19.2 19.9c5.2 8.1 8.5 17 10 26.5l0 0l0 0    L117.9 61.8z M24 51.4v-0.1L5 43.7v-0.1l0 0c3.5-8.8 8.7-16.6 15.3-23.3c6.7-6.8 14.6-12 23.5-15.5l0 0l7.6 19l0 0    C39 28.7 29 38.7 24.1 51.2L24 51.4z M93.8 26.9L93.8 26.9c-7.4-4.2-15.7-6.4-24.2-6.4c-1.1 0-2.3 0-3.4 0.1    c-3.7 0.3-7.4 0.9-10.9 2h-0.1l0 0L49.3 3l0 0l0 0l0 0V2.7L49.4 3c5-1.5 10.2-2.5 15.4-2.8C66.4 0.1 68 0 69.6 0    c12 0 23.9 3.1 34.3 9.1l0 0l0 0L93.8 26.9z</Geometry>
+    <Geometry x:Key="WorldSpaceUI.Geometry.RingButton">M7.4 0C2.6 14.4 0 29.8 0 45.8s2.6 31.4 7.4 45.8h275.1c4.8-14.4 7.4-29.8 7.4-45.8s-2.6-31.4-7.4-45.8C282.5 0 7.4 0 7.4 0  z</Geometry>
+
+    <Style x:Key="WorldSpaceUI.Button.Blue" TargetType="{x:Type Button}">
+      <Setter Property="OverridesDefaultStyle" Value="True"/>
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="BorderBrush" Value="#FCBA20"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Padding" Value="8,7"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="30"/>
+      <Setter Property="UseLayoutRounding" Value="True"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Grid VerticalAlignment="Stretch" UseLayoutRounding="True">
+              <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                  <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:0.3" To="MouseOver">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.8"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                    <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                    <VisualTransition GeneratedDuration="0:0:0.2" To="Pressed">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                  </VisualStateGroup.Transitions>
+                  <VisualState x:Name="Normal"/>
+                  <VisualState x:Name="MouseOver">
+                    <Storyboard>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
+                        <EasingColorKeyFrame KeyTime="0" Value="#FF4BC3CF"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="PART_ContentPresenter">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="53"/>
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Pressed">
+                    <Storyboard>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
+                        <EasingColorKeyFrame KeyTime="0" Value="#FF33848C"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="30"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="PART_ContentPresenter">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="33"/>
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+              </VisualStateManager.VisualStateGroups>
+              <Border x:Name="Border" BorderBrush="White" BorderThickness="3" CornerRadius="4" VerticalAlignment="Stretch" Background="#FF4BC3CF" RenderTransformOrigin="0.5,0.5">
+                <noesis:Element.Transform3D>
+                  <noesis:CompositeTransform3D TranslateZ="40"/>
+                </noesis:Element.Transform3D>
+              </Border>
+              <ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <noesis:Element.Transform3D>
+                  <noesis:CompositeTransform3D TranslateZ="43"/>
+                </noesis:Element.Transform3D>
+              </ContentPresenter>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Style x:Key="WorldSpaceUI.Button.Orange" TargetType="{x:Type Button}">
+      <Setter Property="OverridesDefaultStyle" Value="True"/>
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="BorderBrush" Value="#FCBA20"/>
+      <Setter Property="BorderThickness" Value="2"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Padding" Value="8,7"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="30"/>
+      <Setter Property="UseLayoutRounding" Value="True"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Grid VerticalAlignment="Stretch" UseLayoutRounding="True">
+              <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                  <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:0.3" To="MouseOver">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.8"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                    <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                    <VisualTransition GeneratedDuration="0:0:0.2" To="Pressed">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                  </VisualStateGroup.Transitions>
+                  <VisualState x:Name="Normal"/>
+                  <VisualState x:Name="MouseOver">
+                    <Storyboard>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Orange}"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="PART_ContentPresenter">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="53"/>
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Pressed">
+                    <Storyboard>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Orange.Dark}"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="30"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="PART_ContentPresenter">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="33"/>
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+              </VisualStateManager.VisualStateGroups>
+              <Border x:Name="Border" BorderBrush="White" BorderThickness="3" CornerRadius="4" VerticalAlignment="Stretch" Background="#FFF48B00" RenderTransformOrigin="0.5,0.5">
+                <noesis:Element.Transform3D>
+                  <noesis:CompositeTransform3D TranslateZ="40"/>
+                </noesis:Element.Transform3D>
+              </Border>
+              <ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <noesis:Element.Transform3D>
+                  <noesis:CompositeTransform3D TranslateZ="43"/>
+                </noesis:Element.Transform3D>
+              </ContentPresenter>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Style x:Key="WorldSpaceUI.Button.Floating" TargetType="{x:Type Button}">
+      <Setter Property="OverridesDefaultStyle" Value="True"/>
+      <Setter Property="Background" Value="White"/>
+      <Setter Property="BorderBrush" Value="#FCBA20"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Padding" Value="8,7"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="30"/>
+      <Setter Property="UseLayoutRounding" Value="True"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Grid UseLayoutRounding="True">
+              <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Loaded">
+                  <b:GoToStateAction StateName="Rotating" />
+                </b:EventTrigger>
+              </b:Interaction.Triggers>
+              <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                  <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:0.3" To="MouseOver">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                    <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.5">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                    <VisualTransition GeneratedDuration="0:0:0.2" To="Pressed">
+                      <VisualTransition.GeneratedEasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                      </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                  </VisualStateGroup.Transitions>
+                  <VisualState x:Name="Normal"/>
+                  <VisualState x:Name="MouseOver">
+                    <Storyboard>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="RingButtonPath">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="80"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="PART_ContentPresenter">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="90"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Ring1Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Ring1Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Ring2Path">
+                        <EasingColorKeyFrame KeyTime="0" Value="#FFF48B00"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="RingButtonPath">
+                        <EasingColorKeyFrame KeyTime="0" Value="#FFF48B00"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Ring1Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Ring2Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="55"/>
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Pressed">
+                    <Storyboard>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="RingButtonPath">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="PART_ContentPresenter">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="80"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Ring1Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Ring1Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Ring2Path">
+                        <EasingColorKeyFrame KeyTime="0" Value="#FFF48B00"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="RingButtonPath">
+                        <EasingColorKeyFrame KeyTime="0" Value="#FFD77B00"/>
+                      </ColorAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Ring1Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.4"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Ring4Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.7"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Ring4Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Ring4Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Ring3Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Ring3Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualState>
+                  <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="CustomStates">
+                  <VisualState x:Name="Rotating">
+                    <Storyboard RepeatBehavior="Forever">
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="Ring1Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:6" Value="360"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="Ring2Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:6" Value="-360"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="Ring3Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:6" Value="360"/>
+                      </DoubleAnimationUsingKeyFrames>
+                      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="Ring4Path">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:6" Value="-360"/>
+                      </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                  </VisualState>
+                </VisualStateGroup>
+              </VisualStateManager.VisualStateGroups>
+              <Grid x:Name="RingsGrid">
+                <Path x:Name="RingButtonPath" Data="{StaticResource WorldSpaceUI.Geometry.RingButton}" StrokeThickness="4" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="2" RenderTransformOrigin="0.5,0.5" Height="86.038" Stretch="Fill" Width="272.3" Stroke="White">
+                  <Path.RenderTransform>
+                    <TransformGroup>
+                      <ScaleTransform ScaleX="0.65" ScaleY="0.65"/>
+                      <SkewTransform/>
+                      <RotateTransform/>
+                      <TranslateTransform/>
+                    </TransformGroup>
+                  </Path.RenderTransform>
+                  <Path.Fill>
+                    <SolidColorBrush Color="#FFF48B00" Opacity="1"/>
+                  </Path.Fill>
+                  <noesis:Element.Transform3D>
+                    <noesis:CompositeTransform3D TranslateZ="60"/>
+                  </noesis:Element.Transform3D>
+                </Path>
+                <Path x:Name="Ring1Path"  Data="{StaticResource WorldSpaceUI.Geometry.Ring1}" Fill="#FF4BC3CF" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
+                  <Path.RenderTransform>
+                    <TransformGroup>
+                      <ScaleTransform/>
+                      <SkewTransform/>
+                      <RotateTransform/>
+                      <TranslateTransform/>
+                    </TransformGroup>
+                  </Path.RenderTransform>
+                  <noesis:Element.Transform3D>
+                    <noesis:CompositeTransform3D x:Name="compositeTransform3D" TranslateZ="60"/>
+                  </noesis:Element.Transform3D>
+                </Path>
+                <Path x:Name="Ring2Path"  Data="{StaticResource WorldSpaceUI.Geometry.Ring2}" Fill="#FF4BC3CF" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
+                  <Path.RenderTransform>
+                    <TransformGroup>
+                      <ScaleTransform/>
+                      <SkewTransform/>
+                      <RotateTransform/>
+                      <TranslateTransform/>
+                    </TransformGroup>
+                  </Path.RenderTransform>
+                  <noesis:Element.Transform3D>
+                    <noesis:CompositeTransform3D TranslateZ="40"/>
+                  </noesis:Element.Transform3D>
+                </Path>
+                <Path x:Name="Ring3Path"  Data="{StaticResource WorldSpaceUI.Geometry.Ring3}" Fill="#FF4BC3CF" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
+                  <Path.RenderTransform>
+                    <TransformGroup>
+                      <ScaleTransform/>
+                      <SkewTransform/>
+                      <RotateTransform/>
+                      <TranslateTransform/>
+                    </TransformGroup>
+                  </Path.RenderTransform>
+                  <noesis:Element.Transform3D>
+                    <noesis:CompositeTransform3D TranslateZ="20"/>
+                  </noesis:Element.Transform3D>
+                </Path>
+                <Path x:Name="Ring4Path" Data="{StaticResource WorldSpaceUI.Geometry.Ring4}" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
+                  <Path.RenderTransform>
+                    <TransformGroup>
+                      <ScaleTransform/>
+                      <SkewTransform/>
+                      <RotateTransform/>
+                      <TranslateTransform/>
+                    </TransformGroup>
+                  </Path.RenderTransform>
+                  <Path.Fill>
+                    <SolidColorBrush Color="#FF4BC3CF" Opacity="0.5"/>
+                  </Path.Fill>
+                </Path>
+              </Grid>
+              <ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <noesis:Element.Transform3D>
+                  <noesis:CompositeTransform3D TranslateZ="70"/>
+                </noesis:Element.Transform3D>
+              </ContentPresenter>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Storyboard x:Key="ShowPanel">
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PanelGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PanelGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="PanelGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="500"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Path.TrimEnd)" Storyboard.TargetName="energy">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="{Binding Energy}">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <CubicEase EasingMode="EaseOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="20">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle1">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="38">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle2">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="32">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle3">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="59">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle4">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.94" Value="91">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle5">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.96" Value="82">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle6">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="95">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle7">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.92" Value="73">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle8">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="105">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="rectangle9">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.95" Value="121">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[4].(LineSegment.Point)" Storyboard.TargetName="path">
+        <EasingPointKeyFrame KeyTime="0" Value="306.313648390111,143.9"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.2" Value="306.313648390111,143.9"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.9" Value="307.899535855294,1.49999997615814">
+          <EasingPointKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseInOut" Amplitude="0.6"/>
+          </EasingPointKeyFrame.EasingFunction>
+        </EasingPointKeyFrame>
+      </PointAnimationUsingKeyFrames>
+      <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(LineSegment.Point)" Storyboard.TargetName="path">
+        <EasingPointKeyFrame KeyTime="0" Value="252.730088979594,143.1"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.2" Value="252.730088979594,143.1"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.9" Value="255.899999951363,26.3">
+          <EasingPointKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseInOut" Amplitude="0.6"/>
+          </EasingPointKeyFrame.EasingFunction>
+        </EasingPointKeyFrame>
+      </PointAnimationUsingKeyFrames>
+      <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(LineSegment.Point)" Storyboard.TargetName="path">
+        <EasingPointKeyFrame KeyTime="0" Value="201.703461552745,143.1"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.2" Value="201.703461552745,143.1"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.9" Value="202.299999951363,32.7">
+          <EasingPointKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseInOut" Amplitude="0.6"/>
+          </EasingPointKeyFrame.EasingFunction>
+        </EasingPointKeyFrame>
+      </PointAnimationUsingKeyFrames>
+      <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(LineSegment.Point)" Storyboard.TargetName="path">
+        <EasingPointKeyFrame KeyTime="0" Value="128.611099297734,143.1"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.2" Value="128.611099297734,143.1"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.9" Value="128.699999951363,35.9">
+          <EasingPointKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseInOut" Amplitude="0.6"/>
+          </EasingPointKeyFrame.EasingFunction>
+        </EasingPointKeyFrame>
+      </PointAnimationUsingKeyFrames>
+      <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(LineSegment.Point)" Storyboard.TargetName="path">
+        <EasingPointKeyFrame KeyTime="0" Value="59.6898745312528,143.1"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.2" Value="59.6898745312528,143.1"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.9" Value="59.0999999513626,81.5">
+          <EasingPointKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseInOut" Amplitude="0.6"/>
+          </EasingPointKeyFrame.EasingFunction>
+        </EasingPointKeyFrame>
+      </PointAnimationUsingKeyFrames>
+      <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.StartPoint)" Storyboard.TargetName="path">
+        <EasingPointKeyFrame KeyTime="0" Value="3.90000000000005,143.9"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.2" Value="3.90000000000005,143.9"/>
+        <EasingPointKeyFrame KeyTime="0:0:0.9" Value="1.49999995136257,96.7">
+          <EasingPointKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseInOut" Amplitude="0.6"/>
+          </EasingPointKeyFrame.EasingFunction>
+        </EasingPointKeyFrame>
+      </PointAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="HidePanel">
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="PanelGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="PanelGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="PanelGrid">
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="500">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <SineEase EasingMode="EaseInOut"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+  </UserControl.Resources>
+
+  <Viewbox>
+    <Border x:Name="PanelBorder" CornerRadius="8"  BorderThickness="2" Height="482" Width="790">
+      <Grid>
+        <Grid x:Name="ButtonGrid" RenderTransformOrigin="0.5,0.5">
+          <Grid.RenderTransform>
+            <TransformGroup>
+              <ScaleTransform/>
+              <SkewTransform/>
+              <RotateTransform/>
+              <TranslateTransform/>
+            </TransformGroup>
+          </Grid.RenderTransform>
+          <Button Style="{StaticResource WorldSpaceUI.Button.Floating}" Content="INFO" HorizontalAlignment="Center" Height="430" VerticalAlignment="Center" Width="430" Panel.ZIndex="10">
+            <Button.Triggers>
+              <EventTrigger RoutedEvent="ButtonBase.Click">
+                <BeginStoryboard Storyboard="{StaticResource ShowPanel}"/>
+              </EventTrigger>
+            </Button.Triggers>
+          </Button>
+        </Grid>
+        <Grid x:Name="PanelGrid" RenderTransformOrigin="0.5,0.5">
+          <Grid.RenderTransform>
+            <TransformGroup>
+              <ScaleTransform ScaleX="0" ScaleY="0"/>
+              <SkewTransform/>
+              <RotateTransform/>
+              <TranslateTransform Y="500"/>
+            </TransformGroup>
+          </Grid.RenderTransform>
+          <Viewbox Stretch="Fill">
+            <Path x:Name="PanelPath" Data="{StaticResource WorldSpaceUI.Geometry.Panel}" Fill="#7F0B193A" Stroke="White" StrokeThickness="2"/>
+          </Viewbox>
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="93*"/>
+              <RowDefinition Height="385*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+              <noesis:Element.Transform3D>
+                <noesis:CompositeTransform3D TranslateZ="50"/>
+              </noesis:Element.Transform3D>
+              <TextBlock HorizontalAlignment="Center"  Foreground="{StaticResource WorldSpaceUI.Brush.Aqua}" TextWrapping="Wrap" Text="////" VerticalAlignment="Center"  FontSize="52" TextAlignment="Center" FontWeight="Bold" Opacity="0.5"/>
+              <TextBlock HorizontalAlignment="Center"  Foreground="White" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Center" FontSize="52" TextAlignment="Center" Margin="30,0"/>
+              <TextBlock HorizontalAlignment="Center"  Foreground="{StaticResource WorldSpaceUI.Brush.Aqua}" TextWrapping="Wrap" Text="////" VerticalAlignment="Center"  FontSize="52" TextAlignment="Center" Opacity="0.5"/>
+            </StackPanel>
+            <Path Data="M637.09699,1 L637.09699,11.400002 1,11.400002 1,1" HorizontalAlignment="Center" Height="6.6" Stretch="Fill" Stroke="#99FFFFFF" StrokeThickness="2" VerticalAlignment="Bottom" Width="684" Margin="51,0">
+              <noesis:Element.Transform3D>
+                <noesis:CompositeTransform3D TranslateZ="20"/>
+              </noesis:Element.Transform3D>
+            </Path>
+            <Grid Grid.Row="1" Width="684">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="161*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="161*"/>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="64*"/>
+                <RowDefinition Height="235*"/>
+                <RowDefinition Height="86*"/>
+              </Grid.RowDefinitions>
+              <TextBlock HorizontalAlignment="Left"  Foreground="White" TextWrapping="Wrap" Text="PATROL STATS" VerticalAlignment="Bottom" FontSize="35" TextAlignment="Center" Grid.Column="3">
+                            <noesis:Element.Transform3D>
+                                <noesis:CompositeTransform3D TranslateZ="40"/>
+                            </noesis:Element.Transform3D>
+              </TextBlock>
+              <TextBlock HorizontalAlignment="Left"  Foreground="White" TextWrapping="Wrap" Text="ENERGY LEVEL" VerticalAlignment="Bottom" FontSize="35" TextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2">
+                            <noesis:Element.Transform3D>
+                                <noesis:CompositeTransform3D TranslateZ="40"/>
+                            </noesis:Element.Transform3D>
+              </TextBlock>
+              <StackPanel x:Name="stackPanel" Grid.Column="3" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0,0,0,40" Height="120">
+                <noesis:Element.Transform3D>
+                  <noesis:CompositeTransform3D TranslateZ="35"/>
+                </noesis:Element.Transform3D>
+                <Rectangle x:Name="rectangle" Width="28" Height="20" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+                <Rectangle x:Name="rectangle1" Width="28" Height="37" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+                <Rectangle x:Name="rectangle2" Width="28" Height="31" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+                <Rectangle x:Name="rectangle3" Width="28" Height="58" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+                <Rectangle x:Name="rectangle4" Width="28" Height="90" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+                <Rectangle x:Name="rectangle5" Width="28" Height="80" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+                <Rectangle x:Name="rectangle6" Width="28" Height="94" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+                <Rectangle x:Name="rectangle7" Width="28" Height="72" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+                <Rectangle x:Name="rectangle8" Width="28" Height="104" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+                <Rectangle x:Name="rectangle9" Width="28" Height="120" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
+              </StackPanel>
+              <Path x:Name="path" Height="145.4" Grid.Row="1" Width="309.4" StrokeThickness="4" Stroke="#FF4BC3CF" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
+                <Path.Data>
+                  <PathGeometry>
+                    <PathFigure StartPoint="1.85099989637441,100.878649896591">
+                      <LineSegment Point="59.6898745312528,89.0335712094298"/>
+                      <LineSegment Point="128.611099297734,43.9776701928753"/>
+                      <LineSegment Point="201.703461552745,40.9873009763259"/>
+                      <LineSegment Point="252.730088979594,21.3465412970811"/>
+                      <LineSegment Point="305.547064446641,7.12135699015226"/>
+                    </PathFigure>
+                  </PathGeometry>
+                </Path.Data>
+                <noesis:Element.Transform3D>
+                  <noesis:CompositeTransform3D TranslateZ="30"/>
+                </noesis:Element.Transform3D>
+              </Path>
+              <Button Content="CLOSE" HorizontalAlignment="Center" Grid.Column="3" Height="48" Grid.Row="2" VerticalAlignment="Top" Width="310" Style="{StaticResource WorldSpaceUI.Button.Blue}" Margin="0,0,0,30">
+                <Button.Triggers>
+                  <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard Storyboard="{StaticResource HidePanel}"/>
+                  </EventTrigger>
+                </Button.Triggers>
+              </Button>
+              <Button Content="RECALL" HorizontalAlignment="Center" Height="48" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" Width="310" Style="{StaticResource WorldSpaceUI.Button.Orange}" Margin="0,0,0,30">
+                <Button.Triggers>
+                  <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard Storyboard="{StaticResource HidePanel}"/>
+                  </EventTrigger>
+                </Button.Triggers>
+              </Button>
+              <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition/>
+                  <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF4BC3CF" FontSize="65" Text="{Binding (noesis:Path.TrimEnd), ElementName=energy, Converter={StaticResource percConv}, FallbackValue=50 %}">
+                                <noesis:Element.Transform3D>
+                                    <noesis:CompositeTransform3D TranslateX="-20" TranslateZ="35"/>
+                                </noesis:Element.Transform3D>
+                </TextBlock>
+                <Ellipse x:Name="energy" Stroke="#FF4BC3CF" StrokeThickness="20" Width="150" Height="150" noesis:Path.TrimOffset="0.25">
+                  <noesis:Element.Transform3D>
+                    <noesis:CompositeTransform3D TranslateZ="30"/>
+                  </noesis:Element.Transform3D>
+                </Ellipse>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Border>
+  </Viewbox>
+</UserControl>
