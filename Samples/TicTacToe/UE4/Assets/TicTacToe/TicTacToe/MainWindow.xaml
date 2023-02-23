@@ -2234,7 +2234,7 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Click">
                   <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                  <b:InvokeCommandAction Command="{Binding CheckCommand, Mode=OneWay}" CommandParameter="{StaticResource Index0}"/>
+                  <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index0}"/>
                 </b:EventTrigger>
                 <b:DataTrigger Binding="{Binding Content, ElementName=Cell00}" Value="{x:Static local:State.Player1}">
                   <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.5"/>
@@ -2259,7 +2259,7 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Click">
                   <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                  <b:InvokeCommandAction Command="{Binding CheckCommand, Mode=OneWay}" CommandParameter="{StaticResource Index1}"/>
+                  <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index1}"/>
                 </b:EventTrigger>
                 <b:DataTrigger Binding="{Binding Content, ElementName=Cell01}" Value="{x:Static local:State.Player1}">
                   <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.5"/>
@@ -2284,7 +2284,7 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Click">
                   <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                  <b:InvokeCommandAction Command="{Binding CheckCommand, Mode=OneWay}" CommandParameter="{StaticResource Index2}"/>
+                  <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index2}"/>
                 </b:EventTrigger>
                 <b:DataTrigger Binding="{Binding Content, ElementName=Cell02}" Value="{x:Static local:State.Player1}">
                   <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.5"/>
@@ -2309,7 +2309,7 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Click">
                   <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                  <b:InvokeCommandAction Command="{Binding CheckCommand, Mode=OneWay}" CommandParameter="{StaticResource Index3}"/>
+                  <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index3}"/>
                 </b:EventTrigger>
                 <b:DataTrigger Binding="{Binding Content, ElementName=Cell10}" Value="{x:Static local:State.Player1}">
                   <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.5"/>
@@ -2334,7 +2334,7 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Click">
                   <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                  <b:InvokeCommandAction Command="{Binding CheckCommand, Mode=OneWay}" CommandParameter="{StaticResource Index4}"/>
+                  <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index4}"/>
                 </b:EventTrigger>
                 <b:DataTrigger Binding="{Binding Content, ElementName=Cell11}" Value="{x:Static local:State.Player1}">
                   <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.5"/>
@@ -2359,7 +2359,7 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Click">
                   <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                  <b:InvokeCommandAction Command="{Binding CheckCommand, Mode=OneWay}" CommandParameter="{StaticResource Index5}"/>
+                  <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index5}"/>
                 </b:EventTrigger>
                 <b:DataTrigger Binding="{Binding Content, ElementName=Cell12}" Value="{x:Static local:State.Player1}">
                   <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.5"/>
@@ -2384,7 +2384,7 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Click">
                   <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                  <b:InvokeCommandAction Command="{Binding CheckCommand, Mode=OneWay}" CommandParameter="{StaticResource Index6}"/>
+                  <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index6}"/>
                 </b:EventTrigger>
                 <b:DataTrigger Binding="{Binding Content, ElementName=Cell20}" Value="{x:Static local:State.Player1}">
                   <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.5"/>
@@ -2409,7 +2409,7 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Click">
                   <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                  <b:InvokeCommandAction Command="{Binding CheckCommand, Mode=OneWay}" CommandParameter="{StaticResource Index7}"/>
+                  <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index7}"/>
                 </b:EventTrigger>
                 <b:DataTrigger Binding="{Binding Content, ElementName=Cell21}" Value="{x:Static local:State.Player1}">
                   <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.5"/>
@@ -2434,7 +2434,7 @@
                 </b:EventTrigger>
                 <b:EventTrigger EventName="Click">
                   <b:ChangePropertyAction PropertyName="Content" Value="{Binding State}"/>
-                  <b:InvokeCommandAction Command="{Binding CheckCommand, Mode=OneWay}" CommandParameter="{StaticResource Index8}"/>
+                  <b:InvokeCommandAction Command="{Binding Check, Mode=OneWay}" CommandParameter="{StaticResource Index8}"/>
                 </b:EventTrigger>
                 <b:DataTrigger Binding="{Binding Content, ElementName=Cell22}" Value="{x:Static local:State.Player1}">
                   <b:PlaySoundAction Source="Sounds/NoughtEffect.mp3" Volume="0.5"/>
@@ -2482,7 +2482,7 @@
                 <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell21"/>
                 <b:ChangePropertyAction PropertyName="Content" Value="" TargetName="Cell22"/>
                 <b:ControlStoryboardAction Storyboard="{StaticResource BoardFlip2Anim}"/>
-                <b:InvokeCommandAction Command="{Binding StartCommand}"/>
+                <b:InvokeCommandAction Command="{Binding Start}"/>
                 <b:ChangePropertyAction PropertyName="IsEnabled" Value="True" TargetName="Cells"/>
               </b:StoryboardCompletedTrigger>
             </b:Interaction.Triggers>

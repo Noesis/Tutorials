@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{d1f338e2-0b22-49d1-bc08-069b7cb00954}</UniqueIdentifier>
+      <UniqueIdentifier>{d79c4c72-b730-4286-a484-5184b5424c27}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
-      <UniqueIdentifier>{c35f07ac-df21-4234-86e7-72d45203fd16}</UniqueIdentifier>
+      <UniqueIdentifier>{ae1d4f55-bdd4-4a4d-bd91-e5cc1667bd39}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{71fd2d43-1cc5-4307-8cfc-ee93277af779}</UniqueIdentifier>
+      <UniqueIdentifier>{af9fde1e-fcbe-4d15-8b7f-bf374b1bfcf1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +81,9 @@
     <CustomBuild Include="..\..\Data\MainWindow.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\..\Data\Resources.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
     <CustomBuild Include="..\..\Data\Fonts\Multicolore.otf">
       <Filter>Data</Filter>
     </CustomBuild>
@@ -88,6 +91,9 @@
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Sounds\CrossEffect.mp3">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Sounds\ClickEffect.mp3">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Sounds\WinEffect.mp3">

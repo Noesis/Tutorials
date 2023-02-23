@@ -70,8 +70,8 @@ ifeq ($(CONFIG), Debug)
   LIB_DIRS = 
   LIBS = -lNoesis -lNoesisApp
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -I../../../../App/RiveControl/Include -Ibuild/Debug
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.2.0b3 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
   CFLAGS = $(CFLAGS_COMMON) -D_DEBUG
   CXXFLAGS = $(CXXFLAGS_COMMON) -D_DEBUG
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
@@ -82,8 +82,8 @@ else ifeq ($(CONFIG), Profile)
   LIB_DIRS = 
   LIBS = -lNoesis -lNoesisApp
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -I../../../../App/RiveControl/Include -Ibuild/Profile
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.2.0b3 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
   CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
@@ -94,8 +94,8 @@ else ifeq ($(CONFIG), Release)
   LIB_DIRS = 
   LIBS = -lNoesis -lNoesisApp
   LIBS_DEPS = ../../../../../../Bin/linux_arm/libNoesis.so ../../../../../../Bin/linux_arm/libNoesisApp.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/Display/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -I../../../../App/RiveControl/Include -Ibuild/Release
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.2.0b3 -DNS_APP_FRAMEWORK -DNS_LICENSE
   CFLAGS = $(CFLAGS_COMMON) -Ofast -flto=jobserver -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
   CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -flto=jobserver -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
@@ -105,7 +105,7 @@ endif
 
 PCH =
 PCHFLAGS =
-DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Multicolore.otf.bin.h $(INTERMEDIATE)/NoughtEffect.mp3.bin.h $(INTERMEDIATE)/CrossEffect.mp3.bin.h $(INTERMEDIATE)/WinEffect.mp3.bin.h $(INTERMEDIATE)/TieEffect.mp3.bin.h
+DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Resources.xaml.bin.h $(INTERMEDIATE)/Multicolore.otf.bin.h $(INTERMEDIATE)/NoughtEffect.mp3.bin.h $(INTERMEDIATE)/CrossEffect.mp3.bin.h $(INTERMEDIATE)/ClickEffect.mp3.bin.h $(INTERMEDIATE)/WinEffect.mp3.bin.h $(INTERMEDIATE)/TieEffect.mp3.bin.h
 
 .SUFFIXES:
 .DELETE_ON_ERROR:
@@ -144,6 +144,10 @@ $(INTERMEDIATE)/MainWindow.xaml.bin.h: ../../../../Samples/TicTacToe/Data/MainWi
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/MainWindow.xaml" > "$(INTERMEDIATE)/MainWindow.xaml.bin.h" 
 
+$(INTERMEDIATE)/Resources.xaml.bin.h: ../../../../Samples/TicTacToe/Data/Resources.xaml | $(INTERMEDIATE)
+	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Resources.xaml" > "$(INTERMEDIATE)/Resources.xaml.bin.h" 
+
 $(INTERMEDIATE)/Multicolore.otf.bin.h: ../../../../Samples/TicTacToe/Data/Fonts/Multicolore.otf | $(INTERMEDIATE)
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Fonts/Multicolore.otf" > "$(INTERMEDIATE)/Multicolore.otf.bin.h" 
@@ -156,6 +160,10 @@ $(INTERMEDIATE)/CrossEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Sounds/CrossEffect.mp3" > "$(INTERMEDIATE)/CrossEffect.mp3.bin.h" 
 
+$(INTERMEDIATE)/ClickEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds/ClickEffect.mp3 | $(INTERMEDIATE)
+	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Sounds/ClickEffect.mp3" > "$(INTERMEDIATE)/ClickEffect.mp3.bin.h" 
+
 $(INTERMEDIATE)/WinEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds/WinEffect.mp3 | $(INTERMEDIATE)
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Sounds/WinEffect.mp3" > "$(INTERMEDIATE)/WinEffect.mp3.bin.h" 
@@ -164,7 +172,7 @@ $(INTERMEDIATE)/TieEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds/T
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Sounds/TieEffect.mp3" > "$(INTERMEDIATE)/TieEffect.mp3.bin.h" 
 
-$(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/ViewModel.o $(INTERMEDIATE)/MainWindow.xaml.o $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/App.xaml.o | $(TARGET_DIR)
+$(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/App.xaml.o $(INTERMEDIATE)/Main.o $(INTERMEDIATE)/MainWindow.xaml.o $(INTERMEDIATE)/ViewModel.o | $(TARGET_DIR)
 	@echo [LD] $(notdir $@)
 	+$(Q)$(CXX) $(LDFLAGS) -pie -Wl,-rpath,\$$ORIGIN -Wl,-rpath,../../../../../../Bin/linux_arm -L../../../../../../Bin/linux_arm $(LIB_DIRS) -o $(TARGET) @$(CONFIG).rsp $(LIBS)
 	@echo [STRIP] $(notdir $@)
@@ -172,7 +180,7 @@ $(TARGET): $(LIBS_DEPS) $(INTERMEDIATE)/ViewModel.o $(INTERMEDIATE)/MainWindow.x
 	$(Q)arm-linux-gnueabihf-strip --strip-unneeded $(TARGET)
 	$(Q)arm-linux-gnueabihf-objcopy --add-gnu-debuglink=$(TARGET).debug $(TARGET)
 
--include $(INTERMEDIATE)/ViewModel.d $(INTERMEDIATE)/MainWindow.xaml.d $(INTERMEDIATE)/Main.d $(INTERMEDIATE)/App.xaml.d
+-include $(INTERMEDIATE)/App.xaml.d $(INTERMEDIATE)/Main.d $(INTERMEDIATE)/MainWindow.xaml.d $(INTERMEDIATE)/ViewModel.d
 
 clean:
 	@echo ==== [Samples.TicTacToe] Cleaning '$(CONFIG)' configuration ====

@@ -73,10 +73,10 @@ ifeq ($(CONFIG), Debug)
   TARGET_APK = ../../../../../../Bin/android_arm64/Samples.TicTacToe.apk
   INTERMEDIATE = build/Debug
   LIB_DIRS = 
-  LIBS = -landroid -llog -lNoesis -lNoesisApp
+  LIBS = -landroid -lNoesis -lNoesisApp -llog
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Debug -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -I../../../../App/RiveControl/Include -Ibuild/Debug -I$(ANDROID_NDK)/sources/android/native_app_glue
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.2.0b3 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
   CFLAGS = $(CFLAGS_COMMON) -D_DEBUG
   CXXFLAGS = $(CXXFLAGS_COMMON) -D_DEBUG
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
@@ -87,10 +87,10 @@ else ifeq ($(CONFIG), Profile)
   TARGET_APK = ../../../../../../Bin/android_arm64/Samples.TicTacToe.apk
   INTERMEDIATE = build/Profile
   LIB_DIRS = 
-  LIBS = -landroid -llog -lNoesis -lNoesisApp
+  LIBS = -landroid -lNoesis -lNoesisApp -llog
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Profile -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -I../../../../App/RiveControl/Include -Ibuild/Profile -I$(ANDROID_NDK)/sources/android/native_app_glue
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.2.0b3 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
   CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
@@ -101,10 +101,10 @@ else ifeq ($(CONFIG), Release)
   TARGET_APK = ../../../../../../Bin/android_arm64/Samples.TicTacToe.apk
   INTERMEDIATE = build/Release
   LIB_DIRS = 
-  LIBS = -landroid -llog -lNoesis -lNoesisApp
+  LIBS = -landroid -lNoesis -lNoesisApp -llog
   LIBS_DEPS = ../../../../../../Bin/android_arm64/libNoesis.so ../../../../../../Bin/android_arm64/libNoesisApp.so
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Release -I$(ANDROID_NDK)/sources/android/native_app_glue
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -I../../../../App/RiveControl/Include -Ibuild/Release -I$(ANDROID_NDK)/sources/android/native_app_glue
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.2.0b3 -DNS_APP_FRAMEWORK -DNS_LICENSE
   CFLAGS = $(CFLAGS_COMMON) -Ofast -flto -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
   CXXFLAGS = $(CXXFLAGS_COMMON) -Ofast -flto -DNDEBUG -ffunction-sections -fdata-sections -fno-asynchronous-unwind-tables -U_FORTIFY_SOURCE -fomit-frame-pointer
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS) -fuse-ld=gold -Wl,-O3,--gc-sections,--icf=all
@@ -115,7 +115,7 @@ endif
 
 PCH =
 PCHFLAGS =
-DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Multicolore.otf.bin.h $(INTERMEDIATE)/NoughtEffect.mp3.bin.h $(INTERMEDIATE)/CrossEffect.mp3.bin.h $(INTERMEDIATE)/WinEffect.mp3.bin.h $(INTERMEDIATE)/TieEffect.mp3.bin.h
+DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Resources.xaml.bin.h $(INTERMEDIATE)/Multicolore.otf.bin.h $(INTERMEDIATE)/NoughtEffect.mp3.bin.h $(INTERMEDIATE)/CrossEffect.mp3.bin.h $(INTERMEDIATE)/ClickEffect.mp3.bin.h $(INTERMEDIATE)/WinEffect.mp3.bin.h $(INTERMEDIATE)/TieEffect.mp3.bin.h
 
 .SUFFIXES:
 .DELETE_ON_ERROR:
@@ -166,6 +166,10 @@ $(INTERMEDIATE)/MainWindow.xaml.bin.h: ../../../../Samples/TicTacToe/Data/MainWi
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/MainWindow.xaml" > "$(INTERMEDIATE)/MainWindow.xaml.bin.h" 
 
+$(INTERMEDIATE)/Resources.xaml.bin.h: ../../../../Samples/TicTacToe/Data/Resources.xaml | $(INTERMEDIATE)
+	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Resources.xaml" > "$(INTERMEDIATE)/Resources.xaml.bin.h" 
+
 $(INTERMEDIATE)/Multicolore.otf.bin.h: ../../../../Samples/TicTacToe/Data/Fonts/Multicolore.otf | $(INTERMEDIATE)
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Fonts/Multicolore.otf" > "$(INTERMEDIATE)/Multicolore.otf.bin.h" 
@@ -177,6 +181,10 @@ $(INTERMEDIATE)/NoughtEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sound
 $(INTERMEDIATE)/CrossEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds/CrossEffect.mp3 | $(INTERMEDIATE)
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Sounds/CrossEffect.mp3" > "$(INTERMEDIATE)/CrossEffect.mp3.bin.h" 
+
+$(INTERMEDIATE)/ClickEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds/ClickEffect.mp3 | $(INTERMEDIATE)
+	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Sounds/ClickEffect.mp3" > "$(INTERMEDIATE)/ClickEffect.mp3.bin.h" 
 
 $(INTERMEDIATE)/WinEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds/WinEffect.mp3 | $(INTERMEDIATE)
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
@@ -226,7 +234,24 @@ run:
 	$(Q)adb install -r $(TARGET_APK)
 	$(Q)adb logcat -c
 	$(Q)adb shell monkey -p com.noesis.Samples.TicTacToe -c android.intent.category.LAUNCHER 1
-	$(Q)adb logcat -s Noesis:V
+	$(Q)adb logcat -s Noesis:V VALIDATION
+
+enable_validation:
+	$(Q)@echo =====================================================================
+	$(Q)@echo https://github.com/KhronosGroup/Vulkan-ValidationLayers/releases
+	$(Q)@echo Copy libVkLayer_khronos_validation.so next to Makefile
+	$(Q)@echo Copy libc++_shared.so to build/$(CONFIGURATION)/apk/lib/arm64-v8a
+	$(Q)@echo =====================================================================
+	$(Q)adb push libVkLayer_khronos_validation.so /data/local/tmp
+	$(Q)adb shell run-as com.noesis.Samples.TicTacToe cp /data/local/tmp/libVkLayer_khronos_validation.so .
+	$(Q)adb shell settings put global enable_gpu_debug_layers 1
+	$(Q)adb shell settings put global gpu_debug_app com.noesis.Samples.TicTacToe
+	$(Q)adb shell settings put global gpu_debug_layers VK_LAYER_KHRONOS_validation
+
+disable_validation:
+	$(Q)adb shell settings delete global enable_gpu_debug_layers
+	$(Q)adb shell settings delete global gpu_debug_app
+	$(Q)adb shell settings delete global gpu_debug_layers
 
 clean:
 	@echo ==== [Samples.TicTacToe] Cleaning '$(CONFIG)' configuration ====

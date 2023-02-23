@@ -18,9 +18,11 @@
 
 #include "App.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
+#include "Resources.xaml.bin.h"
 #include "Multicolore.otf.bin.h"
 #include "NoughtEffect.mp3.bin.h"
 #include "CrossEffect.mp3.bin.h"
+#include "ClickEffect.mp3.bin.h"
 #include "WinEffect.mp3.bin.h"
 #include "TieEffect.mp3.bin.h"
 
@@ -47,8 +49,10 @@ private:
         {
             { "App.xaml", App_xaml },
             { "MainWindow.xaml", MainWindow_xaml },
+            { "Resources.xaml", Resources_xaml },
             { "Sounds/NoughtEffect.mp3", NoughtEffect_mp3 },
             { "Sounds/CrossEffect.mp3", CrossEffect_mp3 },
+            { "Sounds/ClickEffect.mp3", ClickEffect_mp3 },
             { "Sounds/WinEffect.mp3", WinEffect_mp3 },
             { "Sounds/TieEffect.mp3", TieEffect_mp3 }
         };

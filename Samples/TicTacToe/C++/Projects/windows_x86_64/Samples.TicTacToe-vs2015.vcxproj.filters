@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Src">
-      <UniqueIdentifier>{eac58c48-bf99-4827-8766-74bd2c1c2f81}</UniqueIdentifier>
+      <UniqueIdentifier>{3ccc9f57-ab50-4246-a731-f536f3130482}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources">
-      <UniqueIdentifier>{6c989aee-dfdb-4103-a569-46ec060a16d8}</UniqueIdentifier>
+      <UniqueIdentifier>{6c144494-842f-4fb0-87ec-1d371995355f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Data">
-      <UniqueIdentifier>{34424638-183f-4719-ba11-94b98d07222c}</UniqueIdentifier>
+      <UniqueIdentifier>{6c4fbf83-82df-45d0-81b4-236621974b4d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,52 +33,19 @@
     <ClInclude Include="..\..\Src\ViewModel.h">
       <Filter>Src</Filter>
     </ClInclude>
-    <AppxManifest Include="Package.appxmanifest">
+    <ResourceCompile Include="resources.rc">
       <Filter>Resources</Filter>
-    </AppxManifest>
-    <Image Include="SplashScreen.scale-200.png">
+    </ResourceCompile>
+    <None Include="Noesis.ico">
       <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square44x44Logo.scale-200.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square44x44Logo.targetsize-24.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square44x44Logo.targetsize-48.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square44x44Logo.targetsize-256.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square44x44Logo.targetsize-24_altform-unplated.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square44x44Logo.targetsize-48_altform-unplated.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square44x44Logo.targetsize-256_altform-unplated.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square71x71Logo.scale-200.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square150x150Logo.scale-200.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Square310x310Logo.scale-200.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="StoreLogo.scale-200.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Wide310x150Logo.scale-200.png">
-      <Filter>Resources</Filter>
-    </Image>
+    </None>
     <CustomBuild Include="..\..\Data\App.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\MainWindow.xaml">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Resources.xaml">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Fonts\Multicolore.otf">
@@ -88,6 +55,9 @@
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Sounds\CrossEffect.mp3">
+      <Filter>Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Data\Sounds\ClickEffect.mp3">
       <Filter>Data</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\Data\Sounds\WinEffect.mp3">

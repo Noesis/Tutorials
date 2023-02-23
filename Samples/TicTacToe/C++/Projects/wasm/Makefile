@@ -9,7 +9,7 @@ AR = emar
 
 CFLAGS_COMMON = -pipe -Wall -Werror -Wfatal-errors -Wtype-limits
 CXXFLAGS_COMMON = $(CFLAGS_COMMON) -std=c++11 -fno-exceptions -frtti -fno-threadsafe-statics
-LDFLAGS_COMMON = -s USE_WEBGL2=1 -s NO_FILESYSTEM=1 -s WASM=1 -s INITIAL_MEMORY=67108864 -s EXPORTED_FUNCTIONS='["_malloc","_free"]'
+LDFLAGS_COMMON = -s USE_WEBGL2=1 -s NO_FILESYSTEM=1 -s WASM=1 -s INITIAL_MEMORY=67108864 -s EXPORTED_FUNCTIONS='["_malloc","_free","_main"]'
 
 SHELLTYPE = msdos
 ifeq (, $(ComSpec)$(COMSPEC))
@@ -71,8 +71,8 @@ ifeq ($(CONFIG), Debug)
   LIB_DIRS = 
   LIBS = 
   LIBS_DEPS = 
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Debug
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -I../../../../App/RiveControl/Include -Ibuild/Debug
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Debug -DNS_VERSION=3.2.0b3 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_DEBUG -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=1
   CFLAGS = $(CFLAGS_COMMON) -g -D_DEBUG
   CXXFLAGS = $(CXXFLAGS_COMMON) -g -D_DEBUG
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
@@ -84,8 +84,8 @@ else ifeq ($(CONFIG), Profile)
   LIB_DIRS = 
   LIBS = 
   LIBS_DEPS = 
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Profile
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -I../../../../App/RiveControl/Include -Ibuild/Profile
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Profile -DNS_VERSION=3.2.0b3 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY -DNS_PROFILE -DNS_MINIMUM_LOG_LEVEL=2
   CFLAGS = $(CFLAGS_COMMON) -Oz -DNDEBUG
   CXXFLAGS = $(CXXFLAGS_COMMON) -Oz -DNDEBUG
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
@@ -97,8 +97,8 @@ else ifeq ($(CONFIG), Release)
   LIB_DIRS = 
   LIBS = 
   LIBS_DEPS = 
-  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -Ibuild/Release
-  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.1.0 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY
+  INCLUDES = -I../../../../../../Include -I../../../../App/ApplicationLauncher/Include -I../../../../App/DisplayLauncher/Include -I../../../../App/Display/Include -I../../../../App/Interactivity/Include -I../../../../App/Launcher/Include -I../../../../App/MediaElement/Include -I../../../../App/Providers/Include -I../../../../App/RiveControl/Include -Ibuild/Release
+  DEFINES = -DNS_BUILD -DNS_CONFIG=Release -DNS_VERSION=3.2.0b3 -DNS_APP_FRAMEWORK -DNS_LICENSE -DNS_STATIC_LIBRARY
   CFLAGS = $(CFLAGS_COMMON) -Oz -DNDEBUG -flto
   CXXFLAGS = $(CXXFLAGS_COMMON) -Oz -DNDEBUG -flto
   LDFLAGS = $(LDFLAGS_COMMON) $(CXXFLAGS)
@@ -108,7 +108,7 @@ endif
 
 PCH =
 PCHFLAGS =
-DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Multicolore.otf.bin.h $(INTERMEDIATE)/NoughtEffect.mp3.bin.h $(INTERMEDIATE)/CrossEffect.mp3.bin.h $(INTERMEDIATE)/WinEffect.mp3.bin.h $(INTERMEDIATE)/TieEffect.mp3.bin.h
+DATA = $(INTERMEDIATE)/App.xaml.bin.h $(INTERMEDIATE)/MainWindow.xaml.bin.h $(INTERMEDIATE)/Resources.xaml.bin.h $(INTERMEDIATE)/Multicolore.otf.bin.h $(INTERMEDIATE)/NoughtEffect.mp3.bin.h $(INTERMEDIATE)/CrossEffect.mp3.bin.h $(INTERMEDIATE)/ClickEffect.mp3.bin.h $(INTERMEDIATE)/WinEffect.mp3.bin.h $(INTERMEDIATE)/TieEffect.mp3.bin.h
 
 .SUFFIXES:
 .DELETE_ON_ERROR:
@@ -147,6 +147,10 @@ $(INTERMEDIATE)/MainWindow.xaml.bin.h: ../../../../Samples/TicTacToe/Data/MainWi
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/MainWindow.xaml" > "$(INTERMEDIATE)/MainWindow.xaml.bin.h" 
 
+$(INTERMEDIATE)/Resources.xaml.bin.h: ../../../../Samples/TicTacToe/Data/Resources.xaml | $(INTERMEDIATE)
+	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Resources.xaml" > "$(INTERMEDIATE)/Resources.xaml.bin.h" 
+
 $(INTERMEDIATE)/Multicolore.otf.bin.h: ../../../../Samples/TicTacToe/Data/Fonts/Multicolore.otf | $(INTERMEDIATE)
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Fonts/Multicolore.otf" > "$(INTERMEDIATE)/Multicolore.otf.bin.h" 
@@ -158,6 +162,10 @@ $(INTERMEDIATE)/NoughtEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sound
 $(INTERMEDIATE)/CrossEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds/CrossEffect.mp3 | $(INTERMEDIATE)
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
 	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Sounds/CrossEffect.mp3" > "$(INTERMEDIATE)/CrossEffect.mp3.bin.h" 
+
+$(INTERMEDIATE)/ClickEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds/ClickEffect.mp3 | $(INTERMEDIATE)
+	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
+	$(Q)$(BIN2H) "../../../../Samples/TicTacToe/Data/Sounds/ClickEffect.mp3" > "$(INTERMEDIATE)/ClickEffect.mp3.bin.h" 
 
 $(INTERMEDIATE)/WinEffect.mp3.bin.h: ../../../../Samples/TicTacToe/Data/Sounds/WinEffect.mp3 | $(INTERMEDIATE)
 	@echo [BIN] [Samples/TicTacToe] $(notdir $<)
