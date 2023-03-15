@@ -1,73 +1,124 @@
-<ResourceDictionary
+﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions">
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
 
     <BooleanToVisibilityConverter x:Key="boolToVisibility"/>
 
-    <LinearGradientBrush x:Key="NoesisLogoBg" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Offset="0" Color="#FF184C79"/>
-        <GradientStop Offset="0.05" Color="#FF1B5688"/>
-        <GradientStop Offset="1" Color="#FF123859"/>
-    </LinearGradientBrush>
-    <SolidColorBrush x:Key="NoesisLogoFg" Color="#07000000"/>
-    <SolidColorBrush x:Key="NoesisLogoBlueBg" Color="#FF2AA6E2"/>
+    <SolidColorBrush x:Key="QuestLog.Brush.MistyMoss" Color="#FFBDAB77"/>
+    <SolidColorBrush x:Key="QuestLog.Brush.Turquoise" Color="#FF09D1E4"/>
+    <SolidColorBrush x:Key="QuestLog.Brush.Aquamarine" Color="#FF50F9C4"/>
+    <SolidColorBrush x:Key="QuestLog.Brush.DarkVanilla" Color="#FFD0C9AA"/>
+    <SolidColorBrush x:Key="QuestLog.Brush.GoldFusion" Color="#FF847755 "/>
+    <SolidColorBrush x:Key="QuestLog.Brush.Coffee" Color="#FF6B6453"/>
+    <SolidColorBrush x:Key="QuestLog.Brush.GunMetal" Color="#FF2D2C3A"/>
+    <SolidColorBrush x:Key="QuestLog.Brush.VampireBlack" Color="#FF020909"/>
 
-    <Geometry x:Key="NoesisLogoGeometry">
-        M64.552314,61.408115 L90.473059,64.639252 65.938536,97.224111 96.858771,170.22477 151.36087,176.44062 176.65871,144.70187 186.30899,167.69955 161.59547,200.607 80.812194,191.57223 39.827483,94.941438 z
-        M48.254649,23.461594 L152.39867,36.273918 169.09616,74.476677 153.32091,95.305482 137.28592,57.748096 58.689337,48.038651 58.673125,48.036747 26.085236,92.157874 40.901858,129.9017 16.161385,126.74894 0.032970434,88.96424 z
-        M136.8885,0 L177.71051,4.9764633 210.32399,79.460176 147.07187,163.27949 105.70369,158.62394 95.540381,134.55325 136.09376,139.68585 183.81151,76.187043 161.88087,25.886173 121.79224,19.86055 z
-    </Geometry>
-    <Geometry x:Key="NoesisTextGeometry">
-        M92.8579999677658,70.3415300000004L91.6092999677657,70.3415300000004C89.1117999677657,70.3415300000004 86.3690999677657,69.0553500000004 84.6772999677657,67.5409700000003 83.3359999677656,66.3402600000004 81.3786999677656,63.7640900000003 79.5695999677656,61.6829800000004L48.2047999677656,14.2132800000004C44.6023999677656,9.61943000000042 40.5841999677656,5.85798000000045 37.5730999677657,3.3297700000004 32.8352999677656,1.39255000000037 29.1355999677657,0.416200000000344 22.8921999677656,0.416200000000344L-3.22343520764434E-08,0.416200000000344 -3.22343520764434E-08,91.5688500000003 21.6435999677657,91.5688500000003 21.6435999677657,21.6435500000003 22.8921999677656,21.6435500000003C25.3893999677656,21.6435500000003 27.0235999677656,22.4759800000004 29.1048999677656,23.7246500000003 31.1705999677658,25.5488600000003 33.1231999677656,27.6454000000003 34.6437999677657,30.1582000000003L66.0398999677656,78.0749800000003C69.6422999677656,82.7973200000003 72.2215999677657,85.6954300000003 75.5205999677657,88.6398700000003 80.0990999677657,90.7209900000004 84.9497999677657,91.9850800000002 91.6092999677657,91.9850800000002L114.501399967766,91.9850800000002 114.501399967766,2.27373673749166E-13 92.8579999677658,2.27373673749166E-13z
-        M206.253499967766,3.41060514011881E-13L160.667099967766,3.41060514011881E-13C137.774799967766,3.41060514011881E-13,126.120799967766,9.57309000000032,126.120799967766,29.1355300000003L126.120799967766,62.4333200000003C126.120799967766,81.5795200000003,137.774799967766,91.5688500000003,160.667099967766,91.5688500000003L206.253499967766,91.5688500000003C229.145899967766,91.5688500000003,240.800099967766,81.9957600000003,240.800099967766,62.4333200000003L240.800099967766,29.1355300000003C240.800099967766,9.98931000000039,229.145899967766,3.41060514011881E-13,206.253499967766,3.41060514011881E-13z
-        M218.323899967766,62.4333200000003C218.323899967766,67.4279700000003,214.161899967766,70.3415300000004,206.253499967766,70.3415300000004L160.667099967766,70.3415300000004C152.758899967766,70.3415300000004,148.596999967766,67.8441800000004,148.596999967766,62.4333200000003L148.596999967766,29.1355300000003C148.596999967766,23.7246500000003,152.758899967766,21.2273400000003,160.667099967766,21.2273400000003L206.253499967766,21.2273400000003C214.161899967766,21.2273400000003,218.323899967766,23.7246500000003,218.323899967766,29.1355300000003z
-        M274.513899967766,65.7631100000002L274.513899967766,56.6062200000003 366.277899967766,56.6062200000003 366.277899967766,35.3788800000003 274.513899967766,35.3788800000003 274.513899967766,26.2219700000003C274.513899967766,23.3084200000003,276.178999967766,21.6435500000002,279.508699967766,21.6435500000002L366.694299967766,21.6435500000002 366.694299967766,2.27373673749166E-13 279.508699967766,2.27373673749166E-13C261.194999967766,2.27373673749166E-13,252.037899967766,7.49200000000019,252.037899967766,22.0597700000002L252.037899967766,68.6766500000002C252.037899967766,83.6606500000002,261.194999967766,91.1526500000002,279.508699967766,91.1526500000002L367.110299967766,91.1526500000002 367.110299967766,69.9253100000002 279.508699967766,69.9253100000002C276.178999967766,70.3415300000001,274.513899967766,68.6766500000002,274.513899967766,65.7631100000002z
-        M464.725099967766,34.9626400000003L404.986699967766,34.9626400000003C401.656899967766,34.9626400000003,399.575899967766,33.7139800000003,399.575899967766,31.6328800000003L399.575899967766,24.5570900000003C399.575899967766,22.4759800000004,401.240899967766,21.2273400000003,404.986699967766,21.2273400000003L489.281899967766,21.2273400000003 489.281899967766,3.41060514011881E-13 404.986699967766,3.41060514011881E-13C386.672899967766,3.41060514011881E-13,377.516099967766,7.4920000000003,377.516099967766,22.0597700000003L377.516099967766,36.6275400000003C377.516099967766,49.5304200000003,386.672899967766,56.1899800000003,404.986699967766,56.1899800000003L464.725099967766,56.1899800000003C468.054699967766,56.1899800000003,469.719799967766,57.4386300000003,469.719799967766,59.5197500000004L469.719799967766,67.0117400000004C469.719799967766,69.0928600000004,468.054699967766,70.3415300000004,464.725099967766,70.3415300000004L380.429599967766,70.3415300000004 380.429599967766,91.5688500000003 464.725099967766,91.5688500000003C483.038799967766,91.5688500000003,492.195599967766,84.0768600000003,492.195599967766,69.5090700000003L492.195599967766,57.0224100000002C492.195599967766,42.4546400000002,483.038799967766,34.9626400000003,464.725099967766,34.9626400000003z
-        M503.433699967766,3.41060514011881E-13L525.909499967766,3.41060514011881E-13 525.909499967766,91.1526500000003 503.433699967766,91.1526500000003z
-        M625.010299967766,34.9626400000003L565.054499967766,34.9626400000003C561.724799967766,34.9626400000003,559.643599967766,33.7139800000003,559.643599967766,31.6328800000003L559.643599967766,24.5570900000003C559.643599967766,22.4759800000004,561.308399967766,21.2273400000003,565.054499967766,21.2273400000003L649.567499967766,21.2273400000003 649.567499967766,3.41060514011881E-13 565.054499967766,3.41060514011881E-13C546.740699967766,3.41060514011881E-13,537.583799967766,7.4920000000003,537.583799967766,22.0597700000003L537.583799967766,36.6275400000003C537.583799967766,49.5304200000003,546.740699967766,56.1899800000003,565.054499967766,56.1899800000003L625.010299967766,56.1899800000003C628.340199967766,56.1899800000003,630.005099967766,57.4386300000003,630.005099967766,59.5197500000004L630.005099967766,67.0117400000004C630.005099967766,69.0928600000004,628.340199967766,70.3415300000004,625.010299967766,70.3415300000004L540.497399967766,70.3415300000004 540.497399967766,91.5688500000003 625.010299967766,91.5688500000003C643.324099967766,91.5688500000003,652.481199967766,84.0768600000003,652.481199967766,69.5090700000003L652.481199967766,57.0224100000002C652.064899967766,42.4546400000002,642.907899967766,34.9626400000003,625.010299967766,34.9626400000003z
-    </Geometry>
-    <Geometry x:Key="NoesisGuiTextGeometry">
-        M218.200700106049,67.01174C218.200700106049,69.09286,216.535800106049,70.34153,213.205900106049,70.34153L153.648800106049,70.34153C150.319100106049,70.34153,148.237800106049,69.09286,148.237800106049,67.01174L148.237800106049,0.416200000000003 125.762100106049,0.416200000000003 125.762100106049,69.50907C125.762100106049,84.49309,134.918800106049,91.98508,153.232600106049,91.98508L212.789900106049,91.98508C231.103500106049,91.98508,240.260500106049,84.49309,240.260500106049,69.92531L240.260500106049,2.5410988417629E-21 217.784500106049,2.5410988417629E-21 217.784500106049,67.01174z
-        M251.914700106049,2.5410988417629E-21L274.390700106049,2.5410988417629E-21 274.390700106049,91.15265 251.914700106049,91.15265z
-        M64.3942001060486,35.79507L64.3942001060486,58.27109 92.2812001060488,58.27109 92.2812001060488,70.34153 27.4707001060488,70.34153C24.1410001060485,70.34153,22.0598001060485,68.67665,22.0598001060485,65.76311L22.0598001060485,25.80576C22.0598001060485,22.89222,23.7246001060485,21.2273399999999,27.4707001060488,21.2273399999999L112.259700106049,21.2273399999999 112.259700106049,2.5410988417629E-21 27.4707001060488,2.5410988417629E-21C9.15670010604844,2.5410988417629E-21,1.06048446468776E-07,7.49199999999996,1.06048446468776E-07,22.05977L1.06048446468776E-07,68.67665C1.06048446468776E-07,83.66065,9.15670010604844,91.15265,27.4707001060488,91.15265L114.757000106049,91.15265 114.757000106049,35.37888 64.3942001060486,35.37888z
-    </Geometry>
+    <LinearGradientBrush x:Key="QuestLog.Brush.SelectedGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Offset="0" Color="#FF077AC8"/>
+        <GradientStop Offset="1" Color="#FF0AC1EB"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="QuestLog.Brush.PurpleGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Offset="0" Color="#FF6B45BD"/>
+        <GradientStop Offset="1" Color="#FF301E63"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="QuestLog.Brush.PanelGradient" EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.8">
+        <GradientStop Offset="0" Color="#FF121C24"/>
+        <GradientStop Offset="1" Color="#FF233748"/>
+    </LinearGradientBrush>
+
+    <Geometry x:Key="QuestLog.Geom.X">M4.86 0l4 6.74H9L13 0h4.72l-6 9.89 6.17 9.89H13.06L9 13H8.85L4.79 19.78H0L6.19 9.89.12 0Z</Geometry>
+    <Geometry x:Key="QuestLog.Geom.Arrow">M224.11,2.8610229E-06 L226.50999,2.8610229E-06 226.50999,1.6400023 225.37,1.6400023 224.78999,1.6400023 213.38,13.05 224.78999,24.460003 225.37,24.460003 226.50999,24.460003 226.50999,26.089999 224.11,26.089999 211.87062,13.860002 0,13.860002 0,12.220003 211.89,12.220003 z M230.91,0 L232.14,0 232.14,2.6200018 232.14,4.3700027 230.89999,5.610003 223.47,13.040003 230.89999,20.460002 232.14,21.700002 232.14,23.449999 232.14,26.090002 230.91,26.090002 230.91,22.450003 221.5,13.040003 230.91,3.6200027 z</Geometry>
+    <Geometry x:Key="QuestLog.Geom.Check">M0,37.11 L7.73,27.84 L18.56,37.11 L57.22,0 L64.95,7.73 L18.56,54.12 z</Geometry>
 
     <ControlTemplate x:Key="CloseButtonTemplate" TargetType="{x:Type Button}">
-        <Border x:Name="Bg" Background="#002AA6E2" BorderBrush="#7F2AA6E2" BorderThickness="1.2">
+        <Grid x:Name="TemplateRoot" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Stretch" >
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualStateGroup.Transitions>
-                        <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver"/>
-                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.2"/>
+                        <VisualTransition GeneratedDuration="0:0:0.3" To="MouseOver">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <BackEase EasingMode="EaseOut" Amplitude="0.8"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition From="MouseOver" GeneratedDuration="0:0:0.3">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <BackEase EasingMode="EaseOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                        <VisualTransition GeneratedDuration="0:0:0.2" To="Pressed">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <SineEase EasingMode="EaseInOut"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
                     </VisualStateGroup.Transitions>
                     <VisualState x:Name="Normal"/>
                     <VisualState x:Name="MouseOver">
                         <Storyboard>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Bg">
-                                <EasingColorKeyFrame KeyTime="0" Value="#E52AA6E2"/>
-                            </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="Check">
-                                <EasingColorKeyFrame KeyTime="0" Value="#FF1F73A3"/>
-                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="TemplateRoot">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="TemplateRoot">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(LinearGradientBrush.StartPoint)" Storyboard.TargetName="ellipse">
+                                <EasingPointKeyFrame KeyTime="0" Value="0.502,0.984"/>
+                            </PointAnimationUsingKeyFrames>
+                            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(LinearGradientBrush.StartPoint)" Storyboard.TargetName="path">
+                                <EasingPointKeyFrame KeyTime="0" Value="0.559,0.275"/>
+                            </PointAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
-                    <VisualState x:Name="Pressed"/>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(LinearGradientBrush.StartPoint)" Storyboard.TargetName="ellipse1">
+                                <EasingPointKeyFrame KeyTime="0" Value="0.521,-0.464"/>
+                            </PointAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
                     <VisualState x:Name="Disabled"/>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Grid>
-                <Path x:Name="Check" Data="M0,10 L10,0" StrokeThickness="1.2" Stroke="#FF29A6E2" Stretch="Fill" StrokeStartLineCap="Triangle" StrokeEndLineCap="Triangle" Margin="2"/>
-            </Grid>
-        </Border>
+            <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Ellipse x:Name="ellipse" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="15" Height="15" UseLayoutRounding="False">
+                        <Ellipse.Fill>
+                            <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.502,1.172">
+                                <GradientStop Color="#FFFAE9A4" Offset="0"/>
+                                <GradientStop Color="#FFBEAA75" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Ellipse x:Name="ellipse1" Fill="{StaticResource QuestLog.Brush.PurpleGradient}" Stroke="Black" StrokeThickness="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Width="13" Height="13" UseLayoutRounding="False"/>
+                    <Path x:Name="path" Data="{StaticResource QuestLog.Geom.X}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="6.5" Height="6" Stretch="Fill">
+                        <Path.Fill>
+                            <LinearGradientBrush EndPoint="0.502,1.215" StartPoint="0.488,-0.185">
+                                <GradientStop Color="#FFFAE9A4" Offset="0"/>
+                                <GradientStop Color="#FFBEAA75" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Path.Fill>
+                    </Path>
+                </Grid>
+            </Viewbox>
+        </Grid>
     </ControlTemplate>
     <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template" Value="{StaticResource CloseButtonTemplate}"/>
     </Style>
     <ControlTemplate x:Key="QuestListScrollBarButtonTemplate" TargetType="{x:Type RepeatButton}">
-        <Border Background="Transparent"/>
+        <Border Background="Transparent" Width="44" Height="44"/>
     </ControlTemplate>
     <Style x:Key="QuestListScrollBarButtonStyle" TargetType="{x:Type RepeatButton}">
         <Setter Property="Focusable" Value="False"/>
@@ -76,18 +127,30 @@
     <ControlTemplate x:Key="QuestListScrollBarThumbTemplate" TargetType="{x:Type Thumb}">
         <ControlTemplate.Resources>
             <Storyboard x:Key="OverState">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BdTop">
-                    <EasingColorKeyFrame KeyTime="0" Value="#7F2AA6E2"/>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="BdMiddle">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FFA59364"/>
                 </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BdMiddle">
-                    <EasingColorKeyFrame KeyTime="0" Value="#7F2AA6E2"/>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="BdMiddle">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FFDCCD8F"/>
                 </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BdBottom">
-                    <EasingColorKeyFrame KeyTime="0" Value="#7F2AA6E2"/>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="BdTop">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FFDCCD8F"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="BdMiddle">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="BdTop">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FFA59364"/>
+                </ColorAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="BdBottom">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FFA59364"/>
+                </ColorAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="BdBottom">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FFDCCD8F"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
         </ControlTemplate.Resources>
-        <Grid Background="Transparent" noesis:Element.PPAAMode="Disabled">
+        <Grid Background="Transparent" Margin="0,9.5">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualStateGroup.Transitions>
@@ -113,9 +176,30 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2"/>
             </Grid.RowDefinitions>
-            <Path x:Name="BdTop" Grid.Row="0" Data="M0,2 L2,0 4,2z" Fill="#4C2AA6E2" HorizontalAlignment="Center"/>
-            <Rectangle x:Name="BdMiddle" Grid.Row="1" Width="4" Fill="#4C2AA6E2"/>
-            <Path x:Name="BdBottom" Grid.Row="2" Data="M0,0 L2,2 4,0z" Fill="#4C2AA6E2" HorizontalAlignment="Center"/>
+            <Path x:Name="BdTop" Grid.Row="0" Data="M0,1.5 L1.5,0 L3,1.5 z" HorizontalAlignment="Center" VerticalAlignment="Bottom" Opacity="1">
+                <Path.Fill>
+                    <LinearGradientBrush EndPoint="0.5,136.356" StartPoint="0.5,0">
+                        <GradientStop Color="#FF696140" Offset="0"/>
+                        <GradientStop Color="#FF4F462C" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+            <Path x:Name="BdBottom" Grid.Row="2" Data="M3,0 L1.5,1.5 L0,0 z" HorizontalAlignment="Center" Opacity="1">
+                <Path.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,-101.291">
+                        <GradientStop Color="#FF696140" Offset="0"/>
+                        <GradientStop Color="#FF4F462C" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+            <Rectangle x:Name="BdMiddle" Grid.Row="1" Width="3" Opacity="1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1.012" StartPoint="0.5,-0.011">
+                        <GradientStop Color="#FF696140" Offset="0"/>
+                        <GradientStop Color="#FF4F462C" Offset="0.995"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
         </Grid>
     </ControlTemplate>
     <ControlTemplate x:Key="QuestListScrollBarTemplate" TargetType="{x:Type ScrollBar}">
@@ -130,6 +214,7 @@
                 <Thumb Template="{StaticResource QuestListScrollBarThumbTemplate}"/>
             </Track.Thumb>
         </Track>
+
     </ControlTemplate>
     <Style x:Key="QuestListScrollBarStyle" TargetType="{x:Type ScrollBar}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -164,27 +249,99 @@
         <Setter Property="Template" Value="{StaticResource QuestListScrollTemplate}"/>
     </Style>
     <ControlTemplate x:Key="QuestListTemplate" TargetType="{x:Type ListBox}">
-        <Grid Background="Transparent">
+        <Grid Background="Transparent" UseLayoutRounding="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition/>
+                <RowDefinition Height="1"/>
             </Grid.RowDefinitions>
-            <Path Data="M10,0 L130,0 L140,10 140,235 130,245 10,245 0,235 0,10z" Grid.RowSpan="3" Grid.ColumnSpan="3">
-                <Path.Fill>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF163C5E" Offset="0"/>
-                        <GradientStop Color="#FF133857" Offset="1"/>
+            <Rectangle Grid.Column="1" Height="1" Width="Auto">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.998,1.012" StartPoint="0.005,1.017">
+                        <GradientStop Color="#005A492A" Offset="0"/>
+                        <GradientStop Color="#FFB5A684" Offset="0.719"/>
+                        <GradientStop Color="#005A492A" Offset="1"/>
+                        <GradientStop Color="#E8AC9D7B" Offset="0.309"/>
                     </LinearGradientBrush>
-                </Path.Fill>
-            </Path>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Grid.Column="1" Grid.Row="2" Height="1" Width="Auto">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.998,1.012" StartPoint="0.005,1.017">
+                        <GradientStop Color="#005A492A" Offset="0"/>
+                        <GradientStop Color="#FFB5A684" Offset="0.719"/>
+                        <GradientStop Color="#005A492A" Offset="1"/>
+                        <GradientStop Color="#E8AC9D7B" Offset="0.309"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Grid.Column="1" Height="160" Width="Auto" VerticalAlignment="Bottom" Grid.RowSpan="1" Margin="0" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <Rectangle.Fill>
+                    <RadialGradientBrush GradientOrigin="0.501,-0.014" Center="0.501,0.003" RadiusX="0.498">
+                        <GradientStop Color="#FF27ABCE"/>
+                        <GradientStop Color="#E5273657" Offset="0.5"/>
+                        <GradientStop Color="#00273657" Offset="1"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Grid.Column="1" Height="160" Width="Auto" VerticalAlignment="Top" Grid.RowSpan="1" Margin="0" Grid.Row="1">
+                <Rectangle.Fill>
+                    <RadialGradientBrush GradientOrigin="0.5,-0.005" Center="0.5,0.012" RadiusX="0.495">
+                        <GradientStop Color="#FF27ABCE" Offset="0.009"/>
+                        <GradientStop Color="#E5273657" Offset="0.5"/>
+                        <GradientStop Color="#00273657" Offset="1"/>
+                    </RadialGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid Width="8" Height="252" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="1" >
+                <Path x:Name="ArrowTopPath" Data="M4,3.2 L6.9000001,6.0999999 8,6.0999999 8,6.5 7.1999998,6.5 6.6999998,6.5 6.3000002,6.0999999 4,3.8 1.7,6.0999999 1.3,6.5 0.79999995,6.5 0,6.5 0,6.0999999 1.1,6.0999999 z M4,0 L8,4 8,4.6999998 7.5,4.6999998 7.5,4.4000001 7.5,4.1999998 4,0.70000005 0.5,4.1999998 0.5,4.4000001 0.5,4.6999998 0,4.6999998 0,4 z"  Width="8" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Path.Fill>
+                        <LinearGradientBrush EndPoint="0.493,2.156" StartPoint="0.51,0.14">
+                            <GradientStop Color="#FFB5A684"/>
+                            <GradientStop Color="#005A492A" Offset="1"/>
+                            <GradientStop Color="#F1B0A17F" Offset="0.328"/>
+                        </LinearGradientBrush>
+                    </Path.Fill>
+                </Path>
+                <Canvas x:Name="ScrollBackgroundPath"  Width="5" Height="235.1" Canvas.Left="0" Canvas.Top="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Path Fill="{StaticResource QuestLog.Brush.VampireBlack}" Data="M2.5 235.1L2.5 235.1c-1-1-1.5-1.5-2.5-2.5V2.5C1 1.5 1.5 1 2.5 0l0 0C3.5 1 4 1.5 5 2.5v230.1C4 233.6 3.5 234.1 2.5 235.1  z"/>
+                    <Path  x:Name="path4832"  Stroke="{StaticResource QuestLog.Brush.GunMetal}" StrokeThickness="0.5" Data="M2.5 232.3L2.5 232.3c-0.4-0.4-0.6-0.6-1-1V3.6c0.4-0.4 0.6-0.6 1-1h0c0.4 0.4 0.6 0.6 1 1v227.8  C3.1 231.7 2.9 232 2.5 232.3z"/>
+                </Canvas>
+                <Path x:Name="ArrowBottomPath" Data="M4,3.2 L6.9000001,6.0999999 8,6.0999999 8,6.5 7.1999998,6.5 6.6999998,6.5 6.3000002,6.0999999 4,3.8 1.7,6.0999999 1.3,6.5 0.79999995,6.5 0,6.5 0,6.0999999 1.1,6.0999999 z M4,0 L8,4 8,4.6999998 7.5,4.6999998 7.5,4.4000001 7.5,4.1999998 4,0.70000005 0.5,4.1999998 0.5,4.4000001 0.5,4.6999998 0,4.6999998 0,4 z"  Width="8" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                    <Path.Fill>
+                        <LinearGradientBrush EndPoint="0.493,2.156" StartPoint="0.51,0.14">
+                            <GradientStop Color="#FFB5A684" Offset="1"/>
+                            <GradientStop Color="#005A492A" Offset="0.59"/>
+                            <GradientStop Color="#F1B0A17F" Offset="0.43"/>
+                        </LinearGradientBrush>
+                    </Path.Fill>
+                </Path>
+            </Grid>
+
+
             <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource QuestListScrollStyle}">
-                <ItemsPresenter/>
+                <ItemsPresenter Margin="0,2"/>
             </ScrollViewer>
         </Grid>
     </ControlTemplate>
@@ -208,49 +365,71 @@
                         <VisualTransition From="Checked" GeneratedDuration="0:0:0.2"/>
                     </VisualStateGroup.Transitions>
                     <VisualState x:Name="Checked">
+
+                    </VisualState>
+                    <VisualState x:Name="Unchecked">
                         <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(Brush.Opacity)" Storyboard.TargetName="Check">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="Bd">
-                                <EasingColorKeyFrame KeyTime="0" Value="#FFE5C94D"/>
-                            </ColorAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Check">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CheckBlur">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                            </ObjectAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
-                    <VisualState x:Name="Unchecked"/>
                     <VisualState x:Name="Indeterminate"/>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Rectangle x:Name="Bd" Width="10" Height="10">
-                <Rectangle.Stroke>
-                    <SolidColorBrush Color="#FF6A795D"/>
-                </Rectangle.Stroke>
-            </Rectangle>
-            <Path x:Name="Check" Data="M0,3 L2,5 5,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Path.Stroke>
-                    <SolidColorBrush Color="#FFE5C94D" Opacity="0"/>
-                </Path.Stroke>
-            </Path>
+
+            <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Width="11.26" Height="9.1">
+                <Grid>
+                    <Path x:Name="CheckBlur" Data="{StaticResource ResourceKey=QuestLog.Geom.Check}" Fill="{StaticResource QuestLog.Brush.Turquoise}" RenderTransformOrigin="0.5,0.5" Opacity="0.8" >
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                        <Path.Effect>
+                            <BlurEffect Radius="40"/>
+                        </Path.Effect>
+                    </Path>
+                    <Path x:Name="Check" Data="{StaticResource ResourceKey=QuestLog.Geom.Check}" Fill="{StaticResource QuestLog.Brush.SelectedGradient}" />
+                </Grid>
+            </Viewbox>
         </Grid>
     </ControlTemplate>
     <ControlTemplate x:Key="QuestListItemTemplate" TargetType="{x:Type ListBoxItem}">
         <ControlTemplate.Resources>
             <Storyboard x:Key="SelectState">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="Bd">
-                    <EasingColorKeyFrame KeyTime="0" Value="#FF1C6590"/>
-                </ColorAnimationUsingKeyFrames>
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="Bd">
-                    <EasingColorKeyFrame KeyTime="0" Value="#FF2AA6E2"/>
-                </ColorAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Bd">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="QuestItemGrid">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="8"/>
                 </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ContentHost">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="10"/>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FFBDAB77"/>
+                </ColorAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                    <EasingColorKeyFrame KeyTime="0" Value="#FF6B6453"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="QuestItemGrid">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1.05"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="QuestItemGrid">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="1.05"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
         </ControlTemplate.Resources>
-        <Grid Margin="0,0,0,4">
+        <Grid x:Name="QuestItemGrid" RenderTransformOrigin="0.5,0.5" Height="21.252" Width="152" Margin="4,2,0,2" UseLayoutRounding="False">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="SelectionStates">
                     <VisualStateGroup.Transitions>
@@ -281,13 +460,14 @@
                     <VisualState x:Name="SelectedUnfocused" Storyboard="{StaticResource SelectState}"/>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Border x:Name="Bd" Padding="4,4,4,5">
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                        <GradientStop Color="#FF174568" Offset="0"/>
-                        <GradientStop Color="#FF153B5D" Offset="0.93"/>
-                    </LinearGradientBrush>
-                </Border.Background>
+            <Viewbox Width="140" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Grid>
+                    <Path Fill="{StaticResource QuestLog.Brush.VampireBlack}" Data="M364.68 25.8 349.77 10.9 339.68.8a2.78 2.78 0 0 0-1.94-.8h-310A2.76 2.76 0 0 0 25.8.8l-25 25a2.75 2.75 0 0 0 0 3.88l25 25a2.76 2.76 0 0 0 1.94.8h310a2.78 2.78 0 0 0 1.94-.8L355.6 38.75l9.08-9.07A2.76 2.76 0 0 0 364.68 25.8Z"/>
+                    <Path x:Name="path" Fill="#FF6B6453" Data="M336.91 4.74l9.51 9.51 13.49 13.49-7.66 7.66L336.91 50.74H28.57l-23-23 23-23H336.91m.83-2h-310l-25 25h0l25 25h310l25-25h0l-25-25Z"/>
+                    <Path x:Name="path1" Fill="#FF2D2C3A" Data="M335.67 47.74H29.81l-20-20 20-20H335.67l20 20Zm-305-2h304.2l18-18-18-18H30.64l-18 18Z"/>
+                </Grid>
+            </Viewbox>
+            <Border x:Name="Bd">
                 <Grid x:Name="ContentHost" RenderTransformOrigin="0.5,0.5">
                     <Grid.RenderTransform>
                         <TransformGroup>
@@ -298,19 +478,19 @@
                         </TransformGroup>
                     </Grid.RenderTransform>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <CheckBox IsChecked="{Binding Completed, Mode=OneWay}" IsEnabled="False"
-                                HorizontalAlignment="Center" VerticalAlignment="Center"
-                                Template="{StaticResource QuestListItemCompletedTemplate}"/>
-                    <ContentPresenter Grid.Column="1" VerticalAlignment="Center"/>
+                                HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Template="{StaticResource QuestListItemCompletedTemplate}" Margin="0,4.35,3,4.35" Height="12" Width="12"/>
+                    <ContentPresenter Grid.Column="1" VerticalAlignment="Center" Height="11.574" Margin="0,3.563"/>
                 </Grid>
             </Border>
         </Grid>
     </ControlTemplate>
     <Style x:Key="QuestListItemStyle" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Foreground" Value="#FF80C4EA"/>
+        <Setter Property="Foreground" Value="{StaticResource QuestLog.Brush.DarkVanilla}"/>
         <Setter Property="FontSize" Value="10"/>
         <Setter Property="Template" Value="{StaticResource QuestListItemTemplate}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -325,5 +505,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>

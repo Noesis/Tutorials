@@ -51,7 +51,7 @@ ViewModel::ViewModel()
         q->title = "Nature's Uprising";
         q->image = image0;
         q->difficulty = QuestDifficulty::Easy;
-        q->description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nPellentesque molestie dolor ac leo convallis, non fermentum felis lobortis. Vivamus id turpis nibh.\n\nSed feugiat massa dolor, commodo hendrerit lectus dapibus sit amet.";
+        q->description = "\u201cThe timeless, tireless jaws of nature, which shaped our world since its inception, shall one day devour us all.\u201d";
         q->completed = false;
 
         _quests->Add(q);
@@ -61,7 +61,7 @@ ViewModel::ViewModel()
         q->title = "Calming the Wake";
         q->image = image1;
         q->difficulty = QuestDifficulty::Normal;
-        q->description = "Nullam volutpat felis eget lorem dictum sodales.\nNulla egestas porttitor ipsum ut tincidunt. Nullam varius justo quis mi pulvinar rutrum at a ligula.\n\nAenean efficitur dolor vel elit varius, sit amet convallis nulla rutrum.";
+        q->description = "\u201cThe rangers warned us of reports of malevolent evil energy swelling and pouring out of the dark Marshes.\u201d";
         q->completed = true;
 
         _quests->Add(q);
@@ -71,7 +71,7 @@ ViewModel::ViewModel()
         q->title = "Tomen's Curiosity";
         q->image = image2;
         q->difficulty = QuestDifficulty::Easy;
-        q->description = "Quisque nec tortor in tortor.\nVestibulum tincidunt porttitor sit amet justo. Vestibulum vehicula, dui et vehicula finibus, est nunc efficitur sem, in tempus dolor dolor accumsan enim.\n\nUt rhoncus et orci quis vehicula. Nam bibendum at augue sit amet iaculis.";
+        q->description = "\u201cBack to camp from the battle, lieutenant Tomen awaits your return with the loot of last night's skirmish.\u201d";
         q->completed = false;
 
         _quests->Add(q);
@@ -81,7 +81,7 @@ ViewModel::ViewModel()
         q->title = "Forest in Dispair";
         q->image = image0;
         q->difficulty = QuestDifficulty::Normal;
-        q->description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nPellentesque molestie dolor ac leo convallis, non fermentum felis lobortis. Vivamus id turpis nibh.\n\nSed feugiat massa dolor, commodo hendrerit lectus dapibus sit amet.";
+        q->description = "\u201cWild animals are growing more and more aggressive near Eastburg, and our men suffers constant attacks from wolves!\u201d";
         q->completed = true;
 
         _quests->Add(q);
@@ -91,7 +91,7 @@ ViewModel::ViewModel()
         q->title = "Retaliation";
         q->image = image1;
         q->difficulty = QuestDifficulty::Easy;
-        q->description = "Nullam volutpat felis eget lorem dictum sodales.\nNulla egestas porttitor ipsum ut tincidunt. Nullam varius justo quis mi pulvinar rutrum at a ligula.\n\nAenean efficitur dolor vel elit varius, sit amet convallis nulla rutrum.";
+        q->description = "\u201cThe goblins are among the most ancient and bitter rivals of the Dwarven brethen, and yet again we should clash.\u201d";
         q->completed = true;
 
         _quests->Add(q);
@@ -101,7 +101,7 @@ ViewModel::ViewModel()
         q->title = "Living Hearts";
         q->image = image2;
         q->difficulty = QuestDifficulty::Easy;
-        q->description = "Quisque nec tortor in tortor.\nVestibulum tincidunt porttitor sit amet justo. Vestibulum vehicula, dui et vehicula finibus, est nunc efficitur sem, in tempus dolor dolor accumsan enim.\n\nUt rhoncus et orci quis vehicula. Nam bibendum at augue sit amet iaculis.";
+        q->description = "\u201cVenture into the depths of this land, and old lover's curse may be a blessing in disguise near the BrokenHeart's Well.\u201d";
         q->completed = false;
 
         _quests->Add(q);
@@ -111,7 +111,7 @@ ViewModel::ViewModel()
         q->title = "Scout their Defenses";
         q->image = image0;
         q->difficulty = QuestDifficulty::Easy;
-        q->description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nPellentesque molestie dolor ac leo convallis, non fermentum felis lobortis. Vivamus id turpis nibh.\n\nSed feugiat massa dolor, commodo hendrerit lectus dapibus sit amet.";
+        q->description = "\u201cElwin believes that you can score a telling blow against the Black Ogres and their masters in the northern Amberwood.\u201d";
         q->completed = false;
 
         _quests->Add(q);
@@ -121,7 +121,7 @@ ViewModel::ViewModel()
         q->title = "Rescue the Leader";
         q->image = image1;
         q->difficulty = QuestDifficulty::Hard;
-        q->description = "Nullam volutpat felis eget lorem dictum sodales.\nNulla egestas porttitor ipsum ut tincidunt. Nullam varius justo quis mi pulvinar rutrum at a ligula.\n\nAenean efficitur dolor vel elit varius, sit amet convallis nulla rutrum.";
+        q->description = "\u201cEnter into their dwelling and release as many of the captives as possible. Find them quickly!\u201d";
         q->completed = true;
 
         _quests->Add(q);
@@ -131,7 +131,7 @@ ViewModel::ViewModel()
         q->title = "Golden Oportunity";
         q->image = image2;
         q->difficulty = QuestDifficulty::Hard;
-        q->description = "Quisque nec tortor in tortor.\nVestibulum tincidunt porttitor sit amet justo. Vestibulum vehicula, dui et vehicula finibus, est nunc efficitur sem, in tempus dolor dolor accumsan enim.\n\nUt rhoncus et orci quis vehicula. Nam bibendum at augue sit amet iaculis.";
+        q->description = "\u201cYou restored the good name of the Purple Guard, and master Proudbeard is delighted at what you have done.\u201d";
         q->completed = false;
 
         _quests->Add(q);
@@ -141,7 +141,7 @@ ViewModel::ViewModel()
         q->title = "Loyal Subordinates";
         q->image = image2;
         q->difficulty = QuestDifficulty::Easy;
-        q->description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nPellentesque molestie dolor ac leo convallis, non fermentum felis lobortis. Vivamus id turpis nibh.\n\nSed feugiat massa dolor, commodo hendrerit lectus dapibus sit amet.";
+        q->description = "\u201cYou have helped us before, and if you continue to do so we will not forget it. Neither will the Orcs, to be sure.\u201d";
         q->completed = true;
 
         _quests->Add(q);
@@ -151,7 +151,7 @@ ViewModel::ViewModel()
         q->title = "Legacy of the Past";
         q->image = image1;
         q->difficulty = QuestDifficulty::Normal;
-        q->description = "Nullam volutpat felis eget lorem dictum sodales.\nNulla egestas porttitor ipsum ut tincidunt. Nullam varius justo quis mi pulvinar rutrum at a ligula.\n\nAenean efficitur dolor vel elit varius, sit amet convallis nulla rutrum.";
+        q->description = "\u201cWord of your deeds travelled far, and you became much sought-after by those who have need of such a champion!\u201d";
         q->completed = true;
 
         _quests->Add(q);
@@ -161,7 +161,7 @@ ViewModel::ViewModel()
         q->title = "Purging the Dead";
         q->image = image2;
         q->difficulty = QuestDifficulty::Hard;
-        q->description = "Quisque nec tortor in tortor.\nVestibulum tincidunt porttitor sit amet justo. Vestibulum vehicula, dui et vehicula finibus, est nunc efficitur sem, in tempus dolor dolor accumsan enim.\n\nUt rhoncus et orci quis vehicula. Nam bibendum at augue sit amet iaculis.";
+        q->description = "\u201cI think he said he hid it in a tall tree east of the River Falls in the Autumn Valley. Beware of the Necromancer!\u201d";
         q->completed = false;
 
         _quests->Add(q);

@@ -6,42 +6,41 @@
     xmlns:local="clr-namespace:QuestLog"
     xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
     mc:Ignorable="d"
-    FontFamily="./#Aero Matics"
-    Foreground="#FF488EB5"
+    FontFamily="./#Gentium Book Basic"
+    Foreground="#FFD0C9AA"
     Title="NoesisGUI - QuestLog"
-    d:DesignWidth="1280" d:DesignHeight="720" d:DataContext="{d:DesignInstance {x:Type local:ViewModel}, IsDesignTimeCreatable=True}">
-
+    d:DesignWidth="1280" d:DesignHeight="720" d:DataContext="{d:DesignInstance {x:Type local:ViewModel}, IsDesignTimeCreatable=True}" Background="{x:Null}">
     <Window.Resources>
         <Storyboard x:Key="Intro">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Dialog">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Dialog">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut" Amplitude="0.2"/>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Dialog">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CubicEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="Dialog">
-                <DiscreteBooleanKeyFrame KeyTime="0:0:0.6" Value="True"/>
+                <DiscreteBooleanKeyFrame KeyTime="0:0:0.7" Value="True"/>
             </BooleanAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="Close">
@@ -77,43 +76,18 @@
             </BooleanAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="QuestSelected">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="QuestFade">
-                <EasingColorKeyFrame KeyTime="0" Value="#FF1B5A85"/>
-                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#001B5A85">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <SineEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="QuestTitle">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-30"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CircleEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="QuestDescription">
-                <EasingColorKeyFrame KeyTime="0" Value="#0099E0FF"/>
-                <EasingColorKeyFrame KeyTime="0:0:0.7" Value="#FF99E0FF">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="QuestCompleted">
-                <EasingColorKeyFrame KeyTime="0" Value="#00E5C94D"/>
-                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#00E5C94D"/>
-                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FFE5C94D">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="QuestCompleted">
                 <EasingDoubleKeyFrame KeyTime="0" Value="10"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="10"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CircleEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
@@ -121,8 +95,8 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="QuestCompleted">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.75"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.75"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <BackEase EasingMode="EaseOut" Amplitude="1"/>
                     </EasingDoubleKeyFrame.EasingFunction>
@@ -130,16 +104,64 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="QuestCompleted">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.75"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.75"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <BackEase EasingMode="EaseOut" Amplitude="1"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="QuestCompleted">
+                <EasingColorKeyFrame KeyTime="0" Value="#0009D1E4"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#0009D1E4"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FF09D1E4"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="QuestTitle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="QuestCompleteCheck">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="QuestCompleteCheck">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="QuestCheckBlur">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="QuestCheck">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-15"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
-
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
             <b:ControlStoryboardAction Storyboard="{StaticResource Intro}"/>
@@ -148,8 +170,10 @@
             <b:ControlStoryboardAction Storyboard="{StaticResource Intro}"/>
         </b:StoryboardCompletedTrigger>
     </b:Interaction.Triggers>
-
-    <Grid x:Name="LayoutRoot" Background="{StaticResource NoesisLogoBg}">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/Background.png" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="95*"/>
             <RowDefinition Height="800*"/>
@@ -160,8 +184,9 @@
             <ColumnDefinition Width="900*"/>
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
-        <Viewbox Grid.Column="1" Grid.Row="1" noesis:Element.PPAAMode="Disabled">
-            <Grid x:Name="Dialog" Width="400" Height="300" RenderTransformOrigin="0.5,0.5">
+        <Viewbox Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+
+            <Grid x:Name="Dialog" Width="403" Height="314.5" RenderTransformOrigin="0.5,0.5">
                 <Grid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -171,155 +196,248 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="7"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="7"/>
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="16"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="5"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="34*"/>
+                    <RowDefinition Height="217*"/>
+                    <RowDefinition Height="12.5"/>
                 </Grid.RowDefinitions>
-                <Border Grid.Column="1">
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#00000000" Offset="0"/>
-                            <GradientStop Color="#3F000000" Offset="1"/>
+                <Viewbox Grid.RowSpan="5" Grid.ColumnSpan="3" >
+                    <Canvas Width="1075.1" Height="839.1" Canvas.Left="0" Canvas.Top="0">
+                        <Path x:Name="Panel" Fill="{StaticResource QuestLog.Brush.PanelGradient}" Data="M15.3 837c-1.1 0-2-0.9-2-2c0-5.1-4.2-9.3-9.3-9.3c-1.1 0-2-0.9-2-2V15.3c0-1.1 0.9-2 2-2c5.2 0 9.3-4.1 9.3-9.3  c0-1.1 0.9-2 2-2h1044.4c1.1 0 2 0.9 2 2c0 5.1 4.2 9.3 9.3 9.3c1.1 0 2 0.9 2 2v808.4c0 1.1-0.9 2-2 2c-5.1 0-9.3 4.2-9.3 9.3  c0 1.1-0.9 2-2 2H15.3z"/>
+                        <Path x:Name="FrameLine" Data="M1055.4 9.3c1.5 4.6 5 8.2 9.5 10v800.3c-4.5 1.8-7.9 5.5-9.5 10H19.7c-1.5-4.6-5-8.2-9.5-10V19.4  c4.5-1.8 7.9-5.5 9.5-10L1055.4 9.3 M1057 7.2H18.1c-1.2 5.1-5 9.2-10 10.7v803.3c5 1.5 8.8 5.6 10 10.7H1057c1.2-5.1 5-9.2 10-10.7  V17.9C1062 16.4 1058.1 12.3 1057 7.2L1057 7.2z">
+                            <Path.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF6B6453" Offset="0.186"/>
+                                    <GradientStop Color="#FF6B6453" Offset="0.992"/>
+                                    <GradientStop Color="#006B6453" Offset="0.126"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path x:Name="FrameOuterLine" Data="M1059.7 4c0 6.3 5.1 11.3 11.3 11.3v808.4c-6.3 0-11.3 5.1-11.3 11.3H15.3c0-6.3-5.1-11.3-11.3-11.3V15.3  c6.3 0 11.3-5 11.3-11.3H1059.7 M1059.7 0H15.3c-2.2 0-4 1.8-4 4c0 4.1-3.2 7.3-7.3 7.3c-2.2 0-4 1.8-4 4v808.4c0 2.2 1.8 4 4 4  c4 0 7.3 3.3 7.3 7.3c0 2.2 1.8 4 4 4h1044.4c2.2 0 4-1.8 4-4c0-4 3.3-7.3 7.3-7.3c2.2 0 4-1.8 4-4V15.3c0-2.2-1.8-4-4-4  c-4 0-7.3-3.3-7.3-7.3C1063.7 1.8 1061.9 0 1059.7 0L1059.7 0z">
+                            <Path.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF15181A" Offset="0"/>
+                                    <GradientStop Color="#FF2C2D37" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                    </Canvas>
+                </Viewbox>
+                <Viewbox Grid.RowSpan="2" Grid.ColumnSpan="3" VerticalAlignment="Top" Margin="0" >
+                    <Canvas Width="1075.1" Height="118.5" Canvas.Left="0" Canvas.Top="0">
+                        <Path x:Name="PanelHeaderPathOuter" Data="M1071 11.3c-4 0-7.3-3.3-7.3-7.3c0-2.2-1.8-4-4-4H15.3c-2.2 0-4 1.8-4 4c0 4.1-3.2 7.3-7.3 7.3c-2.2 0-4 1.8-4 4V94  c0 2.2 1.8 4 4 4c4 0 7.3 3.3 7.3 7.3c0 2.2 1.8 4 4 4h472.6l2.4 2.4c0.8 0.8 1.8 1.2 2.8 1.2c1.1 0 2.1-0.4 2.8-1.2l2.4-2.4h561.4  c2.2 0 4-1.8 4-4c0-4 3.3-7.3 7.3-7.3c2.2 0 4-1.8 4-4V15.3C1075 13.1 1073.2 11.3 1071 11.3z">
+                            <Path.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF1B1138" Offset="0"/>
+                                    <GradientStop Color="#FF020909" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path x:Name="PanelHeaderPath" Data="M1059.7 4H15.3c0 6.3-5 11.3-11.3 11.3V94c6.2 0 11.3 5 11.3 11.3h474.3l3.5 3.5l3.5-3.5h563.1   c0-6.2 5-11.3 11.3-11.3V15.3C1064.8 15.3 1059.7 10.3 1059.7 4z">
+                            <Path.Fill>
+                                <RadialGradientBrush Center="0.467,0.019" GradientOrigin="0.467,0.019" RadiusY="5.15" RadiusX="0.578">
+                                    <GradientStop Color="#FF6B45BD" Offset="0"/>
+                                    <GradientStop Color="#FF301E63" Offset="0.612"/>
+                                    <GradientStop Color="#E52A2757" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path x:Name="PanelHeaderDetails" Data="M472.19999,95.900013 L473.9,95.900013 473.9,97.000004 473.9,97.60001 485.19999,109.00002 496.69999,97.60001 496.69999,97.000004 496.69999,95.900013 498.19999,95.900013 498.19999,98.300007 485.19999,111.30002 472.19999,98.300007 z M505.69999,95.899998 L507.19999,95.899998 502.9,100.2 498.19999,100.2 499.4,99.10001 502.4,99.10001 z M463.19999,95.899998 L464.9,95.899998 468.10001,99.10001 471.10001,99.10001 472.19999,100.2 467.60001,100.2 z M11.600004,2.2000122 C10,6.7000141 6.5999994,10.400015 2.1000061,12.20001 L2.1000061,24.6 2.3000021,24.800013 C2.1999998,24.800014 2.1999998,24.900013 2.1000061,24.900002 L2.1000061,82.700024 2.1000061,82.80003 C6.5999994,84.600018 10.1,88.200016 11.600004,92.700001 L476.10001,92.700001 485.00001,101.60001 491.69999,94.899998 493.9,92.700001 1047.3,92.700001 C1048.9,88.200016 1052.3,84.500011 1056.8,82.700024 L1056.8,24.1 1056.8,12.100002 C1052.3,10.300014 1048.8,6.7000141 1047.3,2.2000122 z M9.9999981,0 L1048.9,0 C1050,5.1000147 1053.9,9.2000141 1058.9,10.70001 L1058.9,22.50001 1058.9,84.200024 1058.6,84.30003 C1053.7,85.900013 1050.1,89.900013 1048.9,94.899998 L494.69999,94.899998 484.9,104.70002 475.10001,94.899998 9.9999981,94.899998 C8.8999996,89.800014 5.0999994,85.700016 0.1000061,84.200024 L0,84.30003 0,84.200024 0,23.300013 0,10.70001 C5,9.2000141 8.7999992,5.1000147 9.9999981,0 z" Height="111.3" Canvas.Left="8.1" Stretch="Fill" Canvas.Top="7.2" Width="1058.9">
+                            <Path.Fill>
+                                <RadialGradientBrush RadiusY="4.404" GradientOrigin="0.456,0.249">
+                                    <GradientStop Color="#FFFAE9A4" Offset="0.042"/>
+                                    <GradientStop Color="#FF4F3F2F" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                    </Canvas>
+                </Viewbox>
+
+                <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontFamily="./#Dungeon" Text="Quest Log" Margin="0,8,34,0" Foreground="#FF221546">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1.15"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontFamily="./#Dungeon" Text="Quest Log" Margin="0,7,34,0" >
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1.15"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="0.488,0.875" StartPoint="0.49,0.501">
+                            <GradientStop Color="#FFFAE9A4" Offset="0"/>
+                            <GradientStop Color="#FFBEAA75" Offset="1"/>
                         </LinearGradientBrush>
-                    </Border.Background>
-                </Border>
-                <Border Grid.Column="1" Grid.Row="2">
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#00000000" Offset="1"/>
-                            <GradientStop Color="#3F000000"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                </Border>
-                <Border Grid.Row="1">
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                            <GradientStop Color="#00000000"/>
-                            <GradientStop Color="#3F000000" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                </Border>
-                <Border Grid.Column="2" Grid.Row="1">
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                            <GradientStop Color="#00000000" Offset="1"/>
-                            <GradientStop Color="#3F000000"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                </Border>
-                <Border>
-                    <Border.Background>
-                        <RadialGradientBrush GradientOrigin="1,1" Center="1,1" RadiusX="1" RadiusY="1">
-                            <GradientStop Color="#00000000" Offset="1"/>
-                            <GradientStop Color="#3F000000"/>
-                        </RadialGradientBrush>
-                    </Border.Background>
-                </Border>
-                <Border Grid.Column="2">
-                    <Border.Background>
-                        <RadialGradientBrush GradientOrigin="0,1" Center="0,1" RadiusX="1" RadiusY="1">
-                            <GradientStop Color="#00000000" Offset="1"/>
-                            <GradientStop Color="#3F000000"/>
-                        </RadialGradientBrush>
-                    </Border.Background>
-                </Border>
-                <Border Grid.Row="2">
-                    <Border.Background>
-                        <RadialGradientBrush GradientOrigin="1,0" Center="1,0" RadiusX="1" RadiusY="1">
-                            <GradientStop Color="#00000000" Offset="1"/>
-                            <GradientStop Color="#3F000000"/>
-                        </RadialGradientBrush>
-                    </Border.Background>
-                </Border>
-                <Border Grid.Column="2" Grid.Row="2">
-                    <Border.Background>
-                        <RadialGradientBrush GradientOrigin="0,0" Center="0,0" RadiusX="1" RadiusY="1">
-                            <GradientStop Color="#00000000" Offset="1"/>
-                            <GradientStop Color="#3F000000"/>
-                        </RadialGradientBrush>
-                    </Border.Background>
-                </Border>
-                <Grid Grid.Column="1" Grid.Row="1" noesis:Element.PPAAMode="Default">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
-                        <RowDefinition Height="10"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="10"/>
-                    </Grid.RowDefinitions>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <Button Background="#7F2AA6DC" Style="{StaticResource CloseButtonStyle}" Grid.Column="1" Width="17" Height="17" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,8,0,0">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ControlStoryboardAction Storyboard="{StaticResource Close}"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </Button>
+                <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="166"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Path Margin="0,15,0,0" Data="M30.000002,15.000004 L19.999998,25.000001 19.999998,250 30.000002,260 150,260 160,250 170,260 356,260 366,250 366,25.000001 356,15.000004 170,15.000004 160,25.000001 150,15.000004 z M25,0 L160,0 170,5.0000013 216,5.0000013 226,0 360,0 365,5.0000013 386,5.0000013 386,270 0,270 0,5.0000013 19.999998,5.0000013 z" Stretch="Fill" Grid.ColumnSpan="3" Grid.RowSpan="4">
-                        <Path.Fill>
-                            <RadialGradientBrush GradientOrigin="0.5,0.1" Center="0.5,0.1" RadiusY="0.7" RadiusX="0.6">
-                                <GradientStop Color="#FF194E79" Offset="0.75"/>
-                                <GradientStop Color="#FF235986"/>
-                                <GradientStop Color="#FF154064" Offset="1"/>
-                            </RadialGradientBrush>
-                        </Path.Fill>
-                    </Path>
-                    <Path Grid.ColumnSpan="3" Data="M168,2.0000039 L158,11.000001 171,18 215,18 228,11.000001 218,2.0000039 z M0,0 L386,0 386,20.000004 365,20.000004 360,15.000003 226,15.000003 216,20.000004 170,20.000004 160,15.000003 25,15.000003 19.999998,20.000004 0,20.000004 z" Stretch="Fill">
-                        <Path.Fill>
-                            <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                                <GradientStop Color="#FF154368" Offset="0"/>
-                                <GradientStop Color="#FF143F62" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Path.Fill>
-                    </Path>
-                    <Path Data="M0,9 L10,0 60,0 70,9 57,16 13,16z" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#FF113A5D"/>
-                    <Grid>
-                        <Viewbox x:Name="Logo" Stretch="Uniform" Margin="5,4,3,4">
-                            <Path Data="{StaticResource NoesisLogoGeometry}" Fill="#7F2AA6E2" Stretch="Uniform"/>
-                        </Viewbox>
-                    </Grid>
-                    <TextBlock Text="QUEST LOG" FontSize="10.667" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
-                    <Button Grid.Column="2" Margin="4" Background="#7F2AA6DC" Style="{StaticResource CloseButtonStyle}">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="Click">
-                                <b:ControlStoryboardAction Storyboard="{StaticResource Close}"/>
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                    </Button>
-                    <Grid Grid.Column="1" Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="140"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <ListBox x:Name="Quests" Style="{StaticResource QuestListStyle}"
+                    <ListBox x:Name="Quests" Style="{StaticResource QuestListStyle}"
                             ItemContainerStyle="{StaticResource QuestListItemStyle}"
                             ItemsSource="{Binding Quests}"
                             SelectedItem="{Binding SelectedQuest}"
                             DisplayMemberPath="Title">
-                            <b:Interaction.Triggers>
-                                <b:EventTrigger>
-                                    <noesis:SetFocusAction/>
-                                </b:EventTrigger>
-                                <b:EventTrigger EventName="SelectionChanged">
-                                    <b:ControlStoryboardAction Storyboard="{StaticResource QuestSelected}"/>
-                                    <b:PlaySoundAction x:Name="SelectionSoundAction" Source="Sounds/WaterDropSmall.mp3" Volume="0.2" IsEnabled="False"/>
-                                    <b:ChangePropertyAction TargetName="SelectionSoundAction" PropertyName="IsEnabled" Value="True"/>
-                                </b:EventTrigger>
-                            </b:Interaction.Triggers>
-                        </ListBox>
-                        <Border Grid.Column="1">
-                            <Grid>
-                                <Path Data="M0,10 L10,0 196,0 206,10 206,235 196,245 10,245 0,235z M10,10 L196,10 196,235 10,235z" Fill="{StaticResource NoesisLogoBlueBg}"/>
-                                <Grid Margin="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="55"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding SelectedQuest.Image}"/>
-                                    <Border Background="#C0123553" noesis:Element.PPAAMode="Disabled">
-                                        <TextBlock x:Name="QuestTitle" Text="{Binding SelectedQuest.Title}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" RenderTransformOrigin="0.5,0.5">
+                        <b:Interaction.Triggers>
+                            <b:EventTrigger>
+                                <noesis:SetFocusAction/>
+                            </b:EventTrigger>
+                            <b:EventTrigger EventName="SelectionChanged">
+                                <b:ControlStoryboardAction Storyboard="{StaticResource QuestSelected}"/>
+                                <b:PlaySoundAction x:Name="SelectionSoundAction" Source="Sounds/WaterDropSmall.mp3" Volume="0.2" IsEnabled="False"/>
+                                <b:ChangePropertyAction TargetName="SelectionSoundAction" PropertyName="IsEnabled" Value="True"/>
+                            </b:EventTrigger>
+                        </b:Interaction.Triggers>
+                    </ListBox>
+                    <Border x:Name="border" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Margin="6,0,0,0">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <Grid>
+                            <Viewbox Width="197.8" Height="251">
+                                <Canvas Width="527.69" Height="669.92">
+                                    <Path Fill="{StaticResource QuestLog.Brush.VampireBlack}" Data="M523.69 28.34A24.37 24.37 0 0 1 499.35 4a4 4 0 0 0-4-4h-463a4 4 0 0 0-4 4A24.37 24.37 0 0 1 4 28.34a4 4 0 0 0-4 4V637.58a4 4 0 0 0 4 4 24.37 24.37 0 0 1 24.34 24.34 4 4 0 0 0 4 4h463a4 4 0 0 0 4-4 24.37 24.37 0 0 1 24.34-24.34 4 4 0 0 0 4-4V32.34A4 4 0 0 0 523.69 28.34Z"/>
+                                    <Path x:Name="OuterFrame" Fill="{StaticResource QuestLog.Brush.GoldFusion}" Data="M491.6 8a32.41 32.41 0 0 0 28.09 28.1V633.82a32.41 32.41 0 0 0-28.09 28.1H36.1A32.43 32.43 0 0 0 8 633.82V36.1A32.43 32.43 0 0 0 36.1 8H491.6m3.75-4h-463A28.34 28.34 0 0 1 4 32.34V637.58a28.34 28.34 0 0 1 28.34 28.34h463a28.34 28.34 0 0 1 28.34-28.34V32.34A28.34 28.34 0 0 1 495.35 4Z"/>
+                                    <Path x:Name="InnerFrame" Fill="{StaticResource QuestLog.Brush.Coffee}" Data="M489 658.92H38.65l-.17-.78a35.52 35.52 0 0 0-26.7-26.7l-.78-.18V38.66l.78-.18a35.53 35.53 0 0 0 26.7-26.7l.17-.78H489l.17.78a35.53 35.53 0 0 0 26.7 26.7l.78.18v592.6l-.78.18a35.52 35.52 0 0 0-26.7 26.7Zm-448.79-2h447.2a37.51 37.51 0 0 1 27.24-27.25V40.25A37.51 37.51 0 0 1 487.45 13H40.25A37.54 37.54 0 0 1 13 40.25V629.67A37.53 37.53 0 0 1 40.25 656.92Z"/>
+                                    <Path x:Name="CenterPanel" Data="M484.44 17a41.25 41.25 0 0 0 26.25 26.25V626.67a41.25 41.25 0 0 0-26.25 26.25H43.25A41.25 41.25 0 0 0 17 626.67V43.25A41.25 41.25 0 0 0 43.25 17H484.44" >
+                                        <Path.Fill>
+                                            <LinearGradientBrush EndPoint="0.557,0.034" StartPoint="0.544,1.007">
+                                                <GradientStop Color="#FF081218" Offset="0"/>
+                                                <GradientStop Color="#FF121C24" Offset="0.31"/>
+                                                <GradientStop Color="#FF233748" Offset="0.67"/>
+                                                <GradientStop Color="#FF081218" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Path.Fill>
+                                    </Path>
+                                </Canvas>
+                            </Viewbox>
+                            <Grid Margin="6.55,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="36"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Margin="0,5,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="16*"/>
+                                        <ColumnDefinition Width="8*"/>
+                                        <ColumnDefinition Width="16*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Viewbox x:Name="QuestCompleteCheck" Visibility="{Binding SelectedQuest.Completed, Converter={StaticResource boolToVisibility}, Mode=OneWay}" Height="18" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                        <Viewbox.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Viewbox.RenderTransform>
+                                        <Grid>
+                                            <Path x:Name="QuestCheckBlur" Data="{StaticResource ResourceKey=QuestLog.Geom.Check}" Fill="{StaticResource QuestLog.Brush.Turquoise}" Opacity="0.8" >
+                                                <Path.Effect>
+                                                    <BlurEffect Radius="20"/>
+                                                </Path.Effect>
+                                            </Path>
+                                            <Path x:Name="QuestCheck" Data="{StaticResource ResourceKey=QuestLog.Geom.Check}" Fill="{StaticResource QuestLog.Brush.SelectedGradient}" />
+                                        </Grid>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="75">
+                                        <Path Data="{StaticResource QuestLog.Geom.Arrow}" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                            <Path.Fill>
+                                                <LinearGradientBrush EndPoint="1.76,0.458" Opacity="0.5" StartPoint="0.027,0.534">
+                                                    <GradientStop Color="#005A492A" Offset="0"/>
+                                                    <GradientStop Color="#FFB5A684" Offset="0.47"/>
+                                                    <GradientStop Color="#FFB5A684" Offset="0.57"/>
+                                                    <GradientStop Color="#005A492A" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Path.Fill>
+                                        </Path>
+                                    </Viewbox>
+                                    <Viewbox Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75">
+                                        <Path Data="{StaticResource QuestLog.Geom.Arrow}" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="-1"/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                            <Path.Fill>
+                                                <LinearGradientBrush EndPoint="1.76,0.458" Opacity="0.5" StartPoint="0.027,0.534">
+                                                    <GradientStop Color="#005A492A" Offset="0"/>
+                                                    <GradientStop Color="#FFB5A684" Offset="0.47"/>
+                                                    <GradientStop Color="#FFB5A684" Offset="0.57"/>
+                                                    <GradientStop Color="#005A492A" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Path.Fill>
+                                        </Path>
+                                    </Viewbox>
+                                </Grid>
+                                <Image Grid.Row="1" Source="{Binding SelectedQuest.Image}" Margin="1,0"/>
+                                <Border Grid.Row="2">
+                                    <Grid Margin="12,6">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="23*"/>
+                                            <RowDefinition Height="16*" />
+                                            <RowDefinition Height="20*"/>
+                                            <RowDefinition Height="40*" />
+                                            <RowDefinition Height="28*" />
+                                        </Grid.RowDefinitions>
+                                        <Rectangle Height="0.5" VerticalAlignment="Top" Margin="0,3,0,0" >
+                                            <Rectangle.Fill>
+                                                <LinearGradientBrush EndPoint="0.998,0" Opacity="0.5" StartPoint="0.003,0">
+                                                    <GradientStop Color="#005A492A" Offset="0"/>
+                                                    <GradientStop Color="#FFB5A684" Offset="0.47"/>
+                                                    <GradientStop Color="#FFB5A684" Offset="0.57"/>
+                                                    <GradientStop Color="#005A492A" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                        <Viewbox Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill" Height="16" Margin="0,2,0,0" Width="160.9" Grid.RowSpan="2">
+                                            <Grid Height="20.289" Width="837.73">
+                                                <Path Data="M440.07001,2.0900038 L441.64001,2.0900038 437.31,6.420009 432.70001,6.420009 433.81,5.3100075 436.85001,5.3100075 z M406.60001,2.0900038 L408.23999,2.0900038 408.23999,3.2400016 408.23999,3.810007 419.64999,15.220005 431.06,3.810007 431.06,3.2400016 431.06,2.0900038 432.70001,2.0900038 432.70001,4.4900016 419.64999,17.539999 406.60001,4.4900016 z M397.66,2.0900038 L399.23001,2.0900038 402.45001,5.3100075 405.48999,5.3100075 406.60001,6.420009 402,6.420009 z M167.24226,5.5511151E-17 L408.92001,0 410.67001,0 411.91,1.2400012 419.32999,8.6700095 426.76001,1.2400012 428,0 429.75,0 674.79895,6.3260833E-15 674.79895,1.2200031 428.75,1.2200031 419.32999,10.640013 409.92001,1.2200031 167.24226,1.2200031 z" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill" Height="8">
+                                                    <Path.Fill>
+                                                        <LinearGradientBrush EndPoint="0.991,0.268" Opacity="0.5" StartPoint="0.005,0.289">
+                                                            <GradientStop Color="#005A492A"/>
+                                                            <GradientStop Color="#FFB5A684" Offset="0.47"/>
+                                                            <GradientStop Color="#FFB5A684" Offset="0.57"/>
+                                                            <GradientStop Color="#005A492A" Offset="1"/>
+                                                        </LinearGradientBrush>
+                                                    </Path.Fill>
+                                                </Path>
+                                            </Grid>
+                                        </Viewbox>
+                                        <TextBlock x:Name="QuestTitle"  Text="{Binding SelectedQuest.Title}" HorizontalAlignment="Center" VerticalAlignment="Bottom"  RenderTransformOrigin="0.5,0.5"  FontWeight="Bold" FontSize="16">
                                             <TextBlock.RenderTransform>
                                                 <TransformGroup>
                                                     <ScaleTransform/>
@@ -329,38 +447,29 @@
                                                 </TransformGroup>
                                             </TextBlock.RenderTransform>
                                         </TextBlock>
-                                    </Border>
-                                    <Border Grid.Row="2" Background="#FF1B608F" Padding="5" noesis:Element.PPAAMode="Disabled">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="Auto"/>
-                                            </Grid.RowDefinitions>
-                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                                <TextBlock Text="Difficulty:" FontSize="9" Foreground="White" Margin="0,0,5,0"/>
-                                                <TextBlock Text="{Binding SelectedQuest.Difficulty}" FontSize="9" Foreground="Aqua"/>
-                                            </StackPanel>
-                                            <TextBlock x:Name="QuestDescription" Grid.Row="1" TextWrapping="Wrap" FontSize="10" Foreground="#FF99E0FF"
-                                                Text="{Binding SelectedQuest.Description}"/>
-                                            <TextBlock x:Name="QuestCompleted" Grid.Row="2" FontSize="12" Text="COMPLETED!" Foreground="#FFE5C94D" HorizontalAlignment="Center"
-                                                Visibility="{Binding SelectedQuest.Completed, Converter={StaticResource boolToVisibility}, Mode=OneWay}" RenderTransformOrigin="0.5,0.5">
-                                                <TextBlock.RenderTransform>
-                                                    <TransformGroup>
-                                                        <ScaleTransform/>
-                                                        <SkewTransform/>
-                                                        <RotateTransform/>
-                                                        <TranslateTransform/>
-                                                    </TransformGroup>
-                                                </TextBlock.RenderTransform>
-                                            </TextBlock>
-                                        </Grid>
-                                    </Border>
-                                    <Border x:Name="QuestFade" Background="#001B5A85" Grid.RowSpan="3"/>
-                                </Grid>
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,2" Grid.Row="2">
+                                            <TextBlock Text="Difficulty:" FontSize="10" Margin="0,0,5,0" />
+                                            <TextBlock Text="{Binding SelectedQuest.Difficulty}" FontSize="10" Foreground="{StaticResource QuestLog.Brush.Aquamarine}"/>
+                                        </StackPanel>
+                                        <TextBlock x:Name="QuestDescription" Grid.Row="3" TextWrapping="Wrap" FontSize="9"  Foreground="{StaticResource QuestLog.Brush.MistyMoss}" 
+                                                   Text="{Binding SelectedQuest.Description}"/>
+                                        <TextBlock x:Name="QuestCompleted" Grid.Row="4" FontSize="12" Text="COMPLETED!" Foreground="#FF09D1E4"
+                                                   Visibility="{Binding SelectedQuest.Completed, Converter={StaticResource boolToVisibility}, Mode=OneWay}" RenderTransformOrigin="0.5,0.5"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Top">
+                                            <TextBlock.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </TextBlock.RenderTransform>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
                             </Grid>
-                        </Border>
-                    </Grid>
+                        </Grid>
+                    </Border>
                 </Grid>
             </Grid>
         </Viewbox>

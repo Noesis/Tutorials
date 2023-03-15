@@ -20,7 +20,9 @@
 #include "App.xaml.bin.h"
 #include "Resources.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
-#include "Aero Matics Regular.ttf.bin.h"
+#include "Dungeon.ttf.bin.h"
+#include "GentiumBookBasic.ttf.bin.h"
+#include "Background.png.bin.h"
 #include "Image0.png.bin.h"
 #include "Image1.png.bin.h"
 #include "Image2.png.bin.h"
@@ -60,7 +62,8 @@ private:
     {
         EmbeddedFont fonts[] = 
         {
-            { "", Aero_Matics_Regular_ttf }
+            { "", Dungeon_ttf },
+            { "", GentiumBookBasic_ttf }
         };
 
         return *new EmbeddedFontProvider(fonts);
@@ -70,6 +73,7 @@ private:
     {
         EmbeddedTexture textures[] = 
         {
+            { "Images/Background.png", Background_png },
             { "Images/Image0.png", Image0_png },
             { "Images/Image1.png", Image1_png },
             { "Images/Image2.png", Image2_png }
