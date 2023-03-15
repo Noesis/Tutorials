@@ -1,0 +1,156 @@
+<UserControl x:Class="BackgroundBlur.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+  xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+  mc:Ignorable="d"
+  d:DesignWidth="1920" d:DesignHeight="1080"
+  TextElement.FontFamily="./#Rajdhani SemiBold">
+
+  <UserControl.Resources>
+    <ResourceDictionary Source="Resources.xaml"/>
+  </UserControl.Resources>
+
+  <Grid x:Name="LayoutRoot">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="3*"/>
+      <ColumnDefinition Width="4*"/>
+      <ColumnDefinition Width="3*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="2*"/>
+      <RowDefinition Height="6*"/>
+      <RowDefinition Height="2*"/>
+    </Grid.RowDefinitions>
+
+        <Border x:Name="source" Grid.RowSpan="3" Grid.ColumnSpan="3" Background="{StaticResource BackgroundBlur.Brush.Background}"/>
+        <Viewbox x:Name="Panel" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+      <b:Interaction.Behaviors>
+        <b:MouseDragElementBehavior ConstrainToParentBounds="True"/>
+      </b:Interaction.Behaviors>
+
+      <Grid x:Name="PanelGrid">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Bottom Shape -->
+        <Path x:Name="BottomPanelBlur" Grid.Row="1" Data="{StaticResource BackgroundBlur.Geometry.Bottom}">
+          <b:Interaction.Behaviors>
+            <noesis:BackgroundEffectBehavior Source="{Binding ElementName=source}">
+              <BlurEffect Radius="{Binding Value, ElementName=BottomBlurRadius}"/>
+            </noesis:BackgroundEffectBehavior>
+          </b:Interaction.Behaviors>
+        </Path>
+        <Path x:Name="BottomPanelColor" Grid.Row="1" Data="{StaticResource BackgroundBlur.Geometry.Bottom}" Fill="{StaticResource BackgroundBlur.Brush.Bottom.Gradient}" Stroke="{StaticResource BackgroundBlur.Brush.Border}" Margin="0,-1,0,0" Opacity="0.5">
+          <Path.Effect>
+            <DropShadowEffect Direction="270" Opacity="0.365" BlurRadius="20" ShadowDepth="18"/>
+          </Path.Effect>
+        </Path>
+        <Path x:Name="DecorLeft" Grid.Row="1" Data="{StaticResource BackgroundBlur.Geometry.Decor.Bottom}" Fill="{StaticResource BackgroundBlur.Brush.Decor.BottomLeft.Gradient}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="-0.5,0,0,0" Opacity="0.7"/>
+        <Path x:Name="DecorRight" Grid.Row="1" Data="{StaticResource BackgroundBlur.Geometry.Decor.Bottom}" Fill="{StaticResource BackgroundBlur.Brush.Decor.BottomRight.Gradient}" VerticalAlignment="Bottom" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Opacity="0.7">
+          <Path.RenderTransform>
+            <ScaleTransform ScaleX="-1"/>
+          </Path.RenderTransform>
+        </Path>
+
+        <!-- Bottom Content -->
+        <Grid x:Name="BottomContent" Grid.Row="1" Margin="0,5,0,0" KeyboardNavigation.DirectionalNavigation="Cycle">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <TextBlock Height="20" Margin="0" Grid.Row="0" Text="ACRYLIC  SAMPLE" VerticalAlignment="Center" TextAlignment="Center" Foreground="{StaticResource BackgroundBlur.Brush.Foreground}" Effect="{StaticResource BackgroundBlur.Effect.TextShadow}"/>
+          <StackPanel x:Name="DecorLine" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,11">
+            <Path x:Name="LineLeft" Data="{StaticResource BackgroundBlur.Geometry.Detail.Left}" Stretch="Uniform" VerticalAlignment="Center" >
+              <Path.Fill>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                  <GradientStop Color="#007BC0F6" Offset="0"/>
+                  <GradientStop Color="{StaticResource BackgroundBlur.Color.Aero}" Offset="0.7"/>
+                  <GradientStop Color="{StaticResource BackgroundBlur.Color.Gainsboro}" Offset="1"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+            <Path x:Name="LineCenter" Data="{StaticResource BackgroundBlur.Geometry.Detail.Center}" Stretch="Uniform" VerticalAlignment="Center" >
+              <Path.Fill>
+                <SolidColorBrush Color="{StaticResource BackgroundBlur.Color.Gainsboro}"/>
+              </Path.Fill>
+            </Path>
+            <Path x:Name="LineRight" Data="{StaticResource BackgroundBlur.Geometry.Detail.Left}" Stretch="Uniform" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+              <Path.RenderTransform>
+                <TransformGroup>
+                  <ScaleTransform ScaleX="-1"/>
+                  <SkewTransform/>
+                  <RotateTransform/>
+                  <TranslateTransform/>
+                </TransformGroup>
+              </Path.RenderTransform>
+              <Path.Fill>
+                <LinearGradientBrush EndPoint="1,1" StartPoint="0,1">
+                  <GradientStop Color="#007BC0F6" Offset="0"/>
+                  <GradientStop Color="{StaticResource BackgroundBlur.Color.Aero}" Offset="0.7"/>
+                  <GradientStop Color="{StaticResource BackgroundBlur.Color.Gainsboro}" Offset="1"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+          </StackPanel >
+          <Grid x:Name="SlidersGrid" Width="190" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="40*"/>
+              <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="5"/>
+              <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Height="15" Margin="0,2,0,0" Grid.Row="0" Grid.Column="0" Text="TOP EFFECT" Foreground="{StaticResource BackgroundBlur.Brush.Text}" FontSize="10" Effect="{StaticResource BackgroundBlur.Effect.TextShadow}" HorizontalAlignment="Left"/>
+            <TextBlock Height="15" Margin="0,2,0,0" Grid.Row="2" Grid.Column="0" Text="BOTTOM EFFECT" Foreground="{StaticResource BackgroundBlur.Brush.Text}" FontSize="10" Effect="{StaticResource BackgroundBlur.Effect.TextShadow}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Slider x:Name="TopBlurRadius" Grid.Row="0" Grid.Column="1" Value="20" Style="{StaticResource BackgroundBlur.Slider}" VerticalAlignment="Center"/>
+            <Slider x:Name="BottomBlurRadius" Grid.Row="2" Grid.Column="1" Value="10" Style="{StaticResource BackgroundBlur.Slider}" VerticalAlignment="Center"/>
+          </Grid>
+          <Grid x:Name="ButtonsGrid" Width="140" Grid.Row="3" Margin="0,18,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition />
+              <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Margin="0,0,7,0" Style="{StaticResource BackgroundBlur.ButtonBlue}">ACCEPT</Button>
+            <Button Grid.Column="1" Margin="7,0,0,0" Style="{StaticResource BackgroundBlur.ButtonYellow}">CANCEL</Button>
+          </Grid>
+        </Grid>
+
+        <!-- Top Shape -->
+        <Path x:Name="TopPanelBlur" Grid.Row="0" Data="{StaticResource BackgroundBlur.Geometry.Top}">
+          <b:Interaction.Behaviors>
+            <noesis:BackgroundEffectBehavior Source="{Binding ElementName=source}">
+              <BlurEffect Radius="{Binding Value, ElementName=TopBlurRadius}"/>
+            </noesis:BackgroundEffectBehavior>
+          </b:Interaction.Behaviors>
+        </Path>
+        <Path x:Name="TopPanelColor" Grid.Row="0" Data="{StaticResource BackgroundBlur.Geometry.Top}" Fill="{StaticResource BackgroundBlur.Brush.Top.Gradient}" Stroke="{StaticResource BackgroundBlur.Brush.Border}" Opacity="0.7">
+          <Path.Effect>
+            <DropShadowEffect Direction="270" Opacity="0.35" ShadowDepth="8" BlurRadius="20"/>
+          </Path.Effect>
+        </Path>
+        <Path x:Name="DecorTop" Grid.Row="0" Data="{StaticResource BackgroundBlur.Geometry.Decor.Top}" Fill="{StaticResource BackgroundBlur.Brush.Decor.Gradient}" VerticalAlignment="Top"/>
+        <Ellipse x:Name="LineHighlight" Grid.Row="0" Fill="{StaticResource BackgroundBlur.Brush.Decor.Gradient}" Height="1" VerticalAlignment="Bottom" Width="250"/>
+
+        <!-- Top Content -->
+        <Viewbox x:Name="LogoViewbox" Grid.Row="0" Stretch="Uniform" HorizontalAlignment="Center" Width="135" Margin="0,2,0,0" Effect="{StaticResource BackgroundBlur.Effect.TextShadow}">
+          <StackPanel x:Name="Logo" Orientation="Horizontal">
+            <Path x:Name="Shape" Data="{StaticResource BackgroundBlur.Geometry.Logo}" Fill="{StaticResource BackgroundBlur.Brush.NoesisLogoBlueBg}" Stretch="Uniform"/>
+            <Path x:Name="Noesis" Data="{StaticResource BackgroundBlur.Geometry.NoesisText}" Fill="White" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+            <Path x:Name="GUI" Data="{StaticResource BackgroundBlur.Geometry.GuiText}" Fill="{StaticResource BackgroundBlur.Brush.NoesisLogoBlueBg}" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
+          </StackPanel>
+        </Viewbox>
+      </Grid>
+
+    </Viewbox>
+
+  </Grid>
+</UserControl>
