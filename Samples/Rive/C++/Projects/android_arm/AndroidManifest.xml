@@ -1,0 +1,33 @@
+<manifest
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.noesis.Samples.Rive"
+  android:versionCode="12357"
+  android:versionName="3.2.0rc1">
+
+  <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="29" />
+  <uses-permission android:name="android.permission.INTERNET" />
+
+  <application
+    android:icon="@mipmap/ic_launcher"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:label="Rive">
+
+    <activity
+      android:name=".NoesisNativeActivity"
+      android:label="Rive"
+      android:configChanges="screenSize|orientation|keyboardHidden"
+      android:screenOrientation="landscape"
+      android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+
+      <meta-data
+        android:name="android.app.lib_name"
+        android:value="Samples_Rive" />
+
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+
+    </activity>
+  </application>
+</manifest>
