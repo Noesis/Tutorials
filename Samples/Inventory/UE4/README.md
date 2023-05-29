@@ -19,8 +19,6 @@ This is a demo that shows how to implement a drag and drop based UI forn an inve
 
 * [AnimatedNumber.h](Source/Inventory/AnimatedNumber.h), [AnimatedNumber.cpp](Source/Inventory/AnimatedNumber.cpp): Implement an `UserControl` used for the animated stats for the character.
 
-* [MainWindow.h](Source/Inventory/MainWindow.h): Implements a minimal code-behind for [MainWindow.xaml](Assets/MainWindow.xaml).
-
 * [InventoryGame.cpp](Source/Inventory/InventoryGame.cpp): Implements a minimal game module that registers the NoesisGUI native components.
 
 ### Blueprint
