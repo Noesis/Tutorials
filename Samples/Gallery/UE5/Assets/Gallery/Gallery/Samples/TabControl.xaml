@@ -1,0 +1,128 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="TabControl"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._TabControl.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="TabControl provides the user with a collection of tabs that can be used to display several pages but only one at a time."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/3013afb35ef609a7bbf7836cd53f5676" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="SelectedContent"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Content being shown by the TabControl is defined by each TabItem and exposed through the</Run>
+            <Run FontWeight="Bold">SelectedContent</Run>
+            <Run>property.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TabControl Width="360" Height="200">
+          <TabItem Header="Page 1">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+              </Grid.RowDefinitions>
+              <Rectangle Grid.RowSpan="2" Margin="5" Fill="Teal"/>
+              <Rectangle Grid.Row="0" Grid.Column="1" Margin="5" Fill="Turquoise"/>
+              <Rectangle Grid.Row="0" Grid.Column="2" Margin="5" Fill="Aquamarine"/>
+              <Rectangle Grid.Row="1" Grid.Column="1" Margin="5" Fill="CadetBlue"/>
+              <Rectangle Grid.Row="1" Grid.Column="2" Margin="5" Fill="PaleTurquoise"/>
+            </Grid>
+          </TabItem>
+          <TabItem Header="Page 2">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+              </Grid.ColumnDefinitions>
+              <Rectangle Grid.RowSpan="2" Margin="5" Fill="Turquoise" Height="60" VerticalAlignment="Top"/>
+              <TextBlock Grid.Column="1" TextWrapping="Wrap" Margin="5"
+                         Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at sem at tortor vulputate mattis. Proin eu ipsum sagittis, faucibus diam eu, ultricies felis. Nulla luctus lacus sapien, ac tempor elit consequat ut."/>
+            </Grid>
+          </TabItem>
+          <TabItem Header="Page 3">
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+              </Grid.RowDefinitions>
+              <TextBlock Text="TabControl" FontSize="20" FontWeight="Bold" Margin="5"/>
+              <TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="5"
+                         Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at sem at tortor vulputate mattis. Proin eu ipsum sagittis, faucibus diam eu, ultricies felis. Nulla luctus lacus sapien, ac tempor elit consequat ut."/>
+            </Grid>
+          </TabItem>
+        </TabControl>
+      </Grid>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/d9d30e38a824637247ee9cb185cc11fe" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="ItemsSource and item visualization"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>When TabControl is data bound to a collection of tabs, using its</Run>
+            <Run FontWeight="Bold">ContentTemplate</Run>
+            <Run>property you can define how the content for all tabs will be represented.</Run>
+          </TextBlock>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>Tab's header is rendered using TabControl's</Run>
+            <Run FontWeight="Bold">ItemTemplate</Run>
+            <Run>property.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel.Resources>
+          <GradientStopCollection x:Key="list">
+            <GradientStop x:Name="Tab1" Offset="10" Color="CadetBlue"/>
+            <GradientStop x:Name="Tab2" Offset="20" Color="Turquoise"/>
+            <GradientStop x:Name="Tab3" Offset="30" Color="Aquamarine"/>
+          </GradientStopCollection>
+        </StackPanel.Resources>
+        <TabControl Width="360" Height="210" ItemsSource="{Binding Source={StaticResource list}}">
+          <TabControl.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal">
+                <Rectangle Width="10" Margin="5">
+                  <Rectangle.Fill>
+                    <SolidColorBrush Color="{Binding Color}"/>
+                  </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock Text="{Binding Offset}"/>
+              </StackPanel>
+            </DataTemplate>
+          </TabControl.ItemTemplate>
+          <TabControl.ContentTemplate>
+            <DataTemplate>
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="5"
+                         Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at sem at tortor vulputate mattis. Proin eu ipsum sagittis, faucibus diam eu, ultricies felis. Nulla luctus lacus sapien, ac tempor elit consequat ut."/>
+                <Rectangle Grid.Row="1" Margin="5" Height="{Binding Offset}">
+                  <Rectangle.Fill>
+                    <SolidColorBrush Color="{Binding Color}"/>
+                  </Rectangle.Fill>
+                </Rectangle>
+              </Grid>
+            </DataTemplate>
+          </TabControl.ContentTemplate>
+        </TabControl>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>

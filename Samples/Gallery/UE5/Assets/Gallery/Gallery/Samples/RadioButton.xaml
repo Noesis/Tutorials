@@ -1,0 +1,124 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="RadioButton"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._RadioButton.html">
+
+    <StackPanel>
+        <TextBlock Style="{StaticResource SampleSectionDesc}" Text="Use RadioButton to let user choose between a set of mutually exclusive related options. The IsChecked property of a RadioButton can be set by clicking it, but it can only be cleared programmatically."/>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/ccbbcd99bcc899575fd0ec328153ce89" TabIndex="100">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Implicit grouping"/>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>By default radio buttons are grouped by placing them inside a container.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <RadioButton Content="Option 1" IsChecked="True"/>
+                    <RadioButton Content="Option 2" Margin="0,8,0,0"/>
+                    <RadioButton Content="Option 3" Margin="0,8,0,0"/>
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0">
+                    <RadioButton Content="Option 4" IsChecked="True"/>
+                    <RadioButton Content="Option 5" Margin="0,8,0,0"/>
+                    <RadioButton Content="Option 6" Margin="0,8,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/d874547783fd75054c1fab91e703e448" TabIndex="200">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="GroupName"/>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>The</Run>
+                        <Run FontWeight="Bold">GroupName</Run>
+                        <Run>property can be set to specify different groups of radio buttons inside the same container.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="4" Text="Border:"/>
+                <RadioButton Grid.Row="1" Grid.Column="0" GroupName="BorderBrush" Content="Yellow" Margin="0,8,0,0" IsChecked="True">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="BorderBrush" Value="Yellow" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Grid.Row="1" Grid.Column="1" GroupName="BorderBrush" Content="Cyan" Margin="10,8,0,0">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="BorderBrush" Value="Cyan" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Grid.Row="1" Grid.Column="2" GroupName="BorderBrush" Content="Magenta" Margin="10,8,0,0">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="BorderBrush" Value="Magenta" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Grid.Row="1" Grid.Column="3" GroupName="BorderBrush" Content="Black" Margin="10,8,0,0">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="BorderBrush" Value="Black" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </RadioButton>
+                <TextBlock Grid.Row="2" Grid.ColumnSpan="4" Text="Background:" Margin="0,12,0,0"/>
+                <RadioButton Grid.Row="3" Grid.Column="0" GroupName="Background" Content="Red" Margin="0,8,0,0" IsChecked="True">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="Background" Value="Red" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Grid.Row="3" Grid.Column="1" GroupName="Background" Content="Green" Margin="10,8,0,0">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="Background" Value="Green" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Grid.Row="3" Grid.Column="2" GroupName="Background" Content="Blue" Margin="10,8,0,0">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="Background" Value="Blue" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </RadioButton>
+                <RadioButton Grid.Row="3" Grid.Column="3" GroupName="Background" Content="White" Margin="10,8,0,0">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <b:ChangePropertyAction PropertyName="Background" Value="White" TargetName="Border"/>
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </RadioButton>
+                <Border Grid.Row="4" Grid.ColumnSpan="4" x:Name="Border" Height="50" BorderThickness="10" Margin="0,12,0,0" Background="Red" BorderBrush="Yellow"/>
+            </Grid>
+        </HeaderedContentControl>
+    </StackPanel>
+</HeaderedContentControl>

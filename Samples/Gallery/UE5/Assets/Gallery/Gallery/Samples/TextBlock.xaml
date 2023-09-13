@@ -1,0 +1,105 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="TextBlock"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._TextBlock.html">
+
+    <StackPanel>
+        <TextBlock Style="{StaticResource SampleSectionDesc}" Text="TextBlock is the primary control for displaying read-only text in your app. You tipically display text by setting the Text property to a simple string. You can also display a series of strings in Run elements and give each different formatting."/>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/fbc44f9890ef3407aab3a1016b595682" TabIndex="100">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Text and alignment"/>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold">Text</Run>
+                        <Run>property is used to specify the string content of the TextBlock.</Run>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold">TextAlignment</Run>
+                        <Run>property specifies how text gets aligned within the available space.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <Border BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1" Padding="8,4" Width="100">
+                        <TextBlock Text="Left" TextAlignment="Left"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1" Padding="8,4" Width="101" Margin="-1,0,0,0">
+                        <TextBlock Text="Center" TextAlignment="Center"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1" Padding="8,4" Width="101" Margin="-1,0,0,0">
+                        <TextBlock Text="Right" TextAlignment="Right"/>
+                    </Border>
+                </StackPanel>
+                <Border BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1" Padding="8,4" Width="300" Margin="0,-1,0,0">
+                    <TextBlock Text="Justified text will adjust the size of white spaces so all lines fit perfectly into the width of the container." TextAlignment="Justify" TextWrapping="Wrap"/>
+                </Border>
+            </StackPanel>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/58d75bd9fb3f27a5145abbe8c1bcb913" TabIndex="200">
+            <HeaderedContentControl.Header>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Text wrapping and trimming"/>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run>To wrap text inside a container</Run>
+                        <Run FontWeight="Bold">TextWrapping</Run>
+                        <Run>property must be set to</Run>
+                        <Run FontWeight="Bold">Wrap</Run>
+                        <Run>or</Run>
+                        <Run FontWeight="Bold">WrapWithOverflow</Run><Run>,</Run>
+                        <Run>and the container should have a limited width.</Run>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+                        <Run FontWeight="Bold">TextTrimming</Run>
+                        <Run>property is used to add ellipsis  at character or word boundaries when text doesn't fit inside the available space.</Run>
+                    </TextBlock>
+                </StackPanel>
+            </HeaderedContentControl.Header>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                    <ComboBox x:Name="Wrap" noesis:Text.Placeholder="Select wrapping" FontSize="12" Width="170" Padding="6,4">
+                        <sys:String>NoWrap</sys:String>
+                        <sys:String>Wrap</sys:String>
+                        <sys:String>WrapWithOverflow</sys:String>
+                    </ComboBox>
+                    <ComboBox x:Name="Trim" noesis:Text.Placeholder="Select trimming" FontSize="12" Width="170" Padding="6,4" Margin="10,0,0,0">
+                        <sys:String>None</sys:String>
+                        <sys:String>CharacterEllipsis</sys:String>
+                        <sys:String>WordEllipsis</sys:String>
+                    </ComboBox>
+                </StackPanel>
+                <Border BorderBrush="{DynamicResource Brush.Border.Normal}" BorderThickness="1" Padding="8,4" Width="350">
+                    <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consectetur metus tortor, non accumsan ligula aliquet eu. Nam eu orci sed justo pretium malesuada quis sit amet justo. Proin vestibulum, elit in dignissim pretium, ex neque vestibulum mauris, ac cursus libero lectus eu massa. Sed faucibus sapien felis, quis luctus nibh tincidunt eu. Duis lorem neque, scelerisque ac odio eu, finibus posuere est. Integer posuere diam fringilla, hendrerit tellus ut, laoreet orci. Cras cursus nibh sit amet sagittis lobortis. Nullam gravida purus diam, id imperdiet mi ultrices eget." TextWrapping="{Binding SelectedItem, ElementName=Wrap}" TextTrimming="{Binding SelectedItem, ElementName=Trim}" Height="60"/>
+                </Border>
+            </StackPanel>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/963b71c898b703f1487353175602deab" TabIndex="300">
+            <HeaderedContentControl.Header>
+                <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Text inlines"/>
+            </HeaderedContentControl.Header>
+            <TextBlock Width="350" FontFamily="Fonts/#Muli">
+                <Run FontFamily="Fonts/#Caladea" Foreground="Gray">Text in a TextBlock doesn't have to be a simple string.</Run>
+                <LineBreak/>
+                <Span FontSize="16">Text can be <Bold>bold</Bold>, <Italic>italic</Italic>, or <Underline>underlined</Underline>.</Span>
+            </TextBlock>
+        </HeaderedContentControl>
+        <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/c46e2a8ea0df8487efbcee557969612c" TabIndex="400">
+            <HeaderedContentControl.Header>
+                <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Text coloring"/>
+            </HeaderedContentControl.Header>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Margin="4,0" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Brush.Border.FocusAccent}">FOREGROUND</TextBlock>
+                <TextBlock Margin="4,0" FontSize="18" FontWeight="Bold" Background="{DynamicResource Brush.Border.FocusAccent}">BACKGROUND</TextBlock>
+                <TextBlock Margin="4,0" FontSize="18" FontWeight="Bold" noesis:Text.Stroke="{DynamicResource Brush.Border.FocusAccent}" noesis:Text.StrokeThickness="1">STROKE</TextBlock>
+            </StackPanel>
+        </HeaderedContentControl>
+    </StackPanel>
+</HeaderedContentControl>

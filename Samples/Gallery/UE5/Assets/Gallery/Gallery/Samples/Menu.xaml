@@ -1,0 +1,186 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="Menu"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._Menu.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="The Menu simplifies the creation of basic applications by providing a set of menus at the top of the app window."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/16357af0503441ae267f53c24609c5a0" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="A simple Menu"/>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Menu VerticalAlignment="Top" Width="360">
+          <MenuItem Header="File">
+            <MenuItem Header="New"/>
+            <MenuItem Header="Open"/>
+            <MenuItem Header="Save"/>
+            <MenuItem Header="Exit"/>
+          </MenuItem>
+          <MenuItem Header="Edit">
+            <MenuItem Header="Cut"/>
+            <MenuItem Header="Copy"/>
+            <MenuItem Header="Paste"/>
+          </MenuItem>
+          <MenuItem Header="Help">
+            <MenuItem Header="About"/>
+          </MenuItem>
+        </Menu>
+      </Grid>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/69c4b042d5c995c8610f1786dd77af39" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Key shortcuts"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>To add keyboard shortcuts to specific Menu items user must define command and key bindings. The property</Run>
+            <Run FontWeight="Bold">InputgestureText</Run>
+            <Run>only represents an informative text.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!--<Grid.CommandBindings>
+          <CommandBinding Command="ApplicationCommands.New" Executed="OnNewDocument"/>
+          <CommandBinding Command="ApplicationCommands.Open" Executed="OnOpenDocument"/>
+          <CommandBinding Command="ApplicationCommands.Save" CanExecute="OnCanSaveDocument" Executed="OnSaveDocument"/>
+          <CommandBinding Command="ApplicationCommands.Help" Executed="OnShowHelp"/>
+        </Grid.CommandBindings>-->
+        <Grid.InputBindings>
+          <KeyBinding Command="ApplicationCommands.New" Key="N" Modifiers="Ctrl"/>
+          <KeyBinding Command="ApplicationCommands.Open" Key="O" Modifiers="Ctrl"/>
+          <KeyBinding Command="ApplicationCommands.Save" Key="S" Modifiers="Ctrl"/>
+          <KeyBinding Command="ApplicationCommands.Help" Key="H" Modifiers="Ctrl"/>
+        </Grid.InputBindings>
+        <Menu VerticalAlignment="Top" Width="360">
+          <MenuItem Header="File">
+            <MenuItem Header="New" InputGestureText="Ctrl+N"/>
+            <MenuItem Header="Open" InputGestureText="Ctrl+O"/>
+            <MenuItem Header="Save" InputGestureText="Ctrl+S"/>
+            <MenuItem Header="Exit"/>
+          </MenuItem>
+          <MenuItem Header="Edit">
+            <MenuItem Header="Cut" InputGestureText="Ctrl+X"/>
+            <MenuItem Header="Copy" InputGestureText="Ctrl+C"/>
+            <MenuItem Header="Paste" InputGestureText="Ctrl+P"/>
+          </MenuItem>
+          <MenuItem Header="Help">
+            <MenuItem Header="About" InputGestureText="Ctrl+H"/>
+          </MenuItem>
+        </Menu>
+      </Grid>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/bd0fc99823f0e8c80c8816c8ed4f9fb1" TabIndex="300">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Submenus and toggle entries"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>A</Run>
+            <Run FontWeight="Bold">Separator</Run>
+            <Run>can be used to group menu entries in different blocks.</Run>
+          </TextBlock>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>An entry can be a toggle option by setting</Run>
+            <Run FontWeight="Bold">IsCheckable</Run>
+            <Run>property to true.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Menu VerticalAlignment="Top" Width="360">
+          <MenuItem Header="File">
+            <MenuItem Header="New">
+              <MenuItem Header="Project"/>
+              <MenuItem Header="Document"/>
+            </MenuItem>
+            <MenuItem Header="Open"/>
+            <MenuItem Header="Save"/>
+            <Separator/>
+            <MenuItem Header="Exit"/>
+          </MenuItem>
+          <MenuItem Header="Edit">
+            <MenuItem Header="Cut"/>
+            <MenuItem Header="Copy"/>
+            <MenuItem Header="Paste"/>
+            <Separator/>
+            <MenuItem Header="Find and Replace">
+              <MenuItem Header="Find"/>
+              <MenuItem Header="Replace"/>
+              <Separator/>
+              <MenuItem Header="Find in Files"/>
+              <MenuItem Header="Replace in Files"/>
+            </MenuItem>
+          </MenuItem>
+          <MenuItem Header="View">
+            <MenuItem Header="Show ToolBar" IsCheckable="True"/>
+            <MenuItem Header="Show Console" IsCheckable="True"/>
+          </MenuItem>
+          <MenuItem Header="Help">
+            <MenuItem Header="About"/>
+          </MenuItem>
+        </Menu>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/f5b2438ef900bbc6f4bdac05d8409d83" TabIndex="400">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Icons"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>MenuItem's define the</Run>
+            <Run FontWeight="Bold">Icon</Run>
+            <Run>property to add visual feedback about the menu item action.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Menu VerticalAlignment="Top" Width="360">
+          <MenuItem Header="File">
+            <MenuItem Header="New">
+              <MenuItem.Icon>
+                <Image Source="Images/file.png" Height="16"/>
+              </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Open">
+              <MenuItem.Icon>
+                <Image Source="Images/folder-closed.png" Height="16"/>
+              </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Save">
+              <MenuItem.Icon>
+                <Image Source="Images/floppy-disk.png" Height="16"/>
+              </MenuItem.Icon>
+            </MenuItem>
+            <Separator/>
+            <MenuItem Header="Exit"/>
+          </MenuItem>
+          <MenuItem Header="Edit">
+            <MenuItem Header="Find">
+              <MenuItem.Icon>
+                <Image Source="Images/search.png" Height="16"/>
+              </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Replace"/>
+          </MenuItem>
+          <MenuItem Header="Help">
+            <MenuItem Header="About">
+              <MenuItem.Icon>
+                <Grid>
+                  <Ellipse Fill="#FF005AFF" Stroke="#FF003CA0" Height="16" Width="16"/>
+                  <TextBlock Text="?" FontSize="12" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,-1"/>
+                </Grid>
+              </MenuItem.Icon>
+            </MenuItem>
+          </MenuItem>
+        </Menu>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>

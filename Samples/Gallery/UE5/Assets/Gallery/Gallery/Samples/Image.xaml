@@ -1,0 +1,62 @@
+<HeaderedContentControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1280" d:DesignHeight="1720"
+    Style="{StaticResource SampleControlStyle}"
+    Header="Image"
+    Tag="https://www.noesisengine.com/docs/Gui.Core._Image.html">
+
+  <StackPanel>
+    <TextBlock Style="{StaticResource SampleSectionDesc}" Text="You can use Image control to show and scale images."/>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/abcc8048157d32c6d5b6b8ac1f7b8870" TabIndex="100">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Simple local image"/>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Image Width="360" Source="Images/Nature.png"/>
+      </StackPanel>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/323ef02a8a7a1bc246783e25c8df82a0" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <TextBlock Style="{StaticResource SampleSectionTitle}" Text="Stretch and StretchDirection"/>
+      </HeaderedContentControl.Header>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+          <TextBlock Text="Stretch" Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+          <ComboBox x:Name="stretch" SelectedIndex="0" Width="180">
+            <ComboBoxItem Content="None"/>
+            <ComboBoxItem Content="Fill"/>
+            <ComboBoxItem Content="Uniform"/>
+            <ComboBoxItem Content="UniformToFill"/>
+          </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+          <TextBlock Text="StretchDirection" Width="120" TextAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+          <ComboBox x:Name="stretchDirection" SelectedIndex="0" Width="180">
+            <ComboBoxItem Content="UpOnly"/>
+            <ComboBoxItem Content="DownOnly"/>
+            <ComboBoxItem Content="Both"/>
+          </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+          <Border BorderBrush="Gray" BorderThickness="1" Width="200" Height="160">
+            <Image Source="Images/floppy-disk.png" Stretch="{Binding SelectedItem.Content, ElementName=stretch}" StretchDirection="{Binding SelectedItem.Content, ElementName=stretchDirection}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+          </Border>
+          <StackPanel>
+            <Border BorderBrush="Gray" BorderThickness="1" Width="100" Height="50" Margin="10,0,0,0" VerticalAlignment="Top">
+              <Image Source="Images/floppy-disk.png" Stretch="{Binding SelectedItem.Content, ElementName=stretch}" StretchDirection="{Binding SelectedItem.Content, ElementName=stretchDirection}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border BorderBrush="Gray" BorderThickness="1" Width="100" Height="100" Margin="10,10,0,0" VerticalAlignment="Top">
+              <Image Source="Images/floppy-disk.png" Stretch="{Binding SelectedItem.Content, ElementName=stretch}" StretchDirection="{Binding SelectedItem.Content, ElementName=stretchDirection}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </StackPanel>
+        </StackPanel>
+      </StackPanel>
+    </HeaderedContentControl>
+  </StackPanel>
+</HeaderedContentControl>
