@@ -1,0 +1,376 @@
+<UserControl x:Class="Materials.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+  xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+  xmlns:local="clr-namespace:Materials"
+  FontFamily="./#Exo SemiBold"
+  FontSize="40"
+  Focusable="True">
+
+  <UserControl.Resources>
+    <ImageSource x:Key="FillBlue">fill-blue.png</ImageSource>
+    <ImageSource x:Key="FillGold">fill-gold.png</ImageSource>
+
+    <Color x:Key="LightBlueColor">#FF01BCFF</Color>
+    <Color x:Key="LightBlueOverColor">#FF3BD5FF</Color>
+    <Color x:Key="LightBlueFxColor">#FF86F4FF</Color>
+    <Color x:Key="DarkBlueBdColor">#33245376</Color>
+    <Color x:Key="DarkBlueBdOverColor">#3328889E</Color>
+    <Color x:Key="OrangeColor">#FFFFAB03</Color>
+    <Color x:Key="OrangeOverColor">#FFFFB41F</Color>
+    <Color x:Key="OrangeFxColor">#FFFDF6AB</Color>
+    <Color x:Key="OrangeBdColor">#33565351</Color>
+    <Color x:Key="OrangeBdOverColor">#338B5900</Color>
+
+    <SolidColorBrush x:Key="LightBlue" Color="{StaticResource LightBlueColor}"/>
+    <SolidColorBrush x:Key="DarkBlue" Color="{StaticResource DarkBlueBdColor}"/>
+    <SolidColorBrush x:Key="Orange" Color="{StaticResource OrangeColor}"/>
+    <SolidColorBrush x:Key="DarkOrange" Color="{StaticResource OrangeBdColor}"/>
+    <SolidColorBrush x:Key="NoesisBlue">#FF2AA6E2</SolidColorBrush>
+
+    <ControlTemplate x:Key="PlasmaButtonTemplate" TargetType="Button">
+      <Grid x:Name="ButtonGrid" Background="Transparent" Width="300" RenderTransformOrigin="0.5,0.5">
+        <VisualStateManager.VisualStateGroups>
+          <VisualStateGroup x:Name="CommonStates">
+            <VisualStateGroup.Transitions>
+              <VisualTransition GeneratedDuration="0:0:0.2" From="Pressed">
+                <VisualTransition.GeneratedEasingFunction>
+                  <BackEase EasingMode="EaseOut" Amplitude="0.75"/>
+                </VisualTransition.GeneratedEasingFunction>
+              </VisualTransition>
+              <VisualTransition GeneratedDuration="0:0:0.1" To="Pressed">
+                <VisualTransition.GeneratedEasingFunction>
+                  <SineEase EasingMode="EaseInOut"/>
+                </VisualTransition.GeneratedEasingFunction>
+              </VisualTransition>
+            </VisualStateGroup.Transitions>
+            <VisualState x:Name="Normal"/>
+            <VisualState x:Name="MouseOver"/>
+            <VisualState x:Name="Pressed">
+              <Storyboard>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="InnerGrid" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="0.98"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="InnerGrid" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="0.98"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ButtonCenter" Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                </DoubleAnimationUsingKeyFrames>
+              </Storyboard>
+            </VisualState>
+            <VisualState x:Name="Disabled"/>
+          </VisualStateGroup>
+          <VisualStateGroup x:Name="FocusStates">
+            <VisualStateGroup.Transitions>
+              <VisualTransition GeneratedDuration="0:0:0.2" From="Unfocused" To="Focused">
+                <VisualTransition.GeneratedEasingFunction>
+                  <BackEase EasingMode="EaseInOut" Amplitude="0.75"/>
+                </VisualTransition.GeneratedEasingFunction>
+              </VisualTransition>
+              <VisualTransition GeneratedDuration="0:0:0.3" From="Focused">
+                <VisualTransition.GeneratedEasingFunction>
+                  <PowerEase EasingMode="EaseInOut"/>
+                </VisualTransition.GeneratedEasingFunction>
+              </VisualTransition>
+            </VisualStateGroup.Transitions>
+            <VisualState x:Name="Focused">
+              <Storyboard>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ButtonGrid" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="1.05"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ButtonGrid" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="1.05"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SecondChevron" Storyboard.TargetProperty="(UIElement.Opacity)">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SecondChevron" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="10"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ThirdChevron" Storyboard.TargetProperty="(UIElement.Opacity)">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ThirdChevron" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                  <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <PointAnimationUsingKeyFrames Storyboard.TargetName="bd" Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[0].(LineSegment.Point)">
+                  <EasingPointKeyFrame KeyTime="0" Value="146.556415620437,86.8753217064441"/>
+                </PointAnimationUsingKeyFrames>
+                <PointAnimationUsingKeyFrames Storyboard.TargetName="bd" Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(LineSegment.Point)">
+                  <EasingPointKeyFrame KeyTime="0" Value="149.356415525016,83.9753218084038"/>
+                </PointAnimationUsingKeyFrames>
+                <PointAnimationUsingKeyFrames Storyboard.TargetName="bd" Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[2].(LineSegment.Point)">
+                  <EasingPointKeyFrame KeyTime="0" Value="189.956414141416,43.4753232323231"/>
+                </PointAnimationUsingKeyFrames>
+                <PointAnimationUsingKeyFrames Storyboard.TargetName="bd" Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[3].(LineSegment.Point)">
+                  <EasingPointKeyFrame KeyTime="0" Value="149.5564155182,3.07532465272637"/>
+                </PointAnimationUsingKeyFrames>
+                <PointAnimationUsingKeyFrames Storyboard.TargetName="bd" Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[4].(LineSegment.Point)">
+                  <EasingPointKeyFrame KeyTime="0" Value="146.556415620437,0.0753247582018717"/>
+                </PointAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetName="ButtonCenter" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                  <EasingColorKeyFrame KeyTime="0" Value="#FF12576F"/>
+                </ColorAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetName="ButtonCenter" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                  <EasingColorKeyFrame KeyTime="0" Value="#FF219BFF"/>
+                </ColorAnimationUsingKeyFrames>
+              </Storyboard>
+            </VisualState>
+            <VisualState x:Name="Unfocused"/>
+          </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.Resources>
+          <local:Noise x:Key="NoiseShader" Color="{Binding Background.Color, RelativeSource={RelativeSource TemplatedParent}}"
+                       Seed="{Binding Path=(local:Noise.Seed), RelativeSource={RelativeSource TemplatedParent}}"/>
+          <ImageBrush x:Key="NoiseBrush" Stretch="Uniform" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,300,90"
+                      ImageSource="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"
+                      noesis:Brush.Shader="{StaticResource NoiseShader}"/>
+          <RadialGradientBrush x:Key="VignetteBrush">
+            <GradientStop Offset="0" Color="#FF00BCFF"/>
+            <GradientStop Offset="1" Color="Black"/>
+          </RadialGradientBrush>
+          <LinearGradientBrush x:Key="StripesBrush" SpreadMethod="Repeat" StartPoint="0.344,0.385" EndPoint="0.596,1.262" Opacity="0.2">
+            <GradientStop Offset="0.007" Color="#33000000"/>
+            <GradientStop Offset="0.469" Color="#33000000"/>
+            <GradientStop Offset="0.472" Color="#3301BCFF"/>
+            <GradientStop Offset="0.987" Color="#3301BCFF"/>
+            <GradientStop Offset="0.992" Color="#33000000"/>
+          </LinearGradientBrush>
+        </Grid.Resources>
+        <Grid.RenderTransform>
+          <ScaleTransform />
+        </Grid.RenderTransform>
+        <Viewbox Stretch="Fill">
+          <Grid x:Name="InnerGrid" Width="501.5" Height="86.8" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+              <ScaleTransform/>
+            </Grid.RenderTransform>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="140*"/>
+              <ColumnDefinition Width="111*"/>
+            </Grid.ColumnDefinitions>
+            <Path x:Name="FirstChevron" Grid.ColumnSpan="2" Width="58.2" Height="86.6" Margin="0,0.2,191.795,0"
+                  HorizontalAlignment="Right" VerticalAlignment="Center"
+                  Data="F1M252.5,86.8L267.3,86.8 310.7,43.4 267.5,0.2 252.7,0.2 295.9,43.4z"
+                  Fill="{TemplateBinding Background}" Stretch="Fill"/>
+            <Path x:Name="LineLeft" Width="1.4" Height="57.8" Margin="11.3,14.6,0,14.4"
+                  HorizontalAlignment="Left" VerticalAlignment="Center"
+                  Data="F1M12.7,14.6L11.3,16 11.3,71 12.7,72.4z"
+                  Fill="{TemplateBinding Background}" Stretch="Fill"/>
+            <Path x:Name="ButtonCenter" Grid.ColumnSpan="2" Width="274.6" Height="81" Margin="-198,3,0,2.8"
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                  Data="F1M289,43.4L248.6,3H25.9L14.4,14.5v58L25.9,84h222.6L289,43.4z"
+                  Opacity="0.2" Stretch="Fill"
+                  Fill="{StaticResource VignetteBrush}"/>
+            <Path x:Name="ButtonCenterTop" Grid.ColumnSpan="2" Width="274.6" Height="81" Margin="-198,3,0,2.8"
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                  Data="F1M289,43.4L248.6,3H25.9L14.4,14.5v58L25.9,84h222.6L289,43.4z"
+                  Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"
+                  Fill="{StaticResource StripesBrush}" Stretch="Fill"/>
+            <Path x:Name="SecondChevron" Grid.Column="1" Width="58.2" Height="86.6" Margin="0,0.2,29.1,0"
+                  HorizontalAlignment="Right" VerticalAlignment="Center"
+                  Data="F1M414.2,86.8L429,86.8 472.4,43.4 429.2,0.2 414.4,0.2 457.6,43.4z"
+                  Opacity="0.8" Stretch="Fill"
+                  Fill="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5">
+              <Path.RenderTransform>
+                <TranslateTransform X="-60"/>
+              </Path.RenderTransform>
+            </Path>
+            <Path x:Name="LeftDetail" Width="21.5" Height="86.6" Margin="0,0.2,0,0"
+                  HorizontalAlignment="Left" VerticalAlignment="Center"
+                  Data="F1M21.5,86.8L5.2,70.6 5.2,16.4 21.5,0.2 10,0.2 0,10.2 0,76.8 10,86.8z"
+                  Fill="{TemplateBinding Background}" Stretch="Fill"/>
+            <Path x:Name="ThirdChevron" Grid.Column="1" Width="58.2" Height="86.6" Margin="0,0,0,0.2"
+                  HorizontalAlignment="Right" VerticalAlignment="Center"
+                  Data="F1M457.9,1l42.2,42.2 -42.4,42.4h-12l41.7,-41.7 0.7,-0.7 -0.7,-0.7L445.9,1H457.9M458.3,0h-14.8l43.2,43.2 -43.4,43.4h14.8l43.4,-43.4L458.3,0 458.3,0z"
+                  Opacity="0" Stretch="Fill"
+                  Fill="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5">
+              <Path.RenderTransform>
+                <TranslateTransform X="-30"/>
+              </Path.RenderTransform>
+            </Path>
+            <Path x:Name="LineBottom" Width="222.5" Height="1.4" Margin="25.7,0,0,0"
+                  HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                  Data="F1M248.2,85.4L25.7,85.4 27.1,86.8 246.8,86.8z"
+                  Fill="{TemplateBinding Background}" Stretch="Fill"/>
+            <Path x:Name="LineTop" Width="222.7" Height="1.4" Margin="25.7,0.2,0,0"
+                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Data="F1M247,0.2L27.1,0.2 25.7,1.6 248.4,1.6z"
+                  Fill="{TemplateBinding Background}" Stretch="Fill"/>
+            <Path x:Name="bd" Grid.Column="0" Grid.ColumnSpan="2" Width="259.956" Height="87.223" Margin="0,-0.423,-31.356,0"
+                  HorizontalAlignment="Right" VerticalAlignment="Center"
+                  Stretch="None" noesis:Element.BlendingMode="Screen"
+                  Fill="{StaticResource NoiseBrush}">
+              <Path.OpacityMask>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                  <GradientStop Offset="0.838" Color="Black"/>
+                  <GradientStop Color="#00000000"/>
+                  <GradientStop Offset="1" Color="#00000000"/>
+                  <GradientStop Offset="0.356" Color="Black"/>
+                </LinearGradientBrush>
+              </Path.OpacityMask>
+              <Path.Data>
+                <PathGeometry>
+                  <PathFigure IsClosed="True" StartPoint="2.23696225702952E-05,87.2228497028352">
+                    <LineSegment Point="74.8282098123545,87.2228497028354"/>
+                    <LineSegment Point="77.6282097169335,84.322849804795"/>
+                    <LineSegment Point="118.228208333333,43.8228512287145"/>
+                    <LineSegment Point="77.8282097101175,3.42285264911782"/>
+                    <LineSegment Point="74.8282098123545,0.422852754593316"/>
+                    <LineSegment Point="2.23696225702952E-05,0.422852754592896"/>
+                    <LineSegment Point="40.6000209860228,41.0228513271578"/>
+                    <LineSegment Point="43.4000208906022,43.822851228714"/>
+                    <LineSegment Point="40.6000209860228,46.6228511302703"/>
+                  </PathFigure>
+                </PathGeometry>
+              </Path.Data>
+            </Path>
+            <ContentPresenter Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+          </Grid>
+        </Viewbox>
+      </Grid>
+    </ControlTemplate>
+    <Style x:Key="BlueButton" TargetType="Button">
+      <Setter Property="Margin" Value="0,15"/>
+      <Setter Property="Foreground" Value="{StaticResource LightBlue}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource DarkBlue}"/>
+      <Setter Property="Background" Value="{StaticResource LightBlue}"/>
+      <Setter Property="Tag" Value="{StaticResource FillBlue}"/>
+      <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+      <Setter Property="Template" Value="{StaticResource PlasmaButtonTemplate}"/>
+      <Setter Property="noesis:StyleInteraction.Triggers">
+        <Setter.Value>
+          <noesis:StyleTriggerCollection>
+            <b:EventTrigger EventName="MouseEnter">
+              <noesis:SetFocusAction/>
+            </b:EventTrigger>
+          </noesis:StyleTriggerCollection>
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+        <Trigger Property="IsKeyboardFocused" Value="True">
+          <Trigger.EnterActions>
+            <BeginStoryboard>
+              <Storyboard>
+                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.2" To="{StaticResource LightBlueFxColor}"/>
+                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.2" To="{StaticResource DarkBlueBdOverColor}"/>
+                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.2" To="{StaticResource LightBlueOverColor}"/>
+              </Storyboard>
+            </BeginStoryboard>
+          </Trigger.EnterActions>
+          <Trigger.ExitActions>
+            <BeginStoryboard>
+              <Storyboard>
+                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.3" To="{StaticResource LightBlueColor}"/>
+                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.3" To="{StaticResource DarkBlueBdColor}"/>
+                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.3" To="{StaticResource LightBlueColor}"/>
+              </Storyboard>
+            </BeginStoryboard>
+          </Trigger.ExitActions>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="OrangeButton" TargetType="Button">
+      <Setter Property="Margin" Value="0,15"/>
+      <Setter Property="Foreground" Value="{StaticResource Orange}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource DarkOrange}"/>
+      <Setter Property="Background" Value="{StaticResource Orange}"/>
+      <Setter Property="Tag" Value="{StaticResource FillGold}"/>
+      <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+      <Setter Property="Template" Value="{StaticResource PlasmaButtonTemplate}"/>
+      <Setter Property="noesis:StyleInteraction.Triggers">
+        <Setter.Value>
+          <noesis:StyleTriggerCollection>
+            <b:EventTrigger EventName="MouseEnter">
+              <noesis:SetFocusAction/>
+            </b:EventTrigger>
+          </noesis:StyleTriggerCollection>
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+        <Trigger Property="IsKeyboardFocused" Value="True">
+          <Trigger.EnterActions>
+            <BeginStoryboard>
+              <Storyboard>
+                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.2" To="{StaticResource OrangeFxColor}"/>
+                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.2" To="{StaticResource OrangeBdOverColor}"/>
+                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.2" To="{StaticResource OrangeOverColor}"/>
+              </Storyboard>
+            </BeginStoryboard>
+          </Trigger.EnterActions>
+          <Trigger.ExitActions>
+            <BeginStoryboard>
+              <Storyboard>
+                <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.3" To="{StaticResource OrangeColor}"/>
+                <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.3" To="{StaticResource OrangeBdColor}"/>
+                <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.3" To="{StaticResource OrangeColor}"/>
+              </Storyboard>
+            </BeginStoryboard>
+          </Trigger.ExitActions>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+  </UserControl.Resources>
+
+  <UserControl.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1.022,1">
+      <GradientStop Offset="0" Color="#FF0A5E85"/>
+      <GradientStop Offset="0.3" Color="#FF0C3251"/>
+      <GradientStop Offset="0.7" Color="#FF0C3251"/>
+      <GradientStop Offset="1" Color="#FF124C7A"/>
+    </LinearGradientBrush>
+  </UserControl.Background>
+
+  <Grid>
+    <Grid.Background>
+      <RadialGradientBrush>
+        <RadialGradientBrush.RelativeTransform>
+          <TransformGroup>
+            <ScaleTransform ScaleX="2" ScaleY="0.75" CenterX="0.5" CenterY="0.75"/>
+            <RotateTransform Angle="-10" CenterX="0.5" CenterY="0.75"/>
+          </TransformGroup>
+        </RadialGradientBrush.RelativeTransform>
+        <GradientStop Offset="0" Color="#9F091620"/>
+        <GradientStop Offset="1" Color="#00091620"/>
+      </RadialGradientBrush>
+    </Grid.Background>
+    <Viewbox>
+      <Grid Width="325.8" Margin="24">
+        <Grid HorizontalAlignment="Center">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+          </Grid.RowDefinitions>
+          <Grid x:Name="Logo" Grid.Column="0" Width="49">
+            <Path x:Name="Line1" Height="24.8" Margin="0,5.5,9.6,16.5" VerticalAlignment="Center" Fill="{StaticResource NoesisBlue}"
+                  Data="M6.1,16 L13.7,5.7 32,8 35.7,16.7 39.4,11.9 35.5,3 11.2,0 0,15.2 3.8,24.1 9.5,24.8 6.1,16 z"/>
+            <Path x:Name="Line2" Height="38.1" Margin="22.2,0,0,8.7" VerticalAlignment="Center" Fill="{StaticResource NoesisBlue}"
+                  Data="M15.5,6 L20.6,17.8 9.5,32.6 0,31.4 2.4,37 12.1,38.1 26.8,18.5 19.2,1.2 9.7,0 6.2,4.6 15.5,6.1 z"/>
+            <Path x:Name="Line3" Height="32.5" Margin="9.3,14.3,5.6,0" VerticalAlignment="Center" Fill="{StaticResource NoesisBlue}"
+                  Data="M26,26.8 L13.3,25.4 6.1,8.4 6,8.4 11.8,0.8 5.7,0 0,7.8 9.5,30.3 28.4,32.5 34.1,24.8 31.9,19.4 z"/>
+          </Grid>
+          <Grid x:Name="Word" Grid.Column="1" Width="276.8">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+              <Path x:Name="Noesis" Margin="12,0,0,0" VerticalAlignment="Center" Fill="White"
+                    Data="M26.0999999999999,16.9L25.8,16.9C25.2,16.9 24.5999999999999,16.6999999999999 24.0999999999999,16.4 23.5999999999999,16.1 23.0999999999999,15.6999999999999 22.6999999999998,15.1999999999999L12.0999999999999,2.99999999999989C11.1999999999998,1.99999999999989 10.1999999999998,1.19999999999993 9.19999999999982,0.799999999999841 8.19999999999982,0.299999999999841 6.99999999999977,0.0999999999997954 5.49999999999977,0.0999999999997954L-2.27373675443232E-13,0.0999999999997954 -2.27373675443232E-13,21.9999999999998 5.19999999999982,21.9999999999998 5.19999999999982,5.19999999999982 5.49999999999977,5.19999999999982C6.09999999999968,5.19999999999982 6.69999999999982,5.39999999999986 7.19999999999982,5.69999999999982 7.79999999999973,5.99999999999977 8.19999999999982,6.39999999999986 8.59999999999991,6.89999999999986L19,18.9999999999999C19.9000000000001,20.0999999999999 20.9000000000001,20.8999999999999 21.9000000000001,21.3999999999999 23,21.8999999999999 24.2,22.0999999999999 25.8000000000002,22.0999999999999L31.3000000000002,22.0999999999999 31.3000000000002,-1.13686837721616E-13 26.1000000000001,-1.13686837721616E-13 26.0999999999999,16.9z M59.3,0L42.3999999999999,0C36.8999999999999,0,34.0999999999999,2.29999999999995,34.0999999999999,7L34.0999999999999,15C34.0999999999999,19.6,36.8999999999999,22,42.3999999999999,22L59.3,22C64.8,22,67.5999999999999,19.7,67.5999999999999,15L67.5999999999999,7C67.5999999999999,2.39999999999998,64.8,0,59.3,0z M62.2,15C62.2,16.2,61.2,16.9,59.3,16.9L42.3999999999999,16.9C40.4999999999998,16.9,39.4999999999998,16.3,39.4999999999998,15L39.4999999999998,7C39.4999999999998,5.70000000000005,40.4999999999998,5.10000000000002,42.3999999999999,5.10000000000002L59.3,5.10000000000002C61.2,5.10000000000002,62.2,5.70000000000005,62.2,7L62.2,15z M75.7,15.7999999999997L75.7,13.5999999999999 100.9,13.5999999999999 100.9,8.49999999999989 75.7,8.49999999999989 75.7,6.29999999999984C75.7,5.5999999999998,76.1000000000001,5.19999999999982,76.9000000000001,5.19999999999982L101,5.19999999999982 101,-2.27373675443232E-13 76.9000000000001,-2.27373675443232E-13C72.5,-2.27373675443232E-13,70.3000000000002,1.79999999999973,70.3000000000002,5.29999999999973L70.3000000000002,16.4999999999998C70.3000000000002,20.0999999999998,72.5000000000002,21.8999999999998,76.9000000000001,21.8999999999998L101.1,21.8999999999998 101.1,16.7999999999997 76.9000000000001,16.7999999999997C76.1000000000001,16.8999999999998,75.7,16.4999999999998,75.7,15.7999999999997z M128.5,8.39999999999998L110.2,8.39999999999998C109.4,8.39999999999998,108.9,8.10000000000002,108.9,7.60000000000002L108.9,5.89999999999998C108.9,5.39999999999998,109.3,5.10000000000002,110.2,5.10000000000002L134.4,5.10000000000002 134.4,0 110.2,0C105.8,0,103.6,1.79999999999995,103.6,5.29999999999995L103.6,8.79999999999995C103.6,11.9,105.8,13.5,110.2,13.5L128.5,13.5C129.3,13.5,129.7,13.8,129.7,14.3L129.7,16.0999999999999C129.7,16.5999999999999,129.3,16.8999999999999,128.5,16.8999999999999L104.3,16.8999999999999 104.3,21.9999999999999 128.5,21.9999999999999C132.9,21.9999999999999,135.1,20.1999999999999,135.1,16.6999999999999L135.1,13.6999999999999C135.1,10.1999999999999,132.9,8.39999999999998,128.5,8.39999999999998z M137.8,0L143.2,0 143.2,21.9 137.8,21.9z M170.8,8.39999999999998L152.5,8.39999999999998C151.7,8.39999999999998,151.2,8.10000000000002,151.2,7.60000000000002L151.2,5.89999999999998C151.2,5.39999999999998,151.6,5.10000000000002,152.5,5.10000000000002L176.7,5.10000000000002 176.7,0 152.5,0C148.1,0,145.9,1.79999999999995,145.9,5.29999999999995L145.9,8.79999999999995C145.9,11.9,148.1,13.5,152.5,13.5L170.8,13.5C171.6,13.5,172,13.8,172,14.3L172,16.0999999999999C172,16.5999999999999,171.6,16.8999999999999,170.8,16.8999999999999L146.6,16.8999999999999 146.6,21.9999999999999 170.8,21.9999999999999C175.2,21.9999999999999,177.4,20.1999999999999,177.4,16.6999999999999L177.4,13.6999999999999C177.3,10.1999999999999,175.1,8.39999999999998,170.8,8.39999999999998z"/>
+              <Path x:Name="GUI" Margin="12,0,0,0" VerticalAlignment="Center" Fill="{StaticResource NoesisBlue}"
+                    Data="M61.9000244140625,16.1C61.9000244140625,16.6,61.5000244140624,16.9,60.7000244140625,16.9L41.5000244140624,16.9C40.7000244140625,16.9,40.2000244140625,16.6,40.2000244140625,16.1L40.2000244140625,0.100000000000023 34.8000244140624,0.100000000000023 34.8000244140624,16.7C34.8000244140624,20.3000000000001,37.0000244140624,22.1,41.4000244140623,22.1L60.6000244140623,22.1C65.0000244140624,22.1,67.2000244140622,20.3000000000001,67.2000244140622,16.8000000000001L67.2000244140622,1.13686837721616E-13 61.8000244140621,1.13686837721616E-13 61.8000244140621,16.1000000000001z M70.0000244140624,0L75.4000244140625,0 75.4000244140625,21.9 70.0000244140624,21.9z M20.1000244140623,8.60000000000002L20.1000244140623,14 26.8000244140624,14 26.8000244140624,16.9 6.60002441406232,16.9C5.80002441406236,16.9,5.30002441406236,16.5,5.30002441406236,15.8L5.30002441406236,6.19999999999993C5.30002441406236,5.49999999999989,5.70002441406245,5.09999999999991,6.60002441406232,5.09999999999991L31.6000244140623,5.09999999999991 31.6000244140623,-1.13686837721616E-13 6.60002441406232,-1.13686837721616E-13C2.20002441406223,-1.13686837721616E-13,2.44140624090505E-05,1.79999999999984,2.44140624090505E-05,5.29999999999984L2.44140624090505E-05,16.4999999999999C2.44140624090505E-05,20.0999999999999,2.20002441406245,21.8999999999999,6.60002441406232,21.8999999999999L32.2000244140622,21.8999999999999 32.2000244140622,8.49999999999989 20.1000244140623,8.49999999999989z"/>
+            </StackPanel>
+          </Grid>
+          <StackPanel x:Name="Buttons" Grid.Row="1" Grid.ColumnSpan="2" Margin="20,30,0,0" HorizontalAlignment="Center">
+            <Button Content="P L A Y" Style="{StaticResource BlueButton}" local:Noise.Seed="100"/>
+            <Button Content="S T A G E" Style="{StaticResource BlueButton}" local:Noise.Seed="200"/>
+            <Button Content="E X I T" Style="{StaticResource OrangeButton}" local:Noise.Seed="300"/>
+          </StackPanel>
+        </Grid>
+      </Grid>
+    </Viewbox>
+  </Grid>
+
+</UserControl>

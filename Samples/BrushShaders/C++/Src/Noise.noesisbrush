@@ -1,0 +1,92 @@
+#include "BrushHelpers.h"
+
+uniforms
+{
+    float4 _color;
+    float2 _scale;
+    float _time;
+    float _seed;
+};
+
+float3 NoiseSeeds(float3 v, out float seed000, out float seed001, out float seed010,
+    out float seed011, out float seed100, out float seed101, out float seed110, out float seed111)
+{
+    float3 fv = frac(v);
+    float3 iv = floor(v);
+    const float3 primes = float3(19, 47, 101);
+    seed000 = dot(primes, iv);
+    seed100 = dot(primes, iv + float3(1, 0, 0));
+    seed010 = dot(primes, iv + float3(0, 1, 0));
+    seed110 = dot(primes, iv + float3(1, 1, 0));
+    seed001 = dot(primes, iv + float3(0, 0, 1));
+    seed101 = dot(primes, iv + float3(1, 0, 1));
+    seed011 = dot(primes, iv + float3(0, 1, 1));
+    seed111 = dot(primes, iv + float3(1, 1, 1));
+    return fv;
+}
+
+uint3 Rand3DPCG16(int3 p)
+{
+    uint3 v = uint3(p);
+    v = v * 1664525u + 1013904223u;
+    v.x += v.y * v.z;
+    v.y += v.z * v.x;
+    v.z += v.x * v.y;
+    v.x += v.y * v.z;
+    v.y += v.z * v.x;
+    v.z += v.x * v.y;
+    return v >> 16u;
+}
+
+#define MGradientMask int3(0x8000, 0x4000, 0x2000)
+#define MGradientScale float3(1. / float(0x4000), 1. / float(0x2000), 1. / float(0x1000))
+
+float4 MGradient(int seed, float3 offset)
+{
+    uint rand = Rand3DPCG16(int3(seed, 0, 0)).x;
+    float3 direction = float3(int3(rand, rand, rand) & MGradientMask) * MGradientScale - float3(1,1,1);
+    return float4(direction, dot(direction, offset));
+}
+
+float4 PerlinRamp(float4 t)
+{
+    return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
+}
+
+float GradientNoise3D(float3 v)
+{
+    float seed000, seed001, seed010, seed011, seed100, seed101, seed110, seed111;
+    float3 fv = NoiseSeeds(v, seed000, seed001, seed010, seed011, seed100, seed101, seed110, seed111);
+    float rand000 = MGradient(int(seed000), fv - float3(0, 0, 0)).w;
+    float rand100 = MGradient(int(seed100), fv - float3(1, 0, 0)).w;
+    float rand010 = MGradient(int(seed010), fv - float3(0, 1, 0)).w;
+    float rand110 = MGradient(int(seed110), fv - float3(1, 1, 0)).w;
+    float rand001 = MGradient(int(seed001), fv - float3(0, 0, 1)).w;
+    float rand101 = MGradient(int(seed101), fv - float3(1, 0, 1)).w;
+    float rand011 = MGradient(int(seed011), fv - float3(0, 1, 1)).w;
+    float rand111 = MGradient(int(seed111), fv - float3(1, 1, 1)).w;
+    float3 Weights = PerlinRamp(float4(fv, 0)).xyz;
+    float i = lerp(lerp(rand000, rand100, Weights.x), lerp(rand010, rand110, Weights.x), Weights.y);
+    float j = lerp(lerp(rand001, rand101, Weights.x), lerp(rand011, rand111, Weights.x), Weights.y);
+    return lerp(i, j, Weights.z);
+}
+
+float Noise(float3 v)
+{
+    float t = 3.0 * abs(GradientNoise3D(v * 0.02000000));
+    return lerp(-0.50, 1.0, t);
+}
+
+float Pow6(float x)
+{
+    float x_x = x * x;
+    return x_x * x_x * x_x;
+}
+
+fixed4 main_brush(float2 uv)
+{
+    float2 xy = float2(_time * 10.0f, _time * 7.0f) + uv * _scale;
+    float3 p = float3(xy, _time * 25.0);
+    float v = Pow6(1.0 - Noise(p + _seed));
+    return float4(_color.xyz * v, 1.0);
+}
