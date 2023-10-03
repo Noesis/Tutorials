@@ -9,8 +9,15 @@
 
   <UserControl.Resources>
 
-    <Color x:Key="WorldSpaceUI.Color.Aqua">#4BC3CF</Color>
+    <Color x:Key="WorldSpaceUI.Color.Aqua">#FF4BC3CF</Color>
+    <Color x:Key="WorldSpaceUI.Color.Aqua.Dark">#FF33848C</Color>
+    <Color x:Key="WorldSpaceUI.Color.Aqua.Darker">#7F0B193A</Color>
+    <Color x:Key="WorldSpaceUI.Color.Orange">#FFF48B00</Color>
+
     <SolidColorBrush x:Key="WorldSpaceUI.Brush.Aqua" Color="{StaticResource WorldSpaceUI.Color.Aqua}"/>
+    <SolidColorBrush x:Key="WorldSpaceUI.Brush.Aqua.Dark" Color="{StaticResource WorldSpaceUI.Color.Aqua.Dark}"/>
+    <SolidColorBrush x:Key="WorldSpaceUI.Brush.Aqua.Darker" Color="{StaticResource WorldSpaceUI.Color.Aqua.Darker}"/>
+    <SolidColorBrush x:Key="WorldSpaceUI.Brush.Orange" Color="{StaticResource WorldSpaceUI.Color.Orange}"/>
 
     <Geometry x:Key="WorldSpaceUI.Geometry.Panel">M444.9 482H13L0.5 469.5V35.1L35.6 0h431.9L480 12.5v434.4L444.9 482z</Geometry>
 
@@ -82,7 +89,7 @@
             <VisualState x:Name="Checked">
               <Storyboard>
                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ThumbBase">
-                  <EasingColorKeyFrame KeyTime="0" Value="#FFF48B00"/>
+                  <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Orange}"/>
                 </ColorAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Thumb">
                   <EasingDoubleKeyFrame KeyTime="0" Value="78"/>
@@ -93,7 +100,7 @@
             <VisualState x:Name="Indeterminate"/>
           </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Rectangle x:Name="Track" Grid.Column="0" Fill="#7F0B193A" Stroke="#FF4BC3CF" StrokeThickness="3" RadiusX="2" RadiusY="2" RenderTransformOrigin="0.5,0.5" Margin="0,2">
+        <Rectangle x:Name="Track" Grid.Column="0" Fill="{StaticResource WorldSpaceUI.Brush.Aqua.Darker}" Stroke="{StaticResource WorldSpaceUI.Brush.Aqua}" StrokeThickness="3" RadiusX="2" RadiusY="2" RenderTransformOrigin="0.5,0.5" Margin="0,2">
           <Rectangle.RenderTransform>
             <TransformGroup>
               <ScaleTransform/>
@@ -116,7 +123,11 @@
               <TranslateTransform/>
             </TransformGroup>
           </Grid.RenderTransform>
-          <Rectangle x:Name="ThumbBase" Fill="#FF4BC3CF" Stroke="Transparent" StrokeThickness="3" Width="42" RadiusX="4" RadiusY="4"/>
+          <Rectangle x:Name="ThumbBase" Stroke="Transparent" StrokeThickness="3" Width="42" RadiusX="4" RadiusY="4">
+            <Rectangle.Fill>
+              <SolidColorBrush Color="{StaticResource WorldSpaceUI.Color.Aqua}"/>
+            </Rectangle.Fill>
+          </Rectangle>
           <Rectangle x:Name="ThumbDarkener" Fill="#00000000" Stroke="White" StrokeThickness="3" Width="42" RadiusX="4" RadiusY="4"/>
         </Grid>
       </Grid>
@@ -124,8 +135,6 @@
 
     <Style x:Key="WorldSpaceUI.Button" TargetType="{x:Type Button}">
       <Setter Property="OverridesDefaultStyle" Value="True"/>
-      <Setter Property="Background" Value="White"/>
-      <Setter Property="BorderBrush" Value="#FCBA20"/>
       <Setter Property="BorderThickness" Value="2"/>
       <Setter Property="HorizontalContentAlignment" Value="Center"/>
       <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -161,7 +170,7 @@
                   <VisualState x:Name="MouseOver">
                     <Storyboard>
                       <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
-                        <EasingColorKeyFrame KeyTime="0" Value="#FF4BC3CF"/>
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Aqua}"/>
                       </ColorAnimationUsingKeyFrames>
                       <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
                         <EasingDoubleKeyFrame KeyTime="0" Value="25"/>
@@ -174,7 +183,7 @@
                   <VisualState x:Name="Pressed">
                     <Storyboard>
                       <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
-                        <EasingColorKeyFrame KeyTime="0" Value="#FF33848C"/>
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Aqua.Dark}"/>
                       </ColorAnimationUsingKeyFrames>
                       <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
                         <EasingDoubleKeyFrame KeyTime="0" Value="15"/>
@@ -187,7 +196,7 @@
                   <VisualState x:Name="Disabled"/>
                 </VisualStateGroup>
               </VisualStateManager.VisualStateGroups>
-              <Border x:Name="Border" BorderBrush="White" BorderThickness="3" CornerRadius="4" VerticalAlignment="Stretch" Background="#FF4BC3CF" RenderTransformOrigin="0.5,0.5">
+              <Border x:Name="Border" BorderBrush="White" BorderThickness="3" CornerRadius="4" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
                 <noesis:Element.Transform3D>
                   <noesis:CompositeTransform3D TranslateZ="20"/>
                 </noesis:Element.Transform3D>
@@ -199,6 +208,9 @@
                     <TranslateTransform/>
                   </TransformGroup>
                 </Border.RenderTransform>
+                <Border.Background>
+                  <SolidColorBrush Color="{StaticResource WorldSpaceUI.Color.Aqua}"/>
+                </Border.Background>
               </Border>
               <ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <noesis:Element.Transform3D>

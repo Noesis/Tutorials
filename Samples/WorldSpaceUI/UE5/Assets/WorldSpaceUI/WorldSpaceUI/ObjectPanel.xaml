@@ -13,6 +13,7 @@
     <local:PercentageConverter x:Key="percConv"/>
 
     <Color x:Key="WorldSpaceUI.Color.Aqua">#FF4BC3CF</Color>
+    <Color x:Key="WorldSpaceUI.Color.Aqua.Dark">#FF33848C</Color>
     <Color x:Key="WorldSpaceUI.Color.Orange">#FFF48B00</Color>
     <Color x:Key="WorldSpaceUI.Color.Orange.Dark">#FFD77B00</Color>
 
@@ -28,8 +29,6 @@
 
     <Style x:Key="WorldSpaceUI.Button.Blue" TargetType="{x:Type Button}">
       <Setter Property="OverridesDefaultStyle" Value="True"/>
-      <Setter Property="Background" Value="White"/>
-      <Setter Property="BorderBrush" Value="#FCBA20"/>
       <Setter Property="BorderThickness" Value="2"/>
       <Setter Property="HorizontalContentAlignment" Value="Center"/>
       <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -64,7 +63,7 @@
                   <VisualState x:Name="MouseOver">
                     <Storyboard>
                       <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
-                        <EasingColorKeyFrame KeyTime="0" Value="#FF4BC3CF"/>
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Aqua}"/>
                       </ColorAnimationUsingKeyFrames>
                       <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
                         <EasingDoubleKeyFrame KeyTime="0" Value="50"/>
@@ -77,7 +76,7 @@
                   <VisualState x:Name="Pressed">
                     <Storyboard>
                       <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border">
-                        <EasingColorKeyFrame KeyTime="0" Value="#FF33848C"/>
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Aqua.Dark}"/>
                       </ColorAnimationUsingKeyFrames>
                       <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Border">
                         <EasingDoubleKeyFrame KeyTime="0" Value="30"/>
@@ -90,10 +89,13 @@
                   <VisualState x:Name="Disabled"/>
                 </VisualStateGroup>
               </VisualStateManager.VisualStateGroups>
-              <Border x:Name="Border" BorderBrush="White" BorderThickness="3" CornerRadius="4" VerticalAlignment="Stretch" Background="#FF4BC3CF" RenderTransformOrigin="0.5,0.5">
+              <Border x:Name="Border" BorderBrush="White" BorderThickness="3" CornerRadius="4" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
                 <noesis:Element.Transform3D>
                   <noesis:CompositeTransform3D TranslateZ="40"/>
                 </noesis:Element.Transform3D>
+                <Border.Background>
+                  <SolidColorBrush Color="{StaticResource WorldSpaceUI.Color.Aqua}"/>
+                </Border.Background>
               </Border>
               <ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <noesis:Element.Transform3D>
@@ -108,8 +110,6 @@
 
     <Style x:Key="WorldSpaceUI.Button.Orange" TargetType="{x:Type Button}">
       <Setter Property="OverridesDefaultStyle" Value="True"/>
-      <Setter Property="Background" Value="White"/>
-      <Setter Property="BorderBrush" Value="#FCBA20"/>
       <Setter Property="BorderThickness" Value="2"/>
       <Setter Property="HorizontalContentAlignment" Value="Center"/>
       <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -170,10 +170,13 @@
                   <VisualState x:Name="Disabled"/>
                 </VisualStateGroup>
               </VisualStateManager.VisualStateGroups>
-              <Border x:Name="Border" BorderBrush="White" BorderThickness="3" CornerRadius="4" VerticalAlignment="Stretch" Background="#FFF48B00" RenderTransformOrigin="0.5,0.5">
+              <Border x:Name="Border" BorderBrush="White" BorderThickness="3" CornerRadius="4" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
                 <noesis:Element.Transform3D>
                   <noesis:CompositeTransform3D TranslateZ="40"/>
                 </noesis:Element.Transform3D>
+                <Border.Background>
+                  <SolidColorBrush Color="{StaticResource WorldSpaceUI.Color.Orange}"/>
+                </Border.Background>
               </Border>
               <ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <noesis:Element.Transform3D>
@@ -189,7 +192,7 @@
     <Style x:Key="WorldSpaceUI.Button.Floating" TargetType="{x:Type Button}">
       <Setter Property="OverridesDefaultStyle" Value="True"/>
       <Setter Property="Background" Value="White"/>
-      <Setter Property="BorderBrush" Value="#FCBA20"/>
+      <Setter Property="BorderBrush" Value="{StaticResource WorldSpaceUI.Brush.Orange}"/>
       <Setter Property="BorderThickness" Value="1"/>
       <Setter Property="HorizontalContentAlignment" Value="Center"/>
       <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -241,10 +244,10 @@
                         <EasingDoubleKeyFrame KeyTime="0" Value="0.8"/>
                       </DoubleAnimationUsingKeyFrames>
                       <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Ring2Path">
-                        <EasingColorKeyFrame KeyTime="0" Value="#FFF48B00"/>
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Orange}"/>
                       </ColorAnimationUsingKeyFrames>
                       <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="RingButtonPath">
-                        <EasingColorKeyFrame KeyTime="0" Value="#FFF48B00"/>
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Orange}"/>
                       </ColorAnimationUsingKeyFrames>
                       <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(noesis:Element.Transform3D).(noesis:CompositeTransform3D.TranslateZ)" Storyboard.TargetName="Ring1Path">
                         <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
@@ -269,10 +272,10 @@
                         <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
                       </DoubleAnimationUsingKeyFrames>
                       <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Ring2Path">
-                        <EasingColorKeyFrame KeyTime="0" Value="#FFF48B00"/>
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Orange}"/>
                       </ColorAnimationUsingKeyFrames>
                       <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="RingButtonPath">
-                        <EasingColorKeyFrame KeyTime="0" Value="#FFD77B00"/>
+                        <EasingColorKeyFrame KeyTime="0" Value="{StaticResource WorldSpaceUI.Color.Orange.Dark}"/>
                       </ColorAnimationUsingKeyFrames>
                       <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="Ring1Path">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0.4"/>
@@ -330,13 +333,13 @@
                     </TransformGroup>
                   </Path.RenderTransform>
                   <Path.Fill>
-                    <SolidColorBrush Color="#FFF48B00" Opacity="1"/>
+                    <SolidColorBrush Color="{StaticResource WorldSpaceUI.Color.Orange}" Opacity="1"/>
                   </Path.Fill>
                   <noesis:Element.Transform3D>
                     <noesis:CompositeTransform3D TranslateZ="60"/>
                   </noesis:Element.Transform3D>
                 </Path>
-                <Path x:Name="Ring1Path"  Data="{StaticResource WorldSpaceUI.Geometry.Ring1}" Fill="#FF4BC3CF" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
+                <Path x:Name="Ring1Path"  Data="{StaticResource WorldSpaceUI.Geometry.Ring1}" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
                   <Path.RenderTransform>
                     <TransformGroup>
                       <ScaleTransform/>
@@ -345,11 +348,14 @@
                       <TranslateTransform/>
                     </TransformGroup>
                   </Path.RenderTransform>
+                  <Path.Fill>
+                    <SolidColorBrush Color="{StaticResource WorldSpaceUI.Color.Aqua}" Opacity="1"/>
+                  </Path.Fill>
                   <noesis:Element.Transform3D>
                     <noesis:CompositeTransform3D x:Name="compositeTransform3D" TranslateZ="60"/>
                   </noesis:Element.Transform3D>
                 </Path>
-                <Path x:Name="Ring2Path"  Data="{StaticResource WorldSpaceUI.Geometry.Ring2}" Fill="#FF4BC3CF" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
+                <Path x:Name="Ring2Path"  Data="{StaticResource WorldSpaceUI.Geometry.Ring2}" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
                   <Path.RenderTransform>
                     <TransformGroup>
                       <ScaleTransform/>
@@ -358,11 +364,14 @@
                       <TranslateTransform/>
                     </TransformGroup>
                   </Path.RenderTransform>
+                  <Path.Fill>
+                    <SolidColorBrush Color="{StaticResource WorldSpaceUI.Color.Aqua}" Opacity="1"/>
+                  </Path.Fill>
                   <noesis:Element.Transform3D>
                     <noesis:CompositeTransform3D TranslateZ="40"/>
                   </noesis:Element.Transform3D>
                 </Path>
-                <Path x:Name="Ring3Path"  Data="{StaticResource WorldSpaceUI.Geometry.Ring3}" Fill="#FF4BC3CF" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
+                <Path x:Name="Ring3Path"  Data="{StaticResource WorldSpaceUI.Geometry.Ring3}" StrokeThickness="2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False">
                   <Path.RenderTransform>
                     <TransformGroup>
                       <ScaleTransform/>
@@ -371,6 +380,9 @@
                       <TranslateTransform/>
                     </TransformGroup>
                   </Path.RenderTransform>
+                  <Path.Fill>
+                    <SolidColorBrush Color="{StaticResource WorldSpaceUI.Color.Aqua}" Opacity="1"/>
+                  </Path.Fill>
                   <noesis:Element.Transform3D>
                     <noesis:CompositeTransform3D TranslateZ="20"/>
                   </noesis:Element.Transform3D>
@@ -385,7 +397,7 @@
                     </TransformGroup>
                   </Path.RenderTransform>
                   <Path.Fill>
-                    <SolidColorBrush Color="#FF4BC3CF" Opacity="0.5"/>
+                    <SolidColorBrush Color="{StaticResource WorldSpaceUI.Color.Aqua}" Opacity="0.5"/>
                   </Path.Fill>
                 </Path>
               </Grid>
@@ -715,7 +727,7 @@
                 <Rectangle x:Name="rectangle8" Width="28" Height="104" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
                 <Rectangle x:Name="rectangle9" Width="28" Height="120" Fill="{StaticResource WorldSpaceUI.Brush.Orange}" VerticalAlignment="Bottom" Margin="0,0,4,0"/>
               </StackPanel>
-              <Path x:Name="path" Height="145.4" Grid.Row="1" Width="309.4" StrokeThickness="4" Stroke="#FF4BC3CF" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
+              <Path x:Name="path" Height="145.4" Grid.Row="1" Width="309.4" StrokeThickness="4" Stroke="{StaticResource WorldSpaceUI.Brush.Aqua}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
                 <Path.Data>
                   <PathGeometry>
                     <PathFigure StartPoint="1.85099989637441,100.878649896591">
@@ -750,12 +762,12 @@
                   <ColumnDefinition/>
                   <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF4BC3CF" FontSize="65" Text="{Binding (noesis:Path.TrimEnd), ElementName=energy, Converter={StaticResource percConv}, FallbackValue=50 %}">
-                                <noesis:Element.Transform3D>
-                                    <noesis:CompositeTransform3D TranslateX="-20" TranslateZ="35"/>
-                                </noesis:Element.Transform3D>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{StaticResource WorldSpaceUI.Brush.Aqua}" FontSize="65" Text="{Binding (noesis:Path.TrimEnd), ElementName=energy, Converter={StaticResource percConv}, FallbackValue=50 %}">
+                  <noesis:Element.Transform3D>
+                      <noesis:CompositeTransform3D TranslateX="-20" TranslateZ="35"/>
+                  </noesis:Element.Transform3D>
                 </TextBlock>
-                <Ellipse x:Name="energy" Stroke="#FF4BC3CF" StrokeThickness="20" Width="150" Height="150" noesis:Path.TrimOffset="0.25">
+                <Ellipse x:Name="energy" Stroke="{StaticResource WorldSpaceUI.Brush.Aqua}" StrokeThickness="20" Width="150" Height="150" noesis:Path.TrimOffset="0.25">
                   <noesis:Element.Transform3D>
                     <noesis:CompositeTransform3D TranslateZ="30"/>
                   </noesis:Element.Transform3D>

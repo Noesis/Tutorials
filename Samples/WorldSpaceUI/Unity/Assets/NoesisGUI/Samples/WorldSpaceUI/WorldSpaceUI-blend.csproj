@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <BaseIntermediateOutputPath>Blend~\obj\</BaseIntermediateOutputPath>
   </PropertyGroup>
@@ -12,7 +12,9 @@
     <AppDesignerFolder>Blend~\Properties</AppDesignerFolder>
     <RootNamespace>WorldSpaceUI</RootNamespace>
     <AssemblyName>WorldSpaceUI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FrameworkVersion>v4.7.2</FrameworkVersion>
+	<FrameworkVersion Condition="'$(VisualStudioVersion)' == '15.0'">v4.6.1</FrameworkVersion>
+	<TargetFrameworkVersion>$(FrameworkVersion)</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -52,9 +54,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LayoutRoot.xaml.cs">
-      <DependentUpon>LayoutRoot.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PercentageConverter.cs" />
     <None Include="Blend~\App.config" />
     <ApplicationDefinition Include="Blend~\App.xaml">
