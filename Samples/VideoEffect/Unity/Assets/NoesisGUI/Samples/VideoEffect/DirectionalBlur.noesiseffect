@@ -1,17 +1,17 @@
 #include "EffectHelpers.h"
 
-cbuffer Constants: register(b1)
+uniforms
 {
-    float2 dir;
-    float scale;
-}
+    float2 _dir;
+    float _scale;
+};
 
-float4 GetCustomEffect()
+fixed4 main_effect()
 {
-    float2 d = scale * dir;
+    float2 d = _scale * _dir;
     #define SAMPLE(x) (SampleInputAtOffset(d * x) + SampleInputAtOffset(-d * x))
 
-    float4 c = 0;
+    float4 c = float4(0, 0, 0, 0);
 
     c += 0.10855 * SAMPLE(0.66293);
     c += 0.13135 * SAMPLE(2.47904);

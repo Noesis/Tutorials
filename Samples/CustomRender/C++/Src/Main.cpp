@@ -11,6 +11,7 @@
 #include <NsGui/Brushes.h>
 #include <NsGui/IView.h>
 #include <NsGui/Mouse.h>
+#include <NsGui/Keyboard.h>
 #include <NsGui/DrawingContext.h>
 #include <NsApp/ApplicationLauncher.h>
 #include <NsApp/EmbeddedXamlProvider.h>
@@ -68,7 +69,7 @@ public:
 
         memset(mBlocks, 0, sizeof(mBlocks));
 
-        mPosX = Width / 2.0f;
+        mPadX = mPosX = Width / 2.0f;
         mPosY = Height - PadHeight - 50.0f;
         mVelX = -2.0f;
         mVelY = -4.0f;
@@ -86,9 +87,24 @@ public:
         // Draw pad
         {
             Point mouse = PointFromScreen(GetMouse()->GetPosition());
-            float x = Min(Max(mouse.x, PadWidth * 0.5f), Width - PadWidth * 0.5f);
+            if (mouse.x > 0.0f && mouse.x < Width && mouse.y > 0 && mouse.y < Height)
+            {
+                mPadX = Min(Max(mouse.x, PadWidth * 0.5f), Width - PadWidth * 0.5f);
+            }
+            else
+            {
+                Keyboard* keyboard = GetKeyboard();
+                if (keyboard->IsKeyDown(Key_Left) || keyboard->IsKeyDown(Key_GamepadLeft))
+                {
+                    mPadX = Max(PadWidth * 0.5f, mPadX - 600.0f * dt);
+                }
+                if (keyboard->IsKeyDown(Key_Right) || keyboard->IsKeyDown(Key_GamepadRight))
+                {
+                    mPadX = Min(mPadX + 600.0f * dt, Width - PadWidth * 0.5f);
+                }
+            }
 
-            float x0 = x - PadWidth * 0.5f;
+            float x0 = mPadX - PadWidth * 0.5f;
             float x1 = x0 + PadWidth;
             float y0 = 550.0f - PadHeight * 0.5f;
             float y1 = y0 + PadHeight;
@@ -97,7 +113,7 @@ public:
             {
                 if (mVelY > 0.0f) mVelY = -mVelY;
 
-                float vScale = (mPosX - x) / (PadWidth * 0.5f);
+                float vScale = (mPosX - mPadX) / (PadWidth * 0.5f);
                 mVelX += vScale * 2.0f;
             }
 
@@ -188,6 +204,7 @@ public:
 
     bool mBlocks[5][13];
 
+    float mPadX;
     float mPosX;
     float mPosY;
     float mVelX;

@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+  <ImageBrush x:Key="Flag" ImageSource="Flag-ar.png" Stretch="Fill"/>
+
+  <sys:String x:Key="SelectLabel">[size=12]اختار اللغة[/size]</sys:String>
+  <sys:String x:Key="SoundLabel">[size=12]الصوت[/size]</sys:String>
+  <sys:String x:Key="MusicLabel">[size=12]موسيقى[/size]</sys:String>
+  <sys:String x:Key="TitleLabel">[size=13][b]نموذج الترجمة[/b][/size]</sys:String>
+  <sys:String x:Key="DescLabel">[size=12]توجد طرق عديدة لتنفيذ الترجمة في [/size][style=ColoredText]NoesisGUI[/style].[size=12] في هذا المثال ، نستخدم ملحق ترميز [/size][style=ColoredText][i]Loc[/i][/style][size=12] الخاص بنا ، والذي يشير إلى الموارد في [/size][i]ResourceDictionary[/i][size=12] محلي. يتم تحديد قاموس اللغة المطلوب في [/size][i]DataContext[/i][size=12] الجذر. خاصية [/size][style=ColoredText][i]RichText[/i][/style][size=12] المرفقة لـ [/size][i]TextBlocks[/i][size=12] تسمح لك باستخدام ترميز [/size]BBCode[size=12] في النص الخاص بك. يدعم تنسيق النص والصور والارتباطات بـ [/size][i]DataContext[/i] ([size=12]على سبيل المثال ، مستوى الموسيقى هو [/size][style=ColoredNumber][bind format='{0:0}%']MusicLevel[/bind][/style]).</sys:String>
+
+</ResourceDictionary>

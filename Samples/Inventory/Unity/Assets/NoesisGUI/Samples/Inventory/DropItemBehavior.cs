@@ -36,18 +36,26 @@ namespace Inventory
         {
             base.OnAttached();
 
-            this.AssociatedObject.AllowDrop = true;
-            this.AssociatedObject.PreviewDragEnter += OnDragEnter;
-            this.AssociatedObject.PreviewDragLeave += OnDragLeave;
-            this.AssociatedObject.PreviewDrop += OnDrop;
+            FrameworkElement element = AssociatedObject;
+            if (element != null)
+            {
+                element.AllowDrop = true;
+                element.PreviewDragEnter += OnDragEnter;
+                element.PreviewDragLeave += OnDragLeave;
+                element.PreviewDrop += OnDrop;
+            }
         }
 
         protected override void OnDetaching()
         {
-            this.AssociatedObject.AllowDrop = false;
-            this.AssociatedObject.PreviewDragEnter -= OnDragEnter;
-            this.AssociatedObject.PreviewDragLeave -= OnDragLeave;
-            this.AssociatedObject.PreviewDrop -= OnDrop;
+            FrameworkElement element = AssociatedObject;
+            if (element != null)
+            {
+                element.AllowDrop = false;
+                element.PreviewDragEnter -= OnDragEnter;
+                element.PreviewDragLeave -= OnDragLeave;
+                element.PreviewDrop -= OnDrop;
+            }
 
             base.OnDetaching();
         }

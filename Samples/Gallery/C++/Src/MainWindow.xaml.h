@@ -98,6 +98,7 @@ public:
 
 private:
     void InitializeComponent();
+    bool ConnectField(BaseComponent* object, const char* name) override;
     void UpdateSample();
     void UpdateTheme();
     Noesis::ResourceDictionary* GetTheme(const char* color, const char* accent);
@@ -112,6 +113,7 @@ private:
     ColorItem* mSelectedThemeAccent;
 
     Noesis::Panel* mLayoutRoot;
+    Noesis::Panel* mWindowContent;
 
     Noesis::Panel* mSamplePanel;
     Noesis::ContentControl* mSampleContainer1;

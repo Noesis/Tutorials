@@ -297,7 +297,7 @@
               <Rectangle.Fill>
                 <ImageBrush ImageSource="Images/Nature.png">
                   <noesis:Brush.Shader>
-                    <noesis:MonochromeBrushShader Color="White"/>
+                    <noesis:MonochromeBrush Color="White"/>
                   </noesis:Brush.Shader>
                 </ImageBrush>
               </Rectangle.Fill>
@@ -309,13 +309,13 @@
               <Ellipse.Fill>
                 <ImageBrush ImageSource="Images/Nature.png">
                   <noesis:Brush.Shader>
-                    <noesis:ConicGradientBrushShader>
+                    <noesis:ConicGradientBrush>
                       <GradientStop Offset="0" Color="Red"/>
                       <GradientStop Offset="0.25" Color="Yellow"/>
                       <GradientStop Offset="0.5" Color="GreenYellow"/>
                       <GradientStop Offset="0.75" Color="DodgerBlue"/>
                       <GradientStop Offset="1" Color="Purple"/>
-                    </noesis:ConicGradientBrushShader>
+                    </noesis:ConicGradientBrush>
                   </noesis:Brush.Shader>
                 </ImageBrush>
               </Ellipse.Fill>
@@ -337,7 +337,7 @@
               <Path.Fill>
                 <ImageBrush ImageSource="Images/Nature.png">
                   <noesis:Brush.Shader>
-                    <noesis:WavesBrushShader x:Name="waves" Time="0"/>
+                    <noesis:WavesBrush x:Name="waves" Time="0"/>
                   </noesis:Brush.Shader>
                 </ImageBrush>
               </Path.Fill>

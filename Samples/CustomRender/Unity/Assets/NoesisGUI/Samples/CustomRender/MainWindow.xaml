@@ -1,0 +1,18 @@
+<UserControl x:Class="CustomRender.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="clr-namespace:CustomRender">
+
+  <Grid Background="#222">
+    <Viewbox>
+      <Border BorderBrush="#555" BorderThickness="4,4,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+        <Border BorderBrush="#444" BorderThickness="4,4,4,4">
+          <Border BorderBrush="#333" BorderThickness="0,0,4,4" Background="Black" Padding="4">
+            <local:Game Width="800" Height="600"/>
+          </Border>
+        </Border>
+      </Border>
+    </Viewbox>
+  </Grid>
+
+</UserControl>

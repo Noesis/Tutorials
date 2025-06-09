@@ -14,6 +14,7 @@ namespace Localization
     {
         public string Name { get; set; }
         public Uri Source { get; set; }
+        public FlowDirection FlowDirection { get; set; }
     }
 
     public class ViewModel : NotifyPropertyChangedBase
@@ -25,19 +26,29 @@ namespace Localization
                 new Language
                 {
                     Name = "English",
-                    Source = new Uri("/Localization;component/Language-en.xaml", UriKind.Relative)
+                    Source = new Uri("/Localization;component/Language-en.xaml", UriKind.Relative),
+                    FlowDirection = FlowDirection.LeftToRight
                 },
 
                 new Language
                 {
                     Name = "Français",
-                    Source = new Uri("/Localization;component/Language-fr.xaml", UriKind.Relative)
+                    Source = new Uri("/Localization;component/Language-fr.xaml", UriKind.Relative),
+                    FlowDirection = FlowDirection.LeftToRight
                 },
 
                 new Language
                 {
                     Name = "日本語",
-                    Source = new Uri("/Localization;component/Language-jp.xaml", UriKind.Relative)
+                    Source = new Uri("/Localization;component/Language-jp.xaml", UriKind.Relative),
+                    FlowDirection = FlowDirection.LeftToRight
+                },
+
+                new Language
+                {
+                    Name = "عربي",
+                    Source = new Uri("/Localization;component/Language-ar.xaml", UriKind.Relative),
+                    FlowDirection = FlowDirection.RightToLeft
                 }
             };
 

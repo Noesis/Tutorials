@@ -27,6 +27,10 @@
         <GradientStop Color="#11000000" Offset="0"/>
         <GradientStop Color="#33000000" Offset="1"/>
     </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ControlHilightBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#66FFFFFF" Offset="0"/>
+        <GradientStop Color="#11FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
     <LinearGradientBrush x:Key="SliderBorderBrush" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="#FF1A7FB2"/>
         <GradientStop Color="#FF24648F" Offset="0.5"/>
@@ -58,25 +62,25 @@
     <Geometry x:Key="NoesisGuiTextGeometry">M218.200700106049,67.01174C218.200700106049,69.09286,216.535800106049,70.34153,213.205900106049,70.34153L153.648800106049,70.34153C150.319100106049,70.34153,148.237800106049,69.09286,148.237800106049,67.01174L148.237800106049,0.416200000000003 125.762100106049,0.416200000000003 125.762100106049,69.50907C125.762100106049,84.49309,134.918800106049,91.98508,153.232600106049,91.98508L212.789900106049,91.98508C231.103500106049,91.98508,240.260500106049,84.49309,240.260500106049,69.92531L240.260500106049,2.5410988417629E-21 217.784500106049,2.5410988417629E-21 217.784500106049,67.01174z M251.914700106049,2.5410988417629E-21L274.390700106049,2.5410988417629E-21 274.390700106049,91.15265 251.914700106049,91.15265z M64.3942001060486,35.79507L64.3942001060486,58.27109 92.2812001060488,58.27109 92.2812001060488,70.34153 27.4707001060488,70.34153C24.1410001060485,70.34153,22.0598001060485,68.67665,22.0598001060485,65.76311L22.0598001060485,25.80576C22.0598001060485,22.89222,23.7246001060485,21.2273399999999,27.4707001060488,21.2273399999999L112.259700106049,21.2273399999999 112.259700106049,2.5410988417629E-21 27.4707001060488,2.5410988417629E-21C9.15670010604844,2.5410988417629E-21,1.06048446468776E-07,7.49199999999996,1.06048446468776E-07,22.05977L1.06048446468776E-07,68.67665C1.06048446468776E-07,83.66065,9.15670010604844,91.15265,27.4707001060488,91.15265L114.757000106049,91.15265 114.757000106049,35.37888 64.3942001060486,35.37888z</Geometry>
     <ScaleTransform x:Key="NoesisLogoTransform" ScaleX="1.5" ScaleY="1.5"/>
 
-    <ControlTemplate x:Key="LabelTemplate" TargetType="{x:Type Label}">
+    <ControlTemplate x:Key="LabelTemplate" TargetType="Label">
         <Grid>
-            <TextBlock noesis:RichText.Text="{TemplateBinding Content}" TextWrapping="Wrap" TextAlignment="Justify" LineHeight="{TemplateBinding MinHeight}">
+            <TextBlock noesis:RichText.Text="{TemplateBinding Content}" TextWrapping="Wrap" TextAlignment="Left" LineHeight="{TemplateBinding MinHeight}">
                 <TextBlock.Effect>
                     <DropShadowEffect ShadowDepth="1" Direction="330" Opacity="0.1875" BlurRadius="2"/>
                 </TextBlock.Effect>
             </TextBlock>
         </Grid>
     </ControlTemplate>
-    <Style TargetType="{x:Type Label}">
+    <Style TargetType="Label">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Template" Value="{StaticResource LabelTemplate}"/>
         <Setter Property="FontSize" Value="10"/>
     </Style>
 
-    <Style x:Key="FocusStyle" TargetType="{x:Type Control}">
+    <Style x:Key="FocusStyle" TargetType="Control">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Control}">
+                <ControlTemplate TargetType="Control">
                     <Border CornerRadius="2" BorderThickness="1" Margin="1">
                         <Border.BorderBrush>
                             <LinearGradientBrush>
@@ -91,7 +95,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="SliderButtonStyle" TargetType="{x:Type RepeatButton}">
+    <Style x:Key="SliderButtonStyle" TargetType="RepeatButton">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
@@ -104,7 +108,7 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                <ControlTemplate TargetType="RepeatButton">
                     <Border Background="Transparent">
                         <Grid Margin="1">
                             <Border Background="{TemplateBinding Foreground}" CornerRadius="0.5"/>
@@ -115,17 +119,17 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="SliderThumbStyle" TargetType="{x:Type Thumb}">
+    <Style x:Key="SliderThumbStyle" TargetType="Thumb">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Thumb}">
+                <ControlTemplate TargetType="Thumb">
                     <Grid Background="Transparent"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <ControlTemplate x:Key="SliderTemplate" TargetType="{x:Type Slider}">
+    <ControlTemplate x:Key="SliderTemplate" TargetType="Slider">
         <Border BorderThickness="1" CornerRadius="3" BorderBrush="{StaticResource ControlShadowBrush}">
             <Border BorderThickness="1" CornerRadius="2" BorderBrush="{StaticResource SliderBorderBrush}" Background="{StaticResource SliderBackgroundBrush}">
                 <Grid>
@@ -149,8 +153,13 @@
                 </Grid>
             </Border>
         </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="noesis:Element.IsFocusEngaged" Value="True">
+                <Setter TargetName="DecBtn" Property="BorderBrush" Value="{StaticResource ControlHilightBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
-    <Style x:Key="SliderStyle" TargetType="{x:Type Slider}">
+    <Style x:Key="SliderStyle" TargetType="Slider">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="IsMoveToPointEnabled" Value="True"/>
         <Setter Property="MinHeight" Value="0"/>
@@ -166,17 +175,17 @@
         <TextBlock Text="{Binding Name}"/>
     </DataTemplate>
 
-    <ControlTemplate x:Key="ComboBoxButtonTemplate" TargetType="{x:Type ToggleButton}">
+    <ControlTemplate x:Key="ComboBoxButtonTemplate" TargetType="ToggleButton">
         <Grid Background="Transparent"/>
     </ControlTemplate>
-    <Style x:Key="ComboBoxButtonStyle" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="ComboBoxButtonStyle" TargetType="ToggleButton">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="ClickMode" Value="Press"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Template" Value="{StaticResource ComboBoxButtonTemplate}"/>
     </Style>
-    <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
+    <ControlTemplate x:Key="ComboBoxTemplate" TargetType="ComboBox">
         <Grid UseLayoutRounding="True">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
@@ -210,7 +219,7 @@
                     </Border>
                     <ContentPresenter x:Name="ContentSite"
                             HorizontalAlignment="Center" VerticalAlignment="Center"
-                            ContentSource="SelectionBoxItem" Margin="6,2"/>
+                            ContentSource="SelectionBoxItem" Margin="6,3,6,5"/>
                     <ToggleButton x:Name="DropDownButton"
                         IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                         Style="{StaticResource ComboBoxButtonStyle}"/>
@@ -229,24 +238,20 @@
                                 <GradientStop Color="#FF1B3143" Offset="0"/>
                             </LinearGradientBrush>
                         </Border.Background>
-                        <StackPanel
-              IsItemsHost="True"
-              KeyboardNavigation.DirectionalNavigation="Contained"
-              UseLayoutRounding="{TemplateBinding UseLayoutRounding}" Margin="3"/>
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" Margin="3"/>
                     </Border>
                 </Grid>
             </Popup>
         </Grid>
     </ControlTemplate>
-    <Style TargetType="{x:Type ComboBox}">
+    <Style TargetType="ComboBox">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Foreground" Value="#FFD8F1FF"/>
         <Setter Property="FontSize" Value="10"/>
-        <Setter Property="Padding" Value="0,2,0,3"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
         <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
     </Style>
-    <ControlTemplate x:Key="ComboBoxItemTemplate" TargetType="{x:Type ComboBoxItem}">
+    <ControlTemplate x:Key="ComboBoxItemTemplate" TargetType="ComboBoxItem">
         <Border x:Name="Bd" BorderThickness="1" CornerRadius="2">
             <Border.BorderBrush>
                 <SolidColorBrush Color="#FF1A3143" Opacity="0"/>
@@ -277,22 +282,22 @@
                     <VisualState x:Name="Disabled"/>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,2"/>
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,1,3,3"/>
         </Border>
     </ControlTemplate>
-    <Style TargetType="{x:Type ComboBoxItem}">
+    <Style TargetType="ComboBoxItem">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusStyle}"/>
         <Setter Property="Template" Value="{StaticResource ComboBoxItemTemplate}"/>
     </Style>
 
-    <Style x:Key="ColoredText" TargetType="{x:Type Inline}">
+    <Style x:Key="ColoredText" TargetType="Inline">
         <Setter Property="Foreground" Value="{StaticResource NoesisLogoBlueBg}"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
-    <Style x:Key="ColoredNumber" TargetType="{x:Type Inline}">
+    <Style x:Key="ColoredNumber" TargetType="Inline">
         <Setter Property="Foreground" Value="{Binding Foreground, ElementName=MusicLevel}"/>
     </Style>
 

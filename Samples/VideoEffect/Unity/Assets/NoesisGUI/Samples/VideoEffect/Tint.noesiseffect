@@ -1,19 +1,19 @@
 #include "EffectHelpers.h"
 
-cbuffer Constants: register(b1)
+uniforms
 {
-    float4 color;
-}
+    fixed4 _color;
+};
 
-float4 GetCustomEffect()
+fixed4 main_effect()
 {
-    float4 c = GetInput();
+    fixed4 c = GetInput();
 
     return float4
     (
-        c.r * color.r,
-        c.g * color.g,
-        c.b * color.b,
-        c.a + color.a * (1.0f - c.a)
+        c.r * _color.r,
+        c.g * _color.g,
+        c.b * _color.b,
+        c.a + _color.a * (1.0f - c.a)
     );
 }

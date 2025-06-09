@@ -6,9 +6,40 @@
   xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
   xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
   mc:Ignorable="d"
+  Title="NoesisGUI - BackgroundBlur"
   d:DesignWidth="1920" d:DesignHeight="1080"
   TextElement.FontFamily="./#Rajdhani SemiBold">
 
+  <Window.Resources>
+    <Storyboard x:Key="AnimClose">
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PanelGrid" Storyboard.TargetProperty="RenderTransform.ScaleX">
+        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="1">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PanelGrid" Storyboard.TargetProperty="RenderTransform.ScaleY">
+        <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="1">
+          <EasingDoubleKeyFrame.EasingFunction>
+            <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+          </EasingDoubleKeyFrame.EasingFunction>
+        </EasingDoubleKeyFrame>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+  </Window.Resources>
   <Grid x:Name="LayoutRoot">
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="3*"/>
@@ -21,13 +52,16 @@
       <RowDefinition Height="2*"/>
     </Grid.RowDefinitions>
 
-        <Border x:Name="source" Grid.RowSpan="3" Grid.ColumnSpan="3" Background="{StaticResource BackgroundBlur.Brush.Background}"/>
-        <Viewbox x:Name="Panel" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Border x:Name="source" Grid.RowSpan="3" Grid.ColumnSpan="3" Background="{StaticResource BackgroundBlur.Brush.Background}"/>
+    <Viewbox x:Name="Panel" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
       <b:Interaction.Behaviors>
         <b:MouseDragElementBehavior ConstrainToParentBounds="True"/>
       </b:Interaction.Behaviors>
 
-      <Grid x:Name="PanelGrid">
+      <Grid x:Name="PanelGrid" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+          <ScaleTransform/>
+        </Grid.RenderTransform>
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
@@ -54,7 +88,7 @@
         </Path>
 
         <!-- Bottom Content -->
-        <Grid x:Name="BottomContent" Grid.Row="1" Margin="0,5,0,0">
+        <Grid x:Name="BottomContent" Grid.Row="1" Margin="0,5,0,0" KeyboardNavigation.DirectionalNavigation="Cycle">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -115,8 +149,20 @@
               <ColumnDefinition />
               <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="0,0,7,0" Style="{StaticResource BackgroundBlur.ButtonBlue}">ACCEPT</Button>
-            <Button Grid.Column="1" Margin="7,0,0,0" Style="{StaticResource BackgroundBlur.ButtonYellow}">CANCEL</Button>
+            <Button Grid.Column="0" Margin="0,0,7,0" Style="{StaticResource BackgroundBlur.ButtonBlue}" Content="ACCEPT">
+              <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Click">
+                  <b:ControlStoryboardAction Storyboard="{StaticResource AnimClose}"/>
+                </b:EventTrigger>
+              </b:Interaction.Triggers>
+            </Button>
+            <Button Grid.Column="1" Margin="7,0,0,0" Style="{StaticResource BackgroundBlur.ButtonYellow}" Content="CANCEL">
+              <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Click">
+                  <b:ControlStoryboardAction Storyboard="{StaticResource AnimClose}"/>
+                </b:EventTrigger>
+              </b:Interaction.Triggers>
+            </Button>
           </Grid>
         </Grid>
 

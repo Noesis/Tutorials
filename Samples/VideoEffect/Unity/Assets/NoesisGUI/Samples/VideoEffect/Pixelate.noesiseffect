@@ -1,20 +1,20 @@
 #include "EffectHelpers.h"
 
-cbuffer Constants: register(b1)
+uniforms
 {
-    float size;
-}
+    float _size;
+};
 
-float4 GetCustomEffect()
+fixed4 main_effect()
 {
     float2 pos = GetImagePosition();
 
-    if (floor(pos.y / size) % 2.0 >= 1.0)
+    if (mod(floor(pos.y / _size), 2.0) >= 1.0)
     {
-        pos.x += size / 2.0f;
+        pos.x += _size / 2.0f;
     }
 
-    float2 brickNum = floor(pos / size);
-    float2 centerOfBrick = brickNum * size + size / 2;
+    float2 brickNum = floor(pos / _size);
+    float2 centerOfBrick = brickNum * _size + _size / 2.0;
     return SampleInputAtPosition(centerOfBrick);
 }

@@ -18,6 +18,10 @@
 #include "MainWindow.xaml.bin.h"
 #include "Milky Boba.otf.bin.h"
 #include "background.riv.bin.h"
+#include "leaves-tl.riv.bin.h"
+#include "leaves-tr.riv.bin.h"
+#include "leaves-br.riv.bin.h"
+#include "leaves-bl.riv.bin.h"
 #include "logo.riv.bin.h"
 #include "start.riv.bin.h"
 #include "rewards.riv.bin.h"
@@ -62,6 +66,10 @@ private:
             { "App.xaml", App_xaml },
             { "MainWindow.xaml", MainWindow_xaml },
             { "background.riv", background_riv },
+            { "leaves-tl.riv", leaves_tl_riv },
+            { "leaves-tr.riv", leaves_tr_riv },
+            { "leaves-br.riv", leaves_br_riv },
+            { "leaves-bl.riv", leaves_bl_riv },
             { "logo.riv", logo_riv },
             { "start.riv", start_riv },
             { "rewards.riv", rewards_riv },

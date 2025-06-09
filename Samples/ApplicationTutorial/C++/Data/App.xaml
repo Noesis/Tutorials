@@ -4,17 +4,12 @@
              x:Class="RssReader.App">
 
   <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Noesis.GUI.Extensions;component/Theme/NoesisTheme.DarkBlue.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-            <SolidColorBrush x:Key="Background0" Color="#FF2F3F4F" />
-            <SolidColorBrush x:Key="Background1" Color="SlateGray" />
-            <SolidColorBrush x:Key="Foreground0" Color="White" />
-            <SolidColorBrush x:Key="Foreground1" Color="SkyBlue" />
-            <SolidColorBrush x:Key="Foreground2" Color="Black" />
-            <SolidColorBrush x:Key="Border0" Color="LightSlateGray" />
-        </ResourceDictionary>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Noesis.GUI.Extensions;component/Theme/NoesisTheme.LightBlue.xaml" />
+        <ResourceDictionary Source="Resources.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
   </Application.Resources>
 
 </Application>

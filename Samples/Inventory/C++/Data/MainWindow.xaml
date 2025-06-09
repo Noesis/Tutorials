@@ -1134,7 +1134,6 @@
                             Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top"
                             Width="{Binding ActualWidth, ElementName=DragItemRef}"
                             Height="{Binding ActualWidth, ElementName=DragItemRef}"
-                            BorderThickness="{Binding ActualWidth, ElementName=DragItemBorderRef}"
                             Style="{StaticResource Style.DraggedItem}">
                 <ContentControl.RenderTransform>
                     <TranslateTransform

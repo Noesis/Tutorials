@@ -104,69 +104,9 @@
                         <RowDefinition Height="30*"/>
                         <RowDefinition Height="100*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="StartButton" Grid.Row="1" Content="START" Margin="60,0,0,0" Command="{Binding StartCommand}" RenderTransformOrigin="0.5,0.5">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="MouseEnter">
-                                <noesis:SetFocusAction/>
-                            </b:EventTrigger>
-                            <b:EventTrigger EventName="GotFocus">
-                                <b:PlaySoundAction Source="AudioSlide.mp3" Volume="0.2"/>
-                            </b:EventTrigger>
-                            <b:EventTrigger EventName="Click">
-                                <b:PlaySoundAction Source="AudioClick.mp3" Volume="0.3"/>
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
-                    <Button x:Name="SettingsButton" Grid.Row="3" Content="SETTINGS" Margin="60,0,0,0" Command="{Binding SettingsCommand}" RenderTransformOrigin="0.5,0.5">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="MouseEnter">
-                                <noesis:SetFocusAction/>
-                            </b:EventTrigger>
-                            <b:EventTrigger EventName="GotFocus">
-                                <b:PlaySoundAction Source="AudioSlide.mp3" Volume="0.2"/>
-                            </b:EventTrigger>
-                            <b:EventTrigger EventName="Click">
-                                <b:PlaySoundAction Source="AudioClick.mp3" Volume="0.3"/>
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
-                    <Button x:Name="ExitButton" Grid.Row="5" Content="EXIT" Margin="60,0,0,0" Command="{Binding ExitCommand}" RenderTransformOrigin="0.5,0.5">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="MouseEnter">
-                                <noesis:SetFocusAction/>
-                            </b:EventTrigger>
-                            <b:EventTrigger EventName="GotFocus">
-                                <b:PlaySoundAction Source="AudioSlide.mp3" Volume="0.2"/>
-                            </b:EventTrigger>
-                            <b:EventTrigger EventName="Click">
-                                <b:PlaySoundAction Source="AudioClick.mp3" Volume="0.3"/>
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
+                    <Button x:Name="StartButton" Grid.Row="1" Content="START" Command="{Binding StartCommand}"/>
+                    <Button x:Name="SettingsButton" Grid.Row="3" Content="SETTINGS" Command="{Binding SettingsCommand}"/>
+                    <Button x:Name="ExitButton" Grid.Row="5" Content="EXIT" Command="{Binding ExitCommand}"/>
                 </Grid>
             </Viewbox>
         </Grid>

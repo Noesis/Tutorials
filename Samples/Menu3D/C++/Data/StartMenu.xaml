@@ -579,8 +579,13 @@
             <b:ControlStoryboardAction Storyboard="{StaticResource ActivateExpert}"/>
         </b:EventTrigger>
         <b:DataTrigger Binding="{Binding State}" Value="{x:Static local:State.Start}">
+            <b:ChangePropertyAction TargetName="Casual" PropertyName="MinHeight" Value="1"/>
             <b:ControlStoryboardAction Storyboard="{StaticResource FadeIn}"/>
         </b:DataTrigger>
+        <b:StoryboardCompletedTrigger Storyboard="{StaticResource FadeIn}">
+            <noesis:SetFocusAction TargetName="Casual"/>
+            <b:ChangePropertyAction TargetName="Casual" PropertyName="MinHeight" Value="0"/>
+        </b:StoryboardCompletedTrigger>
         <b:DataTrigger Binding="{Binding State}" Comparison="NotEqual" Value="{x:Static local:State.Start}">
             <b:ControlStoryboardAction Storyboard="{StaticResource FadeOut}"/>
         </b:DataTrigger>
@@ -591,11 +596,6 @@
     </b:Interaction.Triggers>
 
     <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
-        <b:Interaction.Triggers>
-            <b:StoryboardCompletedTrigger Storyboard="{StaticResource FadeIn}">
-                <noesis:SetFocusAction TargetName="Casual"/>
-            </b:StoryboardCompletedTrigger>
-        </b:Interaction.Triggers>
         <Viewbox>
             <Grid Width="1300" Height="900">
                 <noesis:Element.Transform3D>

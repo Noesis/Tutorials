@@ -8,6 +8,7 @@
 #include <NsGui/IRenderer.h>
 #include <NsGui/IView.h>
 #include <NsGui/Page.h>
+#include <NsGui/Uri.h>
 #include <NsCore/HighResTimer.h>
 #include <NsMath/Matrix.h>
 #include <NsRender/D3D11Factory.h>
@@ -249,8 +250,8 @@ static bool MainLoop(bool retryCreate)
     Noesis::GUI::SetLicense(NS_LICENSE_NAME, NS_LICENSE_KEY);
 
     Noesis::GUI::Init();
-    NoesisApp::SetThemeProviders(xamlProvider, fontProvider);
-    Noesis::GUI::LoadApplicationResources("Theme/NoesisTheme.DarkBlue.xaml");
+    NoesisApp::SetThemeProviders();
+    Noesis::GUI::LoadApplicationResources(NoesisApp::Theme::DarkBlue());
 
     Noesis::Ptr<Noesis::IView> uiView = Noesis::GUI::CreateView(Noesis::GUI::LoadXaml<Noesis::Page>("MainWindow.xaml"));
     uiView->SetTessellationMaxPixelError(Noesis::TessellationMaxPixelError::HighQuality());
@@ -311,6 +312,9 @@ static bool MainLoop(bool retryCreate)
 
             ovrTimewarpProjectionDesc posTimewarpProjectionDesc = {};
 
+            // UI Offscreen textures
+            uiView->GetRenderer()->RenderOffscreen();
+
             // Render Scene to Eye Buffers
             for (int eye = 0; eye < 2; ++eye)
             {
@@ -352,8 +356,6 @@ static bool MainLoop(bool retryCreate)
                 Noesis::Matrix4 eyeMtx = scale * offset * (*(Noesis::Matrix4*)&prod) * viewport;
 #endif
 
-                // UI Offscreen textures
-                uiView->GetRenderer()->RenderOffscreen(eyeMtx);
                 DIRECTX.Context->VSSetConstantBuffers(0, 1, &DIRECTX.UniformBufferGen->D3DBuffer);
 
                 // Clear and set up rendertarget

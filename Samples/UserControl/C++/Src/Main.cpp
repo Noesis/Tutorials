@@ -15,6 +15,7 @@
 #include <NsApp/Window.h>
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/BaseMultiValueConverter.h>
+#include <NsGui/DependencyProperty.h>
 #include <NsDrawing/Color.h>
 
 #include "NumericUpDown.h"
@@ -64,9 +65,10 @@ public:
         Noesis::Ptr<BaseComponent>& result) override
     {
         NS_ASSERT(values.Size() == 3);
-        int r = Boxing::Unbox<int>(values[0]);
-        int g = Boxing::Unbox<int>(values[1]);
-        int b = Boxing::Unbox<int>(values[2]);
+        BaseComponent* unset = DependencyProperty::GetUnsetValue();
+        int r = values[0] != unset ? Boxing::Unbox<int>(values[0]) : 0;
+        int g = values[1] != unset ? Boxing::Unbox<int>(values[1]) : 0;
+        int b = values[2] != unset ? Boxing::Unbox<int>(values[2]) : 0;
 
         result = Boxing::Box(Color(r, g, b));
         return true;

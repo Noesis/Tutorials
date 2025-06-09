@@ -26,6 +26,9 @@ namespace Localization
                 return _resources?.uri;
             }
         }
+
+        public FlowDirection _flowDirection;
+        public FlowDirection FlowDirection { get => _flowDirection; }
     }
 }
 

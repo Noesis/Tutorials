@@ -137,8 +137,13 @@
     </UserControl.Resources>
     <b:Interaction.Triggers>
         <b:DataTrigger Binding="{Binding State}" Value="{x:Static local:State.Settings}">
+            <b:ChangePropertyAction TargetName="TexDetailContent" PropertyName="MinHeight" Value="1"/>
             <b:ControlStoryboardAction Storyboard="{StaticResource FadeIn}"/>
         </b:DataTrigger>
+        <b:StoryboardCompletedTrigger Storyboard="{StaticResource FadeIn}">
+            <noesis:SetFocusAction TargetName="TexDetailContent"/>
+            <b:ChangePropertyAction TargetName="TexDetailContent" PropertyName="MinHeight" Value="0"/>
+        </b:StoryboardCompletedTrigger>
         <b:DataTrigger Binding="{Binding State}" Comparison="NotEqual" Value="{x:Static local:State.Settings}">
             <b:ControlStoryboardAction Storyboard="{StaticResource FadeOut}"/>
         </b:DataTrigger>
@@ -149,11 +154,6 @@
     </b:Interaction.Triggers>
 
     <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
-        <b:Interaction.Triggers>
-            <b:StoryboardCompletedTrigger Storyboard="{StaticResource FadeIn}">
-                <noesis:SetFocusAction TargetName="TexDetailContent"/>
-            </b:StoryboardCompletedTrigger>
-        </b:Interaction.Triggers>
         <Viewbox>
             <Grid Width="1300" Height="900">
                 <noesis:Element.Transform3D>

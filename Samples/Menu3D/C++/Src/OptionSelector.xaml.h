@@ -39,6 +39,7 @@ public:
 
 private:
     void InitializeComponent();
+    bool ConnectField(BaseComponent* object, const char* name) override;
     void OnInitialized(Noesis::BaseComponent*, const Noesis::EventArgs&);
     void OnPrev(Noesis::BaseComponent*, const Noesis::RoutedEventArgs&);
     void OnNext(Noesis::BaseComponent*, const Noesis::RoutedEventArgs&);

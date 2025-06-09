@@ -7,6 +7,7 @@
 #include "MainWindow.xaml.h"
 #include "ViewModel.h"
 
+#include <NsGui/Uri.h>
 #include <NsGui/IntegrationAPI.h>
 #include <NsCore/ReflectionImplementEmpty.h>
 

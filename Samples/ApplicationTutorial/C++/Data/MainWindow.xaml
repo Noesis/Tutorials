@@ -1,31 +1,31 @@
-<Window
-   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-   xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-   Title="NoesisGUI - RSS Reader" ResizeMode="NoResize" SizeToContent="WidthAndHeight"
-   Background="{StaticResource Background0}"
-   Foreground="{StaticResource Foreground0}"
-   x:Class="RssReader.MainWindow">
+<Window x:Class="RssReader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="NoesisGUI - RSS Reader"
+        ResizeMode="NoResize" SizeToContent="WidthAndHeight"
+        Background="{StaticResource RssReader.Brush.Background}"
+        Foreground="{StaticResource RssReader.Brush.Title}">
 
-  <Viewbox Width="485" Height="640">
-    <DockPanel LastChildFill="True"
+  <Viewbox Width="490" Height="650">
+    <DockPanel x:Name="dockPanel" LastChildFill="True"
                KeyboardNavigation.TabNavigation="Contained"
                KeyboardNavigation.DirectionalNavigation="Contained"
-               Width="325" Height="430">
-      <TextBlock DockPanel.Dock="Top" Text="RSS Reader" FontSize="32" FontWeight="Bold"
-                 TextAlignment="Center" Margin="0,10,0,0"/>
-      <Border DockPanel.Dock="Top" Background="{StaticResource Background1}"
-              BorderBrush="{StaticResource Border0}" BorderThickness="1" CornerRadius="2"
-              Margin="10" Padding="15,5">
+               Width="337" Height="450">
+      <TextBlock DockPanel.Dock="Top" Text="RSS reader" FontSize="30" FontFamily="./#Montserrat" FontWeight="Bold"
+                 TextAlignment="Center" Margin="0,11,0,5"/>
+      <Border DockPanel.Dock="Top" Background="{StaticResource RssReader.Brush.Panel}" CornerRadius="12"
+              Margin="16,0,16,10" Padding="14,12" Effect="{StaticResource RssReader.DropShadow}">
         <Grid>
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
           </Grid.ColumnDefinitions>
-          <TextBlock Grid.Column="0" Text="URL: " VerticalAlignment="Center"/>
-          <TextBox x:Name="Address" Grid.Column="1" Text="http://www.metacritic.com/"/>
-          <Button x:Name="GoTo" Grid.Column="2" Content="Go" Margin="2,0,0,0">
+          <TextBox x:Name="Address" Grid.Column="0" Text="http://www.metacritic.com/" Style="{StaticResource RssReader.Style.TextBox}" Height="32" VerticalAlignment="Bottom"/>
+          <Button x:Name="GoTo" Grid.Column="1" Content="Go" Margin="10,0,0,0" Style="{StaticResource RssReader.Style.Button}" >
             <b:Interaction.Triggers>
               <b:EventTrigger EventName="Click">
                 <b:LaunchUriOrFileAction Path="{Binding Text, ElementName=Address}"/>
@@ -34,46 +34,31 @@
           </Button>
         </Grid>
       </Border>
-      <Grid DockPanel.Dock="Bottom" Margin="10">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition/>
-          <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.Resources>
-            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-                <Setter Property="BorderBrush" Value="{StaticResource Background1}"/>
-            </Style>
-        </Grid.Resources>
-        <Button x:Name="Prev" Grid.Column="0" Content="Prev" Click="OnPrevClicked" Margin="0,0,5,0"/>
-        <Button x:Name="Next" Grid.Column="1" Content="Next" Click="OnNextClicked" Margin="5,0,0,0"/>
-      </Grid>
-      <Border Background="{StaticResource Background1}" BorderBrush="{StaticResource Border0}"
-              BorderThickness="1" CornerRadius="2" Margin="10,0" Padding="5">
-        <Grid x:Name="ContentPanel" Margin="10,0">
+      <Border Background="{StaticResource RssReader.Brush.Panel}" CornerRadius="12" Margin="16,0,16,16" Padding="4,2" Effect="{StaticResource RssReader.DropShadow}">
+        <Grid x:Name="ContentPanel" Margin="0,0">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
           <TextBlock x:Name="EntryTitle" Text="Article Title"
-                     Grid.Row="0" FontSize="20" FontWeight="Bold"
-                     Foreground="{StaticResource Foreground1}" TextAlignment="Center"
-                     Margin="0,5,0,5"/>
-          <ScrollViewer Grid.Row="1" Margin="0,0,0,10" Padding="10,0" IsTabStop="True"
+                     Grid.Row="0" FontSize="18" FontFamily="./Montserrat" FontWeight="SemiBold"
+                     Foreground="{StaticResource RssReader.Brush.Entry.Title}"
+                     Margin="15,15,0,8" HorizontalAlignment="Left"/>
+          <ScrollViewer Grid.Row="1" Margin="10,0,10,6" IsTabStop="True"
                         HorizontalScrollBarVisibility="Disabled"
                         VerticalScrollBarVisibility="Auto"
-                        PanningMode="VerticalFirst">
-            <ScrollViewer.Style>
-              <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}">
-                <Style.Triggers>
-                  <Trigger Property="IsKeyboardFocused" Value="True">
-                    <Setter Property="Background" Value="#10FFFFFF"/>
-                  </Trigger>
-                </Style.Triggers>
-              </Style>
-            </ScrollViewer.Style>
-            <TextBlock x:Name="EntryDesc" Text="Article text" TextWrapping="Wrap"
-                       Foreground="{StaticResource Foreground2}" FontSize="14"/>
+                        PanningMode="VerticalFirst" Style="{StaticResource RssReader.Style.ScrollViewer}">
+            <TextBlock x:Name="EntryDesc" Text="Article text" Style="{StaticResource RssReader.Style.TextBlock}" />
           </ScrollViewer>
+          <Grid Grid.Row="2" Margin="10">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition/>
+              <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Prev" Grid.Column="0" Content="Prev" Click="OnPrevClicked" Margin="0,0,5,0" Style="{StaticResource RssReader.Style.Button}"/>
+            <Button x:Name="Next" Grid.Column="1" Content="Next" Click="OnNextClicked" Margin="5,0,0,0" Style="{StaticResource RssReader.Style.Button}"/>
+          </Grid>
         </Grid>
       </Border>
     </DockPanel>

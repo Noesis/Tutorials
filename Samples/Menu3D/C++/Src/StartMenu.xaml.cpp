@@ -8,6 +8,7 @@
 
 #include <NsCore/ReflectionImplementEmpty.h>
 #include <NsGui/IntegrationAPI.h>
+#include <NsGui/Uri.h>
 
 
 using namespace Menu3D;

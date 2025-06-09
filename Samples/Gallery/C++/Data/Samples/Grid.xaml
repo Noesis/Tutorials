@@ -4,7 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignWidth="1280" d:DesignHeight="920"
+    d:DesignWidth="1280" d:DesignHeight="1420"
     Style="{StaticResource SampleControlStyle}"
     Header="Grid"
     Tag="https://www.noesisengine.com/docs/Gui.Core._Grid.html">
@@ -88,6 +88,57 @@
             </Grid>
           </Border>
         </Grid>
+      </Viewbox>
+    </HeaderedContentControl>
+    <HeaderedContentControl Style="{StaticResource SampleSectionStyle}" Tag="https://www.noesisengine.com/xamltoy/498b1f156150cb4299d6f808a7da6e17" TabIndex="200">
+      <HeaderedContentControl.Header>
+        <StackPanel>
+          <TextBlock Style="{StaticResource SampleSectionTitle}" Text="GridSplitter"/>
+          <TextBlock Style="{StaticResource SampleSectionDesc}" Margin="0,5,0,0">
+            <Run>The </Run>
+            <Run FontWeight="Bold">GridSplitter</Run>
+            <Run>control is used to redistribute the space between columns or rows of a Grid. The</Run>
+            <Run FontWeight="Bold">ResizeDirection</Run>
+            <Run>and</Run>
+            <Run FontWeight="Bold">ResizeBehavior</Run>
+            <Run>properties determine which columns or rows are being affected by the GridSplitter.</Run>
+          </TextBlock>
+        </StackPanel>
+      </HeaderedContentControl.Header>
+      <Viewbox StretchDirection="DownOnly">
+        <StackPanel>
+          <CheckBox x:Name="preview" Content="Show splitter preview" Margin="0,0,0,10"/>
+          <Grid Width="400" Height="250" Margin="0,0,0,8">
+            <Grid.RowDefinitions>
+              <RowDefinition/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+              </Grid.ColumnDefinitions>
+              <Rectangle x:Name="r1" Grid.Column="0" Fill="Turquoise"/>
+              <TextBlock Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{Binding ActualWidth, ElementName=r1, Mode=OneWay}"/>x<Run Text="{Binding ActualHeight, ElementName=r1, Mode=OneWay}"/>
+              </TextBlock>
+              <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext"
+                            ShowsPreview="{Binding IsChecked, ElementName=preview}"/>
+              <Rectangle x:Name="r2" Grid.Column="2" Fill="LightSeaGreen"/>
+              <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{Binding ActualWidth, ElementName=r2, Mode=OneWay}"/>x<Run Text="{Binding ActualHeight, ElementName=r2, Mode=OneWay}"/>
+              </TextBlock>
+            </Grid>
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext"
+                          ShowsPreview="{Binding IsChecked, ElementName=preview}"/>
+            <Rectangle x:Name="r3" Grid.Row="2" Fill="Teal"/>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Run Text="{Binding ActualWidth, ElementName=r3, Mode=OneWay}"/>x<Run Text="{Binding ActualHeight, ElementName=r3, Mode=OneWay}"/>
+            </TextBlock>
+          </Grid>
+        </StackPanel>
       </Viewbox>
     </HeaderedContentControl>
   </StackPanel>

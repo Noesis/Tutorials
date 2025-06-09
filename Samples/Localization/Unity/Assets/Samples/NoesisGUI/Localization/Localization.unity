@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -130,7 +130,7 @@ LightingSettings:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Settings.lighting
-  serializedVersion: 3
+  serializedVersion: 6
   m_GIWorkflowMode: 0
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 1
@@ -139,11 +139,11 @@ LightingSettings:
   m_AlbedoBoost: 1
   m_IndirectOutputScale: 1
   m_UsingShadowmask: 0
-  m_BakeBackend: 0
+  m_BakeBackend: 1
   m_LightmapMaxSize: 1024
   m_BakeResolution: 40
   m_Padding: 2
-  m_TextureCompression: 1
+  m_LightmapCompression: 3
   m_AO: 0
   m_AOMaxDistance: 1
   m_CompAOExponent: 0
@@ -164,13 +164,13 @@ LightingSettings:
   m_PVRCulling: 1
   m_PVRSampling: 1
   m_PVRDirectSampleCount: 32
-  m_PVRSampleCount: 500
-  m_PVREnvironmentSampleCount: 500
+  m_PVRSampleCount: 512
+  m_PVREnvironmentSampleCount: 512
   m_PVREnvironmentReferencePointCount: 2048
   m_LightProbeSampleCountMultiplier: 4
   m_PVRBounces: 2
   m_PVRMinBounces: 2
-  m_PVREnvironmentMIS: 0
+  m_PVREnvironmentImportanceSampling: 0
   m_PVRFilteringMode: 0
   m_PVRDenoiserTypeDirect: 0
   m_PVRDenoiserTypeIndirect: 0
@@ -184,6 +184,9 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+  m_PVRTiledBaking: 0
+  m_NumRaysToShootPerTexel: -1
+  m_RespectSceneVisibilityWhenBakingGI: 0
 --- !u!1 &2141655593
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,15 +225,20 @@ MonoBehaviour:
   _isPPAAEnabled: 0
   _tessellationMaxPixelError: 0.2
   _renderFlags: 16
+  _dpiScale: 1
   _continuousRendering: 1
   _enableExternalUpdate: 0
   _enableKeyboard: 1
   _enableMouse: 1
   _enableTouch: 1
-  _enableGamepad: 0
+  _enableActions: 0
   _emulateTouch: 0
   _useRealTimeClock: 0
   _actions: {fileID: -944628639613478452, guid: 9f67088567c2b5040b62090c14e352e3, type: 3}
+  _actionMap: Gamepad
+  _actionsRepeatDelay: 0.5
+  _actionsRepeatRate: 0.1
+  _xrTrackingOrigin: {fileID: 0}
 --- !u!81 &2141655595
 AudioListener:
   m_ObjectHideFlags: 0
@@ -262,10 +270,16 @@ MonoBehaviour:
   _languages:
   - _name: English
     _resources: {fileID: -8414808784256213763, guid: 4c2a16ce28cffcf4fb195e711848c2fc, type: 3}
+    _flowDirection: 0
   - _name: "Fran\xE7ais"
     _resources: {fileID: -8414808784256213763, guid: 7f2d252958e7c1d4896f35c0d9459d19, type: 3}
+    _flowDirection: 0
   - _name: "\u65E5\u672C\u8A9E"
     _resources: {fileID: -8414808784256213763, guid: 8c3f8d9546f74fe4d971ddd3f6fe20bb, type: 3}
+    _flowDirection: 0
+  - _name: "\u0639\u0631\u0628\u064A"
+    _resources: {fileID: -8414808784256213763, guid: da7ea62c4e4600b4fae2b000d93be0ff, type: 3}
+    _flowDirection: 1
 --- !u!20 &2141655598
 Camera:
   m_ObjectHideFlags: 0
@@ -276,13 +290,21 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -319,6 +341,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

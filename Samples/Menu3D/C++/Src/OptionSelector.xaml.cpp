@@ -7,6 +7,7 @@
 #include "OptionSelector.xaml.h"
 
 #include <NsCore/ReflectionImplement.h>
+#include <NsGui/Uri.h>
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/RepeatButton.h>
 #include <NsGui/UIElement.h>
@@ -76,11 +77,17 @@ void OptionSelector::InitializeComponent()
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+bool OptionSelector::ConnectField(BaseComponent* object, const char* name)
+{
+    NS_CONNECT_FIELD(_prevButton, "PrevButton");
+    NS_CONNECT_FIELD(_nextButton, "NextButton");
+
+    return false;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 void OptionSelector::OnInitialized(Noesis::BaseComponent*, const Noesis::EventArgs&)
 {
-    _prevButton = FindName<RepeatButton>("PrevButton");
-    _nextButton = FindName<RepeatButton>("NextButton");
-
     _prevButton->Click() += MakeDelegate(this, &OptionSelector::OnPrev);
     _nextButton->Click() += MakeDelegate(this, &OptionSelector::OnNext);
 

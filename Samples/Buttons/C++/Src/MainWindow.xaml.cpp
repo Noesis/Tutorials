@@ -8,6 +8,7 @@
 #include "ViewModel.h"
 
 #include <NsGui/IntegrationAPI.h>
+#include <NsGui/Uri.h>
 #include <NsCore/ReflectionImplementEmpty.h>
 
 

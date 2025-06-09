@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:Localization"
     mc:Ignorable="d"
     x:Class="Localization.MainWindow"
-    FontFamily="./#PT Sans, ./#FontopoNIHONGO"
+    FontFamily="./#PT Sans, ./#FontopoNIHONGO, ./#A_Nefel_Sereke"
     Foreground="#FFBEE8FF"
     Title="NoesisGUI - Localization"
     noesis:Loc.Source="{Binding SelectedLanguage.Source, FallbackValue='/Localization;component/Language-en.xaml'}"
@@ -51,7 +51,7 @@
     </EventTrigger>
   </Window.Triggers>
 
-  <Grid x:Name="LayoutRoot" Background="{StaticResource NoesisLogoBg}">
+  <Grid x:Name="LayoutRoot" Background="{StaticResource NoesisLogoBg}" FlowDirection="{Binding SelectedLanguage.FlowDirection}">
     <Grid.RowDefinitions>
       <RowDefinition Height="90*"/>
       <RowDefinition Height="800*"/>
@@ -181,7 +181,7 @@
               <RowDefinition Height="175*"/>
             </Grid.RowDefinitions>
             <Viewbox x:Name="Logo" Stretch="Uniform" Margin="0,0,10,0">
-              <StackPanel Orientation="Horizontal">
+              <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
                 <Path Data="{StaticResource NoesisLogoGeometry}" Fill="{StaticResource NoesisLogoBlueBg}" Stretch="Uniform"/>
                 <Path Data="{StaticResource NoesisTextGeometry}" Fill="White" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>
                 <Path Data="{StaticResource NoesisGuiTextGeometry}" Fill="{StaticResource NoesisLogoBlueBg}" Stretch="Uniform" Margin="40,0,0,0" VerticalAlignment="Center"/>

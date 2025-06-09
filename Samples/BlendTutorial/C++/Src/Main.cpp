@@ -79,16 +79,22 @@ private:
     void InitializeComponent()
     {
         Noesis::GUI::LoadComponent(this, "ColorSelector.xaml");
+    }
 
-        _r = FindName<Slider>("R"); NS_ASSERT(_r);
-        _g = FindName<Slider>("G"); NS_ASSERT(_g);
-        _b = FindName<Slider>("B"); NS_ASSERT(_b);
-        _a = FindName<Slider>("A"); NS_ASSERT(_a);
+    bool ConnectField(BaseComponent* object, const char* name) override
+    {
+        NS_CONNECT_FIELD(_r, "R");
+        NS_CONNECT_FIELD(_g, "G");
+        NS_CONNECT_FIELD(_b, "B");
+        NS_CONNECT_FIELD(_a, "A");
+
+        return false;
     }
 
     bool ConnectEvent(BaseComponent* source, const char* event, const char* handler) override
     {
         NS_CONNECT_EVENT(Slider, ValueChanged, Slider_ValueChanged);
+
         return false;
     }
 
@@ -175,15 +181,20 @@ private:
     void InitializeComponent()
     {
         Noesis::GUI::LoadComponent(this, "MainWindow.xaml");
+    }
 
-        _positionLeft = FindName<Slider>("PositionLeft"); NS_ASSERT(_positionLeft != 0);
-        _positionTop = FindName<Slider>("PositionTop"); NS_ASSERT(_positionTop != 0);
-        _sizeWidth = FindName<Slider>("SizeWidth"); NS_ASSERT(_sizeWidth != 0);
-        _sizeHeight = FindName<Slider>("SizeHeight"); NS_ASSERT(_sizeHeight != 0);
-        _colorSelect = FindName<ColorSelector>("ColorSelect"); NS_ASSERT(_colorSelect != 0);
-        _containerBorder = FindName<Border>("ContainerBorder"); NS_ASSERT(_colorSelect != 0);
-        _containerCanvas = FindName<Canvas>("ContainerCanvas"); NS_ASSERT(_containerCanvas != 0);
-        _fillSelected = FindName<RadioButton>("FillSelected"); NS_ASSERT(_fillSelected != 0);
+    bool ConnectField(BaseComponent* object, const char* name) override
+    {
+        NS_CONNECT_FIELD(_positionLeft, "PositionLeft");
+        NS_CONNECT_FIELD(_positionTop, "PositionTop");
+        NS_CONNECT_FIELD(_sizeWidth, "SizeWidth");
+        NS_CONNECT_FIELD(_sizeHeight, "SizeHeight");
+        NS_CONNECT_FIELD(_colorSelect, "ColorSelect");
+        NS_CONNECT_FIELD(_containerBorder, "ContainerBorder");
+        NS_CONNECT_FIELD(_containerCanvas, "ContainerCanvas");
+        NS_CONNECT_FIELD(_fillSelected, "FillSelected");
+
+        return false;
     }
 
     bool ConnectEvent(BaseComponent* source, const char* event, const char* handler) override
@@ -193,7 +204,9 @@ private:
         NS_CONNECT_EVENT(Border, PreviewMouseLeftButtonDown, ContainerBorder_MouseDown);
         NS_CONNECT_EVENT(Border, PreviewMouseLeftButtonUp, ContainerBorder_MouseUp);
         NS_CONNECT_EVENT(Border, PreviewMouseMove, ContainerBorder_MouseMove);
+
         NS_CONNECT_ATTACHED_EVENT(RadioButton, Checked, RadioButton_Checked);
+
         return false;
     }
 

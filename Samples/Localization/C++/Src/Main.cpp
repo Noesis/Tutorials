@@ -25,14 +25,18 @@
 #include "Language-en.xaml.bin.h"
 #include "Language-fr.xaml.bin.h"
 #include "Language-jp.xaml.bin.h"
+#include "Language-ar.xaml.bin.h"
 #include "Flag-en.png.bin.h"
 #include "Flag-fr.png.bin.h"
 #include "Flag-jp.png.bin.h"
+#include "Flag-ar.png.bin.h"
 #include "PTSans-Bold.ttf.bin.h"
 #include "PTSans-BoldItalic.ttf.bin.h"
 #include "PTSans-Italic.ttf.bin.h"
 #include "PTSans-Regular.ttf.bin.h"
 #include "FontopoNIHONGO.otf.bin.h"
+#include "A_Nefel_Sereke.ttf.bin.h"
+
 
 using namespace Localization;
 using namespace Noesis;
@@ -77,8 +81,6 @@ private:
         RegisterComponent<Localization::LevelToColorConverter>();
         RegisterComponent<Localization::MainWindow>();
         RegisterComponent<Localization::App>();
-        RegisterComponent<LocExtension>();
-        TypeOf<RichText>();
     }
 
     Noesis::Ptr<XamlProvider> GetXamlProvider() const override
@@ -90,7 +92,8 @@ private:
             { "Resources.xaml", Resources_xaml },
             { "Language-en.xaml", Language_en_xaml },
             { "Language-fr.xaml", Language_fr_xaml },
-            { "Language-jp.xaml", Language_jp_xaml }
+            { "Language-jp.xaml", Language_jp_xaml },
+            { "Language-ar.xaml", Language_ar_xaml }
         };
 
         return *new EmbeddedXamlProvider(xamls);
@@ -102,7 +105,8 @@ private:
         {
             { "Flag-en.png", Flag_en_png },
             { "Flag-fr.png", Flag_fr_png },
-            { "Flag-jp.png", Flag_jp_png }
+            { "Flag-jp.png", Flag_jp_png },
+            { "Flag-ar.png", Flag_ar_png }
         };
 
         return *new EmbeddedTextureProvider(textures);
@@ -116,7 +120,8 @@ private:
             { "", PTSans_BoldItalic_ttf },
             { "", PTSans_Italic_ttf },
             { "", PTSans_Regular_ttf },
-            { "", FontopoNIHONGO_otf }
+            { "", FontopoNIHONGO_otf },
+            { "", A_Nefel_Sereke_ttf }
         };
 
         return *new EmbeddedFontProvider(fonts);

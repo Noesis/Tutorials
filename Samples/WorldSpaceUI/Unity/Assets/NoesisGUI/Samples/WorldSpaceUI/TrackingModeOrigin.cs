@@ -20,7 +20,7 @@ namespace WorldSpaceUI
 
         void Update()
         {
-            SubsystemManager.GetInstances<XRInputSubsystem>(_inputSubsystems);
+            SubsystemManager.GetSubsystems<XRInputSubsystem>(_inputSubsystems);
 
             if (_inputSubsystems.Count > 0)
             {

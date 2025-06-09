@@ -6,8 +6,9 @@
 
 #include "MainMenu.xaml.h"
 
-#include <NsCore/ReflectionImplementEmpty.h>
+#include <NsGui/Uri.h>
 #include <NsGui/IntegrationAPI.h>
+#include <NsCore/ReflectionImplementEmpty.h>
 
 
 using namespace Menu3D;

@@ -138,6 +138,19 @@
           </ControlTemplate>
         </Setter.Value>
       </Setter>
+      <Setter Property="FocusVisualStyle">
+        <Setter.Value>
+          <Style TargetType="Control">
+            <Setter Property="Template">
+              <Setter.Value>
+                <ControlTemplate TargetType="Control">
+                  <Border BorderBrush="#80000000" BorderThickness="2" CornerRadius="1"/>
+                </ControlTemplate>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </Setter.Value>
+      </Setter>
     </Style>
 
   </Window.Resources>

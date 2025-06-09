@@ -48,26 +48,34 @@ namespace Inventory
         {
             base.OnAttached();
 
-            this.AssociatedObject.GiveFeedback += OnGiveFeedback;
-            this.AssociatedObject.PreviewMouseLeftButtonDown += OnMouseDown;
-            this.AssociatedObject.PreviewMouseLeftButtonUp += OnMouseUp;
-            this.AssociatedObject.PreviewMouseMove += OnMouseMove;
+            FrameworkElement element = AssociatedObject;
+            if (element != null)
+            {
+                element.GiveFeedback += OnGiveFeedback;
+                element.PreviewMouseLeftButtonDown += OnMouseDown;
+                element.PreviewMouseLeftButtonUp += OnMouseUp;
+                element.PreviewMouseMove += OnMouseMove;
+            }
+        }
+
+        protected override void OnDetaching()
+        {
+            FrameworkElement element = AssociatedObject;
+            if (element != null)
+            {
+                element.GiveFeedback -= OnGiveFeedback;
+                element.PreviewMouseLeftButtonDown -= OnMouseDown;
+                element.PreviewMouseLeftButtonUp -= OnMouseUp;
+                element.PreviewMouseMove -= OnMouseMove;
+            }
+
+            base.OnDetaching();
         }
 
         private void OnGiveFeedback(object sender, GiveFeedbackEventArgs e)
         {
             e.UseDefaultCursors = false;
             e.Handled = true;
-        }
-
-        protected override void OnDetaching()
-        {
-            this.AssociatedObject.GiveFeedback -= OnGiveFeedback;
-            this.AssociatedObject.PreviewMouseLeftButtonDown -= OnMouseDown;
-            this.AssociatedObject.PreviewMouseLeftButtonUp -= OnMouseUp;
-            this.AssociatedObject.PreviewMouseMove -= OnMouseMove;
-
-            base.OnDetaching();
         }
 
         private void OnMouseDown(object sender, MouseButtonEventArgs e)

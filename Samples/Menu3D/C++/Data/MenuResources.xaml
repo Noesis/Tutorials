@@ -225,6 +225,12 @@
                     <b:EventTrigger EventName="Click">
                         <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
                     </b:EventTrigger>
+                    <b:DataTrigger Binding="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="0">
+                        <b:ChangePropertyAction TargetObject="{Binding (b:Interaction.Triggers)[1].Actions[0], RelativeSource={RelativeSource AncestorType=ToggleButton}}" PropertyName="IsEnabled" Value="True"/>
+                    </b:DataTrigger>
+                    <b:DataTrigger Binding="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="1">
+                        <b:ChangePropertyAction TargetObject="{Binding (b:Interaction.Triggers)[1].Actions[0], RelativeSource={RelativeSource AncestorType=ToggleButton}}" PropertyName="IsEnabled" Value="False"/>
+                    </b:DataTrigger>
                 </noesis:StyleTriggerCollection>
             </Setter.Value>
         </Setter>
@@ -415,6 +421,12 @@
                     <b:KeyTrigger Key="Right" ActiveOnFocus="True">
                         <b:PlaySoundAction Source="Sounds/WaterDropBig.mp3" Volume="0.5"/>
                     </b:KeyTrigger>
+                    <b:DataTrigger Binding="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="0">
+                        <b:ChangePropertyAction TargetObject="{Binding (b:Interaction.Triggers)[0].Actions[0], RelativeSource={RelativeSource AncestorType=UserControl}}" PropertyName="IsEnabled" Value="True"/>
+                    </b:DataTrigger>
+                    <b:DataTrigger Binding="{Binding MinHeight, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="1">
+                        <b:ChangePropertyAction TargetObject="{Binding (b:Interaction.Triggers)[0].Actions[0], RelativeSource={RelativeSource AncestorType=UserControl}}" PropertyName="IsEnabled" Value="False"/>
+                    </b:DataTrigger>
                 </noesis:StyleTriggerCollection>
             </Setter.Value>
         </Setter>

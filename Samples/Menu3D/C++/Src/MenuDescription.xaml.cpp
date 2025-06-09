@@ -10,6 +10,7 @@
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/UIElementData.h>
 #include <NsGui/PropertyMetadata.h>
+#include <NsGui/Uri.h>
 
 
 using namespace Menu3D;

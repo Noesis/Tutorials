@@ -87,7 +87,7 @@ void DragItemBehavior::OnDetaching()
     element->PreviewMouseLeftButtonUp() -= MakeDelegate(this, &DragItemBehavior::OnMouseUp);
     element->PreviewMouseMove() -= MakeDelegate(this, &DragItemBehavior::OnMouseMove);
 
-    ParentClass::OnAttached();
+    ParentClass::OnDetaching();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

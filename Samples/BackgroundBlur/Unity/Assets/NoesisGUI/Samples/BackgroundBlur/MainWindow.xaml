@@ -7,7 +7,8 @@
   xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
   mc:Ignorable="d"
   d:DesignWidth="1920" d:DesignHeight="1080"
-  TextElement.FontFamily="./#Rajdhani SemiBold">
+  TextElement.FontFamily="./#Rajdhani SemiBold"
+  Focusable="True">
 
   <UserControl.Resources>
     <ResourceDictionary Source="Resources.xaml"/>
@@ -25,13 +26,16 @@
       <RowDefinition Height="2*"/>
     </Grid.RowDefinitions>
 
-        <Border x:Name="source" Grid.RowSpan="3" Grid.ColumnSpan="3" Background="{StaticResource BackgroundBlur.Brush.Background}"/>
-        <Viewbox x:Name="Panel" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Border x:Name="source" Grid.RowSpan="3" Grid.ColumnSpan="3" Background="{StaticResource BackgroundBlur.Brush.Background}"/>
+    <Viewbox x:Name="Panel" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
       <b:Interaction.Behaviors>
         <b:MouseDragElementBehavior ConstrainToParentBounds="True"/>
       </b:Interaction.Behaviors>
 
-      <Grid x:Name="PanelGrid">
+      <Grid x:Name="PanelGrid" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+          <ScaleTransform/>
+        </Grid.RenderTransform>
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
           <RowDefinition Height="Auto"/>
@@ -119,8 +123,20 @@
               <ColumnDefinition />
               <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="0,0,7,0" Style="{StaticResource BackgroundBlur.ButtonBlue}">ACCEPT</Button>
-            <Button Grid.Column="1" Margin="7,0,0,0" Style="{StaticResource BackgroundBlur.ButtonYellow}">CANCEL</Button>
+            <Button Grid.Column="0" Margin="0,0,7,0" Style="{StaticResource BackgroundBlur.ButtonBlue}" Content="ACCEPT">
+              <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Click">
+                  <b:ControlStoryboardAction Storyboard="{StaticResource AnimClose}"/>
+                </b:EventTrigger>
+              </b:Interaction.Triggers>
+            </Button>
+            <Button Grid.Column="1" Margin="7,0,0,0" Style="{StaticResource BackgroundBlur.ButtonYellow}" Content="CANCEL">
+              <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Click">
+                  <b:ControlStoryboardAction Storyboard="{StaticResource AnimClose}"/>
+                </b:EventTrigger>
+              </b:Interaction.Triggers>
+            </Button>
           </Grid>
         </Grid>
 

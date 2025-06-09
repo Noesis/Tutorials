@@ -9,6 +9,7 @@
 
 
 #include <NsGui/ShaderEffect.h>
+#include <NsRender/RenderContext.h>
 
 
 namespace Noesis { class DependencyProperty; }
@@ -24,15 +25,15 @@ class ChromaticAberrationEffect final: public Noesis::ShaderEffect
 public:
     ChromaticAberrationEffect();
 
+public:
+    static const Noesis::DependencyProperty* AmountProperty;
+    static NoesisApp::EffectShaders Shaders;
+
     /// Gets or Sets the amount of distortion
     //@{
     float GetAmount() const;
     void SetAmount(float value);
     //@}
-
-public:
-    static const Noesis::DependencyProperty* AmountProperty;
-    static void* Shader;
 
 private:
     struct Constants

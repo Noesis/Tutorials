@@ -67,7 +67,8 @@ NS_IMPLEMENT_REFLECTION(Gallery::ColorItem)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 MainWindow::MainWindow(): mSelectedSample(0), mSelectedThemeColor(0), mSelectedThemeAccent(0),
-    mSamplePanel(0), mSampleContainer1(0), mSampleContainer2(0)
+    mLayoutRoot(0), mWindowContent(0), mSamplePanel(0), mSampleContainer1(0), mSampleContainer2(0),
+    mSampleOffset(0), mSelectorBar(0), mSelectorExpanderButton(0)
 {
     InitializeComponent();
 
@@ -156,8 +157,7 @@ MainWindow::MainWindow(): mSelectedSample(0), mSelectedThemeColor(0), mSelectedT
 
     SetDataContext(this);
 
-    Noesis::Panel* windowContent = FindName<Noesis::Panel>("WindowContent");
-    windowContent->SizeChanged() += [this](BaseComponent*, const SizeChangedEventArgs& e)
+    mWindowContent->SizeChanged() += [this](BaseComponent*, const SizeChangedEventArgs& e)
     {
         float scale;
 
@@ -256,16 +256,23 @@ void MainWindow::SetSelectedThemeAccent(ColorItem* value)
 void MainWindow::InitializeComponent()
 {
     GUI::LoadComponent(this, "MainWindow.xaml");
+}
 
-    mLayoutRoot = FindName<Panel>("LayoutRoot");
+////////////////////////////////////////////////////////////////////////////////////////////////////
+bool MainWindow::ConnectField(BaseComponent* object, const char* name)
+{
+    NS_CONNECT_FIELD(mLayoutRoot, "LayoutRoot");
+    NS_CONNECT_FIELD(mWindowContent, "WindowContent");
 
-    mSamplePanel = FindName<Panel>("SamplePanel");
-    mSampleContainer1 = FindName<ContentControl>("SampleContainer1");
-    mSampleContainer2 = FindName<ContentControl>("SampleContainer2");
+    NS_CONNECT_FIELD(mSamplePanel, "SamplePanel");
+    NS_CONNECT_FIELD(mSampleContainer1, "SampleContainer1");
+    NS_CONNECT_FIELD(mSampleContainer2, "SampleContainer2");
 
-    mSampleOffset = FindName<FrameworkElement>("SampleOffset");
-    mSelectorBar = FindName<FrameworkElement>("SelectorBar");
-    mSelectorExpanderButton = FindName<ToggleButton>("SelectorExpanderButton");
+    NS_CONNECT_FIELD(mSampleOffset, "SampleOffset");
+    NS_CONNECT_FIELD(mSelectorBar, "SelectorBar");
+    NS_CONNECT_FIELD(mSelectorExpanderButton, "SelectorExpanderButton");
+
+    return false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -307,7 +314,9 @@ void MainWindow::UpdateTheme()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ResourceDictionary* MainWindow::GetTheme(const char* color, const char* accent)
 {
-    String themeName(String::VarArgs(), "Theme/NoesisTheme.Brushes.%s%s.xaml", color, accent);
+    String themeName = Uri::Pack("Noesis.GUI.Extensions", "Theme/").Str();
+    themeName.AppendFormat("NoesisTheme.Brushes.%s%s.xaml", color, accent);
+
     ThemeDictionaries::Iterator it = mThemeDictionaries.Find(themeName);
     if (it != mThemeDictionaries.End())
     {

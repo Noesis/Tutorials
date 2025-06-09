@@ -9,12 +9,9 @@
 #include <NsCore/ReflectionImplement.h>
 #include <NsGui/UIElementData.h>
 #include <NsGui/UIPropertyMetadata.h>
-#include <NsRender/RenderContext.h>
-#include <NsRender/RenderDevice.h>
 
-#ifdef NS_PLATFORM_WINDOWS_DESKTOP
-typedef unsigned char BYTE;
-#include "ChromaticAberration.h"
+#ifdef HAVE_CUSTOM_SHADERS
+#include "ChromaticAberration.bin.h"
 #endif
 
 
@@ -25,19 +22,11 @@ using namespace VideoEffect;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ChromaticAberrationEffect::ChromaticAberrationEffect()
 {
-    if (Shader == nullptr)
-    {
-        ShaderSource shader = { "Noesis_ChromaticAberrationEffect", Shader::Custom_Effect };
+  #ifdef HAVE_CUSTOM_SHADERS
+    RenderContext::EnsureShaders(Shaders, "ChromaticAberration", ChromaticAberration_bin);
+  #endif
 
-    #if defined(NS_PLATFORM_WINDOWS_DESKTOP)
-        shader.hlsl = ChromaticAberration;
-    #endif
-
-        RenderContext* context = RenderContext::Current();
-        Shader = context->CreatePixelShader(shader);
-    }
-
-    SetPixelShader(Shader);
+    SetPixelShader(Shaders.shaders[0]);
     SetConstantBuffer(&mConstants, sizeof(mConstants));
 }
 
@@ -74,4 +63,4 @@ NS_END_COLD_REGION
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 const DependencyProperty* ChromaticAberrationEffect::AmountProperty;
-void* ChromaticAberrationEffect::Shader;
+EffectShaders ChromaticAberrationEffect::Shaders;

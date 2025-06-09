@@ -3,6 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
     xmlns:local="clr-namespace:BlendTutorial"
     mc:Ignorable="d">
     <SolidColorBrush x:Key="BlendTutorialForeground" Color="#FFFFFFFF"/>
@@ -286,8 +288,10 @@
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
         </ControlTemplate.Resources>
-        <Grid Width="8">
-            <Border x:Name="Bg" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" BorderThickness="1"/>
+        <Grid Width="8" UseLayoutRounding="False">
+            <Border x:Name="Bg" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" BorderThickness="1">
+              <Border x:Name="BgFocus" BorderBrush="{StaticResource BlendTutorialFocusedBrush}" CornerRadius="1" BorderThickness="0.5" Opacity="0"/>
+            </Border>
             <Border x:Name="BgOver" BorderBrush="{StaticResource BlendTutorialBorderOverBrush}" Background="{StaticResource BlendTutorialBackgroundOverBrush}" CornerRadius="2" BorderThickness="1" Opacity="0"/>
         </Grid>
         <ControlTemplate.Triggers>
@@ -299,6 +303,9 @@
                     <BeginStoryboard Storyboard="{StaticResource OverOn}"/>
                 </Trigger.EnterActions>
             </Trigger>
+            <Trigger Property="Tag" Value="FocusEngaged">
+                <Setter Property="Opacity" Value="0.8" TargetName="BgFocus"/>
+            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="BlendTutorialSliderThumbStyle" TargetType="{x:Type Thumb}">
@@ -308,20 +315,20 @@
         <Setter Property="BorderBrush" Value="{StaticResource BlendTutorialBorderBrush}"/>
     </Style>
     <ControlTemplate x:Key="BlendTutorialSliderTemplate" TargetType="{x:Type Slider}">
-        <Border CornerRadius="2" BorderThickness="1" BorderBrush="{StaticResource BlendTutorialBorderBrush}" Background="{StaticResource BlendTutorialTextBoxBackgroundBrush}">
+        <Border CornerRadius="2.5" BorderThickness="1" BorderBrush="{StaticResource BlendTutorialBorderBrush}" Background="{StaticResource BlendTutorialTextBoxBackgroundBrush}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="32"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border x:Name="BgFocused" Grid.ColumnSpan="2" BorderBrush="{StaticResource BlendTutorialFocusedBrush}" BorderThickness="1" CornerRadius="3" Margin="-2" Opacity="0"/>
-                <Border Grid.Column="0" CornerRadius="2,0,0,2" Background="{StaticResource BlendTutorialBackgroundOverBrush}" Padding="2">
+                <Border Grid.Column="0" CornerRadius="1.8,0,0,1.8" Background="{StaticResource BlendTutorialBackgroundOverBrush}" Padding="2">
                     <TextBlock Text="{Binding Value, ElementName=PART_Track, StringFormat=F0}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 </Border>
-                <Border Grid.Column="1" Background="{StaticResource BlendTutorialFormBackgroundBrush}" CornerRadius="0,2,2,0" Margin="0" Padding="1" >
+                <Border Grid.Column="1" Background="{StaticResource BlendTutorialFormBackgroundBrush}" CornerRadius="0,1.8,1.8,0" Margin="0" Padding="1" >
                     <Track x:Name="PART_Track">
                         <Track.Thumb>
-                            <Thumb Style="{StaticResource BlendTutorialSliderThumbStyle}"/>
+                            <Thumb x:Name="thumb" Style="{StaticResource BlendTutorialSliderThumbStyle}"/>
                         </Track.Thumb>
                     </Track>
                 </Border>
@@ -348,6 +355,9 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="noesis:Element.IsFocusEngaged" Value="True">
+                <Setter Property="Tag" Value="FocusEngaged" TargetName="thumb"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

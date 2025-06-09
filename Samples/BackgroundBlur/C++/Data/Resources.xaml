@@ -3,6 +3,8 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+  xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
   mc:Ignorable="d">
 
   <Color x:Key="BackgroundBlur.Color.MayaBlue">#63C8EA</Color>
@@ -85,14 +87,13 @@
   <Geometry x:Key="BackgroundBlur.Geometry.GuiText">M218.200700106049,67.01174C218.200700106049,69.09286,216.535800106049,70.34153,213.205900106049,70.34153L153.648800106049,70.34153C150.319100106049,70.34153,148.237800106049,69.09286,148.237800106049,67.01174L148.237800106049,0.416200000000003 125.762100106049,0.416200000000003 125.762100106049,69.50907C125.762100106049,84.49309,134.918800106049,91.98508,153.232600106049,91.98508L212.789900106049,91.98508C231.103500106049,91.98508,240.260500106049,84.49309,240.260500106049,69.92531L240.260500106049,2.5410988417629E-21 217.784500106049,2.5410988417629E-21 217.784500106049,67.01174z M251.914700106049,2.5410988417629E-21L274.390700106049,2.5410988417629E-21 274.390700106049,91.15265 251.914700106049,91.15265z M64.3942001060486,35.79507L64.3942001060486,58.27109 92.2812001060488,58.27109 92.2812001060488,70.34153 27.4707001060488,70.34153C24.1410001060485,70.34153,22.0598001060485,68.67665,22.0598001060485,65.76311L22.0598001060485,25.80576C22.0598001060485,22.89222,23.7246001060485,21.2273399999999,27.4707001060488,21.2273399999999L112.259700106049,21.2273399999999 112.259700106049,2.5410988417629E-21 27.4707001060488,2.5410988417629E-21C9.15670010604844,2.5410988417629E-21,1.06048446468776E-07,7.49199999999996,1.06048446468776E-07,22.05977L1.06048446468776E-07,68.67665C1.06048446468776E-07,83.66065,9.15670010604844,91.15265,27.4707001060488,91.15265L114.757000106049,91.15265 114.757000106049,35.37888 64.3942001060486,35.37888z</Geometry>
 
   <DropShadowEffect x:Key="BackgroundBlur.Effect.TextShadow" Direction="270" BlurRadius="2" ShadowDepth="1" Opacity="0.2"/>
-  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.Static.Foreground" Color="#FFE5E5E5"/>
-  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.MouseOver.Background" Color="#FFDCECFC"/>
-  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.MouseOver.Border" Color="#FF7Eb4EA"/>
-  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.Pressed.Background" Color="#FFDAECFC"/>
-  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.Pressed.Border" Color="#FF569DE5"/>
-  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.Disabled.Background" Color="#FFF0F0F0"/>
-  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.Disabled.Border" Color="#FFD9D9D9"/>
-  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.Static.Background" Color="#FFF0F0F0"/>
+  <SolidColorBrush x:Key="BackgroundBlur.Brush.Slider.Static.Border" Color="#FFCBE5FF"/>
+  <SolidColorBrush x:Key="BackgroundBlur.Brush.Slider.MouseOver.Border" Color="White"/>
+  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.Static.Border" Color="Black"/>
+  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.MouseOver.Background" Color="#FFF0F0F0"/>
+  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.MouseOver.Border" Color="#FF316AA3"/>
+  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.Pressed.Border" Color="#FF0E4378"/>
+  <SolidColorBrush x:Key="BackgroundBlur.Brush.SliderThumb.Static.Background" Color="#FFDCECFC"/>
 
   <Style x:Key="BackgroundBlur.Style.RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
     <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -108,28 +109,26 @@
     </Setter>
   </Style>
   <ControlTemplate x:Key="BackgroundBlur.Template.SliderThumb" TargetType="{x:Type Thumb}">
-    <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-      <Path x:Name="grip" Data="M 0,0 C0,0 11,0 11,0 11,0 11,18 11,18 11,18 0,18 0,18 0,18 0,0 0,0 z" Fill="{StaticResource BackgroundBlur.Brush.SliderThumb.Static.Background}" Stretch="Fill" SnapsToDevicePixels="True" StrokeThickness="0.5" Stroke="Black" UseLayoutRounding="True" VerticalAlignment="Center"/>
-    </Grid>
+    <Rectangle x:Name="grip" Fill="{StaticResource BackgroundBlur.Brush.SliderThumb.Static.Background}" Stroke="{StaticResource BackgroundBlur.Brush.SliderThumb.Static.Border}" StrokeThickness="0.5"
+               Width="5" Height="12" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     <ControlTemplate.Triggers>
       <Trigger Property="IsMouseOver" Value="true">
-        <Setter Property="Fill" TargetName="grip" Value="{StaticResource BackgroundBlur.Brush.SliderThumb.MouseOver.Background}"/>
         <Setter Property="Stroke" TargetName="grip" Value="{StaticResource BackgroundBlur.Brush.SliderThumb.MouseOver.Border}"/>
       </Trigger>
       <Trigger Property="IsDragging" Value="true">
-        <Setter Property="Fill" TargetName="grip" Value="{StaticResource BackgroundBlur.Brush.SliderThumb.Pressed.Background}"/>
+        <Setter Property="Fill" TargetName="grip" Value="{StaticResource BackgroundBlur.Brush.Foreground}"/>
         <Setter Property="Stroke" TargetName="grip" Value="{StaticResource BackgroundBlur.Brush.SliderThumb.Pressed.Border}"/>
       </Trigger>
-      <Trigger Property="IsEnabled" Value="false">
-        <Setter Property="Fill" TargetName="grip" Value="{StaticResource BackgroundBlur.Brush.SliderThumb.Disabled.Background}"/>
-        <Setter Property="Stroke" TargetName="grip" Value="{StaticResource BackgroundBlur.Brush.SliderThumb.Disabled.Border}"/>
+      <Trigger Property="Tag" Value="FocusEngaged">
+        <Setter Property="Fill" TargetName="grip" Value="{StaticResource BackgroundBlur.Brush.Foreground}"/>
+        <Setter Property="Stroke" TargetName="grip" Value="{StaticResource BackgroundBlur.Brush.SliderThumb.Pressed.Border}"/>
       </Trigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <ControlTemplate x:Key="BackgroundBlur.Template.SliderHorizontal" TargetType="{x:Type Slider}">
-    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
       <Grid>
-        <Border SnapsToDevicePixels="False" BorderBrush="White" BorderThickness="0.2" Height="6" Margin="0,2" VerticalAlignment="Center"/>
+        <Border x:Name="border" SnapsToDevicePixels="False" BorderBrush="{StaticResource BackgroundBlur.Brush.Slider.Static.Border}" BorderThickness="0.2" Height="6" Margin="0,2" VerticalAlignment="Center"/>
         <Track x:Name="PART_Track">
           <Track.DecreaseRepeatButton>
             <RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource BackgroundBlur.Style.RepeatButtonTransparent}" Margin="1,4,0,4" Background="{StaticResource BackgroundBlur.Brush.Foreground}"/>
@@ -138,14 +137,18 @@
             <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource BackgroundBlur.Style.RepeatButtonTransparent}"/>
           </Track.IncreaseRepeatButton>
           <Track.Thumb>
-            <Thumb x:Name="Thumb" Focusable="False" Height="12" Template="{StaticResource BackgroundBlur.Template.SliderThumb}" VerticalAlignment="Center" Width="5"/>
+            <Thumb x:Name="Thumb" Focusable="False" Template="{StaticResource BackgroundBlur.Template.SliderThumb}" VerticalAlignment="Center"/>
           </Track.Thumb>
         </Track>
       </Grid>
     </Border>
     <ControlTemplate.Triggers>
       <Trigger Property="IsKeyboardFocused" Value="true">
-        <Setter Property="Foreground" TargetName="Thumb" Value="White"/>
+        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BackgroundBlur.Brush.Slider.MouseOver.Border}"/>
+        <Setter Property="BorderThickness" TargetName="border" Value="0.4"/>
+      </Trigger>
+      <Trigger Property="noesis:Element.IsFocusEngaged" Value="true">
+        <Setter Property="Tag" TargetName="Thumb" Value="FocusEngaged"/>
       </Trigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
@@ -153,11 +156,21 @@
     <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
     <Setter Property="Background" Value="Transparent"/>
     <Setter Property="BorderBrush" Value="Transparent"/>
-    <Setter Property="Foreground" Value="{StaticResource BackgroundBlur.Brush.SliderThumb.Static.Foreground}"/>
     <Setter Property="Minimum" Value="0"/>
     <Setter Property="Maximum" Value="40"/>
+    <Setter Property="SmallChange" Value="1"/>
+    <Setter Property="LargeChange" Value="10"/>
     <Setter Property="IsMoveToPointEnabled" Value="True"/>
     <Setter Property="Template" Value="{StaticResource BackgroundBlur.Template.SliderHorizontal}"/>
+    <Setter Property="noesis:StyleInteraction.Triggers">
+      <Setter.Value>
+        <noesis:StyleTriggerCollection>
+          <b:EventTrigger EventName="MouseEnter">
+            <noesis:SetFocusAction/>
+          </b:EventTrigger>
+        </noesis:StyleTriggerCollection>
+      </Setter.Value>
+    </Setter>
   </Style>
 
   <Style x:Key="BackgroundBlur.ButtonBlue" TargetType="{x:Type Button}">
@@ -175,6 +188,15 @@
         </LinearGradientBrush>
       </Setter.Value>
     </Setter>
+    <Setter Property="noesis:StyleInteraction.Triggers">
+      <Setter.Value>
+        <noesis:StyleTriggerCollection>
+          <b:EventTrigger EventName="MouseEnter">
+            <noesis:SetFocusAction/>
+          </b:EventTrigger>
+        </noesis:StyleTriggerCollection>
+      </Setter.Value>
+    </Setter>
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Button}">
@@ -189,8 +211,33 @@
             </Viewbox.RenderTransform>
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup x:Name="FocusStates">
+                <VisualStateGroup.Transitions>
+                  <VisualTransition GeneratedDuration="0:0:0.1" To="Focused"/>
+                  <VisualTransition From="Focused" GeneratedDuration="0:0:0.1"/>
+                </VisualStateGroup.Transitions>
                 <VisualState x:Name="Unfocused"/>
-                <VisualState x:Name="Focused"/>
+                <VisualState x:Name="Focused">
+                  <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="viewbox">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="1.12"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="viewbox">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="1.1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonEffect">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="1.18"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonEffect">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="1.6"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonEffect">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="0.4"/>
+                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
               </VisualStateGroup>
               <VisualStateGroup x:Name="CommonStates">
                 <VisualStateGroup.Transitions>
@@ -212,30 +259,12 @@
                 </VisualStateGroup.Transitions>
                 <VisualState x:Name="Normal"/>
                 <VisualState x:Name="MouseOver">
-                  <Storyboard RepeatBehavior="Forever" AutoReverse="True">
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="viewbox">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="1.12"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="viewbox">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="1.1"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonEffect">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="1.18"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonEffect">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="1.6"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonEffect">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="0.4"/>
-                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="0"/>
-                    </DoubleAnimationUsingKeyFrames>
+                  <Storyboard>
                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBackground">
-                      <EasingColorKeyFrame KeyTime="0:0:01" Value="#FF478CCA"/>
+                      <EasingColorKeyFrame KeyTime="0" Value="#FF478CCA"/>
                     </ColorAnimationUsingKeyFrames>
                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="ButtonBackground">
-                      <EasingColorKeyFrame KeyTime="0:0:01" Value="#FF2488DF"/>
+                      <EasingColorKeyFrame KeyTime="0" Value="#FF2488DF"/>
                     </ColorAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>
@@ -299,6 +328,15 @@
         </LinearGradientBrush>
       </Setter.Value>
     </Setter>
+    <Setter Property="noesis:StyleInteraction.Triggers">
+      <Setter.Value>
+        <noesis:StyleTriggerCollection>
+          <b:EventTrigger EventName="MouseEnter">
+            <noesis:SetFocusAction/>
+          </b:EventTrigger>
+        </noesis:StyleTriggerCollection>
+      </Setter.Value>
+    </Setter>
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type Button}">
@@ -313,8 +351,33 @@
             </Viewbox.RenderTransform>
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup x:Name="FocusStates">
+                <VisualStateGroup.Transitions>
+                  <VisualTransition GeneratedDuration="0:0:0.1" To="Focused"/>
+                  <VisualTransition From="Focused" GeneratedDuration="0:0:0.1"/>
+                </VisualStateGroup.Transitions>
                 <VisualState x:Name="Unfocused"/>
-                <VisualState x:Name="Focused"/>
+                <VisualState x:Name="Focused">
+                  <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="viewbox">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="1.12"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="viewbox">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="1.1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonEffect">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="1.18"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonEffect">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="1.6"/>
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonEffect">
+                      <EasingDoubleKeyFrame KeyTime="0" Value="0.4"/>
+                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="0"/>
+                    </DoubleAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
               </VisualStateGroup>
               <VisualStateGroup x:Name="CommonStates">
                 <VisualStateGroup.Transitions>
@@ -337,29 +400,11 @@
                 <VisualState x:Name="Normal"/>
                 <VisualState x:Name="MouseOver">
                   <Storyboard RepeatBehavior="Forever" AutoReverse="True">
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="viewbox">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="1.12"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="viewbox">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="1.1"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonEffect">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="1.18"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonEffect">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="1.6"/>
-                    </DoubleAnimationUsingKeyFrames>
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonEffect">
-                      <EasingDoubleKeyFrame KeyTime="0" Value="0.4"/>
-                      <EasingDoubleKeyFrame KeyTime="0:0:01" Value="0"/>
-                    </DoubleAnimationUsingKeyFrames>
                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBackground">
-                      <EasingColorKeyFrame KeyTime="0:0:01" Value="#FFDFAB26"/>
+                      <EasingColorKeyFrame KeyTime="0" Value="#FFDFAB26"/>
                     </ColorAnimationUsingKeyFrames>
                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="ButtonBackground">
-                      <EasingColorKeyFrame KeyTime="0:0:01" Value="#FFF1C657"/>
+                      <EasingColorKeyFrame KeyTime="0" Value="#FFF1C657"/>
                     </ColorAnimationUsingKeyFrames>
                   </Storyboard>
                 </VisualState>

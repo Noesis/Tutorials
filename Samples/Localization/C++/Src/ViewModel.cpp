@@ -17,8 +17,8 @@ using namespace Noesis;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-Language::Language(const char* name, const char* sourcePath): _name(name),
-    _source(sourcePath)
+Language::Language(const char* name, const char* sourcePath, Noesis::FlowDirection flow):
+    _name(name), _source(sourcePath), _flow(flow)
 {
 }
 
@@ -35,15 +35,23 @@ const Uri& Language::GetSource() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+Noesis::FlowDirection Language::GetFlowDirection() const
+{
+    return _flow;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 ViewModel::ViewModel()
 {
     _languages = *new ObservableCollection<Language>();
     _languages->Add(MakePtr<Language>("English", 
-        "Language-en.xaml"));
+        "Language-en.xaml", FlowDirection_LeftToRight));
     _languages->Add(MakePtr<Language>("Fran""\xC3\xA7""ais", 
-        "Language-fr.xaml"));
+        "Language-fr.xaml", FlowDirection_LeftToRight));
     _languages->Add(MakePtr<Language>("\xE6\x97\xA5\xE6\x9C\xAC\xE8\xAA\x9E", 
-        "Language-jp.xaml"));
+        "Language-jp.xaml", FlowDirection_LeftToRight));
+    _languages->Add(MakePtr<Language>(u8"عربي", 
+        "Language-ar.xaml", FlowDirection_RightToLeft));
 
     SetSelectedLanguage(_languages->Get(0));
 
@@ -120,6 +128,7 @@ NS_IMPLEMENT_REFLECTION(Language)
 {
     NsProp("Name", &Language::GetName);
     NsProp("Source", &Language::GetSource);
+    NsProp("FlowDirection", &Language::GetFlowDirection);
 }
 
 NS_END_COLD_REGION

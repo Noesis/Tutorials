@@ -8,10 +8,12 @@
 #include <NsCore/ReflectionImplement.h>
 #include <NsCore/RegisterComponent.h>
 #include <NsGui/MatrixTransform.h>
+#include <NsGui/Canvas.h>
 #include <NsGui/Rectangle.h>
 #include <NsGui/Brushes.h>
 #include <NsGui/SolidColorBrush.h>
 #include <NsGui/Panel.h>
+#include <NsGui/IntegrationAPI.h>
 #include <NsMath/Transform.h>
 #include <NsApp/EmbeddedXamlProvider.h>
 #include <NsApp/ApplicationLauncher.h>
@@ -40,8 +42,9 @@ class App final: public Application
 class MainWindow final: public Window
 {
 public:
-    MainWindow(): _index(0)
+    MainWindow()
     {
+        InitializeComponent();
     }
 
     void OnManipulationStarting(const ManipulationStartingEventArgs& e) override
@@ -51,7 +54,7 @@ public:
         {
             Panel::SetZIndex(rectangle, ++_index);
             e.mode = ManipulationModes_All;
-            e.manipulationContainer = (Visual*)FindName("root");
+            e.manipulationContainer = _root;
             e.handled = true;
         }
 
@@ -119,7 +122,21 @@ public:
     }
 
 private:
-    int _index;
+    void InitializeComponent()
+    {
+        GUI::LoadComponent(this, "MainWindow.xaml");
+    }
+
+    bool ConnectField(BaseComponent* object, const char* name) override
+    {
+        NS_CONNECT_FIELD(_root, "root");
+
+        return false;
+    }
+
+private:
+    int _index = 0;
+    Canvas* _root = 0;
 
     NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "Touch.MainWindow")
 };

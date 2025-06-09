@@ -6,6 +6,7 @@
 
 #include "AnimatedNumber.xaml.h"
 
+#include <NsGui/Uri.h>
 #include <NsGui/IntegrationAPI.h>
 #include <NsGui/Storyboard.h>
 #include <NsGui/Int32AnimationUsingKeyFrames.h>

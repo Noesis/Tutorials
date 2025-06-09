@@ -6,6 +6,7 @@
 
 #include <NsCore/Noesis.h>
 #include <NsCore/ReflectionImplement.h>
+#include <NsGui/Uri.h>
 #include <NsGui/Button.h>
 #include <NsGui/UIElementData.h>
 #include <NsGui/IntegrationAPI.h>
@@ -59,6 +60,7 @@ bool NumericUpDown::ConnectEvent(BaseComponent* source, const char* event, const
 {
     NS_CONNECT_EVENT(Button, Click, UpButton_Click);
     NS_CONNECT_EVENT(Button, Click, DownButton_Click);
+
     return false;
 }
 

@@ -17,11 +17,11 @@ namespace WorldSpaceUI
 
         void Start()
         {
-            InputDeviceCharacteristics leftTrackedControllerFilter =  InputDeviceCharacteristics.Controller |
+            InputDeviceCharacteristics rightTrackedControllerFilter =  InputDeviceCharacteristics.Controller |
                 InputDeviceCharacteristics.TrackedDevice | InputDeviceCharacteristics.Right;
 
             List<InputDevice> devices = new List<InputDevice>();
-            InputDevices.GetDevicesWithCharacteristics(leftTrackedControllerFilter, devices);
+            InputDevices.GetDevicesWithCharacteristics(rightTrackedControllerFilter, devices);
 
             if (devices.Count > 0)
             {
@@ -40,17 +40,34 @@ namespace WorldSpaceUI
                 Noesis.Point3D pos = new Noesis.Point3D(Object.transform.position.x, Object.transform.position.y, Object.transform.position.z);
                 Noesis.Vector3D dir = new Noesis.Vector3D(Object.transform.forward.x, Object.transform.forward.y, Object.transform.forward.z);
 
-                var root = (Noesis.Visual)Noesis.VisualTreeHelper.GetRoot(View.Content);
-                var result = Noesis.VisualTreeHelper.HitTest3D(root, pos, dir);
+                bool hit = false;
+                Noesis.Point3D worldPos = new Noesis.Point3D();
 
-                if (result.VisualHit != null)
+                var captured = View.Content.Mouse.Captured;
+                if (captured != null)
                 {
-                    float len = (result.WorldPos - pos).Length;
+                    // Visuals capturing the mouse must always utilize its 3D plane for hit testing
+                    // https://www.noesisengine.com/bugs/view.php?id=2837
+                    hit = Noesis.VisualTreeHelper.IntersectPlane(captured, pos, dir, out worldPos);
+                }
+                else
+                {
+                    var root = (Noesis.Visual)Noesis.VisualTreeHelper.GetRoot(View.Content);
+                    var result = Noesis.VisualTreeHelper.HitTest3D(root, pos, dir);
+
+                    if (result.VisualHit != null)
+                    {
+                        worldPos = result.WorldPos;
+                        hit = true;
+                    }
+                }
+
+                if (hit)
+                {
+                    float len = (worldPos - pos).Length;
                     transform.localPosition = new Vector3(0.0f, 0.0f, len * 0.5f);
                     transform.localScale = new Vector3(0.003f, len * 0.5f, 0.003f);
                 }
-
-                bool hit = result.VisualHit != null;
 
                 if (_lastHit != hit)
                 {

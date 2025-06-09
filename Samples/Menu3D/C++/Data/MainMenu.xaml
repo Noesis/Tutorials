@@ -135,9 +135,17 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <noesis:SetFocusAction TargetName="Start"/>
+        </b:EventTrigger>
         <b:DataTrigger Binding="{Binding State}" Value="{x:Static local:State.Main}">
+            <b:ChangePropertyAction TargetName="Start" PropertyName="MinHeight" Value="1"/>
             <b:ControlStoryboardAction Storyboard="{StaticResource FadeIn}"/>
         </b:DataTrigger>
+        <b:StoryboardCompletedTrigger Storyboard="{StaticResource FadeIn}">
+            <noesis:SetFocusAction TargetName="LayoutRoot"/>
+            <b:ChangePropertyAction TargetName="Start" PropertyName="MinHeight" Value="0"/>
+        </b:StoryboardCompletedTrigger>
         <b:DataTrigger Binding="{Binding State}" Comparison="NotEqual" Value="{x:Static local:State.Main}">
             <b:ControlStoryboardAction Storyboard="{StaticResource FadeOut}"/>
         </b:DataTrigger>
@@ -147,12 +155,7 @@
         </b:KeyTrigger>
     </b:Interaction.Triggers>
 
-    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
-        <b:Interaction.Triggers>
-            <b:StoryboardCompletedTrigger Storyboard="{StaticResource FadeIn}">
-                <noesis:SetFocusAction TargetName="Start"/>
-            </b:StoryboardCompletedTrigger>
-        </b:Interaction.Triggers>
+    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5" FocusManager.IsFocusScope="True">
         <Viewbox>
             <Grid Width="1300" Height="900">
                 <noesis:Element.Transform3D>

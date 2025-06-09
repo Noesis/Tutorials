@@ -9,7 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Localization</RootNamespace>
     <AssemblyName>Localization</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FrameworkVersion>v4.7.2</FrameworkVersion>
+    <FrameworkVersion Condition="'$(VisualStudioVersion)' == '14.0'">v4.5.2</FrameworkVersion>
+    <FrameworkVersion Condition="'$(VisualStudioVersion)' == '15.0'">v4.6.1</FrameworkVersion>
+    <TargetFrameworkVersion>$(FrameworkVersion)</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -36,13 +39,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)packages\Microsoft.Xaml.Behaviors.Wpf.1.1.37\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
-    <Reference Include="Noesis.GUI.Extensions, Version=3.0.14.11748, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)packages\Noesis.GUI.Extensions.3.0.14\lib\net45\Noesis.GUI.Extensions.dll</HintPath>
+    <Reference Include="Noesis.GUI.Extensions, Version=3.0.23.12788, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\Noesis.GUI.Extensions.3.0.23\lib\net45\Noesis.GUI.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\System.Memory.4.5.5\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,6 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Language-ar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Language-en.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,11 +125,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="PTSans-BoldItalic.ttf" />
-    <Resource Include="PTSans-Italic.ttf" />
-    <Resource Include="PTSans-Bold.ttf" />
-    <Resource Include="PTSans-Regular.ttf" />
-    <Resource Include="FontopoNIHONGO.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -126,11 +136,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="PTSans-BoldItalic.ttf" />
+    <Resource Include="PTSans-Italic.ttf" />
+    <Resource Include="PTSans-Bold.ttf" />
+    <Resource Include="PTSans-Regular.ttf" />
+    <Resource Include="FontopoNIHONGO.otf" />
+    <Resource Include="A_Nefel_Sereke.ttf" />
     <Resource Include="Flag-en.png" />
     <Resource Include="Flag-fr.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Flag-jp.png" />
+    <Resource Include="Flag-ar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

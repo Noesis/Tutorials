@@ -34,19 +34,20 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void InstallResourceProviders()
+void SetResourceProviders()
 {
     // Each time a resource (xaml, texture, font) is needed, the corresponding provider is invoked
     // to get a stream to the content. You must install a provider for each needed resource. There
     // are a few implementations available in the app framework (like LocalXamlProvider to load
     // from disk). For this sample, we are embedding needed resources in a C array.
     NoesisApp::EmbeddedXaml xamls[] = { { "Settings.xaml", Settings_xaml } };
+    Noesis::GUI::SetXamlProvider(Noesis::MakePtr<NoesisApp::EmbeddedXamlProvider>(xamls));
+
     NoesisApp::EmbeddedFont fonts[] = { { "", HermeneusOne_Regular_ttf } };
+    Noesis::GUI::SetFontProvider(Noesis::MakePtr<NoesisApp::EmbeddedFontProvider>(fonts));
 
-    Noesis::Ptr<Noesis::XamlProvider> xamlProvider = *new NoesisApp::EmbeddedXamlProvider(xamls);
-    Noesis::Ptr<Noesis::FontProvider> fontProvider = *new NoesisApp::EmbeddedFontProvider(fonts);
-
-    NoesisApp::SetThemeProviders(xamlProvider, fontProvider);
+    // Set providers for the theme
+    NoesisApp::SetThemeProviders();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -130,13 +131,11 @@ void SetupDisplay(NoesisApp::Display* display, NoesisApp::RenderContext* ctx, No
 
     display->Scroll() += [view](NoesisApp::Display*, float delta)
     {
-        NS_LOG_INFO("Scroll: %.4f", delta);
         view->Scroll(delta);
     };
 
     display->HScroll() += [view](NoesisApp::Display*, float delta)
     {
-        NS_LOG_INFO("HScroll: %.4f", delta);
         view->HScroll(delta);
     };
 
@@ -206,7 +205,9 @@ int NsMain(int argc, char** argv)
 {
     NS_UNUSED(argc, argv);
 
-    Noesis::SetLogHandler([](const char*, uint32_t, uint32_t level, const char*, const char* msg)
+    // A logging handler is installed here. You can also install a custom error handler and memory
+    // allocator (see IntegrationAPI.h). By default errors are redirected to the logging handler
+    Noesis::GUI::SetLogHandler([](const char*, uint32_t, uint32_t level, const char*, const char* msg)
     {
         // [TRACE] [DEBUG] [INFO] [WARNING] [ERROR]
         const char* prefixes[] = { "T", "D", "I", "W", "E" };
@@ -216,19 +217,17 @@ int NsMain(int argc, char** argv)
     // https://www.noesisengine.com/docs/Gui.Core.Licensing.html
     Noesis::GUI::SetLicense(NS_LICENSE_NAME, NS_LICENSE_KEY);
 
-    // Noesis initialization. This must be the first step before using any NoesisGUI functionality.
-    // A logging handler is installed here. You can also install a custom error handler and memory
-    // allocator. By default errors are redirected to the logging handler
+    // Noesis initialization. This must be the first step before using any NoesisGUI functionality
     Noesis::GUI::Init();
 
     // Register app components. We need a few in this example, like Display and RenderContext
     NoesisApp::Launcher::RegisterAppComponents();
 
     // Setup providers for each resource
-    InstallResourceProviders();
+    SetResourceProviders();
 
-    // Set application resources
-    Noesis::GUI::LoadApplicationResources("Theme/NoesisTheme.DarkBlue.xaml");
+    // Load the Dark Blue theme
+    Noesis::GUI::LoadApplicationResources(NoesisApp::Theme::DarkBlue());
 
     // A display is an abstraction over a system window (HWND, NSWindow, UIWindow, XWindow, ...).
     // As this is a helper class, not part of core, it goes in the 'NoesisApp' namespace
@@ -261,6 +260,7 @@ int NsMain(int argc, char** argv)
 
     // Close view. This step must be done in the same thread where initialization was performed
     view->GetRenderer()->Shutdown();
+    context->Shutdown();
 
     // It is mandatory to release all noesis objects before shutting down
     view.Reset();

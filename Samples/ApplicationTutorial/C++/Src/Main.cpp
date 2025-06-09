@@ -17,9 +17,14 @@
 #include <NsApp/EntryPoint.h>
 #include <NsApp/Application.h>
 #include <NsApp/Window.h>
+#include <NsApp/RichText.h>
 
 #include "App.xaml.bin.h"
 #include "MainWindow.xaml.bin.h"
+#include "Resources.xaml.bin.h"
+#include "Montserrat-Bold.ttf.bin.h"
+#include "Montserrat-Medium.ttf.bin.h"
+#include "Montserrat-SemiBold.ttf.bin.h"
 
 
 using namespace Noesis;
@@ -42,26 +47,27 @@ static const char* const gTitles[] =
 
 static const char* const gBodies[] =
 {
-    "The Secret of Monkey Island is a 1990 point-and-click graphic adventure game developed and "
-    "published by Lucasfilm Games. It takes place in a fantastical version of the Caribbean during "
-    "the age of piracy. The player assumes the role of Guybrush Threepwood, a young man who dreams "
-    "of becoming a pirate and explores fictional islands while solving puzzles.",
+    "The Secret of Monkey Island is a 1990 [b]point and click[/b] graphic adventure game developed and "
+    "published by [url='https://en.wikipedia.org/wiki/Lucasfilm_Games']Lucasfilm Games[/url]. It "
+    "takes place in a fantastical version of the Caribbean during the age of piracy. The player "
+    "assumes the funny role of [b]Guybrush Threepwood[/b], a man who dreams of becoming a pirate "
+    "while exploring fictional islands and solving puzzles.",
 
-    "Monkey Island 2: LeChuck's Revenge is an adventure game developed and published by LucasArts "
-    "in 1991. It was the second game of the Monkey Island series, following The Secret of Monkey "
-    "Island, and the sixth LucasArts game to use the SCUMM engine. It was the first game to use "
-    "the iMUSE sound system.",
+    "Monkey Island 2: LeChuck's Revenge is an [b]adventure game[/b] developed and published by "
+    "[url='https://en.wikipedia.org/wiki/LucasArts']LucasArts[/url] in 1991. It was the second "
+    "game of the Monkey Island series, following The Secret of Monkey Island, and the sixth "
+    "LucasArts game to use the [b]SCUMM[/b] game engine. It was the first game to use the "
+    "[b]iMUSE[/b] sound system.",
 
-    "The Curse of Monkey Island is an adventure game developed and published by LucasArts, and "
-    "the third game in the Monkey Island series. It was released in 1997 and followed the "
-    "successful games The Secret of Monkey Island and Monkey Island 2: LeChuck's Revenge. The "
-    "game is the twelfth and last LucasArts game to use the SCUMM engine, which was extensively "
-    "upgraded for its last outing before being replaced by the GrimE engine for the next game in "
-    "the series, Escape from Monkey Island. The Curse of Monkey Island is the first Monkey "
-    "Island game to include voice acting, and has a more cartoon-ish graphic style than the "
-    "earlier games."
+    "The Curse of Monkey Island was the adventure video game developed and published by "
+    "[url='https://en.wikipedia.org/wiki/LucasArts']LucasArts[/url], and the third game in the "
+    "'[b]Monkey Island[/b]' series. It was released in 1997 and followed the successful games The "
+    "Secret of Monkey Island and Monkey Island 2: LeChuck's Revenge. The game is the twelfth and "
+    "last game of LucasArts to use the [b]SCUMM[/b] engine, which was extensively upgraded for its "
+    "last outing before being replaced by the new [b]GrimE[/b] engine for the next game in the "
+    "series, Escape from Monkey Island. The Curse of Monkey Island is the first 'Monkey Island' "
+    "game to include voice acting, and has a more cartoon-ish graphic style than the earlier games."
 };
-
 
 namespace RssReader
 {
@@ -76,18 +82,10 @@ class App final: public Application
 class MainWindow final: public Window
 {
 public:
-    MainWindow(): _index(0)
+    MainWindow()
     {
+        Initialized() += MakeDelegate(this, &MainWindow::OnInitialized);
         InitializeComponent();
-
-        _title = FindName<TextBlock>("EntryTitle");
-        _title->SetText(gTitles[0]);
-
-        _desc = FindName<TextBlock>("EntryDesc");
-        _desc->SetText(gBodies[0]);
-
-        _url = FindName<TextBox>("Address");
-        _url->SetText(gURLs[0]);
     }
 
 private:
@@ -96,34 +94,53 @@ private:
         Noesis::GUI::LoadComponent(this, "MainWindow.xaml");
     }
 
+    bool ConnectField(BaseComponent* object, const char* name) override
+    {
+        NS_CONNECT_FIELD(_title, "EntryTitle");
+        NS_CONNECT_FIELD(_desc, "EntryDesc");
+        NS_CONNECT_FIELD(_url, "Address");
+
+        return false;
+    }
+
     bool ConnectEvent(BaseComponent* source, const char* event, const char* handler) override
     {
         NS_CONNECT_EVENT(Button, Click, OnPrevClicked);
         NS_CONNECT_EVENT(Button, Click, OnNextClicked);
+
         return false;
     }
 
-    void OnPrevClicked(BaseComponent* /*sender*/, const RoutedEventArgs& /*e*/)
+    void OnInitialized(BaseComponent*, const EventArgs&)
     {
-        _index = _index == 0 ? 2 : _index - 1;
+        SetData();
+    }
+
+    void SetData()
+    {
         _title->SetText(gTitles[_index]);
-        _desc->SetText(gBodies[_index]);
+        RichText::SetText(_desc, gBodies[_index]);
         _url->SetText(gURLs[_index]);
     }
 
-    void OnNextClicked(BaseComponent* /*sender*/, const RoutedEventArgs& /*e*/)
+    void OnPrevClicked(BaseComponent*, const RoutedEventArgs&)
+    {
+        _index = _index == 0 ? 2 : _index - 1;
+        SetData();
+    }
+
+    void OnNextClicked(BaseComponent*, const RoutedEventArgs&)
     {
         _index = _index == 2 ? 0 : _index + 1;
-        _title->SetText(gTitles[_index]);
-        _desc->SetText(gBodies[_index]);
-        _url->SetText(gURLs[_index]);
+        SetData();
     }
 
 private:
-    int _index;
-    TextBlock* _title;
-    TextBlock* _desc;
-    TextBox* _url;
+    int _index = 0;
+
+    TextBlock* _title = nullptr;
+    TextBlock* _desc = nullptr;
+    TextBox* _url = nullptr;
 
     NS_IMPLEMENT_INLINE_REFLECTION_(MainWindow, Window, "RssReader.MainWindow")
 };
@@ -145,10 +162,23 @@ private:
         EmbeddedXaml xamls[] = 
         {
             { "App.xaml", App_xaml },
-            { "MainWindow.xaml", MainWindow_xaml }
+            { "MainWindow.xaml", MainWindow_xaml },
+            { "Resources.xaml", Resources_xaml }
         };
 
         return *new EmbeddedXamlProvider(xamls);
+    }
+
+    Noesis::Ptr<FontProvider> GetFontProvider() const override
+    {
+        EmbeddedFont fonts[] =
+        {
+            { "", Montserrat_Bold_ttf },
+            { "", Montserrat_Medium_ttf },
+            { "", Montserrat_SemiBold_ttf }
+        };
+
+        return *new EmbeddedFontProvider(fonts);
     }
 };
 

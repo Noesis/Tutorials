@@ -453,4 +453,33 @@
     </Setter>
   </Style>
 
+  <Storyboard x:Key="AnimClose">
+    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PanelGrid" Storyboard.TargetProperty="RenderTransform.ScaleX">
+      <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+        <EasingDoubleKeyFrame.EasingFunction>
+          <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+        </EasingDoubleKeyFrame.EasingFunction>
+      </EasingDoubleKeyFrame>
+      <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+      <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="1">
+        <EasingDoubleKeyFrame.EasingFunction>
+          <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+        </EasingDoubleKeyFrame.EasingFunction>
+      </EasingDoubleKeyFrame>
+    </DoubleAnimationUsingKeyFrames>
+    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PanelGrid" Storyboard.TargetProperty="RenderTransform.ScaleY">
+      <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+        <EasingDoubleKeyFrame.EasingFunction>
+          <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+        </EasingDoubleKeyFrame.EasingFunction>
+      </EasingDoubleKeyFrame>
+      <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+      <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="1">
+        <EasingDoubleKeyFrame.EasingFunction>
+          <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+        </EasingDoubleKeyFrame.EasingFunction>
+      </EasingDoubleKeyFrame>
+    </DoubleAnimationUsingKeyFrames>
+  </Storyboard>
+
 </ResourceDictionary>

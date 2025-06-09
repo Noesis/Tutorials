@@ -25,8 +25,8 @@ namespace RssReader
         private string[] _bodies =
         {
             "The Secret of Monkey Island is a 1990 point-and-click graphic adventure game developed and " +
-            "published by Lucasfilm Games.It takes place in a fantastical version of the Caribbean during " +
-            "the age of piracy.The player assumes the role of Guybrush Threepwood, a young man who dreams " +
+            "published by Lucasfilm Games. It takes place in a fantastical version of the Caribbean during " +
+            "the age of piracy. The player assumes the role of Guybrush Threepwood, a young man who dreams " +
             "of becoming a pirate and explores fictional islands while solving puzzles.",
 
             "Monkey Island 2: LeChuck's Revenge is an adventure game developed and published by LucasArts " +
