@@ -73,7 +73,7 @@
     </Style>
 
     <Style x:Key="Style.Text.Stat" TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std"/>
+        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std 85"/>
         <Setter Property="Foreground" Value="{StaticResource Brush.Text.DarkCyan}"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="noesis:Text.Stroke" Value="{StaticResource Brush.Text.Shadow}"/>
@@ -94,7 +94,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="Style.Button.PrevNext" TargetType="{x:Type Button}">
-        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std"/>
+        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std 85"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template" Value="{StaticResource Template.Button.PrevNext}"/>
@@ -243,7 +243,7 @@
     <Style x:Key="Style.Button.Menu" TargetType="{x:Type Button}">
         <Setter Property="Margin" Value="0,0,0,36"/>
         <Setter Property="Padding" Value="48,4"/>
-        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std"/>
+        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std 85"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template" Value="{StaticResource Template.Button.Menu}"/>
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
@@ -495,7 +495,7 @@
         <Setter Property="Margin" Value="80,12,80,0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="FontSize" Value="28"/>
-        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std"/>
+        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std 85"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template" Value="{StaticResource Template.ListBoxItem.Navigation}"/>
     </Style>
@@ -1252,7 +1252,7 @@
         <Setter Property="Width" Value="98"/>
         <Setter Property="Padding" Value="10,8"/>
         <Setter Property="FontSize" Value="9"/>
-        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std"/>
+        <Setter Property="FontFamily" Value="Fonts/#Avenir LT Std 85"/>
         <Setter Property="Foreground" Value="{StaticResource Brush.Text.ButtonNormal}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template" Value="{StaticResource Template.ListBoxItem.WeaponCategory}"/>
@@ -1706,7 +1706,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock x:Name="Title" Grid.Column="0" Text="{Binding Name, Converter={StaticResource Converter.Uppercase}, FallbackValue=Location}"
-                            FontFamily="Fonts/#Avenir LT Std" Foreground="#FF80ECEB" FontSize="20" Margin="0" d:LayoutOverrides="Width, Height"/>
+                            FontFamily="Fonts/#Avenir LT Std 85" Foreground="#FF80ECEB" FontSize="20" Margin="0" d:LayoutOverrides="Width, Height"/>
                         <Rectangle x:Name="TitleLine" Grid.Column="1" Height="5" Margin="10,0,0,0" RenderTransformOrigin="0,0.5">
                             <Rectangle.RenderTransform>
                                 <TransformGroup>

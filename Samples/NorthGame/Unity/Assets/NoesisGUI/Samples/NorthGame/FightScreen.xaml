@@ -654,7 +654,7 @@
             <Viewbox Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom">
                 <StackPanel>
                     <TextBlock x:Name="PlayerName" Text="{Binding Player.Name, FallbackValue=SomeName, Converter={StaticResource Converter.Uppercase}}"
-                               FontFamily="Fonts/#Avenir LT Std" FontSize="16" Foreground="#FF60DAD6"
+                               FontFamily="Fonts/#Avenir LT Std 85" FontSize="16" Foreground="#FF60DAD6"
                                HorizontalAlignment="Center" Panel.ZIndex="10"
                                noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="2.5" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
@@ -743,7 +743,7 @@
             <Viewbox Grid.Row="0" Grid.Column="3" VerticalAlignment="Bottom">
                 <StackPanel>
                     <TextBlock x:Name="OpponentName" Text="{Binding Opponent.Name, FallbackValue=OtherName, Converter={StaticResource Converter.Uppercase}}"
-                        FontFamily="Fonts/#Avenir LT Std" FontSize="16" Foreground="#FF60DAD6"
+                        FontFamily="Fonts/#Avenir LT Std 85" FontSize="16" Foreground="#FF60DAD6"
                         HorizontalAlignment="Center" Panel.ZIndex="10"
                         noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="2.5" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
@@ -831,7 +831,7 @@
             </Viewbox>
             <Viewbox Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
                 <StackPanel Margin="0,0,0,0">
-                    <TextBlock x:Name="TextVS" Text="vs" FontFamily="Fonts/#Avenir LT Std" FontSize="24" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,5" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock x:Name="TextVS" Text="vs" FontFamily="Fonts/#Avenir LT Std 85" FontSize="24" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,5" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -952,7 +952,7 @@
                         </Border.Background>
                         <StackPanel>
                             <TextBlock Text="{Binding Player.SelectedLocation.Name, Converter={StaticResource Converter.Uppercase}}"
-                               FontFamily="Fonts/#Avenir LT Std" FontSize="10" Foreground="#FF1BF4F7" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                               FontFamily="Fonts/#Avenir LT Std 85" FontSize="10" Foreground="#FF1BF4F7" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                             <Border ClipToBounds="True">
                                 <Image x:Name="LocationImage" Source="{Binding Player.SelectedLocation.Image}" RenderTransformOrigin="0.5,0.5">
                                     <Image.RenderTransform>

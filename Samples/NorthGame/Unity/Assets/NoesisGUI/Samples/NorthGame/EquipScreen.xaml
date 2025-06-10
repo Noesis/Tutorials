@@ -1560,7 +1560,7 @@
                                 </TransformGroup>
                             </Viewbox.RenderTransform>
                             <TextBlock Text="{Binding Player.Name, FallbackValue=SomeName, Converter={StaticResource Converter.Uppercase}}"
-                                       Foreground="White" FontFamily="Fonts/#Avenir LT Std" FontSize="40"
+                                       Foreground="White" FontFamily="Fonts/#Avenir LT Std 85" FontSize="40"
                                        noesis:Text.Stroke="{StaticResource Brush.Text.Shadow}" noesis:Text.StrokeThickness="3.5"/>
                         </Viewbox>
                         <TextBlock x:Name="Class" Text="{Binding Player.Class.Name, FallbackValue=SomeClass, Converter={StaticResource Converter.Uppercase}}"
